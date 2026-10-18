@@ -117,7 +117,9 @@ class WorkflowUsage implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "billable") || $data->billable === null) { throw new SdkValidationError("billable", 'required', "Required property 'billable' is missing or null"); }
+        if (!property_exists($data, "billable") || $data->billable === null) {
+            throw new SdkValidationError("billable", 'required', "Required property 'billable' is missing or null");
+        }
         return new self(
             billable: SdkClient::hydrateClass($data->billable, WorkflowUsageBillable::class),
         );

@@ -11,11 +11,26 @@ final readonly class CopilotSpaceCollaboratorVariant1TypeEnum implements SdkOpen
 {
     public const TEAM = "Team";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class CopilotSpaceCollaboratorVariant1 implements CopilotSpaceCollaborator, \JsonSerializable
@@ -165,13 +180,27 @@ class CopilotSpaceCollaboratorVariant1 implements CopilotSpaceCollaborator, \Jso
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "actor_type") || $data->actor_type === null) { throw new SdkValidationError("actor_type", 'required', "Required property 'actor_type' is missing or null"); }
-        if (!property_exists($data, "role") || $data->role === null) { throw new SdkValidationError("role", 'required', "Required property 'role' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "slug") || $data->slug === null) { throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "actor_type") || $data->actor_type === null) {
+            throw new SdkValidationError("actor_type", 'required', "Required property 'actor_type' is missing or null");
+        }
+        if (!property_exists($data, "role") || $data->role === null) {
+            throw new SdkValidationError("role", 'required', "Required property 'role' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "slug") || $data->slug === null) {
+            throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             actorType: SdkClient::hydrateEnum($data->actor_type, CopilotSpaceCollaboratorVariant1ActorTypeEnum::class),
             role: SdkClient::hydrateStringEnumOrString($data->role, CopilotSpaceCollaboratorVariant1RoleEnum::class),
@@ -206,11 +235,26 @@ final readonly class CopilotSpaceResourceResourceTypeEnum implements SdkOpenEnum
     public const MEDIA_CONTENT = "media_content";
     public const UPLOADED_TEXT_FILE = "uploaded_text_file";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -303,11 +347,21 @@ class CopilotSpaceResource implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "resource_type") || $data->resource_type === null) { throw new SdkValidationError("resource_type", 'required', "Required property 'resource_type' is missing or null"); }
-        if (!property_exists($data, "metadata") || $data->metadata === null) { throw new SdkValidationError("metadata", 'required', "Required property 'metadata' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "resource_type") || $data->resource_type === null) {
+            throw new SdkValidationError("resource_type", 'required', "Required property 'resource_type' is missing or null");
+        }
+        if (!property_exists($data, "metadata") || $data->metadata === null) {
+            throw new SdkValidationError("metadata", 'required', "Required property 'metadata' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             resourceType: SdkClient::hydrateStringEnumOrString($data->resource_type, CopilotSpaceResourceResourceTypeEnum::class),

@@ -55,8 +55,12 @@ class ParticipationStats implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "all") || $data->all === null) { throw new SdkValidationError("all", 'required', "Required property 'all' is missing or null"); }
-        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
+        if (!property_exists($data, "all") || $data->all === null) {
+            throw new SdkValidationError("all", 'required', "Required property 'all' is missing or null");
+        }
+        if (!property_exists($data, "owner") || $data->owner === null) {
+            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
+        }
         return new self(
             all: array_values(array_map(static fn($item) => SdkClient::intValue($item), SdkClient::arrayValue($data->all))),
             owner: array_values(array_map(static fn($item) => SdkClient::intValue($item), SdkClient::arrayValue($data->owner))),
@@ -122,9 +126,15 @@ class ReferrerTraffic implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "referrer") || $data->referrer === null) { throw new SdkValidationError("referrer", 'required', "Required property 'referrer' is missing or null"); }
-        if (!property_exists($data, "count") || $data->count === null) { throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null"); }
-        if (!property_exists($data, "uniques") || $data->uniques === null) { throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null"); }
+        if (!property_exists($data, "referrer") || $data->referrer === null) {
+            throw new SdkValidationError("referrer", 'required', "Required property 'referrer' is missing or null");
+        }
+        if (!property_exists($data, "count") || $data->count === null) {
+            throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null");
+        }
+        if (!property_exists($data, "uniques") || $data->uniques === null) {
+            throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null");
+        }
         return new self(
             referrer: SdkClient::stringValue($data->referrer),
             count: SdkClient::intValue($data->count),
@@ -181,8 +191,12 @@ class ShortBranchCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             sha: SdkClient::stringValue($data->sha),
             url: SdkClient::stringValue($data->url),
@@ -272,9 +286,15 @@ class ShortBranch implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
-        if (!property_exists($data, "protected") || $data->protected === null) { throw new SdkValidationError("protected", 'required', "Required property 'protected' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "commit") || $data->commit === null) {
+            throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null");
+        }
+        if (!property_exists($data, "protected") || $data->protected === null) {
+            throw new SdkValidationError("protected", 'required', "Required property 'protected' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             commit: SdkClient::hydrateClass($data->commit, ShortBranchCommit::class),

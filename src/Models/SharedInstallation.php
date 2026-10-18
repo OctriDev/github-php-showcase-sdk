@@ -15,11 +15,26 @@ final readonly class InstallationRepositorySelectionEnum implements SdkOpenEnum
     public const ALL = "all";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -268,23 +283,57 @@ class Installation implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "account")) { throw new SdkValidationError("account", 'required', "Missing required property 'account'"); }
-        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) { throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null"); }
-        if (!property_exists($data, "access_tokens_url") || $data->access_tokens_url === null) { throw new SdkValidationError("access_tokens_url", 'required', "Required property 'access_tokens_url' is missing or null"); }
-        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) { throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "app_id") || $data->app_id === null) { throw new SdkValidationError("app_id", 'required', "Required property 'app_id' is missing or null"); }
-        if (!property_exists($data, "target_id") || $data->target_id === null) { throw new SdkValidationError("target_id", 'required', "Required property 'target_id' is missing or null"); }
-        if (!property_exists($data, "target_type") || $data->target_type === null) { throw new SdkValidationError("target_type", 'required', "Required property 'target_type' is missing or null"); }
-        if (!property_exists($data, "permissions") || $data->permissions === null) { throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null"); }
-        if (!property_exists($data, "events") || $data->events === null) { throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "single_file_name")) { throw new SdkValidationError("single_file_name", 'required', "Missing required property 'single_file_name'"); }
-        if (!property_exists($data, "app_slug") || $data->app_slug === null) { throw new SdkValidationError("app_slug", 'required', "Required property 'app_slug' is missing or null"); }
-        if (!property_exists($data, "suspended_by")) { throw new SdkValidationError("suspended_by", 'required', "Missing required property 'suspended_by'"); }
-        if (!property_exists($data, "suspended_at")) { throw new SdkValidationError("suspended_at", 'required', "Missing required property 'suspended_at'"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "account")) {
+            throw new SdkValidationError("account", 'required', "Missing required property 'account'");
+        }
+        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) {
+            throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null");
+        }
+        if (!property_exists($data, "access_tokens_url") || $data->access_tokens_url === null) {
+            throw new SdkValidationError("access_tokens_url", 'required', "Required property 'access_tokens_url' is missing or null");
+        }
+        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) {
+            throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "app_id") || $data->app_id === null) {
+            throw new SdkValidationError("app_id", 'required', "Required property 'app_id' is missing or null");
+        }
+        if (!property_exists($data, "target_id") || $data->target_id === null) {
+            throw new SdkValidationError("target_id", 'required', "Required property 'target_id' is missing or null");
+        }
+        if (!property_exists($data, "target_type") || $data->target_type === null) {
+            throw new SdkValidationError("target_type", 'required', "Required property 'target_type' is missing or null");
+        }
+        if (!property_exists($data, "permissions") || $data->permissions === null) {
+            throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null");
+        }
+        if (!property_exists($data, "events") || $data->events === null) {
+            throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "single_file_name")) {
+            throw new SdkValidationError("single_file_name", 'required', "Missing required property 'single_file_name'");
+        }
+        if (!property_exists($data, "app_slug") || $data->app_slug === null) {
+            throw new SdkValidationError("app_slug", 'required', "Required property 'app_slug' is missing or null");
+        }
+        if (!property_exists($data, "suspended_by")) {
+            throw new SdkValidationError("suspended_by", 'required', "Missing required property 'suspended_by'");
+        }
+        if (!property_exists($data, "suspended_at")) {
+            throw new SdkValidationError("suspended_at", 'required', "Missing required property 'suspended_at'");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             account: ($data->account === null ? null : SdkClient::hydrateUnionAs($data->account, InstallationAccount::class, [SimpleUser::class, Enterprise::class], null, [])),

@@ -97,11 +97,21 @@ class NullableLicenseSimple implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "url")) { throw new SdkValidationError("url", 'required', "Missing required property 'url'"); }
-        if (!property_exists($data, "spdx_id")) { throw new SdkValidationError("spdx_id", 'required', "Missing required property 'spdx_id'"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "key") || $data->key === null) {
+            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "url")) {
+            throw new SdkValidationError("url", 'required', "Missing required property 'url'");
+        }
+        if (!property_exists($data, "spdx_id")) {
+            throw new SdkValidationError("spdx_id", 'required', "Missing required property 'spdx_id'");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
         return new self(
             key: SdkClient::stringValue($data->key),
             name: SdkClient::stringValue($data->name),
@@ -121,11 +131,26 @@ final readonly class NullableMilestoneStateEnum implements SdkOpenEnum
     public const OPEN = "open";
     public const CLOSED = "closed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -316,22 +341,54 @@ class NullableMilestone implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "labels_url") || $data->labels_url === null) { throw new SdkValidationError("labels_url", 'required', "Required property 'labels_url' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
-        if (!property_exists($data, "creator")) { throw new SdkValidationError("creator", 'required', "Missing required property 'creator'"); }
-        if (!property_exists($data, "open_issues") || $data->open_issues === null) { throw new SdkValidationError("open_issues", 'required', "Required property 'open_issues' is missing or null"); }
-        if (!property_exists($data, "closed_issues") || $data->closed_issues === null) { throw new SdkValidationError("closed_issues", 'required', "Required property 'closed_issues' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "closed_at")) { throw new SdkValidationError("closed_at", 'required', "Missing required property 'closed_at'"); }
-        if (!property_exists($data, "due_on")) { throw new SdkValidationError("due_on", 'required', "Missing required property 'due_on'"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "labels_url") || $data->labels_url === null) {
+            throw new SdkValidationError("labels_url", 'required', "Required property 'labels_url' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "number") || $data->number === null) {
+            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "description")) {
+            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
+        }
+        if (!property_exists($data, "creator")) {
+            throw new SdkValidationError("creator", 'required', "Missing required property 'creator'");
+        }
+        if (!property_exists($data, "open_issues") || $data->open_issues === null) {
+            throw new SdkValidationError("open_issues", 'required', "Required property 'open_issues' is missing or null");
+        }
+        if (!property_exists($data, "closed_issues") || $data->closed_issues === null) {
+            throw new SdkValidationError("closed_issues", 'required', "Required property 'closed_issues' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "closed_at")) {
+            throw new SdkValidationError("closed_at", 'required', "Missing required property 'closed_at'");
+        }
+        if (!property_exists($data, "due_on")) {
+            throw new SdkValidationError("due_on", 'required', "Missing required property 'due_on'");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
             htmlUrl: SdkClient::stringValue($data->html_url),

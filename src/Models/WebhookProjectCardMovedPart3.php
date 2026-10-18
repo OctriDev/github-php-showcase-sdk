@@ -167,18 +167,42 @@ class WebhookProjectCardMovedProjectCard implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "after_id")) { throw new SdkValidationError("after_id", 'required', "Missing required property 'after_id'"); }
-        if (!property_exists($data, "archived") || $data->archived === null) { throw new SdkValidationError("archived", 'required', "Required property 'archived' is missing or null"); }
-        if (!property_exists($data, "column_id") || $data->column_id === null) { throw new SdkValidationError("column_id", 'required', "Required property 'column_id' is missing or null"); }
-        if (!property_exists($data, "column_url") || $data->column_url === null) { throw new SdkValidationError("column_url", 'required', "Required property 'column_url' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "creator")) { throw new SdkValidationError("creator", 'required', "Missing required property 'creator'"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "note")) { throw new SdkValidationError("note", 'required', "Missing required property 'note'"); }
-        if (!property_exists($data, "project_url") || $data->project_url === null) { throw new SdkValidationError("project_url", 'required', "Required property 'project_url' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "after_id")) {
+            throw new SdkValidationError("after_id", 'required', "Missing required property 'after_id'");
+        }
+        if (!property_exists($data, "archived") || $data->archived === null) {
+            throw new SdkValidationError("archived", 'required', "Required property 'archived' is missing or null");
+        }
+        if (!property_exists($data, "column_id") || $data->column_id === null) {
+            throw new SdkValidationError("column_id", 'required', "Required property 'column_id' is missing or null");
+        }
+        if (!property_exists($data, "column_url") || $data->column_url === null) {
+            throw new SdkValidationError("column_url", 'required', "Required property 'column_url' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "creator")) {
+            throw new SdkValidationError("creator", 'required', "Missing required property 'creator'");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "note")) {
+            throw new SdkValidationError("note", 'required', "Missing required property 'note'");
+        }
+        if (!property_exists($data, "project_url") || $data->project_url === null) {
+            throw new SdkValidationError("project_url", 'required', "Required property 'project_url' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             afterId: ($data->after_id === null ? null : SdkClient::floatValue($data->after_id)),
             archived: SdkClient::boolValue($data->archived),
@@ -315,9 +339,15 @@ class WebhookProjectCardMoved implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "project_card") || $data->project_card === null) { throw new SdkValidationError("project_card", 'required', "Required property 'project_card' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "project_card") || $data->project_card === null) {
+            throw new SdkValidationError("project_card", 'required', "Required property 'project_card' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookProjectCardMovedActionEnum::class),
             projectCard: SdkClient::hydrateClass($data->project_card, WebhookProjectCardMovedProjectCard::class),

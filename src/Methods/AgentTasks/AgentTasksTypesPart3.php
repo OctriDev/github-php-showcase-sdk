@@ -218,9 +218,15 @@ class AgentTasksListTasksForRepoResponseTasksItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             state: SdkClient::hydrateStringEnumOrString($data->state, AgentTasksListTasksForRepoResponseTasksItemStateEnum::class),
@@ -301,7 +307,9 @@ class AgentTasksListTasksForRepoResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "tasks") || $data->tasks === null) { throw new SdkValidationError("tasks", 'required', "Required property 'tasks' is missing or null"); }
+        if (!property_exists($data, "tasks") || $data->tasks === null) {
+            throw new SdkValidationError("tasks", 'required', "Required property 'tasks' is missing or null");
+        }
         return new self(
             tasks: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AgentTasksListTasksForRepoResponseTasksItem::class), SdkClient::arrayValue($data->tasks))),
             totalActiveCount: (property_exists($data, "total_active_count") && $data->total_active_count !== null ? SdkClient::intValue($data->total_active_count) : SdkNotGiven::Value),

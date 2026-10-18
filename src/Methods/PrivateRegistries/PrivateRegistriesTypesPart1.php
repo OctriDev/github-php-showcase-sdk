@@ -25,11 +25,26 @@ final readonly class PrivateRegistriesCreateOrgPrivateRegistryRegistryType imple
     public const PYTHON_INDEX = "python_index";
     public const TERRAFORM_REGISTRY = "terraform_registry";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class PrivateRegistriesCreateOrgPrivateRegistryVisibility implements SdkOpenEnum
@@ -38,11 +53,26 @@ final readonly class PrivateRegistriesCreateOrgPrivateRegistryVisibility impleme
     public const PRIVATE = "private";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class PrivateRegistriesCreateOrgPrivateRegistryAuthType implements SdkOpenEnum
@@ -56,11 +86,26 @@ final readonly class PrivateRegistriesCreateOrgPrivateRegistryAuthType implement
     public const OIDC_GCP = "oidc_gcp";
     public const ANONYMOUS = "anonymous";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class PrivateRegistriesUpdateOrgPrivateRegistryRegistryType implements SdkOpenEnum
@@ -81,11 +126,26 @@ final readonly class PrivateRegistriesUpdateOrgPrivateRegistryRegistryType imple
     public const PYTHON_INDEX = "python_index";
     public const TERRAFORM_REGISTRY = "terraform_registry";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class PrivateRegistriesUpdateOrgPrivateRegistryVisibility implements SdkOpenEnum
@@ -94,11 +154,26 @@ final readonly class PrivateRegistriesUpdateOrgPrivateRegistryVisibility impleme
     public const PRIVATE = "private";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class PrivateRegistriesUpdateOrgPrivateRegistryAuthType implements SdkOpenEnum
@@ -112,11 +187,26 @@ final readonly class PrivateRegistriesUpdateOrgPrivateRegistryAuthType implement
     public const OIDC_GCP = "oidc_gcp";
     public const ANONYMOUS = "anonymous";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class PrivateRegistriesListOrgPrivateRegistriesResponse implements \JsonSerializable
@@ -156,8 +246,12 @@ class PrivateRegistriesListOrgPrivateRegistriesResponse implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "configurations") || $data->configurations === null) { throw new SdkValidationError("configurations", 'required', "Required property 'configurations' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "configurations") || $data->configurations === null) {
+            throw new SdkValidationError("configurations", 'required', "Required property 'configurations' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             configurations: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OrgPrivateRegistryConfiguration::class), SdkClient::arrayValue($data->configurations))),
@@ -210,8 +304,12 @@ class PrivateRegistriesGetOrgPublicKeyResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key_id") || $data->key_id === null) { throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null"); }
-        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
+        if (!property_exists($data, "key_id") || $data->key_id === null) {
+            throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null");
+        }
+        if (!property_exists($data, "key") || $data->key === null) {
+            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
+        }
         return new self(
             keyId: SdkClient::stringValue($data->key_id),
             key: SdkClient::stringValue($data->key),

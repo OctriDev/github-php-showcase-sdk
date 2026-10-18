@@ -120,7 +120,7 @@ trait OrgsMethodsPart8
     public static function orgsListMembershipsForAuthenticatedUser(ClientConfig $clientConfig, OrgsListMembershipsForAuthenticatedUserState|SdkNotGiven $state = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/memberships/orgs", $clientConfig, query: ['state' => new SdkQueryValue($state, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListMembershipsForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/memberships/orgs", $clientConfig, query: ['state' => new SdkQueryValue($state, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListMembershipsForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OrgMembership::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -136,7 +136,7 @@ trait OrgsMethodsPart8
     public static function orgsGetMembershipForAuthenticatedUser(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): OrgMembership
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/memberships/orgs/" . SdkClient::encodePathSegment($org) . "", $clientConfig, returnType: OrgMembership::class, decoder: 'json', operationId: 'orgsGetMembershipForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/memberships/orgs/" . SdkClient::encodePathSegment($org) . "", $clientConfig, returnType: OrgMembership::class, decoder: 'json', operationId: 'orgsGetMembershipForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrgMembership::class));
     }
 
@@ -153,7 +153,7 @@ trait OrgsMethodsPart8
     public static function orgsUpdateMembershipForAuthenticatedUser(ClientConfig $clientConfig, string $org, OrgsUpdateMembershipForAuthenticatedUserState $state, ?RequestOptions $requestOptions = null): OrgMembership
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/user/memberships/orgs/" . SdkClient::encodePathSegment($org) . "", $clientConfig, body: ['state' => $state], returnType: OrgMembership::class, decoder: 'json', operationId: 'orgsUpdateMembershipForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/user/memberships/orgs/" . SdkClient::encodePathSegment($org) . "", $clientConfig, body: ['state' => $state], returnType: OrgMembership::class, decoder: 'json', operationId: 'orgsUpdateMembershipForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrgMembership::class));
     }
 
@@ -170,7 +170,7 @@ trait OrgsMethodsPart8
     public static function orgsListForAuthenticatedUser(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/orgs", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/orgs", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OrganizationSimple::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 

@@ -21,7 +21,7 @@ trait PackagesMethodsPart2
     public static function packagesRestorePackageVersionForAuthenticatedUser(ClientConfig $clientConfig, PackagesRestorePackageVersionForAuthenticatedUserPackageType $packageType, string $packageName, int $packageVersionId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/user/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/versions/" . SdkClient::encodePathSegment($packageVersionId) . "/restore", $clientConfig, decoder: 'empty', operationId: 'packagesRestorePackageVersionForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/user/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/versions/" . SdkClient::encodePathSegment($packageVersionId) . "/restore", $clientConfig, decoder: 'empty', operationId: 'packagesRestorePackageVersionForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -36,7 +36,7 @@ trait PackagesMethodsPart2
     public static function packagesListDockerMigrationConflictingPackagesForUser(ClientConfig $clientConfig, string $username, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/docker/conflicts", $clientConfig, decoder: 'json', operationId: 'packagesListDockerMigrationConflictingPackagesForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/docker/conflicts", $clientConfig, decoder: 'json', operationId: 'packagesListDockerMigrationConflictingPackagesForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Package::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -56,7 +56,7 @@ trait PackagesMethodsPart2
     public static function packagesListPackagesForUser(ClientConfig $clientConfig, string $username, PackagesListPackagesForUserPackageType $packageType, PackagesListPackagesForUserVisibility|SdkNotGiven $visibility = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/packages", $clientConfig, query: ['package_type' => new SdkQueryValue($packageType, "form", true), 'visibility' => new SdkQueryValue($visibility, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], decoder: 'json', operationId: 'packagesListPackagesForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/packages", $clientConfig, query: ['package_type' => new SdkQueryValue($packageType, "form", true), 'visibility' => new SdkQueryValue($visibility, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], decoder: 'json', operationId: 'packagesListPackagesForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Package::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -91,7 +91,7 @@ trait PackagesMethodsPart2
     public static function packagesDeletePackageForUser(ClientConfig $clientConfig, PackagesDeletePackageForUserPackageType $packageType, string $packageName, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -108,7 +108,7 @@ trait PackagesMethodsPart2
     public static function packagesRestorePackageForUser(ClientConfig $clientConfig, PackagesRestorePackageForUserPackageType $packageType, string $packageName, string $username, string|SdkNotGiven $token = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/restore", $clientConfig, query: ['token' => new SdkQueryValue($token, "form", true)], decoder: 'empty', operationId: 'packagesRestorePackageForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/restore", $clientConfig, query: ['token' => new SdkQueryValue($token, "form", true)], decoder: 'empty', operationId: 'packagesRestorePackageForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -125,7 +125,7 @@ trait PackagesMethodsPart2
     public static function packagesGetAllPackageVersionsForPackageOwnedByUser(ClientConfig $clientConfig, PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType $packageType, string $packageName, string $username, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/versions", $clientConfig, decoder: 'json', operationId: 'packagesGetAllPackageVersionsForPackageOwnedByUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/versions", $clientConfig, decoder: 'json', operationId: 'packagesGetAllPackageVersionsForPackageOwnedByUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, PackageVersion::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -162,7 +162,7 @@ trait PackagesMethodsPart2
     public static function packagesDeletePackageVersionForUser(ClientConfig $clientConfig, PackagesDeletePackageVersionForUserPackageType $packageType, string $packageName, string $username, int $packageVersionId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/versions/" . SdkClient::encodePathSegment($packageVersionId) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageVersionForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/versions/" . SdkClient::encodePathSegment($packageVersionId) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageVersionForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -179,6 +179,6 @@ trait PackagesMethodsPart2
     public static function packagesRestorePackageVersionForUser(ClientConfig $clientConfig, PackagesRestorePackageVersionForUserPackageType $packageType, string $packageName, string $username, int $packageVersionId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/versions/" . SdkClient::encodePathSegment($packageVersionId) . "/restore", $clientConfig, decoder: 'empty', operationId: 'packagesRestorePackageVersionForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/versions/" . SdkClient::encodePathSegment($packageVersionId) . "/restore", $clientConfig, decoder: 'empty', operationId: 'packagesRestorePackageVersionForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

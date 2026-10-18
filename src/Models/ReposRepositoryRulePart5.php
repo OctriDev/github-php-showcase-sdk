@@ -78,7 +78,9 @@ class RepositoryRuleDetailedVariant0 implements RepositoryRuleDetailed, \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant0TypeEnum::class),
             rulesetSourceType: (property_exists($data, "ruleset_source_type") && $data->ruleset_source_type !== null ? SdkClient::hydrateStringEnumOrString($data->ruleset_source_type, RepositoryRuleDetailedVariant0RulesetSourceTypeEnum::class) : SdkNotGiven::Value),
@@ -134,7 +136,9 @@ class RepositoryRuleDetailedVariant1Parameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "update_allows_fetch_and_merge") || $data->update_allows_fetch_and_merge === null) { throw new SdkValidationError("update_allows_fetch_and_merge", 'required', "Required property 'update_allows_fetch_and_merge' is missing or null"); }
+        if (!property_exists($data, "update_allows_fetch_and_merge") || $data->update_allows_fetch_and_merge === null) {
+            throw new SdkValidationError("update_allows_fetch_and_merge", 'required', "Required property 'update_allows_fetch_and_merge' is missing or null");
+        }
         return new self(
             updateAllowsFetchAndMerge: SdkClient::boolValue($data->update_allows_fetch_and_merge),
         );
@@ -149,11 +153,26 @@ final readonly class RepositoryRuleDetailedVariant1RulesetSourceTypeEnum impleme
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class RepositoryRuleDetailedVariant1 implements RepositoryRuleDetailed, \JsonSerializable
@@ -239,7 +258,9 @@ class RepositoryRuleDetailedVariant1 implements RepositoryRuleDetailed, \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant1TypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleDetailedVariant1Parameters::class) : SdkNotGiven::Value),
@@ -266,9 +287,24 @@ final readonly class RepositoryRuleDetailedVariant2RulesetSourceTypeEnum impleme
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

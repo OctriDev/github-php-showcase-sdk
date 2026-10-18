@@ -55,8 +55,12 @@ class TimelineReviewedEventLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
+        if (!property_exists($data, "html") || $data->html === null) {
+            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
+        }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
+            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
+        }
         return new self(
             html: SdkClient::hydrateClass($data->html, TimelineReviewedEventLinksHtml::class),
             pullRequest: SdkClient::hydrateClass($data->pull_request, TimelineReviewedEventLinksPullRequest::class),
@@ -250,17 +254,39 @@ class TimelineReviewedEvent implements TimelineIssueEvents, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "event") || $data->event === null) { throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "user") || $data->user === null) { throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null"); }
-        if (!property_exists($data, "body")) { throw new SdkValidationError("body", 'required', "Missing required property 'body'"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "pull_request_url") || $data->pull_request_url === null) { throw new SdkValidationError("pull_request_url", 'required', "Required property 'pull_request_url' is missing or null"); }
-        if (!property_exists($data, "_links") || $data->_links === null) { throw new SdkValidationError("_links", 'required', "Required property '_links' is missing or null"); }
-        if (!property_exists($data, "commit_id") || $data->commit_id === null) { throw new SdkValidationError("commit_id", 'required', "Required property 'commit_id' is missing or null"); }
-        if (!property_exists($data, "author_association") || $data->author_association === null) { throw new SdkValidationError("author_association", 'required', "Required property 'author_association' is missing or null"); }
+        if (!property_exists($data, "event") || $data->event === null) {
+            throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "user") || $data->user === null) {
+            throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null");
+        }
+        if (!property_exists($data, "body")) {
+            throw new SdkValidationError("body", 'required', "Missing required property 'body'");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "pull_request_url") || $data->pull_request_url === null) {
+            throw new SdkValidationError("pull_request_url", 'required', "Required property 'pull_request_url' is missing or null");
+        }
+        if (!property_exists($data, "_links") || $data->_links === null) {
+            throw new SdkValidationError("_links", 'required', "Required property '_links' is missing or null");
+        }
+        if (!property_exists($data, "commit_id") || $data->commit_id === null) {
+            throw new SdkValidationError("commit_id", 'required', "Required property 'commit_id' is missing or null");
+        }
+        if (!property_exists($data, "author_association") || $data->author_association === null) {
+            throw new SdkValidationError("author_association", 'required', "Required property 'author_association' is missing or null");
+        }
         return new self(
             event: SdkClient::stringValue($data->event),
             id: SdkClient::intValue($data->id),

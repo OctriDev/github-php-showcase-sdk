@@ -115,14 +115,30 @@ class PageBuild implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
-        if (!property_exists($data, "error") || $data->error === null) { throw new SdkValidationError("error", 'required', "Required property 'error' is missing or null"); }
-        if (!property_exists($data, "pusher")) { throw new SdkValidationError("pusher", 'required', "Missing required property 'pusher'"); }
-        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
-        if (!property_exists($data, "duration") || $data->duration === null) { throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
+        if (!property_exists($data, "error") || $data->error === null) {
+            throw new SdkValidationError("error", 'required', "Required property 'error' is missing or null");
+        }
+        if (!property_exists($data, "pusher")) {
+            throw new SdkValidationError("pusher", 'required', "Missing required property 'pusher'");
+        }
+        if (!property_exists($data, "commit") || $data->commit === null) {
+            throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null");
+        }
+        if (!property_exists($data, "duration") || $data->duration === null) {
+            throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
             status: SdkClient::stringValue($data->status),
@@ -184,8 +200,12 @@ class PageBuildStatus implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
             status: SdkClient::stringValue($data->status),
@@ -263,9 +283,15 @@ class PageDeployment implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "status_url") || $data->status_url === null) { throw new SdkValidationError("status_url", 'required', "Required property 'status_url' is missing or null"); }
-        if (!property_exists($data, "page_url") || $data->page_url === null) { throw new SdkValidationError("page_url", 'required', "Required property 'page_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "status_url") || $data->status_url === null) {
+            throw new SdkValidationError("status_url", 'required', "Required property 'status_url' is missing or null");
+        }
+        if (!property_exists($data, "page_url") || $data->page_url === null) {
+            throw new SdkValidationError("page_url", 'required', "Required property 'page_url' is missing or null");
+        }
         return new self(
             id: (is_int($data->id) ? SdkClient::intValue($data->id) : SdkClient::stringValue($data->id)),
             statusUrl: SdkClient::stringValue($data->status_url),

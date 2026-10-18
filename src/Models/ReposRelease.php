@@ -301,23 +301,57 @@ class Release implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "assets_url") || $data->assets_url === null) { throw new SdkValidationError("assets_url", 'required', "Required property 'assets_url' is missing or null"); }
-        if (!property_exists($data, "upload_url") || $data->upload_url === null) { throw new SdkValidationError("upload_url", 'required', "Required property 'upload_url' is missing or null"); }
-        if (!property_exists($data, "tarball_url")) { throw new SdkValidationError("tarball_url", 'required', "Missing required property 'tarball_url'"); }
-        if (!property_exists($data, "zipball_url")) { throw new SdkValidationError("zipball_url", 'required', "Missing required property 'zipball_url'"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "tag_name") || $data->tag_name === null) { throw new SdkValidationError("tag_name", 'required', "Required property 'tag_name' is missing or null"); }
-        if (!property_exists($data, "target_commitish") || $data->target_commitish === null) { throw new SdkValidationError("target_commitish", 'required', "Required property 'target_commitish' is missing or null"); }
-        if (!property_exists($data, "name")) { throw new SdkValidationError("name", 'required', "Missing required property 'name'"); }
-        if (!property_exists($data, "draft") || $data->draft === null) { throw new SdkValidationError("draft", 'required', "Required property 'draft' is missing or null"); }
-        if (!property_exists($data, "prerelease") || $data->prerelease === null) { throw new SdkValidationError("prerelease", 'required', "Required property 'prerelease' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "published_at")) { throw new SdkValidationError("published_at", 'required', "Missing required property 'published_at'"); }
-        if (!property_exists($data, "author") || $data->author === null) { throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null"); }
-        if (!property_exists($data, "assets") || $data->assets === null) { throw new SdkValidationError("assets", 'required', "Required property 'assets' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "assets_url") || $data->assets_url === null) {
+            throw new SdkValidationError("assets_url", 'required', "Required property 'assets_url' is missing or null");
+        }
+        if (!property_exists($data, "upload_url") || $data->upload_url === null) {
+            throw new SdkValidationError("upload_url", 'required', "Required property 'upload_url' is missing or null");
+        }
+        if (!property_exists($data, "tarball_url")) {
+            throw new SdkValidationError("tarball_url", 'required', "Missing required property 'tarball_url'");
+        }
+        if (!property_exists($data, "zipball_url")) {
+            throw new SdkValidationError("zipball_url", 'required', "Missing required property 'zipball_url'");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "tag_name") || $data->tag_name === null) {
+            throw new SdkValidationError("tag_name", 'required', "Required property 'tag_name' is missing or null");
+        }
+        if (!property_exists($data, "target_commitish") || $data->target_commitish === null) {
+            throw new SdkValidationError("target_commitish", 'required', "Required property 'target_commitish' is missing or null");
+        }
+        if (!property_exists($data, "name")) {
+            throw new SdkValidationError("name", 'required', "Missing required property 'name'");
+        }
+        if (!property_exists($data, "draft") || $data->draft === null) {
+            throw new SdkValidationError("draft", 'required', "Required property 'draft' is missing or null");
+        }
+        if (!property_exists($data, "prerelease") || $data->prerelease === null) {
+            throw new SdkValidationError("prerelease", 'required', "Required property 'prerelease' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "published_at")) {
+            throw new SdkValidationError("published_at", 'required', "Missing required property 'published_at'");
+        }
+        if (!property_exists($data, "author") || $data->author === null) {
+            throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null");
+        }
+        if (!property_exists($data, "assets") || $data->assets === null) {
+            throw new SdkValidationError("assets", 'required', "Required property 'assets' is missing or null");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
             htmlUrl: SdkClient::stringValue($data->html_url),

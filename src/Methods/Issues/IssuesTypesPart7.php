@@ -52,8 +52,12 @@ class IssuesAddIssueFieldValuesIssueFieldValuesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "field_id") || $data->field_id === null) { throw new SdkValidationError("field_id", 'required', "Required property 'field_id' is missing or null"); }
-        if (!property_exists($data, "value") || $data->value === null) { throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null"); }
+        if (!property_exists($data, "field_id") || $data->field_id === null) {
+            throw new SdkValidationError("field_id", 'required', "Required property 'field_id' is missing or null");
+        }
+        if (!property_exists($data, "value") || $data->value === null) {
+            throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null");
+        }
         return new self(
             fieldId: SdkClient::intValue($data->field_id),
             value: (is_array($data->value) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->value))) : (is_float($data->value) || is_int($data->value) ? SdkClient::floatValue($data->value) : SdkClient::stringValue($data->value))),
@@ -106,8 +110,12 @@ class IssuesSetIssueFieldValuesIssueFieldValuesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "field_id") || $data->field_id === null) { throw new SdkValidationError("field_id", 'required', "Required property 'field_id' is missing or null"); }
-        if (!property_exists($data, "value") || $data->value === null) { throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null"); }
+        if (!property_exists($data, "field_id") || $data->field_id === null) {
+            throw new SdkValidationError("field_id", 'required', "Required property 'field_id' is missing or null");
+        }
+        if (!property_exists($data, "value") || $data->value === null) {
+            throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null");
+        }
         return new self(
             fieldId: SdkClient::intValue($data->field_id),
             value: (is_float($data->value) || is_int($data->value) ? SdkClient::floatValue($data->value) : SdkClient::stringValue($data->value)),
@@ -124,11 +132,26 @@ final readonly class IssuesAddLabelsBodyVariant0LabelsItemVariant1ConfidenceEnum
     public const MEDIUM = "medium";
     public const HIGH = "high";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class IssuesAddLabelsBodyVariant0LabelsItemVariant1 implements \JsonSerializable
@@ -202,7 +225,9 @@ class IssuesAddLabelsBodyVariant0LabelsItemVariant1 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             rationale: (property_exists($data, "rationale") && $data->rationale !== null ? SdkClient::stringValue($data->rationale) : SdkNotGiven::Value),
@@ -264,11 +289,26 @@ final readonly class IssuesAddLabelsBodyItemConfidenceEnum implements SdkOpenEnu
     public const MEDIUM = "medium";
     public const HIGH = "high";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class IssuesAddLabelsBodyItem implements \JsonSerializable
@@ -338,7 +378,9 @@ class IssuesAddLabelsBodyItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             rationale: (property_exists($data, "rationale") && $data->rationale !== null ? SdkClient::stringValue($data->rationale) : SdkNotGiven::Value),

@@ -75,10 +75,18 @@ class ActionsHostedRunnerMachineSpec implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "cpu_cores") || $data->cpu_cores === null) { throw new SdkValidationError("cpu_cores", 'required', "Required property 'cpu_cores' is missing or null"); }
-        if (!property_exists($data, "memory_gb") || $data->memory_gb === null) { throw new SdkValidationError("memory_gb", 'required', "Required property 'memory_gb' is missing or null"); }
-        if (!property_exists($data, "storage_gb") || $data->storage_gb === null) { throw new SdkValidationError("storage_gb", 'required', "Required property 'storage_gb' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "cpu_cores") || $data->cpu_cores === null) {
+            throw new SdkValidationError("cpu_cores", 'required', "Required property 'cpu_cores' is missing or null");
+        }
+        if (!property_exists($data, "memory_gb") || $data->memory_gb === null) {
+            throw new SdkValidationError("memory_gb", 'required', "Required property 'memory_gb' is missing or null");
+        }
+        if (!property_exists($data, "storage_gb") || $data->storage_gb === null) {
+            throw new SdkValidationError("storage_gb", 'required', "Required property 'storage_gb' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             cpuCores: SdkClient::intValue($data->cpu_cores),

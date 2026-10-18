@@ -159,16 +159,36 @@ class WebhookDeploymentReviewRequested implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "environment") || $data->environment === null) { throw new SdkValidationError("environment", 'required', "Required property 'environment' is missing or null"); }
-        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "requestor")) { throw new SdkValidationError("requestor", 'required', "Missing required property 'requestor'"); }
-        if (!property_exists($data, "reviewers") || $data->reviewers === null) { throw new SdkValidationError("reviewers", 'required', "Required property 'reviewers' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
-        if (!property_exists($data, "since") || $data->since === null) { throw new SdkValidationError("since", 'required', "Required property 'since' is missing or null"); }
-        if (!property_exists($data, "workflow_job_run") || $data->workflow_job_run === null) { throw new SdkValidationError("workflow_job_run", 'required', "Required property 'workflow_job_run' is missing or null"); }
-        if (!property_exists($data, "workflow_run")) { throw new SdkValidationError("workflow_run", 'required', "Missing required property 'workflow_run'"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "environment") || $data->environment === null) {
+            throw new SdkValidationError("environment", 'required', "Required property 'environment' is missing or null");
+        }
+        if (!property_exists($data, "organization") || $data->organization === null) {
+            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "requestor")) {
+            throw new SdkValidationError("requestor", 'required', "Missing required property 'requestor'");
+        }
+        if (!property_exists($data, "reviewers") || $data->reviewers === null) {
+            throw new SdkValidationError("reviewers", 'required', "Required property 'reviewers' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
+        if (!property_exists($data, "since") || $data->since === null) {
+            throw new SdkValidationError("since", 'required', "Required property 'since' is missing or null");
+        }
+        if (!property_exists($data, "workflow_job_run") || $data->workflow_job_run === null) {
+            throw new SdkValidationError("workflow_job_run", 'required', "Required property 'workflow_job_run' is missing or null");
+        }
+        if (!property_exists($data, "workflow_run")) {
+            throw new SdkValidationError("workflow_run", 'required', "Missing required property 'workflow_run'");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookDeploymentReviewRequestedActionEnum::class),
             environment: SdkClient::stringValue($data->environment),

@@ -16,11 +16,26 @@ final readonly class CopilotSeatDetailsPlanTypeEnum implements SdkOpenEnum
     public const ENTERPRISE = "enterprise";
     public const UNKNOWN = "unknown";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -169,7 +184,9 @@ class CopilotSeatDetails implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
         return new self(
             createdAt: SdkClient::stringValue($data->created_at),
             assignee: (property_exists($data, "assignee") ? ($data->assignee === null ? null : SdkClient::hydrateClass($data->assignee, NullableSimpleUser::class)) : SdkNotGiven::Value),
@@ -233,8 +250,12 @@ class CopilotUsageMetrics1DayReport implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "download_links") || $data->download_links === null) { throw new SdkValidationError("download_links", 'required', "Required property 'download_links' is missing or null"); }
-        if (!property_exists($data, "report_day") || $data->report_day === null) { throw new SdkValidationError("report_day", 'required', "Required property 'report_day' is missing or null"); }
+        if (!property_exists($data, "download_links") || $data->download_links === null) {
+            throw new SdkValidationError("download_links", 'required', "Required property 'download_links' is missing or null");
+        }
+        if (!property_exists($data, "report_day") || $data->report_day === null) {
+            throw new SdkValidationError("report_day", 'required', "Required property 'report_day' is missing or null");
+        }
         return new self(
             downloadLinks: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->download_links))),
             reportDay: SdkClient::stringValue($data->report_day),
@@ -300,9 +321,15 @@ class CopilotUsageMetrics28DayReport implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "download_links") || $data->download_links === null) { throw new SdkValidationError("download_links", 'required', "Required property 'download_links' is missing or null"); }
-        if (!property_exists($data, "report_start_day") || $data->report_start_day === null) { throw new SdkValidationError("report_start_day", 'required', "Required property 'report_start_day' is missing or null"); }
-        if (!property_exists($data, "report_end_day") || $data->report_end_day === null) { throw new SdkValidationError("report_end_day", 'required', "Required property 'report_end_day' is missing or null"); }
+        if (!property_exists($data, "download_links") || $data->download_links === null) {
+            throw new SdkValidationError("download_links", 'required', "Required property 'download_links' is missing or null");
+        }
+        if (!property_exists($data, "report_start_day") || $data->report_start_day === null) {
+            throw new SdkValidationError("report_start_day", 'required', "Required property 'report_start_day' is missing or null");
+        }
+        if (!property_exists($data, "report_end_day") || $data->report_end_day === null) {
+            throw new SdkValidationError("report_end_day", 'required', "Required property 'report_end_day' is missing or null");
+        }
         return new self(
             downloadLinks: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->download_links))),
             reportStartDay: SdkClient::stringValue($data->report_start_day),
@@ -319,9 +346,24 @@ final readonly class EnterpriseTeamNotificationSettingEnum implements SdkOpenEnu
     public const NOTIFICATIONS_ENABLED = "notifications_enabled";
     public const NOTIFICATIONS_DISABLED = "notifications_disabled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

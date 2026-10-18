@@ -161,15 +161,33 @@ class OrganizationInvitation implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "login")) { throw new SdkValidationError("login", 'required', "Missing required property 'login'"); }
-        if (!property_exists($data, "email")) { throw new SdkValidationError("email", 'required', "Missing required property 'email'"); }
-        if (!property_exists($data, "role") || $data->role === null) { throw new SdkValidationError("role", 'required', "Required property 'role' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "inviter") || $data->inviter === null) { throw new SdkValidationError("inviter", 'required', "Required property 'inviter' is missing or null"); }
-        if (!property_exists($data, "team_count") || $data->team_count === null) { throw new SdkValidationError("team_count", 'required', "Required property 'team_count' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "invitation_teams_url") || $data->invitation_teams_url === null) { throw new SdkValidationError("invitation_teams_url", 'required', "Required property 'invitation_teams_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "login")) {
+            throw new SdkValidationError("login", 'required', "Missing required property 'login'");
+        }
+        if (!property_exists($data, "email")) {
+            throw new SdkValidationError("email", 'required', "Missing required property 'email'");
+        }
+        if (!property_exists($data, "role") || $data->role === null) {
+            throw new SdkValidationError("role", 'required', "Required property 'role' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "inviter") || $data->inviter === null) {
+            throw new SdkValidationError("inviter", 'required', "Required property 'inviter' is missing or null");
+        }
+        if (!property_exists($data, "team_count") || $data->team_count === null) {
+            throw new SdkValidationError("team_count", 'required', "Required property 'team_count' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "invitation_teams_url") || $data->invitation_teams_url === null) {
+            throw new SdkValidationError("invitation_teams_url", 'required', "Required property 'invitation_teams_url' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             login: ($data->login === null ? null : SdkClient::stringValue($data->login)),

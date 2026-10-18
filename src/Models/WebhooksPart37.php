@@ -259,26 +259,66 @@ class WebhooksRelease implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "assets") || $data->assets === null) { throw new SdkValidationError("assets", 'required', "Required property 'assets' is missing or null"); }
-        if (!property_exists($data, "assets_url") || $data->assets_url === null) { throw new SdkValidationError("assets_url", 'required', "Required property 'assets_url' is missing or null"); }
-        if (!property_exists($data, "author")) { throw new SdkValidationError("author", 'required', "Missing required property 'author'"); }
-        if (!property_exists($data, "body")) { throw new SdkValidationError("body", 'required', "Missing required property 'body'"); }
-        if (!property_exists($data, "created_at")) { throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'"); }
-        if (!property_exists($data, "updated_at")) { throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'"); }
-        if (!property_exists($data, "draft") || $data->draft === null) { throw new SdkValidationError("draft", 'required', "Required property 'draft' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "immutable") || $data->immutable === null) { throw new SdkValidationError("immutable", 'required', "Required property 'immutable' is missing or null"); }
-        if (!property_exists($data, "name")) { throw new SdkValidationError("name", 'required', "Missing required property 'name'"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "prerelease") || $data->prerelease === null) { throw new SdkValidationError("prerelease", 'required', "Required property 'prerelease' is missing or null"); }
-        if (!property_exists($data, "published_at")) { throw new SdkValidationError("published_at", 'required', "Missing required property 'published_at'"); }
-        if (!property_exists($data, "tag_name") || $data->tag_name === null) { throw new SdkValidationError("tag_name", 'required', "Required property 'tag_name' is missing or null"); }
-        if (!property_exists($data, "tarball_url")) { throw new SdkValidationError("tarball_url", 'required', "Missing required property 'tarball_url'"); }
-        if (!property_exists($data, "target_commitish") || $data->target_commitish === null) { throw new SdkValidationError("target_commitish", 'required', "Required property 'target_commitish' is missing or null"); }
-        if (!property_exists($data, "upload_url") || $data->upload_url === null) { throw new SdkValidationError("upload_url", 'required', "Required property 'upload_url' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "zipball_url")) { throw new SdkValidationError("zipball_url", 'required', "Missing required property 'zipball_url'"); }
+        if (!property_exists($data, "assets") || $data->assets === null) {
+            throw new SdkValidationError("assets", 'required', "Required property 'assets' is missing or null");
+        }
+        if (!property_exists($data, "assets_url") || $data->assets_url === null) {
+            throw new SdkValidationError("assets_url", 'required', "Required property 'assets_url' is missing or null");
+        }
+        if (!property_exists($data, "author")) {
+            throw new SdkValidationError("author", 'required', "Missing required property 'author'");
+        }
+        if (!property_exists($data, "body")) {
+            throw new SdkValidationError("body", 'required', "Missing required property 'body'");
+        }
+        if (!property_exists($data, "created_at")) {
+            throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'");
+        }
+        if (!property_exists($data, "updated_at")) {
+            throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'");
+        }
+        if (!property_exists($data, "draft") || $data->draft === null) {
+            throw new SdkValidationError("draft", 'required', "Required property 'draft' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "immutable") || $data->immutable === null) {
+            throw new SdkValidationError("immutable", 'required', "Required property 'immutable' is missing or null");
+        }
+        if (!property_exists($data, "name")) {
+            throw new SdkValidationError("name", 'required', "Missing required property 'name'");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "prerelease") || $data->prerelease === null) {
+            throw new SdkValidationError("prerelease", 'required', "Required property 'prerelease' is missing or null");
+        }
+        if (!property_exists($data, "published_at")) {
+            throw new SdkValidationError("published_at", 'required', "Missing required property 'published_at'");
+        }
+        if (!property_exists($data, "tag_name") || $data->tag_name === null) {
+            throw new SdkValidationError("tag_name", 'required', "Required property 'tag_name' is missing or null");
+        }
+        if (!property_exists($data, "tarball_url")) {
+            throw new SdkValidationError("tarball_url", 'required', "Missing required property 'tarball_url'");
+        }
+        if (!property_exists($data, "target_commitish") || $data->target_commitish === null) {
+            throw new SdkValidationError("target_commitish", 'required', "Required property 'target_commitish' is missing or null");
+        }
+        if (!property_exists($data, "upload_url") || $data->upload_url === null) {
+            throw new SdkValidationError("upload_url", 'required', "Required property 'upload_url' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "zipball_url")) {
+            throw new SdkValidationError("zipball_url", 'required', "Missing required property 'zipball_url'");
+        }
         return new self(
             assets: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhooksReleaseAssetsItem::class), SdkClient::arrayValue($data->assets))),
             assetsUrl: SdkClient::stringValue($data->assets_url),
@@ -313,11 +353,26 @@ final readonly class WebhooksRelease1AssetsItemStateEnum implements SdkOpenEnum
 {
     public const UPLOADED = "uploaded";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -329,9 +384,24 @@ final readonly class WebhooksRelease1AssetsItemUploaderTypeEnum implements SdkOp
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

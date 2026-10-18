@@ -195,8 +195,12 @@ class WebhookSecurityAndAnalysis implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "changes") || $data->changes === null) { throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "changes") || $data->changes === null) {
+            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
         return new self(
             changes: SdkClient::hydrateClass($data->changes, WebhookSecurityAndAnalysisChanges::class),
             repository: SdkClient::hydrateClass($data->repository, FullRepository::class),

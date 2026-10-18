@@ -187,20 +187,48 @@ class CodeScanningAnalysis implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
-        if (!property_exists($data, "commit_sha") || $data->commit_sha === null) { throw new SdkValidationError("commit_sha", 'required', "Required property 'commit_sha' is missing or null"); }
-        if (!property_exists($data, "analysis_key") || $data->analysis_key === null) { throw new SdkValidationError("analysis_key", 'required', "Required property 'analysis_key' is missing or null"); }
-        if (!property_exists($data, "environment") || $data->environment === null) { throw new SdkValidationError("environment", 'required', "Required property 'environment' is missing or null"); }
-        if (!property_exists($data, "error") || $data->error === null) { throw new SdkValidationError("error", 'required', "Required property 'error' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "results_count") || $data->results_count === null) { throw new SdkValidationError("results_count", 'required', "Required property 'results_count' is missing or null"); }
-        if (!property_exists($data, "rules_count") || $data->rules_count === null) { throw new SdkValidationError("rules_count", 'required', "Required property 'rules_count' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "sarif_id") || $data->sarif_id === null) { throw new SdkValidationError("sarif_id", 'required', "Required property 'sarif_id' is missing or null"); }
-        if (!property_exists($data, "tool") || $data->tool === null) { throw new SdkValidationError("tool", 'required', "Required property 'tool' is missing or null"); }
-        if (!property_exists($data, "deletable") || $data->deletable === null) { throw new SdkValidationError("deletable", 'required', "Required property 'deletable' is missing or null"); }
-        if (!property_exists($data, "warning") || $data->warning === null) { throw new SdkValidationError("warning", 'required', "Required property 'warning' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) {
+            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
+        }
+        if (!property_exists($data, "commit_sha") || $data->commit_sha === null) {
+            throw new SdkValidationError("commit_sha", 'required', "Required property 'commit_sha' is missing or null");
+        }
+        if (!property_exists($data, "analysis_key") || $data->analysis_key === null) {
+            throw new SdkValidationError("analysis_key", 'required', "Required property 'analysis_key' is missing or null");
+        }
+        if (!property_exists($data, "environment") || $data->environment === null) {
+            throw new SdkValidationError("environment", 'required', "Required property 'environment' is missing or null");
+        }
+        if (!property_exists($data, "error") || $data->error === null) {
+            throw new SdkValidationError("error", 'required', "Required property 'error' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "results_count") || $data->results_count === null) {
+            throw new SdkValidationError("results_count", 'required', "Required property 'results_count' is missing or null");
+        }
+        if (!property_exists($data, "rules_count") || $data->rules_count === null) {
+            throw new SdkValidationError("rules_count", 'required', "Required property 'rules_count' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "sarif_id") || $data->sarif_id === null) {
+            throw new SdkValidationError("sarif_id", 'required', "Required property 'sarif_id' is missing or null");
+        }
+        if (!property_exists($data, "tool") || $data->tool === null) {
+            throw new SdkValidationError("tool", 'required', "Required property 'tool' is missing or null");
+        }
+        if (!property_exists($data, "deletable") || $data->deletable === null) {
+            throw new SdkValidationError("deletable", 'required', "Required property 'deletable' is missing or null");
+        }
+        if (!property_exists($data, "warning") || $data->warning === null) {
+            throw new SdkValidationError("warning", 'required', "Required property 'warning' is missing or null");
+        }
         return new self(
             ref: SdkClient::stringValue($data->ref),
             commitSha: SdkClient::stringValue($data->commit_sha),
@@ -269,8 +297,12 @@ class CodeScanningAnalysisDeletion implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "next_analysis_url")) { throw new SdkValidationError("next_analysis_url", 'required', "Missing required property 'next_analysis_url'"); }
-        if (!property_exists($data, "confirm_delete_url")) { throw new SdkValidationError("confirm_delete_url", 'required', "Missing required property 'confirm_delete_url'"); }
+        if (!property_exists($data, "next_analysis_url")) {
+            throw new SdkValidationError("next_analysis_url", 'required', "Missing required property 'next_analysis_url'");
+        }
+        if (!property_exists($data, "confirm_delete_url")) {
+            throw new SdkValidationError("confirm_delete_url", 'required', "Missing required property 'confirm_delete_url'");
+        }
         return new self(
             nextAnalysisUrl: ($data->next_analysis_url === null ? null : SdkClient::stringValue($data->next_analysis_url)),
             confirmDeleteUrl: ($data->confirm_delete_url === null ? null : SdkClient::stringValue($data->confirm_delete_url)),

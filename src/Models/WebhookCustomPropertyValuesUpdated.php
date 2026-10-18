@@ -14,11 +14,26 @@ final readonly class WebhookCustomPropertyValuesUpdatedActionEnum implements Sdk
 {
     public const UPDATED = "updated";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -135,11 +150,21 @@ class WebhookCustomPropertyValuesUpdated implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
-        if (!property_exists($data, "new_property_values") || $data->new_property_values === null) { throw new SdkValidationError("new_property_values", 'required', "Required property 'new_property_values' is missing or null"); }
-        if (!property_exists($data, "old_property_values") || $data->old_property_values === null) { throw new SdkValidationError("old_property_values", 'required', "Required property 'old_property_values' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "organization") || $data->organization === null) {
+            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
+        }
+        if (!property_exists($data, "new_property_values") || $data->new_property_values === null) {
+            throw new SdkValidationError("new_property_values", 'required', "Required property 'new_property_values' is missing or null");
+        }
+        if (!property_exists($data, "old_property_values") || $data->old_property_values === null) {
+            throw new SdkValidationError("old_property_values", 'required', "Required property 'old_property_values' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookCustomPropertyValuesUpdatedActionEnum::class),
             repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),

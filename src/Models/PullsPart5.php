@@ -52,8 +52,12 @@ class PullRequestMergeAsyncResultDetailsVariant3 implements PullRequestMergeAsyn
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "message") || $data->message === null) {
+            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
         return new self(
             message: SdkClient::stringValue($data->message),
             sha: SdkClient::stringValue($data->sha),
@@ -119,9 +123,15 @@ class PullRequestMergeResult implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "merged") || $data->merged === null) { throw new SdkValidationError("merged", 'required', "Required property 'merged' is missing or null"); }
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
+        if (!property_exists($data, "merged") || $data->merged === null) {
+            throw new SdkValidationError("merged", 'required', "Required property 'merged' is missing or null");
+        }
+        if (!property_exists($data, "message") || $data->message === null) {
+            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
+        }
         return new self(
             sha: SdkClient::stringValue($data->sha),
             merged: SdkClient::boolValue($data->merged),
@@ -168,7 +178,9 @@ class PullRequestReviewLinksHtml implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
+        if (!property_exists($data, "href") || $data->href === null) {
+            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
+        }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -213,7 +225,9 @@ class PullRequestReviewLinksPullRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
+        if (!property_exists($data, "href") || $data->href === null) {
+            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
+        }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -268,8 +282,12 @@ class PullRequestReviewLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
+        if (!property_exists($data, "html") || $data->html === null) {
+            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
+        }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
+            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
+        }
         return new self(
             html: SdkClient::hydrateClass($data->html, PullRequestReviewLinksHtml::class),
             pullRequest: SdkClient::hydrateClass($data->pull_request, PullRequestReviewLinksPullRequest::class),

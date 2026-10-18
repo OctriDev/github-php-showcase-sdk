@@ -105,13 +105,27 @@ class CombinedCommitStatus implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
-        if (!property_exists($data, "statuses") || $data->statuses === null) { throw new SdkValidationError("statuses", 'required', "Required property 'statuses' is missing or null"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "commit_url") || $data->commit_url === null) { throw new SdkValidationError("commit_url", 'required', "Required property 'commit_url' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "statuses") || $data->statuses === null) {
+            throw new SdkValidationError("statuses", 'required', "Required property 'statuses' is missing or null");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "commit_url") || $data->commit_url === null) {
+            throw new SdkValidationError("commit_url", 'required', "Required property 'commit_url' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             state: SdkClient::stringValue($data->state),
             statuses: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleCommitStatus::class), SdkClient::arrayValue($data->statuses))),
@@ -222,13 +236,27 @@ class CommunityProfileFiles implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "code_of_conduct")) { throw new SdkValidationError("code_of_conduct", 'required', "Missing required property 'code_of_conduct'"); }
-        if (!property_exists($data, "code_of_conduct_file")) { throw new SdkValidationError("code_of_conduct_file", 'required', "Missing required property 'code_of_conduct_file'"); }
-        if (!property_exists($data, "license")) { throw new SdkValidationError("license", 'required', "Missing required property 'license'"); }
-        if (!property_exists($data, "contributing")) { throw new SdkValidationError("contributing", 'required', "Missing required property 'contributing'"); }
-        if (!property_exists($data, "readme")) { throw new SdkValidationError("readme", 'required', "Missing required property 'readme'"); }
-        if (!property_exists($data, "issue_template")) { throw new SdkValidationError("issue_template", 'required', "Missing required property 'issue_template'"); }
-        if (!property_exists($data, "pull_request_template")) { throw new SdkValidationError("pull_request_template", 'required', "Missing required property 'pull_request_template'"); }
+        if (!property_exists($data, "code_of_conduct")) {
+            throw new SdkValidationError("code_of_conduct", 'required', "Missing required property 'code_of_conduct'");
+        }
+        if (!property_exists($data, "code_of_conduct_file")) {
+            throw new SdkValidationError("code_of_conduct_file", 'required', "Missing required property 'code_of_conduct_file'");
+        }
+        if (!property_exists($data, "license")) {
+            throw new SdkValidationError("license", 'required', "Missing required property 'license'");
+        }
+        if (!property_exists($data, "contributing")) {
+            throw new SdkValidationError("contributing", 'required', "Missing required property 'contributing'");
+        }
+        if (!property_exists($data, "readme")) {
+            throw new SdkValidationError("readme", 'required', "Missing required property 'readme'");
+        }
+        if (!property_exists($data, "issue_template")) {
+            throw new SdkValidationError("issue_template", 'required', "Missing required property 'issue_template'");
+        }
+        if (!property_exists($data, "pull_request_template")) {
+            throw new SdkValidationError("pull_request_template", 'required', "Missing required property 'pull_request_template'");
+        }
         return new self(
             codeOfConduct: ($data->code_of_conduct === null ? null : SdkClient::hydrateClass($data->code_of_conduct, NullableCodeOfConductSimple::class)),
             codeOfConductFile: ($data->code_of_conduct_file === null ? null : SdkClient::hydrateClass($data->code_of_conduct_file, NullableCommunityHealthFile::class)),
@@ -331,11 +359,21 @@ class CommunityProfile implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "health_percentage") || $data->health_percentage === null) { throw new SdkValidationError("health_percentage", 'required', "Required property 'health_percentage' is missing or null"); }
-        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
-        if (!property_exists($data, "documentation")) { throw new SdkValidationError("documentation", 'required', "Missing required property 'documentation'"); }
-        if (!property_exists($data, "files") || $data->files === null) { throw new SdkValidationError("files", 'required', "Required property 'files' is missing or null"); }
-        if (!property_exists($data, "updated_at")) { throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'"); }
+        if (!property_exists($data, "health_percentage") || $data->health_percentage === null) {
+            throw new SdkValidationError("health_percentage", 'required', "Required property 'health_percentage' is missing or null");
+        }
+        if (!property_exists($data, "description")) {
+            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
+        }
+        if (!property_exists($data, "documentation")) {
+            throw new SdkValidationError("documentation", 'required', "Missing required property 'documentation'");
+        }
+        if (!property_exists($data, "files") || $data->files === null) {
+            throw new SdkValidationError("files", 'required', "Required property 'files' is missing or null");
+        }
+        if (!property_exists($data, "updated_at")) {
+            throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'");
+        }
         return new self(
             healthPercentage: SdkClient::intValue($data->health_percentage),
             description: ($data->description === null ? null : SdkClient::stringValue($data->description)),

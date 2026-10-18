@@ -45,7 +45,9 @@ class RepositoryRuleRequiredDeploymentsParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "required_deployment_environments") || $data->required_deployment_environments === null) { throw new SdkValidationError("required_deployment_environments", 'required', "Required property 'required_deployment_environments' is missing or null"); }
+        if (!property_exists($data, "required_deployment_environments") || $data->required_deployment_environments === null) {
+            throw new SdkValidationError("required_deployment_environments", 'required', "Required property 'required_deployment_environments' is missing or null");
+        }
         return new self(
             requiredDeploymentEnvironments: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->required_deployment_environments))),
         );
@@ -102,7 +104,9 @@ class RepositoryRuleRequiredDeployments implements RepositoryRule, OrgRules, \Js
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleRequiredDeploymentsTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleRequiredDeploymentsParameters::class) : SdkNotGiven::Value),
@@ -156,7 +160,9 @@ class RepositoryRuleRequiredLinearHistory implements RepositoryRule, OrgRules, \
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleRequiredLinearHistoryTypeEnum::class),
         );
@@ -209,7 +215,9 @@ class RepositoryRuleRequiredSignatures implements RepositoryRule, OrgRules, \Jso
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleRequiredSignaturesTypeEnum::class),
         );
@@ -284,8 +292,12 @@ class RepositoryRuleRequiredStatusChecksParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "required_status_checks") || $data->required_status_checks === null) { throw new SdkValidationError("required_status_checks", 'required', "Required property 'required_status_checks' is missing or null"); }
-        if (!property_exists($data, "strict_required_status_checks_policy") || $data->strict_required_status_checks_policy === null) { throw new SdkValidationError("strict_required_status_checks_policy", 'required', "Required property 'strict_required_status_checks_policy' is missing or null"); }
+        if (!property_exists($data, "required_status_checks") || $data->required_status_checks === null) {
+            throw new SdkValidationError("required_status_checks", 'required', "Required property 'required_status_checks' is missing or null");
+        }
+        if (!property_exists($data, "strict_required_status_checks_policy") || $data->strict_required_status_checks_policy === null) {
+            throw new SdkValidationError("strict_required_status_checks_policy", 'required', "Required property 'strict_required_status_checks_policy' is missing or null");
+        }
         return new self(
             requiredStatusChecks: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RepositoryRuleParamsStatusCheckConfiguration::class), SdkClient::arrayValue($data->required_status_checks))),
             strictRequiredStatusChecksPolicy: SdkClient::boolValue($data->strict_required_status_checks_policy),

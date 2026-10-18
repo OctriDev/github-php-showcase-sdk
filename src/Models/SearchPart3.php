@@ -107,12 +107,24 @@ class CommitSearchResultItemCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author") || $data->author === null) { throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null"); }
-        if (!property_exists($data, "committer")) { throw new SdkValidationError("committer", 'required', "Missing required property 'committer'"); }
-        if (!property_exists($data, "comment_count") || $data->comment_count === null) { throw new SdkValidationError("comment_count", 'required', "Required property 'comment_count' is missing or null"); }
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
-        if (!property_exists($data, "tree") || $data->tree === null) { throw new SdkValidationError("tree", 'required', "Required property 'tree' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "author") || $data->author === null) {
+            throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null");
+        }
+        if (!property_exists($data, "committer")) {
+            throw new SdkValidationError("committer", 'required', "Missing required property 'committer'");
+        }
+        if (!property_exists($data, "comment_count") || $data->comment_count === null) {
+            throw new SdkValidationError("comment_count", 'required', "Required property 'comment_count' is missing or null");
+        }
+        if (!property_exists($data, "message") || $data->message === null) {
+            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
+        }
+        if (!property_exists($data, "tree") || $data->tree === null) {
+            throw new SdkValidationError("tree", 'required', "Required property 'tree' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             author: SdkClient::hydrateClass($data->author, CommitSearchResultItemCommitAuthor::class),
             committer: ($data->committer === null ? null : SdkClient::hydrateClass($data->committer, NullableGitUser::class)),

@@ -65,9 +65,15 @@ class RepositoryCollaboratorPermission implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "permission") || $data->permission === null) { throw new SdkValidationError("permission", 'required', "Required property 'permission' is missing or null"); }
-        if (!property_exists($data, "role_name") || $data->role_name === null) { throw new SdkValidationError("role_name", 'required', "Required property 'role_name' is missing or null"); }
-        if (!property_exists($data, "user")) { throw new SdkValidationError("user", 'required', "Missing required property 'user'"); }
+        if (!property_exists($data, "permission") || $data->permission === null) {
+            throw new SdkValidationError("permission", 'required', "Required property 'permission' is missing or null");
+        }
+        if (!property_exists($data, "role_name") || $data->role_name === null) {
+            throw new SdkValidationError("role_name", 'required', "Required property 'role_name' is missing or null");
+        }
+        if (!property_exists($data, "user")) {
+            throw new SdkValidationError("user", 'required', "Missing required property 'user'");
+        }
         return new self(
             permission: SdkClient::stringValue($data->permission),
             roleName: SdkClient::stringValue($data->role_name),
@@ -84,11 +90,26 @@ final readonly class RepositoryHashAlgorithmHashAlgorithmEnum implements SdkOpen
     public const SHA1 = "sha1";
     public const SHA256 = "sha256";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -129,7 +150,9 @@ class RepositoryHashAlgorithm implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "hash_algorithm") || $data->hash_algorithm === null) { throw new SdkValidationError("hash_algorithm", 'required', "Required property 'hash_algorithm' is missing or null"); }
+        if (!property_exists($data, "hash_algorithm") || $data->hash_algorithm === null) {
+            throw new SdkValidationError("hash_algorithm", 'required', "Required property 'hash_algorithm' is missing or null");
+        }
         return new self(
             hashAlgorithm: SdkClient::hydrateStringEnumOrString($data->hash_algorithm, RepositoryHashAlgorithmHashAlgorithmEnum::class),
         );
@@ -148,11 +171,26 @@ final readonly class RepositoryInvitationPermissionsEnum implements SdkOpenEnum
     public const TRIAGE_PLUS = "triage_plus";
     public const MAINTAIN = "maintain";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -285,15 +323,33 @@ class RepositoryInvitation implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "invitee")) { throw new SdkValidationError("invitee", 'required', "Missing required property 'invitee'"); }
-        if (!property_exists($data, "inviter")) { throw new SdkValidationError("inviter", 'required', "Missing required property 'inviter'"); }
-        if (!property_exists($data, "permissions") || $data->permissions === null) { throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "invitee")) {
+            throw new SdkValidationError("invitee", 'required', "Missing required property 'invitee'");
+        }
+        if (!property_exists($data, "inviter")) {
+            throw new SdkValidationError("inviter", 'required', "Missing required property 'inviter'");
+        }
+        if (!property_exists($data, "permissions") || $data->permissions === null) {
+            throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             repository: SdkClient::hydrateClass($data->repository, MinimalRepository::class),

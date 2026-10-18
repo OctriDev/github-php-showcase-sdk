@@ -14,11 +14,26 @@ final readonly class WebhookProjectCardEditedActionEnum implements SdkOpenEnum
 {
     public const EDITED = "edited";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -59,7 +74,9 @@ class WebhookProjectCardEditedChangesNote implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from")) { throw new SdkValidationError("from", 'required', "Missing required property 'from'"); }
+        if (!property_exists($data, "from")) {
+            throw new SdkValidationError("from", 'required', "Missing required property 'from'");
+        }
         return new self(
             from: ($data->from === null ? null : SdkClient::stringValue($data->from)),
         );
@@ -104,7 +121,9 @@ class WebhookProjectCardEditedChanges implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "note") || $data->note === null) { throw new SdkValidationError("note", 'required', "Required property 'note' is missing or null"); }
+        if (!property_exists($data, "note") || $data->note === null) {
+            throw new SdkValidationError("note", 'required', "Required property 'note' is missing or null");
+        }
         return new self(
             note: SdkClient::hydrateClass($data->note, WebhookProjectCardEditedChangesNote::class),
         );
@@ -227,10 +246,18 @@ class WebhookProjectCardEdited implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "changes") || $data->changes === null) { throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null"); }
-        if (!property_exists($data, "project_card") || $data->project_card === null) { throw new SdkValidationError("project_card", 'required', "Required property 'project_card' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "changes") || $data->changes === null) {
+            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
+        }
+        if (!property_exists($data, "project_card") || $data->project_card === null) {
+            throw new SdkValidationError("project_card", 'required', "Required property 'project_card' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookProjectCardEditedActionEnum::class),
             changes: SdkClient::hydrateClass($data->changes, WebhookProjectCardEditedChanges::class),

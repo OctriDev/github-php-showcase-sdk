@@ -135,16 +135,36 @@ class BillingUsageSummaryReportUserUsageItemsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "product") || $data->product === null) { throw new SdkValidationError("product", 'required', "Required property 'product' is missing or null"); }
-        if (!property_exists($data, "sku") || $data->sku === null) { throw new SdkValidationError("sku", 'required', "Required property 'sku' is missing or null"); }
-        if (!property_exists($data, "unitType") || $data->unitType === null) { throw new SdkValidationError("unitType", 'required', "Required property 'unitType' is missing or null"); }
-        if (!property_exists($data, "pricePerUnit") || $data->pricePerUnit === null) { throw new SdkValidationError("pricePerUnit", 'required', "Required property 'pricePerUnit' is missing or null"); }
-        if (!property_exists($data, "grossQuantity") || $data->grossQuantity === null) { throw new SdkValidationError("grossQuantity", 'required', "Required property 'grossQuantity' is missing or null"); }
-        if (!property_exists($data, "grossAmount") || $data->grossAmount === null) { throw new SdkValidationError("grossAmount", 'required', "Required property 'grossAmount' is missing or null"); }
-        if (!property_exists($data, "discountQuantity") || $data->discountQuantity === null) { throw new SdkValidationError("discountQuantity", 'required', "Required property 'discountQuantity' is missing or null"); }
-        if (!property_exists($data, "discountAmount") || $data->discountAmount === null) { throw new SdkValidationError("discountAmount", 'required', "Required property 'discountAmount' is missing or null"); }
-        if (!property_exists($data, "netQuantity") || $data->netQuantity === null) { throw new SdkValidationError("netQuantity", 'required', "Required property 'netQuantity' is missing or null"); }
-        if (!property_exists($data, "netAmount") || $data->netAmount === null) { throw new SdkValidationError("netAmount", 'required', "Required property 'netAmount' is missing or null"); }
+        if (!property_exists($data, "product") || $data->product === null) {
+            throw new SdkValidationError("product", 'required', "Required property 'product' is missing or null");
+        }
+        if (!property_exists($data, "sku") || $data->sku === null) {
+            throw new SdkValidationError("sku", 'required', "Required property 'sku' is missing or null");
+        }
+        if (!property_exists($data, "unitType") || $data->unitType === null) {
+            throw new SdkValidationError("unitType", 'required', "Required property 'unitType' is missing or null");
+        }
+        if (!property_exists($data, "pricePerUnit") || $data->pricePerUnit === null) {
+            throw new SdkValidationError("pricePerUnit", 'required', "Required property 'pricePerUnit' is missing or null");
+        }
+        if (!property_exists($data, "grossQuantity") || $data->grossQuantity === null) {
+            throw new SdkValidationError("grossQuantity", 'required', "Required property 'grossQuantity' is missing or null");
+        }
+        if (!property_exists($data, "grossAmount") || $data->grossAmount === null) {
+            throw new SdkValidationError("grossAmount", 'required', "Required property 'grossAmount' is missing or null");
+        }
+        if (!property_exists($data, "discountQuantity") || $data->discountQuantity === null) {
+            throw new SdkValidationError("discountQuantity", 'required', "Required property 'discountQuantity' is missing or null");
+        }
+        if (!property_exists($data, "discountAmount") || $data->discountAmount === null) {
+            throw new SdkValidationError("discountAmount", 'required', "Required property 'discountAmount' is missing or null");
+        }
+        if (!property_exists($data, "netQuantity") || $data->netQuantity === null) {
+            throw new SdkValidationError("netQuantity", 'required', "Required property 'netQuantity' is missing or null");
+        }
+        if (!property_exists($data, "netAmount") || $data->netAmount === null) {
+            throw new SdkValidationError("netAmount", 'required', "Required property 'netAmount' is missing or null");
+        }
         return new self(
             product: SdkClient::stringValue($data->product),
             sku: SdkClient::stringValue($data->sku),
@@ -254,9 +274,15 @@ class BillingUsageSummaryReportUser implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "timePeriod") || $data->timePeriod === null) { throw new SdkValidationError("timePeriod", 'required', "Required property 'timePeriod' is missing or null"); }
-        if (!property_exists($data, "user") || $data->user === null) { throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null"); }
-        if (!property_exists($data, "usageItems") || $data->usageItems === null) { throw new SdkValidationError("usageItems", 'required', "Required property 'usageItems' is missing or null"); }
+        if (!property_exists($data, "timePeriod") || $data->timePeriod === null) {
+            throw new SdkValidationError("timePeriod", 'required', "Required property 'timePeriod' is missing or null");
+        }
+        if (!property_exists($data, "user") || $data->user === null) {
+            throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null");
+        }
+        if (!property_exists($data, "usageItems") || $data->usageItems === null) {
+            throw new SdkValidationError("usageItems", 'required', "Required property 'usageItems' is missing or null");
+        }
         return new self(
             timePeriod: SdkClient::hydrateClass($data->timePeriod, BillingUsageSummaryReportUserTimePeriod::class),
             user: SdkClient::stringValue($data->user),
@@ -272,11 +298,26 @@ final readonly class BudgetBudgetTypeEnum implements SdkOpenEnum
 {
     public const SKUPRICING = "SkuPricing";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -292,9 +333,24 @@ final readonly class BudgetBudgetScopeEnum implements SdkOpenEnum
     public const MULTI_USER_COST_CENTER = "multi_user_cost_center";
     public const USER = "user";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

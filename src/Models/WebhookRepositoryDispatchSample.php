@@ -119,12 +119,24 @@ class WebhookRepositoryDispatchSample implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "branch") || $data->branch === null) { throw new SdkValidationError("branch", 'required', "Required property 'branch' is missing or null"); }
-        if (!property_exists($data, "client_payload")) { throw new SdkValidationError("client_payload", 'required', "Missing required property 'client_payload'"); }
-        if (!property_exists($data, "installation") || $data->installation === null) { throw new SdkValidationError("installation", 'required', "Required property 'installation' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "branch") || $data->branch === null) {
+            throw new SdkValidationError("branch", 'required', "Required property 'branch' is missing or null");
+        }
+        if (!property_exists($data, "client_payload")) {
+            throw new SdkValidationError("client_payload", 'required', "Missing required property 'client_payload'");
+        }
+        if (!property_exists($data, "installation") || $data->installation === null) {
+            throw new SdkValidationError("installation", 'required', "Required property 'installation' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::stringValue($data->action),
             branch: SdkClient::stringValue($data->branch),

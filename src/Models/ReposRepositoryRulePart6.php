@@ -78,7 +78,9 @@ class RepositoryRuleDetailedVariant2 implements RepositoryRuleDetailed, \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant2TypeEnum::class),
             rulesetSourceType: (property_exists($data, "ruleset_source_type") && $data->ruleset_source_type !== null ? SdkClient::hydrateStringEnumOrString($data->ruleset_source_type, RepositoryRuleDetailedVariant2RulesetSourceTypeEnum::class) : SdkNotGiven::Value),
@@ -104,11 +106,26 @@ final readonly class RepositoryRuleDetailedVariant3RulesetSourceTypeEnum impleme
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class RepositoryRuleDetailedVariant3 implements RepositoryRuleDetailed, \JsonSerializable
@@ -182,7 +199,9 @@ class RepositoryRuleDetailedVariant3 implements RepositoryRuleDetailed, \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant3TypeEnum::class),
             rulesetSourceType: (property_exists($data, "ruleset_source_type") && $data->ruleset_source_type !== null ? SdkClient::hydrateStringEnumOrString($data->ruleset_source_type, RepositoryRuleDetailedVariant3RulesetSourceTypeEnum::class) : SdkNotGiven::Value),
@@ -208,11 +227,26 @@ final readonly class RepositoryRuleDetailedVariant4ParametersGroupingStrategyEnu
     public const ALLGREEN = "ALLGREEN";
     public const HEADGREEN = "HEADGREEN";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -224,11 +258,26 @@ final readonly class RepositoryRuleDetailedVariant4ParametersMergeMethodEnum imp
     public const SQUASH = "SQUASH";
     public const REBASE = "REBASE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -329,13 +378,27 @@ class RepositoryRuleDetailedVariant4Parameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "check_response_timeout_minutes") || $data->check_response_timeout_minutes === null) { throw new SdkValidationError("check_response_timeout_minutes", 'required', "Required property 'check_response_timeout_minutes' is missing or null"); }
-        if (!property_exists($data, "grouping_strategy") || $data->grouping_strategy === null) { throw new SdkValidationError("grouping_strategy", 'required', "Required property 'grouping_strategy' is missing or null"); }
-        if (!property_exists($data, "max_entries_to_build") || $data->max_entries_to_build === null) { throw new SdkValidationError("max_entries_to_build", 'required', "Required property 'max_entries_to_build' is missing or null"); }
-        if (!property_exists($data, "max_entries_to_merge") || $data->max_entries_to_merge === null) { throw new SdkValidationError("max_entries_to_merge", 'required', "Required property 'max_entries_to_merge' is missing or null"); }
-        if (!property_exists($data, "merge_method") || $data->merge_method === null) { throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null"); }
-        if (!property_exists($data, "min_entries_to_merge") || $data->min_entries_to_merge === null) { throw new SdkValidationError("min_entries_to_merge", 'required', "Required property 'min_entries_to_merge' is missing or null"); }
-        if (!property_exists($data, "min_entries_to_merge_wait_minutes") || $data->min_entries_to_merge_wait_minutes === null) { throw new SdkValidationError("min_entries_to_merge_wait_minutes", 'required', "Required property 'min_entries_to_merge_wait_minutes' is missing or null"); }
+        if (!property_exists($data, "check_response_timeout_minutes") || $data->check_response_timeout_minutes === null) {
+            throw new SdkValidationError("check_response_timeout_minutes", 'required', "Required property 'check_response_timeout_minutes' is missing or null");
+        }
+        if (!property_exists($data, "grouping_strategy") || $data->grouping_strategy === null) {
+            throw new SdkValidationError("grouping_strategy", 'required', "Required property 'grouping_strategy' is missing or null");
+        }
+        if (!property_exists($data, "max_entries_to_build") || $data->max_entries_to_build === null) {
+            throw new SdkValidationError("max_entries_to_build", 'required', "Required property 'max_entries_to_build' is missing or null");
+        }
+        if (!property_exists($data, "max_entries_to_merge") || $data->max_entries_to_merge === null) {
+            throw new SdkValidationError("max_entries_to_merge", 'required', "Required property 'max_entries_to_merge' is missing or null");
+        }
+        if (!property_exists($data, "merge_method") || $data->merge_method === null) {
+            throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null");
+        }
+        if (!property_exists($data, "min_entries_to_merge") || $data->min_entries_to_merge === null) {
+            throw new SdkValidationError("min_entries_to_merge", 'required', "Required property 'min_entries_to_merge' is missing or null");
+        }
+        if (!property_exists($data, "min_entries_to_merge_wait_minutes") || $data->min_entries_to_merge_wait_minutes === null) {
+            throw new SdkValidationError("min_entries_to_merge_wait_minutes", 'required', "Required property 'min_entries_to_merge_wait_minutes' is missing or null");
+        }
         return new self(
             checkResponseTimeoutMinutes: SdkClient::intValue($data->check_response_timeout_minutes),
             groupingStrategy: SdkClient::hydrateStringEnumOrString($data->grouping_strategy, RepositoryRuleDetailedVariant4ParametersGroupingStrategyEnum::class),

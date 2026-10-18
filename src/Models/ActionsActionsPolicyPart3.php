@@ -55,8 +55,12 @@ class ActionsPolicyEnterpriseConditionsVariant0WorkflowPath implements \JsonSeri
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "include") || $data->include === null) { throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null"); }
-        if (!property_exists($data, "exclude") || $data->exclude === null) { throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null"); }
+        if (!property_exists($data, "include") || $data->include === null) {
+            throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null");
+        }
+        if (!property_exists($data, "exclude") || $data->exclude === null) {
+            throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null");
+        }
         return new self(
             include_: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include))),
             exclude: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->exclude))),
@@ -121,8 +125,12 @@ class ActionsPolicyEnterpriseConditionsVariant0 implements ActionsPolicyEnterpri
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "organization_name") || $data->organization_name === null) { throw new SdkValidationError("organization_name", 'required', "Required property 'organization_name' is missing or null"); }
-        if (!property_exists($data, "repository_name") || $data->repository_name === null) { throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null"); }
+        if (!property_exists($data, "organization_name") || $data->organization_name === null) {
+            throw new SdkValidationError("organization_name", 'required', "Required property 'organization_name' is missing or null");
+        }
+        if (!property_exists($data, "repository_name") || $data->repository_name === null) {
+            throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null");
+        }
         return new self(
             organizationName: SdkClient::hydrateClass($data->organization_name, ActionsPolicyEnterpriseConditionsVariant0OrganizationName::class),
             repositoryName: SdkClient::hydrateClass($data->repository_name, ActionsPolicyEnterpriseConditionsVariant0RepositoryName::class),
@@ -297,8 +305,12 @@ class ActionsPolicyEnterpriseConditionsVariant1WorkflowPath implements \JsonSeri
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "include") || $data->include === null) { throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null"); }
-        if (!property_exists($data, "exclude") || $data->exclude === null) { throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null"); }
+        if (!property_exists($data, "include") || $data->include === null) {
+            throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null");
+        }
+        if (!property_exists($data, "exclude") || $data->exclude === null) {
+            throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null");
+        }
         return new self(
             include_: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include))),
             exclude: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->exclude))),

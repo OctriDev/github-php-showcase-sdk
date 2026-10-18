@@ -29,7 +29,7 @@ trait TeamsMethodsPart2
     public static function teamsUpdateLegacy(ClientConfig $clientConfig, int $teamId, string $name, string|SdkNotGiven $description = SdkNotGiven::Value, TeamsUpdateLegacyPrivacy|SdkNotGiven $privacy = SdkNotGiven::Value, TeamsUpdateLegacyNotificationSetting|SdkNotGiven $notificationSetting = SdkNotGiven::Value, TeamsUpdateLegacyPermission|SdkNotGiven $permission = SdkNotGiven::Value, int|null|SdkNotGiven $parentTeamId = SdkNotGiven::Value, string|null|SdkNotGiven $parentTeamSlug = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TeamFull
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/teams/" . SdkClient::encodePathSegment($teamId) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'privacy' => $privacy, 'notification_setting' => $notificationSetting, 'permission' => $permission, 'parent_team_id' => $parentTeamId, 'parent_team_slug' => $parentTeamSlug], returnType: TeamFull::class, decoder: 'json', operationId: 'teamsUpdateLegacy', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/teams/" . SdkClient::encodePathSegment($teamId) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'privacy' => $privacy, 'notification_setting' => $notificationSetting, 'permission' => $permission, 'parent_team_id' => $parentTeamId, 'parent_team_slug' => $parentTeamSlug], returnType: TeamFull::class, decoder: 'json', operationId: 'teamsUpdateLegacy', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TeamFull::class));
     }
 
@@ -46,7 +46,7 @@ trait TeamsMethodsPart2
     public static function teamsDeleteLegacy(ClientConfig $clientConfig, int $teamId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/teams/" . SdkClient::encodePathSegment($teamId) . "", $clientConfig, decoder: 'empty', operationId: 'teamsDeleteLegacy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/teams/" . SdkClient::encodePathSegment($teamId) . "", $clientConfig, decoder: 'empty', operationId: 'teamsDeleteLegacy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -86,7 +86,7 @@ trait TeamsMethodsPart2
     public static function teamsListMembersLegacy(ClientConfig $clientConfig, int $teamId, TeamsListMembersLegacyRole|SdkNotGiven $role = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/members", $clientConfig, query: ['role' => new SdkQueryValue($role, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListMembersLegacy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/members", $clientConfig, query: ['role' => new SdkQueryValue($role, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListMembersLegacy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, TeamMember::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -121,7 +121,7 @@ trait TeamsMethodsPart2
     public static function teamsAddMemberLegacy(ClientConfig $clientConfig, int $teamId, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/members/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'teamsAddMemberLegacy', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/members/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'teamsAddMemberLegacy', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -156,7 +156,7 @@ trait TeamsMethodsPart2
     public static function teamsGetMembershipForUserLegacy(ClientConfig $clientConfig, int $teamId, string $username, ?RequestOptions $requestOptions = null): TeamMembership
     {
 
-        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, returnType: TeamMembership::class, decoder: 'json', operationId: 'teamsGetMembershipForUserLegacy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, returnType: TeamMembership::class, decoder: 'json', operationId: 'teamsGetMembershipForUserLegacy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TeamMembership::class));
     }
 
@@ -176,7 +176,7 @@ trait TeamsMethodsPart2
     public static function teamsAddOrUpdateMembershipForUserLegacy(ClientConfig $clientConfig, int $teamId, string $username, TeamsAddOrUpdateMembershipForUserLegacyRole|SdkNotGiven $role = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TeamMembership
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['role' => $role], returnType: TeamMembership::class, decoder: 'json', operationId: 'teamsAddOrUpdateMembershipForUserLegacy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['role' => $role], returnType: TeamMembership::class, decoder: 'json', operationId: 'teamsAddOrUpdateMembershipForUserLegacy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TeamMembership::class));
     }
 
@@ -213,7 +213,7 @@ trait TeamsMethodsPart2
     public static function teamsListReposLegacy(ClientConfig $clientConfig, int $teamId, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/repos", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListReposLegacy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/repos", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListReposLegacy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MinimalRepository::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -253,7 +253,7 @@ trait TeamsMethodsPart2
     public static function teamsAddOrUpdateRepoPermissionsLegacy(ClientConfig $clientConfig, int $teamId, string $owner, string $repo, TeamsAddOrUpdateRepoPermissionsLegacyPermission|SdkNotGiven $permission = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, body: ['permission' => $permission], decoder: 'empty', operationId: 'teamsAddOrUpdateRepoPermissionsLegacy', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, body: ['permission' => $permission], decoder: 'empty', operationId: 'teamsAddOrUpdateRepoPermissionsLegacy', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -290,7 +290,7 @@ trait TeamsMethodsPart2
     public static function teamsListChildLegacy(ClientConfig $clientConfig, int $teamId, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/teams", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListChildLegacy', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/teams", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListChildLegacy', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Team::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -307,7 +307,7 @@ trait TeamsMethodsPart2
     public static function teamsListForAuthenticatedUser(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/teams", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/teams", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, TeamFull::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

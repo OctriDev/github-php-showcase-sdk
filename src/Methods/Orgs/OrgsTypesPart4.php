@@ -54,7 +54,9 @@ class OrgsCreateClusterDeploymentRecordsJobResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "job_id") || $data->job_id === null) { throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null"); }
+        if (!property_exists($data, "job_id") || $data->job_id === null) {
+            throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null");
+        }
         return new self(
             jobId: SdkClient::intValue($data->job_id),
             errors: (property_exists($data, "errors") && $data->errors !== null ? array_values(array_map(static fn($item) => SdkClient::stringMapValue($item), SdkClient::arrayValue($data->errors))) : SdkNotGiven::Value),
@@ -72,11 +74,26 @@ final readonly class OrgsGetClusterDeploymentRecordsJobResponseStatusEnum implem
     public const COMPLETED = "completed";
     public const FAILED = "failed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class OrgsGetClusterDeploymentRecordsJobResponse implements \JsonSerializable
@@ -160,8 +177,12 @@ class OrgsGetClusterDeploymentRecordsJobResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "job_id") || $data->job_id === null) { throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "job_id") || $data->job_id === null) {
+            throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
         return new self(
             jobId: SdkClient::intValue($data->job_id),
             status: SdkClient::hydrateStringEnumOrString($data->status, OrgsGetClusterDeploymentRecordsJobResponseStatusEnum::class),
@@ -322,7 +343,9 @@ class OrgsCreateArtifactStorageRecordResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             storageRecords: (property_exists($data, "storage_records") && $data->storage_records !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OrgsCreateArtifactStorageRecordResponseStorageRecordsItem::class), SdkClient::arrayValue($data->storage_records))) : SdkNotGiven::Value),

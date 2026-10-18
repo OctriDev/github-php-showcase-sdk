@@ -45,7 +45,9 @@ class RepositoryRuleUpdateParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "update_allows_fetch_and_merge") || $data->update_allows_fetch_and_merge === null) { throw new SdkValidationError("update_allows_fetch_and_merge", 'required', "Required property 'update_allows_fetch_and_merge' is missing or null"); }
+        if (!property_exists($data, "update_allows_fetch_and_merge") || $data->update_allows_fetch_and_merge === null) {
+            throw new SdkValidationError("update_allows_fetch_and_merge", 'required', "Required property 'update_allows_fetch_and_merge' is missing or null");
+        }
         return new self(
             updateAllowsFetchAndMerge: SdkClient::boolValue($data->update_allows_fetch_and_merge),
         );
@@ -102,7 +104,9 @@ class RepositoryRuleUpdate implements RepositoryRule, OrgRules, \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleUpdateTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleUpdateParameters::class) : SdkNotGiven::Value),
@@ -168,7 +172,9 @@ class RepositoryRuleWorkflowsParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "workflows") || $data->workflows === null) { throw new SdkValidationError("workflows", 'required', "Required property 'workflows' is missing or null"); }
+        if (!property_exists($data, "workflows") || $data->workflows === null) {
+            throw new SdkValidationError("workflows", 'required', "Required property 'workflows' is missing or null");
+        }
         return new self(
             workflows: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RepositoryRuleParamsWorkflowFileReference::class), SdkClient::arrayValue($data->workflows))),
             doNotEnforceOnCreate: (property_exists($data, "do_not_enforce_on_create") && $data->do_not_enforce_on_create !== null ? SdkClient::boolValue($data->do_not_enforce_on_create) : SdkNotGiven::Value),
@@ -226,7 +232,9 @@ class RepositoryRuleWorkflows implements RepositoryRule, OrgRules, \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleWorkflowsTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleWorkflowsParameters::class) : SdkNotGiven::Value),

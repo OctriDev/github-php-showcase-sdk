@@ -137,9 +137,15 @@ class RepositoryAdvisoryCreate implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "summary") || $data->summary === null) { throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null"); }
-        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
-        if (!property_exists($data, "vulnerabilities") || $data->vulnerabilities === null) { throw new SdkValidationError("vulnerabilities", 'required', "Required property 'vulnerabilities' is missing or null"); }
+        if (!property_exists($data, "summary") || $data->summary === null) {
+            throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null");
+        }
+        if (!property_exists($data, "description") || $data->description === null) {
+            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
+        }
+        if (!property_exists($data, "vulnerabilities") || $data->vulnerabilities === null) {
+            throw new SdkValidationError("vulnerabilities", 'required', "Required property 'vulnerabilities' is missing or null");
+        }
         return new self(
             summary: SdkClient::stringValue($data->summary),
             description: SdkClient::stringValue($data->description),
@@ -163,11 +169,26 @@ final readonly class RepositoryAdvisoryCreditStateEnum implements SdkOpenEnum
     public const DECLINED = "declined";
     public const PENDING = "pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -228,9 +249,15 @@ class RepositoryAdvisoryCredit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "user") || $data->user === null) { throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "user") || $data->user === null) {
+            throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
         return new self(
             user: SdkClient::hydrateClass($data->user, SimpleUser::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, SecurityAdvisoryCreditTypes::class),

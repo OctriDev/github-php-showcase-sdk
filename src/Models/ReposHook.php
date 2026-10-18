@@ -167,18 +167,42 @@ class Hook implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "active") || $data->active === null) { throw new SdkValidationError("active", 'required', "Required property 'active' is missing or null"); }
-        if (!property_exists($data, "events") || $data->events === null) { throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null"); }
-        if (!property_exists($data, "config") || $data->config === null) { throw new SdkValidationError("config", 'required', "Required property 'config' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "test_url") || $data->test_url === null) { throw new SdkValidationError("test_url", 'required', "Required property 'test_url' is missing or null"); }
-        if (!property_exists($data, "ping_url") || $data->ping_url === null) { throw new SdkValidationError("ping_url", 'required', "Required property 'ping_url' is missing or null"); }
-        if (!property_exists($data, "last_response") || $data->last_response === null) { throw new SdkValidationError("last_response", 'required', "Required property 'last_response' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "active") || $data->active === null) {
+            throw new SdkValidationError("active", 'required', "Required property 'active' is missing or null");
+        }
+        if (!property_exists($data, "events") || $data->events === null) {
+            throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null");
+        }
+        if (!property_exists($data, "config") || $data->config === null) {
+            throw new SdkValidationError("config", 'required', "Required property 'config' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "test_url") || $data->test_url === null) {
+            throw new SdkValidationError("test_url", 'required', "Required property 'test_url' is missing or null");
+        }
+        if (!property_exists($data, "ping_url") || $data->ping_url === null) {
+            throw new SdkValidationError("ping_url", 'required', "Required property 'ping_url' is missing or null");
+        }
+        if (!property_exists($data, "last_response") || $data->last_response === null) {
+            throw new SdkValidationError("last_response", 'required', "Required property 'last_response' is missing or null");
+        }
         return new self(
             type: SdkClient::stringValue($data->type),
             id: SdkClient::intValue($data->id),
@@ -255,9 +279,15 @@ class HookResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "code")) { throw new SdkValidationError("code", 'required', "Missing required property 'code'"); }
-        if (!property_exists($data, "status")) { throw new SdkValidationError("status", 'required', "Missing required property 'status'"); }
-        if (!property_exists($data, "message")) { throw new SdkValidationError("message", 'required', "Missing required property 'message'"); }
+        if (!property_exists($data, "code")) {
+            throw new SdkValidationError("code", 'required', "Missing required property 'code'");
+        }
+        if (!property_exists($data, "status")) {
+            throw new SdkValidationError("status", 'required', "Missing required property 'status'");
+        }
+        if (!property_exists($data, "message")) {
+            throw new SdkValidationError("message", 'required', "Missing required property 'message'");
+        }
         return new self(
             code: ($data->code === null ? null : SdkClient::intValue($data->code)),
             status: ($data->status === null ? null : SdkClient::stringValue($data->status)),

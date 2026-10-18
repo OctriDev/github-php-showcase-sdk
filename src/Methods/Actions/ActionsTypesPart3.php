@@ -44,8 +44,12 @@ class ActionsGetHostedRunnersPlatformsForOrgResponse implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "platforms") || $data->platforms === null) { throw new SdkValidationError("platforms", 'required', "Required property 'platforms' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "platforms") || $data->platforms === null) {
+            throw new SdkValidationError("platforms", 'required', "Required property 'platforms' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             platforms: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->platforms))),
@@ -90,8 +94,12 @@ class ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse im
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "repositories") || $data->repositories === null) { throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "repositories") || $data->repositories === null) {
+            throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::floatValue($data->total_count),
             repositories: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Repository::class), SdkClient::arrayValue($data->repositories))),
@@ -192,8 +200,12 @@ class ActionsGetOrgActionsPoliciesResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "policies") || $data->policies === null) { throw new SdkValidationError("policies", 'required', "Required property 'policies' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "policies") || $data->policies === null) {
+            throw new SdkValidationError("policies", 'required', "Required property 'policies' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             policies: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsPolicy::class), SdkClient::arrayValue($data->policies))),
@@ -238,8 +250,12 @@ class ActionsListSelfHostedRunnerGroupsForOrgResponse implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "runner_groups") || $data->runner_groups === null) { throw new SdkValidationError("runner_groups", 'required', "Required property 'runner_groups' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "runner_groups") || $data->runner_groups === null) {
+            throw new SdkValidationError("runner_groups", 'required', "Required property 'runner_groups' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::floatValue($data->total_count),
             runnerGroups: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RunnerGroupsOrg::class), SdkClient::arrayValue($data->runner_groups))),
@@ -284,8 +300,12 @@ class ActionsListGithubHostedRunnersInGroupForOrgResponse implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "runners") || $data->runners === null) { throw new SdkValidationError("runners", 'required', "Required property 'runners' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "runners") || $data->runners === null) {
+            throw new SdkValidationError("runners", 'required', "Required property 'runners' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::floatValue($data->total_count),
             runners: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsHostedRunner::class), SdkClient::arrayValue($data->runners))),
@@ -330,8 +350,12 @@ class ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse implements \Json
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "repositories") || $data->repositories === null) { throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "repositories") || $data->repositories === null) {
+            throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::floatValue($data->total_count),
             repositories: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MinimalRepository::class), SdkClient::arrayValue($data->repositories))),

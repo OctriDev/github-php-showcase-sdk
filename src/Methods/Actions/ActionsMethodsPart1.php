@@ -20,7 +20,7 @@ trait ActionsMethodsPart1
     public static function actionsGetActionsCacheRetentionLimitForEnterprise(ClientConfig $clientConfig, string $enterprise, ?RequestOptions $requestOptions = null): ActionsCacheRetentionLimitForEnterprise
     {
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/cache/retention-limit", $clientConfig, returnType: ActionsCacheRetentionLimitForEnterprise::class, decoder: 'json', operationId: 'actionsGetActionsCacheRetentionLimitForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/cache/retention-limit", $clientConfig, returnType: ActionsCacheRetentionLimitForEnterprise::class, decoder: 'json', operationId: 'actionsGetActionsCacheRetentionLimitForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsCacheRetentionLimitForEnterprise::class));
     }
 
@@ -36,7 +36,7 @@ trait ActionsMethodsPart1
     public static function actionsSetActionsCacheRetentionLimitForEnterprise(ClientConfig $clientConfig, string $enterprise, int|SdkNotGiven $maxCacheRetentionDays = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/cache/retention-limit", $clientConfig, body: ['max_cache_retention_days' => $maxCacheRetentionDays], decoder: 'empty', operationId: 'actionsSetActionsCacheRetentionLimitForEnterprise', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/cache/retention-limit", $clientConfig, body: ['max_cache_retention_days' => $maxCacheRetentionDays], decoder: 'empty', operationId: 'actionsSetActionsCacheRetentionLimitForEnterprise', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -51,7 +51,7 @@ trait ActionsMethodsPart1
     public static function actionsGetActionsCacheStorageLimitForEnterprise(ClientConfig $clientConfig, string $enterprise, ?RequestOptions $requestOptions = null): ActionsCacheStorageLimitForEnterprise
     {
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/cache/storage-limit", $clientConfig, returnType: ActionsCacheStorageLimitForEnterprise::class, decoder: 'json', operationId: 'actionsGetActionsCacheStorageLimitForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/cache/storage-limit", $clientConfig, returnType: ActionsCacheStorageLimitForEnterprise::class, decoder: 'json', operationId: 'actionsGetActionsCacheStorageLimitForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsCacheStorageLimitForEnterprise::class));
     }
 
@@ -67,7 +67,7 @@ trait ActionsMethodsPart1
     public static function actionsSetActionsCacheStorageLimitForEnterprise(ClientConfig $clientConfig, string $enterprise, int|SdkNotGiven $maxCacheSizeGb = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/cache/storage-limit", $clientConfig, body: ['max_cache_size_gb' => $maxCacheSizeGb], decoder: 'empty', operationId: 'actionsSetActionsCacheStorageLimitForEnterprise', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/cache/storage-limit", $clientConfig, body: ['max_cache_size_gb' => $maxCacheSizeGb], decoder: 'empty', operationId: 'actionsSetActionsCacheStorageLimitForEnterprise', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -82,7 +82,7 @@ trait ActionsMethodsPart1
     public static function actionsGetActionsCacheRetentionLimitForOrganization(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): ActionsCacheRetentionLimitForOrganization
     {
 
-        $sdkResponse = SdkClient::request('GET', "/organizations/" . SdkClient::encodePathSegment($org) . "/actions/cache/retention-limit", $clientConfig, returnType: ActionsCacheRetentionLimitForOrganization::class, decoder: 'json', operationId: 'actionsGetActionsCacheRetentionLimitForOrganization', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/organizations/" . SdkClient::encodePathSegment($org) . "/actions/cache/retention-limit", $clientConfig, returnType: ActionsCacheRetentionLimitForOrganization::class, decoder: 'json', operationId: 'actionsGetActionsCacheRetentionLimitForOrganization', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsCacheRetentionLimitForOrganization::class));
     }
 
@@ -98,7 +98,7 @@ trait ActionsMethodsPart1
     public static function actionsSetActionsCacheRetentionLimitForOrganization(ClientConfig $clientConfig, string $org, int|SdkNotGiven $maxCacheRetentionDays = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/organizations/" . SdkClient::encodePathSegment($org) . "/actions/cache/retention-limit", $clientConfig, body: ['max_cache_retention_days' => $maxCacheRetentionDays], decoder: 'empty', operationId: 'actionsSetActionsCacheRetentionLimitForOrganization', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/organizations/" . SdkClient::encodePathSegment($org) . "/actions/cache/retention-limit", $clientConfig, body: ['max_cache_retention_days' => $maxCacheRetentionDays], decoder: 'empty', operationId: 'actionsSetActionsCacheRetentionLimitForOrganization', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -113,7 +113,7 @@ trait ActionsMethodsPart1
     public static function actionsGetActionsCacheStorageLimitForOrganization(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): ActionsCacheStorageLimitForOrganization
     {
 
-        $sdkResponse = SdkClient::request('GET', "/organizations/" . SdkClient::encodePathSegment($org) . "/actions/cache/storage-limit", $clientConfig, returnType: ActionsCacheStorageLimitForOrganization::class, decoder: 'json', operationId: 'actionsGetActionsCacheStorageLimitForOrganization', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/organizations/" . SdkClient::encodePathSegment($org) . "/actions/cache/storage-limit", $clientConfig, returnType: ActionsCacheStorageLimitForOrganization::class, decoder: 'json', operationId: 'actionsGetActionsCacheStorageLimitForOrganization', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsCacheStorageLimitForOrganization::class));
     }
 
@@ -129,7 +129,7 @@ trait ActionsMethodsPart1
     public static function actionsSetActionsCacheStorageLimitForOrganization(ClientConfig $clientConfig, string $org, int|SdkNotGiven $maxCacheSizeGb = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/organizations/" . SdkClient::encodePathSegment($org) . "/actions/cache/storage-limit", $clientConfig, body: ['max_cache_size_gb' => $maxCacheSizeGb], decoder: 'empty', operationId: 'actionsSetActionsCacheStorageLimitForOrganization', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/organizations/" . SdkClient::encodePathSegment($org) . "/actions/cache/storage-limit", $clientConfig, body: ['max_cache_size_gb' => $maxCacheSizeGb], decoder: 'empty', operationId: 'actionsSetActionsCacheStorageLimitForOrganization', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

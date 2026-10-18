@@ -75,10 +75,18 @@ class RateLimit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "limit") || $data->limit === null) { throw new SdkValidationError("limit", 'required', "Required property 'limit' is missing or null"); }
-        if (!property_exists($data, "remaining") || $data->remaining === null) { throw new SdkValidationError("remaining", 'required', "Required property 'remaining' is missing or null"); }
-        if (!property_exists($data, "reset") || $data->reset === null) { throw new SdkValidationError("reset", 'required', "Required property 'reset' is missing or null"); }
-        if (!property_exists($data, "used") || $data->used === null) { throw new SdkValidationError("used", 'required', "Required property 'used' is missing or null"); }
+        if (!property_exists($data, "limit") || $data->limit === null) {
+            throw new SdkValidationError("limit", 'required', "Required property 'limit' is missing or null");
+        }
+        if (!property_exists($data, "remaining") || $data->remaining === null) {
+            throw new SdkValidationError("remaining", 'required', "Required property 'remaining' is missing or null");
+        }
+        if (!property_exists($data, "reset") || $data->reset === null) {
+            throw new SdkValidationError("reset", 'required', "Required property 'reset' is missing or null");
+        }
+        if (!property_exists($data, "used") || $data->used === null) {
+            throw new SdkValidationError("used", 'required', "Required property 'used' is missing or null");
+        }
         return new self(
             limit: SdkClient::intValue($data->limit),
             remaining: SdkClient::intValue($data->remaining),
@@ -256,8 +264,12 @@ class RateLimitOverviewResources implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "core") || $data->core === null) { throw new SdkValidationError("core", 'required', "Required property 'core' is missing or null"); }
-        if (!property_exists($data, "search") || $data->search === null) { throw new SdkValidationError("search", 'required', "Required property 'search' is missing or null"); }
+        if (!property_exists($data, "core") || $data->core === null) {
+            throw new SdkValidationError("core", 'required', "Required property 'core' is missing or null");
+        }
+        if (!property_exists($data, "search") || $data->search === null) {
+            throw new SdkValidationError("search", 'required', "Required property 'search' is missing or null");
+        }
         return new self(
             core: SdkClient::hydrateClass($data->core, RateLimit::class),
             search: SdkClient::hydrateClass($data->search, RateLimit::class),
@@ -323,8 +335,12 @@ class RateLimitOverview implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "resources") || $data->resources === null) { throw new SdkValidationError("resources", 'required', "Required property 'resources' is missing or null"); }
-        if (!property_exists($data, "rate") || $data->rate === null) { throw new SdkValidationError("rate", 'required', "Required property 'rate' is missing or null"); }
+        if (!property_exists($data, "resources") || $data->resources === null) {
+            throw new SdkValidationError("resources", 'required', "Required property 'resources' is missing or null");
+        }
+        if (!property_exists($data, "rate") || $data->rate === null) {
+            throw new SdkValidationError("rate", 'required', "Required property 'rate' is missing or null");
+        }
         return new self(
             resources: SdkClient::hydrateClass($data->resources, RateLimitOverviewResources::class),
             rate: SdkClient::hydrateClass($data->rate, RateLimit::class),
