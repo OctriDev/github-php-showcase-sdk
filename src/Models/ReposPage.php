@@ -16,26 +16,11 @@ final readonly class PageStatusEnum implements SdkOpenEnum
     public const BUILDING = "building";
     public const ERRORED = "errored";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -47,26 +32,11 @@ final readonly class PageProtectedDomainStateEnum implements SdkOpenEnum
     public const VERIFIED = "verified";
     public const UNVERIFIED = "unverified";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -77,26 +47,11 @@ final readonly class PageBuildTypeEnum implements SdkOpenEnum
     public const LEGACY = "legacy";
     public const WORKFLOW = "workflow";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -261,21 +216,11 @@ class Page implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "status")) {
-            throw new SdkValidationError("status", 'required', "Missing required property 'status'");
-        }
-        if (!property_exists($data, "cname")) {
-            throw new SdkValidationError("cname", 'required', "Missing required property 'cname'");
-        }
-        if (!property_exists($data, "custom_404") || $data->custom_404 === null) {
-            throw new SdkValidationError("custom_404", 'required', "Required property 'custom_404' is missing or null");
-        }
-        if (!property_exists($data, "public") || $data->public === null) {
-            throw new SdkValidationError("public", 'required', "Required property 'public' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "status")) { throw new SdkValidationError("status", 'required', "Missing required property 'status'"); }
+        if (!property_exists($data, "cname")) { throw new SdkValidationError("cname", 'required', "Missing required property 'cname'"); }
+        if (!property_exists($data, "custom_404") || $data->custom_404 === null) { throw new SdkValidationError("custom_404", 'required', "Required property 'custom_404' is missing or null"); }
+        if (!property_exists($data, "public") || $data->public === null) { throw new SdkValidationError("public", 'required', "Required property 'public' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             status: ($data->status === null ? null : SdkClient::hydrateStringEnumOrString($data->status, PageStatusEnum::class)),
@@ -331,9 +276,7 @@ class PageBuildError implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message")) {
-            throw new SdkValidationError("message", 'required', "Missing required property 'message'");
-        }
+        if (!property_exists($data, "message")) { throw new SdkValidationError("message", 'required', "Missing required property 'message'"); }
         return new self(
             message: ($data->message === null ? null : SdkClient::stringValue($data->message)),
         );

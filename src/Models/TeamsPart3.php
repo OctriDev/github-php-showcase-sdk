@@ -15,26 +15,11 @@ final readonly class TeamMembershipRoleEnum implements SdkOpenEnum
     public const MEMBER = "member";
     public const MAINTAINER = "maintainer";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -45,26 +30,11 @@ final readonly class TeamMembershipStateEnum implements SdkOpenEnum
     public const ACTIVE = "active";
     public const PENDING = "pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -125,15 +95,9 @@ class TeamMembership implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "role") || $data->role === null) {
-            throw new SdkValidationError("role", 'required', "Required property 'role' is missing or null");
-        }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "role") || $data->role === null) { throw new SdkValidationError("role", 'required', "Required property 'role' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             role: SdkClient::hydrateStringEnumOrString($data->role, TeamMembershipRoleEnum::class),
@@ -224,15 +188,9 @@ class TeamOrganizationPlan implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "space") || $data->space === null) {
-            throw new SdkValidationError("space", 'required', "Required property 'space' is missing or null");
-        }
-        if (!property_exists($data, "private_repos") || $data->private_repos === null) {
-            throw new SdkValidationError("private_repos", 'required', "Required property 'private_repos' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "space") || $data->space === null) { throw new SdkValidationError("space", 'required', "Required property 'space' is missing or null"); }
+        if (!property_exists($data, "private_repos") || $data->private_repos === null) { throw new SdkValidationError("private_repos", 'required', "Required property 'private_repos' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             space: SdkClient::intValue($data->space),

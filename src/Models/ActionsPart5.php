@@ -81,9 +81,7 @@ class OidcCustomSubRepo implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "use_default") || $data->use_default === null) {
-            throw new SdkValidationError("use_default", 'required', "Required property 'use_default' is missing or null");
-        }
+        if (!property_exists($data, "use_default") || $data->use_default === null) { throw new SdkValidationError("use_default", 'required', "Required property 'use_default' is missing or null"); }
         return new self(
             useDefault: SdkClient::boolValue($data->use_default),
             includeClaimKeys: (property_exists($data, "include_claim_keys") && $data->include_claim_keys !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include_claim_keys))) : SdkNotGiven::Value),
@@ -225,12 +223,8 @@ class ReferencedWorkflow implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) {
-            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
-        }
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
+        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
         return new self(
             path: SdkClient::stringValue($data->path),
             sha: SdkClient::stringValue($data->sha),
@@ -248,26 +242,11 @@ final readonly class SelfHostedRunnersSettingsEnabledRepositoriesEnum implements
     public const SELECTED = "selected";
     public const NONE = "none";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -320,9 +299,7 @@ class SelfHostedRunnersSettings implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) {
-            throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null");
-        }
+        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) { throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null"); }
         return new self(
             enabledRepositories: SdkClient::hydrateStringEnumOrString($data->enabled_repositories, SelfHostedRunnersSettingsEnabledRepositoriesEnum::class),
             selectedRepositoriesUrl: (property_exists($data, "selected_repositories_url") && $data->selected_repositories_url !== null ? SdkClient::stringValue($data->selected_repositories_url) : SdkNotGiven::Value),

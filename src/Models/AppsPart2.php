@@ -127,12 +127,8 @@ class InstallationToken implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "token") || $data->token === null) {
-            throw new SdkValidationError("token", 'required', "Required property 'token' is missing or null");
-        }
-        if (!property_exists($data, "expires_at") || $data->expires_at === null) {
-            throw new SdkValidationError("expires_at", 'required', "Required property 'expires_at' is missing or null");
-        }
+        if (!property_exists($data, "token") || $data->token === null) { throw new SdkValidationError("token", 'required', "Required property 'token' is missing or null"); }
+        if (!property_exists($data, "expires_at") || $data->expires_at === null) { throw new SdkValidationError("expires_at", 'required', "Required property 'expires_at' is missing or null"); }
         return new self(
             token: SdkClient::stringValue($data->token),
             expiresAt: SdkClient::stringValue($data->expires_at),
@@ -226,18 +222,10 @@ class IntegrationInstallationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "account") || $data->account === null) {
-            throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null");
-        }
-        if (!property_exists($data, "requester") || $data->requester === null) {
-            throw new SdkValidationError("requester", 'required', "Required property 'requester' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "account") || $data->account === null) { throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null"); }
+        if (!property_exists($data, "requester") || $data->requester === null) { throw new SdkValidationError("requester", 'required', "Required property 'requester' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             account: SdkClient::hydrateUnionAs($data->account, IntegrationInstallationRequestAccount::class, [SimpleUser::class, Enterprise::class], null, []),
@@ -352,18 +340,10 @@ class MarketplaceAccount implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "login") || $data->login === null) {
-            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             id: SdkClient::intValue($data->id),

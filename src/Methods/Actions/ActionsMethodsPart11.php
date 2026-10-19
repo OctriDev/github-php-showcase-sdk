@@ -22,7 +22,7 @@ trait ActionsMethodsPart11
     public static function actionsForceCancelWorkflowRun(ClientConfig $clientConfig, string $owner, string $repo, int $runId, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/force-cancel", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsForceCancelWorkflowRun', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/force-cancel", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsForceCancelWorkflowRun', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 
@@ -76,7 +76,7 @@ trait ActionsMethodsPart11
     public static function actionsDeleteWorkflowRunLogs(ClientConfig $clientConfig, string $owner, string $repo, int $runId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/logs", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteWorkflowRunLogs', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/logs", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteWorkflowRunLogs', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

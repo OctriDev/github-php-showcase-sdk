@@ -137,33 +137,15 @@ class SecretScanningLocationCommit implements NullableSecretScanningFirstDetecte
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) {
-            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
-        }
-        if (!property_exists($data, "start_line") || $data->start_line === null) {
-            throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null");
-        }
-        if (!property_exists($data, "end_line") || $data->end_line === null) {
-            throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null");
-        }
-        if (!property_exists($data, "start_column") || $data->start_column === null) {
-            throw new SdkValidationError("start_column", 'required', "Required property 'start_column' is missing or null");
-        }
-        if (!property_exists($data, "end_column") || $data->end_column === null) {
-            throw new SdkValidationError("end_column", 'required', "Required property 'end_column' is missing or null");
-        }
-        if (!property_exists($data, "blob_sha") || $data->blob_sha === null) {
-            throw new SdkValidationError("blob_sha", 'required', "Required property 'blob_sha' is missing or null");
-        }
-        if (!property_exists($data, "blob_url") || $data->blob_url === null) {
-            throw new SdkValidationError("blob_url", 'required', "Required property 'blob_url' is missing or null");
-        }
-        if (!property_exists($data, "commit_sha") || $data->commit_sha === null) {
-            throw new SdkValidationError("commit_sha", 'required', "Required property 'commit_sha' is missing or null");
-        }
-        if (!property_exists($data, "commit_url") || $data->commit_url === null) {
-            throw new SdkValidationError("commit_url", 'required', "Required property 'commit_url' is missing or null");
-        }
+        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
+        if (!property_exists($data, "start_line") || $data->start_line === null) { throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null"); }
+        if (!property_exists($data, "end_line") || $data->end_line === null) { throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null"); }
+        if (!property_exists($data, "start_column") || $data->start_column === null) { throw new SdkValidationError("start_column", 'required', "Required property 'start_column' is missing or null"); }
+        if (!property_exists($data, "end_column") || $data->end_column === null) { throw new SdkValidationError("end_column", 'required', "Required property 'end_column' is missing or null"); }
+        if (!property_exists($data, "blob_sha") || $data->blob_sha === null) { throw new SdkValidationError("blob_sha", 'required', "Required property 'blob_sha' is missing or null"); }
+        if (!property_exists($data, "blob_url") || $data->blob_url === null) { throw new SdkValidationError("blob_url", 'required', "Required property 'blob_url' is missing or null"); }
+        if (!property_exists($data, "commit_sha") || $data->commit_sha === null) { throw new SdkValidationError("commit_sha", 'required', "Required property 'commit_sha' is missing or null"); }
+        if (!property_exists($data, "commit_url") || $data->commit_url === null) { throw new SdkValidationError("commit_url", 'required', "Required property 'commit_url' is missing or null"); }
         return new self(
             path: SdkClient::stringValue($data->path),
             startLine: SdkClient::floatValue($data->start_line),
@@ -217,9 +199,7 @@ class SecretScanningLocationDiscussionBody implements NullableSecretScanningFirs
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "discussion_body_url") || $data->discussion_body_url === null) {
-            throw new SdkValidationError("discussion_body_url", 'required', "Required property 'discussion_body_url' is missing or null");
-        }
+        if (!property_exists($data, "discussion_body_url") || $data->discussion_body_url === null) { throw new SdkValidationError("discussion_body_url", 'required', "Required property 'discussion_body_url' is missing or null"); }
         return new self(
             discussionBodyUrl: SdkClient::stringValue($data->discussion_body_url),
         );
@@ -264,9 +244,7 @@ class SecretScanningLocationDiscussionComment implements NullableSecretScanningF
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "discussion_comment_url") || $data->discussion_comment_url === null) {
-            throw new SdkValidationError("discussion_comment_url", 'required', "Required property 'discussion_comment_url' is missing or null");
-        }
+        if (!property_exists($data, "discussion_comment_url") || $data->discussion_comment_url === null) { throw new SdkValidationError("discussion_comment_url", 'required', "Required property 'discussion_comment_url' is missing or null"); }
         return new self(
             discussionCommentUrl: SdkClient::stringValue($data->discussion_comment_url),
         );
@@ -311,9 +289,7 @@ class SecretScanningLocationDiscussionTitle implements NullableSecretScanningFir
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "discussion_title_url") || $data->discussion_title_url === null) {
-            throw new SdkValidationError("discussion_title_url", 'required', "Required property 'discussion_title_url' is missing or null");
-        }
+        if (!property_exists($data, "discussion_title_url") || $data->discussion_title_url === null) { throw new SdkValidationError("discussion_title_url", 'required', "Required property 'discussion_title_url' is missing or null"); }
         return new self(
             discussionTitleUrl: SdkClient::stringValue($data->discussion_title_url),
         );
@@ -370,9 +346,7 @@ class SecretScanningLocationIssueBody implements NullableSecretScanningFirstDete
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "issue_body_url") || $data->issue_body_url === null) {
-            throw new SdkValidationError("issue_body_url", 'required', "Required property 'issue_body_url' is missing or null");
-        }
+        if (!property_exists($data, "issue_body_url") || $data->issue_body_url === null) { throw new SdkValidationError("issue_body_url", 'required', "Required property 'issue_body_url' is missing or null"); }
         return new self(
             issueBodyUrl: SdkClient::stringValue($data->issue_body_url),
             htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),

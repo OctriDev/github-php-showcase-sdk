@@ -89,15 +89,9 @@ class OrganizationFullPlan implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "space") || $data->space === null) {
-            throw new SdkValidationError("space", 'required', "Required property 'space' is missing or null");
-        }
-        if (!property_exists($data, "private_repos") || $data->private_repos === null) {
-            throw new SdkValidationError("private_repos", 'required', "Required property 'private_repos' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "space") || $data->space === null) { throw new SdkValidationError("space", 'required', "Required property 'space' is missing or null"); }
+        if (!property_exists($data, "private_repos") || $data->private_repos === null) { throw new SdkValidationError("private_repos", 'required', "Required property 'private_repos' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             space: SdkClient::intValue($data->space),

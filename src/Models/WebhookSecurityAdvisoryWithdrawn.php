@@ -14,26 +14,11 @@ final readonly class WebhookSecurityAdvisoryWithdrawnActionEnum implements SdkOp
 {
     public const WITHDRAWN = "withdrawn";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -84,12 +69,8 @@ class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "score") || $data->score === null) {
-            throw new SdkValidationError("score", 'required', "Required property 'score' is missing or null");
-        }
-        if (!property_exists($data, "vector_string")) {
-            throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'");
-        }
+        if (!property_exists($data, "score") || $data->score === null) { throw new SdkValidationError("score", 'required', "Required property 'score' is missing or null"); }
+        if (!property_exists($data, "vector_string")) { throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'"); }
         return new self(
             score: SdkClient::floatValue($data->score),
             vectorString: ($data->vector_string === null ? null : SdkClient::stringValue($data->vector_string)),
@@ -145,12 +126,8 @@ class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem implements \JsonS
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "cwe_id") || $data->cwe_id === null) {
-            throw new SdkValidationError("cwe_id", 'required', "Required property 'cwe_id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "cwe_id") || $data->cwe_id === null) { throw new SdkValidationError("cwe_id", 'required', "Required property 'cwe_id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             cweId: SdkClient::stringValue($data->cwe_id),
             name: SdkClient::stringValue($data->name),
@@ -206,12 +183,8 @@ class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem implements
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "value") || $data->value === null) {
-            throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "value") || $data->value === null) { throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null"); }
         return new self(
             type: SdkClient::stringValue($data->type),
             value: SdkClient::stringValue($data->value),
@@ -257,9 +230,7 @@ class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem implements 
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
         );
@@ -304,9 +275,7 @@ class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "identifier") || $data->identifier === null) {
-            throw new SdkValidationError("identifier", 'required', "Required property 'identifier' is missing or null");
-        }
+        if (!property_exists($data, "identifier") || $data->identifier === null) { throw new SdkValidationError("identifier", 'required', "Required property 'identifier' is missing or null"); }
         return new self(
             identifier: SdkClient::stringValue($data->identifier),
         );
@@ -361,12 +330,8 @@ class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) {
-            throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) { throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             ecosystem: SdkClient::stringValue($data->ecosystem),
             name: SdkClient::stringValue($data->name),

@@ -65,15 +65,9 @@ class RepositoryRuleParamsCodeScanningTool implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "alerts_threshold") || $data->alerts_threshold === null) {
-            throw new SdkValidationError("alerts_threshold", 'required', "Required property 'alerts_threshold' is missing or null");
-        }
-        if (!property_exists($data, "security_alerts_threshold") || $data->security_alerts_threshold === null) {
-            throw new SdkValidationError("security_alerts_threshold", 'required', "Required property 'security_alerts_threshold' is missing or null");
-        }
-        if (!property_exists($data, "tool") || $data->tool === null) {
-            throw new SdkValidationError("tool", 'required', "Required property 'tool' is missing or null");
-        }
+        if (!property_exists($data, "alerts_threshold") || $data->alerts_threshold === null) { throw new SdkValidationError("alerts_threshold", 'required', "Required property 'alerts_threshold' is missing or null"); }
+        if (!property_exists($data, "security_alerts_threshold") || $data->security_alerts_threshold === null) { throw new SdkValidationError("security_alerts_threshold", 'required', "Required property 'security_alerts_threshold' is missing or null"); }
+        if (!property_exists($data, "tool") || $data->tool === null) { throw new SdkValidationError("tool", 'required', "Required property 'tool' is missing or null"); }
         return new self(
             alertsThreshold: SdkClient::hydrateStringEnumOrString($data->alerts_threshold, RepositoryRuleParamsCodeScanningToolAlertsThresholdEnum::class),
             securityAlertsThreshold: SdkClient::hydrateStringEnumOrString($data->security_alerts_threshold, RepositoryRuleParamsCodeScanningToolSecurityAlertsThresholdEnum::class),
@@ -132,9 +126,7 @@ class RepositoryRuleParamsDismissalRestriction implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
             allowedActors: (property_exists($data, "allowed_actors") && $data->allowed_actors !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RepositoryRuleParamsActor::class), SdkClient::arrayValue($data->allowed_actors))) : SdkNotGiven::Value),
@@ -200,15 +192,9 @@ class RepositoryRuleParamsRequiredReviewerConfiguration implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "file_patterns") || $data->file_patterns === null) {
-            throw new SdkValidationError("file_patterns", 'required', "Required property 'file_patterns' is missing or null");
-        }
-        if (!property_exists($data, "minimum_approvals") || $data->minimum_approvals === null) {
-            throw new SdkValidationError("minimum_approvals", 'required', "Required property 'minimum_approvals' is missing or null");
-        }
-        if (!property_exists($data, "reviewer") || $data->reviewer === null) {
-            throw new SdkValidationError("reviewer", 'required', "Required property 'reviewer' is missing or null");
-        }
+        if (!property_exists($data, "file_patterns") || $data->file_patterns === null) { throw new SdkValidationError("file_patterns", 'required', "Required property 'file_patterns' is missing or null"); }
+        if (!property_exists($data, "minimum_approvals") || $data->minimum_approvals === null) { throw new SdkValidationError("minimum_approvals", 'required', "Required property 'minimum_approvals' is missing or null"); }
+        if (!property_exists($data, "reviewer") || $data->reviewer === null) { throw new SdkValidationError("reviewer", 'required', "Required property 'reviewer' is missing or null"); }
         return new self(
             filePatterns: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->file_patterns))),
             minimumApprovals: SdkClient::intValue($data->minimum_approvals),
@@ -224,26 +210,11 @@ final readonly class RepositoryRuleParamsReviewerTypeEnum implements SdkOpenEnum
 {
     public const TEAM = "Team";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -294,12 +265,8 @@ class RepositoryRuleParamsReviewer implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             type: SdkClient::hydrateStringEnumOrString($data->type, RepositoryRuleParamsReviewerTypeEnum::class),
@@ -357,9 +324,7 @@ class RepositoryRuleParamsStatusCheckConfiguration implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "context") || $data->context === null) {
-            throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null");
-        }
+        if (!property_exists($data, "context") || $data->context === null) { throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null"); }
         return new self(
             context: SdkClient::stringValue($data->context),
             integrationId: (property_exists($data, "integration_id") && $data->integration_id !== null ? SdkClient::intValue($data->integration_id) : SdkNotGiven::Value),

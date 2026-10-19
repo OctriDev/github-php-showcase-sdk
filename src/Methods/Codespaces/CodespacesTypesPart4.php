@@ -114,9 +114,7 @@ class CodespacesCreateForAuthenticatedUserBodyVariant1 implements \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
-            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
-        }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
         return new self(
             pullRequest: SdkClient::hydrateClass($data->pull_request, CodespacesCreateForAuthenticatedUserBodyVariant1PullRequest::class),
             location: (property_exists($data, "location") && $data->location !== null ? SdkClient::stringValue($data->location) : SdkNotGiven::Value),
@@ -166,12 +164,8 @@ class CodespacesListSecretsForAuthenticatedUserResponse implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "secrets") || $data->secrets === null) {
-            throw new SdkValidationError("secrets", 'required', "Required property 'secrets' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "secrets") || $data->secrets === null) { throw new SdkValidationError("secrets", 'required', "Required property 'secrets' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             secrets: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CodespacesSecret::class), SdkClient::arrayValue($data->secrets))),
@@ -216,12 +210,8 @@ class CodespacesListRepositoriesForSecretForAuthenticatedUserResponse implements
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "repositories") || $data->repositories === null) {
-            throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "repositories") || $data->repositories === null) { throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             repositories: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MinimalRepository::class), SdkClient::arrayValue($data->repositories))),
@@ -266,12 +256,8 @@ class CodespacesCodespaceMachinesForAuthenticatedUserResponse implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "machines") || $data->machines === null) {
-            throw new SdkValidationError("machines", 'required', "Required property 'machines' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "machines") || $data->machines === null) { throw new SdkValidationError("machines", 'required', "Required property 'machines' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             machines: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CodespaceMachine::class), SdkClient::arrayValue($data->machines))),

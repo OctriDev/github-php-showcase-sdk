@@ -135,36 +135,16 @@ class WebhooksReleaseReactions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "+1") || get_object_vars($data)["+1"] === null) {
-            throw new SdkValidationError("+1", 'required', "Required property '+1' is missing or null");
-        }
-        if (!property_exists($data, "-1") || get_object_vars($data)["-1"] === null) {
-            throw new SdkValidationError("-1", 'required', "Required property '-1' is missing or null");
-        }
-        if (!property_exists($data, "confused") || $data->confused === null) {
-            throw new SdkValidationError("confused", 'required', "Required property 'confused' is missing or null");
-        }
-        if (!property_exists($data, "eyes") || $data->eyes === null) {
-            throw new SdkValidationError("eyes", 'required', "Required property 'eyes' is missing or null");
-        }
-        if (!property_exists($data, "heart") || $data->heart === null) {
-            throw new SdkValidationError("heart", 'required', "Required property 'heart' is missing or null");
-        }
-        if (!property_exists($data, "hooray") || $data->hooray === null) {
-            throw new SdkValidationError("hooray", 'required', "Required property 'hooray' is missing or null");
-        }
-        if (!property_exists($data, "laugh") || $data->laugh === null) {
-            throw new SdkValidationError("laugh", 'required', "Required property 'laugh' is missing or null");
-        }
-        if (!property_exists($data, "rocket") || $data->rocket === null) {
-            throw new SdkValidationError("rocket", 'required', "Required property 'rocket' is missing or null");
-        }
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "+1") || get_object_vars($data)["+1"] === null) { throw new SdkValidationError("+1", 'required', "Required property '+1' is missing or null"); }
+        if (!property_exists($data, "-1") || get_object_vars($data)["-1"] === null) { throw new SdkValidationError("-1", 'required', "Required property '-1' is missing or null"); }
+        if (!property_exists($data, "confused") || $data->confused === null) { throw new SdkValidationError("confused", 'required', "Required property 'confused' is missing or null"); }
+        if (!property_exists($data, "eyes") || $data->eyes === null) { throw new SdkValidationError("eyes", 'required', "Required property 'eyes' is missing or null"); }
+        if (!property_exists($data, "heart") || $data->heart === null) { throw new SdkValidationError("heart", 'required', "Required property 'heart' is missing or null"); }
+        if (!property_exists($data, "hooray") || $data->hooray === null) { throw new SdkValidationError("hooray", 'required', "Required property 'hooray' is missing or null"); }
+        if (!property_exists($data, "laugh") || $data->laugh === null) { throw new SdkValidationError("laugh", 'required', "Required property 'laugh' is missing or null"); }
+        if (!property_exists($data, "rocket") || $data->rocket === null) { throw new SdkValidationError("rocket", 'required', "Required property 'rocket' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             plus1: SdkClient::intValue(get_object_vars($data)["+1"]),
             minus1: SdkClient::intValue(get_object_vars($data)["-1"]),

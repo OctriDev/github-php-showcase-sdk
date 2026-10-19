@@ -125,15 +125,9 @@ class WebhookRepositoryRulesetEdited implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "repository_ruleset") || $data->repository_ruleset === null) {
-            throw new SdkValidationError("repository_ruleset", 'required', "Required property 'repository_ruleset' is missing or null");
-        }
-        if (!property_exists($data, "sender") || $data->sender === null) {
-            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "repository_ruleset") || $data->repository_ruleset === null) { throw new SdkValidationError("repository_ruleset", 'required', "Required property 'repository_ruleset' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookRepositoryRulesetEditedActionEnum::class),
             repositoryRuleset: SdkClient::hydrateClass($data->repository_ruleset, RepositoryRuleset::class),

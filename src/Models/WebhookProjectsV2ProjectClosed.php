@@ -14,26 +14,11 @@ final readonly class WebhookProjectsV2ProjectClosedActionEnum implements SdkOpen
 {
     public const CLOSED = "closed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -116,18 +101,10 @@ class WebhookProjectsV2ProjectClosed implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "organization") || $data->organization === null) {
-            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
-        }
-        if (!property_exists($data, "projects_v2") || $data->projects_v2 === null) {
-            throw new SdkValidationError("projects_v2", 'required', "Required property 'projects_v2' is missing or null");
-        }
-        if (!property_exists($data, "sender") || $data->sender === null) {
-            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
+        if (!property_exists($data, "projects_v2") || $data->projects_v2 === null) { throw new SdkValidationError("projects_v2", 'required', "Required property 'projects_v2' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookProjectsV2ProjectClosedActionEnum::class),
             organization: SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class),

@@ -54,9 +54,7 @@ class AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemDataVaria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             globalId: (property_exists($data, "global_id") && $data->global_id !== null ? SdkClient::stringValue($data->global_id) : SdkNotGiven::Value),
@@ -109,12 +107,8 @@ class AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemDataVaria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "head_ref") || $data->head_ref === null) {
-            throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null");
-        }
-        if (!property_exists($data, "base_ref") || $data->base_ref === null) {
-            throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null");
-        }
+        if (!property_exists($data, "head_ref") || $data->head_ref === null) { throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null"); }
+        if (!property_exists($data, "base_ref") || $data->base_ref === null) { throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null"); }
         return new self(
             headRef: SdkClient::stringValue($data->head_ref),
             baseRef: SdkClient::stringValue($data->base_ref),
@@ -170,9 +164,7 @@ class AgentAutomationsListAvailableAutomationTriggersResponseItemFieldsItemSchem
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, AgentAutomationsListAvailableAutomationTriggersResponseItemFieldsItemSchemaVariant0TypeEnum::class),
             minLength: (property_exists($data, "minLength") && $data->minLength !== null ? SdkClient::intValue($data->minLength) : SdkNotGiven::Value),
@@ -189,26 +181,11 @@ final readonly class AgentAutomationsListAvailableAutomationTriggersResponseItem
 {
     public const STRING = "string";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class AgentAutomationsListAvailableAutomationTriggersResponseItemFieldsItemSchemaVariant1Items implements \JsonSerializable
@@ -254,9 +231,7 @@ class AgentAutomationsListAvailableAutomationTriggersResponseItemFieldsItemSchem
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, AgentAutomationsListAvailableAutomationTriggersResponseItemFieldsItemSchemaVariant1ItemsTypeEnum::class),
             minLength: (property_exists($data, "minLength") && $data->minLength !== null ? SdkClient::intValue($data->minLength) : SdkNotGiven::Value),
@@ -337,12 +312,8 @@ class AgentAutomationsListAvailableAutomationTriggersResponseItemFieldsItemSchem
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "items") || $data->items === null) {
-            throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "items") || $data->items === null) { throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, AgentAutomationsListAvailableAutomationTriggersResponseItemFieldsItemSchemaVariant1TypeEnum::class),
             items: SdkClient::hydrateClass($data->items, AgentAutomationsListAvailableAutomationTriggersResponseItemFieldsItemSchemaVariant1Items::class),

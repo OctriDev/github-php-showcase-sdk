@@ -137,15 +137,9 @@ class SubIssuesSummary implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total") || $data->total === null) {
-            throw new SdkValidationError("total", 'required', "Required property 'total' is missing or null");
-        }
-        if (!property_exists($data, "completed") || $data->completed === null) {
-            throw new SdkValidationError("completed", 'required', "Required property 'completed' is missing or null");
-        }
-        if (!property_exists($data, "percent_completed") || $data->percent_completed === null) {
-            throw new SdkValidationError("percent_completed", 'required', "Required property 'percent_completed' is missing or null");
-        }
+        if (!property_exists($data, "total") || $data->total === null) { throw new SdkValidationError("total", 'required', "Required property 'total' is missing or null"); }
+        if (!property_exists($data, "completed") || $data->completed === null) { throw new SdkValidationError("completed", 'required', "Required property 'completed' is missing or null"); }
+        if (!property_exists($data, "percent_completed") || $data->percent_completed === null) { throw new SdkValidationError("percent_completed", 'required', "Required property 'percent_completed' is missing or null"); }
         return new self(
             total: SdkClient::intValue($data->total),
             completed: SdkClient::intValue($data->completed),
@@ -232,21 +226,11 @@ class Verification implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "verified") || $data->verified === null) {
-            throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null");
-        }
-        if (!property_exists($data, "reason") || $data->reason === null) {
-            throw new SdkValidationError("reason", 'required', "Required property 'reason' is missing or null");
-        }
-        if (!property_exists($data, "payload")) {
-            throw new SdkValidationError("payload", 'required', "Missing required property 'payload'");
-        }
-        if (!property_exists($data, "signature")) {
-            throw new SdkValidationError("signature", 'required', "Missing required property 'signature'");
-        }
-        if (!property_exists($data, "verified_at")) {
-            throw new SdkValidationError("verified_at", 'required', "Missing required property 'verified_at'");
-        }
+        if (!property_exists($data, "verified") || $data->verified === null) { throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null"); }
+        if (!property_exists($data, "reason") || $data->reason === null) { throw new SdkValidationError("reason", 'required', "Required property 'reason' is missing or null"); }
+        if (!property_exists($data, "payload")) { throw new SdkValidationError("payload", 'required', "Missing required property 'payload'"); }
+        if (!property_exists($data, "signature")) { throw new SdkValidationError("signature", 'required', "Missing required property 'signature'"); }
+        if (!property_exists($data, "verified_at")) { throw new SdkValidationError("verified_at", 'required', "Missing required property 'verified_at'"); }
         return new self(
             verified: SdkClient::boolValue($data->verified),
             reason: SdkClient::stringValue($data->reason),

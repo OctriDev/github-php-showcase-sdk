@@ -297,27 +297,13 @@ class Import implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "vcs")) {
-            throw new SdkValidationError("vcs", 'required', "Missing required property 'vcs'");
-        }
-        if (!property_exists($data, "vcs_url") || $data->vcs_url === null) {
-            throw new SdkValidationError("vcs_url", 'required', "Required property 'vcs_url' is missing or null");
-        }
-        if (!property_exists($data, "status") || $data->status === null) {
-            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "authors_url") || $data->authors_url === null) {
-            throw new SdkValidationError("authors_url", 'required', "Required property 'authors_url' is missing or null");
-        }
-        if (!property_exists($data, "repository_url") || $data->repository_url === null) {
-            throw new SdkValidationError("repository_url", 'required', "Required property 'repository_url' is missing or null");
-        }
+        if (!property_exists($data, "vcs")) { throw new SdkValidationError("vcs", 'required', "Missing required property 'vcs'"); }
+        if (!property_exists($data, "vcs_url") || $data->vcs_url === null) { throw new SdkValidationError("vcs_url", 'required', "Required property 'vcs_url' is missing or null"); }
+        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "authors_url") || $data->authors_url === null) { throw new SdkValidationError("authors_url", 'required', "Required property 'authors_url' is missing or null"); }
+        if (!property_exists($data, "repository_url") || $data->repository_url === null) { throw new SdkValidationError("repository_url", 'required', "Required property 'repository_url' is missing or null"); }
         return new self(
             vcs: ($data->vcs === null ? null : SdkClient::stringValue($data->vcs)),
             vcsUrl: SdkClient::stringValue($data->vcs_url),

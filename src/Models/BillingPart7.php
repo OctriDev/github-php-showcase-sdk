@@ -135,36 +135,16 @@ class BillingUsageSummaryReportOrgUsageItemsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "product") || $data->product === null) {
-            throw new SdkValidationError("product", 'required', "Required property 'product' is missing or null");
-        }
-        if (!property_exists($data, "sku") || $data->sku === null) {
-            throw new SdkValidationError("sku", 'required', "Required property 'sku' is missing or null");
-        }
-        if (!property_exists($data, "unitType") || $data->unitType === null) {
-            throw new SdkValidationError("unitType", 'required', "Required property 'unitType' is missing or null");
-        }
-        if (!property_exists($data, "pricePerUnit") || $data->pricePerUnit === null) {
-            throw new SdkValidationError("pricePerUnit", 'required', "Required property 'pricePerUnit' is missing or null");
-        }
-        if (!property_exists($data, "grossQuantity") || $data->grossQuantity === null) {
-            throw new SdkValidationError("grossQuantity", 'required', "Required property 'grossQuantity' is missing or null");
-        }
-        if (!property_exists($data, "grossAmount") || $data->grossAmount === null) {
-            throw new SdkValidationError("grossAmount", 'required', "Required property 'grossAmount' is missing or null");
-        }
-        if (!property_exists($data, "discountQuantity") || $data->discountQuantity === null) {
-            throw new SdkValidationError("discountQuantity", 'required', "Required property 'discountQuantity' is missing or null");
-        }
-        if (!property_exists($data, "discountAmount") || $data->discountAmount === null) {
-            throw new SdkValidationError("discountAmount", 'required', "Required property 'discountAmount' is missing or null");
-        }
-        if (!property_exists($data, "netQuantity") || $data->netQuantity === null) {
-            throw new SdkValidationError("netQuantity", 'required', "Required property 'netQuantity' is missing or null");
-        }
-        if (!property_exists($data, "netAmount") || $data->netAmount === null) {
-            throw new SdkValidationError("netAmount", 'required', "Required property 'netAmount' is missing or null");
-        }
+        if (!property_exists($data, "product") || $data->product === null) { throw new SdkValidationError("product", 'required', "Required property 'product' is missing or null"); }
+        if (!property_exists($data, "sku") || $data->sku === null) { throw new SdkValidationError("sku", 'required', "Required property 'sku' is missing or null"); }
+        if (!property_exists($data, "unitType") || $data->unitType === null) { throw new SdkValidationError("unitType", 'required', "Required property 'unitType' is missing or null"); }
+        if (!property_exists($data, "pricePerUnit") || $data->pricePerUnit === null) { throw new SdkValidationError("pricePerUnit", 'required', "Required property 'pricePerUnit' is missing or null"); }
+        if (!property_exists($data, "grossQuantity") || $data->grossQuantity === null) { throw new SdkValidationError("grossQuantity", 'required', "Required property 'grossQuantity' is missing or null"); }
+        if (!property_exists($data, "grossAmount") || $data->grossAmount === null) { throw new SdkValidationError("grossAmount", 'required', "Required property 'grossAmount' is missing or null"); }
+        if (!property_exists($data, "discountQuantity") || $data->discountQuantity === null) { throw new SdkValidationError("discountQuantity", 'required', "Required property 'discountQuantity' is missing or null"); }
+        if (!property_exists($data, "discountAmount") || $data->discountAmount === null) { throw new SdkValidationError("discountAmount", 'required', "Required property 'discountAmount' is missing or null"); }
+        if (!property_exists($data, "netQuantity") || $data->netQuantity === null) { throw new SdkValidationError("netQuantity", 'required', "Required property 'netQuantity' is missing or null"); }
+        if (!property_exists($data, "netAmount") || $data->netAmount === null) { throw new SdkValidationError("netAmount", 'required', "Required property 'netAmount' is missing or null"); }
         return new self(
             product: SdkClient::stringValue($data->product),
             sku: SdkClient::stringValue($data->sku),
@@ -274,15 +254,9 @@ class BillingUsageSummaryReportOrg implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "timePeriod") || $data->timePeriod === null) {
-            throw new SdkValidationError("timePeriod", 'required', "Required property 'timePeriod' is missing or null");
-        }
-        if (!property_exists($data, "organization") || $data->organization === null) {
-            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
-        }
-        if (!property_exists($data, "usageItems") || $data->usageItems === null) {
-            throw new SdkValidationError("usageItems", 'required', "Required property 'usageItems' is missing or null");
-        }
+        if (!property_exists($data, "timePeriod") || $data->timePeriod === null) { throw new SdkValidationError("timePeriod", 'required', "Required property 'timePeriod' is missing or null"); }
+        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
+        if (!property_exists($data, "usageItems") || $data->usageItems === null) { throw new SdkValidationError("usageItems", 'required', "Required property 'usageItems' is missing or null"); }
         return new self(
             timePeriod: SdkClient::hydrateClass($data->timePeriod, BillingUsageSummaryReportOrgTimePeriod::class),
             organization: SdkClient::stringValue($data->organization),
@@ -356,9 +330,7 @@ class BillingUsageSummaryReportUserTimePeriod implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "year") || $data->year === null) {
-            throw new SdkValidationError("year", 'required', "Required property 'year' is missing or null");
-        }
+        if (!property_exists($data, "year") || $data->year === null) { throw new SdkValidationError("year", 'required', "Required property 'year' is missing or null"); }
         return new self(
             year: SdkClient::intValue($data->year),
             month: (property_exists($data, "month") && $data->month !== null ? SdkClient::intValue($data->month) : SdkNotGiven::Value),

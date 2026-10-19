@@ -177,45 +177,19 @@ class WebhooksRelease1AssetsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "browser_download_url") || $data->browser_download_url === null) {
-            throw new SdkValidationError("browser_download_url", 'required', "Required property 'browser_download_url' is missing or null");
-        }
-        if (!property_exists($data, "content_type") || $data->content_type === null) {
-            throw new SdkValidationError("content_type", 'required', "Required property 'content_type' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "download_count") || $data->download_count === null) {
-            throw new SdkValidationError("download_count", 'required', "Required property 'download_count' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "label")) {
-            throw new SdkValidationError("label", 'required', "Missing required property 'label'");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "size") || $data->size === null) {
-            throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null");
-        }
-        if (!property_exists($data, "digest")) {
-            throw new SdkValidationError("digest", 'required', "Missing required property 'digest'");
-        }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "browser_download_url") || $data->browser_download_url === null) { throw new SdkValidationError("browser_download_url", 'required', "Required property 'browser_download_url' is missing or null"); }
+        if (!property_exists($data, "content_type") || $data->content_type === null) { throw new SdkValidationError("content_type", 'required', "Required property 'content_type' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "download_count") || $data->download_count === null) { throw new SdkValidationError("download_count", 'required', "Required property 'download_count' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "label")) { throw new SdkValidationError("label", 'required', "Missing required property 'label'"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "size") || $data->size === null) { throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null"); }
+        if (!property_exists($data, "digest")) { throw new SdkValidationError("digest", 'required', "Missing required property 'digest'"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             browserDownloadUrl: SdkClient::stringValue($data->browser_download_url),
             contentType: SdkClient::stringValue($data->content_type),
@@ -244,24 +218,9 @@ final readonly class WebhooksRelease1AuthorTypeEnum implements SdkOpenEnum
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

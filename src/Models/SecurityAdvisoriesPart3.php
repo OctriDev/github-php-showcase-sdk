@@ -57,9 +57,7 @@ class PrivateVulnerabilityReportCreateVulnerabilitiesItemPackage implements \Jso
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) {
-            throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null");
-        }
+        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) { throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null"); }
         return new self(
             ecosystem: SdkClient::hydrateStringEnumOrString($data->ecosystem, SecurityAdvisoryEcosystems::class),
             name: (property_exists($data, "name") ? ($data->name === null ? null : SdkClient::stringValue($data->name)) : SdkNotGiven::Value),
@@ -141,9 +139,7 @@ class PrivateVulnerabilityReportCreateVulnerabilitiesItem implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "package") || $data->package === null) {
-            throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null");
-        }
+        if (!property_exists($data, "package") || $data->package === null) { throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null"); }
         return new self(
             package: SdkClient::hydrateClass($data->package, PrivateVulnerabilityReportCreateVulnerabilitiesItemPackage::class),
             vulnerableVersionRange: (property_exists($data, "vulnerable_version_range") ? ($data->vulnerable_version_range === null ? null : SdkClient::stringValue($data->vulnerable_version_range)) : SdkNotGiven::Value),
@@ -163,26 +159,11 @@ final readonly class PrivateVulnerabilityReportCreateSeverityEnum implements Sdk
     public const MEDIUM = "medium";
     public const LOW = "low";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -293,12 +274,8 @@ class PrivateVulnerabilityReportCreate implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "summary") || $data->summary === null) {
-            throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null");
-        }
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
+        if (!property_exists($data, "summary") || $data->summary === null) { throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null"); }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
         return new self(
             summary: SdkClient::stringValue($data->summary),
             description: SdkClient::stringValue($data->description),
@@ -321,26 +298,11 @@ final readonly class RepositoryAdvisorySeverityEnum implements SdkOpenEnum
     public const MEDIUM = "medium";
     public const LOW = "low";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -351,24 +313,9 @@ final readonly class RepositoryAdvisoryIdentifiersItemTypeEnum implements SdkOpe
     public const CVE = "CVE";
     public const GHSA = "GHSA";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

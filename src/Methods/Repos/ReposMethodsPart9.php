@@ -75,7 +75,7 @@ trait ReposMethodsPart9
     public static function reposListIssueTypes(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issue-types", $clientConfig, decoder: 'json', operationId: 'reposListIssueTypes', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issue-types", $clientConfig, decoder: 'json', operationId: 'reposListIssueTypes', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, IssueType::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -114,7 +114,7 @@ trait ReposMethodsPart9
     public static function reposCreateDeployKey(ClientConfig $clientConfig, string $owner, string $repo, string $key, string|SdkNotGiven $title = SdkNotGiven::Value, bool|SdkNotGiven $readOnly = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeployKey
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/keys", $clientConfig, body: ['key' => $key, 'title' => $title, 'read_only' => $readOnly], returnType: DeployKey::class, decoder: 'json', operationId: 'reposCreateDeployKey', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/keys", $clientConfig, body: ['key' => $key, 'title' => $title, 'read_only' => $readOnly], returnType: DeployKey::class, decoder: 'json', operationId: 'reposCreateDeployKey', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeployKey::class));
     }
 
@@ -132,7 +132,7 @@ trait ReposMethodsPart9
     public static function reposGetDeployKey(ClientConfig $clientConfig, string $owner, string $repo, int $keyId, ?RequestOptions $requestOptions = null): DeployKey
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/keys/" . SdkClient::encodePathSegment($keyId) . "", $clientConfig, returnType: DeployKey::class, decoder: 'json', operationId: 'reposGetDeployKey', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/keys/" . SdkClient::encodePathSegment($keyId) . "", $clientConfig, returnType: DeployKey::class, decoder: 'json', operationId: 'reposGetDeployKey', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeployKey::class));
     }
 
@@ -203,7 +203,7 @@ trait ReposMethodsPart9
     public static function reposMerge(ClientConfig $clientConfig, string $owner, string $repo, string $base, string $head, string|SdkNotGiven $commitMessage = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Commit
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/merges", $clientConfig, body: ['base' => $base, 'head' => $head, 'commit_message' => $commitMessage], returnType: Commit::class, decoder: 'json', operationId: 'reposMerge', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/merges", $clientConfig, body: ['base' => $base, 'head' => $head, 'commit_message' => $commitMessage], returnType: Commit::class, decoder: 'json', operationId: 'reposMerge', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Commit::class));
     }
 
@@ -220,7 +220,7 @@ trait ReposMethodsPart9
     public static function reposGetPages(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): Page
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pages", $clientConfig, returnType: Page::class, decoder: 'json', operationId: 'reposGetPages', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pages", $clientConfig, returnType: Page::class, decoder: 'json', operationId: 'reposGetPages', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Page::class));
     }
 
@@ -239,7 +239,7 @@ trait ReposMethodsPart9
     public static function reposCreatePagesSite(ClientConfig $clientConfig, string $owner, string $repo, ReposCreatePagesSiteBuildType|SdkNotGiven $buildType = SdkNotGiven::Value, ReposCreatePagesSiteSource|SdkNotGiven $source = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Page
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pages", $clientConfig, body: ['build_type' => $buildType, 'source' => $source], returnType: Page::class, decoder: 'json', operationId: 'reposCreatePagesSite', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pages", $clientConfig, body: ['build_type' => $buildType, 'source' => $source], returnType: Page::class, decoder: 'json', operationId: 'reposCreatePagesSite', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Page::class));
     }
 
@@ -259,7 +259,7 @@ trait ReposMethodsPart9
     public static function reposUpdateInformationAboutPagesSite(ClientConfig $clientConfig, string $owner, string $repo, string|null|SdkNotGiven $cname = SdkNotGiven::Value, bool|SdkNotGiven $httpsEnforced = SdkNotGiven::Value, ReposUpdateInformationAboutPagesSiteBuildType|SdkNotGiven $buildType = SdkNotGiven::Value, string|array|SdkNotGiven $source = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pages", $clientConfig, body: ['cname' => $cname, 'https_enforced' => $httpsEnforced, 'build_type' => $buildType, 'source' => $source], decoder: 'empty', operationId: 'reposUpdateInformationAboutPagesSite', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pages", $clientConfig, body: ['cname' => $cname, 'https_enforced' => $httpsEnforced, 'build_type' => $buildType, 'source' => $source], decoder: 'empty', operationId: 'reposUpdateInformationAboutPagesSite', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -274,7 +274,7 @@ trait ReposMethodsPart9
     public static function reposDeletePagesSite(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pages", $clientConfig, decoder: 'empty', operationId: 'reposDeletePagesSite', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pages", $clientConfig, decoder: 'empty', operationId: 'reposDeletePagesSite', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 

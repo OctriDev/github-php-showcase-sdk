@@ -22,7 +22,7 @@ trait ReposMethodsPart11
     public static function reposGetReleaseAsset(ClientConfig $clientConfig, string $owner, string $repo, int $assetId, ?RequestOptions $requestOptions = null): ReleaseAsset
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/assets/" . SdkClient::encodePathSegment($assetId) . "", $clientConfig, returnType: ReleaseAsset::class, decoder: 'json', operationId: 'reposGetReleaseAsset', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/assets/" . SdkClient::encodePathSegment($assetId) . "", $clientConfig, returnType: ReleaseAsset::class, decoder: 'json', operationId: 'reposGetReleaseAsset', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ReleaseAsset::class));
     }
 
@@ -60,7 +60,7 @@ trait ReposMethodsPart11
     public static function reposDeleteReleaseAsset(ClientConfig $clientConfig, string $owner, string $repo, int $assetId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/assets/" . SdkClient::encodePathSegment($assetId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteReleaseAsset', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/assets/" . SdkClient::encodePathSegment($assetId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteReleaseAsset', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -80,7 +80,7 @@ trait ReposMethodsPart11
     public static function reposGenerateReleaseNotes(ClientConfig $clientConfig, string $owner, string $repo, string $tagName, string|SdkNotGiven $targetCommitish = SdkNotGiven::Value, string|SdkNotGiven $previousTagName = SdkNotGiven::Value, string|SdkNotGiven $configurationFilePath = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ReleaseNotesContent
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/generate-notes", $clientConfig, body: ['tag_name' => $tagName, 'target_commitish' => $targetCommitish, 'previous_tag_name' => $previousTagName, 'configuration_file_path' => $configurationFilePath], returnType: ReleaseNotesContent::class, decoder: 'json', operationId: 'reposGenerateReleaseNotes', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/generate-notes", $clientConfig, body: ['tag_name' => $tagName, 'target_commitish' => $targetCommitish, 'previous_tag_name' => $previousTagName, 'configuration_file_path' => $configurationFilePath], returnType: ReleaseNotesContent::class, decoder: 'json', operationId: 'reposGenerateReleaseNotes', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ReleaseNotesContent::class));
     }
 
@@ -97,7 +97,7 @@ trait ReposMethodsPart11
     public static function reposGetLatestRelease(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): Release
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/latest", $clientConfig, returnType: Release::class, decoder: 'json', operationId: 'reposGetLatestRelease', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/latest", $clientConfig, returnType: Release::class, decoder: 'json', operationId: 'reposGetLatestRelease', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Release::class));
     }
 
@@ -115,7 +115,7 @@ trait ReposMethodsPart11
     public static function reposGetReleaseByTag(ClientConfig $clientConfig, string $owner, string $repo, string $tag, ?RequestOptions $requestOptions = null): Release
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/tags/" . SdkClient::encodePathSegment($tag) . "", $clientConfig, returnType: Release::class, decoder: 'json', operationId: 'reposGetReleaseByTag', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/tags/" . SdkClient::encodePathSegment($tag) . "", $clientConfig, returnType: Release::class, decoder: 'json', operationId: 'reposGetReleaseByTag', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Release::class));
     }
 
@@ -159,7 +159,7 @@ trait ReposMethodsPart11
     public static function reposUpdateRelease(ClientConfig $clientConfig, string $owner, string $repo, int $releaseId, string|SdkNotGiven $tagName = SdkNotGiven::Value, string|SdkNotGiven $targetCommitish = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, string|SdkNotGiven $body = SdkNotGiven::Value, bool|SdkNotGiven $draft = SdkNotGiven::Value, bool|SdkNotGiven $prerelease = SdkNotGiven::Value, ReposUpdateReleaseMakeLatest|SdkNotGiven $makeLatest = SdkNotGiven::Value, string|SdkNotGiven $discussionCategoryName = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Release
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/" . SdkClient::encodePathSegment($releaseId) . "", $clientConfig, body: ['tag_name' => $tagName, 'target_commitish' => $targetCommitish, 'name' => $name, 'body' => $body, 'draft' => $draft, 'prerelease' => $prerelease, 'make_latest' => $makeLatest, 'discussion_category_name' => $discussionCategoryName], returnType: Release::class, decoder: 'json', operationId: 'reposUpdateRelease', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/" . SdkClient::encodePathSegment($releaseId) . "", $clientConfig, body: ['tag_name' => $tagName, 'target_commitish' => $targetCommitish, 'name' => $name, 'body' => $body, 'draft' => $draft, 'prerelease' => $prerelease, 'make_latest' => $makeLatest, 'discussion_category_name' => $discussionCategoryName], returnType: Release::class, decoder: 'json', operationId: 'reposUpdateRelease', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Release::class));
     }
 
@@ -176,7 +176,7 @@ trait ReposMethodsPart11
     public static function reposDeleteRelease(ClientConfig $clientConfig, string $owner, string $repo, int $releaseId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/" . SdkClient::encodePathSegment($releaseId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteRelease', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/" . SdkClient::encodePathSegment($releaseId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteRelease', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -257,7 +257,7 @@ trait ReposMethodsPart11
     public static function reposGetRepoRulesets(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, bool|SdkNotGiven $includesParents = SdkNotGiven::Value, string|SdkNotGiven $targets = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/rulesets", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'includes_parents' => new SdkQueryValue($includesParents, "form", true), 'targets' => new SdkQueryValue($targets, "form", true)], decoder: 'json', operationId: 'reposGetRepoRulesets', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/rulesets", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'includes_parents' => new SdkQueryValue($includesParents, "form", true), 'targets' => new SdkQueryValue($targets, "form", true)], decoder: 'json', operationId: 'reposGetRepoRulesets', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RepositoryRuleset::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -280,7 +280,7 @@ trait ReposMethodsPart11
     public static function reposCreateRepoRuleset(ClientConfig $clientConfig, string $owner, string $repo, string $name, RepositoryRuleEnforcement $enforcement, ReposCreateRepoRulesetTarget|SdkNotGiven $target = SdkNotGiven::Value, array|SdkNotGiven $bypassActors = SdkNotGiven::Value, RepositoryRulesetConditions|SdkNotGiven $conditions = SdkNotGiven::Value, array|SdkNotGiven $rules = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): RepositoryRuleset
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/rulesets", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'target' => $target, 'bypass_actors' => $bypassActors, 'conditions' => $conditions, 'rules' => $rules], returnType: RepositoryRuleset::class, decoder: 'json', operationId: 'reposCreateRepoRuleset', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/rulesets", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'target' => $target, 'bypass_actors' => $bypassActors, 'conditions' => $conditions, 'rules' => $rules], returnType: RepositoryRuleset::class, decoder: 'json', operationId: 'reposCreateRepoRuleset', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RepositoryRuleset::class));
     }
 
@@ -304,7 +304,7 @@ trait ReposMethodsPart11
     public static function reposGetRepoRuleSuites(ClientConfig $clientConfig, string $owner, string $repo, string|SdkNotGiven $ref = SdkNotGiven::Value, ReposGetRepoRuleSuitesTimePeriod|SdkNotGiven $timePeriod = SdkNotGiven::Value, string|SdkNotGiven $actorName = SdkNotGiven::Value, ReposGetRepoRuleSuitesRuleSuiteResult|SdkNotGiven $ruleSuiteResult = SdkNotGiven::Value, ReposGetRepoRuleSuitesEvaluateStatus|SdkNotGiven $evaluateStatus = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/rulesets/rule-suites", $clientConfig, query: ['ref' => new SdkQueryValue($ref, "form", true), 'time_period' => new SdkQueryValue($timePeriod, "form", true), 'actor_name' => new SdkQueryValue($actorName, "form", true), 'rule_suite_result' => new SdkQueryValue($ruleSuiteResult, "form", true), 'evaluate_status' => new SdkQueryValue($evaluateStatus, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposGetRepoRuleSuites', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/rulesets/rule-suites", $clientConfig, query: ['ref' => new SdkQueryValue($ref, "form", true), 'time_period' => new SdkQueryValue($timePeriod, "form", true), 'actor_name' => new SdkQueryValue($actorName, "form", true), 'rule_suite_result' => new SdkQueryValue($ruleSuiteResult, "form", true), 'evaluate_status' => new SdkQueryValue($evaluateStatus, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposGetRepoRuleSuites', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RuleSuitesItem::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

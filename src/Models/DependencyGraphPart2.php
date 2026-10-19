@@ -55,12 +55,8 @@ class DependencyGraphSpdxSbomSbomCreationInfo implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created") || $data->created === null) {
-            throw new SdkValidationError("created", 'required', "Required property 'created' is missing or null");
-        }
-        if (!property_exists($data, "creators") || $data->creators === null) {
-            throw new SdkValidationError("creators", 'required', "Required property 'creators' is missing or null");
-        }
+        if (!property_exists($data, "created") || $data->created === null) { throw new SdkValidationError("created", 'required', "Required property 'created' is missing or null"); }
+        if (!property_exists($data, "creators") || $data->creators === null) { throw new SdkValidationError("creators", 'required', "Required property 'creators' is missing or null"); }
         return new self(
             created: SdkClient::stringValue($data->created),
             creators: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->creators))),
@@ -126,15 +122,9 @@ class DependencyGraphSpdxSbomSbomPackagesItemExternalRefsItem implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "referenceCategory") || $data->referenceCategory === null) {
-            throw new SdkValidationError("referenceCategory", 'required', "Required property 'referenceCategory' is missing or null");
-        }
-        if (!property_exists($data, "referenceLocator") || $data->referenceLocator === null) {
-            throw new SdkValidationError("referenceLocator", 'required', "Required property 'referenceLocator' is missing or null");
-        }
-        if (!property_exists($data, "referenceType") || $data->referenceType === null) {
-            throw new SdkValidationError("referenceType", 'required', "Required property 'referenceType' is missing or null");
-        }
+        if (!property_exists($data, "referenceCategory") || $data->referenceCategory === null) { throw new SdkValidationError("referenceCategory", 'required', "Required property 'referenceCategory' is missing or null"); }
+        if (!property_exists($data, "referenceLocator") || $data->referenceLocator === null) { throw new SdkValidationError("referenceLocator", 'required', "Required property 'referenceLocator' is missing or null"); }
+        if (!property_exists($data, "referenceType") || $data->referenceType === null) { throw new SdkValidationError("referenceType", 'required', "Required property 'referenceType' is missing or null"); }
         return new self(
             referenceCategory: SdkClient::stringValue($data->referenceCategory),
             referenceLocator: SdkClient::stringValue($data->referenceLocator),

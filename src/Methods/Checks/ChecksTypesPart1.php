@@ -16,26 +16,11 @@ final readonly class ChecksCreateStatus implements SdkOpenEnum
     public const REQUESTED = "requested";
     public const PENDING = "pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class ChecksCreateConclusion implements SdkOpenEnum
@@ -49,26 +34,11 @@ final readonly class ChecksCreateConclusion implements SdkOpenEnum
     public const STALE = "stale";
     public const TIMED_OUT = "timed_out";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class ChecksListForSuiteStatus implements SdkOpenEnum
@@ -77,26 +47,11 @@ final readonly class ChecksListForSuiteStatus implements SdkOpenEnum
     public const IN_PROGRESS = "in_progress";
     public const COMPLETED = "completed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class ChecksListForSuiteFilter implements SdkOpenEnum
@@ -104,26 +59,11 @@ final readonly class ChecksListForSuiteFilter implements SdkOpenEnum
     public const LATEST = "latest";
     public const ALL = "all";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class ChecksListForRefStatus implements SdkOpenEnum
@@ -132,26 +72,11 @@ final readonly class ChecksListForRefStatus implements SdkOpenEnum
     public const IN_PROGRESS = "in_progress";
     public const COMPLETED = "completed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class ChecksListForRefFilter implements SdkOpenEnum
@@ -159,26 +84,11 @@ final readonly class ChecksListForRefFilter implements SdkOpenEnum
     public const LATEST = "latest";
     public const ALL = "all";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -190,26 +100,11 @@ final readonly class ChecksCreateOutputAnnotationsItemAnnotationLevelEnum implem
     public const WARNING = "warning";
     public const FAILURE = "failure";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class ChecksCreateOutputAnnotationsItem implements \JsonSerializable
@@ -335,21 +230,11 @@ class ChecksCreateOutputAnnotationsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) {
-            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
-        }
-        if (!property_exists($data, "start_line") || $data->start_line === null) {
-            throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null");
-        }
-        if (!property_exists($data, "end_line") || $data->end_line === null) {
-            throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null");
-        }
-        if (!property_exists($data, "annotation_level") || $data->annotation_level === null) {
-            throw new SdkValidationError("annotation_level", 'required', "Required property 'annotation_level' is missing or null");
-        }
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
+        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
+        if (!property_exists($data, "start_line") || $data->start_line === null) { throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null"); }
+        if (!property_exists($data, "end_line") || $data->end_line === null) { throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null"); }
+        if (!property_exists($data, "annotation_level") || $data->annotation_level === null) { throw new SdkValidationError("annotation_level", 'required', "Required property 'annotation_level' is missing or null"); }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
         return new self(
             path: SdkClient::stringValue($data->path),
             startLine: SdkClient::intValue($data->start_line),
@@ -421,12 +306,8 @@ class ChecksCreateOutputImagesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "alt") || $data->alt === null) {
-            throw new SdkValidationError("alt", 'required', "Required property 'alt' is missing or null");
-        }
-        if (!property_exists($data, "image_url") || $data->image_url === null) {
-            throw new SdkValidationError("image_url", 'required', "Required property 'image_url' is missing or null");
-        }
+        if (!property_exists($data, "alt") || $data->alt === null) { throw new SdkValidationError("alt", 'required', "Required property 'alt' is missing or null"); }
+        if (!property_exists($data, "image_url") || $data->image_url === null) { throw new SdkValidationError("image_url", 'required', "Required property 'image_url' is missing or null"); }
         return new self(
             alt: SdkClient::stringValue($data->alt),
             imageUrl: SdkClient::stringValue($data->image_url),

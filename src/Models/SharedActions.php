@@ -103,12 +103,8 @@ class ActionsPublicKey implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key_id") || $data->key_id === null) {
-            throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null");
-        }
-        if (!property_exists($data, "key") || $data->key === null) {
-            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
-        }
+        if (!property_exists($data, "key_id") || $data->key_id === null) { throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null"); }
+        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
         return new self(
             keyId: SdkClient::stringValue($data->key_id),
             key: SdkClient::stringValue($data->key),
@@ -178,15 +174,9 @@ class ActionsSecret implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             createdAt: SdkClient::stringValue($data->created_at),
@@ -263,18 +253,10 @@ class ActionsVariable implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "value") || $data->value === null) {
-            throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "value") || $data->value === null) { throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             value: SdkClient::stringValue($data->value),

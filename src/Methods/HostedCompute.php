@@ -12,26 +12,11 @@ final readonly class HostedComputeCreateNetworkConfigurationForOrgComputeService
     public const NONE = "none";
     public const ACTIONS = "actions";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class HostedComputeUpdateNetworkConfigurationForOrgComputeService implements SdkOpenEnum
@@ -39,26 +24,11 @@ final readonly class HostedComputeUpdateNetworkConfigurationForOrgComputeService
     public const NONE = "none";
     public const ACTIONS = "actions";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class HostedComputeListNetworkConfigurationsForOrgResponse implements \JsonSerializable
@@ -98,12 +68,8 @@ class HostedComputeListNetworkConfigurationsForOrgResponse implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "network_configurations") || $data->network_configurations === null) {
-            throw new SdkValidationError("network_configurations", 'required', "Required property 'network_configurations' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "network_configurations") || $data->network_configurations === null) { throw new SdkValidationError("network_configurations", 'required', "Required property 'network_configurations' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             networkConfigurations: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, NetworkConfiguration::class), SdkClient::arrayValue($data->network_configurations))),

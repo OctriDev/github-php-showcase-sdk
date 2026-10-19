@@ -16,26 +16,11 @@ final readonly class AllowedActions implements SdkOpenEnum
     public const LOCAL_ONLY = "local_only";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -288,36 +273,16 @@ class Artifact implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "size_in_bytes") || $data->size_in_bytes === null) {
-            throw new SdkValidationError("size_in_bytes", 'required', "Required property 'size_in_bytes' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "archive_download_url") || $data->archive_download_url === null) {
-            throw new SdkValidationError("archive_download_url", 'required', "Required property 'archive_download_url' is missing or null");
-        }
-        if (!property_exists($data, "expired") || $data->expired === null) {
-            throw new SdkValidationError("expired", 'required', "Required property 'expired' is missing or null");
-        }
-        if (!property_exists($data, "created_at")) {
-            throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'");
-        }
-        if (!property_exists($data, "expires_at")) {
-            throw new SdkValidationError("expires_at", 'required', "Missing required property 'expires_at'");
-        }
-        if (!property_exists($data, "updated_at")) {
-            throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "size_in_bytes") || $data->size_in_bytes === null) { throw new SdkValidationError("size_in_bytes", 'required', "Required property 'size_in_bytes' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "archive_download_url") || $data->archive_download_url === null) { throw new SdkValidationError("archive_download_url", 'required', "Required property 'archive_download_url' is missing or null"); }
+        if (!property_exists($data, "expired") || $data->expired === null) { throw new SdkValidationError("expired", 'required', "Required property 'expired' is missing or null"); }
+        if (!property_exists($data, "created_at")) { throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'"); }
+        if (!property_exists($data, "expires_at")) { throw new SdkValidationError("expires_at", 'required', "Missing required property 'expires_at'"); }
+        if (!property_exists($data, "updated_at")) { throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'"); }
         return new self(
             id: SdkClient::intValue($data->id),
             nodeId: SdkClient::stringValue($data->node_id),
@@ -343,24 +308,9 @@ final readonly class AuthenticationTokenRepositorySelectionEnum implements SdkOp
     public const ALL = "all";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

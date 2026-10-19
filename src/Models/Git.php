@@ -107,24 +107,12 @@ class Blob implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "content") || $data->content === null) {
-            throw new SdkValidationError("content", 'required', "Required property 'content' is missing or null");
-        }
-        if (!property_exists($data, "encoding") || $data->encoding === null) {
-            throw new SdkValidationError("encoding", 'required', "Required property 'encoding' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "size")) {
-            throw new SdkValidationError("size", 'required', "Missing required property 'size'");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
+        if (!property_exists($data, "content") || $data->content === null) { throw new SdkValidationError("content", 'required', "Required property 'content' is missing or null"); }
+        if (!property_exists($data, "encoding") || $data->encoding === null) { throw new SdkValidationError("encoding", 'required', "Required property 'encoding' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "size")) { throw new SdkValidationError("size", 'required', "Missing required property 'size'"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
         return new self(
             content: SdkClient::stringValue($data->content),
             encoding: SdkClient::stringValue($data->encoding),
@@ -195,15 +183,9 @@ class GitCommitAuthor implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "date") || $data->date === null) {
-            throw new SdkValidationError("date", 'required', "Required property 'date' is missing or null");
-        }
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "date") || $data->date === null) { throw new SdkValidationError("date", 'required', "Required property 'date' is missing or null"); }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             date: SdkClient::stringValue($data->date),
             email: SdkClient::stringValue($data->email),
@@ -270,15 +252,9 @@ class GitCommitCommitter implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "date") || $data->date === null) {
-            throw new SdkValidationError("date", 'required', "Required property 'date' is missing or null");
-        }
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "date") || $data->date === null) { throw new SdkValidationError("date", 'required', "Required property 'date' is missing or null"); }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             date: SdkClient::stringValue($data->date),
             email: SdkClient::stringValue($data->email),
@@ -335,12 +311,8 @@ class GitCommitTree implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             sha: SdkClient::stringValue($data->sha),
             url: SdkClient::stringValue($data->url),

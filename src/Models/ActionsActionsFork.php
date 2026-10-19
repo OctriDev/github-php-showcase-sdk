@@ -16,26 +16,11 @@ final readonly class ActionsForkPrContributorApprovalApprovalPolicyEnum implemen
     public const FIRST_TIME_CONTRIBUTORS = "first_time_contributors";
     public const ALL_EXTERNAL_CONTRIBUTORS = "all_external_contributors";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -76,9 +61,7 @@ class ActionsForkPrContributorApproval implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "approval_policy") || $data->approval_policy === null) {
-            throw new SdkValidationError("approval_policy", 'required', "Required property 'approval_policy' is missing or null");
-        }
+        if (!property_exists($data, "approval_policy") || $data->approval_policy === null) { throw new SdkValidationError("approval_policy", 'required', "Required property 'approval_policy' is missing or null"); }
         return new self(
             approvalPolicy: SdkClient::hydrateStringEnumOrString($data->approval_policy, ActionsForkPrContributorApprovalApprovalPolicyEnum::class),
         );
@@ -153,18 +136,10 @@ class ActionsForkPrWorkflowsPrivateRepos implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "run_workflows_from_fork_pull_requests") || $data->run_workflows_from_fork_pull_requests === null) {
-            throw new SdkValidationError("run_workflows_from_fork_pull_requests", 'required', "Required property 'run_workflows_from_fork_pull_requests' is missing or null");
-        }
-        if (!property_exists($data, "send_write_tokens_to_workflows") || $data->send_write_tokens_to_workflows === null) {
-            throw new SdkValidationError("send_write_tokens_to_workflows", 'required', "Required property 'send_write_tokens_to_workflows' is missing or null");
-        }
-        if (!property_exists($data, "send_secrets_and_variables") || $data->send_secrets_and_variables === null) {
-            throw new SdkValidationError("send_secrets_and_variables", 'required', "Required property 'send_secrets_and_variables' is missing or null");
-        }
-        if (!property_exists($data, "require_approval_for_fork_pr_workflows") || $data->require_approval_for_fork_pr_workflows === null) {
-            throw new SdkValidationError("require_approval_for_fork_pr_workflows", 'required', "Required property 'require_approval_for_fork_pr_workflows' is missing or null");
-        }
+        if (!property_exists($data, "run_workflows_from_fork_pull_requests") || $data->run_workflows_from_fork_pull_requests === null) { throw new SdkValidationError("run_workflows_from_fork_pull_requests", 'required', "Required property 'run_workflows_from_fork_pull_requests' is missing or null"); }
+        if (!property_exists($data, "send_write_tokens_to_workflows") || $data->send_write_tokens_to_workflows === null) { throw new SdkValidationError("send_write_tokens_to_workflows", 'required', "Required property 'send_write_tokens_to_workflows' is missing or null"); }
+        if (!property_exists($data, "send_secrets_and_variables") || $data->send_secrets_and_variables === null) { throw new SdkValidationError("send_secrets_and_variables", 'required', "Required property 'send_secrets_and_variables' is missing or null"); }
+        if (!property_exists($data, "require_approval_for_fork_pr_workflows") || $data->require_approval_for_fork_pr_workflows === null) { throw new SdkValidationError("require_approval_for_fork_pr_workflows", 'required', "Required property 'require_approval_for_fork_pr_workflows' is missing or null"); }
         return new self(
             runWorkflowsFromForkPullRequests: SdkClient::boolValue($data->run_workflows_from_fork_pull_requests),
             sendWriteTokensToWorkflows: SdkClient::boolValue($data->send_write_tokens_to_workflows),
@@ -248,9 +223,7 @@ class ActionsForkPrWorkflowsPrivateReposRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "run_workflows_from_fork_pull_requests") || $data->run_workflows_from_fork_pull_requests === null) {
-            throw new SdkValidationError("run_workflows_from_fork_pull_requests", 'required', "Required property 'run_workflows_from_fork_pull_requests' is missing or null");
-        }
+        if (!property_exists($data, "run_workflows_from_fork_pull_requests") || $data->run_workflows_from_fork_pull_requests === null) { throw new SdkValidationError("run_workflows_from_fork_pull_requests", 'required', "Required property 'run_workflows_from_fork_pull_requests' is missing or null"); }
         return new self(
             runWorkflowsFromForkPullRequests: SdkClient::boolValue($data->run_workflows_from_fork_pull_requests),
             sendWriteTokensToWorkflows: (property_exists($data, "send_write_tokens_to_workflows") && $data->send_write_tokens_to_workflows !== null ? SdkClient::boolValue($data->send_write_tokens_to_workflows) : SdkNotGiven::Value),

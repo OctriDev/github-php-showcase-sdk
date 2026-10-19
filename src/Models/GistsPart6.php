@@ -255,54 +255,22 @@ class GistSimpleForkOf implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "forks_url") || $data->forks_url === null) {
-            throw new SdkValidationError("forks_url", 'required', "Required property 'forks_url' is missing or null");
-        }
-        if (!property_exists($data, "commits_url") || $data->commits_url === null) {
-            throw new SdkValidationError("commits_url", 'required', "Required property 'commits_url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "git_pull_url") || $data->git_pull_url === null) {
-            throw new SdkValidationError("git_pull_url", 'required', "Required property 'git_pull_url' is missing or null");
-        }
-        if (!property_exists($data, "git_push_url") || $data->git_push_url === null) {
-            throw new SdkValidationError("git_push_url", 'required', "Required property 'git_push_url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "files") || $data->files === null) {
-            throw new SdkValidationError("files", 'required', "Required property 'files' is missing or null");
-        }
-        if (!property_exists($data, "public") || $data->public === null) {
-            throw new SdkValidationError("public", 'required', "Required property 'public' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "description")) {
-            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
-        }
-        if (!property_exists($data, "comments") || $data->comments === null) {
-            throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null");
-        }
-        if (!property_exists($data, "user")) {
-            throw new SdkValidationError("user", 'required', "Missing required property 'user'");
-        }
-        if (!property_exists($data, "comments_url") || $data->comments_url === null) {
-            throw new SdkValidationError("comments_url", 'required', "Required property 'comments_url' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "forks_url") || $data->forks_url === null) { throw new SdkValidationError("forks_url", 'required', "Required property 'forks_url' is missing or null"); }
+        if (!property_exists($data, "commits_url") || $data->commits_url === null) { throw new SdkValidationError("commits_url", 'required', "Required property 'commits_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "git_pull_url") || $data->git_pull_url === null) { throw new SdkValidationError("git_pull_url", 'required', "Required property 'git_pull_url' is missing or null"); }
+        if (!property_exists($data, "git_push_url") || $data->git_push_url === null) { throw new SdkValidationError("git_push_url", 'required', "Required property 'git_push_url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "files") || $data->files === null) { throw new SdkValidationError("files", 'required', "Required property 'files' is missing or null"); }
+        if (!property_exists($data, "public") || $data->public === null) { throw new SdkValidationError("public", 'required', "Required property 'public' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
+        if (!property_exists($data, "comments") || $data->comments === null) { throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null"); }
+        if (!property_exists($data, "user")) { throw new SdkValidationError("user", 'required', "Missing required property 'user'"); }
+        if (!property_exists($data, "comments_url") || $data->comments_url === null) { throw new SdkValidationError("comments_url", 'required', "Required property 'comments_url' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             forksUrl: SdkClient::stringValue($data->forks_url),

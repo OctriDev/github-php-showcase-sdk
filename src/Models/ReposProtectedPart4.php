@@ -55,12 +55,8 @@ class ProtectedBranchAdminEnforced implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             enabled: SdkClient::boolValue($data->enabled),

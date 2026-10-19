@@ -105,9 +105,7 @@ class ValidationErrorErrorsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "code") || $data->code === null) {
-            throw new SdkValidationError("code", 'required', "Required property 'code' is missing or null");
-        }
+        if (!property_exists($data, "code") || $data->code === null) { throw new SdkValidationError("code", 'required', "Required property 'code' is missing or null"); }
         return new self(
             code: SdkClient::stringValue($data->code),
             resource_: (property_exists($data, "resource") && $data->resource !== null ? SdkClient::stringValue($data->resource) : SdkNotGiven::Value),
@@ -179,12 +177,8 @@ class ValidationError implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "documentation_url") || $data->documentation_url === null) {
-            throw new SdkValidationError("documentation_url", 'required', "Required property 'documentation_url' is missing or null");
-        }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "documentation_url") || $data->documentation_url === null) { throw new SdkValidationError("documentation_url", 'required', "Required property 'documentation_url' is missing or null"); }
         return new self(
             message: SdkClient::stringValue($data->message),
             documentationUrl: SdkClient::stringValue($data->documentation_url),
@@ -253,12 +247,8 @@ class ValidationErrorSimple implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "documentation_url") || $data->documentation_url === null) {
-            throw new SdkValidationError("documentation_url", 'required', "Required property 'documentation_url' is missing or null");
-        }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "documentation_url") || $data->documentation_url === null) { throw new SdkValidationError("documentation_url", 'required', "Required property 'documentation_url' is missing or null"); }
         return new self(
             message: SdkClient::stringValue($data->message),
             documentationUrl: SdkClient::stringValue($data->documentation_url),

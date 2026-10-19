@@ -219,54 +219,22 @@ class Migration implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "owner")) {
-            throw new SdkValidationError("owner", 'required', "Missing required property 'owner'");
-        }
-        if (!property_exists($data, "guid") || $data->guid === null) {
-            throw new SdkValidationError("guid", 'required', "Required property 'guid' is missing or null");
-        }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
-        if (!property_exists($data, "lock_repositories") || $data->lock_repositories === null) {
-            throw new SdkValidationError("lock_repositories", 'required', "Required property 'lock_repositories' is missing or null");
-        }
-        if (!property_exists($data, "exclude_metadata") || $data->exclude_metadata === null) {
-            throw new SdkValidationError("exclude_metadata", 'required', "Required property 'exclude_metadata' is missing or null");
-        }
-        if (!property_exists($data, "exclude_git_data") || $data->exclude_git_data === null) {
-            throw new SdkValidationError("exclude_git_data", 'required', "Required property 'exclude_git_data' is missing or null");
-        }
-        if (!property_exists($data, "exclude_attachments") || $data->exclude_attachments === null) {
-            throw new SdkValidationError("exclude_attachments", 'required', "Required property 'exclude_attachments' is missing or null");
-        }
-        if (!property_exists($data, "exclude_releases") || $data->exclude_releases === null) {
-            throw new SdkValidationError("exclude_releases", 'required', "Required property 'exclude_releases' is missing or null");
-        }
-        if (!property_exists($data, "exclude_owner_projects") || $data->exclude_owner_projects === null) {
-            throw new SdkValidationError("exclude_owner_projects", 'required', "Required property 'exclude_owner_projects' is missing or null");
-        }
-        if (!property_exists($data, "org_metadata_only") || $data->org_metadata_only === null) {
-            throw new SdkValidationError("org_metadata_only", 'required', "Required property 'org_metadata_only' is missing or null");
-        }
-        if (!property_exists($data, "repositories") || $data->repositories === null) {
-            throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "owner")) { throw new SdkValidationError("owner", 'required', "Missing required property 'owner'"); }
+        if (!property_exists($data, "guid") || $data->guid === null) { throw new SdkValidationError("guid", 'required', "Required property 'guid' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "lock_repositories") || $data->lock_repositories === null) { throw new SdkValidationError("lock_repositories", 'required', "Required property 'lock_repositories' is missing or null"); }
+        if (!property_exists($data, "exclude_metadata") || $data->exclude_metadata === null) { throw new SdkValidationError("exclude_metadata", 'required', "Required property 'exclude_metadata' is missing or null"); }
+        if (!property_exists($data, "exclude_git_data") || $data->exclude_git_data === null) { throw new SdkValidationError("exclude_git_data", 'required', "Required property 'exclude_git_data' is missing or null"); }
+        if (!property_exists($data, "exclude_attachments") || $data->exclude_attachments === null) { throw new SdkValidationError("exclude_attachments", 'required', "Required property 'exclude_attachments' is missing or null"); }
+        if (!property_exists($data, "exclude_releases") || $data->exclude_releases === null) { throw new SdkValidationError("exclude_releases", 'required', "Required property 'exclude_releases' is missing or null"); }
+        if (!property_exists($data, "exclude_owner_projects") || $data->exclude_owner_projects === null) { throw new SdkValidationError("exclude_owner_projects", 'required', "Required property 'exclude_owner_projects' is missing or null"); }
+        if (!property_exists($data, "org_metadata_only") || $data->org_metadata_only === null) { throw new SdkValidationError("org_metadata_only", 'required', "Required property 'org_metadata_only' is missing or null"); }
+        if (!property_exists($data, "repositories") || $data->repositories === null) { throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             owner: ($data->owner === null ? null : SdkClient::hydrateClass($data->owner, NullableSimpleUser::class)),

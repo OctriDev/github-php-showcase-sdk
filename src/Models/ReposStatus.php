@@ -145,39 +145,17 @@ class Status implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "avatar_url")) {
-            throw new SdkValidationError("avatar_url", 'required', "Missing required property 'avatar_url'");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
-        if (!property_exists($data, "description")) {
-            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
-        }
-        if (!property_exists($data, "target_url")) {
-            throw new SdkValidationError("target_url", 'required', "Missing required property 'target_url'");
-        }
-        if (!property_exists($data, "context") || $data->context === null) {
-            throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "creator")) {
-            throw new SdkValidationError("creator", 'required', "Missing required property 'creator'");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "avatar_url")) { throw new SdkValidationError("avatar_url", 'required', "Missing required property 'avatar_url'"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
+        if (!property_exists($data, "target_url")) { throw new SdkValidationError("target_url", 'required', "Missing required property 'target_url'"); }
+        if (!property_exists($data, "context") || $data->context === null) { throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "creator")) { throw new SdkValidationError("creator", 'required', "Missing required property 'creator'"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             avatarUrl: ($data->avatar_url === null ? null : SdkClient::stringValue($data->avatar_url)),
@@ -242,12 +220,8 @@ class StatusCheckPolicyChecksItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "context") || $data->context === null) {
-            throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null");
-        }
-        if (!property_exists($data, "app_id")) {
-            throw new SdkValidationError("app_id", 'required', "Missing required property 'app_id'");
-        }
+        if (!property_exists($data, "context") || $data->context === null) { throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null"); }
+        if (!property_exists($data, "app_id")) { throw new SdkValidationError("app_id", 'required', "Missing required property 'app_id'"); }
         return new self(
             context: SdkClient::stringValue($data->context),
             appId: ($data->app_id === null ? null : SdkClient::intValue($data->app_id)),
@@ -333,21 +307,11 @@ class StatusCheckPolicy implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "strict") || $data->strict === null) {
-            throw new SdkValidationError("strict", 'required', "Required property 'strict' is missing or null");
-        }
-        if (!property_exists($data, "contexts") || $data->contexts === null) {
-            throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null");
-        }
-        if (!property_exists($data, "checks") || $data->checks === null) {
-            throw new SdkValidationError("checks", 'required', "Required property 'checks' is missing or null");
-        }
-        if (!property_exists($data, "contexts_url") || $data->contexts_url === null) {
-            throw new SdkValidationError("contexts_url", 'required', "Required property 'contexts_url' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "strict") || $data->strict === null) { throw new SdkValidationError("strict", 'required', "Required property 'strict' is missing or null"); }
+        if (!property_exists($data, "contexts") || $data->contexts === null) { throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null"); }
+        if (!property_exists($data, "checks") || $data->checks === null) { throw new SdkValidationError("checks", 'required', "Required property 'checks' is missing or null"); }
+        if (!property_exists($data, "contexts_url") || $data->contexts_url === null) { throw new SdkValidationError("contexts_url", 'required', "Required property 'contexts_url' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             strict: SdkClient::boolValue($data->strict),

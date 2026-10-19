@@ -44,12 +44,8 @@ class ChecksListForRefResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "check_runs") || $data->check_runs === null) {
-            throw new SdkValidationError("check_runs", 'required', "Required property 'check_runs' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "check_runs") || $data->check_runs === null) { throw new SdkValidationError("check_runs", 'required', "Required property 'check_runs' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             checkRuns: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CheckRun::class), SdkClient::arrayValue($data->check_runs))),
@@ -94,12 +90,8 @@ class ChecksListSuitesForRefResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "check_suites") || $data->check_suites === null) {
-            throw new SdkValidationError("check_suites", 'required', "Required property 'check_suites' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "check_suites") || $data->check_suites === null) { throw new SdkValidationError("check_suites", 'required', "Required property 'check_suites' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             checkSuites: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CheckSuite::class), SdkClient::arrayValue($data->check_suites))),

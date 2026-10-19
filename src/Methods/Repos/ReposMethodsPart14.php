@@ -19,7 +19,7 @@ trait ReposMethodsPart14
     public static function reposAcceptInvitationForAuthenticatedUser(ClientConfig $clientConfig, int $invitationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PATCH', "/user/repository_invitations/" . SdkClient::encodePathSegment($invitationId) . "", $clientConfig, decoder: 'empty', operationId: 'reposAcceptInvitationForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PATCH', "/user/repository_invitations/" . SdkClient::encodePathSegment($invitationId) . "", $clientConfig, decoder: 'empty', operationId: 'reposAcceptInvitationForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -33,7 +33,7 @@ trait ReposMethodsPart14
     public static function reposDeclineInvitationForAuthenticatedUser(ClientConfig $clientConfig, int $invitationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/user/repository_invitations/" . SdkClient::encodePathSegment($invitationId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeclineInvitationForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/user/repository_invitations/" . SdkClient::encodePathSegment($invitationId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeclineInvitationForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

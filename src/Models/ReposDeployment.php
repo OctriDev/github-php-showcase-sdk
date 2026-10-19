@@ -15,26 +15,11 @@ final readonly class DeploymentBranchPolicyTypeEnum implements SdkOpenEnum
     public const BRANCH = "branch";
     public const TAG = "tag";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -160,9 +145,7 @@ class DeploymentBranchPolicyNamePattern implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
         );
@@ -177,26 +160,11 @@ final readonly class DeploymentBranchPolicyNamePatternWithTypeTypeEnum implement
     public const BRANCH = "branch";
     public const TAG = "tag";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -249,9 +217,7 @@ class DeploymentBranchPolicyNamePatternWithType implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             type: (property_exists($data, "type") && $data->type !== null ? SdkClient::hydrateStringEnumOrString($data->type, DeploymentBranchPolicyNamePatternWithTypeTypeEnum::class) : SdkNotGiven::Value),
@@ -307,12 +273,8 @@ class DeploymentBranchPolicySettings implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "protected_branches") || $data->protected_branches === null) {
-            throw new SdkValidationError("protected_branches", 'required', "Required property 'protected_branches' is missing or null");
-        }
-        if (!property_exists($data, "custom_branch_policies") || $data->custom_branch_policies === null) {
-            throw new SdkValidationError("custom_branch_policies", 'required', "Required property 'custom_branch_policies' is missing or null");
-        }
+        if (!property_exists($data, "protected_branches") || $data->protected_branches === null) { throw new SdkValidationError("protected_branches", 'required', "Required property 'protected_branches' is missing or null"); }
+        if (!property_exists($data, "custom_branch_policies") || $data->custom_branch_policies === null) { throw new SdkValidationError("custom_branch_policies", 'required', "Required property 'custom_branch_policies' is missing or null"); }
         return new self(
             protectedBranches: SdkClient::boolValue($data->protected_branches),
             customBranchPolicies: SdkClient::boolValue($data->custom_branch_policies),

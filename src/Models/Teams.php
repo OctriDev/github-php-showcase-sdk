@@ -15,26 +15,11 @@ final readonly class TeamFullPrivacyEnum implements SdkOpenEnum
     public const CLOSED = "closed";
     public const SECRET = "secret";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -45,26 +30,11 @@ final readonly class TeamFullNotificationSettingEnum implements SdkOpenEnum
     public const NOTIFICATIONS_ENABLED = "notifications_enabled";
     public const NOTIFICATIONS_DISABLED = "notifications_disabled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -75,26 +45,11 @@ final readonly class TeamFullTypeEnum implements SdkOpenEnum
     public const ENTERPRISE = "enterprise";
     public const ORGANIZATION = "organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -357,54 +312,22 @@ class TeamFull implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "slug") || $data->slug === null) {
-            throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null");
-        }
-        if (!property_exists($data, "description")) {
-            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
-        }
-        if (!property_exists($data, "permission") || $data->permission === null) {
-            throw new SdkValidationError("permission", 'required', "Required property 'permission' is missing or null");
-        }
-        if (!property_exists($data, "members_url") || $data->members_url === null) {
-            throw new SdkValidationError("members_url", 'required', "Required property 'members_url' is missing or null");
-        }
-        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) {
-            throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null");
-        }
-        if (!property_exists($data, "members_count") || $data->members_count === null) {
-            throw new SdkValidationError("members_count", 'required', "Required property 'members_count' is missing or null");
-        }
-        if (!property_exists($data, "repos_count") || $data->repos_count === null) {
-            throw new SdkValidationError("repos_count", 'required', "Required property 'repos_count' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "organization") || $data->organization === null) {
-            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "slug") || $data->slug === null) { throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null"); }
+        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
+        if (!property_exists($data, "permission") || $data->permission === null) { throw new SdkValidationError("permission", 'required', "Required property 'permission' is missing or null"); }
+        if (!property_exists($data, "members_url") || $data->members_url === null) { throw new SdkValidationError("members_url", 'required', "Required property 'members_url' is missing or null"); }
+        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) { throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null"); }
+        if (!property_exists($data, "members_count") || $data->members_count === null) { throw new SdkValidationError("members_count", 'required', "Required property 'members_count' is missing or null"); }
+        if (!property_exists($data, "repos_count") || $data->repos_count === null) { throw new SdkValidationError("repos_count", 'required', "Required property 'repos_count' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             nodeId: SdkClient::stringValue($data->node_id),

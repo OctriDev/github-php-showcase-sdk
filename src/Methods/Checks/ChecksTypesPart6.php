@@ -62,15 +62,9 @@ class ChecksUpdateBodyVariant1ActionsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "label") || $data->label === null) {
-            throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null");
-        }
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
-        if (!property_exists($data, "identifier") || $data->identifier === null) {
-            throw new SdkValidationError("identifier", 'required', "Required property 'identifier' is missing or null");
-        }
+        if (!property_exists($data, "label") || $data->label === null) { throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null"); }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
+        if (!property_exists($data, "identifier") || $data->identifier === null) { throw new SdkValidationError("identifier", 'required', "Required property 'identifier' is missing or null"); }
         return new self(
             label: SdkClient::stringValue($data->label),
             description: SdkClient::stringValue($data->description),
@@ -274,12 +268,8 @@ class ChecksSetSuitesPreferencesAutoTriggerChecksItem implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "app_id") || $data->app_id === null) {
-            throw new SdkValidationError("app_id", 'required', "Required property 'app_id' is missing or null");
-        }
-        if (!property_exists($data, "setting") || $data->setting === null) {
-            throw new SdkValidationError("setting", 'required', "Required property 'setting' is missing or null");
-        }
+        if (!property_exists($data, "app_id") || $data->app_id === null) { throw new SdkValidationError("app_id", 'required', "Required property 'app_id' is missing or null"); }
+        if (!property_exists($data, "setting") || $data->setting === null) { throw new SdkValidationError("setting", 'required', "Required property 'setting' is missing or null"); }
         return new self(
             appId: SdkClient::intValue($data->app_id),
             setting: SdkClient::boolValue($data->setting),
@@ -324,12 +314,8 @@ class ChecksListForSuiteResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "check_runs") || $data->check_runs === null) {
-            throw new SdkValidationError("check_runs", 'required', "Required property 'check_runs' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "check_runs") || $data->check_runs === null) { throw new SdkValidationError("check_runs", 'required', "Required property 'check_runs' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             checkRuns: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CheckRun::class), SdkClient::arrayValue($data->check_runs))),

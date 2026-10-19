@@ -125,15 +125,9 @@ class WebhookMetaDeleted implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "hook") || $data->hook === null) {
-            throw new SdkValidationError("hook", 'required', "Required property 'hook' is missing or null");
-        }
-        if (!property_exists($data, "hook_id") || $data->hook_id === null) {
-            throw new SdkValidationError("hook_id", 'required', "Required property 'hook_id' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "hook") || $data->hook === null) { throw new SdkValidationError("hook", 'required', "Required property 'hook' is missing or null"); }
+        if (!property_exists($data, "hook_id") || $data->hook_id === null) { throw new SdkValidationError("hook_id", 'required', "Required property 'hook_id' is missing or null"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookMetaDeletedActionEnum::class),
             hook: SdkClient::hydrateClass($data->hook, WebhookMetaDeletedHook::class),

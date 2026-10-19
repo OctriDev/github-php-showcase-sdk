@@ -45,9 +45,7 @@ class WebhookPullRequestReviewDismissedReviewLinksHtml implements \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -92,9 +90,7 @@ class WebhookPullRequestReviewDismissedReviewLinksPullRequest implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -149,12 +145,8 @@ class WebhookPullRequestReviewDismissedReviewLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "html") || $data->html === null) {
-            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
-        }
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
-            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
-        }
+        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
         return new self(
             html: SdkClient::hydrateClass($data->html, WebhookPullRequestReviewDismissedReviewLinksHtml::class),
             pullRequest: SdkClient::hydrateClass($data->pull_request, WebhookPullRequestReviewDismissedReviewLinksPullRequest::class),
@@ -176,26 +168,11 @@ final readonly class WebhookPullRequestReviewDismissedReviewAuthorAssociationEnu
     public const NONE = "NONE";
     public const OWNER = "OWNER";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -207,26 +184,11 @@ final readonly class WebhookPullRequestReviewDismissedReviewStateEnum implements
     public const APPROVED = "approved";
     public const CHANGES_REQUESTED = "changes_requested";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -239,24 +201,9 @@ final readonly class WebhookPullRequestReviewDismissedReviewUserTypeEnum impleme
     public const ORGANIZATION = "Organization";
     public const MANNEQUIN = "Mannequin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

@@ -66,7 +66,7 @@ trait OrgsMethodsPart3
     public static function orgsListWebhookDeliveries(ClientConfig $clientConfig, string $org, int $hookId, int|SdkNotGiven $perPage = SdkNotGiven::Value, string|SdkNotGiven $cursor = SdkNotGiven::Value, OrgsListWebhookDeliveriesStatus|SdkNotGiven $status = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'cursor' => new SdkQueryValue($cursor, "form", true), 'status' => new SdkQueryValue($status, "form", true)], decoder: 'json', operationId: 'orgsListWebhookDeliveries', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'cursor' => new SdkQueryValue($cursor, "form", true), 'status' => new SdkQueryValue($status, "form", true)], decoder: 'json', operationId: 'orgsListWebhookDeliveries', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, HookDeliveryItem::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -84,7 +84,7 @@ trait OrgsMethodsPart3
     public static function orgsGetWebhookDelivery(ClientConfig $clientConfig, string $org, int $hookId, int $deliveryId, ?RequestOptions $requestOptions = null): HookDelivery
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "", $clientConfig, returnType: HookDelivery::class, decoder: 'json', operationId: 'orgsGetWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "", $clientConfig, returnType: HookDelivery::class, decoder: 'json', operationId: 'orgsGetWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, HookDelivery::class));
     }
 
@@ -102,7 +102,7 @@ trait OrgsMethodsPart3
     public static function orgsRedeliverWebhookDelivery(ClientConfig $clientConfig, string $org, int $hookId, int $deliveryId, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "/attempts", $clientConfig, decoder: 'json', operationId: 'orgsRedeliverWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "/attempts", $clientConfig, decoder: 'json', operationId: 'orgsRedeliverWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::stringMapValue($sdkResponse->data));
     }
 
@@ -118,7 +118,7 @@ trait OrgsMethodsPart3
     public static function orgsPingWebhook(ClientConfig $clientConfig, string $org, int $hookId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/pings", $clientConfig, decoder: 'empty', operationId: 'orgsPingWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/pings", $clientConfig, decoder: 'empty', operationId: 'orgsPingWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

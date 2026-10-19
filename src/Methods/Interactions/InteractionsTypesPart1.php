@@ -64,12 +64,8 @@ class InteractionsGetPullRequestCreationCapForOrgResponse implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
-        if (!property_exists($data, "max_open_pull_requests") || $data->max_open_pull_requests === null) {
-            throw new SdkValidationError("max_open_pull_requests", 'required', "Required property 'max_open_pull_requests' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
+        if (!property_exists($data, "max_open_pull_requests") || $data->max_open_pull_requests === null) { throw new SdkValidationError("max_open_pull_requests", 'required', "Required property 'max_open_pull_requests' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
             maxOpenPullRequests: SdkClient::intValue($data->max_open_pull_requests),
@@ -135,12 +131,8 @@ class InteractionsUpdatePullRequestCreationCapForOrgResponse implements \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
-        if (!property_exists($data, "max_open_pull_requests") || $data->max_open_pull_requests === null) {
-            throw new SdkValidationError("max_open_pull_requests", 'required', "Required property 'max_open_pull_requests' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
+        if (!property_exists($data, "max_open_pull_requests") || $data->max_open_pull_requests === null) { throw new SdkValidationError("max_open_pull_requests", 'required', "Required property 'max_open_pull_requests' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
             maxOpenPullRequests: SdkClient::intValue($data->max_open_pull_requests),
@@ -206,12 +198,8 @@ class InteractionsGetPullRequestCreationCapForRepoResponse implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
-        if (!property_exists($data, "max_open_pull_requests") || $data->max_open_pull_requests === null) {
-            throw new SdkValidationError("max_open_pull_requests", 'required', "Required property 'max_open_pull_requests' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
+        if (!property_exists($data, "max_open_pull_requests") || $data->max_open_pull_requests === null) { throw new SdkValidationError("max_open_pull_requests", 'required', "Required property 'max_open_pull_requests' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
             maxOpenPullRequests: SdkClient::intValue($data->max_open_pull_requests),
@@ -277,12 +265,8 @@ class InteractionsUpdatePullRequestCreationCapForRepoResponse implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
-        if (!property_exists($data, "max_open_pull_requests") || $data->max_open_pull_requests === null) {
-            throw new SdkValidationError("max_open_pull_requests", 'required', "Required property 'max_open_pull_requests' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
+        if (!property_exists($data, "max_open_pull_requests") || $data->max_open_pull_requests === null) { throw new SdkValidationError("max_open_pull_requests", 'required', "Required property 'max_open_pull_requests' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
             maxOpenPullRequests: SdkClient::intValue($data->max_open_pull_requests),

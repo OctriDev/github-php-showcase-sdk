@@ -151,12 +151,8 @@ class FeedLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "timeline") || $data->timeline === null) {
-            throw new SdkValidationError("timeline", 'required', "Required property 'timeline' is missing or null");
-        }
-        if (!property_exists($data, "user") || $data->user === null) {
-            throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null");
-        }
+        if (!property_exists($data, "timeline") || $data->timeline === null) { throw new SdkValidationError("timeline", 'required', "Required property 'timeline' is missing or null"); }
+        if (!property_exists($data, "user") || $data->user === null) { throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null"); }
         return new self(
             timeline: SdkClient::hydrateClass($data->timeline, LinkWithType::class),
             user: SdkClient::hydrateClass($data->user, LinkWithType::class),
@@ -326,15 +322,9 @@ class Feed implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "timeline_url") || $data->timeline_url === null) {
-            throw new SdkValidationError("timeline_url", 'required', "Required property 'timeline_url' is missing or null");
-        }
-        if (!property_exists($data, "user_url") || $data->user_url === null) {
-            throw new SdkValidationError("user_url", 'required', "Required property 'user_url' is missing or null");
-        }
-        if (!property_exists($data, "_links") || $data->_links === null) {
-            throw new SdkValidationError("_links", 'required', "Required property '_links' is missing or null");
-        }
+        if (!property_exists($data, "timeline_url") || $data->timeline_url === null) { throw new SdkValidationError("timeline_url", 'required', "Required property 'timeline_url' is missing or null"); }
+        if (!property_exists($data, "user_url") || $data->user_url === null) { throw new SdkValidationError("user_url", 'required', "Required property 'user_url' is missing or null"); }
+        if (!property_exists($data, "_links") || $data->_links === null) { throw new SdkValidationError("_links", 'required', "Required property '_links' is missing or null"); }
         return new self(
             timelineUrl: SdkClient::stringValue($data->timeline_url),
             userUrl: SdkClient::stringValue($data->user_url),
@@ -359,24 +349,9 @@ final readonly class ForkEventForkeePullRequestCreationPolicyEnum implements Sdk
     public const ALL = "all";
     public const COLLABORATORS_ONLY = "collaborators_only";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

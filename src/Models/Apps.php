@@ -65,15 +65,9 @@ class AuthorizationApp implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "client_id") || $data->client_id === null) {
-            throw new SdkValidationError("client_id", 'required', "Required property 'client_id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "client_id") || $data->client_id === null) { throw new SdkValidationError("client_id", 'required', "Required property 'client_id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             clientId: SdkClient::stringValue($data->client_id),
             name: SdkClient::stringValue($data->name),
@@ -264,45 +258,19 @@ class Authorization implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "scopes")) {
-            throw new SdkValidationError("scopes", 'required', "Missing required property 'scopes'");
-        }
-        if (!property_exists($data, "token") || $data->token === null) {
-            throw new SdkValidationError("token", 'required', "Required property 'token' is missing or null");
-        }
-        if (!property_exists($data, "token_last_eight")) {
-            throw new SdkValidationError("token_last_eight", 'required', "Missing required property 'token_last_eight'");
-        }
-        if (!property_exists($data, "hashed_token")) {
-            throw new SdkValidationError("hashed_token", 'required', "Missing required property 'hashed_token'");
-        }
-        if (!property_exists($data, "app") || $data->app === null) {
-            throw new SdkValidationError("app", 'required', "Required property 'app' is missing or null");
-        }
-        if (!property_exists($data, "note")) {
-            throw new SdkValidationError("note", 'required', "Missing required property 'note'");
-        }
-        if (!property_exists($data, "note_url")) {
-            throw new SdkValidationError("note_url", 'required', "Missing required property 'note_url'");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "fingerprint")) {
-            throw new SdkValidationError("fingerprint", 'required', "Missing required property 'fingerprint'");
-        }
-        if (!property_exists($data, "expires_at")) {
-            throw new SdkValidationError("expires_at", 'required', "Missing required property 'expires_at'");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "scopes")) { throw new SdkValidationError("scopes", 'required', "Missing required property 'scopes'"); }
+        if (!property_exists($data, "token") || $data->token === null) { throw new SdkValidationError("token", 'required', "Required property 'token' is missing or null"); }
+        if (!property_exists($data, "token_last_eight")) { throw new SdkValidationError("token_last_eight", 'required', "Missing required property 'token_last_eight'"); }
+        if (!property_exists($data, "hashed_token")) { throw new SdkValidationError("hashed_token", 'required', "Missing required property 'hashed_token'"); }
+        if (!property_exists($data, "app") || $data->app === null) { throw new SdkValidationError("app", 'required', "Required property 'app' is missing or null"); }
+        if (!property_exists($data, "note")) { throw new SdkValidationError("note", 'required', "Missing required property 'note'"); }
+        if (!property_exists($data, "note_url")) { throw new SdkValidationError("note_url", 'required', "Missing required property 'note_url'"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "fingerprint")) { throw new SdkValidationError("fingerprint", 'required', "Missing required property 'fingerprint'"); }
+        if (!property_exists($data, "expires_at")) { throw new SdkValidationError("expires_at", 'required', "Missing required property 'expires_at'"); }
         return new self(
             id: SdkClient::intValue($data->id),
             url: SdkClient::stringValue($data->url),
@@ -331,24 +299,9 @@ final readonly class InstallationTokenRepositorySelectionEnum implements SdkOpen
     public const ALL = "all";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

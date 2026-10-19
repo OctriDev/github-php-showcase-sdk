@@ -104,9 +104,7 @@ class RepositoryRulesetConditionsRepositoryPropertyTarget implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_property") || $data->repository_property === null) {
-            throw new SdkValidationError("repository_property", 'required', "Required property 'repository_property' is missing or null");
-        }
+        if (!property_exists($data, "repository_property") || $data->repository_property === null) { throw new SdkValidationError("repository_property", 'required', "Required property 'repository_property' is missing or null"); }
         return new self(
             repositoryProperty: SdkClient::hydrateClass($data->repository_property, RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty::class),
         );

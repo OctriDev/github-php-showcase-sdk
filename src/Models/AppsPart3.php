@@ -16,26 +16,11 @@ final readonly class MarketplaceListingPlanPriceModelEnum implements SdkOpenEnum
     public const FLAT_RATE = "FLAT_RATE";
     public const PER_UNIT = "PER_UNIT";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -196,45 +181,19 @@ class MarketplaceListingPlan implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "accounts_url") || $data->accounts_url === null) {
-            throw new SdkValidationError("accounts_url", 'required', "Required property 'accounts_url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "number") || $data->number === null) {
-            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
-        if (!property_exists($data, "monthly_price_in_cents") || $data->monthly_price_in_cents === null) {
-            throw new SdkValidationError("monthly_price_in_cents", 'required', "Required property 'monthly_price_in_cents' is missing or null");
-        }
-        if (!property_exists($data, "yearly_price_in_cents") || $data->yearly_price_in_cents === null) {
-            throw new SdkValidationError("yearly_price_in_cents", 'required', "Required property 'yearly_price_in_cents' is missing or null");
-        }
-        if (!property_exists($data, "price_model") || $data->price_model === null) {
-            throw new SdkValidationError("price_model", 'required', "Required property 'price_model' is missing or null");
-        }
-        if (!property_exists($data, "has_free_trial") || $data->has_free_trial === null) {
-            throw new SdkValidationError("has_free_trial", 'required', "Required property 'has_free_trial' is missing or null");
-        }
-        if (!property_exists($data, "unit_name")) {
-            throw new SdkValidationError("unit_name", 'required', "Missing required property 'unit_name'");
-        }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
-        if (!property_exists($data, "bullets") || $data->bullets === null) {
-            throw new SdkValidationError("bullets", 'required', "Required property 'bullets' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "accounts_url") || $data->accounts_url === null) { throw new SdkValidationError("accounts_url", 'required', "Required property 'accounts_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
+        if (!property_exists($data, "monthly_price_in_cents") || $data->monthly_price_in_cents === null) { throw new SdkValidationError("monthly_price_in_cents", 'required', "Required property 'monthly_price_in_cents' is missing or null"); }
+        if (!property_exists($data, "yearly_price_in_cents") || $data->yearly_price_in_cents === null) { throw new SdkValidationError("yearly_price_in_cents", 'required', "Required property 'yearly_price_in_cents' is missing or null"); }
+        if (!property_exists($data, "price_model") || $data->price_model === null) { throw new SdkValidationError("price_model", 'required', "Required property 'price_model' is missing or null"); }
+        if (!property_exists($data, "has_free_trial") || $data->has_free_trial === null) { throw new SdkValidationError("has_free_trial", 'required', "Required property 'has_free_trial' is missing or null"); }
+        if (!property_exists($data, "unit_name")) { throw new SdkValidationError("unit_name", 'required', "Missing required property 'unit_name'"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "bullets") || $data->bullets === null) { throw new SdkValidationError("bullets", 'required', "Required property 'bullets' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             accountsUrl: SdkClient::stringValue($data->accounts_url),

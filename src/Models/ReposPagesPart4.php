@@ -84,26 +84,11 @@ final readonly class PagesHttpsCertificateStateEnum implements SdkOpenEnum
     public const DESTROY_PENDING = "destroy_pending";
     public const DNS_CHANGED = "dns_changed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -176,15 +161,9 @@ class PagesHttpsCertificate implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
-        if (!property_exists($data, "domains") || $data->domains === null) {
-            throw new SdkValidationError("domains", 'required', "Required property 'domains' is missing or null");
-        }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
+        if (!property_exists($data, "domains") || $data->domains === null) { throw new SdkValidationError("domains", 'required', "Required property 'domains' is missing or null"); }
         return new self(
             state: SdkClient::hydrateStringEnumOrString($data->state, PagesHttpsCertificateStateEnum::class),
             description: SdkClient::stringValue($data->description),
@@ -242,12 +221,8 @@ class PagesSourceHash implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "branch") || $data->branch === null) {
-            throw new SdkValidationError("branch", 'required', "Required property 'branch' is missing or null");
-        }
-        if (!property_exists($data, "path") || $data->path === null) {
-            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
-        }
+        if (!property_exists($data, "branch") || $data->branch === null) { throw new SdkValidationError("branch", 'required', "Required property 'branch' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
         return new self(
             branch: SdkClient::stringValue($data->branch),
             path: SdkClient::stringValue($data->path),

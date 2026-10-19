@@ -61,7 +61,7 @@ class Meta
     public static function metaGetAllVersions(ClientConfig $clientConfig, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/versions", $clientConfig, decoder: 'json', operationId: 'metaGetAllVersions', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/versions", $clientConfig, decoder: 'json', operationId: 'metaGetAllVersions', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($sdkResponse->data))));
     }
 

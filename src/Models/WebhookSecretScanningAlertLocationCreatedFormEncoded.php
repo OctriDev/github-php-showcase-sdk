@@ -45,9 +45,7 @@ class WebhookSecretScanningAlertLocationCreatedFormEncoded implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "payload") || $data->payload === null) {
-            throw new SdkValidationError("payload", 'required', "Required property 'payload' is missing or null");
-        }
+        if (!property_exists($data, "payload") || $data->payload === null) { throw new SdkValidationError("payload", 'required', "Required property 'payload' is missing or null"); }
         return new self(
             payload: SdkClient::stringValue($data->payload),
         );

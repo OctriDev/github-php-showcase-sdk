@@ -45,9 +45,7 @@ class Topic implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "names") || $data->names === null) {
-            throw new SdkValidationError("names", 'required', "Required property 'names' is missing or null");
-        }
+        if (!property_exists($data, "names") || $data->names === null) { throw new SdkValidationError("names", 'required', "Required property 'names' is missing or null"); }
         return new self(
             names: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->names))),
         );
@@ -112,15 +110,9 @@ class Traffic implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "timestamp") || $data->timestamp === null) {
-            throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null");
-        }
-        if (!property_exists($data, "uniques") || $data->uniques === null) {
-            throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null");
-        }
-        if (!property_exists($data, "count") || $data->count === null) {
-            throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null");
-        }
+        if (!property_exists($data, "timestamp") || $data->timestamp === null) { throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null"); }
+        if (!property_exists($data, "uniques") || $data->uniques === null) { throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null"); }
+        if (!property_exists($data, "count") || $data->count === null) { throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null"); }
         return new self(
             timestamp: SdkClient::stringValue($data->timestamp),
             uniques: SdkClient::intValue($data->uniques),
@@ -187,15 +179,9 @@ class ViewTraffic implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "count") || $data->count === null) {
-            throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null");
-        }
-        if (!property_exists($data, "uniques") || $data->uniques === null) {
-            throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null");
-        }
-        if (!property_exists($data, "views") || $data->views === null) {
-            throw new SdkValidationError("views", 'required', "Required property 'views' is missing or null");
-        }
+        if (!property_exists($data, "count") || $data->count === null) { throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null"); }
+        if (!property_exists($data, "uniques") || $data->uniques === null) { throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null"); }
+        if (!property_exists($data, "views") || $data->views === null) { throw new SdkValidationError("views", 'required', "Required property 'views' is missing or null"); }
         return new self(
             count: SdkClient::intValue($data->count),
             uniques: SdkClient::intValue($data->uniques),

@@ -57,9 +57,7 @@ class SecretScanningLocationIssueComment implements NullableSecretScanningFirstD
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "issue_comment_url") || $data->issue_comment_url === null) {
-            throw new SdkValidationError("issue_comment_url", 'required', "Required property 'issue_comment_url' is missing or null");
-        }
+        if (!property_exists($data, "issue_comment_url") || $data->issue_comment_url === null) { throw new SdkValidationError("issue_comment_url", 'required', "Required property 'issue_comment_url' is missing or null"); }
         return new self(
             issueCommentUrl: SdkClient::stringValue($data->issue_comment_url),
             htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
@@ -117,9 +115,7 @@ class SecretScanningLocationIssueTitle implements NullableSecretScanningFirstDet
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "issue_title_url") || $data->issue_title_url === null) {
-            throw new SdkValidationError("issue_title_url", 'required', "Required property 'issue_title_url' is missing or null");
-        }
+        if (!property_exists($data, "issue_title_url") || $data->issue_title_url === null) { throw new SdkValidationError("issue_title_url", 'required', "Required property 'issue_title_url' is missing or null"); }
         return new self(
             issueTitleUrl: SdkClient::stringValue($data->issue_title_url),
             htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
@@ -177,9 +173,7 @@ class SecretScanningLocationPullRequestBody implements NullableSecretScanningFir
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pull_request_body_url") || $data->pull_request_body_url === null) {
-            throw new SdkValidationError("pull_request_body_url", 'required', "Required property 'pull_request_body_url' is missing or null");
-        }
+        if (!property_exists($data, "pull_request_body_url") || $data->pull_request_body_url === null) { throw new SdkValidationError("pull_request_body_url", 'required', "Required property 'pull_request_body_url' is missing or null"); }
         return new self(
             pullRequestBodyUrl: SdkClient::stringValue($data->pull_request_body_url),
             htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
@@ -237,9 +231,7 @@ class SecretScanningLocationPullRequestComment implements NullableSecretScanning
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pull_request_comment_url") || $data->pull_request_comment_url === null) {
-            throw new SdkValidationError("pull_request_comment_url", 'required', "Required property 'pull_request_comment_url' is missing or null");
-        }
+        if (!property_exists($data, "pull_request_comment_url") || $data->pull_request_comment_url === null) { throw new SdkValidationError("pull_request_comment_url", 'required', "Required property 'pull_request_comment_url' is missing or null"); }
         return new self(
             pullRequestCommentUrl: SdkClient::stringValue($data->pull_request_comment_url),
             htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
@@ -297,9 +289,7 @@ class SecretScanningLocationPullRequestReview implements NullableSecretScanningF
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pull_request_review_url") || $data->pull_request_review_url === null) {
-            throw new SdkValidationError("pull_request_review_url", 'required', "Required property 'pull_request_review_url' is missing or null");
-        }
+        if (!property_exists($data, "pull_request_review_url") || $data->pull_request_review_url === null) { throw new SdkValidationError("pull_request_review_url", 'required', "Required property 'pull_request_review_url' is missing or null"); }
         return new self(
             pullRequestReviewUrl: SdkClient::stringValue($data->pull_request_review_url),
             htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),

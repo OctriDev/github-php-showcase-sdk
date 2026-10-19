@@ -15,26 +15,11 @@ final readonly class DependencyRelationshipEnum implements SdkOpenEnum
     public const DIRECT = "direct";
     public const INDIRECT = "indirect";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -45,26 +30,11 @@ final readonly class DependencyScopeEnum implements SdkOpenEnum
     public const RUNTIME = "runtime";
     public const DEVELOPMENT = "development";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -170,26 +140,11 @@ final readonly class DependencyGraphDiffItemChangeTypeEnum implements SdkOpenEnu
     public const ADDED = "added";
     public const REMOVED = "removed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class DependencyGraphDiffItemVulnerabilitiesItem implements \JsonSerializable
@@ -241,18 +196,10 @@ class DependencyGraphDiffItemVulnerabilitiesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "severity") || $data->severity === null) {
-            throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null");
-        }
-        if (!property_exists($data, "advisory_ghsa_id") || $data->advisory_ghsa_id === null) {
-            throw new SdkValidationError("advisory_ghsa_id", 'required', "Required property 'advisory_ghsa_id' is missing or null");
-        }
-        if (!property_exists($data, "advisory_summary") || $data->advisory_summary === null) {
-            throw new SdkValidationError("advisory_summary", 'required', "Required property 'advisory_summary' is missing or null");
-        }
-        if (!property_exists($data, "advisory_url") || $data->advisory_url === null) {
-            throw new SdkValidationError("advisory_url", 'required', "Required property 'advisory_url' is missing or null");
-        }
+        if (!property_exists($data, "severity") || $data->severity === null) { throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null"); }
+        if (!property_exists($data, "advisory_ghsa_id") || $data->advisory_ghsa_id === null) { throw new SdkValidationError("advisory_ghsa_id", 'required', "Required property 'advisory_ghsa_id' is missing or null"); }
+        if (!property_exists($data, "advisory_summary") || $data->advisory_summary === null) { throw new SdkValidationError("advisory_summary", 'required', "Required property 'advisory_summary' is missing or null"); }
+        if (!property_exists($data, "advisory_url") || $data->advisory_url === null) { throw new SdkValidationError("advisory_url", 'required', "Required property 'advisory_url' is missing or null"); }
         return new self(
             severity: SdkClient::stringValue($data->severity),
             advisoryGhsaId: SdkClient::stringValue($data->advisory_ghsa_id),
@@ -271,26 +218,11 @@ final readonly class DependencyGraphDiffItemScopeEnum implements SdkOpenEnum
     public const RUNTIME = "runtime";
     public const DEVELOPMENT = "development";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class DependencyGraphDiffItem implements \JsonSerializable
@@ -382,36 +314,16 @@ class DependencyGraphDiffItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "change_type") || $data->change_type === null) {
-            throw new SdkValidationError("change_type", 'required', "Required property 'change_type' is missing or null");
-        }
-        if (!property_exists($data, "manifest") || $data->manifest === null) {
-            throw new SdkValidationError("manifest", 'required', "Required property 'manifest' is missing or null");
-        }
-        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) {
-            throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "version") || $data->version === null) {
-            throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null");
-        }
-        if (!property_exists($data, "package_url")) {
-            throw new SdkValidationError("package_url", 'required', "Missing required property 'package_url'");
-        }
-        if (!property_exists($data, "license")) {
-            throw new SdkValidationError("license", 'required', "Missing required property 'license'");
-        }
-        if (!property_exists($data, "source_repository_url")) {
-            throw new SdkValidationError("source_repository_url", 'required', "Missing required property 'source_repository_url'");
-        }
-        if (!property_exists($data, "vulnerabilities") || $data->vulnerabilities === null) {
-            throw new SdkValidationError("vulnerabilities", 'required', "Required property 'vulnerabilities' is missing or null");
-        }
-        if (!property_exists($data, "scope") || $data->scope === null) {
-            throw new SdkValidationError("scope", 'required', "Required property 'scope' is missing or null");
-        }
+        if (!property_exists($data, "change_type") || $data->change_type === null) { throw new SdkValidationError("change_type", 'required', "Required property 'change_type' is missing or null"); }
+        if (!property_exists($data, "manifest") || $data->manifest === null) { throw new SdkValidationError("manifest", 'required', "Required property 'manifest' is missing or null"); }
+        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) { throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "version") || $data->version === null) { throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null"); }
+        if (!property_exists($data, "package_url")) { throw new SdkValidationError("package_url", 'required', "Missing required property 'package_url'"); }
+        if (!property_exists($data, "license")) { throw new SdkValidationError("license", 'required', "Missing required property 'license'"); }
+        if (!property_exists($data, "source_repository_url")) { throw new SdkValidationError("source_repository_url", 'required', "Missing required property 'source_repository_url'"); }
+        if (!property_exists($data, "vulnerabilities") || $data->vulnerabilities === null) { throw new SdkValidationError("vulnerabilities", 'required', "Required property 'vulnerabilities' is missing or null"); }
+        if (!property_exists($data, "scope") || $data->scope === null) { throw new SdkValidationError("scope", 'required', "Required property 'scope' is missing or null"); }
         return new self(
             changeType: SdkClient::hydrateStringEnumOrString($data->change_type, DependencyGraphDiffItemChangeTypeEnum::class),
             manifest: SdkClient::stringValue($data->manifest),

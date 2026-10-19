@@ -97,21 +97,11 @@ class WebhookProjectsV2ProjectEdited implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "changes") || $data->changes === null) {
-            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
-        }
-        if (!property_exists($data, "organization") || $data->organization === null) {
-            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
-        }
-        if (!property_exists($data, "projects_v2") || $data->projects_v2 === null) {
-            throw new SdkValidationError("projects_v2", 'required', "Required property 'projects_v2' is missing or null");
-        }
-        if (!property_exists($data, "sender") || $data->sender === null) {
-            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "changes") || $data->changes === null) { throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null"); }
+        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
+        if (!property_exists($data, "projects_v2") || $data->projects_v2 === null) { throw new SdkValidationError("projects_v2", 'required', "Required property 'projects_v2' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookProjectsV2ProjectEditedActionEnum::class),
             changes: SdkClient::hydrateClass($data->changes, WebhookProjectsV2ProjectEditedChanges::class),

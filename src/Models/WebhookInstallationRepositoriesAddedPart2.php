@@ -141,27 +141,13 @@ class WebhookInstallationRepositoriesAdded implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "installation") || $data->installation === null) {
-            throw new SdkValidationError("installation", 'required', "Required property 'installation' is missing or null");
-        }
-        if (!property_exists($data, "repositories_added") || $data->repositories_added === null) {
-            throw new SdkValidationError("repositories_added", 'required', "Required property 'repositories_added' is missing or null");
-        }
-        if (!property_exists($data, "repositories_removed") || $data->repositories_removed === null) {
-            throw new SdkValidationError("repositories_removed", 'required', "Required property 'repositories_removed' is missing or null");
-        }
-        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) {
-            throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null");
-        }
-        if (!property_exists($data, "requester")) {
-            throw new SdkValidationError("requester", 'required', "Missing required property 'requester'");
-        }
-        if (!property_exists($data, "sender") || $data->sender === null) {
-            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "installation") || $data->installation === null) { throw new SdkValidationError("installation", 'required', "Required property 'installation' is missing or null"); }
+        if (!property_exists($data, "repositories_added") || $data->repositories_added === null) { throw new SdkValidationError("repositories_added", 'required', "Required property 'repositories_added' is missing or null"); }
+        if (!property_exists($data, "repositories_removed") || $data->repositories_removed === null) { throw new SdkValidationError("repositories_removed", 'required', "Required property 'repositories_removed' is missing or null"); }
+        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) { throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null"); }
+        if (!property_exists($data, "requester")) { throw new SdkValidationError("requester", 'required', "Missing required property 'requester'"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookInstallationRepositoriesAddedActionEnum::class),
             installation: SdkClient::hydrateClass($data->installation, Installation::class),

@@ -471,18 +471,10 @@ class WebhookInstallationTargetRenamedAccount implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "avatar_url") || $data->avatar_url === null) {
-            throw new SdkValidationError("avatar_url", 'required', "Required property 'avatar_url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
+        if (!property_exists($data, "avatar_url") || $data->avatar_url === null) { throw new SdkValidationError("avatar_url", 'required', "Required property 'avatar_url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
         return new self(
             avatarUrl: SdkClient::stringValue($data->avatar_url),
             htmlUrl: SdkClient::stringValue($data->html_url),

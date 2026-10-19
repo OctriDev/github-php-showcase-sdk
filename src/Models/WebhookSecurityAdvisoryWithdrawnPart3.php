@@ -115,12 +115,8 @@ class WebhookSecurityAdvisoryWithdrawn implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "security_advisory") || $data->security_advisory === null) {
-            throw new SdkValidationError("security_advisory", 'required', "Required property 'security_advisory' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "security_advisory") || $data->security_advisory === null) { throw new SdkValidationError("security_advisory", 'required', "Required property 'security_advisory' is missing or null"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookSecurityAdvisoryWithdrawnActionEnum::class),
             securityAdvisory: SdkClient::hydrateClass($data->security_advisory, WebhookSecurityAdvisoryWithdrawnSecurityAdvisory::class),

@@ -15,26 +15,11 @@ final readonly class RepositoryRuleParamsProofOfPresenceRequiredAuthenticationLe
     public const REAUTH = "reauth";
     public const MFA = "mfa";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -75,9 +60,7 @@ class RepositoryRuleParamsProofOfPresence implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "required_authentication_level") || $data->required_authentication_level === null) {
-            throw new SdkValidationError("required_authentication_level", 'required', "Required property 'required_authentication_level' is missing or null");
-        }
+        if (!property_exists($data, "required_authentication_level") || $data->required_authentication_level === null) { throw new SdkValidationError("required_authentication_level", 'required', "Required property 'required_authentication_level' is missing or null"); }
         return new self(
             requiredAuthenticationLevel: SdkClient::hydrateStringEnumOrString($data->required_authentication_level, RepositoryRuleParamsProofOfPresenceRequiredAuthenticationLevelEnum::class),
         );
@@ -134,9 +117,7 @@ class RepositoryRuleParamsRestrictedCommits implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "oid") || $data->oid === null) {
-            throw new SdkValidationError("oid", 'required', "Required property 'oid' is missing or null");
-        }
+        if (!property_exists($data, "oid") || $data->oid === null) { throw new SdkValidationError("oid", 'required', "Required property 'oid' is missing or null"); }
         return new self(
             oid: SdkClient::stringValue($data->oid),
             reason: (property_exists($data, "reason") && $data->reason !== null ? SdkClient::stringValue($data->reason) : SdkNotGiven::Value),

@@ -65,15 +65,9 @@ class CommitActivity implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "days") || $data->days === null) {
-            throw new SdkValidationError("days", 'required', "Required property 'days' is missing or null");
-        }
-        if (!property_exists($data, "total") || $data->total === null) {
-            throw new SdkValidationError("total", 'required', "Required property 'total' is missing or null");
-        }
-        if (!property_exists($data, "week") || $data->week === null) {
-            throw new SdkValidationError("week", 'required', "Required property 'week' is missing or null");
-        }
+        if (!property_exists($data, "days") || $data->days === null) { throw new SdkValidationError("days", 'required', "Required property 'days' is missing or null"); }
+        if (!property_exists($data, "total") || $data->total === null) { throw new SdkValidationError("total", 'required', "Required property 'total' is missing or null"); }
+        if (!property_exists($data, "week") || $data->week === null) { throw new SdkValidationError("week", 'required', "Required property 'week' is missing or null"); }
         return new self(
             days: array_values(array_map(static fn($item) => SdkClient::intValue($item), SdkClient::arrayValue($data->days))),
             total: SdkClient::intValue($data->total),
@@ -92,26 +86,11 @@ final readonly class CommitComparisonStatusEnum implements SdkOpenEnum
     public const BEHIND = "behind";
     public const IDENTICAL = "identical";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -274,42 +253,18 @@ class CommitComparison implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "permalink_url") || $data->permalink_url === null) {
-            throw new SdkValidationError("permalink_url", 'required', "Required property 'permalink_url' is missing or null");
-        }
-        if (!property_exists($data, "diff_url") || $data->diff_url === null) {
-            throw new SdkValidationError("diff_url", 'required', "Required property 'diff_url' is missing or null");
-        }
-        if (!property_exists($data, "patch_url") || $data->patch_url === null) {
-            throw new SdkValidationError("patch_url", 'required', "Required property 'patch_url' is missing or null");
-        }
-        if (!property_exists($data, "base_commit") || $data->base_commit === null) {
-            throw new SdkValidationError("base_commit", 'required', "Required property 'base_commit' is missing or null");
-        }
-        if (!property_exists($data, "merge_base_commit") || $data->merge_base_commit === null) {
-            throw new SdkValidationError("merge_base_commit", 'required', "Required property 'merge_base_commit' is missing or null");
-        }
-        if (!property_exists($data, "status") || $data->status === null) {
-            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
-        }
-        if (!property_exists($data, "ahead_by") || $data->ahead_by === null) {
-            throw new SdkValidationError("ahead_by", 'required', "Required property 'ahead_by' is missing or null");
-        }
-        if (!property_exists($data, "behind_by") || $data->behind_by === null) {
-            throw new SdkValidationError("behind_by", 'required', "Required property 'behind_by' is missing or null");
-        }
-        if (!property_exists($data, "total_commits") || $data->total_commits === null) {
-            throw new SdkValidationError("total_commits", 'required', "Required property 'total_commits' is missing or null");
-        }
-        if (!property_exists($data, "commits") || $data->commits === null) {
-            throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "permalink_url") || $data->permalink_url === null) { throw new SdkValidationError("permalink_url", 'required', "Required property 'permalink_url' is missing or null"); }
+        if (!property_exists($data, "diff_url") || $data->diff_url === null) { throw new SdkValidationError("diff_url", 'required', "Required property 'diff_url' is missing or null"); }
+        if (!property_exists($data, "patch_url") || $data->patch_url === null) { throw new SdkValidationError("patch_url", 'required', "Required property 'patch_url' is missing or null"); }
+        if (!property_exists($data, "base_commit") || $data->base_commit === null) { throw new SdkValidationError("base_commit", 'required', "Required property 'base_commit' is missing or null"); }
+        if (!property_exists($data, "merge_base_commit") || $data->merge_base_commit === null) { throw new SdkValidationError("merge_base_commit", 'required', "Required property 'merge_base_commit' is missing or null"); }
+        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "ahead_by") || $data->ahead_by === null) { throw new SdkValidationError("ahead_by", 'required', "Required property 'ahead_by' is missing or null"); }
+        if (!property_exists($data, "behind_by") || $data->behind_by === null) { throw new SdkValidationError("behind_by", 'required', "Required property 'behind_by' is missing or null"); }
+        if (!property_exists($data, "total_commits") || $data->total_commits === null) { throw new SdkValidationError("total_commits", 'required', "Required property 'total_commits' is missing or null"); }
+        if (!property_exists($data, "commits") || $data->commits === null) { throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             htmlUrl: SdkClient::stringValue($data->html_url),

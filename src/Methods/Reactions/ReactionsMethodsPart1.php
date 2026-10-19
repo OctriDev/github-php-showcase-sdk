@@ -25,7 +25,7 @@ trait ReactionsMethodsPart1
     public static function reactionsListForCommitComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ReactionsListForCommitCommentContent|SdkNotGiven $content = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForCommitComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForCommitComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Reaction::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -44,7 +44,7 @@ trait ReactionsMethodsPart1
     public static function reactionsCreateForCommitComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ReactionsCreateForCommitCommentContent $content, ?RequestOptions $requestOptions = null): Reaction
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForCommitComment', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForCommitComment', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Reaction::class));
     }
 
@@ -82,7 +82,7 @@ trait ReactionsMethodsPart1
     public static function reactionsListForIssueComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ReactionsListForIssueCommentContent|SdkNotGiven $content = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForIssueComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForIssueComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Reaction::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -101,7 +101,7 @@ trait ReactionsMethodsPart1
     public static function reactionsCreateForIssueComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ReactionsCreateForIssueCommentContent $content, ?RequestOptions $requestOptions = null): Reaction
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForIssueComment', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForIssueComment', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Reaction::class));
     }
 
@@ -139,7 +139,7 @@ trait ReactionsMethodsPart1
     public static function reactionsListForIssue(ClientConfig $clientConfig, string $owner, string $repo, int $issueNumber, ReactionsListForIssueContent|SdkNotGiven $content = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForIssue', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForIssue', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Reaction::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -158,7 +158,7 @@ trait ReactionsMethodsPart1
     public static function reactionsCreateForIssue(ClientConfig $clientConfig, string $owner, string $repo, int $issueNumber, ReactionsCreateForIssueContent $content, ?RequestOptions $requestOptions = null): Reaction
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForIssue', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForIssue', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Reaction::class));
     }
 
@@ -196,7 +196,7 @@ trait ReactionsMethodsPart1
     public static function reactionsListForPullRequestReviewComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ReactionsListForPullRequestReviewCommentContent|SdkNotGiven $content = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForPullRequestReviewComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForPullRequestReviewComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Reaction::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -215,7 +215,7 @@ trait ReactionsMethodsPart1
     public static function reactionsCreateForPullRequestReviewComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ReactionsCreateForPullRequestReviewCommentContent $content, ?RequestOptions $requestOptions = null): Reaction
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForPullRequestReviewComment', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/comments/" . SdkClient::encodePathSegment($commentId) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForPullRequestReviewComment', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Reaction::class));
     }
 
@@ -253,7 +253,7 @@ trait ReactionsMethodsPart1
     public static function reactionsListForRelease(ClientConfig $clientConfig, string $owner, string $repo, int $releaseId, ReactionsListForReleaseContent|SdkNotGiven $content = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/" . SdkClient::encodePathSegment($releaseId) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForRelease', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/" . SdkClient::encodePathSegment($releaseId) . "/reactions", $clientConfig, query: ['content' => new SdkQueryValue($content, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reactionsListForRelease', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Reaction::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -272,7 +272,7 @@ trait ReactionsMethodsPart1
     public static function reactionsCreateForRelease(ClientConfig $clientConfig, string $owner, string $repo, int $releaseId, ReactionsCreateForReleaseContent $content, ?RequestOptions $requestOptions = null): Reaction
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/" . SdkClient::encodePathSegment($releaseId) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForRelease', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/releases/" . SdkClient::encodePathSegment($releaseId) . "/reactions", $clientConfig, body: ['content' => $content], returnType: Reaction::class, decoder: 'json', operationId: 'reactionsCreateForRelease', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Reaction::class));
     }
 

@@ -117,27 +117,13 @@ class Key implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key") || $data->key === null) {
-            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "title") || $data->title === null) {
-            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "verified") || $data->verified === null) {
-            throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null");
-        }
-        if (!property_exists($data, "read_only") || $data->read_only === null) {
-            throw new SdkValidationError("read_only", 'required', "Required property 'read_only' is missing or null");
-        }
+        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "verified") || $data->verified === null) { throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null"); }
+        if (!property_exists($data, "read_only") || $data->read_only === null) { throw new SdkValidationError("read_only", 'required', "Required property 'read_only' is missing or null"); }
         return new self(
             key: SdkClient::stringValue($data->key),
             id: SdkClient::intValue($data->id),
@@ -223,12 +209,8 @@ class KeySimple implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "key") || $data->key === null) {
-            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             key: SdkClient::stringValue($data->key),
@@ -306,18 +288,10 @@ class PrivateUserPlan implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "collaborators") || $data->collaborators === null) {
-            throw new SdkValidationError("collaborators", 'required', "Required property 'collaborators' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "space") || $data->space === null) {
-            throw new SdkValidationError("space", 'required', "Required property 'space' is missing or null");
-        }
-        if (!property_exists($data, "private_repos") || $data->private_repos === null) {
-            throw new SdkValidationError("private_repos", 'required', "Required property 'private_repos' is missing or null");
-        }
+        if (!property_exists($data, "collaborators") || $data->collaborators === null) { throw new SdkValidationError("collaborators", 'required', "Required property 'collaborators' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "space") || $data->space === null) { throw new SdkValidationError("space", 'required', "Required property 'space' is missing or null"); }
+        if (!property_exists($data, "private_repos") || $data->private_repos === null) { throw new SdkValidationError("private_repos", 'required', "Required property 'private_repos' is missing or null"); }
         return new self(
             collaborators: SdkClient::intValue($data->collaborators),
             name: SdkClient::stringValue($data->name),

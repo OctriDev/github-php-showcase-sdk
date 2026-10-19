@@ -14,26 +14,11 @@ final readonly class WebhookDeploymentStatusCreatedActionEnum implements SdkOpen
 {
     public const CREATED = "created";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -50,26 +35,11 @@ final readonly class WebhookDeploymentStatusCreatedCheckRunConclusionEnum implem
     public const STALE = "stale";
     public const SKIPPED = "skipped";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -83,26 +53,11 @@ final readonly class WebhookDeploymentStatusCreatedCheckRunStatusEnum implements
     public const WAITING = "waiting";
     public const PENDING = "pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -253,42 +208,18 @@ class WebhookDeploymentStatusCreatedCheckRun implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "completed_at")) {
-            throw new SdkValidationError("completed_at", 'required', "Missing required property 'completed_at'");
-        }
-        if (!property_exists($data, "conclusion")) {
-            throw new SdkValidationError("conclusion", 'required', "Missing required property 'conclusion'");
-        }
-        if (!property_exists($data, "details_url") || $data->details_url === null) {
-            throw new SdkValidationError("details_url", 'required', "Required property 'details_url' is missing or null");
-        }
-        if (!property_exists($data, "external_id") || $data->external_id === null) {
-            throw new SdkValidationError("external_id", 'required', "Required property 'external_id' is missing or null");
-        }
-        if (!property_exists($data, "head_sha") || $data->head_sha === null) {
-            throw new SdkValidationError("head_sha", 'required', "Required property 'head_sha' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "started_at") || $data->started_at === null) {
-            throw new SdkValidationError("started_at", 'required', "Required property 'started_at' is missing or null");
-        }
-        if (!property_exists($data, "status") || $data->status === null) {
-            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "completed_at")) { throw new SdkValidationError("completed_at", 'required', "Missing required property 'completed_at'"); }
+        if (!property_exists($data, "conclusion")) { throw new SdkValidationError("conclusion", 'required', "Missing required property 'conclusion'"); }
+        if (!property_exists($data, "details_url") || $data->details_url === null) { throw new SdkValidationError("details_url", 'required', "Required property 'details_url' is missing or null"); }
+        if (!property_exists($data, "external_id") || $data->external_id === null) { throw new SdkValidationError("external_id", 'required', "Required property 'external_id' is missing or null"); }
+        if (!property_exists($data, "head_sha") || $data->head_sha === null) { throw new SdkValidationError("head_sha", 'required', "Required property 'head_sha' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "started_at") || $data->started_at === null) { throw new SdkValidationError("started_at", 'required', "Required property 'started_at' is missing or null"); }
+        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             completedAt: ($data->completed_at === null ? null : SdkClient::stringValue($data->completed_at)),
             conclusion: ($data->conclusion === null ? null : SdkClient::hydrateStringEnumOrString($data->conclusion, WebhookDeploymentStatusCreatedCheckRunConclusionEnum::class)),
@@ -315,24 +246,9 @@ final readonly class WebhookDeploymentStatusCreatedDeploymentCreatorTypeEnum imp
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

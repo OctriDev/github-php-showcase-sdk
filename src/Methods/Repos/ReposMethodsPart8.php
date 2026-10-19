@@ -21,7 +21,7 @@ trait ReposMethodsPart8
     public static function reposGetHashAlgorithm(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): RepositoryHashAlgorithm
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hash-algorithm", $clientConfig, returnType: RepositoryHashAlgorithm::class, decoder: 'json', operationId: 'reposGetHashAlgorithm', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hash-algorithm", $clientConfig, returnType: RepositoryHashAlgorithm::class, decoder: 'json', operationId: 'reposGetHashAlgorithm', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RepositoryHashAlgorithm::class));
     }
 
@@ -40,7 +40,7 @@ trait ReposMethodsPart8
     public static function reposListWebhooks(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListWebhooks', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListWebhooks', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Hook::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -61,7 +61,7 @@ trait ReposMethodsPart8
     public static function reposCreateWebhook(ClientConfig $clientConfig, string $owner, string $repo, string|SdkNotGiven $name = SdkNotGiven::Value, ReposCreateWebhookConfig|SdkNotGiven $config = SdkNotGiven::Value, array|SdkNotGiven $events = SdkNotGiven::Value, bool|SdkNotGiven $active = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Hook
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks", $clientConfig, body: ['name' => $name, 'config' => $config, 'events' => $events, 'active' => $active], returnType: Hook::class, decoder: 'json', operationId: 'reposCreateWebhook', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks", $clientConfig, body: ['name' => $name, 'config' => $config, 'events' => $events, 'active' => $active], returnType: Hook::class, decoder: 'json', operationId: 'reposCreateWebhook', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Hook::class));
     }
 
@@ -79,7 +79,7 @@ trait ReposMethodsPart8
     public static function reposGetWebhook(ClientConfig $clientConfig, string $owner, string $repo, int $hookId, ?RequestOptions $requestOptions = null): Hook
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, returnType: Hook::class, decoder: 'json', operationId: 'reposGetWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, returnType: Hook::class, decoder: 'json', operationId: 'reposGetWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Hook::class));
     }
 
@@ -102,7 +102,7 @@ trait ReposMethodsPart8
     public static function reposUpdateWebhook(ClientConfig $clientConfig, string $owner, string $repo, int $hookId, WebhookConfig|SdkNotGiven $config = SdkNotGiven::Value, array|SdkNotGiven $events = SdkNotGiven::Value, array|SdkNotGiven $addEvents = SdkNotGiven::Value, array|SdkNotGiven $removeEvents = SdkNotGiven::Value, bool|SdkNotGiven $active = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Hook
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, body: ['config' => $config, 'events' => $events, 'add_events' => $addEvents, 'remove_events' => $removeEvents, 'active' => $active], returnType: Hook::class, decoder: 'json', operationId: 'reposUpdateWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, body: ['config' => $config, 'events' => $events, 'add_events' => $addEvents, 'remove_events' => $removeEvents, 'active' => $active], returnType: Hook::class, decoder: 'json', operationId: 'reposUpdateWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Hook::class));
     }
 
@@ -119,7 +119,7 @@ trait ReposMethodsPart8
     public static function reposDeleteWebhook(ClientConfig $clientConfig, string $owner, string $repo, int $hookId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -183,7 +183,7 @@ trait ReposMethodsPart8
     public static function reposListWebhookDeliveries(ClientConfig $clientConfig, string $owner, string $repo, int $hookId, int|SdkNotGiven $perPage = SdkNotGiven::Value, string|SdkNotGiven $cursor = SdkNotGiven::Value, ReposListWebhookDeliveriesStatus|SdkNotGiven $status = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'cursor' => new SdkQueryValue($cursor, "form", true), 'status' => new SdkQueryValue($status, "form", true)], decoder: 'json', operationId: 'reposListWebhookDeliveries', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'cursor' => new SdkQueryValue($cursor, "form", true), 'status' => new SdkQueryValue($status, "form", true)], decoder: 'json', operationId: 'reposListWebhookDeliveries', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, HookDeliveryItem::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -202,7 +202,7 @@ trait ReposMethodsPart8
     public static function reposGetWebhookDelivery(ClientConfig $clientConfig, string $owner, string $repo, int $hookId, int $deliveryId, ?RequestOptions $requestOptions = null): HookDelivery
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "", $clientConfig, returnType: HookDelivery::class, decoder: 'json', operationId: 'reposGetWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "", $clientConfig, returnType: HookDelivery::class, decoder: 'json', operationId: 'reposGetWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, HookDelivery::class));
     }
 
@@ -221,7 +221,7 @@ trait ReposMethodsPart8
     public static function reposRedeliverWebhookDelivery(ClientConfig $clientConfig, string $owner, string $repo, int $hookId, int $deliveryId, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "/attempts", $clientConfig, decoder: 'json', operationId: 'reposRedeliverWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "/attempts", $clientConfig, decoder: 'json', operationId: 'reposRedeliverWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::stringMapValue($sdkResponse->data));
     }
 
@@ -238,7 +238,7 @@ trait ReposMethodsPart8
     public static function reposPingWebhook(ClientConfig $clientConfig, string $owner, string $repo, int $hookId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/pings", $clientConfig, decoder: 'empty', operationId: 'reposPingWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/pings", $clientConfig, decoder: 'empty', operationId: 'reposPingWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -254,7 +254,7 @@ trait ReposMethodsPart8
     public static function reposTestPushWebhook(ClientConfig $clientConfig, string $owner, string $repo, int $hookId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/tests", $clientConfig, decoder: 'empty', operationId: 'reposTestPushWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "/tests", $clientConfig, decoder: 'empty', operationId: 'reposTestPushWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -286,7 +286,7 @@ trait ReposMethodsPart8
     public static function reposEnableImmutableReleases(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/immutable-releases", $clientConfig, decoder: 'empty', operationId: 'reposEnableImmutableReleases', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/immutable-releases", $clientConfig, decoder: 'empty', operationId: 'reposEnableImmutableReleases', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -301,6 +301,6 @@ trait ReposMethodsPart8
     public static function reposDisableImmutableReleases(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/immutable-releases", $clientConfig, decoder: 'empty', operationId: 'reposDisableImmutableReleases', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/immutable-releases", $clientConfig, decoder: 'empty', operationId: 'reposDisableImmutableReleases', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

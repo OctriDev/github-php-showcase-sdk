@@ -44,12 +44,8 @@ class ActionsListWorkflowRunsForRepoResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "workflow_runs") || $data->workflow_runs === null) {
-            throw new SdkValidationError("workflow_runs", 'required', "Required property 'workflow_runs' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "workflow_runs") || $data->workflow_runs === null) { throw new SdkValidationError("workflow_runs", 'required', "Required property 'workflow_runs' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             workflowRuns: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WorkflowRun::class), SdkClient::arrayValue($data->workflow_runs))),
@@ -94,12 +90,8 @@ class ActionsListWorkflowRunArtifactsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "artifacts") || $data->artifacts === null) {
-            throw new SdkValidationError("artifacts", 'required', "Required property 'artifacts' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "artifacts") || $data->artifacts === null) { throw new SdkValidationError("artifacts", 'required', "Required property 'artifacts' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             artifacts: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Artifact::class), SdkClient::arrayValue($data->artifacts))),
@@ -144,12 +136,8 @@ class ActionsListJobsForWorkflowRunAttemptResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "jobs") || $data->jobs === null) {
-            throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "jobs") || $data->jobs === null) { throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             jobs: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Job::class), SdkClient::arrayValue($data->jobs))),
@@ -194,12 +182,8 @@ class ActionsListJobsForWorkflowRunResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "jobs") || $data->jobs === null) {
-            throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "jobs") || $data->jobs === null) { throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             jobs: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Job::class), SdkClient::arrayValue($data->jobs))),
@@ -244,12 +228,8 @@ class ActionsListRepoSecretsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "secrets") || $data->secrets === null) {
-            throw new SdkValidationError("secrets", 'required', "Required property 'secrets' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "secrets") || $data->secrets === null) { throw new SdkValidationError("secrets", 'required', "Required property 'secrets' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             secrets: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsSecret::class), SdkClient::arrayValue($data->secrets))),
@@ -294,12 +274,8 @@ class ActionsListRepoVariablesResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "variables") || $data->variables === null) {
-            throw new SdkValidationError("variables", 'required', "Required property 'variables' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "variables") || $data->variables === null) { throw new SdkValidationError("variables", 'required', "Required property 'variables' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             variables: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsVariable::class), SdkClient::arrayValue($data->variables))),
@@ -344,12 +320,8 @@ class ActionsListRepoWorkflowsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "workflows") || $data->workflows === null) {
-            throw new SdkValidationError("workflows", 'required', "Required property 'workflows' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "workflows") || $data->workflows === null) { throw new SdkValidationError("workflows", 'required', "Required property 'workflows' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             workflows: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Workflow::class), SdkClient::arrayValue($data->workflows))),

@@ -65,15 +65,9 @@ class AgentTasksListTasksForRepoResponseTasksItemArtifactsItem implements \JsonS
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "provider") || $data->provider === null) {
-            throw new SdkValidationError("provider", 'required', "Required property 'provider' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "data") || $data->data === null) {
-            throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null");
-        }
+        if (!property_exists($data, "provider") || $data->provider === null) { throw new SdkValidationError("provider", 'required', "Required property 'provider' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "data") || $data->data === null) { throw new SdkValidationError("data", 'required', "Required property 'data' is missing or null"); }
         return new self(
             provider: SdkClient::hydrateStringEnumOrString($data->provider, AgentTasksListTasksForRepoResponseTasksItemArtifactsItemProviderEnum::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, AgentTasksListTasksForRepoResponseTasksItemArtifactsItemTypeEnum::class),

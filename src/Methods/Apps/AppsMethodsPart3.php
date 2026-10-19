@@ -21,7 +21,7 @@ trait AppsMethodsPart3
     public static function appsListSubscriptionsForAuthenticatedUserStubbed(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/marketplace_purchases/stubbed", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListSubscriptionsForAuthenticatedUserStubbed', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/marketplace_purchases/stubbed", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListSubscriptionsForAuthenticatedUserStubbed', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, UserMarketplacePurchase::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 

@@ -55,12 +55,8 @@ class CommitCommentEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "comment") || $data->comment === null) {
-            throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "comment") || $data->comment === null) { throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null"); }
         return new self(
             action: SdkClient::stringValue($data->action),
             comment: SdkClient::hydrateClass($data->comment, CommitCommentEventComment::class),
@@ -158,21 +154,11 @@ class CreateEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
-        }
-        if (!property_exists($data, "ref_type") || $data->ref_type === null) {
-            throw new SdkValidationError("ref_type", 'required', "Required property 'ref_type' is missing or null");
-        }
-        if (!property_exists($data, "full_ref") || $data->full_ref === null) {
-            throw new SdkValidationError("full_ref", 'required', "Required property 'full_ref' is missing or null");
-        }
-        if (!property_exists($data, "master_branch") || $data->master_branch === null) {
-            throw new SdkValidationError("master_branch", 'required', "Required property 'master_branch' is missing or null");
-        }
-        if (!property_exists($data, "pusher_type") || $data->pusher_type === null) {
-            throw new SdkValidationError("pusher_type", 'required', "Required property 'pusher_type' is missing or null");
-        }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "ref_type") || $data->ref_type === null) { throw new SdkValidationError("ref_type", 'required', "Required property 'ref_type' is missing or null"); }
+        if (!property_exists($data, "full_ref") || $data->full_ref === null) { throw new SdkValidationError("full_ref", 'required', "Required property 'full_ref' is missing or null"); }
+        if (!property_exists($data, "master_branch") || $data->master_branch === null) { throw new SdkValidationError("master_branch", 'required', "Required property 'master_branch' is missing or null"); }
+        if (!property_exists($data, "pusher_type") || $data->pusher_type === null) { throw new SdkValidationError("pusher_type", 'required', "Required property 'pusher_type' is missing or null"); }
         return new self(
             ref: SdkClient::stringValue($data->ref),
             refType: SdkClient::stringValue($data->ref_type),
@@ -252,18 +238,10 @@ class DeleteEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
-        }
-        if (!property_exists($data, "ref_type") || $data->ref_type === null) {
-            throw new SdkValidationError("ref_type", 'required', "Required property 'ref_type' is missing or null");
-        }
-        if (!property_exists($data, "full_ref") || $data->full_ref === null) {
-            throw new SdkValidationError("full_ref", 'required', "Required property 'full_ref' is missing or null");
-        }
-        if (!property_exists($data, "pusher_type") || $data->pusher_type === null) {
-            throw new SdkValidationError("pusher_type", 'required', "Required property 'pusher_type' is missing or null");
-        }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "ref_type") || $data->ref_type === null) { throw new SdkValidationError("ref_type", 'required', "Required property 'ref_type' is missing or null"); }
+        if (!property_exists($data, "full_ref") || $data->full_ref === null) { throw new SdkValidationError("full_ref", 'required', "Required property 'full_ref' is missing or null"); }
+        if (!property_exists($data, "pusher_type") || $data->pusher_type === null) { throw new SdkValidationError("pusher_type", 'required', "Required property 'pusher_type' is missing or null"); }
         return new self(
             ref: SdkClient::stringValue($data->ref),
             refType: SdkClient::stringValue($data->ref_type),
@@ -282,24 +260,9 @@ final readonly class DiscussionAnswerChosenByTypeEnum implements SdkOpenEnum
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

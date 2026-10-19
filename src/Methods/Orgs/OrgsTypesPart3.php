@@ -122,15 +122,9 @@ class OrgsSetClusterDeploymentRecordsDeploymentsItem implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "digest") || $data->digest === null) {
-            throw new SdkValidationError("digest", 'required', "Required property 'digest' is missing or null");
-        }
-        if (!property_exists($data, "deployment_name") || $data->deployment_name === null) {
-            throw new SdkValidationError("deployment_name", 'required', "Required property 'deployment_name' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "digest") || $data->digest === null) { throw new SdkValidationError("digest", 'required', "Required property 'digest' is missing or null"); }
+        if (!property_exists($data, "deployment_name") || $data->deployment_name === null) { throw new SdkValidationError("deployment_name", 'required', "Required property 'deployment_name' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             digest: SdkClient::stringValue($data->digest),
@@ -187,9 +181,7 @@ class OrgsSetClusterDeploymentRecordsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             deploymentRecords: (property_exists($data, "deployment_records") && $data->deployment_records !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ArtifactDeploymentRecord::class), SdkClient::arrayValue($data->deployment_records))) : SdkNotGiven::Value),
@@ -205,26 +197,11 @@ final readonly class OrgsCreateClusterDeploymentRecordsJobDeploymentsItemStatusE
     public const DEPLOYED = "deployed";
     public const DECOMMISSIONED = "decommissioned";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class OrgsCreateClusterDeploymentRecordsJobDeploymentsItemRuntimeRisksItemEnum implements SdkOpenEnum
@@ -234,26 +211,11 @@ final readonly class OrgsCreateClusterDeploymentRecordsJobDeploymentsItemRuntime
     public const LATERAL_MOVEMENT = "lateral-movement";
     public const SENSITIVE_DATA = "sensitive-data";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class OrgsCreateClusterDeploymentRecordsJobDeploymentsItem implements \JsonSerializable
@@ -371,15 +333,9 @@ class OrgsCreateClusterDeploymentRecordsJobDeploymentsItem implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "digest") || $data->digest === null) {
-            throw new SdkValidationError("digest", 'required', "Required property 'digest' is missing or null");
-        }
-        if (!property_exists($data, "deployment_name") || $data->deployment_name === null) {
-            throw new SdkValidationError("deployment_name", 'required', "Required property 'deployment_name' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "digest") || $data->digest === null) { throw new SdkValidationError("digest", 'required', "Required property 'digest' is missing or null"); }
+        if (!property_exists($data, "deployment_name") || $data->deployment_name === null) { throw new SdkValidationError("deployment_name", 'required', "Required property 'deployment_name' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             digest: SdkClient::stringValue($data->digest),

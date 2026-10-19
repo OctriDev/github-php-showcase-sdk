@@ -57,9 +57,7 @@ class ReposCreatePagesSiteSource implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "branch") || $data->branch === null) {
-            throw new SdkValidationError("branch", 'required', "Required property 'branch' is missing or null");
-        }
+        if (!property_exists($data, "branch") || $data->branch === null) { throw new SdkValidationError("branch", 'required', "Required property 'branch' is missing or null"); }
         return new self(
             branch: SdkClient::stringValue($data->branch),
             path: (property_exists($data, "path") && $data->path !== null ? SdkClient::hydrateStringEnumOrString($data->path, ReposCreatePagesSiteSourcePathEnum::class) : SdkNotGiven::Value),
@@ -102,9 +100,7 @@ class ReposCheckPrivateVulnerabilityReportingResponse implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
         );

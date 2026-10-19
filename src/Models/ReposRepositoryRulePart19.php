@@ -45,9 +45,7 @@ class RepositoryRuleLicenseComplianceScanning implements RepositoryRule, \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleLicenseComplianceScanningTypeEnum::class),
         );
@@ -100,9 +98,7 @@ class RepositoryRuleMaxFilePathLengthParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "max_file_path_length") || $data->max_file_path_length === null) {
-            throw new SdkValidationError("max_file_path_length", 'required', "Required property 'max_file_path_length' is missing or null");
-        }
+        if (!property_exists($data, "max_file_path_length") || $data->max_file_path_length === null) { throw new SdkValidationError("max_file_path_length", 'required', "Required property 'max_file_path_length' is missing or null"); }
         return new self(
             maxFilePathLength: SdkClient::intValue($data->max_file_path_length),
         );
@@ -159,9 +155,7 @@ class RepositoryRuleMaxFilePathLength implements RepositoryRule, OrgRules, \Json
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleMaxFilePathLengthTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleMaxFilePathLengthParameters::class) : SdkNotGiven::Value),
@@ -215,9 +209,7 @@ class RepositoryRuleMaxFileSizeParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "max_file_size") || $data->max_file_size === null) {
-            throw new SdkValidationError("max_file_size", 'required', "Required property 'max_file_size' is missing or null");
-        }
+        if (!property_exists($data, "max_file_size") || $data->max_file_size === null) { throw new SdkValidationError("max_file_size", 'required', "Required property 'max_file_size' is missing or null"); }
         return new self(
             maxFileSize: SdkClient::intValue($data->max_file_size),
         );
@@ -274,9 +266,7 @@ class RepositoryRuleMaxFileSize implements RepositoryRule, OrgRules, \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleMaxFileSizeTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleMaxFileSizeParameters::class) : SdkNotGiven::Value),
@@ -300,26 +290,11 @@ final readonly class RepositoryRuleMergeQueueParametersGroupingStrategyEnum impl
     public const ALLGREEN = "ALLGREEN";
     public const HEADGREEN = "HEADGREEN";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -331,24 +306,9 @@ final readonly class RepositoryRuleMergeQueueParametersMergeMethodEnum implement
     public const SQUASH = "SQUASH";
     public const REBASE = "REBASE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

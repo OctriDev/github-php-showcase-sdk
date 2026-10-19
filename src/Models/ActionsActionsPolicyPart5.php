@@ -160,12 +160,8 @@ class ActionsPolicyEnterpriseConditionsVariant3WorkflowPath implements \JsonSeri
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "include") || $data->include === null) {
-            throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null");
-        }
-        if (!property_exists($data, "exclude") || $data->exclude === null) {
-            throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null");
-        }
+        if (!property_exists($data, "include") || $data->include === null) { throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null"); }
+        if (!property_exists($data, "exclude") || $data->exclude === null) { throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null"); }
         return new self(
             include_: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include))),
             exclude: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->exclude))),
@@ -230,12 +226,8 @@ class ActionsPolicyEnterpriseConditionsVariant3 implements ActionsPolicyEnterpri
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "organization_id") || $data->organization_id === null) {
-            throw new SdkValidationError("organization_id", 'required', "Required property 'organization_id' is missing or null");
-        }
-        if (!property_exists($data, "repository_property") || $data->repository_property === null) {
-            throw new SdkValidationError("repository_property", 'required', "Required property 'repository_property' is missing or null");
-        }
+        if (!property_exists($data, "organization_id") || $data->organization_id === null) { throw new SdkValidationError("organization_id", 'required', "Required property 'organization_id' is missing or null"); }
+        if (!property_exists($data, "repository_property") || $data->repository_property === null) { throw new SdkValidationError("repository_property", 'required', "Required property 'repository_property' is missing or null"); }
         return new self(
             organizationId: SdkClient::hydrateClass($data->organization_id, ActionsPolicyEnterpriseConditionsVariant3OrganizationId::class),
             repositoryProperty: SdkClient::hydrateClass($data->repository_property, ActionsPolicyEnterpriseConditionsVariant3RepositoryProperty::class),

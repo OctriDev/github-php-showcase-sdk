@@ -175,48 +175,20 @@ class PersonalAccessTokenRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "owner") || $data->owner === null) {
-            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
-        }
-        if (!property_exists($data, "permissions_added") || $data->permissions_added === null) {
-            throw new SdkValidationError("permissions_added", 'required', "Required property 'permissions_added' is missing or null");
-        }
-        if (!property_exists($data, "permissions_upgraded") || $data->permissions_upgraded === null) {
-            throw new SdkValidationError("permissions_upgraded", 'required', "Required property 'permissions_upgraded' is missing or null");
-        }
-        if (!property_exists($data, "permissions_result") || $data->permissions_result === null) {
-            throw new SdkValidationError("permissions_result", 'required', "Required property 'permissions_result' is missing or null");
-        }
-        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) {
-            throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null");
-        }
-        if (!property_exists($data, "repository_count")) {
-            throw new SdkValidationError("repository_count", 'required', "Missing required property 'repository_count'");
-        }
-        if (!property_exists($data, "repositories")) {
-            throw new SdkValidationError("repositories", 'required', "Missing required property 'repositories'");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "token_id") || $data->token_id === null) {
-            throw new SdkValidationError("token_id", 'required', "Required property 'token_id' is missing or null");
-        }
-        if (!property_exists($data, "token_name") || $data->token_name === null) {
-            throw new SdkValidationError("token_name", 'required', "Required property 'token_name' is missing or null");
-        }
-        if (!property_exists($data, "token_expired") || $data->token_expired === null) {
-            throw new SdkValidationError("token_expired", 'required', "Required property 'token_expired' is missing or null");
-        }
-        if (!property_exists($data, "token_expires_at")) {
-            throw new SdkValidationError("token_expires_at", 'required', "Missing required property 'token_expires_at'");
-        }
-        if (!property_exists($data, "token_last_used_at")) {
-            throw new SdkValidationError("token_last_used_at", 'required', "Missing required property 'token_last_used_at'");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
+        if (!property_exists($data, "permissions_added") || $data->permissions_added === null) { throw new SdkValidationError("permissions_added", 'required', "Required property 'permissions_added' is missing or null"); }
+        if (!property_exists($data, "permissions_upgraded") || $data->permissions_upgraded === null) { throw new SdkValidationError("permissions_upgraded", 'required', "Required property 'permissions_upgraded' is missing or null"); }
+        if (!property_exists($data, "permissions_result") || $data->permissions_result === null) { throw new SdkValidationError("permissions_result", 'required', "Required property 'permissions_result' is missing or null"); }
+        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) { throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null"); }
+        if (!property_exists($data, "repository_count")) { throw new SdkValidationError("repository_count", 'required', "Missing required property 'repository_count'"); }
+        if (!property_exists($data, "repositories")) { throw new SdkValidationError("repositories", 'required', "Missing required property 'repositories'"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "token_id") || $data->token_id === null) { throw new SdkValidationError("token_id", 'required', "Required property 'token_id' is missing or null"); }
+        if (!property_exists($data, "token_name") || $data->token_name === null) { throw new SdkValidationError("token_name", 'required', "Required property 'token_name' is missing or null"); }
+        if (!property_exists($data, "token_expired") || $data->token_expired === null) { throw new SdkValidationError("token_expired", 'required', "Required property 'token_expired' is missing or null"); }
+        if (!property_exists($data, "token_expires_at")) { throw new SdkValidationError("token_expires_at", 'required', "Missing required property 'token_expires_at'"); }
+        if (!property_exists($data, "token_last_used_at")) { throw new SdkValidationError("token_last_used_at", 'required', "Missing required property 'token_last_used_at'"); }
         return new self(
             id: SdkClient::intValue($data->id),
             owner: SdkClient::hydrateClass($data->owner, SimpleUser::class),
@@ -245,26 +217,11 @@ final readonly class PullRequestWebhookVariant1MergeCommitMessageEnum implements
     public const PR_TITLE = "PR_TITLE";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -275,26 +232,11 @@ final readonly class PullRequestWebhookVariant1MergeCommitTitleEnum implements S
     public const PR_TITLE = "PR_TITLE";
     public const MERGE_MESSAGE = "MERGE_MESSAGE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -306,26 +248,11 @@ final readonly class PullRequestWebhookVariant1SquashMergeCommitMessageEnum impl
     public const COMMIT_MESSAGES = "COMMIT_MESSAGES";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -336,24 +263,9 @@ final readonly class PullRequestWebhookVariant1SquashMergeCommitTitleEnum implem
     public const PR_TITLE = "PR_TITLE";
     public const COMMIT_OR_PR_TITLE = "COMMIT_OR_PR_TITLE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

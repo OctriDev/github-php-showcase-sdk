@@ -85,21 +85,11 @@ class PullRequestMinimal implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "number") || $data->number === null) {
-            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "head") || $data->head === null) {
-            throw new SdkValidationError("head", 'required', "Required property 'head' is missing or null");
-        }
-        if (!property_exists($data, "base") || $data->base === null) {
-            throw new SdkValidationError("base", 'required', "Required property 'base' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "head") || $data->head === null) { throw new SdkValidationError("head", 'required', "Required property 'head' is missing or null"); }
+        if (!property_exists($data, "base") || $data->base === null) { throw new SdkValidationError("base", 'required', "Required property 'base' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             number: SdkClient::intValue($data->number),
@@ -148,9 +138,7 @@ class PullRequestReviewCommentLinksSelf implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -195,9 +183,7 @@ class PullRequestReviewCommentLinksHtml implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -242,9 +228,7 @@ class PullRequestReviewCommentLinksPullRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -309,15 +293,9 @@ class PullRequestReviewCommentLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "self") || $data->self === null) {
-            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
-        }
-        if (!property_exists($data, "html") || $data->html === null) {
-            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
-        }
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
-            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
-        }
+        if (!property_exists($data, "self") || $data->self === null) { throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null"); }
+        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
         return new self(
             self_: SdkClient::hydrateClass($data->self, PullRequestReviewCommentLinksSelf::class),
             html: SdkClient::hydrateClass($data->html, PullRequestReviewCommentLinksHtml::class),
@@ -334,26 +312,11 @@ final readonly class PullRequestReviewCommentStartSideEnum implements SdkOpenEnu
     public const LEFT = "LEFT";
     public const RIGHT = "RIGHT";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -364,26 +327,11 @@ final readonly class PullRequestReviewCommentSideEnum implements SdkOpenEnum
     public const LEFT = "LEFT";
     public const RIGHT = "RIGHT";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -394,24 +342,9 @@ final readonly class PullRequestReviewCommentSubjectTypeEnum implements SdkOpenE
     public const LINE = "line";
     public const FILE = "file";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

@@ -89,15 +89,9 @@ class TeamRepositoryPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "admin") || $data->admin === null) {
-            throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null");
-        }
-        if (!property_exists($data, "pull") || $data->pull === null) {
-            throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null");
-        }
-        if (!property_exists($data, "push") || $data->push === null) {
-            throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null");
-        }
+        if (!property_exists($data, "admin") || $data->admin === null) { throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null"); }
+        if (!property_exists($data, "pull") || $data->pull === null) { throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null"); }
+        if (!property_exists($data, "push") || $data->push === null) { throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null"); }
         return new self(
             admin: SdkClient::boolValue($data->admin),
             pull: SdkClient::boolValue($data->pull),

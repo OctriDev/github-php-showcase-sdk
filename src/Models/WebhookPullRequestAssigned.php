@@ -14,26 +14,11 @@ final readonly class WebhookPullRequestAssignedActionEnum implements SdkOpenEnum
 {
     public const ASSIGNED = "assigned";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -74,9 +59,7 @@ class WebhookPullRequestAssignedPullRequestLinksComments implements \JsonSeriali
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -121,9 +104,7 @@ class WebhookPullRequestAssignedPullRequestLinksCommits implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -168,9 +149,7 @@ class WebhookPullRequestAssignedPullRequestLinksHtml implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -215,9 +194,7 @@ class WebhookPullRequestAssignedPullRequestLinksIssue implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -262,9 +239,7 @@ class WebhookPullRequestAssignedPullRequestLinksReviewComment implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -309,9 +284,7 @@ class WebhookPullRequestAssignedPullRequestLinksReviewComments implements \JsonS
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -356,9 +329,7 @@ class WebhookPullRequestAssignedPullRequestLinksSelf implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
         );

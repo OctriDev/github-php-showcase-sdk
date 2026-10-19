@@ -129,9 +129,7 @@ class RepositoryAdvisoryDescriptionValidationErrorErrorsItem implements \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "code") || $data->code === null) {
-            throw new SdkValidationError("code", 'required', "Required property 'code' is missing or null");
-        }
+        if (!property_exists($data, "code") || $data->code === null) { throw new SdkValidationError("code", 'required', "Required property 'code' is missing or null"); }
         return new self(
             code: SdkClient::stringValue($data->code),
             resource_: (property_exists($data, "resource") && $data->resource !== null ? SdkClient::stringValue($data->resource) : SdkNotGiven::Value),
@@ -205,12 +203,8 @@ class RepositoryAdvisoryDescriptionValidationError implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "documentation_url") || $data->documentation_url === null) {
-            throw new SdkValidationError("documentation_url", 'required', "Required property 'documentation_url' is missing or null");
-        }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "documentation_url") || $data->documentation_url === null) { throw new SdkValidationError("documentation_url", 'required', "Required property 'documentation_url' is missing or null"); }
         return new self(
             message: SdkClient::stringValue($data->message),
             documentationUrl: SdkClient::stringValue($data->documentation_url),
@@ -269,9 +263,7 @@ class RepositoryAdvisoryUpdateVulnerabilitiesItemPackage implements \JsonSeriali
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) {
-            throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null");
-        }
+        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) { throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null"); }
         return new self(
             ecosystem: SdkClient::hydrateStringEnumOrString($data->ecosystem, SecurityAdvisoryEcosystems::class),
             name: (property_exists($data, "name") ? ($data->name === null ? null : SdkClient::stringValue($data->name)) : SdkNotGiven::Value),
@@ -353,9 +345,7 @@ class RepositoryAdvisoryUpdateVulnerabilitiesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "package") || $data->package === null) {
-            throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null");
-        }
+        if (!property_exists($data, "package") || $data->package === null) { throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null"); }
         return new self(
             package: SdkClient::hydrateClass($data->package, RepositoryAdvisoryUpdateVulnerabilitiesItemPackage::class),
             vulnerableVersionRange: (property_exists($data, "vulnerable_version_range") ? ($data->vulnerable_version_range === null ? null : SdkClient::stringValue($data->vulnerable_version_range)) : SdkNotGiven::Value),

@@ -118,7 +118,7 @@ trait ChecksMethodsPart1
     public static function checksRerequestRun(ClientConfig $clientConfig, string $owner, string $repo, int $checkRunId, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/check-runs/" . SdkClient::encodePathSegment($checkRunId) . "/rerequest", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'checksRerequestRun', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/check-runs/" . SdkClient::encodePathSegment($checkRunId) . "/rerequest", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'checksRerequestRun', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 

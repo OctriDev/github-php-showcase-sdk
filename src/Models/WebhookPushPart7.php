@@ -203,42 +203,18 @@ class WebhookPush implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "after") || $data->after === null) {
-            throw new SdkValidationError("after", 'required', "Required property 'after' is missing or null");
-        }
-        if (!property_exists($data, "base_ref")) {
-            throw new SdkValidationError("base_ref", 'required', "Missing required property 'base_ref'");
-        }
-        if (!property_exists($data, "before") || $data->before === null) {
-            throw new SdkValidationError("before", 'required', "Required property 'before' is missing or null");
-        }
-        if (!property_exists($data, "commits") || $data->commits === null) {
-            throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null");
-        }
-        if (!property_exists($data, "compare") || $data->compare === null) {
-            throw new SdkValidationError("compare", 'required', "Required property 'compare' is missing or null");
-        }
-        if (!property_exists($data, "created") || $data->created === null) {
-            throw new SdkValidationError("created", 'required', "Required property 'created' is missing or null");
-        }
-        if (!property_exists($data, "deleted") || $data->deleted === null) {
-            throw new SdkValidationError("deleted", 'required', "Required property 'deleted' is missing or null");
-        }
-        if (!property_exists($data, "forced") || $data->forced === null) {
-            throw new SdkValidationError("forced", 'required', "Required property 'forced' is missing or null");
-        }
-        if (!property_exists($data, "head_commit")) {
-            throw new SdkValidationError("head_commit", 'required', "Missing required property 'head_commit'");
-        }
-        if (!property_exists($data, "pusher") || $data->pusher === null) {
-            throw new SdkValidationError("pusher", 'required', "Required property 'pusher' is missing or null");
-        }
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
-        }
-        if (!property_exists($data, "repository") || $data->repository === null) {
-            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
-        }
+        if (!property_exists($data, "after") || $data->after === null) { throw new SdkValidationError("after", 'required', "Required property 'after' is missing or null"); }
+        if (!property_exists($data, "base_ref")) { throw new SdkValidationError("base_ref", 'required', "Missing required property 'base_ref'"); }
+        if (!property_exists($data, "before") || $data->before === null) { throw new SdkValidationError("before", 'required', "Required property 'before' is missing or null"); }
+        if (!property_exists($data, "commits") || $data->commits === null) { throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null"); }
+        if (!property_exists($data, "compare") || $data->compare === null) { throw new SdkValidationError("compare", 'required', "Required property 'compare' is missing or null"); }
+        if (!property_exists($data, "created") || $data->created === null) { throw new SdkValidationError("created", 'required', "Required property 'created' is missing or null"); }
+        if (!property_exists($data, "deleted") || $data->deleted === null) { throw new SdkValidationError("deleted", 'required', "Required property 'deleted' is missing or null"); }
+        if (!property_exists($data, "forced") || $data->forced === null) { throw new SdkValidationError("forced", 'required', "Required property 'forced' is missing or null"); }
+        if (!property_exists($data, "head_commit")) { throw new SdkValidationError("head_commit", 'required', "Missing required property 'head_commit'"); }
+        if (!property_exists($data, "pusher") || $data->pusher === null) { throw new SdkValidationError("pusher", 'required', "Required property 'pusher' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
         return new self(
             after: SdkClient::stringValue($data->after),
             baseRef: ($data->base_ref === null ? null : SdkClient::stringValue($data->base_ref)),

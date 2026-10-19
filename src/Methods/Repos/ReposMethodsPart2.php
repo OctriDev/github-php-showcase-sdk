@@ -22,7 +22,7 @@ trait ReposMethodsPart2
     public static function reposCreateAttestation(ClientConfig $clientConfig, string $owner, string $repo, ReposCreateAttestationBundle $bundle, ?RequestOptions $requestOptions = null): ReposCreateAttestationResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/attestations", $clientConfig, body: ['bundle' => $bundle], returnType: ReposCreateAttestationResponse::class, decoder: 'json', operationId: 'reposCreateAttestation', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/attestations", $clientConfig, body: ['bundle' => $bundle], returnType: ReposCreateAttestationResponse::class, decoder: 'json', operationId: 'reposCreateAttestation', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ReposCreateAttestationResponse::class));
     }
 
@@ -81,7 +81,7 @@ trait ReposMethodsPart2
     public static function reposCreateAutolink(ClientConfig $clientConfig, string $owner, string $repo, string $keyPrefix, string $urlTemplate, bool|SdkNotGiven $isAlphanumeric = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Autolink
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks", $clientConfig, body: ['key_prefix' => $keyPrefix, 'url_template' => $urlTemplate, 'is_alphanumeric' => $isAlphanumeric], returnType: Autolink::class, decoder: 'json', operationId: 'reposCreateAutolink', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks", $clientConfig, body: ['key_prefix' => $keyPrefix, 'url_template' => $urlTemplate, 'is_alphanumeric' => $isAlphanumeric], returnType: Autolink::class, decoder: 'json', operationId: 'reposCreateAutolink', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Autolink::class));
     }
 
@@ -99,7 +99,7 @@ trait ReposMethodsPart2
     public static function reposGetAutolink(ClientConfig $clientConfig, string $owner, string $repo, int $autolinkId, ?RequestOptions $requestOptions = null): Autolink
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks/" . SdkClient::encodePathSegment($autolinkId) . "", $clientConfig, returnType: Autolink::class, decoder: 'json', operationId: 'reposGetAutolink', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks/" . SdkClient::encodePathSegment($autolinkId) . "", $clientConfig, returnType: Autolink::class, decoder: 'json', operationId: 'reposGetAutolink', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Autolink::class));
     }
 
@@ -116,7 +116,7 @@ trait ReposMethodsPart2
     public static function reposDeleteAutolink(ClientConfig $clientConfig, string $owner, string $repo, int $autolinkId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks/" . SdkClient::encodePathSegment($autolinkId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteAutolink', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks/" . SdkClient::encodePathSegment($autolinkId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteAutolink', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -182,7 +182,7 @@ trait ReposMethodsPart2
     public static function reposListBranches(ClientConfig $clientConfig, string $owner, string $repo, bool|SdkNotGiven $protected = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches", $clientConfig, query: ['protected' => new SdkQueryValue($protected, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListBranches', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches", $clientConfig, query: ['protected' => new SdkQueryValue($protected, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListBranches', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ShortBranch::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -200,7 +200,7 @@ trait ReposMethodsPart2
     public static function reposGetBranch(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): BranchWithProtection
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "", $clientConfig, returnType: BranchWithProtection::class, decoder: 'json', operationId: 'reposGetBranch', requestOptions: $requestOptions, errors: [301 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "", $clientConfig, returnType: BranchWithProtection::class, decoder: 'json', operationId: 'reposGetBranch', requestOptions: $requestOptions, errors: [301 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, BranchWithProtection::class));
     }
 
@@ -218,7 +218,7 @@ trait ReposMethodsPart2
     public static function reposGetBranchProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): BranchProtection
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, returnType: BranchProtection::class, decoder: 'json', operationId: 'reposGetBranchProtection', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, returnType: BranchProtection::class, decoder: 'json', operationId: 'reposGetBranchProtection', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, BranchProtection::class));
     }
 
@@ -247,7 +247,7 @@ trait ReposMethodsPart2
     public static function reposUpdateBranchProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?ReposUpdateBranchProtectionRequiredStatusChecks $requiredStatusChecks, ?bool $enforceAdmins, ?ReposUpdateBranchProtectionRequiredPullRequestReviews $requiredPullRequestReviews, ?ReposUpdateBranchProtectionRestrictions $restrictions, bool|SdkNotGiven $requiredLinearHistory = SdkNotGiven::Value, bool|null|SdkNotGiven $allowForcePushes = SdkNotGiven::Value, bool|SdkNotGiven $allowDeletions = SdkNotGiven::Value, bool|SdkNotGiven $blockCreations = SdkNotGiven::Value, bool|SdkNotGiven $requiredConversationResolution = SdkNotGiven::Value, bool|SdkNotGiven $lockBranch = SdkNotGiven::Value, bool|SdkNotGiven $allowForkSyncing = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ProtectedBranch
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, body: ['required_status_checks' => $requiredStatusChecks, 'enforce_admins' => $enforceAdmins, 'required_pull_request_reviews' => $requiredPullRequestReviews, 'restrictions' => $restrictions, 'required_linear_history' => $requiredLinearHistory, 'allow_force_pushes' => $allowForcePushes, 'allow_deletions' => $allowDeletions, 'block_creations' => $blockCreations, 'required_conversation_resolution' => $requiredConversationResolution, 'lock_branch' => $lockBranch, 'allow_fork_syncing' => $allowForkSyncing], returnType: ProtectedBranch::class, decoder: 'json', operationId: 'reposUpdateBranchProtection', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, body: ['required_status_checks' => $requiredStatusChecks, 'enforce_admins' => $enforceAdmins, 'required_pull_request_reviews' => $requiredPullRequestReviews, 'restrictions' => $restrictions, 'required_linear_history' => $requiredLinearHistory, 'allow_force_pushes' => $allowForcePushes, 'allow_deletions' => $allowDeletions, 'block_creations' => $blockCreations, 'required_conversation_resolution' => $requiredConversationResolution, 'lock_branch' => $lockBranch, 'allow_fork_syncing' => $allowForkSyncing], returnType: ProtectedBranch::class, decoder: 'json', operationId: 'reposUpdateBranchProtection', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ProtectedBranch::class));
     }
 
@@ -264,7 +264,7 @@ trait ReposMethodsPart2
     public static function reposDeleteBranchProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, decoder: 'empty', operationId: 'reposDeleteBranchProtection', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, decoder: 'empty', operationId: 'reposDeleteBranchProtection', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

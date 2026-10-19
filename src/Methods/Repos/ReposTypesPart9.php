@@ -42,9 +42,7 @@ class ReposRemoveTeamAccessRestrictionsBodyVariant0 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "teams") || $data->teams === null) {
-            throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null");
-        }
+        if (!property_exists($data, "teams") || $data->teams === null) { throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null"); }
         return new self(
             teams: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->teams))),
         );
@@ -107,12 +105,8 @@ class ReposCreateOrUpdateFileContentsCommitter implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             email: SdkClient::stringValue($data->email),
@@ -177,12 +171,8 @@ class ReposCreateOrUpdateFileContentsAuthor implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             email: SdkClient::stringValue($data->email),

@@ -205,12 +205,8 @@ class CreateBudget implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "budget") || $data->budget === null) {
-            throw new SdkValidationError("budget", 'required', "Required property 'budget' is missing or null");
-        }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "budget") || $data->budget === null) { throw new SdkValidationError("budget", 'required', "Required property 'budget' is missing or null"); }
         return new self(
             message: SdkClient::stringValue($data->message),
             budget: SdkClient::hydrateClass($data->budget, CreateBudgetBudget::class),
@@ -266,12 +262,8 @@ class DeleteBudget implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
         return new self(
             message: SdkClient::stringValue($data->message),
             id: SdkClient::stringValue($data->id),
@@ -337,15 +329,9 @@ class GetAllBudgetsEffectiveBudget implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "budget_amount") || $data->budget_amount === null) {
-            throw new SdkValidationError("budget_amount", 'required', "Required property 'budget_amount' is missing or null");
-        }
-        if (!property_exists($data, "consumed_amount") || $data->consumed_amount === null) {
-            throw new SdkValidationError("consumed_amount", 'required', "Required property 'consumed_amount' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "budget_amount") || $data->budget_amount === null) { throw new SdkValidationError("budget_amount", 'required', "Required property 'budget_amount' is missing or null"); }
+        if (!property_exists($data, "consumed_amount") || $data->consumed_amount === null) { throw new SdkValidationError("consumed_amount", 'required', "Required property 'consumed_amount' is missing or null"); }
         return new self(
             id: SdkClient::stringValue($data->id),
             budgetAmount: SdkClient::intValue($data->budget_amount),

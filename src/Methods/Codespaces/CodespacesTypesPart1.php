@@ -14,26 +14,11 @@ final readonly class CodespacesSetCodespacesAccessVisibility implements SdkOpenE
     public const ALL_MEMBERS = "all_members";
     public const ALL_MEMBERS_AND_OUTSIDE_COLLABORATORS = "all_members_and_outside_collaborators";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class CodespacesCreateOrUpdateOrgSecretVisibility implements SdkOpenEnum
@@ -42,26 +27,11 @@ final readonly class CodespacesCreateOrUpdateOrgSecretVisibility implements SdkO
     public const PRIVATE = "private";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class CodespacesCreateWithRepoForAuthenticatedUserGeo implements SdkOpenEnum
@@ -71,26 +41,11 @@ final readonly class CodespacesCreateWithRepoForAuthenticatedUserGeo implements 
     public const USEAST = "UsEast";
     public const USWEST = "UsWest";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class CodespacesCreateWithPrForAuthenticatedUserGeo implements SdkOpenEnum
@@ -100,26 +55,11 @@ final readonly class CodespacesCreateWithPrForAuthenticatedUserGeo implements Sd
     public const USEAST = "UsEast";
     public const USWEST = "UsWest";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class CodespacesListInOrganizationResponse implements \JsonSerializable
@@ -159,12 +99,8 @@ class CodespacesListInOrganizationResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "codespaces") || $data->codespaces === null) {
-            throw new SdkValidationError("codespaces", 'required', "Required property 'codespaces' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "codespaces") || $data->codespaces === null) { throw new SdkValidationError("codespaces", 'required', "Required property 'codespaces' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             codespaces: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Codespace::class), SdkClient::arrayValue($data->codespaces))),
@@ -209,12 +145,8 @@ class CodespacesListOrgSecretsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "secrets") || $data->secrets === null) {
-            throw new SdkValidationError("secrets", 'required', "Required property 'secrets' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "secrets") || $data->secrets === null) { throw new SdkValidationError("secrets", 'required', "Required property 'secrets' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             secrets: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CodespacesOrgSecret::class), SdkClient::arrayValue($data->secrets))),
@@ -259,12 +191,8 @@ class CodespacesListSelectedReposForOrgSecretResponse implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "repositories") || $data->repositories === null) {
-            throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "repositories") || $data->repositories === null) { throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             repositories: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MinimalRepository::class), SdkClient::arrayValue($data->repositories))),
@@ -309,12 +237,8 @@ class CodespacesGetCodespacesForUserInOrgResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "codespaces") || $data->codespaces === null) {
-            throw new SdkValidationError("codespaces", 'required', "Required property 'codespaces' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "codespaces") || $data->codespaces === null) { throw new SdkValidationError("codespaces", 'required', "Required property 'codespaces' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             codespaces: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Codespace::class), SdkClient::arrayValue($data->codespaces))),
@@ -359,12 +283,8 @@ class CodespacesListInRepositoryForAuthenticatedUserResponse implements \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "codespaces") || $data->codespaces === null) {
-            throw new SdkValidationError("codespaces", 'required', "Required property 'codespaces' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "codespaces") || $data->codespaces === null) { throw new SdkValidationError("codespaces", 'required', "Required property 'codespaces' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             codespaces: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Codespace::class), SdkClient::arrayValue($data->codespaces))),
@@ -419,9 +339,7 @@ class CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevcont
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) {
-            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
-        }
+        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
         return new self(
             path: SdkClient::stringValue($data->path),
             name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),

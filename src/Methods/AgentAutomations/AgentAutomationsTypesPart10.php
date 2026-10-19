@@ -65,15 +65,9 @@ class AgentAutomationsListAvailableAutomationToolsResponseItem implements \JsonS
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "title") || $data->title === null) {
-            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
-        }
-        if (!property_exists($data, "tools") || $data->tools === null) {
-            throw new SdkValidationError("tools", 'required', "Required property 'tools' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
+        if (!property_exists($data, "tools") || $data->tools === null) { throw new SdkValidationError("tools", 'required', "Required property 'tools' is missing or null"); }
         return new self(
             id: SdkClient::stringValue($data->id),
             title: SdkClient::stringValue($data->title),
@@ -162,18 +156,10 @@ class AgentAutomationsListAvailableAutomationTriggersResponseItemFieldsItem impl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "label") || $data->label === null) {
-            throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null");
-        }
-        if (!property_exists($data, "required") || $data->required === null) {
-            throw new SdkValidationError("required", 'required', "Required property 'required' is missing or null");
-        }
-        if (!property_exists($data, "schema") || $data->schema === null) {
-            throw new SdkValidationError("schema", 'required', "Required property 'schema' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "label") || $data->label === null) { throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null"); }
+        if (!property_exists($data, "required") || $data->required === null) { throw new SdkValidationError("required", 'required', "Required property 'required' is missing or null"); }
+        if (!property_exists($data, "schema") || $data->schema === null) { throw new SdkValidationError("schema", 'required', "Required property 'schema' is missing or null"); }
         return new self(
             id: SdkClient::stringValue($data->id),
             label: SdkClient::stringValue($data->label),
@@ -264,18 +250,10 @@ class AgentAutomationsListAvailableAutomationTriggersResponseItem implements \Js
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "title") || $data->title === null) {
-            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
-        }
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
-        if (!property_exists($data, "fields") || $data->fields === null) {
-            throw new SdkValidationError("fields", 'required', "Required property 'fields' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
+        if (!property_exists($data, "fields") || $data->fields === null) { throw new SdkValidationError("fields", 'required', "Required property 'fields' is missing or null"); }
         return new self(
             id: SdkClient::stringValue($data->id),
             title: SdkClient::stringValue($data->title),
@@ -344,15 +322,9 @@ class AgentAutomationsGetAutomationResponseRepository implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "owner") || $data->owner === null) {
-            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             owner: SdkClient::stringValue($data->owner),
@@ -369,24 +341,9 @@ final readonly class AgentAutomationsGetAutomationResponseOwnerTypeEnum implemen
     public const USER = "user";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

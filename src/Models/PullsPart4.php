@@ -17,26 +17,11 @@ final readonly class PullRequestMergeAsyncResultStatusEnum implements SdkOpenEnu
     public const ENQUEUED = "enqueued";
     public const FAILED = "failed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -87,12 +72,8 @@ class PullRequestMergeAsyncResult implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "status") || $data->status === null) {
-            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
-        }
-        if (!property_exists($data, "details") || $data->details === null) {
-            throw new SdkValidationError("details", 'required', "Required property 'details' is missing or null");
-        }
+        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "details") || $data->details === null) { throw new SdkValidationError("details", 'required', "Required property 'details' is missing or null"); }
         return new self(
             status: SdkClient::hydrateStringEnumOrString($data->status, PullRequestMergeAsyncResultStatusEnum::class),
             details: SdkClient::hydrateUnionAs($data->details, PullRequestMergeAsyncResultDetails::class, [PullRequestMergeAsyncResultDetailsVariant0::class, PullRequestMergeAsyncResultDetailsVariant1::class, PullRequestMergeAsyncResultDetailsVariant2::class, PullRequestMergeAsyncResultDetailsVariant3::class], null, []),
@@ -110,26 +91,11 @@ final readonly class PullRequestMergeAsyncResultDetailsVariant0MergeMethodEnum i
     public const SQUASH = "squash";
     public const REBASE = "rebase";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -141,26 +107,11 @@ final readonly class PullRequestMergeAsyncResultDetailsVariant0MergeActionEnum i
     public const MERGE_QUEUE = "merge_queue";
     public const DIRECT_MERGE = "direct_merge";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class PullRequestMergeAsyncResultDetailsVariant0 implements PullRequestMergeAsyncResultDetails, \JsonSerializable
@@ -250,21 +201,11 @@ class PullRequestMergeAsyncResultDetailsVariant0 implements PullRequestMergeAsyn
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "uuid") || $data->uuid === null) {
-            throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null");
-        }
-        if (!property_exists($data, "merge_method") || $data->merge_method === null) {
-            throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null");
-        }
-        if (!property_exists($data, "merge_action") || $data->merge_action === null) {
-            throw new SdkValidationError("merge_action", 'required', "Required property 'merge_action' is missing or null");
-        }
-        if (!property_exists($data, "expected_head_sha") || $data->expected_head_sha === null) {
-            throw new SdkValidationError("expected_head_sha", 'required', "Required property 'expected_head_sha' is missing or null");
-        }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "uuid") || $data->uuid === null) { throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null"); }
+        if (!property_exists($data, "merge_method") || $data->merge_method === null) { throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null"); }
+        if (!property_exists($data, "merge_action") || $data->merge_action === null) { throw new SdkValidationError("merge_action", 'required', "Required property 'merge_action' is missing or null"); }
+        if (!property_exists($data, "expected_head_sha") || $data->expected_head_sha === null) { throw new SdkValidationError("expected_head_sha", 'required', "Required property 'expected_head_sha' is missing or null"); }
         return new self(
             message: SdkClient::stringValue($data->message),
             uuid: SdkClient::stringValue($data->uuid),
@@ -311,9 +252,7 @@ class PullRequestMergeAsyncResultDetailsVariant1 implements PullRequestMergeAsyn
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
         return new self(
             message: SdkClient::stringValue($data->message),
         );
@@ -355,9 +294,7 @@ class PullRequestMergeAsyncResultDetailsVariant2 implements PullRequestMergeAsyn
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
         return new self(
             message: SdkClient::stringValue($data->message),
         );

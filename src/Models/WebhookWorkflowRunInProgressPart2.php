@@ -21,26 +21,11 @@ final readonly class WebhookWorkflowRunInProgressWorkflowRunConclusionEnum imple
     public const SUCCESS = "success";
     public const TIMED_OUT = "timed_out";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -115,12 +100,8 @@ class WebhookWorkflowRunInProgressWorkflowRunHeadCommitAuthor implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email")) {
-            throw new SdkValidationError("email", 'required', "Missing required property 'email'");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "email")) { throw new SdkValidationError("email", 'required', "Missing required property 'email'"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             email: ($data->email === null ? null : SdkClient::stringValue($data->email)),
             name: SdkClient::stringValue($data->name),
@@ -202,12 +183,8 @@ class WebhookWorkflowRunInProgressWorkflowRunHeadCommitCommitter implements \Jso
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email")) {
-            throw new SdkValidationError("email", 'required', "Missing required property 'email'");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "email")) { throw new SdkValidationError("email", 'required', "Missing required property 'email'"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             email: ($data->email === null ? null : SdkClient::stringValue($data->email)),
             name: SdkClient::stringValue($data->name),
@@ -305,24 +282,12 @@ class WebhookWorkflowRunInProgressWorkflowRunHeadCommit implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author") || $data->author === null) {
-            throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null");
-        }
-        if (!property_exists($data, "committer") || $data->committer === null) {
-            throw new SdkValidationError("committer", 'required', "Required property 'committer' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "timestamp") || $data->timestamp === null) {
-            throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null");
-        }
-        if (!property_exists($data, "tree_id") || $data->tree_id === null) {
-            throw new SdkValidationError("tree_id", 'required', "Required property 'tree_id' is missing or null");
-        }
+        if (!property_exists($data, "author") || $data->author === null) { throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null"); }
+        if (!property_exists($data, "committer") || $data->committer === null) { throw new SdkValidationError("committer", 'required', "Required property 'committer' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "timestamp") || $data->timestamp === null) { throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null"); }
+        if (!property_exists($data, "tree_id") || $data->tree_id === null) { throw new SdkValidationError("tree_id", 'required', "Required property 'tree_id' is missing or null"); }
         return new self(
             author: SdkClient::hydrateClass($data->author, WebhookWorkflowRunInProgressWorkflowRunHeadCommitAuthor::class),
             committer: SdkClient::hydrateClass($data->committer, WebhookWorkflowRunInProgressWorkflowRunHeadCommitCommitter::class),
@@ -343,24 +308,9 @@ final readonly class WebhookWorkflowRunInProgressWorkflowRunHeadRepositoryOwnerT
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

@@ -187,48 +187,20 @@ class ProjectsV2View implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "number") || $data->number === null) {
-            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "layout") || $data->layout === null) {
-            throw new SdkValidationError("layout", 'required', "Required property 'layout' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "project_url") || $data->project_url === null) {
-            throw new SdkValidationError("project_url", 'required', "Required property 'project_url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "creator") || $data->creator === null) {
-            throw new SdkValidationError("creator", 'required', "Required property 'creator' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "visible_fields") || $data->visible_fields === null) {
-            throw new SdkValidationError("visible_fields", 'required', "Required property 'visible_fields' is missing or null");
-        }
-        if (!property_exists($data, "sort_by") || $data->sort_by === null) {
-            throw new SdkValidationError("sort_by", 'required', "Required property 'sort_by' is missing or null");
-        }
-        if (!property_exists($data, "group_by") || $data->group_by === null) {
-            throw new SdkValidationError("group_by", 'required', "Required property 'group_by' is missing or null");
-        }
-        if (!property_exists($data, "vertical_group_by") || $data->vertical_group_by === null) {
-            throw new SdkValidationError("vertical_group_by", 'required', "Required property 'vertical_group_by' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "layout") || $data->layout === null) { throw new SdkValidationError("layout", 'required', "Required property 'layout' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "project_url") || $data->project_url === null) { throw new SdkValidationError("project_url", 'required', "Required property 'project_url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "creator") || $data->creator === null) { throw new SdkValidationError("creator", 'required', "Required property 'creator' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "visible_fields") || $data->visible_fields === null) { throw new SdkValidationError("visible_fields", 'required', "Required property 'visible_fields' is missing or null"); }
+        if (!property_exists($data, "sort_by") || $data->sort_by === null) { throw new SdkValidationError("sort_by", 'required', "Required property 'sort_by' is missing or null"); }
+        if (!property_exists($data, "group_by") || $data->group_by === null) { throw new SdkValidationError("group_by", 'required', "Required property 'group_by' is missing or null"); }
+        if (!property_exists($data, "vertical_group_by") || $data->vertical_group_by === null) { throw new SdkValidationError("vertical_group_by", 'required', "Required property 'vertical_group_by' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             number: SdkClient::intValue($data->number),

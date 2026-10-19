@@ -119,24 +119,12 @@ class Snapshot implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "version") || $data->version === null) {
-            throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null");
-        }
-        if (!property_exists($data, "job") || $data->job === null) {
-            throw new SdkValidationError("job", 'required', "Required property 'job' is missing or null");
-        }
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
-        }
-        if (!property_exists($data, "detector") || $data->detector === null) {
-            throw new SdkValidationError("detector", 'required', "Required property 'detector' is missing or null");
-        }
-        if (!property_exists($data, "scanned") || $data->scanned === null) {
-            throw new SdkValidationError("scanned", 'required', "Required property 'scanned' is missing or null");
-        }
+        if (!property_exists($data, "version") || $data->version === null) { throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null"); }
+        if (!property_exists($data, "job") || $data->job === null) { throw new SdkValidationError("job", 'required', "Required property 'job' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "detector") || $data->detector === null) { throw new SdkValidationError("detector", 'required', "Required property 'detector' is missing or null"); }
+        if (!property_exists($data, "scanned") || $data->scanned === null) { throw new SdkValidationError("scanned", 'required', "Required property 'scanned' is missing or null"); }
         return new self(
             version: SdkClient::intValue($data->version),
             job: SdkClient::hydrateClass($data->job, SnapshotJob::class),

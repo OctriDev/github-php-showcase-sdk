@@ -63,7 +63,7 @@ trait OrgsMethodsPart2
     public static function orgsDeleteAttestationsBulk(ClientConfig $clientConfig, string $org, OrgsDeleteAttestationsBulkBodyVariant0|OrgsDeleteAttestationsBulkBodyVariant1 $body, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/delete-request", $clientConfig, body: $body, decoder: 'empty', operationId: 'orgsDeleteAttestationsBulk', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/delete-request", $clientConfig, body: $body, decoder: 'empty', operationId: 'orgsDeleteAttestationsBulk', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -78,7 +78,7 @@ trait OrgsMethodsPart2
     public static function orgsDeleteAttestationsBySubjectDigest(ClientConfig $clientConfig, string $org, string $subjectDigest, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/digest/" . SdkClient::encodePathSegment($subjectDigest) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteAttestationsBySubjectDigest', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/digest/" . SdkClient::encodePathSegment($subjectDigest) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteAttestationsBySubjectDigest', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -113,7 +113,7 @@ trait OrgsMethodsPart2
     public static function orgsDeleteAttestationsById(ClientConfig $clientConfig, string $org, int $attestationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/" . SdkClient::encodePathSegment($attestationId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteAttestationsById', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/" . SdkClient::encodePathSegment($attestationId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteAttestationsById', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -167,7 +167,7 @@ trait OrgsMethodsPart2
     public static function orgsCheckBlockedUser(ClientConfig $clientConfig, string $org, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/blocks/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsCheckBlockedUser', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/blocks/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsCheckBlockedUser', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -182,7 +182,7 @@ trait OrgsMethodsPart2
     public static function orgsBlockUser(ClientConfig $clientConfig, string $org, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/blocks/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsBlockUser', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/blocks/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsBlockUser', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -214,7 +214,7 @@ trait OrgsMethodsPart2
     public static function orgsListFailedInvitations(ClientConfig $clientConfig, string $org, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/failed_invitations", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListFailedInvitations', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/failed_invitations", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListFailedInvitations', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OrganizationInvitation::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -232,7 +232,7 @@ trait OrgsMethodsPart2
     public static function orgsListWebhooks(ClientConfig $clientConfig, string $org, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListWebhooks', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListWebhooks', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OrgHook::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -252,7 +252,7 @@ trait OrgsMethodsPart2
     public static function orgsCreateWebhook(ClientConfig $clientConfig, string $org, string $name, OrgsCreateWebhookConfig $config, array|SdkNotGiven $events = SdkNotGiven::Value, bool|SdkNotGiven $active = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OrgHook
     {
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks", $clientConfig, body: ['name' => $name, 'config' => $config, 'events' => $events, 'active' => $active], returnType: OrgHook::class, decoder: 'json', operationId: 'orgsCreateWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks", $clientConfig, body: ['name' => $name, 'config' => $config, 'events' => $events, 'active' => $active], returnType: OrgHook::class, decoder: 'json', operationId: 'orgsCreateWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrgHook::class));
     }
 
@@ -269,7 +269,7 @@ trait OrgsMethodsPart2
     public static function orgsGetWebhook(ClientConfig $clientConfig, string $org, int $hookId, ?RequestOptions $requestOptions = null): OrgHook
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, returnType: OrgHook::class, decoder: 'json', operationId: 'orgsGetWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, returnType: OrgHook::class, decoder: 'json', operationId: 'orgsGetWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrgHook::class));
     }
 
@@ -290,7 +290,7 @@ trait OrgsMethodsPart2
     public static function orgsUpdateWebhook(ClientConfig $clientConfig, string $org, int $hookId, OrgsUpdateWebhookConfig|SdkNotGiven $config = SdkNotGiven::Value, array|SdkNotGiven $events = SdkNotGiven::Value, bool|SdkNotGiven $active = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OrgHook
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, body: ['config' => $config, 'events' => $events, 'active' => $active, 'name' => $name], returnType: OrgHook::class, decoder: 'json', operationId: 'orgsUpdateWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, body: ['config' => $config, 'events' => $events, 'active' => $active, 'name' => $name], returnType: OrgHook::class, decoder: 'json', operationId: 'orgsUpdateWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrgHook::class));
     }
 
@@ -306,6 +306,6 @@ trait OrgsMethodsPart2
     public static function orgsDeleteWebhook(ClientConfig $clientConfig, string $org, int $hookId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteWebhook', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/hooks/" . SdkClient::encodePathSegment($hookId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteWebhook', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

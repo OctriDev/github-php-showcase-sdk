@@ -22,7 +22,7 @@ class Credentials
 
         Validation::validateItems('credentials', $credentials, min: 1, max: 1000);
 
-        $sdkResponse = SdkClient::request('POST', "/credentials/revoke", $clientConfig, body: ['credentials' => $credentials], decoder: 'json', operationId: 'credentialsRevoke', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/credentials/revoke", $clientConfig, body: ['credentials' => $credentials], decoder: 'json', operationId: 'credentialsRevoke', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::stringMapValue($sdkResponse->data));
     }
 }

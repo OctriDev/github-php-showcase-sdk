@@ -75,12 +75,8 @@ class RepositoryRuleDetailedVariant8Parameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "required_status_checks") || $data->required_status_checks === null) {
-            throw new SdkValidationError("required_status_checks", 'required', "Required property 'required_status_checks' is missing or null");
-        }
-        if (!property_exists($data, "strict_required_status_checks_policy") || $data->strict_required_status_checks_policy === null) {
-            throw new SdkValidationError("strict_required_status_checks_policy", 'required', "Required property 'strict_required_status_checks_policy' is missing or null");
-        }
+        if (!property_exists($data, "required_status_checks") || $data->required_status_checks === null) { throw new SdkValidationError("required_status_checks", 'required', "Required property 'required_status_checks' is missing or null"); }
+        if (!property_exists($data, "strict_required_status_checks_policy") || $data->strict_required_status_checks_policy === null) { throw new SdkValidationError("strict_required_status_checks_policy", 'required', "Required property 'strict_required_status_checks_policy' is missing or null"); }
         return new self(
             requiredStatusChecks: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RepositoryRuleParamsStatusCheckConfiguration::class), SdkClient::arrayValue($data->required_status_checks))),
             strictRequiredStatusChecksPolicy: SdkClient::boolValue($data->strict_required_status_checks_policy),
@@ -97,26 +93,11 @@ final readonly class RepositoryRuleDetailedVariant8RulesetSourceTypeEnum impleme
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class RepositoryRuleDetailedVariant8 implements RepositoryRuleDetailed, \JsonSerializable
@@ -202,9 +183,7 @@ class RepositoryRuleDetailedVariant8 implements RepositoryRuleDetailed, \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant8TypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleDetailedVariant8Parameters::class) : SdkNotGiven::Value),
@@ -231,26 +210,11 @@ final readonly class RepositoryRuleDetailedVariant9RulesetSourceTypeEnum impleme
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class RepositoryRuleDetailedVariant9 implements RepositoryRuleDetailed, \JsonSerializable
@@ -324,9 +288,7 @@ class RepositoryRuleDetailedVariant9 implements RepositoryRuleDetailed, \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant9TypeEnum::class),
             rulesetSourceType: (property_exists($data, "ruleset_source_type") && $data->ruleset_source_type !== null ? SdkClient::hydrateStringEnumOrString($data->ruleset_source_type, RepositoryRuleDetailedVariant9RulesetSourceTypeEnum::class) : SdkNotGiven::Value),
@@ -354,24 +316,9 @@ final readonly class RepositoryRuleDetailedVariant10ParametersOperatorEnum imple
     public const CONTAINS = "contains";
     public const REGEX = "regex";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

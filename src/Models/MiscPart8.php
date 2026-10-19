@@ -85,21 +85,11 @@ class PullRequestWebhookHead implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "label") || $data->label === null) {
-            throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null");
-        }
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
-        }
-        if (!property_exists($data, "repo") || $data->repo === null) {
-            throw new SdkValidationError("repo", 'required', "Required property 'repo' is missing or null");
-        }
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "user") || $data->user === null) {
-            throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null");
-        }
+        if (!property_exists($data, "label") || $data->label === null) { throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "repo") || $data->repo === null) { throw new SdkValidationError("repo", 'required', "Required property 'repo' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "user") || $data->user === null) { throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null"); }
         return new self(
             label: SdkClient::stringValue($data->label),
             ref: SdkClient::stringValue($data->ref),
@@ -188,21 +178,11 @@ class PullRequestWebhookBase implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "label") || $data->label === null) {
-            throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null");
-        }
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
-        }
-        if (!property_exists($data, "repo") || $data->repo === null) {
-            throw new SdkValidationError("repo", 'required', "Required property 'repo' is missing or null");
-        }
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "user") || $data->user === null) {
-            throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null");
-        }
+        if (!property_exists($data, "label") || $data->label === null) { throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "repo") || $data->repo === null) { throw new SdkValidationError("repo", 'required', "Required property 'repo' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "user") || $data->user === null) { throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null"); }
         return new self(
             label: SdkClient::stringValue($data->label),
             ref: SdkClient::stringValue($data->ref),
@@ -321,30 +301,14 @@ class PullRequestWebhookLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "comments") || $data->comments === null) {
-            throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null");
-        }
-        if (!property_exists($data, "commits") || $data->commits === null) {
-            throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null");
-        }
-        if (!property_exists($data, "statuses") || $data->statuses === null) {
-            throw new SdkValidationError("statuses", 'required', "Required property 'statuses' is missing or null");
-        }
-        if (!property_exists($data, "html") || $data->html === null) {
-            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
-        }
-        if (!property_exists($data, "issue") || $data->issue === null) {
-            throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null");
-        }
-        if (!property_exists($data, "review_comments") || $data->review_comments === null) {
-            throw new SdkValidationError("review_comments", 'required', "Required property 'review_comments' is missing or null");
-        }
-        if (!property_exists($data, "review_comment") || $data->review_comment === null) {
-            throw new SdkValidationError("review_comment", 'required', "Required property 'review_comment' is missing or null");
-        }
-        if (!property_exists($data, "self") || $data->self === null) {
-            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
-        }
+        if (!property_exists($data, "comments") || $data->comments === null) { throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null"); }
+        if (!property_exists($data, "commits") || $data->commits === null) { throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null"); }
+        if (!property_exists($data, "statuses") || $data->statuses === null) { throw new SdkValidationError("statuses", 'required', "Required property 'statuses' is missing or null"); }
+        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
+        if (!property_exists($data, "issue") || $data->issue === null) { throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null"); }
+        if (!property_exists($data, "review_comments") || $data->review_comments === null) { throw new SdkValidationError("review_comments", 'required', "Required property 'review_comments' is missing or null"); }
+        if (!property_exists($data, "review_comment") || $data->review_comment === null) { throw new SdkValidationError("review_comment", 'required', "Required property 'review_comment' is missing or null"); }
+        if (!property_exists($data, "self") || $data->self === null) { throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null"); }
         return new self(
             comments: SdkClient::hydrateClass($data->comments, Link::class),
             commits: SdkClient::hydrateClass($data->commits, Link::class),
@@ -367,26 +331,11 @@ final readonly class PullRequestWebhookMergeCommitMessageEnum implements SdkOpen
     public const PR_TITLE = "PR_TITLE";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -397,24 +346,9 @@ final readonly class PullRequestWebhookMergeCommitTitleEnum implements SdkOpenEn
     public const PR_TITLE = "PR_TITLE";
     public const MERGE_MESSAGE = "MERGE_MESSAGE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

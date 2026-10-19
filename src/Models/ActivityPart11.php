@@ -103,12 +103,8 @@ class IssuesEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "issue") || $data->issue === null) {
-            throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "issue") || $data->issue === null) { throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null"); }
         return new self(
             action: SdkClient::stringValue($data->action),
             issue: SdkClient::hydrateClass($data->issue, Issue::class),
@@ -168,12 +164,8 @@ class LinkWithType implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             href: SdkClient::stringValue($data->href),
             type: SdkClient::stringValue($data->type),
@@ -229,12 +221,8 @@ class MemberEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "member") || $data->member === null) {
-            throw new SdkValidationError("member", 'required', "Required property 'member' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "member") || $data->member === null) { throw new SdkValidationError("member", 'required', "Required property 'member' is missing or null"); }
         return new self(
             action: SdkClient::stringValue($data->action),
             member: SdkClient::hydrateClass($data->member, SimpleUser::class),

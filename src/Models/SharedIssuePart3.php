@@ -211,30 +211,14 @@ class IssueComment implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "user")) {
-            throw new SdkValidationError("user", 'required', "Missing required property 'user'");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "issue_url") || $data->issue_url === null) {
-            throw new SdkValidationError("issue_url", 'required', "Required property 'issue_url' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "user")) { throw new SdkValidationError("user", 'required', "Missing required property 'user'"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "issue_url") || $data->issue_url === null) { throw new SdkValidationError("issue_url", 'required', "Required property 'issue_url' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             nodeId: SdkClient::stringValue($data->node_id),
@@ -324,18 +308,10 @@ class IssueDependenciesSummary implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "blocked_by") || $data->blocked_by === null) {
-            throw new SdkValidationError("blocked_by", 'required', "Required property 'blocked_by' is missing or null");
-        }
-        if (!property_exists($data, "blocking") || $data->blocking === null) {
-            throw new SdkValidationError("blocking", 'required', "Required property 'blocking' is missing or null");
-        }
-        if (!property_exists($data, "total_blocked_by") || $data->total_blocked_by === null) {
-            throw new SdkValidationError("total_blocked_by", 'required', "Required property 'total_blocked_by' is missing or null");
-        }
-        if (!property_exists($data, "total_blocking") || $data->total_blocking === null) {
-            throw new SdkValidationError("total_blocking", 'required', "Required property 'total_blocking' is missing or null");
-        }
+        if (!property_exists($data, "blocked_by") || $data->blocked_by === null) { throw new SdkValidationError("blocked_by", 'required', "Required property 'blocked_by' is missing or null"); }
+        if (!property_exists($data, "blocking") || $data->blocking === null) { throw new SdkValidationError("blocking", 'required', "Required property 'blocking' is missing or null"); }
+        if (!property_exists($data, "total_blocked_by") || $data->total_blocked_by === null) { throw new SdkValidationError("total_blocked_by", 'required', "Required property 'total_blocked_by' is missing or null"); }
+        if (!property_exists($data, "total_blocking") || $data->total_blocking === null) { throw new SdkValidationError("total_blocking", 'required', "Required property 'total_blocking' is missing or null"); }
         return new self(
             blockedBy: SdkClient::intValue($data->blocked_by),
             blocking: SdkClient::intValue($data->blocking),
@@ -356,24 +332,9 @@ final readonly class IssueFieldValueDataTypeEnum implements SdkOpenEnum
     public const NUMBER = "number";
     public const DATE = "date";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

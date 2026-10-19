@@ -52,12 +52,8 @@ class AppsListInstallationReposForAuthenticatedUserResponse implements \JsonSeri
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "repositories") || $data->repositories === null) {
-            throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "repositories") || $data->repositories === null) { throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             repositories: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AppsListInstallationReposForAuthenticatedUserResponseRepositoriesItem::class), SdkClient::arrayValue($data->repositories))),

@@ -13,26 +13,11 @@ final readonly class SecurityAdvisoriesListGlobalAdvisoriesType implements SdkOp
     public const MALWARE = "malware";
     public const UNREVIEWED = "unreviewed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesListGlobalAdvisoriesSeverity implements SdkOpenEnum
@@ -43,26 +28,11 @@ final readonly class SecurityAdvisoriesListGlobalAdvisoriesSeverity implements S
     public const HIGH = "high";
     public const CRITICAL = "critical";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesListGlobalAdvisoriesDirection implements SdkOpenEnum
@@ -70,26 +40,11 @@ final readonly class SecurityAdvisoriesListGlobalAdvisoriesDirection implements 
     public const ASC = "asc";
     public const DESC = "desc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesListGlobalAdvisoriesSort implements SdkOpenEnum
@@ -99,26 +54,11 @@ final readonly class SecurityAdvisoriesListGlobalAdvisoriesSort implements SdkOp
     public const EPSS_PERCENTAGE = "epss_percentage";
     public const EPSS_PERCENTILE = "epss_percentile";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesListOrgRepositoryAdvisoriesDirection implements SdkOpenEnum
@@ -126,26 +66,11 @@ final readonly class SecurityAdvisoriesListOrgRepositoryAdvisoriesDirection impl
     public const ASC = "asc";
     public const DESC = "desc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesListOrgRepositoryAdvisoriesSort implements SdkOpenEnum
@@ -154,26 +79,11 @@ final readonly class SecurityAdvisoriesListOrgRepositoryAdvisoriesSort implement
     public const UPDATED = "updated";
     public const PUBLISHED = "published";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesListOrgRepositoryAdvisoriesState implements SdkOpenEnum
@@ -183,26 +93,11 @@ final readonly class SecurityAdvisoriesListOrgRepositoryAdvisoriesState implemen
     public const PUBLISHED = "published";
     public const CLOSED = "closed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesListRepositoryAdvisoriesDirection implements SdkOpenEnum
@@ -210,26 +105,11 @@ final readonly class SecurityAdvisoriesListRepositoryAdvisoriesDirection impleme
     public const ASC = "asc";
     public const DESC = "desc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesListRepositoryAdvisoriesSort implements SdkOpenEnum
@@ -238,26 +118,11 @@ final readonly class SecurityAdvisoriesListRepositoryAdvisoriesSort implements S
     public const UPDATED = "updated";
     public const PUBLISHED = "published";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesListRepositoryAdvisoriesState implements SdkOpenEnum
@@ -267,26 +132,11 @@ final readonly class SecurityAdvisoriesListRepositoryAdvisoriesState implements 
     public const PUBLISHED = "published";
     public const CLOSED = "closed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesCreateRepositoryAdvisorySeverity implements SdkOpenEnum
@@ -296,26 +146,11 @@ final readonly class SecurityAdvisoriesCreateRepositoryAdvisorySeverity implemen
     public const MEDIUM = "medium";
     public const LOW = "low";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesCreatePrivateVulnerabilityReportSeverity implements SdkOpenEnum
@@ -325,26 +160,11 @@ final readonly class SecurityAdvisoriesCreatePrivateVulnerabilityReportSeverity 
     public const MEDIUM = "medium";
     public const LOW = "low";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesUpdateRepositoryAdvisorySeverity implements SdkOpenEnum
@@ -354,26 +174,11 @@ final readonly class SecurityAdvisoriesUpdateRepositoryAdvisorySeverity implemen
     public const MEDIUM = "medium";
     public const LOW = "low";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class SecurityAdvisoriesUpdateRepositoryAdvisoryState implements SdkOpenEnum
@@ -382,26 +187,11 @@ final readonly class SecurityAdvisoriesUpdateRepositoryAdvisoryState implements 
     public const CLOSED = "closed";
     public const DRAFT = "draft";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -454,9 +244,7 @@ class SecurityAdvisoriesCreateRepositoryAdvisoryVulnerabilitiesItemPackage imple
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) {
-            throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null");
-        }
+        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) { throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null"); }
         return new self(
             ecosystem: SdkClient::hydrateStringEnumOrString($data->ecosystem, SecurityAdvisoryEcosystems::class),
             name: (property_exists($data, "name") ? ($data->name === null ? null : SdkClient::stringValue($data->name)) : SdkNotGiven::Value),
@@ -538,9 +326,7 @@ class SecurityAdvisoriesCreateRepositoryAdvisoryVulnerabilitiesItem implements \
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "package") || $data->package === null) {
-            throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null");
-        }
+        if (!property_exists($data, "package") || $data->package === null) { throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null"); }
         return new self(
             package: SdkClient::hydrateClass($data->package, SecurityAdvisoriesCreateRepositoryAdvisoryVulnerabilitiesItemPackage::class),
             vulnerableVersionRange: (property_exists($data, "vulnerable_version_range") ? ($data->vulnerable_version_range === null ? null : SdkClient::stringValue($data->vulnerable_version_range)) : SdkNotGiven::Value),

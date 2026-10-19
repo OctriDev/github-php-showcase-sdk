@@ -55,12 +55,8 @@ class ActionsPolicyRepoConditionsVariant1WorkflowPath implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "include") || $data->include === null) {
-            throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null");
-        }
-        if (!property_exists($data, "exclude") || $data->exclude === null) {
-            throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null");
-        }
+        if (!property_exists($data, "include") || $data->include === null) { throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null"); }
+        if (!property_exists($data, "exclude") || $data->exclude === null) { throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null"); }
         return new self(
             include_: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include))),
             exclude: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->exclude))),
@@ -103,9 +99,7 @@ class ActionsPolicyRepoConditionsVariant1 implements ActionsPolicyRepoConditions
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "workflow_path") || $data->workflow_path === null) {
-            throw new SdkValidationError("workflow_path", 'required', "Required property 'workflow_path' is missing or null");
-        }
+        if (!property_exists($data, "workflow_path") || $data->workflow_path === null) { throw new SdkValidationError("workflow_path", 'required', "Required property 'workflow_path' is missing or null"); }
         return new self(
             workflowPath: SdkClient::hydrateClass($data->workflow_path, ActionsPolicyRepoConditionsVariant1WorkflowPath::class),
         );
@@ -160,12 +154,8 @@ class ActionsPolicyWorkflowPathConditionWorkflowPath implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "include") || $data->include === null) {
-            throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null");
-        }
-        if (!property_exists($data, "exclude") || $data->exclude === null) {
-            throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null");
-        }
+        if (!property_exists($data, "include") || $data->include === null) { throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null"); }
+        if (!property_exists($data, "exclude") || $data->exclude === null) { throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null"); }
         return new self(
             include_: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include))),
             exclude: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->exclude))),

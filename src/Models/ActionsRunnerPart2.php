@@ -189,27 +189,13 @@ class RunnerGroupsOrg implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "visibility") || $data->visibility === null) {
-            throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null");
-        }
-        if (!property_exists($data, "default") || $data->default === null) {
-            throw new SdkValidationError("default", 'required', "Required property 'default' is missing or null");
-        }
-        if (!property_exists($data, "runners_url") || $data->runners_url === null) {
-            throw new SdkValidationError("runners_url", 'required', "Required property 'runners_url' is missing or null");
-        }
-        if (!property_exists($data, "inherited") || $data->inherited === null) {
-            throw new SdkValidationError("inherited", 'required', "Required property 'inherited' is missing or null");
-        }
-        if (!property_exists($data, "allows_public_repositories") || $data->allows_public_repositories === null) {
-            throw new SdkValidationError("allows_public_repositories", 'required', "Required property 'allows_public_repositories' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "visibility") || $data->visibility === null) { throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null"); }
+        if (!property_exists($data, "default") || $data->default === null) { throw new SdkValidationError("default", 'required', "Required property 'default' is missing or null"); }
+        if (!property_exists($data, "runners_url") || $data->runners_url === null) { throw new SdkValidationError("runners_url", 'required', "Required property 'runners_url' is missing or null"); }
+        if (!property_exists($data, "inherited") || $data->inherited === null) { throw new SdkValidationError("inherited", 'required', "Required property 'inherited' is missing or null"); }
+        if (!property_exists($data, "allows_public_repositories") || $data->allows_public_repositories === null) { throw new SdkValidationError("allows_public_repositories", 'required', "Required property 'allows_public_repositories' is missing or null"); }
         return new self(
             id: SdkClient::floatValue($data->id),
             name: SdkClient::stringValue($data->name),
@@ -237,26 +223,11 @@ final readonly class RunnerLabelTypeEnum implements SdkOpenEnum
     public const READ_ONLY = "read-only";
     public const CUSTOM = "custom";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -321,9 +292,7 @@ class RunnerLabel implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             id: (property_exists($data, "id") && $data->id !== null ? SdkClient::intValue($data->id) : SdkNotGiven::Value),

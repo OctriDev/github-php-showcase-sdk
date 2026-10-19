@@ -15,26 +15,11 @@ final readonly class ActionsDefaultWorkflowPermissions implements SdkOpenEnum
     public const READ = "read";
     public const WRITE = "write";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -85,12 +70,8 @@ class ActionsGetDefaultWorkflowPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "default_workflow_permissions") || $data->default_workflow_permissions === null) {
-            throw new SdkValidationError("default_workflow_permissions", 'required', "Required property 'default_workflow_permissions' is missing or null");
-        }
-        if (!property_exists($data, "can_approve_pull_request_reviews") || $data->can_approve_pull_request_reviews === null) {
-            throw new SdkValidationError("can_approve_pull_request_reviews", 'required', "Required property 'can_approve_pull_request_reviews' is missing or null");
-        }
+        if (!property_exists($data, "default_workflow_permissions") || $data->default_workflow_permissions === null) { throw new SdkValidationError("default_workflow_permissions", 'required', "Required property 'default_workflow_permissions' is missing or null"); }
+        if (!property_exists($data, "can_approve_pull_request_reviews") || $data->can_approve_pull_request_reviews === null) { throw new SdkValidationError("can_approve_pull_request_reviews", 'required', "Required property 'can_approve_pull_request_reviews' is missing or null"); }
         return new self(
             defaultWorkflowPermissions: SdkClient::hydrateStringEnumOrString($data->default_workflow_permissions, ActionsDefaultWorkflowPermissions::class),
             canApprovePullRequestReviews: SdkClient::boolValue($data->can_approve_pull_request_reviews),
@@ -184,9 +165,7 @@ class ActionsOrganizationPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) {
-            throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null");
-        }
+        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) { throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null"); }
         return new self(
             enabledRepositories: SdkClient::hydrateStringEnumOrString($data->enabled_repositories, EnabledRepositories::class),
             selectedRepositoriesUrl: (property_exists($data, "selected_repositories_url") && $data->selected_repositories_url !== null ? SdkClient::stringValue($data->selected_repositories_url) : SdkNotGiven::Value),
@@ -271,9 +250,7 @@ class ActionsRepositoryPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
             allowedActions: (property_exists($data, "allowed_actions") && $data->allowed_actions !== null ? SdkClient::hydrateStringEnumOrString($data->allowed_actions, AllowedActions::class) : SdkNotGiven::Value),
@@ -351,24 +328,9 @@ final readonly class ActionsWorkflowAccessToRepositoryAccessLevelEnum implements
     public const USER = "user";
     public const ORGANIZATION = "organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

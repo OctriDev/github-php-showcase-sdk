@@ -57,9 +57,7 @@ class RepositoryRuleCommitterEmailPattern implements RepositoryRule, OrgRules, \
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleCommitterEmailPatternTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleCommitterEmailPatternParameters::class) : SdkNotGiven::Value),
@@ -184,9 +182,7 @@ class RepositoryRuleCopilotCodeReview implements RepositoryRule, OrgRules, \Json
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleCopilotCodeReviewTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleCopilotCodeReviewParameters::class) : SdkNotGiven::Value),
@@ -240,9 +236,7 @@ class RepositoryRuleCreation implements RepositoryRule, OrgRules, \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleCreationTypeEnum::class),
         );
@@ -295,9 +289,7 @@ class RepositoryRuleDeletion implements RepositoryRule, OrgRules, \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDeletionTypeEnum::class),
         );
@@ -320,24 +312,9 @@ final readonly class RepositoryRuleDetailedVariant0RulesetSourceTypeEnum impleme
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

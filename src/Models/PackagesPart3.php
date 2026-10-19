@@ -19,26 +19,11 @@ final readonly class PackagePackageTypeEnum implements SdkOpenEnum
     public const NUGET = "nuget";
     public const CONTAINER = "container";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -49,26 +34,11 @@ final readonly class PackageVisibilityEnum implements SdkOpenEnum
     public const PRIVATE = "private";
     public const PUBLIC = "public";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -213,33 +183,15 @@ class Package implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "package_type") || $data->package_type === null) {
-            throw new SdkValidationError("package_type", 'required', "Required property 'package_type' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "version_count") || $data->version_count === null) {
-            throw new SdkValidationError("version_count", 'required', "Required property 'version_count' is missing or null");
-        }
-        if (!property_exists($data, "visibility") || $data->visibility === null) {
-            throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "package_type") || $data->package_type === null) { throw new SdkValidationError("package_type", 'required', "Required property 'package_type' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "version_count") || $data->version_count === null) { throw new SdkValidationError("version_count", 'required', "Required property 'version_count' is missing or null"); }
+        if (!property_exists($data, "visibility") || $data->visibility === null) { throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),
@@ -268,26 +220,11 @@ final readonly class PackageVersionMetadataPackageTypeEnum implements SdkOpenEnu
     public const NUGET = "nuget";
     public const CONTAINER = "container";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -328,9 +265,7 @@ class PackageVersionMetadataContainer implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "tags") || $data->tags === null) {
-            throw new SdkValidationError("tags", 'required', "Required property 'tags' is missing or null");
-        }
+        if (!property_exists($data, "tags") || $data->tags === null) { throw new SdkValidationError("tags", 'required', "Required property 'tags' is missing or null"); }
         return new self(
             tags: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->tags))),
         );

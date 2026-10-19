@@ -201,27 +201,13 @@ class DependencyGraphSpdxSbomSbom implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "SPDXID") || $data->SPDXID === null) {
-            throw new SdkValidationError("SPDXID", 'required', "Required property 'SPDXID' is missing or null");
-        }
-        if (!property_exists($data, "spdxVersion") || $data->spdxVersion === null) {
-            throw new SdkValidationError("spdxVersion", 'required', "Required property 'spdxVersion' is missing or null");
-        }
-        if (!property_exists($data, "creationInfo") || $data->creationInfo === null) {
-            throw new SdkValidationError("creationInfo", 'required', "Required property 'creationInfo' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "dataLicense") || $data->dataLicense === null) {
-            throw new SdkValidationError("dataLicense", 'required', "Required property 'dataLicense' is missing or null");
-        }
-        if (!property_exists($data, "documentNamespace") || $data->documentNamespace === null) {
-            throw new SdkValidationError("documentNamespace", 'required', "Required property 'documentNamespace' is missing or null");
-        }
-        if (!property_exists($data, "packages") || $data->packages === null) {
-            throw new SdkValidationError("packages", 'required', "Required property 'packages' is missing or null");
-        }
+        if (!property_exists($data, "SPDXID") || $data->SPDXID === null) { throw new SdkValidationError("SPDXID", 'required', "Required property 'SPDXID' is missing or null"); }
+        if (!property_exists($data, "spdxVersion") || $data->spdxVersion === null) { throw new SdkValidationError("spdxVersion", 'required', "Required property 'spdxVersion' is missing or null"); }
+        if (!property_exists($data, "creationInfo") || $data->creationInfo === null) { throw new SdkValidationError("creationInfo", 'required', "Required property 'creationInfo' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "dataLicense") || $data->dataLicense === null) { throw new SdkValidationError("dataLicense", 'required', "Required property 'dataLicense' is missing or null"); }
+        if (!property_exists($data, "documentNamespace") || $data->documentNamespace === null) { throw new SdkValidationError("documentNamespace", 'required', "Required property 'documentNamespace' is missing or null"); }
+        if (!property_exists($data, "packages") || $data->packages === null) { throw new SdkValidationError("packages", 'required', "Required property 'packages' is missing or null"); }
         return new self(
             spdxid: SdkClient::stringValue($data->SPDXID),
             spdxVersion: SdkClient::stringValue($data->spdxVersion),
@@ -274,9 +260,7 @@ class DependencyGraphSpdxSbom implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sbom") || $data->sbom === null) {
-            throw new SdkValidationError("sbom", 'required', "Required property 'sbom' is missing or null");
-        }
+        if (!property_exists($data, "sbom") || $data->sbom === null) { throw new SdkValidationError("sbom", 'required', "Required property 'sbom' is missing or null"); }
         return new self(
             sbom: SdkClient::hydrateClass($data->sbom, DependencyGraphSpdxSbomSbom::class),
         );

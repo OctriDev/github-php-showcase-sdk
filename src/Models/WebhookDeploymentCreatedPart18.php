@@ -411,72 +411,28 @@ class WebhookDeploymentCreatedWorkflowRun implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "actor")) {
-            throw new SdkValidationError("actor", 'required', "Missing required property 'actor'");
-        }
-        if (!property_exists($data, "check_suite_id") || $data->check_suite_id === null) {
-            throw new SdkValidationError("check_suite_id", 'required', "Required property 'check_suite_id' is missing or null");
-        }
-        if (!property_exists($data, "check_suite_node_id") || $data->check_suite_node_id === null) {
-            throw new SdkValidationError("check_suite_node_id", 'required', "Required property 'check_suite_node_id' is missing or null");
-        }
-        if (!property_exists($data, "conclusion")) {
-            throw new SdkValidationError("conclusion", 'required', "Missing required property 'conclusion'");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "display_title") || $data->display_title === null) {
-            throw new SdkValidationError("display_title", 'required', "Required property 'display_title' is missing or null");
-        }
-        if (!property_exists($data, "event") || $data->event === null) {
-            throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null");
-        }
-        if (!property_exists($data, "head_branch") || $data->head_branch === null) {
-            throw new SdkValidationError("head_branch", 'required', "Required property 'head_branch' is missing or null");
-        }
-        if (!property_exists($data, "head_sha") || $data->head_sha === null) {
-            throw new SdkValidationError("head_sha", 'required', "Required property 'head_sha' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "path") || $data->path === null) {
-            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
-        }
-        if (!property_exists($data, "pull_requests") || $data->pull_requests === null) {
-            throw new SdkValidationError("pull_requests", 'required', "Required property 'pull_requests' is missing or null");
-        }
-        if (!property_exists($data, "run_attempt") || $data->run_attempt === null) {
-            throw new SdkValidationError("run_attempt", 'required', "Required property 'run_attempt' is missing or null");
-        }
-        if (!property_exists($data, "run_number") || $data->run_number === null) {
-            throw new SdkValidationError("run_number", 'required', "Required property 'run_number' is missing or null");
-        }
-        if (!property_exists($data, "run_started_at") || $data->run_started_at === null) {
-            throw new SdkValidationError("run_started_at", 'required', "Required property 'run_started_at' is missing or null");
-        }
-        if (!property_exists($data, "status") || $data->status === null) {
-            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "workflow_id") || $data->workflow_id === null) {
-            throw new SdkValidationError("workflow_id", 'required', "Required property 'workflow_id' is missing or null");
-        }
+        if (!property_exists($data, "actor")) { throw new SdkValidationError("actor", 'required', "Missing required property 'actor'"); }
+        if (!property_exists($data, "check_suite_id") || $data->check_suite_id === null) { throw new SdkValidationError("check_suite_id", 'required', "Required property 'check_suite_id' is missing or null"); }
+        if (!property_exists($data, "check_suite_node_id") || $data->check_suite_node_id === null) { throw new SdkValidationError("check_suite_node_id", 'required', "Required property 'check_suite_node_id' is missing or null"); }
+        if (!property_exists($data, "conclusion")) { throw new SdkValidationError("conclusion", 'required', "Missing required property 'conclusion'"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "display_title") || $data->display_title === null) { throw new SdkValidationError("display_title", 'required', "Required property 'display_title' is missing or null"); }
+        if (!property_exists($data, "event") || $data->event === null) { throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null"); }
+        if (!property_exists($data, "head_branch") || $data->head_branch === null) { throw new SdkValidationError("head_branch", 'required', "Required property 'head_branch' is missing or null"); }
+        if (!property_exists($data, "head_sha") || $data->head_sha === null) { throw new SdkValidationError("head_sha", 'required', "Required property 'head_sha' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
+        if (!property_exists($data, "pull_requests") || $data->pull_requests === null) { throw new SdkValidationError("pull_requests", 'required', "Required property 'pull_requests' is missing or null"); }
+        if (!property_exists($data, "run_attempt") || $data->run_attempt === null) { throw new SdkValidationError("run_attempt", 'required', "Required property 'run_attempt' is missing or null"); }
+        if (!property_exists($data, "run_number") || $data->run_number === null) { throw new SdkValidationError("run_number", 'required', "Required property 'run_number' is missing or null"); }
+        if (!property_exists($data, "run_started_at") || $data->run_started_at === null) { throw new SdkValidationError("run_started_at", 'required', "Required property 'run_started_at' is missing or null"); }
+        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "workflow_id") || $data->workflow_id === null) { throw new SdkValidationError("workflow_id", 'required', "Required property 'workflow_id' is missing or null"); }
         return new self(
             actor: ($data->actor === null ? null : SdkClient::hydrateClass($data->actor, WebhookDeploymentCreatedWorkflowRunActor::class)),
             checkSuiteId: SdkClient::intValue($data->check_suite_id),

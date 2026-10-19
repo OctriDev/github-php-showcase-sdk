@@ -105,27 +105,13 @@ class BranchRestrictionPolicy implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "users_url") || $data->users_url === null) {
-            throw new SdkValidationError("users_url", 'required', "Required property 'users_url' is missing or null");
-        }
-        if (!property_exists($data, "teams_url") || $data->teams_url === null) {
-            throw new SdkValidationError("teams_url", 'required', "Required property 'teams_url' is missing or null");
-        }
-        if (!property_exists($data, "apps_url") || $data->apps_url === null) {
-            throw new SdkValidationError("apps_url", 'required', "Required property 'apps_url' is missing or null");
-        }
-        if (!property_exists($data, "users") || $data->users === null) {
-            throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null");
-        }
-        if (!property_exists($data, "teams") || $data->teams === null) {
-            throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null");
-        }
-        if (!property_exists($data, "apps") || $data->apps === null) {
-            throw new SdkValidationError("apps", 'required', "Required property 'apps' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "users_url") || $data->users_url === null) { throw new SdkValidationError("users_url", 'required', "Required property 'users_url' is missing or null"); }
+        if (!property_exists($data, "teams_url") || $data->teams_url === null) { throw new SdkValidationError("teams_url", 'required', "Required property 'teams_url' is missing or null"); }
+        if (!property_exists($data, "apps_url") || $data->apps_url === null) { throw new SdkValidationError("apps_url", 'required', "Required property 'apps_url' is missing or null"); }
+        if (!property_exists($data, "users") || $data->users === null) { throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null"); }
+        if (!property_exists($data, "teams") || $data->teams === null) { throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null"); }
+        if (!property_exists($data, "apps") || $data->apps === null) { throw new SdkValidationError("apps", 'required', "Required property 'apps' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             usersUrl: SdkClient::stringValue($data->users_url),
@@ -186,12 +172,8 @@ class BranchShortCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             sha: SdkClient::stringValue($data->sha),
             url: SdkClient::stringValue($data->url),
@@ -257,15 +239,9 @@ class BranchShort implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "commit") || $data->commit === null) {
-            throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null");
-        }
-        if (!property_exists($data, "protected") || $data->protected === null) {
-            throw new SdkValidationError("protected", 'required', "Required property 'protected' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
+        if (!property_exists($data, "protected") || $data->protected === null) { throw new SdkValidationError("protected", 'required', "Required property 'protected' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             commit: SdkClient::hydrateClass($data->commit, BranchShortCommit::class),
@@ -322,12 +298,8 @@ class BranchWithProtectionLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "html") || $data->html === null) {
-            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
-        }
-        if (!property_exists($data, "self") || $data->self === null) {
-            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
-        }
+        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
+        if (!property_exists($data, "self") || $data->self === null) { throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null"); }
         return new self(
             html: SdkClient::stringValue($data->html),
             self_: SdkClient::stringValue($data->self),

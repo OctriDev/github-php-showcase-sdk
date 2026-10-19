@@ -369,99 +369,37 @@ class Root implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "current_user_url") || $data->current_user_url === null) {
-            throw new SdkValidationError("current_user_url", 'required', "Required property 'current_user_url' is missing or null");
-        }
-        if (!property_exists($data, "current_user_authorizations_html_url") || $data->current_user_authorizations_html_url === null) {
-            throw new SdkValidationError("current_user_authorizations_html_url", 'required', "Required property 'current_user_authorizations_html_url' is missing or null");
-        }
-        if (!property_exists($data, "authorizations_url") || $data->authorizations_url === null) {
-            throw new SdkValidationError("authorizations_url", 'required', "Required property 'authorizations_url' is missing or null");
-        }
-        if (!property_exists($data, "code_search_url") || $data->code_search_url === null) {
-            throw new SdkValidationError("code_search_url", 'required', "Required property 'code_search_url' is missing or null");
-        }
-        if (!property_exists($data, "commit_search_url") || $data->commit_search_url === null) {
-            throw new SdkValidationError("commit_search_url", 'required', "Required property 'commit_search_url' is missing or null");
-        }
-        if (!property_exists($data, "emails_url") || $data->emails_url === null) {
-            throw new SdkValidationError("emails_url", 'required', "Required property 'emails_url' is missing or null");
-        }
-        if (!property_exists($data, "emojis_url") || $data->emojis_url === null) {
-            throw new SdkValidationError("emojis_url", 'required', "Required property 'emojis_url' is missing or null");
-        }
-        if (!property_exists($data, "events_url") || $data->events_url === null) {
-            throw new SdkValidationError("events_url", 'required', "Required property 'events_url' is missing or null");
-        }
-        if (!property_exists($data, "feeds_url") || $data->feeds_url === null) {
-            throw new SdkValidationError("feeds_url", 'required', "Required property 'feeds_url' is missing or null");
-        }
-        if (!property_exists($data, "followers_url") || $data->followers_url === null) {
-            throw new SdkValidationError("followers_url", 'required', "Required property 'followers_url' is missing or null");
-        }
-        if (!property_exists($data, "following_url") || $data->following_url === null) {
-            throw new SdkValidationError("following_url", 'required', "Required property 'following_url' is missing or null");
-        }
-        if (!property_exists($data, "gists_url") || $data->gists_url === null) {
-            throw new SdkValidationError("gists_url", 'required', "Required property 'gists_url' is missing or null");
-        }
-        if (!property_exists($data, "issue_search_url") || $data->issue_search_url === null) {
-            throw new SdkValidationError("issue_search_url", 'required', "Required property 'issue_search_url' is missing or null");
-        }
-        if (!property_exists($data, "issues_url") || $data->issues_url === null) {
-            throw new SdkValidationError("issues_url", 'required', "Required property 'issues_url' is missing or null");
-        }
-        if (!property_exists($data, "keys_url") || $data->keys_url === null) {
-            throw new SdkValidationError("keys_url", 'required', "Required property 'keys_url' is missing or null");
-        }
-        if (!property_exists($data, "label_search_url") || $data->label_search_url === null) {
-            throw new SdkValidationError("label_search_url", 'required', "Required property 'label_search_url' is missing or null");
-        }
-        if (!property_exists($data, "notifications_url") || $data->notifications_url === null) {
-            throw new SdkValidationError("notifications_url", 'required', "Required property 'notifications_url' is missing or null");
-        }
-        if (!property_exists($data, "organization_url") || $data->organization_url === null) {
-            throw new SdkValidationError("organization_url", 'required', "Required property 'organization_url' is missing or null");
-        }
-        if (!property_exists($data, "organization_repositories_url") || $data->organization_repositories_url === null) {
-            throw new SdkValidationError("organization_repositories_url", 'required', "Required property 'organization_repositories_url' is missing or null");
-        }
-        if (!property_exists($data, "organization_teams_url") || $data->organization_teams_url === null) {
-            throw new SdkValidationError("organization_teams_url", 'required', "Required property 'organization_teams_url' is missing or null");
-        }
-        if (!property_exists($data, "public_gists_url") || $data->public_gists_url === null) {
-            throw new SdkValidationError("public_gists_url", 'required', "Required property 'public_gists_url' is missing or null");
-        }
-        if (!property_exists($data, "rate_limit_url") || $data->rate_limit_url === null) {
-            throw new SdkValidationError("rate_limit_url", 'required', "Required property 'rate_limit_url' is missing or null");
-        }
-        if (!property_exists($data, "repository_url") || $data->repository_url === null) {
-            throw new SdkValidationError("repository_url", 'required', "Required property 'repository_url' is missing or null");
-        }
-        if (!property_exists($data, "repository_search_url") || $data->repository_search_url === null) {
-            throw new SdkValidationError("repository_search_url", 'required', "Required property 'repository_search_url' is missing or null");
-        }
-        if (!property_exists($data, "current_user_repositories_url") || $data->current_user_repositories_url === null) {
-            throw new SdkValidationError("current_user_repositories_url", 'required', "Required property 'current_user_repositories_url' is missing or null");
-        }
-        if (!property_exists($data, "starred_url") || $data->starred_url === null) {
-            throw new SdkValidationError("starred_url", 'required', "Required property 'starred_url' is missing or null");
-        }
-        if (!property_exists($data, "starred_gists_url") || $data->starred_gists_url === null) {
-            throw new SdkValidationError("starred_gists_url", 'required', "Required property 'starred_gists_url' is missing or null");
-        }
-        if (!property_exists($data, "user_url") || $data->user_url === null) {
-            throw new SdkValidationError("user_url", 'required', "Required property 'user_url' is missing or null");
-        }
-        if (!property_exists($data, "user_organizations_url") || $data->user_organizations_url === null) {
-            throw new SdkValidationError("user_organizations_url", 'required', "Required property 'user_organizations_url' is missing or null");
-        }
-        if (!property_exists($data, "user_repositories_url") || $data->user_repositories_url === null) {
-            throw new SdkValidationError("user_repositories_url", 'required', "Required property 'user_repositories_url' is missing or null");
-        }
-        if (!property_exists($data, "user_search_url") || $data->user_search_url === null) {
-            throw new SdkValidationError("user_search_url", 'required', "Required property 'user_search_url' is missing or null");
-        }
+        if (!property_exists($data, "current_user_url") || $data->current_user_url === null) { throw new SdkValidationError("current_user_url", 'required', "Required property 'current_user_url' is missing or null"); }
+        if (!property_exists($data, "current_user_authorizations_html_url") || $data->current_user_authorizations_html_url === null) { throw new SdkValidationError("current_user_authorizations_html_url", 'required', "Required property 'current_user_authorizations_html_url' is missing or null"); }
+        if (!property_exists($data, "authorizations_url") || $data->authorizations_url === null) { throw new SdkValidationError("authorizations_url", 'required', "Required property 'authorizations_url' is missing or null"); }
+        if (!property_exists($data, "code_search_url") || $data->code_search_url === null) { throw new SdkValidationError("code_search_url", 'required', "Required property 'code_search_url' is missing or null"); }
+        if (!property_exists($data, "commit_search_url") || $data->commit_search_url === null) { throw new SdkValidationError("commit_search_url", 'required', "Required property 'commit_search_url' is missing or null"); }
+        if (!property_exists($data, "emails_url") || $data->emails_url === null) { throw new SdkValidationError("emails_url", 'required', "Required property 'emails_url' is missing or null"); }
+        if (!property_exists($data, "emojis_url") || $data->emojis_url === null) { throw new SdkValidationError("emojis_url", 'required', "Required property 'emojis_url' is missing or null"); }
+        if (!property_exists($data, "events_url") || $data->events_url === null) { throw new SdkValidationError("events_url", 'required', "Required property 'events_url' is missing or null"); }
+        if (!property_exists($data, "feeds_url") || $data->feeds_url === null) { throw new SdkValidationError("feeds_url", 'required', "Required property 'feeds_url' is missing or null"); }
+        if (!property_exists($data, "followers_url") || $data->followers_url === null) { throw new SdkValidationError("followers_url", 'required', "Required property 'followers_url' is missing or null"); }
+        if (!property_exists($data, "following_url") || $data->following_url === null) { throw new SdkValidationError("following_url", 'required', "Required property 'following_url' is missing or null"); }
+        if (!property_exists($data, "gists_url") || $data->gists_url === null) { throw new SdkValidationError("gists_url", 'required', "Required property 'gists_url' is missing or null"); }
+        if (!property_exists($data, "issue_search_url") || $data->issue_search_url === null) { throw new SdkValidationError("issue_search_url", 'required', "Required property 'issue_search_url' is missing or null"); }
+        if (!property_exists($data, "issues_url") || $data->issues_url === null) { throw new SdkValidationError("issues_url", 'required', "Required property 'issues_url' is missing or null"); }
+        if (!property_exists($data, "keys_url") || $data->keys_url === null) { throw new SdkValidationError("keys_url", 'required', "Required property 'keys_url' is missing or null"); }
+        if (!property_exists($data, "label_search_url") || $data->label_search_url === null) { throw new SdkValidationError("label_search_url", 'required', "Required property 'label_search_url' is missing or null"); }
+        if (!property_exists($data, "notifications_url") || $data->notifications_url === null) { throw new SdkValidationError("notifications_url", 'required', "Required property 'notifications_url' is missing or null"); }
+        if (!property_exists($data, "organization_url") || $data->organization_url === null) { throw new SdkValidationError("organization_url", 'required', "Required property 'organization_url' is missing or null"); }
+        if (!property_exists($data, "organization_repositories_url") || $data->organization_repositories_url === null) { throw new SdkValidationError("organization_repositories_url", 'required', "Required property 'organization_repositories_url' is missing or null"); }
+        if (!property_exists($data, "organization_teams_url") || $data->organization_teams_url === null) { throw new SdkValidationError("organization_teams_url", 'required', "Required property 'organization_teams_url' is missing or null"); }
+        if (!property_exists($data, "public_gists_url") || $data->public_gists_url === null) { throw new SdkValidationError("public_gists_url", 'required', "Required property 'public_gists_url' is missing or null"); }
+        if (!property_exists($data, "rate_limit_url") || $data->rate_limit_url === null) { throw new SdkValidationError("rate_limit_url", 'required', "Required property 'rate_limit_url' is missing or null"); }
+        if (!property_exists($data, "repository_url") || $data->repository_url === null) { throw new SdkValidationError("repository_url", 'required', "Required property 'repository_url' is missing or null"); }
+        if (!property_exists($data, "repository_search_url") || $data->repository_search_url === null) { throw new SdkValidationError("repository_search_url", 'required', "Required property 'repository_search_url' is missing or null"); }
+        if (!property_exists($data, "current_user_repositories_url") || $data->current_user_repositories_url === null) { throw new SdkValidationError("current_user_repositories_url", 'required', "Required property 'current_user_repositories_url' is missing or null"); }
+        if (!property_exists($data, "starred_url") || $data->starred_url === null) { throw new SdkValidationError("starred_url", 'required', "Required property 'starred_url' is missing or null"); }
+        if (!property_exists($data, "starred_gists_url") || $data->starred_gists_url === null) { throw new SdkValidationError("starred_gists_url", 'required', "Required property 'starred_gists_url' is missing or null"); }
+        if (!property_exists($data, "user_url") || $data->user_url === null) { throw new SdkValidationError("user_url", 'required', "Required property 'user_url' is missing or null"); }
+        if (!property_exists($data, "user_organizations_url") || $data->user_organizations_url === null) { throw new SdkValidationError("user_organizations_url", 'required', "Required property 'user_organizations_url' is missing or null"); }
+        if (!property_exists($data, "user_repositories_url") || $data->user_repositories_url === null) { throw new SdkValidationError("user_repositories_url", 'required', "Required property 'user_repositories_url' is missing or null"); }
+        if (!property_exists($data, "user_search_url") || $data->user_search_url === null) { throw new SdkValidationError("user_search_url", 'required', "Required property 'user_search_url' is missing or null"); }
         return new self(
             currentUserUrl: SdkClient::stringValue($data->current_user_url),
             currentUserAuthorizationsHtmlUrl: SdkClient::stringValue($data->current_user_authorizations_html_url),
