@@ -57,7 +57,9 @@ class SecretScanningLocationPullRequestReviewComment implements NullableSecretSc
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pull_request_review_comment_url") || $data->pull_request_review_comment_url === null) { throw new SdkValidationError("pull_request_review_comment_url", 'required', "Required property 'pull_request_review_comment_url' is missing or null"); }
+        if (!property_exists($data, "pull_request_review_comment_url") || $data->pull_request_review_comment_url === null) {
+            throw new SdkValidationError("pull_request_review_comment_url", 'required', "Required property 'pull_request_review_comment_url' is missing or null");
+        }
         return new self(
             pullRequestReviewCommentUrl: SdkClient::stringValue($data->pull_request_review_comment_url),
             htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
@@ -115,7 +117,9 @@ class SecretScanningLocationPullRequestTitle implements NullableSecretScanningFi
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pull_request_title_url") || $data->pull_request_title_url === null) { throw new SdkValidationError("pull_request_title_url", 'required', "Required property 'pull_request_title_url' is missing or null"); }
+        if (!property_exists($data, "pull_request_title_url") || $data->pull_request_title_url === null) {
+            throw new SdkValidationError("pull_request_title_url", 'required', "Required property 'pull_request_title_url' is missing or null");
+        }
         return new self(
             pullRequestTitleUrl: SdkClient::stringValue($data->pull_request_title_url),
             htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
@@ -241,15 +245,33 @@ class SecretScanningLocationWikiCommit implements NullableSecretScanningFirstDet
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
-        if (!property_exists($data, "start_line") || $data->start_line === null) { throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null"); }
-        if (!property_exists($data, "end_line") || $data->end_line === null) { throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null"); }
-        if (!property_exists($data, "start_column") || $data->start_column === null) { throw new SdkValidationError("start_column", 'required', "Required property 'start_column' is missing or null"); }
-        if (!property_exists($data, "end_column") || $data->end_column === null) { throw new SdkValidationError("end_column", 'required', "Required property 'end_column' is missing or null"); }
-        if (!property_exists($data, "blob_sha") || $data->blob_sha === null) { throw new SdkValidationError("blob_sha", 'required', "Required property 'blob_sha' is missing or null"); }
-        if (!property_exists($data, "page_url") || $data->page_url === null) { throw new SdkValidationError("page_url", 'required', "Required property 'page_url' is missing or null"); }
-        if (!property_exists($data, "commit_sha") || $data->commit_sha === null) { throw new SdkValidationError("commit_sha", 'required', "Required property 'commit_sha' is missing or null"); }
-        if (!property_exists($data, "commit_url") || $data->commit_url === null) { throw new SdkValidationError("commit_url", 'required', "Required property 'commit_url' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) {
+            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
+        }
+        if (!property_exists($data, "start_line") || $data->start_line === null) {
+            throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null");
+        }
+        if (!property_exists($data, "end_line") || $data->end_line === null) {
+            throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null");
+        }
+        if (!property_exists($data, "start_column") || $data->start_column === null) {
+            throw new SdkValidationError("start_column", 'required', "Required property 'start_column' is missing or null");
+        }
+        if (!property_exists($data, "end_column") || $data->end_column === null) {
+            throw new SdkValidationError("end_column", 'required', "Required property 'end_column' is missing or null");
+        }
+        if (!property_exists($data, "blob_sha") || $data->blob_sha === null) {
+            throw new SdkValidationError("blob_sha", 'required', "Required property 'blob_sha' is missing or null");
+        }
+        if (!property_exists($data, "page_url") || $data->page_url === null) {
+            throw new SdkValidationError("page_url", 'required', "Required property 'page_url' is missing or null");
+        }
+        if (!property_exists($data, "commit_sha") || $data->commit_sha === null) {
+            throw new SdkValidationError("commit_sha", 'required', "Required property 'commit_sha' is missing or null");
+        }
+        if (!property_exists($data, "commit_url") || $data->commit_url === null) {
+            throw new SdkValidationError("commit_url", 'required', "Required property 'commit_url' is missing or null");
+        }
         return new self(
             path: SdkClient::stringValue($data->path),
             startLine: SdkClient::floatValue($data->start_line),
@@ -344,9 +366,24 @@ final readonly class SecretScanningPatternOverrideDefaultSettingEnum implements 
     public const DISABLED = "disabled";
     public const ENABLED = "enabled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

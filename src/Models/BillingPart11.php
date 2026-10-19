@@ -93,7 +93,9 @@ class GetAllBudgets implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "budgets") || $data->budgets === null) { throw new SdkValidationError("budgets", 'required', "Required property 'budgets' is missing or null"); }
+        if (!property_exists($data, "budgets") || $data->budgets === null) {
+            throw new SdkValidationError("budgets", 'required', "Required property 'budgets' is missing or null");
+        }
         return new self(
             budgets: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Budget::class), SdkClient::arrayValue($data->budgets))),
             user: (property_exists($data, "user") && $data->user !== null ? SdkClient::stringValue($data->user) : SdkNotGiven::Value),
@@ -117,22 +119,52 @@ final readonly class GetBudgetBudgetScopeEnum implements SdkOpenEnum
     public const MULTI_USER_COST_CENTER = "multi_user_cost_center";
     public const USER = "user";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class GetBudgetBudgetTypeEnum implements SdkOpenEnum
 {
     public const PRODUCTPRICING = "ProductPricing";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -326,14 +358,30 @@ class GetBudget implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "budget_scope") || $data->budget_scope === null) { throw new SdkValidationError("budget_scope", 'required', "Required property 'budget_scope' is missing or null"); }
-        if (!property_exists($data, "budget_entity_name") || $data->budget_entity_name === null) { throw new SdkValidationError("budget_entity_name", 'required', "Required property 'budget_entity_name' is missing or null"); }
-        if (!property_exists($data, "budget_amount") || $data->budget_amount === null) { throw new SdkValidationError("budget_amount", 'required', "Required property 'budget_amount' is missing or null"); }
-        if (!property_exists($data, "prevent_further_usage") || $data->prevent_further_usage === null) { throw new SdkValidationError("prevent_further_usage", 'required', "Required property 'prevent_further_usage' is missing or null"); }
-        if (!property_exists($data, "budget_product_sku") || $data->budget_product_sku === null) { throw new SdkValidationError("budget_product_sku", 'required', "Required property 'budget_product_sku' is missing or null"); }
-        if (!property_exists($data, "budget_type") || $data->budget_type === null) { throw new SdkValidationError("budget_type", 'required', "Required property 'budget_type' is missing or null"); }
-        if (!property_exists($data, "budget_alerting") || $data->budget_alerting === null) { throw new SdkValidationError("budget_alerting", 'required', "Required property 'budget_alerting' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "budget_scope") || $data->budget_scope === null) {
+            throw new SdkValidationError("budget_scope", 'required', "Required property 'budget_scope' is missing or null");
+        }
+        if (!property_exists($data, "budget_entity_name") || $data->budget_entity_name === null) {
+            throw new SdkValidationError("budget_entity_name", 'required', "Required property 'budget_entity_name' is missing or null");
+        }
+        if (!property_exists($data, "budget_amount") || $data->budget_amount === null) {
+            throw new SdkValidationError("budget_amount", 'required', "Required property 'budget_amount' is missing or null");
+        }
+        if (!property_exists($data, "prevent_further_usage") || $data->prevent_further_usage === null) {
+            throw new SdkValidationError("prevent_further_usage", 'required', "Required property 'prevent_further_usage' is missing or null");
+        }
+        if (!property_exists($data, "budget_product_sku") || $data->budget_product_sku === null) {
+            throw new SdkValidationError("budget_product_sku", 'required', "Required property 'budget_product_sku' is missing or null");
+        }
+        if (!property_exists($data, "budget_type") || $data->budget_type === null) {
+            throw new SdkValidationError("budget_type", 'required', "Required property 'budget_type' is missing or null");
+        }
+        if (!property_exists($data, "budget_alerting") || $data->budget_alerting === null) {
+            throw new SdkValidationError("budget_alerting", 'required', "Required property 'budget_alerting' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             budgetScope: SdkClient::hydrateStringEnumOrString($data->budget_scope, GetBudgetBudgetScopeEnum::class),

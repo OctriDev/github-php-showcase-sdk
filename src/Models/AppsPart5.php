@@ -109,11 +109,21 @@ class NullableScopedInstallation implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "permissions") || $data->permissions === null) { throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null"); }
-        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) { throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null"); }
-        if (!property_exists($data, "single_file_name")) { throw new SdkValidationError("single_file_name", 'required', "Missing required property 'single_file_name'"); }
-        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) { throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null"); }
-        if (!property_exists($data, "account") || $data->account === null) { throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null"); }
+        if (!property_exists($data, "permissions") || $data->permissions === null) {
+            throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null");
+        }
+        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) {
+            throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null");
+        }
+        if (!property_exists($data, "single_file_name")) {
+            throw new SdkValidationError("single_file_name", 'required', "Missing required property 'single_file_name'");
+        }
+        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) {
+            throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null");
+        }
+        if (!property_exists($data, "account") || $data->account === null) {
+            throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null");
+        }
         return new self(
             permissions: SdkClient::hydrateClass($data->permissions, AppPermissions::class),
             repositorySelection: SdkClient::hydrateStringEnumOrString($data->repository_selection, NullableScopedInstallationRepositorySelectionEnum::class),
@@ -234,14 +244,30 @@ class UserMarketplacePurchase implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "billing_cycle") || $data->billing_cycle === null) { throw new SdkValidationError("billing_cycle", 'required', "Required property 'billing_cycle' is missing or null"); }
-        if (!property_exists($data, "next_billing_date")) { throw new SdkValidationError("next_billing_date", 'required', "Missing required property 'next_billing_date'"); }
-        if (!property_exists($data, "unit_count")) { throw new SdkValidationError("unit_count", 'required', "Missing required property 'unit_count'"); }
-        if (!property_exists($data, "on_free_trial") || $data->on_free_trial === null) { throw new SdkValidationError("on_free_trial", 'required', "Required property 'on_free_trial' is missing or null"); }
-        if (!property_exists($data, "free_trial_ends_on")) { throw new SdkValidationError("free_trial_ends_on", 'required', "Missing required property 'free_trial_ends_on'"); }
-        if (!property_exists($data, "updated_at")) { throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'"); }
-        if (!property_exists($data, "account") || $data->account === null) { throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null"); }
-        if (!property_exists($data, "plan") || $data->plan === null) { throw new SdkValidationError("plan", 'required', "Required property 'plan' is missing or null"); }
+        if (!property_exists($data, "billing_cycle") || $data->billing_cycle === null) {
+            throw new SdkValidationError("billing_cycle", 'required', "Required property 'billing_cycle' is missing or null");
+        }
+        if (!property_exists($data, "next_billing_date")) {
+            throw new SdkValidationError("next_billing_date", 'required', "Missing required property 'next_billing_date'");
+        }
+        if (!property_exists($data, "unit_count")) {
+            throw new SdkValidationError("unit_count", 'required', "Missing required property 'unit_count'");
+        }
+        if (!property_exists($data, "on_free_trial") || $data->on_free_trial === null) {
+            throw new SdkValidationError("on_free_trial", 'required', "Required property 'on_free_trial' is missing or null");
+        }
+        if (!property_exists($data, "free_trial_ends_on")) {
+            throw new SdkValidationError("free_trial_ends_on", 'required', "Missing required property 'free_trial_ends_on'");
+        }
+        if (!property_exists($data, "updated_at")) {
+            throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'");
+        }
+        if (!property_exists($data, "account") || $data->account === null) {
+            throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null");
+        }
+        if (!property_exists($data, "plan") || $data->plan === null) {
+            throw new SdkValidationError("plan", 'required', "Required property 'plan' is missing or null");
+        }
         return new self(
             billingCycle: SdkClient::stringValue($data->billing_cycle),
             nextBillingDate: ($data->next_billing_date === null ? null : SdkClient::stringValue($data->next_billing_date)),

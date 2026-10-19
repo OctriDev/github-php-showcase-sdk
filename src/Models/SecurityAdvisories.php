@@ -16,11 +16,26 @@ final readonly class GlobalAdvisoryTypeEnum implements SdkOpenEnum
     public const UNREVIEWED = "unreviewed";
     public const MALWARE = "malware";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -34,11 +49,26 @@ final readonly class GlobalAdvisorySeverityEnum implements SdkOpenEnum
     public const LOW = "low";
     public const UNKNOWN = "unknown";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -49,11 +79,26 @@ final readonly class GlobalAdvisoryIdentifiersItemTypeEnum implements SdkOpenEnu
     public const CVE = "CVE";
     public const GHSA = "GHSA";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -104,8 +149,12 @@ class GlobalAdvisoryIdentifiersItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "value") || $data->value === null) { throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "value") || $data->value === null) {
+            throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, GlobalAdvisoryIdentifiersItemTypeEnum::class),
             value: SdkClient::stringValue($data->value),
@@ -161,8 +210,12 @@ class GlobalAdvisoryCvss implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "vector_string")) { throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'"); }
-        if (!property_exists($data, "score")) { throw new SdkValidationError("score", 'required', "Missing required property 'score'"); }
+        if (!property_exists($data, "vector_string")) {
+            throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'");
+        }
+        if (!property_exists($data, "score")) {
+            throw new SdkValidationError("score", 'required', "Missing required property 'score'");
+        }
         return new self(
             vectorString: ($data->vector_string === null ? null : SdkClient::stringValue($data->vector_string)),
             score: ($data->score === null ? null : SdkClient::floatValue($data->score)),
@@ -218,8 +271,12 @@ class GlobalAdvisoryCwesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "cwe_id") || $data->cwe_id === null) { throw new SdkValidationError("cwe_id", 'required', "Required property 'cwe_id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "cwe_id") || $data->cwe_id === null) {
+            throw new SdkValidationError("cwe_id", 'required', "Required property 'cwe_id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
         return new self(
             cweId: SdkClient::stringValue($data->cwe_id),
             name: SdkClient::stringValue($data->name),
@@ -275,8 +332,12 @@ class GlobalAdvisoryCreditsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "user") || $data->user === null) { throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "user") || $data->user === null) {
+            throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             user: SdkClient::hydrateClass($data->user, SimpleUser::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, SecurityAdvisoryCreditTypes::class),

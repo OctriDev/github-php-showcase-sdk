@@ -157,11 +157,21 @@ class WebhookDeploymentStatusCreated implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "deployment") || $data->deployment === null) { throw new SdkValidationError("deployment", 'required', "Required property 'deployment' is missing or null"); }
-        if (!property_exists($data, "deployment_status") || $data->deployment_status === null) { throw new SdkValidationError("deployment_status", 'required', "Required property 'deployment_status' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "deployment") || $data->deployment === null) {
+            throw new SdkValidationError("deployment", 'required', "Required property 'deployment' is missing or null");
+        }
+        if (!property_exists($data, "deployment_status") || $data->deployment_status === null) {
+            throw new SdkValidationError("deployment_status", 'required', "Required property 'deployment_status' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookDeploymentStatusCreatedActionEnum::class),
             deployment: SdkClient::hydrateClass($data->deployment, WebhookDeploymentStatusCreatedDeployment::class),

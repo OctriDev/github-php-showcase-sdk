@@ -131,12 +131,24 @@ class WebhookMembershipAdded implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "member")) { throw new SdkValidationError("member", 'required', "Missing required property 'member'"); }
-        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
-        if (!property_exists($data, "scope") || $data->scope === null) { throw new SdkValidationError("scope", 'required', "Required property 'scope' is missing or null"); }
-        if (!property_exists($data, "sender")) { throw new SdkValidationError("sender", 'required', "Missing required property 'sender'"); }
-        if (!property_exists($data, "team") || $data->team === null) { throw new SdkValidationError("team", 'required', "Required property 'team' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "member")) {
+            throw new SdkValidationError("member", 'required', "Missing required property 'member'");
+        }
+        if (!property_exists($data, "organization") || $data->organization === null) {
+            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
+        }
+        if (!property_exists($data, "scope") || $data->scope === null) {
+            throw new SdkValidationError("scope", 'required', "Required property 'scope' is missing or null");
+        }
+        if (!property_exists($data, "sender")) {
+            throw new SdkValidationError("sender", 'required', "Missing required property 'sender'");
+        }
+        if (!property_exists($data, "team") || $data->team === null) {
+            throw new SdkValidationError("team", 'required', "Required property 'team' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookMembershipAddedActionEnum::class),
             member: ($data->member === null ? null : SdkClient::hydrateClass($data->member, WebhooksUser::class)),

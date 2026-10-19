@@ -45,7 +45,9 @@ class WebhookBranchProtectionRuleEditedChangesLockAllowsForkSync implements \Jso
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from")) { throw new SdkValidationError("from", 'required', "Missing required property 'from'"); }
+        if (!property_exists($data, "from")) {
+            throw new SdkValidationError("from", 'required', "Missing required property 'from'");
+        }
         return new self(
             from: ($data->from === null ? null : SdkClient::boolValue($data->from)),
         );
@@ -61,11 +63,26 @@ final readonly class WebhookBranchProtectionRuleEditedChangesPullRequestReviewsE
     public const NON_ADMINS = "non_admins";
     public const EVERYONE = "everyone";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -106,7 +123,9 @@ class WebhookBranchProtectionRuleEditedChangesPullRequestReviewsEnforcementLevel
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
         return new self(
             from: SdkClient::hydrateStringEnumOrString($data->from, WebhookBranchProtectionRuleEditedChangesPullRequestReviewsEnforcementLevelFromEnum::class),
         );
@@ -151,7 +170,9 @@ class WebhookBranchProtectionRuleEditedChangesRequireLastPushApproval implements
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from")) { throw new SdkValidationError("from", 'required', "Missing required property 'from'"); }
+        if (!property_exists($data, "from")) {
+            throw new SdkValidationError("from", 'required', "Missing required property 'from'");
+        }
         return new self(
             from: ($data->from === null ? null : SdkClient::boolValue($data->from)),
         );
@@ -196,7 +217,9 @@ class WebhookBranchProtectionRuleEditedChangesRequiredStatusChecks implements \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
         return new self(
             from: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->from))),
         );
@@ -212,11 +235,26 @@ final readonly class WebhookBranchProtectionRuleEditedChangesRequiredStatusCheck
     public const NON_ADMINS = "non_admins";
     public const EVERYONE = "everyone";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -257,7 +295,9 @@ class WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLev
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
         return new self(
             from: SdkClient::hydrateStringEnumOrString($data->from, WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFromEnum::class),
         );

@@ -249,7 +249,9 @@ class ApiOverview implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "verifiable_password_authentication") || $data->verifiable_password_authentication === null) { throw new SdkValidationError("verifiable_password_authentication", 'required', "Required property 'verifiable_password_authentication' is missing or null"); }
+        if (!property_exists($data, "verifiable_password_authentication") || $data->verifiable_password_authentication === null) {
+            throw new SdkValidationError("verifiable_password_authentication", 'required', "Required property 'verifiable_password_authentication' is missing or null");
+        }
         return new self(
             verifiablePasswordAuthentication: SdkClient::boolValue($data->verifiable_password_authentication),
             sshKeyFingerprints: (property_exists($data, "ssh_key_fingerprints") && $data->ssh_key_fingerprints !== null ? SdkClient::hydrateClass($data->ssh_key_fingerprints, ApiOverviewSshKeyFingerprints::class) : SdkNotGiven::Value),

@@ -184,10 +184,18 @@ class WebhookProjectsV2StatusUpdateEdited implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
-        if (!property_exists($data, "projects_v2_status_update") || $data->projects_v2_status_update === null) { throw new SdkValidationError("projects_v2_status_update", 'required', "Required property 'projects_v2_status_update' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "organization") || $data->organization === null) {
+            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
+        }
+        if (!property_exists($data, "projects_v2_status_update") || $data->projects_v2_status_update === null) {
+            throw new SdkValidationError("projects_v2_status_update", 'required', "Required property 'projects_v2_status_update' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookProjectsV2StatusUpdateEditedActionEnum::class),
             organization: SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class),

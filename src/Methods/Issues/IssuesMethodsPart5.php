@@ -51,7 +51,7 @@ trait IssuesMethodsPart5
             Validation::validateDateTime('since', $since);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/user/issues", $clientConfig, query: ['filter' => new SdkQueryValue($filter, "form", true), 'state' => new SdkQueryValue($state, "form", true), 'labels' => new SdkQueryValue($labels, "form", true), 'sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListForAuthenticatedUser', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/issues", $clientConfig, query: ['filter' => new SdkQueryValue($filter, "form", true), 'state' => new SdkQueryValue($state, "form", true), 'labels' => new SdkQueryValue($labels, "form", true), 'sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListForAuthenticatedUser', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Issue::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

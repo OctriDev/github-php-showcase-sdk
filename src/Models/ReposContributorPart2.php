@@ -150,9 +150,15 @@ class ContributorActivity implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author")) { throw new SdkValidationError("author", 'required', "Missing required property 'author'"); }
-        if (!property_exists($data, "total") || $data->total === null) { throw new SdkValidationError("total", 'required', "Required property 'total' is missing or null"); }
-        if (!property_exists($data, "weeks") || $data->weeks === null) { throw new SdkValidationError("weeks", 'required', "Required property 'weeks' is missing or null"); }
+        if (!property_exists($data, "author")) {
+            throw new SdkValidationError("author", 'required', "Missing required property 'author'");
+        }
+        if (!property_exists($data, "total") || $data->total === null) {
+            throw new SdkValidationError("total", 'required', "Required property 'total' is missing or null");
+        }
+        if (!property_exists($data, "weeks") || $data->weeks === null) {
+            throw new SdkValidationError("weeks", 'required', "Required property 'weeks' is missing or null");
+        }
         return new self(
             author: ($data->author === null ? null : SdkClient::hydrateClass($data->author, NullableSimpleUser::class)),
             total: SdkClient::intValue($data->total),

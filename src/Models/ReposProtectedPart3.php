@@ -281,7 +281,9 @@ class ProtectedBranch implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
             requiredStatusChecks: (property_exists($data, "required_status_checks") && $data->required_status_checks !== null ? SdkClient::hydrateClass($data->required_status_checks, StatusCheckPolicy::class) : SdkNotGiven::Value),

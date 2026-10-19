@@ -91,7 +91,9 @@ class EnterpriseRulesetConditionsOrganizationIdTarget implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "organization_id") || $data->organization_id === null) { throw new SdkValidationError("organization_id", 'required', "Required property 'organization_id' is missing or null"); }
+        if (!property_exists($data, "organization_id") || $data->organization_id === null) {
+            throw new SdkValidationError("organization_id", 'required', "Required property 'organization_id' is missing or null");
+        }
         return new self(
             organizationId: SdkClient::hydrateClass($data->organization_id, EnterpriseRulesetConditionsOrganizationIdTargetOrganizationId::class),
         );
@@ -195,7 +197,9 @@ class EnterpriseRulesetConditionsOrganizationNameTarget implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "organization_name") || $data->organization_name === null) { throw new SdkValidationError("organization_name", 'required', "Required property 'organization_name' is missing or null"); }
+        if (!property_exists($data, "organization_name") || $data->organization_name === null) {
+            throw new SdkValidationError("organization_name", 'required', "Required property 'organization_name' is missing or null");
+        }
         return new self(
             organizationName: SdkClient::hydrateClass($data->organization_name, EnterpriseRulesetConditionsOrganizationNameTargetOrganizationName::class),
         );
@@ -250,8 +254,12 @@ class EnterpriseRulesetConditionsOrganizationPropertySpec implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "property_values") || $data->property_values === null) { throw new SdkValidationError("property_values", 'required', "Required property 'property_values' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "property_values") || $data->property_values === null) {
+            throw new SdkValidationError("property_values", 'required', "Required property 'property_values' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             propertyValues: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->property_values))),

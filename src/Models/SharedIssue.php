@@ -17,11 +17,26 @@ final readonly class IssueStateReasonEnum implements SdkOpenEnum
     public const NOT_PLANNED = "not_planned";
     public const DUPLICATE = "duplicate";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -241,10 +256,18 @@ class IssuePullRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "diff_url")) { throw new SdkValidationError("diff_url", 'required', "Missing required property 'diff_url'"); }
-        if (!property_exists($data, "html_url")) { throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'"); }
-        if (!property_exists($data, "patch_url")) { throw new SdkValidationError("patch_url", 'required', "Missing required property 'patch_url'"); }
-        if (!property_exists($data, "url")) { throw new SdkValidationError("url", 'required', "Missing required property 'url'"); }
+        if (!property_exists($data, "diff_url")) {
+            throw new SdkValidationError("diff_url", 'required', "Missing required property 'diff_url'");
+        }
+        if (!property_exists($data, "html_url")) {
+            throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'");
+        }
+        if (!property_exists($data, "patch_url")) {
+            throw new SdkValidationError("patch_url", 'required', "Missing required property 'patch_url'");
+        }
+        if (!property_exists($data, "url")) {
+            throw new SdkValidationError("url", 'required', "Missing required property 'url'");
+        }
         return new self(
             diffUrl: ($data->diff_url === null ? null : SdkClient::stringValue($data->diff_url)),
             htmlUrl: ($data->html_url === null ? null : SdkClient::stringValue($data->html_url)),

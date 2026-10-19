@@ -307,32 +307,84 @@ class RepositoryAdvisory implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ghsa_id") || $data->ghsa_id === null) { throw new SdkValidationError("ghsa_id", 'required', "Required property 'ghsa_id' is missing or null"); }
-        if (!property_exists($data, "cve_id")) { throw new SdkValidationError("cve_id", 'required', "Missing required property 'cve_id'"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "summary") || $data->summary === null) { throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null"); }
-        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
-        if (!property_exists($data, "severity")) { throw new SdkValidationError("severity", 'required', "Missing required property 'severity'"); }
-        if (!property_exists($data, "author")) { throw new SdkValidationError("author", 'required', "Missing required property 'author'"); }
-        if (!property_exists($data, "publisher")) { throw new SdkValidationError("publisher", 'required', "Missing required property 'publisher'"); }
-        if (!property_exists($data, "identifiers") || $data->identifiers === null) { throw new SdkValidationError("identifiers", 'required', "Required property 'identifiers' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
-        if (!property_exists($data, "created_at")) { throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'"); }
-        if (!property_exists($data, "updated_at")) { throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'"); }
-        if (!property_exists($data, "published_at")) { throw new SdkValidationError("published_at", 'required', "Missing required property 'published_at'"); }
-        if (!property_exists($data, "closed_at")) { throw new SdkValidationError("closed_at", 'required', "Missing required property 'closed_at'"); }
-        if (!property_exists($data, "withdrawn_at")) { throw new SdkValidationError("withdrawn_at", 'required', "Missing required property 'withdrawn_at'"); }
-        if (!property_exists($data, "submission")) { throw new SdkValidationError("submission", 'required', "Missing required property 'submission'"); }
-        if (!property_exists($data, "vulnerabilities")) { throw new SdkValidationError("vulnerabilities", 'required', "Missing required property 'vulnerabilities'"); }
-        if (!property_exists($data, "cvss")) { throw new SdkValidationError("cvss", 'required', "Missing required property 'cvss'"); }
-        if (!property_exists($data, "cwes")) { throw new SdkValidationError("cwes", 'required', "Missing required property 'cwes'"); }
-        if (!property_exists($data, "cwe_ids")) { throw new SdkValidationError("cwe_ids", 'required', "Missing required property 'cwe_ids'"); }
-        if (!property_exists($data, "credits")) { throw new SdkValidationError("credits", 'required', "Missing required property 'credits'"); }
-        if (!property_exists($data, "credits_detailed")) { throw new SdkValidationError("credits_detailed", 'required', "Missing required property 'credits_detailed'"); }
-        if (!property_exists($data, "collaborating_users")) { throw new SdkValidationError("collaborating_users", 'required', "Missing required property 'collaborating_users'"); }
-        if (!property_exists($data, "collaborating_teams")) { throw new SdkValidationError("collaborating_teams", 'required', "Missing required property 'collaborating_teams'"); }
-        if (!property_exists($data, "private_fork")) { throw new SdkValidationError("private_fork", 'required', "Missing required property 'private_fork'"); }
+        if (!property_exists($data, "ghsa_id") || $data->ghsa_id === null) {
+            throw new SdkValidationError("ghsa_id", 'required', "Required property 'ghsa_id' is missing or null");
+        }
+        if (!property_exists($data, "cve_id")) {
+            throw new SdkValidationError("cve_id", 'required', "Missing required property 'cve_id'");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "summary") || $data->summary === null) {
+            throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null");
+        }
+        if (!property_exists($data, "description")) {
+            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
+        }
+        if (!property_exists($data, "severity")) {
+            throw new SdkValidationError("severity", 'required', "Missing required property 'severity'");
+        }
+        if (!property_exists($data, "author")) {
+            throw new SdkValidationError("author", 'required', "Missing required property 'author'");
+        }
+        if (!property_exists($data, "publisher")) {
+            throw new SdkValidationError("publisher", 'required', "Missing required property 'publisher'");
+        }
+        if (!property_exists($data, "identifiers") || $data->identifiers === null) {
+            throw new SdkValidationError("identifiers", 'required', "Required property 'identifiers' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "created_at")) {
+            throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'");
+        }
+        if (!property_exists($data, "updated_at")) {
+            throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'");
+        }
+        if (!property_exists($data, "published_at")) {
+            throw new SdkValidationError("published_at", 'required', "Missing required property 'published_at'");
+        }
+        if (!property_exists($data, "closed_at")) {
+            throw new SdkValidationError("closed_at", 'required', "Missing required property 'closed_at'");
+        }
+        if (!property_exists($data, "withdrawn_at")) {
+            throw new SdkValidationError("withdrawn_at", 'required', "Missing required property 'withdrawn_at'");
+        }
+        if (!property_exists($data, "submission")) {
+            throw new SdkValidationError("submission", 'required', "Missing required property 'submission'");
+        }
+        if (!property_exists($data, "vulnerabilities")) {
+            throw new SdkValidationError("vulnerabilities", 'required', "Missing required property 'vulnerabilities'");
+        }
+        if (!property_exists($data, "cvss")) {
+            throw new SdkValidationError("cvss", 'required', "Missing required property 'cvss'");
+        }
+        if (!property_exists($data, "cwes")) {
+            throw new SdkValidationError("cwes", 'required', "Missing required property 'cwes'");
+        }
+        if (!property_exists($data, "cwe_ids")) {
+            throw new SdkValidationError("cwe_ids", 'required', "Missing required property 'cwe_ids'");
+        }
+        if (!property_exists($data, "credits")) {
+            throw new SdkValidationError("credits", 'required', "Missing required property 'credits'");
+        }
+        if (!property_exists($data, "credits_detailed")) {
+            throw new SdkValidationError("credits_detailed", 'required', "Missing required property 'credits_detailed'");
+        }
+        if (!property_exists($data, "collaborating_users")) {
+            throw new SdkValidationError("collaborating_users", 'required', "Missing required property 'collaborating_users'");
+        }
+        if (!property_exists($data, "collaborating_teams")) {
+            throw new SdkValidationError("collaborating_teams", 'required', "Missing required property 'collaborating_teams'");
+        }
+        if (!property_exists($data, "private_fork")) {
+            throw new SdkValidationError("private_fork", 'required', "Missing required property 'private_fork'");
+        }
         return new self(
             ghsaId: SdkClient::stringValue($data->ghsa_id),
             cveId: ($data->cve_id === null ? null : SdkClient::stringValue($data->cve_id)),

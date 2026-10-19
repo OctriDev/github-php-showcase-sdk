@@ -45,7 +45,9 @@ class DependabotAlertSecurityVulnerabilityFirstPatchedVersion implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "identifier") || $data->identifier === null) { throw new SdkValidationError("identifier", 'required', "Required property 'identifier' is missing or null"); }
+        if (!property_exists($data, "identifier") || $data->identifier === null) {
+            throw new SdkValidationError("identifier", 'required', "Required property 'identifier' is missing or null");
+        }
         return new self(
             identifier: SdkClient::stringValue($data->identifier),
         );
@@ -120,10 +122,18 @@ class DependabotAlertSecurityVulnerability implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "package") || $data->package === null) { throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null"); }
-        if (!property_exists($data, "severity") || $data->severity === null) { throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null"); }
-        if (!property_exists($data, "vulnerable_version_range") || $data->vulnerable_version_range === null) { throw new SdkValidationError("vulnerable_version_range", 'required', "Required property 'vulnerable_version_range' is missing or null"); }
-        if (!property_exists($data, "first_patched_version")) { throw new SdkValidationError("first_patched_version", 'required', "Missing required property 'first_patched_version'"); }
+        if (!property_exists($data, "package") || $data->package === null) {
+            throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null");
+        }
+        if (!property_exists($data, "severity") || $data->severity === null) {
+            throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null");
+        }
+        if (!property_exists($data, "vulnerable_version_range") || $data->vulnerable_version_range === null) {
+            throw new SdkValidationError("vulnerable_version_range", 'required', "Required property 'vulnerable_version_range' is missing or null");
+        }
+        if (!property_exists($data, "first_patched_version")) {
+            throw new SdkValidationError("first_patched_version", 'required', "Missing required property 'first_patched_version'");
+        }
         return new self(
             package: SdkClient::hydrateClass($data->package, DependabotAlertPackage::class),
             severity: SdkClient::hydrateStringEnumOrString($data->severity, DependabotAlertSecurityVulnerabilitySeverityEnum::class),
@@ -140,11 +150,26 @@ final readonly class DependabotAlertWithdrawnWebhookStateEnum implements SdkOpen
 {
     public const WITHDRAWN = "withdrawn";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -155,11 +180,26 @@ final readonly class DependabotAlertWithdrawnWebhookDependencyScopeEnum implemen
     public const DEVELOPMENT = "development";
     public const RUNTIME = "runtime";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -172,11 +212,26 @@ final readonly class DependabotAlertWithdrawnWebhookDependencyRelationshipEnum i
     public const TRANSITIVE = "transitive";
     public const INCONCLUSIVE = "inconclusive";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -249,9 +304,15 @@ class DependabotAlertWithdrawnWebhookDependency implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "package") || $data->package === null) { throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null"); }
-        if (!property_exists($data, "manifest_path")) { throw new SdkValidationError("manifest_path", 'required', "Missing required property 'manifest_path'"); }
-        if (!property_exists($data, "scope")) { throw new SdkValidationError("scope", 'required', "Missing required property 'scope'"); }
+        if (!property_exists($data, "package") || $data->package === null) {
+            throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null");
+        }
+        if (!property_exists($data, "manifest_path")) {
+            throw new SdkValidationError("manifest_path", 'required', "Missing required property 'manifest_path'");
+        }
+        if (!property_exists($data, "scope")) {
+            throw new SdkValidationError("scope", 'required', "Missing required property 'scope'");
+        }
         return new self(
             package: SdkClient::hydrateClass($data->package, DependabotAlertPackage::class),
             manifestPath: ($data->manifest_path === null ? null : SdkClient::stringValue($data->manifest_path)),
@@ -309,8 +370,12 @@ class DependabotAlertWithdrawnWebhookSecurityAdvisory implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ghsa_id") || $data->ghsa_id === null) { throw new SdkValidationError("ghsa_id", 'required', "Required property 'ghsa_id' is missing or null"); }
-        if (!property_exists($data, "cve_id")) { throw new SdkValidationError("cve_id", 'required', "Missing required property 'cve_id'"); }
+        if (!property_exists($data, "ghsa_id") || $data->ghsa_id === null) {
+            throw new SdkValidationError("ghsa_id", 'required', "Required property 'ghsa_id' is missing or null");
+        }
+        if (!property_exists($data, "cve_id")) {
+            throw new SdkValidationError("cve_id", 'required', "Missing required property 'cve_id'");
+        }
         return new self(
             ghsaId: SdkClient::stringValue($data->ghsa_id),
             cveId: ($data->cve_id === null ? null : SdkClient::stringValue($data->cve_id)),

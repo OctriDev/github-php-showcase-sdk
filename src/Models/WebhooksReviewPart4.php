@@ -65,9 +65,15 @@ class WebhooksReviewCommentLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
-        if (!property_exists($data, "self") || $data->self === null) { throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null"); }
+        if (!property_exists($data, "html") || $data->html === null) {
+            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
+        }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
+            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
+        }
+        if (!property_exists($data, "self") || $data->self === null) {
+            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
+        }
         return new self(
             html: SdkClient::hydrateClass($data->html, WebhooksReviewCommentLinksHtml::class),
             pullRequest: SdkClient::hydrateClass($data->pull_request, WebhooksReviewCommentLinksPullRequest::class),
@@ -90,11 +96,26 @@ final readonly class WebhooksReviewCommentAuthorAssociationEnum implements SdkOp
     public const NONE = "NONE";
     public const OWNER = "OWNER";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -225,16 +246,36 @@ class WebhooksReviewCommentReactions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "+1") || get_object_vars($data)["+1"] === null) { throw new SdkValidationError("+1", 'required', "Required property '+1' is missing or null"); }
-        if (!property_exists($data, "-1") || get_object_vars($data)["-1"] === null) { throw new SdkValidationError("-1", 'required', "Required property '-1' is missing or null"); }
-        if (!property_exists($data, "confused") || $data->confused === null) { throw new SdkValidationError("confused", 'required', "Required property 'confused' is missing or null"); }
-        if (!property_exists($data, "eyes") || $data->eyes === null) { throw new SdkValidationError("eyes", 'required', "Required property 'eyes' is missing or null"); }
-        if (!property_exists($data, "heart") || $data->heart === null) { throw new SdkValidationError("heart", 'required', "Required property 'heart' is missing or null"); }
-        if (!property_exists($data, "hooray") || $data->hooray === null) { throw new SdkValidationError("hooray", 'required', "Required property 'hooray' is missing or null"); }
-        if (!property_exists($data, "laugh") || $data->laugh === null) { throw new SdkValidationError("laugh", 'required', "Required property 'laugh' is missing or null"); }
-        if (!property_exists($data, "rocket") || $data->rocket === null) { throw new SdkValidationError("rocket", 'required', "Required property 'rocket' is missing or null"); }
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "+1") || get_object_vars($data)["+1"] === null) {
+            throw new SdkValidationError("+1", 'required', "Required property '+1' is missing or null");
+        }
+        if (!property_exists($data, "-1") || get_object_vars($data)["-1"] === null) {
+            throw new SdkValidationError("-1", 'required', "Required property '-1' is missing or null");
+        }
+        if (!property_exists($data, "confused") || $data->confused === null) {
+            throw new SdkValidationError("confused", 'required', "Required property 'confused' is missing or null");
+        }
+        if (!property_exists($data, "eyes") || $data->eyes === null) {
+            throw new SdkValidationError("eyes", 'required', "Required property 'eyes' is missing or null");
+        }
+        if (!property_exists($data, "heart") || $data->heart === null) {
+            throw new SdkValidationError("heart", 'required', "Required property 'heart' is missing or null");
+        }
+        if (!property_exists($data, "hooray") || $data->hooray === null) {
+            throw new SdkValidationError("hooray", 'required', "Required property 'hooray' is missing or null");
+        }
+        if (!property_exists($data, "laugh") || $data->laugh === null) {
+            throw new SdkValidationError("laugh", 'required', "Required property 'laugh' is missing or null");
+        }
+        if (!property_exists($data, "rocket") || $data->rocket === null) {
+            throw new SdkValidationError("rocket", 'required', "Required property 'rocket' is missing or null");
+        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             plus1: SdkClient::intValue(get_object_vars($data)["+1"]),
             minus1: SdkClient::intValue(get_object_vars($data)["-1"]),
@@ -258,11 +299,26 @@ final readonly class WebhooksReviewCommentSideEnum implements SdkOpenEnum
     public const LEFT = "LEFT";
     public const RIGHT = "RIGHT";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -273,11 +329,26 @@ final readonly class WebhooksReviewCommentStartSideEnum implements SdkOpenEnum
     public const LEFT = "LEFT";
     public const RIGHT = "RIGHT";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -288,11 +359,26 @@ final readonly class WebhooksReviewCommentSubjectTypeEnum implements SdkOpenEnum
     public const LINE = "line";
     public const FILE = "file";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -304,9 +390,24 @@ final readonly class WebhooksReviewCommentUserTypeEnum implements SdkOpenEnum
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

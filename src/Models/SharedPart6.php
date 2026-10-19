@@ -55,8 +55,12 @@ class CvssSeveritiesCvssV4 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "vector_string")) { throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'"); }
-        if (!property_exists($data, "score")) { throw new SdkValidationError("score", 'required', "Missing required property 'score'"); }
+        if (!property_exists($data, "vector_string")) {
+            throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'");
+        }
+        if (!property_exists($data, "score")) {
+            throw new SdkValidationError("score", 'required', "Missing required property 'score'");
+        }
         return new self(
             vectorString: ($data->vector_string === null ? null : SdkClient::stringValue($data->vector_string)),
             score: ($data->score === null ? null : SdkClient::floatValue($data->score)),
@@ -136,11 +140,26 @@ final readonly class DiffEntryStatusEnum implements SdkOpenEnum
     public const CHANGED = "changed";
     public const UNCHANGED = "unchanged";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -285,15 +304,33 @@ class DiffEntry implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha")) { throw new SdkValidationError("sha", 'required', "Missing required property 'sha'"); }
-        if (!property_exists($data, "filename") || $data->filename === null) { throw new SdkValidationError("filename", 'required', "Required property 'filename' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
-        if (!property_exists($data, "additions") || $data->additions === null) { throw new SdkValidationError("additions", 'required', "Required property 'additions' is missing or null"); }
-        if (!property_exists($data, "deletions") || $data->deletions === null) { throw new SdkValidationError("deletions", 'required', "Required property 'deletions' is missing or null"); }
-        if (!property_exists($data, "changes") || $data->changes === null) { throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null"); }
-        if (!property_exists($data, "blob_url") || $data->blob_url === null) { throw new SdkValidationError("blob_url", 'required', "Required property 'blob_url' is missing or null"); }
-        if (!property_exists($data, "raw_url") || $data->raw_url === null) { throw new SdkValidationError("raw_url", 'required', "Required property 'raw_url' is missing or null"); }
-        if (!property_exists($data, "contents_url") || $data->contents_url === null) { throw new SdkValidationError("contents_url", 'required', "Required property 'contents_url' is missing or null"); }
+        if (!property_exists($data, "sha")) {
+            throw new SdkValidationError("sha", 'required', "Missing required property 'sha'");
+        }
+        if (!property_exists($data, "filename") || $data->filename === null) {
+            throw new SdkValidationError("filename", 'required', "Required property 'filename' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
+        if (!property_exists($data, "additions") || $data->additions === null) {
+            throw new SdkValidationError("additions", 'required', "Required property 'additions' is missing or null");
+        }
+        if (!property_exists($data, "deletions") || $data->deletions === null) {
+            throw new SdkValidationError("deletions", 'required', "Required property 'deletions' is missing or null");
+        }
+        if (!property_exists($data, "changes") || $data->changes === null) {
+            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
+        }
+        if (!property_exists($data, "blob_url") || $data->blob_url === null) {
+            throw new SdkValidationError("blob_url", 'required', "Required property 'blob_url' is missing or null");
+        }
+        if (!property_exists($data, "raw_url") || $data->raw_url === null) {
+            throw new SdkValidationError("raw_url", 'required', "Required property 'raw_url' is missing or null");
+        }
+        if (!property_exists($data, "contents_url") || $data->contents_url === null) {
+            throw new SdkValidationError("contents_url", 'required', "Required property 'contents_url' is missing or null");
+        }
         return new self(
             sha: ($data->sha === null ? null : SdkClient::stringValue($data->sha)),
             filename: SdkClient::stringValue($data->filename),
@@ -315,12 +352,10 @@ class DiffEntry implements \JsonSerializable
  */
 class EmptyObject implements CommitAuthor, CommitCommitter, \JsonSerializable
 {
-
     /**
      */
     public function __construct(
-    ) {
-    }
+    ) {}
 
     /** @return array<array-key, mixed> */
     public function toArray(): array

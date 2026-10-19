@@ -55,8 +55,12 @@ class ActionsRunnerJitconfig implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "runner") || $data->runner === null) { throw new SdkValidationError("runner", 'required', "Required property 'runner' is missing or null"); }
-        if (!property_exists($data, "encoded_jit_config") || $data->encoded_jit_config === null) { throw new SdkValidationError("encoded_jit_config", 'required', "Required property 'encoded_jit_config' is missing or null"); }
+        if (!property_exists($data, "runner") || $data->runner === null) {
+            throw new SdkValidationError("runner", 'required', "Required property 'runner' is missing or null");
+        }
+        if (!property_exists($data, "encoded_jit_config") || $data->encoded_jit_config === null) {
+            throw new SdkValidationError("encoded_jit_config", 'required', "Required property 'encoded_jit_config' is missing or null");
+        }
         return new self(
             runner: SdkClient::hydrateClass($data->runner, Runner::class),
             encodedJitConfig: SdkClient::stringValue($data->encoded_jit_config),
@@ -112,8 +116,12 @@ class ActionsRunnerLabels implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "labels") || $data->labels === null) { throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "labels") || $data->labels === null) {
+            throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             labels: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RunnerLabel::class), SdkClient::arrayValue($data->labels))),
@@ -169,8 +177,12 @@ class ActionsRunnerLabelsReadonly implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "labels") || $data->labels === null) { throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "labels") || $data->labels === null) {
+            throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             labels: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RunnerLabel::class), SdkClient::arrayValue($data->labels))),

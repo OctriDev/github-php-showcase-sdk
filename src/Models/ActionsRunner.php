@@ -131,12 +131,24 @@ class Runner implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "os") || $data->os === null) { throw new SdkValidationError("os", 'required', "Required property 'os' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
-        if (!property_exists($data, "busy") || $data->busy === null) { throw new SdkValidationError("busy", 'required', "Required property 'busy' is missing or null"); }
-        if (!property_exists($data, "labels") || $data->labels === null) { throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "os") || $data->os === null) {
+            throw new SdkValidationError("os", 'required', "Required property 'os' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
+        if (!property_exists($data, "busy") || $data->busy === null) {
+            throw new SdkValidationError("busy", 'required', "Required property 'busy' is missing or null");
+        }
+        if (!property_exists($data, "labels") || $data->labels === null) {
+            throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),
@@ -243,10 +255,18 @@ class RunnerApplication implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "os") || $data->os === null) { throw new SdkValidationError("os", 'required', "Required property 'os' is missing or null"); }
-        if (!property_exists($data, "architecture") || $data->architecture === null) { throw new SdkValidationError("architecture", 'required', "Required property 'architecture' is missing or null"); }
-        if (!property_exists($data, "download_url") || $data->download_url === null) { throw new SdkValidationError("download_url", 'required', "Required property 'download_url' is missing or null"); }
-        if (!property_exists($data, "filename") || $data->filename === null) { throw new SdkValidationError("filename", 'required', "Required property 'filename' is missing or null"); }
+        if (!property_exists($data, "os") || $data->os === null) {
+            throw new SdkValidationError("os", 'required', "Required property 'os' is missing or null");
+        }
+        if (!property_exists($data, "architecture") || $data->architecture === null) {
+            throw new SdkValidationError("architecture", 'required', "Required property 'architecture' is missing or null");
+        }
+        if (!property_exists($data, "download_url") || $data->download_url === null) {
+            throw new SdkValidationError("download_url", 'required', "Required property 'download_url' is missing or null");
+        }
+        if (!property_exists($data, "filename") || $data->filename === null) {
+            throw new SdkValidationError("filename", 'required', "Required property 'filename' is missing or null");
+        }
         return new self(
             os: SdkClient::stringValue($data->os),
             architecture: SdkClient::stringValue($data->architecture),

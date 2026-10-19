@@ -38,7 +38,7 @@ trait InteractionsMethodsPart1
     public static function interactionsSetRestrictionsForOrg(ClientConfig $clientConfig, string $org, InteractionGroup $limit, InteractionExpiry|SdkNotGiven $expiry = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): InteractionLimitResponse
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/interaction-limits", $clientConfig, body: ['limit' => $limit, 'expiry' => $expiry], returnType: InteractionLimitResponse::class, decoder: 'json', operationId: 'interactionsSetRestrictionsForOrg', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/interaction-limits", $clientConfig, body: ['limit' => $limit, 'expiry' => $expiry], returnType: InteractionLimitResponse::class, decoder: 'json', operationId: 'interactionsSetRestrictionsForOrg', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, InteractionLimitResponse::class));
     }
 
@@ -68,7 +68,7 @@ trait InteractionsMethodsPart1
     public static function interactionsGetPullRequestCreationCapForOrg(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): InteractionsGetPullRequestCreationCapForOrgResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/interaction-limits/pulls/creation-cap", $clientConfig, returnType: InteractionsGetPullRequestCreationCapForOrgResponse::class, decoder: 'json', operationId: 'interactionsGetPullRequestCreationCapForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 405 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/interaction-limits/pulls/creation-cap", $clientConfig, returnType: InteractionsGetPullRequestCreationCapForOrgResponse::class, decoder: 'json', operationId: 'interactionsGetPullRequestCreationCapForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 405 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, InteractionsGetPullRequestCreationCapForOrgResponse::class));
     }
 
@@ -91,7 +91,7 @@ trait InteractionsMethodsPart1
             Validation::validateRange('max_open_pull_requests', $maxOpenPullRequests, min: 1, max: 1000);
         }
 
-        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/interaction-limits/pulls/creation-cap", $clientConfig, body: ['enabled' => $enabled, 'max_open_pull_requests' => $maxOpenPullRequests, 'include_drafts' => $includeDrafts], returnType: InteractionsUpdatePullRequestCreationCapForOrgResponse::class, decoder: 'json', operationId: 'interactionsUpdatePullRequestCreationCapForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 405 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/interaction-limits/pulls/creation-cap", $clientConfig, body: ['enabled' => $enabled, 'max_open_pull_requests' => $maxOpenPullRequests, 'include_drafts' => $includeDrafts], returnType: InteractionsUpdatePullRequestCreationCapForOrgResponse::class, decoder: 'json', operationId: 'interactionsUpdatePullRequestCreationCapForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 405 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, InteractionsUpdatePullRequestCreationCapForOrgResponse::class));
     }
 
@@ -159,7 +159,7 @@ trait InteractionsMethodsPart1
     public static function interactionsGetPullRequestBypassListForRepo(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/bypass-list", $clientConfig, decoder: 'json', operationId: 'interactionsGetPullRequestBypassListForRepo', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/bypass-list", $clientConfig, decoder: 'json', operationId: 'interactionsGetPullRequestBypassListForRepo', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -176,7 +176,7 @@ trait InteractionsMethodsPart1
     public static function interactionsSetPullRequestBypassListForRepo(ClientConfig $clientConfig, string $owner, string $repo, array $users, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/bypass-list", $clientConfig, body: ['users' => $users], decoder: 'empty', operationId: 'interactionsSetPullRequestBypassListForRepo', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/bypass-list", $clientConfig, body: ['users' => $users], decoder: 'empty', operationId: 'interactionsSetPullRequestBypassListForRepo', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -192,7 +192,7 @@ trait InteractionsMethodsPart1
     public static function interactionsRemovePullRequestBypassListForRepo(ClientConfig $clientConfig, string $owner, string $repo, array $users, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/bypass-list", $clientConfig, body: ['users' => $users], decoder: 'empty', operationId: 'interactionsRemovePullRequestBypassListForRepo', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/bypass-list", $clientConfig, body: ['users' => $users], decoder: 'empty', operationId: 'interactionsRemovePullRequestBypassListForRepo', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -208,7 +208,7 @@ trait InteractionsMethodsPart1
     public static function interactionsGetPullRequestCreationCapForRepo(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): InteractionsGetPullRequestCreationCapForRepoResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/creation-cap", $clientConfig, returnType: InteractionsGetPullRequestCreationCapForRepoResponse::class, decoder: 'json', operationId: 'interactionsGetPullRequestCreationCapForRepo', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 405 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/creation-cap", $clientConfig, returnType: InteractionsGetPullRequestCreationCapForRepoResponse::class, decoder: 'json', operationId: 'interactionsGetPullRequestCreationCapForRepo', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 405 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, InteractionsGetPullRequestCreationCapForRepoResponse::class));
     }
 
@@ -232,7 +232,7 @@ trait InteractionsMethodsPart1
             Validation::validateRange('max_open_pull_requests', $maxOpenPullRequests, min: 1, max: 1000);
         }
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/creation-cap", $clientConfig, body: ['enabled' => $enabled, 'max_open_pull_requests' => $maxOpenPullRequests, 'include_drafts' => $includeDrafts], returnType: InteractionsUpdatePullRequestCreationCapForRepoResponse::class, decoder: 'json', operationId: 'interactionsUpdatePullRequestCreationCapForRepo', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 405 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/interaction-limits/pulls/creation-cap", $clientConfig, body: ['enabled' => $enabled, 'max_open_pull_requests' => $maxOpenPullRequests, 'include_drafts' => $includeDrafts], returnType: InteractionsUpdatePullRequestCreationCapForRepoResponse::class, decoder: 'json', operationId: 'interactionsUpdatePullRequestCreationCapForRepo', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 405 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, InteractionsUpdatePullRequestCreationCapForRepoResponse::class));
     }
 
@@ -262,7 +262,7 @@ trait InteractionsMethodsPart1
     public static function interactionsSetRestrictionsForAuthenticatedUser(ClientConfig $clientConfig, InteractionGroup $limit, InteractionExpiry|SdkNotGiven $expiry = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): InteractionLimitResponse
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/user/interaction-limits", $clientConfig, body: ['limit' => $limit, 'expiry' => $expiry], returnType: InteractionLimitResponse::class, decoder: 'json', operationId: 'interactionsSetRestrictionsForAuthenticatedUser', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/user/interaction-limits", $clientConfig, body: ['limit' => $limit, 'expiry' => $expiry], returnType: InteractionLimitResponse::class, decoder: 'json', operationId: 'interactionsSetRestrictionsForAuthenticatedUser', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, InteractionLimitResponse::class));
     }
 

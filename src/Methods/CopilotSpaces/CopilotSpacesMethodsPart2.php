@@ -29,7 +29,7 @@ trait CopilotSpacesMethodsPart2
             Validation::validateLength('general_instructions', $generalInstructions, max: 4000);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces", $clientConfig, body: ['name' => $name, 'description' => $description, 'general_instructions' => $generalInstructions, 'base_role' => $baseRole, 'resources_attributes' => $resourcesAttributes], returnType: CopilotSpace::class, decoder: 'json', operationId: 'copilotSpacesCreateForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces", $clientConfig, body: ['name' => $name, 'description' => $description, 'general_instructions' => $generalInstructions, 'base_role' => $baseRole, 'resources_attributes' => $resourcesAttributes], returnType: CopilotSpace::class, decoder: 'json', operationId: 'copilotSpacesCreateForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotSpace::class));
     }
 
@@ -46,7 +46,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesGetForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, ?RequestOptions $requestOptions = null): CopilotSpace
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "", $clientConfig, returnType: CopilotSpace::class, decoder: 'json', operationId: 'copilotSpacesGetForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "", $clientConfig, returnType: CopilotSpace::class, decoder: 'json', operationId: 'copilotSpacesGetForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotSpace::class));
     }
 
@@ -72,7 +72,7 @@ trait CopilotSpacesMethodsPart2
             Validation::validateLength('general_instructions', $generalInstructions, max: 4000);
         }
 
-        $sdkResponse = SdkClient::request('PUT', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'general_instructions' => $generalInstructions, 'base_role' => $baseRole, 'resources_attributes' => $resourcesAttributes], returnType: CopilotSpace::class, decoder: 'json', operationId: 'copilotSpacesUpdateForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'general_instructions' => $generalInstructions, 'base_role' => $baseRole, 'resources_attributes' => $resourcesAttributes], returnType: CopilotSpace::class, decoder: 'json', operationId: 'copilotSpacesUpdateForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotSpace::class));
     }
 
@@ -88,7 +88,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesDeleteForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "", $clientConfig, decoder: 'empty', operationId: 'copilotSpacesDeleteForUser', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "", $clientConfig, decoder: 'empty', operationId: 'copilotSpacesDeleteForUser', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -104,7 +104,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesListCollaboratorsForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, ?RequestOptions $requestOptions = null): CopilotSpacesListCollaboratorsForUserResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/collaborators", $clientConfig, returnType: CopilotSpacesListCollaboratorsForUserResponse::class, decoder: 'json', operationId: 'copilotSpacesListCollaboratorsForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/collaborators", $clientConfig, returnType: CopilotSpacesListCollaboratorsForUserResponse::class, decoder: 'json', operationId: 'copilotSpacesListCollaboratorsForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotSpacesListCollaboratorsForUserResponse::class));
     }
 
@@ -124,7 +124,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesAddCollaboratorForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, CopilotSpacesAddCollaboratorForUserActorType $actorType, string $actorIdentifier, CopilotSpacesAddCollaboratorForUserRole $role, ?RequestOptions $requestOptions = null): CopilotSpaceCollaborator
     {
 
-        $sdkResponse = SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/collaborators", $clientConfig, body: ['actor_type' => $actorType, 'actor_identifier' => $actorIdentifier, 'role' => $role], decoder: 'json', operationId: 'copilotSpacesAddCollaboratorForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/collaborators", $clientConfig, body: ['actor_type' => $actorType, 'actor_identifier' => $actorIdentifier, 'role' => $role], decoder: 'json', operationId: 'copilotSpacesAddCollaboratorForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::hydrateUnionAs($sdkResponse->data, CopilotSpaceCollaborator::class, [CopilotSpaceCollaboratorVariant0::class, CopilotSpaceCollaboratorVariant1::class], null, []));
     }
 
@@ -144,7 +144,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesUpdateCollaboratorForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, CopilotSpacesUpdateCollaboratorForUserActorType $actorType, string $actorIdentifier, CopilotSpacesUpdateCollaboratorForUserRole $role, ?RequestOptions $requestOptions = null): CopilotSpaceCollaborator
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/collaborators/" . SdkClient::encodePathSegment($actorType) . "/" . SdkClient::encodePathSegment($actorIdentifier) . "", $clientConfig, body: ['role' => $role], decoder: 'json', operationId: 'copilotSpacesUpdateCollaboratorForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/collaborators/" . SdkClient::encodePathSegment($actorType) . "/" . SdkClient::encodePathSegment($actorIdentifier) . "", $clientConfig, body: ['role' => $role], decoder: 'json', operationId: 'copilotSpacesUpdateCollaboratorForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::hydrateUnionAs($sdkResponse->data, CopilotSpaceCollaborator::class, [CopilotSpaceCollaboratorVariant0::class, CopilotSpaceCollaboratorVariant1::class], null, []));
     }
 
@@ -162,7 +162,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesRemoveCollaboratorForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, CopilotSpacesRemoveCollaboratorForUserActorType $actorType, string $actorIdentifier, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/collaborators/" . SdkClient::encodePathSegment($actorType) . "/" . SdkClient::encodePathSegment($actorIdentifier) . "", $clientConfig, decoder: 'empty', operationId: 'copilotSpacesRemoveCollaboratorForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/collaborators/" . SdkClient::encodePathSegment($actorType) . "/" . SdkClient::encodePathSegment($actorIdentifier) . "", $clientConfig, decoder: 'empty', operationId: 'copilotSpacesRemoveCollaboratorForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -178,7 +178,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesListResourcesForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, ?RequestOptions $requestOptions = null): CopilotSpacesListResourcesForUserResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources", $clientConfig, returnType: CopilotSpacesListResourcesForUserResponse::class, decoder: 'json', operationId: 'copilotSpacesListResourcesForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources", $clientConfig, returnType: CopilotSpacesListResourcesForUserResponse::class, decoder: 'json', operationId: 'copilotSpacesListResourcesForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotSpacesListResourcesForUserResponse::class));
     }
 
@@ -197,7 +197,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesCreateResourceForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, CopilotSpacesCreateResourceForUserResourceType $resourceType, array $metadata, ?RequestOptions $requestOptions = null): CopilotSpaceResource
     {
 
-        $sdkResponse = SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources", $clientConfig, body: ['resource_type' => $resourceType, 'metadata' => $metadata], returnType: CopilotSpaceResource::class, decoder: 'json', operationId: 'copilotSpacesCreateResourceForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources", $clientConfig, body: ['resource_type' => $resourceType, 'metadata' => $metadata], returnType: CopilotSpaceResource::class, decoder: 'json', operationId: 'copilotSpacesCreateResourceForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotSpaceResource::class));
     }
 
@@ -215,7 +215,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesGetResourceForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, int $spaceResourceId, ?RequestOptions $requestOptions = null): CopilotSpaceResource
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources/" . SdkClient::encodePathSegment($spaceResourceId) . "", $clientConfig, returnType: CopilotSpaceResource::class, decoder: 'json', operationId: 'copilotSpacesGetResourceForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources/" . SdkClient::encodePathSegment($spaceResourceId) . "", $clientConfig, returnType: CopilotSpaceResource::class, decoder: 'json', operationId: 'copilotSpacesGetResourceForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotSpaceResource::class));
     }
 
@@ -234,7 +234,7 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesUpdateResourceForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, int $spaceResourceId, array|SdkNotGiven $metadata = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CopilotSpaceResource
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources/" . SdkClient::encodePathSegment($spaceResourceId) . "", $clientConfig, body: ['metadata' => $metadata], returnType: CopilotSpaceResource::class, decoder: 'json', operationId: 'copilotSpacesUpdateResourceForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources/" . SdkClient::encodePathSegment($spaceResourceId) . "", $clientConfig, body: ['metadata' => $metadata], returnType: CopilotSpaceResource::class, decoder: 'json', operationId: 'copilotSpacesUpdateResourceForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotSpaceResource::class));
     }
 
@@ -251,6 +251,6 @@ trait CopilotSpacesMethodsPart2
     public static function copilotSpacesDeleteResourceForUser(ClientConfig $clientConfig, string $username, int $spaceNumber, int $spaceResourceId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources/" . SdkClient::encodePathSegment($spaceResourceId) . "", $clientConfig, decoder: 'empty', operationId: 'copilotSpacesDeleteResourceForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/copilot-spaces/" . SdkClient::encodePathSegment($spaceNumber) . "/resources/" . SdkClient::encodePathSegment($spaceResourceId) . "", $clientConfig, decoder: 'empty', operationId: 'copilotSpacesDeleteResourceForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

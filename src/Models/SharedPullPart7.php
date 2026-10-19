@@ -55,8 +55,12 @@ class PullRequestStackBase implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) {
+            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
         return new self(
             ref: SdkClient::stringValue($data->ref),
             sha: SdkClient::stringValue($data->sha),
@@ -150,7 +154,9 @@ class PullRequestStack implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "base") || $data->base === null) { throw new SdkValidationError("base", 'required', "Required property 'base' is missing or null"); }
+        if (!property_exists($data, "base") || $data->base === null) {
+            throw new SdkValidationError("base", 'required', "Required property 'base' is missing or null");
+        }
         return new self(
             base: SdkClient::hydrateClass($data->base, PullRequestStackBase::class),
             size: (property_exists($data, "size") && $data->size !== null ? SdkClient::intValue($data->size) : SdkNotGiven::Value),

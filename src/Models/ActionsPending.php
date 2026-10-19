@@ -242,11 +242,21 @@ class PendingDeployment implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "environment") || $data->environment === null) { throw new SdkValidationError("environment", 'required', "Required property 'environment' is missing or null"); }
-        if (!property_exists($data, "wait_timer") || $data->wait_timer === null) { throw new SdkValidationError("wait_timer", 'required', "Required property 'wait_timer' is missing or null"); }
-        if (!property_exists($data, "wait_timer_started_at")) { throw new SdkValidationError("wait_timer_started_at", 'required', "Missing required property 'wait_timer_started_at'"); }
-        if (!property_exists($data, "current_user_can_approve") || $data->current_user_can_approve === null) { throw new SdkValidationError("current_user_can_approve", 'required', "Required property 'current_user_can_approve' is missing or null"); }
-        if (!property_exists($data, "reviewers") || $data->reviewers === null) { throw new SdkValidationError("reviewers", 'required', "Required property 'reviewers' is missing or null"); }
+        if (!property_exists($data, "environment") || $data->environment === null) {
+            throw new SdkValidationError("environment", 'required', "Required property 'environment' is missing or null");
+        }
+        if (!property_exists($data, "wait_timer") || $data->wait_timer === null) {
+            throw new SdkValidationError("wait_timer", 'required', "Required property 'wait_timer' is missing or null");
+        }
+        if (!property_exists($data, "wait_timer_started_at")) {
+            throw new SdkValidationError("wait_timer_started_at", 'required', "Missing required property 'wait_timer_started_at'");
+        }
+        if (!property_exists($data, "current_user_can_approve") || $data->current_user_can_approve === null) {
+            throw new SdkValidationError("current_user_can_approve", 'required', "Required property 'current_user_can_approve' is missing or null");
+        }
+        if (!property_exists($data, "reviewers") || $data->reviewers === null) {
+            throw new SdkValidationError("reviewers", 'required', "Required property 'reviewers' is missing or null");
+        }
         return new self(
             environment: SdkClient::hydrateClass($data->environment, PendingDeploymentEnvironment::class),
             waitTimer: SdkClient::intValue($data->wait_timer),

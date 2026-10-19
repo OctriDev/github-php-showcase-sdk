@@ -113,9 +113,15 @@ class WebhookRegistryPackagePublished implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "registry_package") || $data->registry_package === null) { throw new SdkValidationError("registry_package", 'required', "Required property 'registry_package' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "registry_package") || $data->registry_package === null) {
+            throw new SdkValidationError("registry_package", 'required', "Required property 'registry_package' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookRegistryPackagePublishedActionEnum::class),
             registryPackage: SdkClient::hydrateClass($data->registry_package, WebhookRegistryPackagePublishedRegistryPackage::class),

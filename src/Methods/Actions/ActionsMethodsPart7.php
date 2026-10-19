@@ -38,7 +38,7 @@ trait ActionsMethodsPart7
     public static function actionsDownloadArtifact(ClientConfig $clientConfig, string $owner, string $repo, int $artifactId, string $archiveFormat, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/artifacts/" . SdkClient::encodePathSegment($artifactId) . "/" . SdkClient::encodePathSegment($archiveFormat) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDownloadArtifact', requestOptions: $requestOptions, errors: [410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/artifacts/" . SdkClient::encodePathSegment($artifactId) . "/" . SdkClient::encodePathSegment($archiveFormat) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDownloadArtifact', requestOptions: $requestOptions, errors: [410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -54,7 +54,7 @@ trait ActionsMethodsPart7
     public static function actionsGetActionsCacheRetentionLimitForRepository(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): ActionsCacheRetentionLimitForRepository
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/cache/retention-limit", $clientConfig, returnType: ActionsCacheRetentionLimitForRepository::class, decoder: 'json', operationId: 'actionsGetActionsCacheRetentionLimitForRepository', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/cache/retention-limit", $clientConfig, returnType: ActionsCacheRetentionLimitForRepository::class, decoder: 'json', operationId: 'actionsGetActionsCacheRetentionLimitForRepository', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsCacheRetentionLimitForRepository::class));
     }
 
@@ -71,7 +71,7 @@ trait ActionsMethodsPart7
     public static function actionsSetActionsCacheRetentionLimitForRepository(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $maxCacheRetentionDays = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/cache/retention-limit", $clientConfig, body: ['max_cache_retention_days' => $maxCacheRetentionDays], decoder: 'empty', operationId: 'actionsSetActionsCacheRetentionLimitForRepository', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/cache/retention-limit", $clientConfig, body: ['max_cache_retention_days' => $maxCacheRetentionDays], decoder: 'empty', operationId: 'actionsSetActionsCacheRetentionLimitForRepository', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -87,7 +87,7 @@ trait ActionsMethodsPart7
     public static function actionsGetActionsCacheStorageLimitForRepository(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): ActionsCacheStorageLimitForRepository
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/cache/storage-limit", $clientConfig, returnType: ActionsCacheStorageLimitForRepository::class, decoder: 'json', operationId: 'actionsGetActionsCacheStorageLimitForRepository', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/cache/storage-limit", $clientConfig, returnType: ActionsCacheStorageLimitForRepository::class, decoder: 'json', operationId: 'actionsGetActionsCacheStorageLimitForRepository', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsCacheStorageLimitForRepository::class));
     }
 
@@ -104,7 +104,7 @@ trait ActionsMethodsPart7
     public static function actionsSetActionsCacheStorageLimitForRepository(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $maxCacheSizeGb = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/cache/storage-limit", $clientConfig, body: ['max_cache_size_gb' => $maxCacheSizeGb], decoder: 'empty', operationId: 'actionsSetActionsCacheStorageLimitForRepository', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/cache/storage-limit", $clientConfig, body: ['max_cache_size_gb' => $maxCacheSizeGb], decoder: 'empty', operationId: 'actionsSetActionsCacheStorageLimitForRepository', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -197,7 +197,7 @@ trait ActionsMethodsPart7
     public static function actionsListConcurrencyGroupsForRepository(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $perPage = SdkNotGiven::Value, string|SdkNotGiven $after = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ConcurrencyGroupList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/concurrency_groups", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'after' => new SdkQueryValue($after, "form", true)], returnType: ConcurrencyGroupList::class, decoder: 'json', operationId: 'actionsListConcurrencyGroupsForRepository', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/concurrency_groups", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'after' => new SdkQueryValue($after, "form", true)], returnType: ConcurrencyGroupList::class, decoder: 'json', operationId: 'actionsListConcurrencyGroupsForRepository', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ConcurrencyGroupList::class));
     }
 
@@ -225,7 +225,7 @@ trait ActionsMethodsPart7
             Validation::validateRange('ahead_of_job', $aheadOfJob, min: 1);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/concurrency_groups/" . SdkClient::encodePathSegment($concurrencyGroupName) . "", $clientConfig, query: ['ahead_of_run' => new SdkQueryValue($aheadOfRun, "form", true), 'ahead_of_job' => new SdkQueryValue($aheadOfJob, "form", true)], returnType: ConcurrencyGroup::class, decoder: 'json', operationId: 'actionsGetConcurrencyGroupForRepository', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/concurrency_groups/" . SdkClient::encodePathSegment($concurrencyGroupName) . "", $clientConfig, query: ['ahead_of_run' => new SdkQueryValue($aheadOfRun, "form", true), 'ahead_of_job' => new SdkQueryValue($aheadOfJob, "form", true)], returnType: ConcurrencyGroup::class, decoder: 'json', operationId: 'actionsGetConcurrencyGroupForRepository', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ConcurrencyGroup::class));
     }
 
@@ -279,7 +279,7 @@ trait ActionsMethodsPart7
     public static function actionsReRunJobForWorkflowRun(ClientConfig $clientConfig, string $owner, string $repo, int $jobId, bool|SdkNotGiven $enableDebugLogging = SdkNotGiven::Value, bool|SdkNotGiven $enableDebugger = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/jobs/" . SdkClient::encodePathSegment($jobId) . "/rerun", $clientConfig, body: ['enable_debug_logging' => $enableDebugLogging, 'enable_debugger' => $enableDebugger], returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsReRunJobForWorkflowRun', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/jobs/" . SdkClient::encodePathSegment($jobId) . "/rerun", $clientConfig, body: ['enable_debug_logging' => $enableDebugLogging, 'enable_debugger' => $enableDebugger], returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsReRunJobForWorkflowRun', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 

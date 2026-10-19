@@ -55,8 +55,12 @@ class ConcurrencyGroupRunList implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "concurrency_groups") || $data->concurrency_groups === null) { throw new SdkValidationError("concurrency_groups", 'required', "Required property 'concurrency_groups' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "concurrency_groups") || $data->concurrency_groups === null) {
+            throw new SdkValidationError("concurrency_groups", 'required', "Required property 'concurrency_groups' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             concurrencyGroups: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ConcurrencyGroupRunListConcurrencyGroupsItem::class), SdkClient::arrayValue($data->concurrency_groups))),

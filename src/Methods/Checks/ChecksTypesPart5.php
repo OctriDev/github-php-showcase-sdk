@@ -130,11 +130,21 @@ class ChecksUpdateBodyVariant1OutputAnnotationsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
-        if (!property_exists($data, "start_line") || $data->start_line === null) { throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null"); }
-        if (!property_exists($data, "end_line") || $data->end_line === null) { throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null"); }
-        if (!property_exists($data, "annotation_level") || $data->annotation_level === null) { throw new SdkValidationError("annotation_level", 'required', "Required property 'annotation_level' is missing or null"); }
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) {
+            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
+        }
+        if (!property_exists($data, "start_line") || $data->start_line === null) {
+            throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null");
+        }
+        if (!property_exists($data, "end_line") || $data->end_line === null) {
+            throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null");
+        }
+        if (!property_exists($data, "annotation_level") || $data->annotation_level === null) {
+            throw new SdkValidationError("annotation_level", 'required', "Required property 'annotation_level' is missing or null");
+        }
+        if (!property_exists($data, "message") || $data->message === null) {
+            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
+        }
         return new self(
             path: SdkClient::stringValue($data->path),
             startLine: SdkClient::intValue($data->start_line),
@@ -206,8 +216,12 @@ class ChecksUpdateBodyVariant1OutputImagesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "alt") || $data->alt === null) { throw new SdkValidationError("alt", 'required', "Required property 'alt' is missing or null"); }
-        if (!property_exists($data, "image_url") || $data->image_url === null) { throw new SdkValidationError("image_url", 'required', "Required property 'image_url' is missing or null"); }
+        if (!property_exists($data, "alt") || $data->alt === null) {
+            throw new SdkValidationError("alt", 'required', "Required property 'alt' is missing or null");
+        }
+        if (!property_exists($data, "image_url") || $data->image_url === null) {
+            throw new SdkValidationError("image_url", 'required', "Required property 'image_url' is missing or null");
+        }
         return new self(
             alt: SdkClient::stringValue($data->alt),
             imageUrl: SdkClient::stringValue($data->image_url),
@@ -302,7 +316,9 @@ class ChecksUpdateBodyVariant1Output implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "summary") || $data->summary === null) { throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null"); }
+        if (!property_exists($data, "summary") || $data->summary === null) {
+            throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null");
+        }
         return new self(
             summary: SdkClient::stringValue($data->summary),
             title: (property_exists($data, "title") && $data->title !== null ? SdkClient::stringValue($data->title) : SdkNotGiven::Value),

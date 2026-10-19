@@ -21,7 +21,7 @@ trait ActivityApiMethodsPart2
     public static function activityGetStargazerCountForRepo(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): ActivityGetStargazerCountForRepoResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers/count", $clientConfig, returnType: ActivityGetStargazerCountForRepoResponse::class, decoder: 'json', operationId: 'activityGetStargazerCountForRepo', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers/count", $clientConfig, returnType: ActivityGetStargazerCountForRepoResponse::class, decoder: 'json', operationId: 'activityGetStargazerCountForRepo', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActivityGetStargazerCountForRepoResponse::class));
     }
 
@@ -48,7 +48,7 @@ trait ActivityApiMethodsPart2
             Validation::validateRange('page', $page, min: 1, max: 100);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers/history", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityGetStargazerHistoryForRepo', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers/history", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityGetStargazerHistoryForRepo', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, StargazerHistory::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -84,7 +84,7 @@ trait ActivityApiMethodsPart2
     public static function activityGetRepoSubscription(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): RepositorySubscription
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/subscription", $clientConfig, returnType: RepositorySubscription::class, decoder: 'json', operationId: 'activityGetRepoSubscription', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/subscription", $clientConfig, returnType: RepositorySubscription::class, decoder: 'json', operationId: 'activityGetRepoSubscription', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RepositorySubscription::class));
     }
 
@@ -137,7 +137,7 @@ trait ActivityApiMethodsPart2
     public static function activityListReposStarredByAuthenticatedUser(ClientConfig $clientConfig, ActivityListReposStarredByAuthenticatedUserSort|SdkNotGiven $sort = SdkNotGiven::Value, ActivityListReposStarredByAuthenticatedUserDirection|SdkNotGiven $direction = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/starred", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityListReposStarredByAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/starred", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityListReposStarredByAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Repository::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -153,7 +153,7 @@ trait ActivityApiMethodsPart2
     public static function activityCheckRepoIsStarredByAuthenticatedUser(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/user/starred/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, decoder: 'empty', operationId: 'activityCheckRepoIsStarredByAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/user/starred/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, decoder: 'empty', operationId: 'activityCheckRepoIsStarredByAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -168,7 +168,7 @@ trait ActivityApiMethodsPart2
     public static function activityStarRepoForAuthenticatedUser(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/user/starred/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, decoder: 'empty', operationId: 'activityStarRepoForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/user/starred/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, decoder: 'empty', operationId: 'activityStarRepoForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -183,7 +183,7 @@ trait ActivityApiMethodsPart2
     public static function activityUnstarRepoForAuthenticatedUser(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/user/starred/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, decoder: 'empty', operationId: 'activityUnstarRepoForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/user/starred/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, decoder: 'empty', operationId: 'activityUnstarRepoForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -199,7 +199,7 @@ trait ActivityApiMethodsPart2
     public static function activityListWatchedReposForAuthenticatedUser(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/subscriptions", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityListWatchedReposForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/subscriptions", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityListWatchedReposForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MinimalRepository::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
