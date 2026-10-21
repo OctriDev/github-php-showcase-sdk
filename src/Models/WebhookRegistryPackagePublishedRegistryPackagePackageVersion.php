@@ -339,36 +339,16 @@ class WebhookRegistryPackagePublishedRegistryPackagePackageVersion implements \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "installation_command") || $data->installation_command === null) {
-            throw new SdkValidationError("installation_command", 'required', "Required property 'installation_command' is missing or null");
-        }
-        if (!property_exists($data, "metadata") || $data->metadata === null) {
-            throw new SdkValidationError("metadata", 'required', "Required property 'metadata' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "package_files") || $data->package_files === null) {
-            throw new SdkValidationError("package_files", 'required', "Required property 'package_files' is missing or null");
-        }
-        if (!property_exists($data, "package_url") || $data->package_url === null) {
-            throw new SdkValidationError("package_url", 'required', "Required property 'package_url' is missing or null");
-        }
-        if (!property_exists($data, "summary") || $data->summary === null) {
-            throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null");
-        }
-        if (!property_exists($data, "version") || $data->version === null) {
-            throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null");
-        }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "installation_command") || $data->installation_command === null) { throw new SdkValidationError("installation_command", 'required', "Required property 'installation_command' is missing or null"); }
+        if (!property_exists($data, "metadata") || $data->metadata === null) { throw new SdkValidationError("metadata", 'required', "Required property 'metadata' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "package_files") || $data->package_files === null) { throw new SdkValidationError("package_files", 'required', "Required property 'package_files' is missing or null"); }
+        if (!property_exists($data, "package_url") || $data->package_url === null) { throw new SdkValidationError("package_url", 'required', "Required property 'package_url' is missing or null"); }
+        if (!property_exists($data, "summary") || $data->summary === null) { throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null"); }
+        if (!property_exists($data, "version") || $data->version === null) { throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null"); }
         return new self(
             description: SdkClient::stringValue($data->description),
             htmlUrl: SdkClient::stringValue($data->html_url),

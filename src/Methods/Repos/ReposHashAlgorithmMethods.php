@@ -21,7 +21,7 @@ trait ReposHashAlgorithmMethods
     public static function reposGetHashAlgorithm(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): RepositoryHashAlgorithm
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hash-algorithm", $clientConfig, returnType: RepositoryHashAlgorithm::class, decoder: 'json', operationId: 'reposGetHashAlgorithm', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/hash-algorithm", $clientConfig, returnType: RepositoryHashAlgorithm::class, decoder: 'json', operationId: 'reposGetHashAlgorithm', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RepositoryHashAlgorithm::class));
     }
 }

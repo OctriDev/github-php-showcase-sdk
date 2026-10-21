@@ -22,7 +22,7 @@ trait ReposTrafficMethods
     public static function reposGetClones(ClientConfig $clientConfig, string $owner, string $repo, ReposGetClonesPer|SdkNotGiven $per = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CloneTraffic
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/traffic/clones", $clientConfig, query: ['per' => new SdkQueryValue($per, "form", true)], returnType: CloneTraffic::class, decoder: 'json', operationId: 'reposGetClones', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/traffic/clones", $clientConfig, query: ['per' => new SdkQueryValue($per, "form", true)], returnType: CloneTraffic::class, decoder: 'json', operationId: 'reposGetClones', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CloneTraffic::class));
     }
 
@@ -39,7 +39,7 @@ trait ReposTrafficMethods
     public static function reposGetTopPaths(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/traffic/popular/paths", $clientConfig, decoder: 'json', operationId: 'reposGetTopPaths', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/traffic/popular/paths", $clientConfig, decoder: 'json', operationId: 'reposGetTopPaths', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ContentTraffic::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -56,7 +56,7 @@ trait ReposTrafficMethods
     public static function reposGetTopReferrers(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/traffic/popular/referrers", $clientConfig, decoder: 'json', operationId: 'reposGetTopReferrers', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/traffic/popular/referrers", $clientConfig, decoder: 'json', operationId: 'reposGetTopReferrers', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ReferrerTraffic::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -74,7 +74,7 @@ trait ReposTrafficMethods
     public static function reposGetViews(ClientConfig $clientConfig, string $owner, string $repo, ReposGetViewsPer|SdkNotGiven $per = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ViewTraffic
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/traffic/views", $clientConfig, query: ['per' => new SdkQueryValue($per, "form", true)], returnType: ViewTraffic::class, decoder: 'json', operationId: 'reposGetViews', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/traffic/views", $clientConfig, query: ['per' => new SdkQueryValue($per, "form", true)], returnType: ViewTraffic::class, decoder: 'json', operationId: 'reposGetViews', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ViewTraffic::class));
     }
 }

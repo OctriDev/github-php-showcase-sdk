@@ -14,26 +14,11 @@ final readonly class ContentDirectoryItemTypeEnum implements SdkOpenEnum
     public const SUBMODULE = "submodule";
     public const SYMLINK = "symlink";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class ContentDirectoryItemLinks implements \JsonSerializable
@@ -79,15 +64,9 @@ class ContentDirectoryItemLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "git")) {
-            throw new SdkValidationError("git", 'required', "Missing required property 'git'");
-        }
-        if (!property_exists($data, "html")) {
-            throw new SdkValidationError("html", 'required', "Missing required property 'html'");
-        }
-        if (!property_exists($data, "self") || $data->self === null) {
-            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
-        }
+        if (!property_exists($data, "git")) { throw new SdkValidationError("git", 'required', "Missing required property 'git'"); }
+        if (!property_exists($data, "html")) { throw new SdkValidationError("html", 'required', "Missing required property 'html'"); }
+        if (!property_exists($data, "self") || $data->self === null) { throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null"); }
         return new self(
             git: ($data->git === null ? null : SdkClient::stringValue($data->git)),
             html: ($data->html === null ? null : SdkClient::stringValue($data->html)),
@@ -189,36 +168,16 @@ class ContentDirectoryItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "size") || $data->size === null) {
-            throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "path") || $data->path === null) {
-            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
-        }
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "git_url")) {
-            throw new SdkValidationError("git_url", 'required', "Missing required property 'git_url'");
-        }
-        if (!property_exists($data, "html_url")) {
-            throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'");
-        }
-        if (!property_exists($data, "download_url")) {
-            throw new SdkValidationError("download_url", 'required', "Missing required property 'download_url'");
-        }
-        if (!property_exists($data, "_links") || $data->_links === null) {
-            throw new SdkValidationError("_links", 'required', "Required property '_links' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "size") || $data->size === null) { throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "git_url")) { throw new SdkValidationError("git_url", 'required', "Missing required property 'git_url'"); }
+        if (!property_exists($data, "html_url")) { throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'"); }
+        if (!property_exists($data, "download_url")) { throw new SdkValidationError("download_url", 'required', "Missing required property 'download_url'"); }
+        if (!property_exists($data, "_links") || $data->_links === null) { throw new SdkValidationError("_links", 'required', "Required property '_links' is missing or null"); }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, ContentDirectoryItemTypeEnum::class),
             size: SdkClient::intValue($data->size),
@@ -301,15 +260,9 @@ class ContentSubmoduleLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "git")) {
-            throw new SdkValidationError("git", 'required', "Missing required property 'git'");
-        }
-        if (!property_exists($data, "html")) {
-            throw new SdkValidationError("html", 'required', "Missing required property 'html'");
-        }
-        if (!property_exists($data, "self") || $data->self === null) {
-            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
-        }
+        if (!property_exists($data, "git")) { throw new SdkValidationError("git", 'required', "Missing required property 'git'"); }
+        if (!property_exists($data, "html")) { throw new SdkValidationError("html", 'required', "Missing required property 'html'"); }
+        if (!property_exists($data, "self") || $data->self === null) { throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null"); }
         return new self(
             git: ($data->git === null ? null : SdkClient::stringValue($data->git)),
             html: ($data->html === null ? null : SdkClient::stringValue($data->html)),

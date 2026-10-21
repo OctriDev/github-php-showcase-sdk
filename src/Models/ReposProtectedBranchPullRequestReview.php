@@ -115,12 +115,8 @@ class ProtectedBranchPullRequestReview implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "dismiss_stale_reviews") || $data->dismiss_stale_reviews === null) {
-            throw new SdkValidationError("dismiss_stale_reviews", 'required', "Required property 'dismiss_stale_reviews' is missing or null");
-        }
-        if (!property_exists($data, "require_code_owner_reviews") || $data->require_code_owner_reviews === null) {
-            throw new SdkValidationError("require_code_owner_reviews", 'required', "Required property 'require_code_owner_reviews' is missing or null");
-        }
+        if (!property_exists($data, "dismiss_stale_reviews") || $data->dismiss_stale_reviews === null) { throw new SdkValidationError("dismiss_stale_reviews", 'required', "Required property 'dismiss_stale_reviews' is missing or null"); }
+        if (!property_exists($data, "require_code_owner_reviews") || $data->require_code_owner_reviews === null) { throw new SdkValidationError("require_code_owner_reviews", 'required', "Required property 'require_code_owner_reviews' is missing or null"); }
         return new self(
             dismissStaleReviews: SdkClient::boolValue($data->dismiss_stale_reviews),
             requireCodeOwnerReviews: SdkClient::boolValue($data->require_code_owner_reviews),
@@ -181,12 +177,8 @@ class ProtectedBranchRequiredStatusCheckChecksItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "context") || $data->context === null) {
-            throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null");
-        }
-        if (!property_exists($data, "app_id")) {
-            throw new SdkValidationError("app_id", 'required', "Missing required property 'app_id'");
-        }
+        if (!property_exists($data, "context") || $data->context === null) { throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null"); }
+        if (!property_exists($data, "app_id")) { throw new SdkValidationError("app_id", 'required', "Missing required property 'app_id'"); }
         return new self(
             context: SdkClient::stringValue($data->context),
             appId: ($data->app_id === null ? null : SdkClient::intValue($data->app_id)),
@@ -290,12 +282,8 @@ class ProtectedBranchRequiredStatusCheck implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "contexts") || $data->contexts === null) {
-            throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null");
-        }
-        if (!property_exists($data, "checks") || $data->checks === null) {
-            throw new SdkValidationError("checks", 'required', "Required property 'checks' is missing or null");
-        }
+        if (!property_exists($data, "contexts") || $data->contexts === null) { throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null"); }
+        if (!property_exists($data, "checks") || $data->checks === null) { throw new SdkValidationError("checks", 'required', "Required property 'checks' is missing or null"); }
         return new self(
             contexts: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->contexts))),
             checks: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ProtectedBranchRequiredStatusCheckChecksItem::class), SdkClient::arrayValue($data->checks))),

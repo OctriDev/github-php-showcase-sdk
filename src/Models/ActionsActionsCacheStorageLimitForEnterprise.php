@@ -203,15 +203,9 @@ class ActionsCacheUsageByRepository implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "full_name") || $data->full_name === null) {
-            throw new SdkValidationError("full_name", 'required', "Required property 'full_name' is missing or null");
-        }
-        if (!property_exists($data, "active_caches_size_in_bytes") || $data->active_caches_size_in_bytes === null) {
-            throw new SdkValidationError("active_caches_size_in_bytes", 'required', "Required property 'active_caches_size_in_bytes' is missing or null");
-        }
-        if (!property_exists($data, "active_caches_count") || $data->active_caches_count === null) {
-            throw new SdkValidationError("active_caches_count", 'required', "Required property 'active_caches_count' is missing or null");
-        }
+        if (!property_exists($data, "full_name") || $data->full_name === null) { throw new SdkValidationError("full_name", 'required', "Required property 'full_name' is missing or null"); }
+        if (!property_exists($data, "active_caches_size_in_bytes") || $data->active_caches_size_in_bytes === null) { throw new SdkValidationError("active_caches_size_in_bytes", 'required', "Required property 'active_caches_size_in_bytes' is missing or null"); }
+        if (!property_exists($data, "active_caches_count") || $data->active_caches_count === null) { throw new SdkValidationError("active_caches_count", 'required', "Required property 'active_caches_count' is missing or null"); }
         return new self(
             fullName: SdkClient::stringValue($data->full_name),
             activeCachesSizeInBytes: SdkClient::intValue($data->active_caches_size_in_bytes),

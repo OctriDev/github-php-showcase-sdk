@@ -77,15 +77,9 @@ class WebhookStatusCommitCommitAuthor implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "date") || $data->date === null) {
-            throw new SdkValidationError("date", 'required', "Required property 'date' is missing or null");
-        }
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "date") || $data->date === null) { throw new SdkValidationError("date", 'required', "Required property 'date' is missing or null"); }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             date: SdkClient::stringValue($data->date),
             email: SdkClient::stringValue($data->email),
@@ -165,15 +159,9 @@ class WebhookStatusCommitCommitCommitter implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "date") || $data->date === null) {
-            throw new SdkValidationError("date", 'required', "Required property 'date' is missing or null");
-        }
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "date") || $data->date === null) { throw new SdkValidationError("date", 'required', "Required property 'date' is missing or null"); }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             date: SdkClient::stringValue($data->date),
             email: SdkClient::stringValue($data->email),
@@ -231,12 +219,8 @@ class WebhookStatusCommitCommitTree implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             sha: SdkClient::stringValue($data->sha),
             url: SdkClient::stringValue($data->url),
@@ -265,26 +249,11 @@ final readonly class WebhookStatusCommitCommitVerificationReasonEnum implements 
     public const BAD_CERT = "bad_cert";
     public const OCSP_PENDING = "ocsp_pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -365,21 +334,11 @@ class WebhookStatusCommitCommitVerification implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "payload")) {
-            throw new SdkValidationError("payload", 'required', "Missing required property 'payload'");
-        }
-        if (!property_exists($data, "reason") || $data->reason === null) {
-            throw new SdkValidationError("reason", 'required', "Required property 'reason' is missing or null");
-        }
-        if (!property_exists($data, "signature")) {
-            throw new SdkValidationError("signature", 'required', "Missing required property 'signature'");
-        }
-        if (!property_exists($data, "verified") || $data->verified === null) {
-            throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null");
-        }
-        if (!property_exists($data, "verified_at")) {
-            throw new SdkValidationError("verified_at", 'required', "Missing required property 'verified_at'");
-        }
+        if (!property_exists($data, "payload")) { throw new SdkValidationError("payload", 'required', "Missing required property 'payload'"); }
+        if (!property_exists($data, "reason") || $data->reason === null) { throw new SdkValidationError("reason", 'required', "Required property 'reason' is missing or null"); }
+        if (!property_exists($data, "signature")) { throw new SdkValidationError("signature", 'required', "Missing required property 'signature'"); }
+        if (!property_exists($data, "verified") || $data->verified === null) { throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null"); }
+        if (!property_exists($data, "verified_at")) { throw new SdkValidationError("verified_at", 'required', "Missing required property 'verified_at'"); }
         return new self(
             payload: ($data->payload === null ? null : SdkClient::stringValue($data->payload)),
             reason: SdkClient::hydrateStringEnumOrString($data->reason, WebhookStatusCommitCommitVerificationReasonEnum::class),

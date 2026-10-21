@@ -21,26 +21,11 @@ final readonly class AuthorAssociation implements SdkOpenEnum
     public const NONE = "NONE";
     public const OWNER = "OWNER";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -52,26 +37,11 @@ final readonly class AutoMergeMergeMethodEnum implements SdkOpenEnum
     public const SQUASH = "squash";
     public const REBASE = "rebase";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -142,18 +112,10 @@ class AutoMerge implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled_by") || $data->enabled_by === null) {
-            throw new SdkValidationError("enabled_by", 'required', "Required property 'enabled_by' is missing or null");
-        }
-        if (!property_exists($data, "merge_method") || $data->merge_method === null) {
-            throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null");
-        }
-        if (!property_exists($data, "commit_title") || $data->commit_title === null) {
-            throw new SdkValidationError("commit_title", 'required', "Required property 'commit_title' is missing or null");
-        }
-        if (!property_exists($data, "commit_message") || $data->commit_message === null) {
-            throw new SdkValidationError("commit_message", 'required', "Required property 'commit_message' is missing or null");
-        }
+        if (!property_exists($data, "enabled_by") || $data->enabled_by === null) { throw new SdkValidationError("enabled_by", 'required', "Required property 'enabled_by' is missing or null"); }
+        if (!property_exists($data, "merge_method") || $data->merge_method === null) { throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null"); }
+        if (!property_exists($data, "commit_title") || $data->commit_title === null) { throw new SdkValidationError("commit_title", 'required', "Required property 'commit_title' is missing or null"); }
+        if (!property_exists($data, "commit_message") || $data->commit_message === null) { throw new SdkValidationError("commit_message", 'required', "Required property 'commit_message' is missing or null"); }
         return new self(
             enabledBy: SdkClient::hydrateClass($data->enabled_by, SimpleUser::class),
             mergeMethod: SdkClient::hydrateStringEnumOrString($data->merge_method, AutoMergeMergeMethodEnum::class),
@@ -296,12 +258,8 @@ class CustomPropertyValue implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "property_name") || $data->property_name === null) {
-            throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null");
-        }
-        if (!property_exists($data, "value")) {
-            throw new SdkValidationError("value", 'required', "Missing required property 'value'");
-        }
+        if (!property_exists($data, "property_name") || $data->property_name === null) { throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null"); }
+        if (!property_exists($data, "value")) { throw new SdkValidationError("value", 'required', "Missing required property 'value'"); }
         return new self(
             propertyName: SdkClient::stringValue($data->property_name),
             value: ($data->value === null ? null : (is_array($data->value) ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->value))) : SdkClient::stringValue($data->value))),
@@ -357,12 +315,8 @@ class CvssSeveritiesCvssV3 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "vector_string")) {
-            throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'");
-        }
-        if (!property_exists($data, "score")) {
-            throw new SdkValidationError("score", 'required', "Missing required property 'score'");
-        }
+        if (!property_exists($data, "vector_string")) { throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'"); }
+        if (!property_exists($data, "score")) { throw new SdkValidationError("score", 'required', "Missing required property 'score'"); }
         return new self(
             vectorString: ($data->vector_string === null ? null : SdkClient::stringValue($data->vector_string)),
             score: ($data->score === null ? null : SdkClient::floatValue($data->score)),

@@ -30,7 +30,7 @@ trait IssuesCommentsMethods
             Validation::validateDateTime('since', $since);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListCommentsForRepo', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListCommentsForRepo', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, IssueComment::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -48,7 +48,7 @@ trait IssuesCommentsMethods
     public static function issuesGetComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ?RequestOptions $requestOptions = null): IssueComment
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, returnType: IssueComment::class, decoder: 'json', operationId: 'issuesGetComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, returnType: IssueComment::class, decoder: 'json', operationId: 'issuesGetComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, IssueComment::class));
     }
 
@@ -67,7 +67,7 @@ trait IssuesCommentsMethods
     public static function issuesUpdateComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, string $body, ?RequestOptions $requestOptions = null): IssueComment
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, body: ['body' => $body], returnType: IssueComment::class, decoder: 'json', operationId: 'issuesUpdateComment', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, body: ['body' => $body], returnType: IssueComment::class, decoder: 'json', operationId: 'issuesUpdateComment', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, IssueComment::class));
     }
 
@@ -101,7 +101,7 @@ trait IssuesCommentsMethods
     public static function issuesPinComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ?RequestOptions $requestOptions = null): IssueComment
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "/pin", $clientConfig, returnType: IssueComment::class, decoder: 'json', operationId: 'issuesPinComment', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "/pin", $clientConfig, returnType: IssueComment::class, decoder: 'json', operationId: 'issuesPinComment', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, IssueComment::class));
     }
 
@@ -118,7 +118,7 @@ trait IssuesCommentsMethods
     public static function issuesUnpinComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "/pin", $clientConfig, decoder: 'empty', operationId: 'issuesUnpinComment', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/comments/" . SdkClient::encodePathSegment($commentId) . "/pin", $clientConfig, decoder: 'empty', operationId: 'issuesUnpinComment', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)])->data;
     }
 
 
@@ -142,7 +142,7 @@ trait IssuesCommentsMethods
             Validation::validateDateTime('since', $since);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/comments", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListComments', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/comments", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListComments', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, IssueComment::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -161,7 +161,7 @@ trait IssuesCommentsMethods
     public static function issuesCreateComment(ClientConfig $clientConfig, string $owner, string $repo, int $issueNumber, string $body, ?RequestOptions $requestOptions = null): IssueComment
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/comments", $clientConfig, body: ['body' => $body], returnType: IssueComment::class, decoder: 'json', operationId: 'issuesCreateComment', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/comments", $clientConfig, body: ['body' => $body], returnType: IssueComment::class, decoder: 'json', operationId: 'issuesCreateComment', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, IssueComment::class));
     }
 }

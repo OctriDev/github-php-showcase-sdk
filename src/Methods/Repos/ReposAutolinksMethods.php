@@ -41,7 +41,7 @@ trait ReposAutolinksMethods
     public static function reposCreateAutolink(ClientConfig $clientConfig, string $owner, string $repo, string $keyPrefix, string $urlTemplate, bool|SdkNotGiven $isAlphanumeric = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Autolink
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks", $clientConfig, body: ['key_prefix' => $keyPrefix, 'url_template' => $urlTemplate, 'is_alphanumeric' => $isAlphanumeric], returnType: Autolink::class, decoder: 'json', operationId: 'reposCreateAutolink', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks", $clientConfig, body: ['key_prefix' => $keyPrefix, 'url_template' => $urlTemplate, 'is_alphanumeric' => $isAlphanumeric], returnType: Autolink::class, decoder: 'json', operationId: 'reposCreateAutolink', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Autolink::class));
     }
 
@@ -59,7 +59,7 @@ trait ReposAutolinksMethods
     public static function reposGetAutolink(ClientConfig $clientConfig, string $owner, string $repo, int $autolinkId, ?RequestOptions $requestOptions = null): Autolink
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks/" . SdkClient::encodePathSegment($autolinkId) . "", $clientConfig, returnType: Autolink::class, decoder: 'json', operationId: 'reposGetAutolink', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks/" . SdkClient::encodePathSegment($autolinkId) . "", $clientConfig, returnType: Autolink::class, decoder: 'json', operationId: 'reposGetAutolink', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Autolink::class));
     }
 
@@ -76,6 +76,6 @@ trait ReposAutolinksMethods
     public static function reposDeleteAutolink(ClientConfig $clientConfig, string $owner, string $repo, int $autolinkId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks/" . SdkClient::encodePathSegment($autolinkId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteAutolink', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/autolinks/" . SdkClient::encodePathSegment($autolinkId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteAutolink', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

@@ -15,26 +15,11 @@ final readonly class OrganizationUpdateIssueFieldVisibilityEnum implements SdkOp
     public const ORGANIZATION_MEMBERS_ONLY = "organization_members_only";
     public const ALL = "all";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -51,26 +36,11 @@ final readonly class OrganizationUpdateIssueFieldOptionsItemColorEnum implements
     public const PINK = "pink";
     public const PURPLE = "purple";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -155,15 +125,9 @@ class OrganizationUpdateIssueFieldOptionsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "color") || $data->color === null) {
-            throw new SdkValidationError("color", 'required', "Required property 'color' is missing or null");
-        }
-        if (!property_exists($data, "priority") || $data->priority === null) {
-            throw new SdkValidationError("priority", 'required', "Required property 'priority' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "color") || $data->color === null) { throw new SdkValidationError("color", 'required', "Required property 'color' is missing or null"); }
+        if (!property_exists($data, "priority") || $data->priority === null) { throw new SdkValidationError("priority", 'required', "Required property 'priority' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             color: SdkClient::hydrateStringEnumOrString($data->color, OrganizationUpdateIssueFieldOptionsItemColorEnum::class),

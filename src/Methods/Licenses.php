@@ -38,7 +38,7 @@ class Licenses
     public static function licensesGet(ClientConfig $clientConfig, string $license, ?RequestOptions $requestOptions = null): License
     {
 
-        $sdkResponse = SdkClient::request('GET', "/licenses/" . SdkClient::encodePathSegment($license) . "", $clientConfig, returnType: License::class, decoder: 'json', operationId: 'licensesGet', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/licenses/" . SdkClient::encodePathSegment($license) . "", $clientConfig, returnType: License::class, decoder: 'json', operationId: 'licensesGet', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, License::class));
     }
 
@@ -56,7 +56,7 @@ class Licenses
     public static function licensesGetForRepo(ClientConfig $clientConfig, string $owner, string $repo, string|SdkNotGiven $ref = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): LicenseContent
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/license", $clientConfig, query: ['ref' => new SdkQueryValue($ref, "form", true)], returnType: LicenseContent::class, decoder: 'json', operationId: 'licensesGetForRepo', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/license", $clientConfig, query: ['ref' => new SdkQueryValue($ref, "form", true)], returnType: LicenseContent::class, decoder: 'json', operationId: 'licensesGetForRepo', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, LicenseContent::class));
     }
 }

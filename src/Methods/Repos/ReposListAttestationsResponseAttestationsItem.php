@@ -163,9 +163,7 @@ class ReposUpdateBranchProtectionRequiredStatusChecksChecksItem implements \Json
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "context") || $data->context === null) {
-            throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null");
-        }
+        if (!property_exists($data, "context") || $data->context === null) { throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null"); }
         return new self(
             context: SdkClient::stringValue($data->context),
             appId: (property_exists($data, "app_id") && $data->app_id !== null ? SdkClient::intValue($data->app_id) : SdkNotGiven::Value),
@@ -233,12 +231,8 @@ class ReposUpdateBranchProtectionRequiredStatusChecks implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "strict") || $data->strict === null) {
-            throw new SdkValidationError("strict", 'required', "Required property 'strict' is missing or null");
-        }
-        if (!property_exists($data, "contexts") || $data->contexts === null) {
-            throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null");
-        }
+        if (!property_exists($data, "strict") || $data->strict === null) { throw new SdkValidationError("strict", 'required', "Required property 'strict' is missing or null"); }
+        if (!property_exists($data, "contexts") || $data->contexts === null) { throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null"); }
         return new self(
             strict: SdkClient::boolValue($data->strict),
             contexts: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->contexts))),

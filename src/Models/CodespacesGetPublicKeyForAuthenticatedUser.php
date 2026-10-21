@@ -55,12 +55,8 @@ class CodespacesUserPublicKey implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key_id") || $data->key_id === null) {
-            throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null");
-        }
-        if (!property_exists($data, "key") || $data->key === null) {
-            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
-        }
+        if (!property_exists($data, "key_id") || $data->key_id === null) { throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null"); }
+        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
         return new self(
             keyId: SdkClient::stringValue($data->key_id),
             key: SdkClient::stringValue($data->key),

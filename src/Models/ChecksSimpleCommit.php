@@ -95,24 +95,12 @@ class SimpleCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "tree_id") || $data->tree_id === null) {
-            throw new SdkValidationError("tree_id", 'required', "Required property 'tree_id' is missing or null");
-        }
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "timestamp") || $data->timestamp === null) {
-            throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null");
-        }
-        if (!property_exists($data, "author")) {
-            throw new SdkValidationError("author", 'required', "Missing required property 'author'");
-        }
-        if (!property_exists($data, "committer")) {
-            throw new SdkValidationError("committer", 'required', "Missing required property 'committer'");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "tree_id") || $data->tree_id === null) { throw new SdkValidationError("tree_id", 'required', "Required property 'tree_id' is missing or null"); }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "timestamp") || $data->timestamp === null) { throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null"); }
+        if (!property_exists($data, "author")) { throw new SdkValidationError("author", 'required', "Missing required property 'author'"); }
+        if (!property_exists($data, "committer")) { throw new SdkValidationError("committer", 'required', "Missing required property 'committer'"); }
         return new self(
             id: SdkClient::stringValue($data->id),
             treeId: SdkClient::stringValue($data->tree_id),

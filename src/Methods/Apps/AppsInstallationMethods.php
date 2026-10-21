@@ -21,7 +21,7 @@ trait AppsInstallationMethods
     public static function appsListReposAccessibleToInstallation(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): AppsListReposAccessibleToInstallationResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/installation/repositories", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: AppsListReposAccessibleToInstallationResponse::class, decoder: 'json', operationId: 'appsListReposAccessibleToInstallation', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/installation/repositories", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: AppsListReposAccessibleToInstallationResponse::class, decoder: 'json', operationId: 'appsListReposAccessibleToInstallation', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AppsListReposAccessibleToInstallationResponse::class));
     }
 

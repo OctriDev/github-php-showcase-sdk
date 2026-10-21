@@ -55,12 +55,8 @@ class OrganizationExternalPropertyInstallation implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "display_name") || $data->display_name === null) {
-            throw new SdkValidationError("display_name", 'required', "Required property 'display_name' is missing or null");
-        }
-        if (!property_exists($data, "installation") || $data->installation === null) {
-            throw new SdkValidationError("installation", 'required', "Required property 'installation' is missing or null");
-        }
+        if (!property_exists($data, "display_name") || $data->display_name === null) { throw new SdkValidationError("display_name", 'required', "Required property 'display_name' is missing or null"); }
+        if (!property_exists($data, "installation") || $data->installation === null) { throw new SdkValidationError("installation", 'required', "Required property 'installation' is missing or null"); }
         return new self(
             displayName: SdkClient::stringValue($data->display_name),
             installation: SdkClient::hydrateClass($data->installation, OrganizationExternalPropertyInstallationInstallation::class),
@@ -150,15 +146,9 @@ class OrganizationFullPlan implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "space") || $data->space === null) {
-            throw new SdkValidationError("space", 'required', "Required property 'space' is missing or null");
-        }
-        if (!property_exists($data, "private_repos") || $data->private_repos === null) {
-            throw new SdkValidationError("private_repos", 'required', "Required property 'private_repos' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "space") || $data->space === null) { throw new SdkValidationError("space", 'required', "Required property 'space' is missing or null"); }
+        if (!property_exists($data, "private_repos") || $data->private_repos === null) { throw new SdkValidationError("private_repos", 'required', "Required property 'private_repos' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             space: SdkClient::intValue($data->space),

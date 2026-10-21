@@ -75,18 +75,10 @@ class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem implem
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "first_patched_version")) {
-            throw new SdkValidationError("first_patched_version", 'required', "Missing required property 'first_patched_version'");
-        }
-        if (!property_exists($data, "package") || $data->package === null) {
-            throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null");
-        }
-        if (!property_exists($data, "severity") || $data->severity === null) {
-            throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null");
-        }
-        if (!property_exists($data, "vulnerable_version_range") || $data->vulnerable_version_range === null) {
-            throw new SdkValidationError("vulnerable_version_range", 'required', "Required property 'vulnerable_version_range' is missing or null");
-        }
+        if (!property_exists($data, "first_patched_version")) { throw new SdkValidationError("first_patched_version", 'required', "Missing required property 'first_patched_version'"); }
+        if (!property_exists($data, "package") || $data->package === null) { throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null"); }
+        if (!property_exists($data, "severity") || $data->severity === null) { throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null"); }
+        if (!property_exists($data, "vulnerable_version_range") || $data->vulnerable_version_range === null) { throw new SdkValidationError("vulnerable_version_range", 'required', "Required property 'vulnerable_version_range' is missing or null"); }
         return new self(
             firstPatchedVersion: ($data->first_patched_version === null ? null : SdkClient::hydrateClass($data->first_patched_version, WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion::class)),
             package: SdkClient::hydrateClass($data->package, WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage::class),
@@ -256,42 +248,18 @@ class WebhookSecurityAdvisoryWithdrawnSecurityAdvisory implements \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "cvss") || $data->cvss === null) {
-            throw new SdkValidationError("cvss", 'required', "Required property 'cvss' is missing or null");
-        }
-        if (!property_exists($data, "cwes") || $data->cwes === null) {
-            throw new SdkValidationError("cwes", 'required', "Required property 'cwes' is missing or null");
-        }
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
-        if (!property_exists($data, "ghsa_id") || $data->ghsa_id === null) {
-            throw new SdkValidationError("ghsa_id", 'required', "Required property 'ghsa_id' is missing or null");
-        }
-        if (!property_exists($data, "identifiers") || $data->identifiers === null) {
-            throw new SdkValidationError("identifiers", 'required', "Required property 'identifiers' is missing or null");
-        }
-        if (!property_exists($data, "published_at") || $data->published_at === null) {
-            throw new SdkValidationError("published_at", 'required', "Required property 'published_at' is missing or null");
-        }
-        if (!property_exists($data, "references") || $data->references === null) {
-            throw new SdkValidationError("references", 'required', "Required property 'references' is missing or null");
-        }
-        if (!property_exists($data, "severity") || $data->severity === null) {
-            throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null");
-        }
-        if (!property_exists($data, "summary") || $data->summary === null) {
-            throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "vulnerabilities") || $data->vulnerabilities === null) {
-            throw new SdkValidationError("vulnerabilities", 'required', "Required property 'vulnerabilities' is missing or null");
-        }
-        if (!property_exists($data, "withdrawn_at") || $data->withdrawn_at === null) {
-            throw new SdkValidationError("withdrawn_at", 'required', "Required property 'withdrawn_at' is missing or null");
-        }
+        if (!property_exists($data, "cvss") || $data->cvss === null) { throw new SdkValidationError("cvss", 'required', "Required property 'cvss' is missing or null"); }
+        if (!property_exists($data, "cwes") || $data->cwes === null) { throw new SdkValidationError("cwes", 'required', "Required property 'cwes' is missing or null"); }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
+        if (!property_exists($data, "ghsa_id") || $data->ghsa_id === null) { throw new SdkValidationError("ghsa_id", 'required', "Required property 'ghsa_id' is missing or null"); }
+        if (!property_exists($data, "identifiers") || $data->identifiers === null) { throw new SdkValidationError("identifiers", 'required', "Required property 'identifiers' is missing or null"); }
+        if (!property_exists($data, "published_at") || $data->published_at === null) { throw new SdkValidationError("published_at", 'required', "Required property 'published_at' is missing or null"); }
+        if (!property_exists($data, "references") || $data->references === null) { throw new SdkValidationError("references", 'required', "Required property 'references' is missing or null"); }
+        if (!property_exists($data, "severity") || $data->severity === null) { throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null"); }
+        if (!property_exists($data, "summary") || $data->summary === null) { throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "vulnerabilities") || $data->vulnerabilities === null) { throw new SdkValidationError("vulnerabilities", 'required', "Required property 'vulnerabilities' is missing or null"); }
+        if (!property_exists($data, "withdrawn_at") || $data->withdrawn_at === null) { throw new SdkValidationError("withdrawn_at", 'required', "Required property 'withdrawn_at' is missing or null"); }
         return new self(
             cvss: SdkClient::hydrateClass($data->cvss, WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss::class),
             cwes: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem::class), SdkClient::arrayValue($data->cwes))),

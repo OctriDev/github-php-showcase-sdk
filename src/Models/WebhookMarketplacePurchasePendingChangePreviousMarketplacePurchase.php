@@ -107,24 +107,12 @@ class WebhookMarketplacePurchasePendingChangePreviousMarketplacePurchase impleme
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "account") || $data->account === null) {
-            throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null");
-        }
-        if (!property_exists($data, "billing_cycle") || $data->billing_cycle === null) {
-            throw new SdkValidationError("billing_cycle", 'required', "Required property 'billing_cycle' is missing or null");
-        }
-        if (!property_exists($data, "free_trial_ends_on")) {
-            throw new SdkValidationError("free_trial_ends_on", 'required', "Missing required property 'free_trial_ends_on'");
-        }
-        if (!property_exists($data, "on_free_trial") || $data->on_free_trial === null) {
-            throw new SdkValidationError("on_free_trial", 'required', "Required property 'on_free_trial' is missing or null");
-        }
-        if (!property_exists($data, "plan") || $data->plan === null) {
-            throw new SdkValidationError("plan", 'required', "Required property 'plan' is missing or null");
-        }
-        if (!property_exists($data, "unit_count") || $data->unit_count === null) {
-            throw new SdkValidationError("unit_count", 'required', "Required property 'unit_count' is missing or null");
-        }
+        if (!property_exists($data, "account") || $data->account === null) { throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null"); }
+        if (!property_exists($data, "billing_cycle") || $data->billing_cycle === null) { throw new SdkValidationError("billing_cycle", 'required', "Required property 'billing_cycle' is missing or null"); }
+        if (!property_exists($data, "free_trial_ends_on")) { throw new SdkValidationError("free_trial_ends_on", 'required', "Missing required property 'free_trial_ends_on'"); }
+        if (!property_exists($data, "on_free_trial") || $data->on_free_trial === null) { throw new SdkValidationError("on_free_trial", 'required', "Required property 'on_free_trial' is missing or null"); }
+        if (!property_exists($data, "plan") || $data->plan === null) { throw new SdkValidationError("plan", 'required', "Required property 'plan' is missing or null"); }
+        if (!property_exists($data, "unit_count") || $data->unit_count === null) { throw new SdkValidationError("unit_count", 'required', "Required property 'unit_count' is missing or null"); }
         return new self(
             account: SdkClient::hydrateClass($data->account, WebhookMarketplacePurchasePendingChangePreviousMarketplacePurchaseAccount::class),
             billingCycle: SdkClient::stringValue($data->billing_cycle),
@@ -265,18 +253,10 @@ class WebhookMarketplacePurchasePendingChange implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "effective_date") || $data->effective_date === null) {
-            throw new SdkValidationError("effective_date", 'required', "Required property 'effective_date' is missing or null");
-        }
-        if (!property_exists($data, "marketplace_purchase") || $data->marketplace_purchase === null) {
-            throw new SdkValidationError("marketplace_purchase", 'required', "Required property 'marketplace_purchase' is missing or null");
-        }
-        if (!property_exists($data, "sender") || $data->sender === null) {
-            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "effective_date") || $data->effective_date === null) { throw new SdkValidationError("effective_date", 'required', "Required property 'effective_date' is missing or null"); }
+        if (!property_exists($data, "marketplace_purchase") || $data->marketplace_purchase === null) { throw new SdkValidationError("marketplace_purchase", 'required', "Required property 'marketplace_purchase' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookMarketplacePurchasePendingChangeActionEnum::class),
             effectiveDate: SdkClient::stringValue($data->effective_date),

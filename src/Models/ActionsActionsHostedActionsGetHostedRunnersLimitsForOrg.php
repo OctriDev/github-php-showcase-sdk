@@ -55,12 +55,8 @@ class ActionsHostedRunnerLimitsPublicIps implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "maximum") || $data->maximum === null) {
-            throw new SdkValidationError("maximum", 'required', "Required property 'maximum' is missing or null");
-        }
-        if (!property_exists($data, "current_usage") || $data->current_usage === null) {
-            throw new SdkValidationError("current_usage", 'required', "Required property 'current_usage' is missing or null");
-        }
+        if (!property_exists($data, "maximum") || $data->maximum === null) { throw new SdkValidationError("maximum", 'required', "Required property 'maximum' is missing or null"); }
+        if (!property_exists($data, "current_usage") || $data->current_usage === null) { throw new SdkValidationError("current_usage", 'required', "Required property 'current_usage' is missing or null"); }
         return new self(
             maximum: SdkClient::intValue($data->maximum),
             currentUsage: SdkClient::intValue($data->current_usage),
@@ -106,9 +102,7 @@ class ActionsHostedRunnerLimits implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "public_ips") || $data->public_ips === null) {
-            throw new SdkValidationError("public_ips", 'required', "Required property 'public_ips' is missing or null");
-        }
+        if (!property_exists($data, "public_ips") || $data->public_ips === null) { throw new SdkValidationError("public_ips", 'required', "Required property 'public_ips' is missing or null"); }
         return new self(
             publicIps: SdkClient::hydrateClass($data->public_ips, ActionsHostedRunnerLimitsPublicIps::class),
         );

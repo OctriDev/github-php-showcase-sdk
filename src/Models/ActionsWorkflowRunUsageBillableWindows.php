@@ -67,12 +67,8 @@ class WorkflowRunUsageBillableWINDOWS implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_ms") || $data->total_ms === null) {
-            throw new SdkValidationError("total_ms", 'required', "Required property 'total_ms' is missing or null");
-        }
-        if (!property_exists($data, "jobs") || $data->jobs === null) {
-            throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null");
-        }
+        if (!property_exists($data, "total_ms") || $data->total_ms === null) { throw new SdkValidationError("total_ms", 'required', "Required property 'total_ms' is missing or null"); }
+        if (!property_exists($data, "jobs") || $data->jobs === null) { throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null"); }
         return new self(
             totalMs: SdkClient::intValue($data->total_ms),
             jobs: SdkClient::intValue($data->jobs),
@@ -203,9 +199,7 @@ class WorkflowRunUsage implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "billable") || $data->billable === null) {
-            throw new SdkValidationError("billable", 'required', "Required property 'billable' is missing or null");
-        }
+        if (!property_exists($data, "billable") || $data->billable === null) { throw new SdkValidationError("billable", 'required', "Required property 'billable' is missing or null"); }
         return new self(
             billable: SdkClient::hydrateClass($data->billable, WorkflowRunUsageBillable::class),
             runDurationMs: (property_exists($data, "run_duration_ms") && $data->run_duration_ms !== null ? SdkClient::intValue($data->run_duration_ms) : SdkNotGiven::Value),

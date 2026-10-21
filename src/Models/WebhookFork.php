@@ -101,15 +101,9 @@ class WebhookFork implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "forkee") || $data->forkee === null) {
-            throw new SdkValidationError("forkee", 'required', "Required property 'forkee' is missing or null");
-        }
-        if (!property_exists($data, "repository") || $data->repository === null) {
-            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
-        }
-        if (!property_exists($data, "sender") || $data->sender === null) {
-            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
-        }
+        if (!property_exists($data, "forkee") || $data->forkee === null) { throw new SdkValidationError("forkee", 'required', "Required property 'forkee' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
             forkee: SdkClient::hydrateClass($data->forkee, WebhookForkForkee::class),
             repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),

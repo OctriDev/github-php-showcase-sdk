@@ -43,7 +43,7 @@ trait UsersAttestationsMethods
     public static function usersDeleteAttestationsBulk(ClientConfig $clientConfig, string $username, UsersDeleteAttestationsBulkBodyVariant0|UsersDeleteAttestationsBulkBodyVariant1 $body, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/attestations/delete-request", $clientConfig, body: $body, decoder: 'empty', operationId: 'usersDeleteAttestationsBulk', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/attestations/delete-request", $clientConfig, body: $body, decoder: 'empty', operationId: 'usersDeleteAttestationsBulk', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -58,7 +58,7 @@ trait UsersAttestationsMethods
     public static function usersDeleteAttestationsBySubjectDigest(ClientConfig $clientConfig, string $username, string $subjectDigest, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/attestations/digest/" . SdkClient::encodePathSegment($subjectDigest) . "", $clientConfig, decoder: 'empty', operationId: 'usersDeleteAttestationsBySubjectDigest', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/attestations/digest/" . SdkClient::encodePathSegment($subjectDigest) . "", $clientConfig, decoder: 'empty', operationId: 'usersDeleteAttestationsBySubjectDigest', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -73,7 +73,7 @@ trait UsersAttestationsMethods
     public static function usersDeleteAttestationsById(ClientConfig $clientConfig, string $username, int $attestationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/attestations/" . SdkClient::encodePathSegment($attestationId) . "", $clientConfig, decoder: 'empty', operationId: 'usersDeleteAttestationsById', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/attestations/" . SdkClient::encodePathSegment($attestationId) . "", $clientConfig, decoder: 'empty', operationId: 'usersDeleteAttestationsById', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -93,7 +93,7 @@ trait UsersAttestationsMethods
     public static function usersListAttestations(ClientConfig $clientConfig, string $username, string $subjectDigest, int|SdkNotGiven $perPage = SdkNotGiven::Value, string|SdkNotGiven $before = SdkNotGiven::Value, string|SdkNotGiven $after = SdkNotGiven::Value, string|SdkNotGiven $predicateType = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): UsersListAttestationsResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/attestations/" . SdkClient::encodePathSegment($subjectDigest) . "", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'before' => new SdkQueryValue($before, "form", true), 'after' => new SdkQueryValue($after, "form", true), 'predicate_type' => new SdkQueryValue($predicateType, "form", true)], returnType: UsersListAttestationsResponse::class, decoder: 'json', operationId: 'usersListAttestations', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/attestations/" . SdkClient::encodePathSegment($subjectDigest) . "", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'before' => new SdkQueryValue($before, "form", true), 'after' => new SdkQueryValue($after, "form", true), 'predicate_type' => new SdkQueryValue($predicateType, "form", true)], returnType: UsersListAttestationsResponse::class, decoder: 'json', operationId: 'usersListAttestations', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, UsersListAttestationsResponse::class));
     }
 }

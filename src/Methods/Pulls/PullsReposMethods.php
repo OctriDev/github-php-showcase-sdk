@@ -24,7 +24,7 @@ trait PullsReposMethods
     public static function pullRequestStacksList(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $pullRequest = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks", $clientConfig, query: ['pull_request' => new SdkQueryValue($pullRequest, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'pullRequestStacksList', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks", $clientConfig, query: ['pull_request' => new SdkQueryValue($pullRequest, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'pullRequestStacksList', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, PullRequestStackMinimal::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -44,7 +44,7 @@ trait PullsReposMethods
 
         Validation::validateItems('pull_requests', $pullRequests, min: 2, max: 100);
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks", $clientConfig, body: ['pull_requests' => $pullRequests], returnType: PullRequestStacksCreateResponse::class, decoder: 'json', operationId: 'pullRequestStacksCreate', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks", $clientConfig, body: ['pull_requests' => $pullRequests], returnType: PullRequestStacksCreateResponse::class, decoder: 'json', operationId: 'pullRequestStacksCreate', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestStacksCreateResponse::class));
     }
 
@@ -62,7 +62,7 @@ trait PullsReposMethods
     public static function pullRequestStacksGet(ClientConfig $clientConfig, string $owner, string $repo, int $stackNumber, ?RequestOptions $requestOptions = null): PullRequestStacksGetResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks/" . SdkClient::encodePathSegment($stackNumber) . "", $clientConfig, returnType: PullRequestStacksGetResponse::class, decoder: 'json', operationId: 'pullRequestStacksGet', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks/" . SdkClient::encodePathSegment($stackNumber) . "", $clientConfig, returnType: PullRequestStacksGetResponse::class, decoder: 'json', operationId: 'pullRequestStacksGet', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestStacksGetResponse::class));
     }
 
@@ -83,7 +83,7 @@ trait PullsReposMethods
 
         Validation::validateItems('pull_requests', $pullRequests, min: 1, max: 100);
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks/" . SdkClient::encodePathSegment($stackNumber) . "/add", $clientConfig, body: ['pull_requests' => $pullRequests], returnType: PullRequestStacksAddResponse::class, decoder: 'json', operationId: 'pullRequestStacksAdd', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks/" . SdkClient::encodePathSegment($stackNumber) . "/add", $clientConfig, body: ['pull_requests' => $pullRequests], returnType: PullRequestStacksAddResponse::class, decoder: 'json', operationId: 'pullRequestStacksAdd', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestStacksAddResponse::class));
     }
 
@@ -101,7 +101,7 @@ trait PullsReposMethods
     public static function pullRequestStacksUnstack(ClientConfig $clientConfig, string $owner, string $repo, int $stackNumber, ?RequestOptions $requestOptions = null): PullRequestStacksUnstackResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks/" . SdkClient::encodePathSegment($stackNumber) . "/unstack", $clientConfig, returnType: PullRequestStacksUnstackResponse::class, decoder: 'json', operationId: 'pullRequestStacksUnstack', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stacks/" . SdkClient::encodePathSegment($stackNumber) . "/unstack", $clientConfig, returnType: PullRequestStacksUnstackResponse::class, decoder: 'json', operationId: 'pullRequestStacksUnstack', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestStacksUnstackResponse::class));
     }
 }

@@ -127,12 +127,8 @@ class CodeScanningVariantAnalysisRepoTask implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository") || $data->repository === null) {
-            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
-        }
-        if (!property_exists($data, "analysis_status") || $data->analysis_status === null) {
-            throw new SdkValidationError("analysis_status", 'required', "Required property 'analysis_status' is missing or null");
-        }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "analysis_status") || $data->analysis_status === null) { throw new SdkValidationError("analysis_status", 'required', "Required property 'analysis_status' is missing or null"); }
         return new self(
             repository: SdkClient::hydrateClass($data->repository, SimpleRepository::class),
             analysisStatus: SdkClient::hydrateStringEnumOrString($data->analysis_status, CodeScanningVariantAnalysisStatus::class),

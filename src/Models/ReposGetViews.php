@@ -65,15 +65,9 @@ class ViewTraffic implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "count") || $data->count === null) {
-            throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null");
-        }
-        if (!property_exists($data, "uniques") || $data->uniques === null) {
-            throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null");
-        }
-        if (!property_exists($data, "views") || $data->views === null) {
-            throw new SdkValidationError("views", 'required', "Required property 'views' is missing or null");
-        }
+        if (!property_exists($data, "count") || $data->count === null) { throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null"); }
+        if (!property_exists($data, "uniques") || $data->uniques === null) { throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null"); }
+        if (!property_exists($data, "views") || $data->views === null) { throw new SdkValidationError("views", 'required', "Required property 'views' is missing or null"); }
         return new self(
             count: SdkClient::intValue($data->count),
             uniques: SdkClient::intValue($data->uniques),

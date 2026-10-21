@@ -93,9 +93,7 @@ class ActionsOrganizationPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) {
-            throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null");
-        }
+        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) { throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null"); }
         return new self(
             enabledRepositories: SdkClient::hydrateStringEnumOrString($data->enabled_repositories, EnabledRepositories::class),
             selectedRepositoriesUrl: (property_exists($data, "selected_repositories_url") && $data->selected_repositories_url !== null ? SdkClient::stringValue($data->selected_repositories_url) : SdkNotGiven::Value),

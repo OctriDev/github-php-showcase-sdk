@@ -101,15 +101,9 @@ class WebhookTeamAdd implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository") || $data->repository === null) {
-            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
-        }
-        if (!property_exists($data, "sender") || $data->sender === null) {
-            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
-        }
-        if (!property_exists($data, "team") || $data->team === null) {
-            throw new SdkValidationError("team", 'required', "Required property 'team' is missing or null");
-        }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "team") || $data->team === null) { throw new SdkValidationError("team", 'required', "Required property 'team' is missing or null"); }
         return new self(
             repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
             sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),

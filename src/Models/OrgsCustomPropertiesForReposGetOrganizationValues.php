@@ -75,18 +75,10 @@ class OrgRepoCustomPropertyValues implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
-            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
-        }
-        if (!property_exists($data, "repository_name") || $data->repository_name === null) {
-            throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null");
-        }
-        if (!property_exists($data, "repository_full_name") || $data->repository_full_name === null) {
-            throw new SdkValidationError("repository_full_name", 'required', "Required property 'repository_full_name' is missing or null");
-        }
-        if (!property_exists($data, "properties") || $data->properties === null) {
-            throw new SdkValidationError("properties", 'required', "Required property 'properties' is missing or null");
-        }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
+        if (!property_exists($data, "repository_name") || $data->repository_name === null) { throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null"); }
+        if (!property_exists($data, "repository_full_name") || $data->repository_full_name === null) { throw new SdkValidationError("repository_full_name", 'required', "Required property 'repository_full_name' is missing or null"); }
+        if (!property_exists($data, "properties") || $data->properties === null) { throw new SdkValidationError("properties", 'required', "Required property 'properties' is missing or null"); }
         return new self(
             repositoryId: SdkClient::intValue($data->repository_id),
             repositoryName: SdkClient::stringValue($data->repository_name),

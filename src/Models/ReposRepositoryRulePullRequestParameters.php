@@ -121,21 +121,11 @@ class RepositoryRulePullRequestParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "dismiss_stale_reviews_on_push") || $data->dismiss_stale_reviews_on_push === null) {
-            throw new SdkValidationError("dismiss_stale_reviews_on_push", 'required', "Required property 'dismiss_stale_reviews_on_push' is missing or null");
-        }
-        if (!property_exists($data, "require_code_owner_review") || $data->require_code_owner_review === null) {
-            throw new SdkValidationError("require_code_owner_review", 'required', "Required property 'require_code_owner_review' is missing or null");
-        }
-        if (!property_exists($data, "require_last_push_approval") || $data->require_last_push_approval === null) {
-            throw new SdkValidationError("require_last_push_approval", 'required', "Required property 'require_last_push_approval' is missing or null");
-        }
-        if (!property_exists($data, "required_approving_review_count") || $data->required_approving_review_count === null) {
-            throw new SdkValidationError("required_approving_review_count", 'required', "Required property 'required_approving_review_count' is missing or null");
-        }
-        if (!property_exists($data, "required_review_thread_resolution") || $data->required_review_thread_resolution === null) {
-            throw new SdkValidationError("required_review_thread_resolution", 'required', "Required property 'required_review_thread_resolution' is missing or null");
-        }
+        if (!property_exists($data, "dismiss_stale_reviews_on_push") || $data->dismiss_stale_reviews_on_push === null) { throw new SdkValidationError("dismiss_stale_reviews_on_push", 'required', "Required property 'dismiss_stale_reviews_on_push' is missing or null"); }
+        if (!property_exists($data, "require_code_owner_review") || $data->require_code_owner_review === null) { throw new SdkValidationError("require_code_owner_review", 'required', "Required property 'require_code_owner_review' is missing or null"); }
+        if (!property_exists($data, "require_last_push_approval") || $data->require_last_push_approval === null) { throw new SdkValidationError("require_last_push_approval", 'required', "Required property 'require_last_push_approval' is missing or null"); }
+        if (!property_exists($data, "required_approving_review_count") || $data->required_approving_review_count === null) { throw new SdkValidationError("required_approving_review_count", 'required', "Required property 'required_approving_review_count' is missing or null"); }
+        if (!property_exists($data, "required_review_thread_resolution") || $data->required_review_thread_resolution === null) { throw new SdkValidationError("required_review_thread_resolution", 'required', "Required property 'required_review_thread_resolution' is missing or null"); }
         return new self(
             dismissStaleReviewsOnPush: SdkClient::boolValue($data->dismiss_stale_reviews_on_push),
             requireCodeOwnerReview: SdkClient::boolValue($data->require_code_owner_review),
@@ -199,9 +189,7 @@ class RepositoryRulePullRequest implements RepositoryRule, OrgRules, \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRulePullRequestTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRulePullRequestParameters::class) : SdkNotGiven::Value),
@@ -255,9 +243,7 @@ class RepositoryRuleRequiredDeploymentsParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "required_deployment_environments") || $data->required_deployment_environments === null) {
-            throw new SdkValidationError("required_deployment_environments", 'required', "Required property 'required_deployment_environments' is missing or null");
-        }
+        if (!property_exists($data, "required_deployment_environments") || $data->required_deployment_environments === null) { throw new SdkValidationError("required_deployment_environments", 'required', "Required property 'required_deployment_environments' is missing or null"); }
         return new self(
             requiredDeploymentEnvironments: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->required_deployment_environments))),
         );
@@ -314,9 +300,7 @@ class RepositoryRuleRequiredDeployments implements RepositoryRule, OrgRules, \Js
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleRequiredDeploymentsTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleRequiredDeploymentsParameters::class) : SdkNotGiven::Value),

@@ -55,12 +55,8 @@ class ShortBranchCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             sha: SdkClient::stringValue($data->sha),
             url: SdkClient::stringValue($data->url),
@@ -150,15 +146,9 @@ class ShortBranch implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "commit") || $data->commit === null) {
-            throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null");
-        }
-        if (!property_exists($data, "protected") || $data->protected === null) {
-            throw new SdkValidationError("protected", 'required', "Required property 'protected' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
+        if (!property_exists($data, "protected") || $data->protected === null) { throw new SdkValidationError("protected", 'required', "Required property 'protected' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             commit: SdkClient::hydrateClass($data->commit, ShortBranchCommit::class),

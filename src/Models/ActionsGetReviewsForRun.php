@@ -140,26 +140,11 @@ final readonly class EnvironmentApprovalsStateEnum implements SdkOpenEnum
     public const REJECTED = "rejected";
     public const PENDING = "pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -230,18 +215,10 @@ class EnvironmentApprovals implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "environments") || $data->environments === null) {
-            throw new SdkValidationError("environments", 'required', "Required property 'environments' is missing or null");
-        }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
-        if (!property_exists($data, "user") || $data->user === null) {
-            throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null");
-        }
-        if (!property_exists($data, "comment") || $data->comment === null) {
-            throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null");
-        }
+        if (!property_exists($data, "environments") || $data->environments === null) { throw new SdkValidationError("environments", 'required', "Required property 'environments' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "user") || $data->user === null) { throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null"); }
+        if (!property_exists($data, "comment") || $data->comment === null) { throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null"); }
         return new self(
             environments: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, EnvironmentApprovalsEnvironmentsItem::class), SdkClient::arrayValue($data->environments))),
             state: SdkClient::hydrateStringEnumOrString($data->state, EnvironmentApprovalsStateEnum::class),

@@ -195,18 +195,10 @@ class RepositoryRuleset implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "source") || $data->source === null) {
-            throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null");
-        }
-        if (!property_exists($data, "enforcement") || $data->enforcement === null) {
-            throw new SdkValidationError("enforcement", 'required', "Required property 'enforcement' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "source") || $data->source === null) { throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null"); }
+        if (!property_exists($data, "enforcement") || $data->enforcement === null) { throw new SdkValidationError("enforcement", 'required', "Required property 'enforcement' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),
@@ -238,26 +230,11 @@ final readonly class RepositoryRulesetBypassActorActorTypeEnum implements SdkOpe
     public const DEPLOYKEY = "DeployKey";
     public const USER = "User";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -269,26 +246,11 @@ final readonly class RepositoryRulesetBypassActorBypassModeEnum implements SdkOp
     public const PULL_REQUEST = "pull_request";
     public const EXEMPT = "exempt";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -353,9 +315,7 @@ class RepositoryRulesetBypassActor implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "actor_type") || $data->actor_type === null) {
-            throw new SdkValidationError("actor_type", 'required', "Required property 'actor_type' is missing or null");
-        }
+        if (!property_exists($data, "actor_type") || $data->actor_type === null) { throw new SdkValidationError("actor_type", 'required', "Required property 'actor_type' is missing or null"); }
         return new self(
             actorType: SdkClient::hydrateStringEnumOrString($data->actor_type, RepositoryRulesetBypassActorActorTypeEnum::class),
             actorId: (property_exists($data, "actor_id") ? ($data->actor_id === null ? null : SdkClient::intValue($data->actor_id)) : SdkNotGiven::Value),

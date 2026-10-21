@@ -24,6 +24,6 @@ trait ReposDispatchesMethods
 
         Validation::validateLength('event_type', $eventType, min: 1, max: 100);
 
-        return SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dispatches", $clientConfig, body: ['event_type' => $eventType, 'client_payload' => $clientPayload], decoder: 'empty', operationId: 'reposCreateDispatchEvent', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dispatches", $clientConfig, body: ['event_type' => $eventType, 'client_payload' => $clientPayload], decoder: 'empty', operationId: 'reposCreateDispatchEvent', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 }

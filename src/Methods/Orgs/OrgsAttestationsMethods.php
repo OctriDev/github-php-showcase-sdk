@@ -43,7 +43,7 @@ trait OrgsAttestationsMethods
     public static function orgsDeleteAttestationsBulk(ClientConfig $clientConfig, string $org, OrgsDeleteAttestationsBulkBodyVariant0|OrgsDeleteAttestationsBulkBodyVariant1 $body, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/delete-request", $clientConfig, body: $body, decoder: 'empty', operationId: 'orgsDeleteAttestationsBulk', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/delete-request", $clientConfig, body: $body, decoder: 'empty', operationId: 'orgsDeleteAttestationsBulk', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -58,7 +58,7 @@ trait OrgsAttestationsMethods
     public static function orgsDeleteAttestationsBySubjectDigest(ClientConfig $clientConfig, string $org, string $subjectDigest, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/digest/" . SdkClient::encodePathSegment($subjectDigest) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteAttestationsBySubjectDigest', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/digest/" . SdkClient::encodePathSegment($subjectDigest) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteAttestationsBySubjectDigest', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -93,7 +93,7 @@ trait OrgsAttestationsMethods
     public static function orgsDeleteAttestationsById(ClientConfig $clientConfig, string $org, int $attestationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/" . SdkClient::encodePathSegment($attestationId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteAttestationsById', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/attestations/" . SdkClient::encodePathSegment($attestationId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteAttestationsById', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

@@ -25,7 +25,7 @@ trait ReposCollaboratorsMethods
     public static function reposListCollaborators(ClientConfig $clientConfig, string $owner, string $repo, ReposListCollaboratorsAffiliation|SdkNotGiven $affiliation = SdkNotGiven::Value, ReposListCollaboratorsPermission|SdkNotGiven $permission = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators", $clientConfig, query: ['affiliation' => new SdkQueryValue($affiliation, "form", true), 'permission' => new SdkQueryValue($permission, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListCollaborators', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators", $clientConfig, query: ['affiliation' => new SdkQueryValue($affiliation, "form", true), 'permission' => new SdkQueryValue($permission, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListCollaborators', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Collaborator::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -60,7 +60,7 @@ trait ReposCollaboratorsMethods
     public static function reposAddCollaborator(ClientConfig $clientConfig, string $owner, string $repo, string $username, string|SdkNotGiven $permission = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): RepositoryInvitation
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['permission' => $permission], returnType: RepositoryInvitation::class, decoder: 'json', operationId: 'reposAddCollaborator', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['permission' => $permission], returnType: RepositoryInvitation::class, decoder: 'json', operationId: 'reposAddCollaborator', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RepositoryInvitation::class));
     }
 
@@ -77,7 +77,7 @@ trait ReposCollaboratorsMethods
     public static function reposRemoveCollaborator(ClientConfig $clientConfig, string $owner, string $repo, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'reposRemoveCollaborator', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'reposRemoveCollaborator', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -94,7 +94,7 @@ trait ReposCollaboratorsMethods
     public static function reposGetCollaboratorPermissionLevel(ClientConfig $clientConfig, string $owner, string $repo, string $username, ?RequestOptions $requestOptions = null): RepositoryCollaboratorPermission
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "/permission", $clientConfig, returnType: RepositoryCollaboratorPermission::class, decoder: 'json', operationId: 'reposGetCollaboratorPermissionLevel', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "/permission", $clientConfig, returnType: RepositoryCollaboratorPermission::class, decoder: 'json', operationId: 'reposGetCollaboratorPermissionLevel', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RepositoryCollaboratorPermission::class));
     }
 }

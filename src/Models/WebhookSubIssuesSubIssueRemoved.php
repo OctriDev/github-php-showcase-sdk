@@ -14,26 +14,11 @@ final readonly class WebhookSubIssuesSubIssueRemovedActionEnum implements SdkOpe
 {
     public const SUB_ISSUE_REMOVED = "sub_issue_removed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -174,21 +159,11 @@ class WebhookSubIssuesSubIssueRemoved implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "parent_issue_id") || $data->parent_issue_id === null) {
-            throw new SdkValidationError("parent_issue_id", 'required', "Required property 'parent_issue_id' is missing or null");
-        }
-        if (!property_exists($data, "parent_issue") || $data->parent_issue === null) {
-            throw new SdkValidationError("parent_issue", 'required', "Required property 'parent_issue' is missing or null");
-        }
-        if (!property_exists($data, "repository") || $data->repository === null) {
-            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
-        }
-        if (!property_exists($data, "sender") || $data->sender === null) {
-            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "parent_issue_id") || $data->parent_issue_id === null) { throw new SdkValidationError("parent_issue_id", 'required', "Required property 'parent_issue_id' is missing or null"); }
+        if (!property_exists($data, "parent_issue") || $data->parent_issue === null) { throw new SdkValidationError("parent_issue", 'required', "Required property 'parent_issue' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookSubIssuesSubIssueRemovedActionEnum::class),
             parentIssueId: SdkClient::floatValue($data->parent_issue_id),

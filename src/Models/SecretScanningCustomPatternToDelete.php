@@ -57,9 +57,7 @@ class SecretScanningCustomPatternToDelete implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pattern_id") || $data->pattern_id === null) {
-            throw new SdkValidationError("pattern_id", 'required', "Required property 'pattern_id' is missing or null");
-        }
+        if (!property_exists($data, "pattern_id") || $data->pattern_id === null) { throw new SdkValidationError("pattern_id", 'required', "Required property 'pattern_id' is missing or null"); }
         return new self(
             patternId: SdkClient::intValue($data->pattern_id),
             customPatternVersion: (property_exists($data, "custom_pattern_version") ? ($data->custom_pattern_version === null ? null : SdkClient::stringValue($data->custom_pattern_version)) : SdkNotGiven::Value),
@@ -165,9 +163,7 @@ class SecretScanningCustomPatternToUpdate implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "custom_pattern_version")) {
-            throw new SdkValidationError("custom_pattern_version", 'required', "Missing required property 'custom_pattern_version'");
-        }
+        if (!property_exists($data, "custom_pattern_version")) { throw new SdkValidationError("custom_pattern_version", 'required', "Missing required property 'custom_pattern_version'"); }
         return new self(
             customPatternVersion: ($data->custom_pattern_version === null ? null : SdkClient::stringValue($data->custom_pattern_version)),
             pattern: (property_exists($data, "pattern") && $data->pattern !== null ? SdkClient::stringValue($data->pattern) : SdkNotGiven::Value),
@@ -193,26 +189,11 @@ final readonly class SecretScanningCustomPatternValidationErrorCodeEnum implemen
     public const MUST_NOT_MATCH = "must_not_match";
     public const CUSTOM_PATTERN_VERSION_MISMATCH = "custom_pattern_version_mismatch";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**

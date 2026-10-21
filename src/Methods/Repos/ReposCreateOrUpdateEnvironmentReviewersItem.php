@@ -104,12 +104,8 @@ class ReposListDeploymentBranchPoliciesResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "branch_policies") || $data->branch_policies === null) {
-            throw new SdkValidationError("branch_policies", 'required', "Required property 'branch_policies' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "branch_policies") || $data->branch_policies === null) { throw new SdkValidationError("branch_policies", 'required', "Required property 'branch_policies' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             branchPolicies: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, DeploymentBranchPolicy::class), SdkClient::arrayValue($data->branch_policies))),
@@ -310,24 +306,9 @@ final readonly class ReposCreatePagesSiteSourcePathEnum implements SdkOpenEnum
     public const UNKNOWN = "/";
     public const DOCS = "/docs";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

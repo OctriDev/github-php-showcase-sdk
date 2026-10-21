@@ -18,26 +18,11 @@ final readonly class ActionsHostedRunnerStatusEnum implements SdkOpenEnum
     public const DELETING = "Deleting";
     public const STUCK = "Stuck";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -198,27 +183,13 @@ class ActionsHostedRunner implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "image_details")) {
-            throw new SdkValidationError("image_details", 'required', "Missing required property 'image_details'");
-        }
-        if (!property_exists($data, "machine_size_details") || $data->machine_size_details === null) {
-            throw new SdkValidationError("machine_size_details", 'required', "Required property 'machine_size_details' is missing or null");
-        }
-        if (!property_exists($data, "status") || $data->status === null) {
-            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
-        }
-        if (!property_exists($data, "platform") || $data->platform === null) {
-            throw new SdkValidationError("platform", 'required', "Required property 'platform' is missing or null");
-        }
-        if (!property_exists($data, "public_ip_enabled") || $data->public_ip_enabled === null) {
-            throw new SdkValidationError("public_ip_enabled", 'required', "Required property 'public_ip_enabled' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "image_details")) { throw new SdkValidationError("image_details", 'required', "Missing required property 'image_details'"); }
+        if (!property_exists($data, "machine_size_details") || $data->machine_size_details === null) { throw new SdkValidationError("machine_size_details", 'required', "Required property 'machine_size_details' is missing or null"); }
+        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "platform") || $data->platform === null) { throw new SdkValidationError("platform", 'required', "Required property 'platform' is missing or null"); }
+        if (!property_exists($data, "public_ip_enabled") || $data->public_ip_enabled === null) { throw new SdkValidationError("public_ip_enabled", 'required', "Required property 'public_ip_enabled' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),
@@ -245,26 +216,11 @@ final readonly class ActionsHostedRunnerCuratedImageSourceEnum implements SdkOpe
     public const PARTNER = "partner";
     public const CUSTOM = "custom";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -345,21 +301,11 @@ class ActionsHostedRunnerCuratedImage implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "platform") || $data->platform === null) {
-            throw new SdkValidationError("platform", 'required', "Required property 'platform' is missing or null");
-        }
-        if (!property_exists($data, "size_gb") || $data->size_gb === null) {
-            throw new SdkValidationError("size_gb", 'required', "Required property 'size_gb' is missing or null");
-        }
-        if (!property_exists($data, "display_name") || $data->display_name === null) {
-            throw new SdkValidationError("display_name", 'required', "Required property 'display_name' is missing or null");
-        }
-        if (!property_exists($data, "source") || $data->source === null) {
-            throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "platform") || $data->platform === null) { throw new SdkValidationError("platform", 'required', "Required property 'platform' is missing or null"); }
+        if (!property_exists($data, "size_gb") || $data->size_gb === null) { throw new SdkValidationError("size_gb", 'required', "Required property 'size_gb' is missing or null"); }
+        if (!property_exists($data, "display_name") || $data->display_name === null) { throw new SdkValidationError("display_name", 'required', "Required property 'display_name' is missing or null"); }
+        if (!property_exists($data, "source") || $data->source === null) { throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null"); }
         return new self(
             id: SdkClient::stringValue($data->id),
             platform: SdkClient::stringValue($data->platform),

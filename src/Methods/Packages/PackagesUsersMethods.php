@@ -20,7 +20,7 @@ trait PackagesUsersMethods
     public static function packagesListDockerMigrationConflictingPackagesForUser(ClientConfig $clientConfig, string $username, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/docker/conflicts", $clientConfig, decoder: 'json', operationId: 'packagesListDockerMigrationConflictingPackagesForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/docker/conflicts", $clientConfig, decoder: 'json', operationId: 'packagesListDockerMigrationConflictingPackagesForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Package::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

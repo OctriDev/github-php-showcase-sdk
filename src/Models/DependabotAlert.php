@@ -211,48 +211,20 @@ class DependabotAlert implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "number") || $data->number === null) {
-            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
-        }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
-        if (!property_exists($data, "dependency") || $data->dependency === null) {
-            throw new SdkValidationError("dependency", 'required', "Required property 'dependency' is missing or null");
-        }
-        if (!property_exists($data, "security_advisory") || $data->security_advisory === null) {
-            throw new SdkValidationError("security_advisory", 'required', "Required property 'security_advisory' is missing or null");
-        }
-        if (!property_exists($data, "security_vulnerability") || $data->security_vulnerability === null) {
-            throw new SdkValidationError("security_vulnerability", 'required', "Required property 'security_vulnerability' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "dismissed_at")) {
-            throw new SdkValidationError("dismissed_at", 'required', "Missing required property 'dismissed_at'");
-        }
-        if (!property_exists($data, "dismissed_by")) {
-            throw new SdkValidationError("dismissed_by", 'required', "Missing required property 'dismissed_by'");
-        }
-        if (!property_exists($data, "dismissed_reason")) {
-            throw new SdkValidationError("dismissed_reason", 'required', "Missing required property 'dismissed_reason'");
-        }
-        if (!property_exists($data, "dismissed_comment")) {
-            throw new SdkValidationError("dismissed_comment", 'required', "Missing required property 'dismissed_comment'");
-        }
-        if (!property_exists($data, "fixed_at")) {
-            throw new SdkValidationError("fixed_at", 'required', "Missing required property 'fixed_at'");
-        }
+        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "dependency") || $data->dependency === null) { throw new SdkValidationError("dependency", 'required', "Required property 'dependency' is missing or null"); }
+        if (!property_exists($data, "security_advisory") || $data->security_advisory === null) { throw new SdkValidationError("security_advisory", 'required', "Required property 'security_advisory' is missing or null"); }
+        if (!property_exists($data, "security_vulnerability") || $data->security_vulnerability === null) { throw new SdkValidationError("security_vulnerability", 'required', "Required property 'security_vulnerability' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "dismissed_at")) { throw new SdkValidationError("dismissed_at", 'required', "Missing required property 'dismissed_at'"); }
+        if (!property_exists($data, "dismissed_by")) { throw new SdkValidationError("dismissed_by", 'required', "Missing required property 'dismissed_by'"); }
+        if (!property_exists($data, "dismissed_reason")) { throw new SdkValidationError("dismissed_reason", 'required', "Missing required property 'dismissed_reason'"); }
+        if (!property_exists($data, "dismissed_comment")) { throw new SdkValidationError("dismissed_comment", 'required', "Missing required property 'dismissed_comment'"); }
+        if (!property_exists($data, "fixed_at")) { throw new SdkValidationError("fixed_at", 'required', "Missing required property 'fixed_at'"); }
         return new self(
             number: SdkClient::intValue($data->number),
             state: SdkClient::hydrateStringEnumOrString($data->state, DependabotAlertStateEnum::class),
@@ -285,26 +257,11 @@ final readonly class DependabotAlertDismissalRequestSimpleStatusEnum implements 
     public const REJECTED = "rejected";
     public const CANCELLED = "cancelled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**

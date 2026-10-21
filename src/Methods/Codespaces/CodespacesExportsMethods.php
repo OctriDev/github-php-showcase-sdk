@@ -20,7 +20,7 @@ trait CodespacesExportsMethods
     public static function codespacesExportForAuthenticatedUser(ClientConfig $clientConfig, string $codespaceName, ?RequestOptions $requestOptions = null): CodespaceExportDetails
     {
 
-        $sdkResponse = SdkClient::request('POST', "/user/codespaces/" . SdkClient::encodePathSegment($codespaceName) . "/exports", $clientConfig, returnType: CodespaceExportDetails::class, decoder: 'json', operationId: 'codespacesExportForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/user/codespaces/" . SdkClient::encodePathSegment($codespaceName) . "/exports", $clientConfig, returnType: CodespaceExportDetails::class, decoder: 'json', operationId: 'codespacesExportForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodespaceExportDetails::class));
     }
 
@@ -37,7 +37,7 @@ trait CodespacesExportsMethods
     public static function codespacesGetExportDetailsForAuthenticatedUser(ClientConfig $clientConfig, string $codespaceName, string $exportId, ?RequestOptions $requestOptions = null): CodespaceExportDetails
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/codespaces/" . SdkClient::encodePathSegment($codespaceName) . "/exports/" . SdkClient::encodePathSegment($exportId) . "", $clientConfig, returnType: CodespaceExportDetails::class, decoder: 'json', operationId: 'codespacesGetExportDetailsForAuthenticatedUser', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/codespaces/" . SdkClient::encodePathSegment($codespaceName) . "/exports/" . SdkClient::encodePathSegment($exportId) . "", $clientConfig, returnType: CodespaceExportDetails::class, decoder: 'json', operationId: 'codespacesGetExportDetailsForAuthenticatedUser', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodespaceExportDetails::class));
     }
 }

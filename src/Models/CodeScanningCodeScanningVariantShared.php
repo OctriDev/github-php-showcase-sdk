@@ -17,26 +17,11 @@ final readonly class CodeScanningVariantAnalysisStatusModelEnum implements SdkOp
     public const FAILED = "failed";
     public const CANCELLED = "cancelled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -48,26 +33,11 @@ final readonly class CodeScanningVariantAnalysisFailureReasonEnum implements Sdk
     public const ACTIONS_WORKFLOW_RUN_FAILED = "actions_workflow_run_failed";
     public const INTERNAL_ERROR = "internal_error";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -154,12 +124,8 @@ class CodeScanningVariantAnalysisScannedRepositoriesItem implements \JsonSeriali
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository") || $data->repository === null) {
-            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
-        }
-        if (!property_exists($data, "analysis_status") || $data->analysis_status === null) {
-            throw new SdkValidationError("analysis_status", 'required', "Required property 'analysis_status' is missing or null");
-        }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "analysis_status") || $data->analysis_status === null) { throw new SdkValidationError("analysis_status", 'required', "Required property 'analysis_status' is missing or null"); }
         return new self(
             repository: SdkClient::hydrateClass($data->repository, CodeScanningVariantAnalysisRepository::class),
             analysisStatus: SdkClient::hydrateStringEnumOrString($data->analysis_status, CodeScanningVariantAnalysisStatus::class),
@@ -218,12 +184,8 @@ class CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos implements \Js
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_count") || $data->repository_count === null) {
-            throw new SdkValidationError("repository_count", 'required', "Required property 'repository_count' is missing or null");
-        }
-        if (!property_exists($data, "repository_full_names") || $data->repository_full_names === null) {
-            throw new SdkValidationError("repository_full_names", 'required', "Required property 'repository_full_names' is missing or null");
-        }
+        if (!property_exists($data, "repository_count") || $data->repository_count === null) { throw new SdkValidationError("repository_count", 'required', "Required property 'repository_count' is missing or null"); }
+        if (!property_exists($data, "repository_full_names") || $data->repository_full_names === null) { throw new SdkValidationError("repository_full_names", 'required', "Required property 'repository_full_names' is missing or null"); }
         return new self(
             repositoryCount: SdkClient::intValue($data->repository_count),
             repositoryFullNames: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->repository_full_names))),
@@ -299,18 +261,10 @@ class CodeScanningVariantAnalysisSkippedRepositories implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "access_mismatch_repos") || $data->access_mismatch_repos === null) {
-            throw new SdkValidationError("access_mismatch_repos", 'required', "Required property 'access_mismatch_repos' is missing or null");
-        }
-        if (!property_exists($data, "not_found_repos") || $data->not_found_repos === null) {
-            throw new SdkValidationError("not_found_repos", 'required', "Required property 'not_found_repos' is missing or null");
-        }
-        if (!property_exists($data, "no_codeql_db_repos") || $data->no_codeql_db_repos === null) {
-            throw new SdkValidationError("no_codeql_db_repos", 'required', "Required property 'no_codeql_db_repos' is missing or null");
-        }
-        if (!property_exists($data, "over_limit_repos") || $data->over_limit_repos === null) {
-            throw new SdkValidationError("over_limit_repos", 'required', "Required property 'over_limit_repos' is missing or null");
-        }
+        if (!property_exists($data, "access_mismatch_repos") || $data->access_mismatch_repos === null) { throw new SdkValidationError("access_mismatch_repos", 'required', "Required property 'access_mismatch_repos' is missing or null"); }
+        if (!property_exists($data, "not_found_repos") || $data->not_found_repos === null) { throw new SdkValidationError("not_found_repos", 'required', "Required property 'not_found_repos' is missing or null"); }
+        if (!property_exists($data, "no_codeql_db_repos") || $data->no_codeql_db_repos === null) { throw new SdkValidationError("no_codeql_db_repos", 'required', "Required property 'no_codeql_db_repos' is missing or null"); }
+        if (!property_exists($data, "over_limit_repos") || $data->over_limit_repos === null) { throw new SdkValidationError("over_limit_repos", 'required', "Required property 'over_limit_repos' is missing or null"); }
         return new self(
             accessMismatchRepos: SdkClient::hydrateClass($data->access_mismatch_repos, CodeScanningVariantAnalysisSkippedRepoGroup::class),
             notFoundRepos: SdkClient::hydrateClass($data->not_found_repos, CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos::class),

@@ -65,15 +65,9 @@ class ConcurrencyGroupListConcurrencyGroupsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "group_name") || $data->group_name === null) {
-            throw new SdkValidationError("group_name", 'required', "Required property 'group_name' is missing or null");
-        }
-        if (!property_exists($data, "group_url") || $data->group_url === null) {
-            throw new SdkValidationError("group_url", 'required', "Required property 'group_url' is missing or null");
-        }
-        if (!property_exists($data, "last_acquired_at")) {
-            throw new SdkValidationError("last_acquired_at", 'required', "Missing required property 'last_acquired_at'");
-        }
+        if (!property_exists($data, "group_name") || $data->group_name === null) { throw new SdkValidationError("group_name", 'required', "Required property 'group_name' is missing or null"); }
+        if (!property_exists($data, "group_url") || $data->group_url === null) { throw new SdkValidationError("group_url", 'required', "Required property 'group_url' is missing or null"); }
+        if (!property_exists($data, "last_acquired_at")) { throw new SdkValidationError("last_acquired_at", 'required', "Missing required property 'last_acquired_at'"); }
         return new self(
             groupName: SdkClient::stringValue($data->group_name),
             groupUrl: SdkClient::stringValue($data->group_url),
@@ -130,12 +124,8 @@ class ConcurrencyGroupList implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "concurrency_groups") || $data->concurrency_groups === null) {
-            throw new SdkValidationError("concurrency_groups", 'required', "Required property 'concurrency_groups' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "concurrency_groups") || $data->concurrency_groups === null) { throw new SdkValidationError("concurrency_groups", 'required', "Required property 'concurrency_groups' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             concurrencyGroups: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ConcurrencyGroupListConcurrencyGroupsItem::class), SdkClient::arrayValue($data->concurrency_groups))),

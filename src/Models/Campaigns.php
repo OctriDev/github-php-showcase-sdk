@@ -15,26 +15,11 @@ final readonly class CampaignState implements SdkOpenEnum
     public const OPEN = "open";
     public const CLOSED = "closed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -95,15 +80,9 @@ class CampaignSummaryAlertStats implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "open_count") || $data->open_count === null) {
-            throw new SdkValidationError("open_count", 'required', "Required property 'open_count' is missing or null");
-        }
-        if (!property_exists($data, "closed_count") || $data->closed_count === null) {
-            throw new SdkValidationError("closed_count", 'required', "Required property 'closed_count' is missing or null");
-        }
-        if (!property_exists($data, "in_progress_count") || $data->in_progress_count === null) {
-            throw new SdkValidationError("in_progress_count", 'required', "Required property 'in_progress_count' is missing or null");
-        }
+        if (!property_exists($data, "open_count") || $data->open_count === null) { throw new SdkValidationError("open_count", 'required', "Required property 'open_count' is missing or null"); }
+        if (!property_exists($data, "closed_count") || $data->closed_count === null) { throw new SdkValidationError("closed_count", 'required', "Required property 'closed_count' is missing or null"); }
+        if (!property_exists($data, "in_progress_count") || $data->in_progress_count === null) { throw new SdkValidationError("in_progress_count", 'required', "Required property 'in_progress_count' is missing or null"); }
         return new self(
             openCount: SdkClient::intValue($data->open_count),
             closedCount: SdkClient::intValue($data->closed_count),
@@ -280,30 +259,14 @@ class CampaignSummary implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "number") || $data->number === null) {
-            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
-        if (!property_exists($data, "managers") || $data->managers === null) {
-            throw new SdkValidationError("managers", 'required', "Required property 'managers' is missing or null");
-        }
-        if (!property_exists($data, "ends_at") || $data->ends_at === null) {
-            throw new SdkValidationError("ends_at", 'required', "Required property 'ends_at' is missing or null");
-        }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
-        if (!property_exists($data, "contact_link")) {
-            throw new SdkValidationError("contact_link", 'required', "Missing required property 'contact_link'");
-        }
+        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
+        if (!property_exists($data, "managers") || $data->managers === null) { throw new SdkValidationError("managers", 'required', "Required property 'managers' is missing or null"); }
+        if (!property_exists($data, "ends_at") || $data->ends_at === null) { throw new SdkValidationError("ends_at", 'required', "Required property 'ends_at' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "contact_link")) { throw new SdkValidationError("contact_link", 'required', "Missing required property 'contact_link'"); }
         return new self(
             number: SdkClient::intValue($data->number),
             createdAt: SdkClient::stringValue($data->created_at),

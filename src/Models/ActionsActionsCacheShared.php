@@ -179,12 +179,8 @@ class ActionsCacheList implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "actions_caches") || $data->actions_caches === null) {
-            throw new SdkValidationError("actions_caches", 'required', "Required property 'actions_caches' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "actions_caches") || $data->actions_caches === null) { throw new SdkValidationError("actions_caches", 'required', "Required property 'actions_caches' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             actionsCaches: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsCacheListActionsCachesItem::class), SdkClient::arrayValue($data->actions_caches))),

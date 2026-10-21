@@ -20,7 +20,7 @@ trait CodeScanningAiScanMethods
     public static function codeScanningGetAiScanEnablementForOrg(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): CodeScanningAiScanOrgSettings
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/code-scanning/ai-scan", $clientConfig, returnType: CodeScanningAiScanOrgSettings::class, decoder: 'json', operationId: 'codeScanningGetAiScanEnablementForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/code-scanning/ai-scan", $clientConfig, returnType: CodeScanningAiScanOrgSettings::class, decoder: 'json', operationId: 'codeScanningGetAiScanEnablementForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningAiScanOrgSettings::class));
     }
 
@@ -37,7 +37,7 @@ trait CodeScanningAiScanMethods
     public static function codeScanningUpdateAiScanEnablementForOrg(ClientConfig $clientConfig, string $org, CodeScanningUpdateAiScanEnablementForOrgPrScan|SdkNotGiven $prScan = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CodeScanningAiScanOrgSettings
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/code-scanning/ai-scan", $clientConfig, body: ['pr_scan' => $prScan], returnType: CodeScanningAiScanOrgSettings::class, decoder: 'json', operationId: 'codeScanningUpdateAiScanEnablementForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/code-scanning/ai-scan", $clientConfig, body: ['pr_scan' => $prScan], returnType: CodeScanningAiScanOrgSettings::class, decoder: 'json', operationId: 'codeScanningUpdateAiScanEnablementForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningAiScanOrgSettings::class));
     }
 
@@ -54,7 +54,7 @@ trait CodeScanningAiScanMethods
     public static function codeScanningGetAiScanEnablement(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): CodeScanningAiScanEnablement
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/ai-scan", $clientConfig, returnType: CodeScanningAiScanEnablement::class, decoder: 'json', operationId: 'codeScanningGetAiScanEnablement', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/ai-scan", $clientConfig, returnType: CodeScanningAiScanEnablement::class, decoder: 'json', operationId: 'codeScanningGetAiScanEnablement', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningAiScanEnablement::class));
     }
 
@@ -72,7 +72,7 @@ trait CodeScanningAiScanMethods
     public static function codeScanningUpdateAiScanEnablement(ClientConfig $clientConfig, string $owner, string $repo, CodeScanningUpdateAiScanEnablementPrScan|SdkNotGiven $prScan = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CodeScanningAiScanEnablement
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/ai-scan", $clientConfig, body: ['pr_scan' => $prScan], returnType: CodeScanningAiScanEnablement::class, decoder: 'json', operationId: 'codeScanningUpdateAiScanEnablement', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/ai-scan", $clientConfig, body: ['pr_scan' => $prScan], returnType: CodeScanningAiScanEnablement::class, decoder: 'json', operationId: 'codeScanningUpdateAiScanEnablement', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningAiScanEnablement::class));
     }
 }

@@ -24,7 +24,7 @@ trait ReposMergesMethods
     public static function reposMerge(ClientConfig $clientConfig, string $owner, string $repo, string $base, string $head, string|SdkNotGiven $commitMessage = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Commit
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/merges", $clientConfig, body: ['base' => $base, 'head' => $head, 'commit_message' => $commitMessage], returnType: Commit::class, decoder: 'json', operationId: 'reposMerge', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/merges", $clientConfig, body: ['base' => $base, 'head' => $head, 'commit_message' => $commitMessage], returnType: Commit::class, decoder: 'json', operationId: 'reposMerge', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Commit::class));
     }
 }

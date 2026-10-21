@@ -23,7 +23,7 @@ trait SecretScanningPushProtectionBypassesMethods
     public static function secretScanningCreatePushProtectionBypass(ClientConfig $clientConfig, string $owner, string $repo, SecretScanningPushProtectionBypassReason $reason, string $placeholderId, ?RequestOptions $requestOptions = null): SecretScanningPushProtectionBypass
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/secret-scanning/push-protection-bypasses", $clientConfig, body: ['reason' => $reason, 'placeholder_id' => $placeholderId], returnType: SecretScanningPushProtectionBypass::class, decoder: 'json', operationId: 'secretScanningCreatePushProtectionBypass', requestOptions: $requestOptions, errors: [503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/secret-scanning/push-protection-bypasses", $clientConfig, body: ['reason' => $reason, 'placeholder_id' => $placeholderId], returnType: SecretScanningPushProtectionBypass::class, decoder: 'json', operationId: 'secretScanningCreatePushProtectionBypass', requestOptions: $requestOptions, errors: [503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SecretScanningPushProtectionBypass::class));
     }
 }

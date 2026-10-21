@@ -65,15 +65,9 @@ class PullRequestMergeResult implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
-        if (!property_exists($data, "merged") || $data->merged === null) {
-            throw new SdkValidationError("merged", 'required', "Required property 'merged' is missing or null");
-        }
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "merged") || $data->merged === null) { throw new SdkValidationError("merged", 'required', "Required property 'merged' is missing or null"); }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
         return new self(
             sha: SdkClient::stringValue($data->sha),
             merged: SdkClient::boolValue($data->merged),

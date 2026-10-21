@@ -14,26 +14,11 @@ final readonly class WebhookMarketplacePurchasePendingChangeActionEnum implement
 {
     public const PENDING_CHANGE = "pending_change";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -114,21 +99,11 @@ class WebhookMarketplacePurchasePendingChangePreviousMarketplacePurchaseAccount 
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "login") || $data->login === null) {
-            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "organization_billing_email")) {
-            throw new SdkValidationError("organization_billing_email", 'required', "Missing required property 'organization_billing_email'");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "organization_billing_email")) { throw new SdkValidationError("organization_billing_email", 'required', "Missing required property 'organization_billing_email'"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             login: SdkClient::stringValue($data->login),
@@ -148,26 +123,11 @@ final readonly class WebhookMarketplacePurchasePendingChangePreviousMarketplaceP
     public const FLAT_RATE = "FLAT_RATE";
     public const PER_UNIT = "PER_UNIT";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -288,33 +248,15 @@ class WebhookMarketplacePurchasePendingChangePreviousMarketplacePurchasePlan imp
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "bullets") || $data->bullets === null) {
-            throw new SdkValidationError("bullets", 'required', "Required property 'bullets' is missing or null");
-        }
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
-        if (!property_exists($data, "has_free_trial") || $data->has_free_trial === null) {
-            throw new SdkValidationError("has_free_trial", 'required', "Required property 'has_free_trial' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "monthly_price_in_cents") || $data->monthly_price_in_cents === null) {
-            throw new SdkValidationError("monthly_price_in_cents", 'required', "Required property 'monthly_price_in_cents' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "price_model") || $data->price_model === null) {
-            throw new SdkValidationError("price_model", 'required', "Required property 'price_model' is missing or null");
-        }
-        if (!property_exists($data, "unit_name")) {
-            throw new SdkValidationError("unit_name", 'required', "Missing required property 'unit_name'");
-        }
-        if (!property_exists($data, "yearly_price_in_cents") || $data->yearly_price_in_cents === null) {
-            throw new SdkValidationError("yearly_price_in_cents", 'required', "Required property 'yearly_price_in_cents' is missing or null");
-        }
+        if (!property_exists($data, "bullets") || $data->bullets === null) { throw new SdkValidationError("bullets", 'required', "Required property 'bullets' is missing or null"); }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
+        if (!property_exists($data, "has_free_trial") || $data->has_free_trial === null) { throw new SdkValidationError("has_free_trial", 'required', "Required property 'has_free_trial' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "monthly_price_in_cents") || $data->monthly_price_in_cents === null) { throw new SdkValidationError("monthly_price_in_cents", 'required', "Required property 'monthly_price_in_cents' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "price_model") || $data->price_model === null) { throw new SdkValidationError("price_model", 'required', "Required property 'price_model' is missing or null"); }
+        if (!property_exists($data, "unit_name")) { throw new SdkValidationError("unit_name", 'required', "Missing required property 'unit_name'"); }
+        if (!property_exists($data, "yearly_price_in_cents") || $data->yearly_price_in_cents === null) { throw new SdkValidationError("yearly_price_in_cents", 'required', "Required property 'yearly_price_in_cents' is missing or null"); }
         return new self(
             bullets: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->bullets))),
             description: SdkClient::stringValue($data->description),

@@ -48,7 +48,7 @@ trait PullsCommentsMethods
     public static function pullsGetReviewComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ?RequestOptions $requestOptions = null): PullRequestReviewComment
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, returnType: PullRequestReviewComment::class, decoder: 'json', operationId: 'pullsGetReviewComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, returnType: PullRequestReviewComment::class, decoder: 'json', operationId: 'pullsGetReviewComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestReviewComment::class));
     }
 
@@ -84,7 +84,7 @@ trait PullsCommentsMethods
     public static function pullsDeleteReviewComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, decoder: 'empty', operationId: 'pullsDeleteReviewComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, decoder: 'empty', operationId: 'pullsDeleteReviewComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -138,7 +138,7 @@ trait PullsCommentsMethods
     public static function pullsCreateReviewComment(ClientConfig $clientConfig, string $owner, string $repo, int $pullNumber, string $body, string $commitId, string $path, int|SdkNotGiven $position = SdkNotGiven::Value, PullsCreateReviewCommentSide|SdkNotGiven $side = SdkNotGiven::Value, int|SdkNotGiven $line = SdkNotGiven::Value, int|SdkNotGiven $startLine = SdkNotGiven::Value, PullsCreateReviewCommentStartSide|SdkNotGiven $startSide = SdkNotGiven::Value, int|SdkNotGiven $inReplyTo = SdkNotGiven::Value, PullsCreateReviewCommentSubjectType|SdkNotGiven $subjectType = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PullRequestReviewComment
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/comments", $clientConfig, body: ['body' => $body, 'commit_id' => $commitId, 'path' => $path, 'position' => $position, 'side' => $side, 'line' => $line, 'start_line' => $startLine, 'start_side' => $startSide, 'in_reply_to' => $inReplyTo, 'subject_type' => $subjectType], returnType: PullRequestReviewComment::class, decoder: 'json', operationId: 'pullsCreateReviewComment', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/comments", $clientConfig, body: ['body' => $body, 'commit_id' => $commitId, 'path' => $path, 'position' => $position, 'side' => $side, 'line' => $line, 'start_line' => $startLine, 'start_side' => $startSide, 'in_reply_to' => $inReplyTo, 'subject_type' => $subjectType], returnType: PullRequestReviewComment::class, decoder: 'json', operationId: 'pullsCreateReviewComment', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestReviewComment::class));
     }
 
@@ -158,7 +158,7 @@ trait PullsCommentsMethods
     public static function pullsCreateReplyForReviewComment(ClientConfig $clientConfig, string $owner, string $repo, int $pullNumber, int $commentId, string $body, ?RequestOptions $requestOptions = null): PullRequestReviewComment
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/comments/" . SdkClient::encodePathSegment($commentId) . "/replies", $clientConfig, body: ['body' => $body], returnType: PullRequestReviewComment::class, decoder: 'json', operationId: 'pullsCreateReplyForReviewComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/comments/" . SdkClient::encodePathSegment($commentId) . "/replies", $clientConfig, body: ['body' => $body], returnType: PullRequestReviewComment::class, decoder: 'json', operationId: 'pullsCreateReplyForReviewComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestReviewComment::class));
     }
 }

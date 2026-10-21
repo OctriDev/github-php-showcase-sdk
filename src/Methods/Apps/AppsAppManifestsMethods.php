@@ -20,7 +20,7 @@ trait AppsAppManifestsMethods
     public static function appsCreateFromManifest(ClientConfig $clientConfig, string $code, ?RequestOptions $requestOptions = null): AppsCreateFromManifestResponse|null
     {
 
-        $sdkResponse = SdkClient::request('POST', "/app-manifests/" . SdkClient::encodePathSegment($code) . "/conversions", $clientConfig, returnType: AppsCreateFromManifestResponse::class, decoder: 'json', operationId: 'appsCreateFromManifest', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('POST', "/app-manifests/" . SdkClient::encodePathSegment($code) . "/conversions", $clientConfig, returnType: AppsCreateFromManifestResponse::class, decoder: 'json', operationId: 'appsCreateFromManifest', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AppsCreateFromManifestResponse::class));
     }
 }

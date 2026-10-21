@@ -19,26 +19,11 @@ final readonly class ActivityActivityTypeEnum implements SdkOpenEnum
     public const PR_MERGE = "pr_merge";
     public const MERGE_QUEUE_MERGE = "merge_queue_merge";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -149,30 +134,14 @@ class Activity implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "before") || $data->before === null) {
-            throw new SdkValidationError("before", 'required', "Required property 'before' is missing or null");
-        }
-        if (!property_exists($data, "after") || $data->after === null) {
-            throw new SdkValidationError("after", 'required', "Required property 'after' is missing or null");
-        }
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
-        }
-        if (!property_exists($data, "timestamp") || $data->timestamp === null) {
-            throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null");
-        }
-        if (!property_exists($data, "activity_type") || $data->activity_type === null) {
-            throw new SdkValidationError("activity_type", 'required', "Required property 'activity_type' is missing or null");
-        }
-        if (!property_exists($data, "actor")) {
-            throw new SdkValidationError("actor", 'required', "Missing required property 'actor'");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "before") || $data->before === null) { throw new SdkValidationError("before", 'required', "Required property 'before' is missing or null"); }
+        if (!property_exists($data, "after") || $data->after === null) { throw new SdkValidationError("after", 'required', "Required property 'after' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "timestamp") || $data->timestamp === null) { throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null"); }
+        if (!property_exists($data, "activity_type") || $data->activity_type === null) { throw new SdkValidationError("activity_type", 'required', "Required property 'activity_type' is missing or null"); }
+        if (!property_exists($data, "actor")) { throw new SdkValidationError("actor", 'required', "Missing required property 'actor'"); }
         return new self(
             id: SdkClient::intValue($data->id),
             nodeId: SdkClient::stringValue($data->node_id),

@@ -69,9 +69,7 @@ class PackageVersionMetadata implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "package_type") || $data->package_type === null) {
-            throw new SdkValidationError("package_type", 'required', "Required property 'package_type' is missing or null");
-        }
+        if (!property_exists($data, "package_type") || $data->package_type === null) { throw new SdkValidationError("package_type", 'required', "Required property 'package_type' is missing or null"); }
         return new self(
             packageType: SdkClient::hydrateStringEnumOrString($data->package_type, PackageVersionMetadataPackageTypeEnum::class),
             container: (property_exists($data, "container") && $data->container !== null ? SdkClient::hydrateClass($data->container, PackageVersionMetadataContainer::class) : SdkNotGiven::Value),
@@ -228,24 +226,12 @@ class PackageVersion implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "package_html_url") || $data->package_html_url === null) {
-            throw new SdkValidationError("package_html_url", 'required', "Required property 'package_html_url' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "package_html_url") || $data->package_html_url === null) { throw new SdkValidationError("package_html_url", 'required', "Required property 'package_html_url' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),

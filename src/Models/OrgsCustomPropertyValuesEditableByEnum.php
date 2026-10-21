@@ -15,26 +15,11 @@ final readonly class CustomPropertyValuesEditableByEnum implements SdkOpenEnum
     public const ORG_ACTORS = "org_actors";
     public const ORG_AND_REPO_ACTORS = "org_and_repo_actors";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -181,12 +166,8 @@ class CustomProperty implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "property_name") || $data->property_name === null) {
-            throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null");
-        }
-        if (!property_exists($data, "value_type") || $data->value_type === null) {
-            throw new SdkValidationError("value_type", 'required', "Required property 'value_type' is missing or null");
-        }
+        if (!property_exists($data, "property_name") || $data->property_name === null) { throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null"); }
+        if (!property_exists($data, "value_type") || $data->value_type === null) { throw new SdkValidationError("value_type", 'required', "Required property 'value_type' is missing or null"); }
         return new self(
             propertyName: SdkClient::stringValue($data->property_name),
             valueType: SdkClient::hydrateStringEnumOrString($data->value_type, CustomPropertyValueTypeEnum::class),
@@ -213,26 +194,11 @@ final readonly class IssueFieldDataTypeEnum implements SdkOpenEnum
     public const MULTI_SELECT = "multi_select";
     public const NUMBER = "number";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -243,26 +209,11 @@ final readonly class IssueFieldVisibilityEnum implements SdkOpenEnum
     public const ORGANIZATION_MEMBERS_ONLY = "organization_members_only";
     public const ALL = "all";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -279,24 +230,9 @@ final readonly class IssueFieldOptionsItemColorEnum implements SdkOpenEnum
     public const PINK = "pink";
     public const PURPLE = "purple";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

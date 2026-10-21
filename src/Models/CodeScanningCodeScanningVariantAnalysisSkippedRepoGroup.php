@@ -55,12 +55,8 @@ class CodeScanningVariantAnalysisSkippedRepoGroup implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_count") || $data->repository_count === null) {
-            throw new SdkValidationError("repository_count", 'required', "Required property 'repository_count' is missing or null");
-        }
-        if (!property_exists($data, "repositories") || $data->repositories === null) {
-            throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null");
-        }
+        if (!property_exists($data, "repository_count") || $data->repository_count === null) { throw new SdkValidationError("repository_count", 'required', "Required property 'repository_count' is missing or null"); }
+        if (!property_exists($data, "repositories") || $data->repositories === null) { throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null"); }
         return new self(
             repositoryCount: SdkClient::intValue($data->repository_count),
             repositories: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CodeScanningVariantAnalysisRepository::class), SdkClient::arrayValue($data->repositories))),
@@ -80,24 +76,9 @@ final readonly class CodeScanningVariantAnalysisStatus implements SdkOpenEnum
     public const CANCELED = "canceled";
     public const TIMED_OUT = "timed_out";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

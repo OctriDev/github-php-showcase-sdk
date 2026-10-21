@@ -45,9 +45,7 @@ class EnterpriseRulesetConditionsOrganizationPropertyTarget implements \JsonSeri
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "organization_property") || $data->organization_property === null) {
-            throw new SdkValidationError("organization_property", 'required', "Required property 'organization_property' is missing or null");
-        }
+        if (!property_exists($data, "organization_property") || $data->organization_property === null) { throw new SdkValidationError("organization_property", 'required', "Required property 'organization_property' is missing or null"); }
         return new self(
             organizationProperty: SdkClient::hydrateClass($data->organization_property, EnterpriseRulesetConditionsOrganizationPropertyTargetOrganizationProperty::class),
         );

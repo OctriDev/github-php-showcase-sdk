@@ -55,12 +55,8 @@ class Stargazer implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "starred_at") || $data->starred_at === null) {
-            throw new SdkValidationError("starred_at", 'required', "Required property 'starred_at' is missing or null");
-        }
-        if (!property_exists($data, "user")) {
-            throw new SdkValidationError("user", 'required', "Missing required property 'user'");
-        }
+        if (!property_exists($data, "starred_at") || $data->starred_at === null) { throw new SdkValidationError("starred_at", 'required', "Required property 'starred_at' is missing or null"); }
+        if (!property_exists($data, "user")) { throw new SdkValidationError("user", 'required', "Missing required property 'user'"); }
         return new self(
             starredAt: SdkClient::stringValue($data->starred_at),
             user: ($data->user === null ? null : SdkClient::hydrateClass($data->user, NullableSimpleUser::class)),

@@ -20,7 +20,7 @@ trait AppsMethods
     public static function appsGetBySlug(ClientConfig $clientConfig, string $appSlug, ?RequestOptions $requestOptions = null): Integration|null
     {
 
-        $sdkResponse = SdkClient::request('GET', "/apps/" . SdkClient::encodePathSegment($appSlug) . "", $clientConfig, returnType: Integration::class, decoder: 'json', operationId: 'appsGetBySlug', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/apps/" . SdkClient::encodePathSegment($appSlug) . "", $clientConfig, returnType: Integration::class, decoder: 'json', operationId: 'appsGetBySlug', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Integration::class));
     }
 }

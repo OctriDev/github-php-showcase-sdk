@@ -55,12 +55,8 @@ class ActionsCacheUsageOrgEnterprise implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_active_caches_count") || $data->total_active_caches_count === null) {
-            throw new SdkValidationError("total_active_caches_count", 'required', "Required property 'total_active_caches_count' is missing or null");
-        }
-        if (!property_exists($data, "total_active_caches_size_in_bytes") || $data->total_active_caches_size_in_bytes === null) {
-            throw new SdkValidationError("total_active_caches_size_in_bytes", 'required', "Required property 'total_active_caches_size_in_bytes' is missing or null");
-        }
+        if (!property_exists($data, "total_active_caches_count") || $data->total_active_caches_count === null) { throw new SdkValidationError("total_active_caches_count", 'required', "Required property 'total_active_caches_count' is missing or null"); }
+        if (!property_exists($data, "total_active_caches_size_in_bytes") || $data->total_active_caches_size_in_bytes === null) { throw new SdkValidationError("total_active_caches_size_in_bytes", 'required', "Required property 'total_active_caches_size_in_bytes' is missing or null"); }
         return new self(
             totalActiveCachesCount: SdkClient::intValue($data->total_active_caches_count),
             totalActiveCachesSizeInBytes: SdkClient::intValue($data->total_active_caches_size_in_bytes),

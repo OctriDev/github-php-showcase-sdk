@@ -65,15 +65,9 @@ class StargazerHistory implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "days") || $data->days === null) {
-            throw new SdkValidationError("days", 'required', "Required property 'days' is missing or null");
-        }
-        if (!property_exists($data, "total") || $data->total === null) {
-            throw new SdkValidationError("total", 'required', "Required property 'total' is missing or null");
-        }
-        if (!property_exists($data, "week") || $data->week === null) {
-            throw new SdkValidationError("week", 'required', "Required property 'week' is missing or null");
-        }
+        if (!property_exists($data, "days") || $data->days === null) { throw new SdkValidationError("days", 'required', "Required property 'days' is missing or null"); }
+        if (!property_exists($data, "total") || $data->total === null) { throw new SdkValidationError("total", 'required', "Required property 'total' is missing or null"); }
+        if (!property_exists($data, "week") || $data->week === null) { throw new SdkValidationError("week", 'required', "Required property 'week' is missing or null"); }
         return new self(
             days: array_values(array_map(static fn($item) => SdkClient::intValue($item), SdkClient::arrayValue($data->days))),
             total: SdkClient::intValue($data->total),

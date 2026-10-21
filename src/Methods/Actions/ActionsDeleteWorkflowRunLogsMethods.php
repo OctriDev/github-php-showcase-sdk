@@ -21,7 +21,7 @@ trait ActionsDeleteWorkflowRunLogsMethods
     public static function actionsDeleteWorkflowRunLogs(ClientConfig $clientConfig, string $owner, string $repo, int $runId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/logs", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteWorkflowRunLogs', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/logs", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteWorkflowRunLogs', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

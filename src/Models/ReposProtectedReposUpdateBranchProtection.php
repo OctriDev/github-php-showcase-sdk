@@ -97,21 +97,11 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions implements 
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "users_url") || $data->users_url === null) {
-            throw new SdkValidationError("users_url", 'required', "Required property 'users_url' is missing or null");
-        }
-        if (!property_exists($data, "teams_url") || $data->teams_url === null) {
-            throw new SdkValidationError("teams_url", 'required', "Required property 'teams_url' is missing or null");
-        }
-        if (!property_exists($data, "users") || $data->users === null) {
-            throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null");
-        }
-        if (!property_exists($data, "teams") || $data->teams === null) {
-            throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "users_url") || $data->users_url === null) { throw new SdkValidationError("users_url", 'required', "Required property 'users_url' is missing or null"); }
+        if (!property_exists($data, "teams_url") || $data->teams_url === null) { throw new SdkValidationError("teams_url", 'required', "Required property 'teams_url' is missing or null"); }
+        if (!property_exists($data, "users") || $data->users === null) { throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null"); }
+        if (!property_exists($data, "teams") || $data->teams === null) { throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             usersUrl: SdkClient::stringValue($data->users_url),
@@ -183,12 +173,8 @@ class ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances imple
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "users") || $data->users === null) {
-            throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null");
-        }
-        if (!property_exists($data, "teams") || $data->teams === null) {
-            throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null");
-        }
+        if (!property_exists($data, "users") || $data->users === null) { throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null"); }
+        if (!property_exists($data, "teams") || $data->teams === null) { throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null"); }
         return new self(
             users: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($data->users))),
             teams: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Team::class), SdkClient::arrayValue($data->teams))),
@@ -307,9 +293,7 @@ class ProtectedBranchRequiredPullRequestReviews implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             dismissStaleReviews: (property_exists($data, "dismiss_stale_reviews") && $data->dismiss_stale_reviews !== null ? SdkClient::boolValue($data->dismiss_stale_reviews) : SdkNotGiven::Value),

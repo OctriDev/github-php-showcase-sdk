@@ -55,12 +55,8 @@ class CheckAutomatedSecurityFixes implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
-        if (!property_exists($data, "paused") || $data->paused === null) {
-            throw new SdkValidationError("paused", 'required', "Required property 'paused' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
+        if (!property_exists($data, "paused") || $data->paused === null) { throw new SdkValidationError("paused", 'required', "Required property 'paused' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
             paused: SdkClient::boolValue($data->paused),
@@ -116,12 +112,8 @@ class CheckImmutableReleases implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
-        if (!property_exists($data, "enforced_by_owner") || $data->enforced_by_owner === null) {
-            throw new SdkValidationError("enforced_by_owner", 'required', "Required property 'enforced_by_owner' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
+        if (!property_exists($data, "enforced_by_owner") || $data->enforced_by_owner === null) { throw new SdkValidationError("enforced_by_owner", 'required', "Required property 'enforced_by_owner' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
             enforcedByOwner: SdkClient::boolValue($data->enforced_by_owner),

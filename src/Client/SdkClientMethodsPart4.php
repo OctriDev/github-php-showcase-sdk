@@ -144,7 +144,7 @@ trait SdkClientMethodsPart4
             return [];
         }
         foreach ($form->files as $name) {
-            $file = fn(mixed $data): mixed => is_string($data) ? new SdkUploadFile($data, $name) : $data;
+            $file = fn (mixed $data): mixed => is_string($data) ? new SdkUploadFile($data, $name) : $data;
             if (isset($fields[$name])) {
                 $fields[$name] = is_array($fields[$name]) ? array_map($file, $fields[$name]) : $file($fields[$name]);
             }

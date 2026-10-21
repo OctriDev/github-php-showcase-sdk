@@ -21,7 +21,7 @@ trait CodeScanningCodeqlMethods
     public static function codeScanningListCodeqlDatabases(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/databases", $clientConfig, decoder: 'json', operationId: 'codeScanningListCodeqlDatabases', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/databases", $clientConfig, decoder: 'json', operationId: 'codeScanningListCodeqlDatabases', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CodeScanningCodeqlDatabase::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -39,7 +39,7 @@ trait CodeScanningCodeqlMethods
     public static function codeScanningGetCodeqlDatabase(ClientConfig $clientConfig, string $owner, string $repo, string $language, ?RequestOptions $requestOptions = null): CodeScanningCodeqlDatabase
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/databases/" . SdkClient::encodePathSegment($language) . "", $clientConfig, returnType: CodeScanningCodeqlDatabase::class, decoder: 'json', operationId: 'codeScanningGetCodeqlDatabase', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/databases/" . SdkClient::encodePathSegment($language) . "", $clientConfig, returnType: CodeScanningCodeqlDatabase::class, decoder: 'json', operationId: 'codeScanningGetCodeqlDatabase', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningCodeqlDatabase::class));
     }
 
@@ -56,7 +56,7 @@ trait CodeScanningCodeqlMethods
     public static function codeScanningDeleteCodeqlDatabase(ClientConfig $clientConfig, string $owner, string $repo, string $language, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/databases/" . SdkClient::encodePathSegment($language) . "", $clientConfig, decoder: 'empty', operationId: 'codeScanningDeleteCodeqlDatabase', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/databases/" . SdkClient::encodePathSegment($language) . "", $clientConfig, decoder: 'empty', operationId: 'codeScanningDeleteCodeqlDatabase', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)])->data;
     }
 
 
@@ -85,7 +85,7 @@ trait CodeScanningCodeqlMethods
             Validation::validateItems('repository_owners', $repositoryOwners, max: 1);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/variant-analyses", $clientConfig, body: ['language' => $language, 'query_pack' => $queryPack, 'repositories' => $repositories, 'repository_lists' => $repositoryLists, 'repository_owners' => $repositoryOwners], returnType: CodeScanningVariantAnalysis::class, decoder: 'json', operationId: 'codeScanningCreateVariantAnalysis', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/variant-analyses", $clientConfig, body: ['language' => $language, 'query_pack' => $queryPack, 'repositories' => $repositories, 'repository_lists' => $repositoryLists, 'repository_owners' => $repositoryOwners], returnType: CodeScanningVariantAnalysis::class, decoder: 'json', operationId: 'codeScanningCreateVariantAnalysis', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningVariantAnalysis::class));
     }
 
@@ -103,7 +103,7 @@ trait CodeScanningCodeqlMethods
     public static function codeScanningGetVariantAnalysis(ClientConfig $clientConfig, string $owner, string $repo, int $codeqlVariantAnalysisId, ?RequestOptions $requestOptions = null): CodeScanningVariantAnalysis
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/variant-analyses/" . SdkClient::encodePathSegment($codeqlVariantAnalysisId) . "", $clientConfig, returnType: CodeScanningVariantAnalysis::class, decoder: 'json', operationId: 'codeScanningGetVariantAnalysis', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/variant-analyses/" . SdkClient::encodePathSegment($codeqlVariantAnalysisId) . "", $clientConfig, returnType: CodeScanningVariantAnalysis::class, decoder: 'json', operationId: 'codeScanningGetVariantAnalysis', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningVariantAnalysis::class));
     }
 
@@ -123,7 +123,7 @@ trait CodeScanningCodeqlMethods
     public static function codeScanningGetVariantAnalysisRepoTask(ClientConfig $clientConfig, string $owner, string $repo, int $codeqlVariantAnalysisId, string $repoOwner, string $repoName, ?RequestOptions $requestOptions = null): CodeScanningVariantAnalysisRepoTask
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/variant-analyses/" . SdkClient::encodePathSegment($codeqlVariantAnalysisId) . "/repos/" . SdkClient::encodePathSegment($repoOwner) . "/" . SdkClient::encodePathSegment($repoName) . "", $clientConfig, returnType: CodeScanningVariantAnalysisRepoTask::class, decoder: 'json', operationId: 'codeScanningGetVariantAnalysisRepoTask', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/codeql/variant-analyses/" . SdkClient::encodePathSegment($codeqlVariantAnalysisId) . "/repos/" . SdkClient::encodePathSegment($repoOwner) . "/" . SdkClient::encodePathSegment($repoName) . "", $clientConfig, returnType: CodeScanningVariantAnalysisRepoTask::class, decoder: 'json', operationId: 'codeScanningGetVariantAnalysisRepoTask', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningVariantAnalysisRepoTask::class));
     }
 }

@@ -26,7 +26,7 @@ trait GistsPublicMethods
             Validation::validateDateTime('since', $since);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/gists/public", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'gistsListPublic', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/gists/public", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'gistsListPublic', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BaseGist::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

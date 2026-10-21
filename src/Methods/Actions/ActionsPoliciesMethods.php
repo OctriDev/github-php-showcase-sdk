@@ -23,7 +23,7 @@ trait ActionsPoliciesMethods
     public static function actionsGetOrgActionsPolicies(ClientConfig $clientConfig, string $org, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, bool|SdkNotGiven $hasParents = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActionsGetOrgActionsPoliciesResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'has_parents' => new SdkQueryValue($hasParents, "form", true)], returnType: ActionsGetOrgActionsPoliciesResponse::class, decoder: 'json', operationId: 'actionsGetOrgActionsPolicies', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'has_parents' => new SdkQueryValue($hasParents, "form", true)], returnType: ActionsGetOrgActionsPoliciesResponse::class, decoder: 'json', operationId: 'actionsGetOrgActionsPolicies', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsGetOrgActionsPoliciesResponse::class));
     }
 
@@ -43,7 +43,7 @@ trait ActionsPoliciesMethods
     public static function actionsCreateOrgActionsPolicy(ClientConfig $clientConfig, string $org, string $name, RepositoryRuleEnforcement $enforcement, ActionsPolicyOrgConditions|SdkNotGiven $conditions = SdkNotGiven::Value, array|SdkNotGiven $rules = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActionsPolicy
     {
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsCreateOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsCreateOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsPolicy::class));
     }
 
@@ -60,7 +60,7 @@ trait ActionsPoliciesMethods
     public static function actionsGetOrgActionsPolicy(ClientConfig $clientConfig, string $org, int $policyId, ?RequestOptions $requestOptions = null): ActionsPolicy
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsGetOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsGetOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsPolicy::class));
     }
 
@@ -81,7 +81,7 @@ trait ActionsPoliciesMethods
     public static function actionsUpdateOrgActionsPolicy(ClientConfig $clientConfig, string $org, int $policyId, string|SdkNotGiven $name = SdkNotGiven::Value, RepositoryRuleEnforcement|SdkNotGiven $enforcement = SdkNotGiven::Value, ActionsPolicyOrgConditions|SdkNotGiven $conditions = SdkNotGiven::Value, array|SdkNotGiven $rules = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActionsPolicy
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsUpdateOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsUpdateOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsPolicy::class));
     }
 
@@ -97,7 +97,7 @@ trait ActionsPoliciesMethods
     public static function actionsDeleteOrgActionsPolicy(ClientConfig $clientConfig, string $org, int $policyId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -116,7 +116,7 @@ trait ActionsPoliciesMethods
     public static function actionsGetRepoActionsPolicies(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, bool|SdkNotGiven $hasParents = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActionsGetRepoActionsPoliciesResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'has_parents' => new SdkQueryValue($hasParents, "form", true)], returnType: ActionsGetRepoActionsPoliciesResponse::class, decoder: 'json', operationId: 'actionsGetRepoActionsPolicies', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'has_parents' => new SdkQueryValue($hasParents, "form", true)], returnType: ActionsGetRepoActionsPoliciesResponse::class, decoder: 'json', operationId: 'actionsGetRepoActionsPolicies', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsGetRepoActionsPoliciesResponse::class));
     }
 
@@ -137,7 +137,7 @@ trait ActionsPoliciesMethods
     public static function actionsCreateRepoActionsPolicy(ClientConfig $clientConfig, string $owner, string $repo, string $name, RepositoryRuleEnforcement $enforcement, ActionsPolicyRepoConditions|SdkNotGiven $conditions = SdkNotGiven::Value, array|SdkNotGiven $rules = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActionsPolicy
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsCreateRepoActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsCreateRepoActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsPolicy::class));
     }
 
@@ -155,7 +155,7 @@ trait ActionsPoliciesMethods
     public static function actionsGetRepoActionsPolicy(ClientConfig $clientConfig, string $owner, string $repo, int $policyId, ?RequestOptions $requestOptions = null): ActionsPolicy
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsGetRepoActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsGetRepoActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsPolicy::class));
     }
 
@@ -177,7 +177,7 @@ trait ActionsPoliciesMethods
     public static function actionsUpdateRepoActionsPolicy(ClientConfig $clientConfig, string $owner, string $repo, int $policyId, string|SdkNotGiven $name = SdkNotGiven::Value, RepositoryRuleEnforcement|SdkNotGiven $enforcement = SdkNotGiven::Value, ActionsPolicyRepoConditions|SdkNotGiven $conditions = SdkNotGiven::Value, array|SdkNotGiven $rules = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActionsPolicy
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsUpdateRepoActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsUpdateRepoActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsPolicy::class));
     }
 
@@ -194,6 +194,6 @@ trait ActionsPoliciesMethods
     public static function actionsDeleteRepoActionsPolicy(ClientConfig $clientConfig, string $owner, string $repo, int $policyId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteRepoActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteRepoActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

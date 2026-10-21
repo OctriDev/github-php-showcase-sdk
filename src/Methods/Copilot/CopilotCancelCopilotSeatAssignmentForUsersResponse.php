@@ -41,9 +41,7 @@ class CopilotCancelCopilotSeatAssignmentForUsersResponse implements \JsonSeriali
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "seats_cancelled") || $data->seats_cancelled === null) {
-            throw new SdkValidationError("seats_cancelled", 'required', "Required property 'seats_cancelled' is missing or null");
-        }
+        if (!property_exists($data, "seats_cancelled") || $data->seats_cancelled === null) { throw new SdkValidationError("seats_cancelled", 'required', "Required property 'seats_cancelled' is missing or null"); }
         return new self(
             seatsCancelled: SdkClient::intValue($data->seats_cancelled),
         );
@@ -59,26 +57,11 @@ final readonly class CopilotGetCopilotCodingAgentPermissionsOrganizationResponse
     public const SELECTED = "selected";
     public const NONE = "none";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class CopilotGetCopilotCodingAgentPermissionsOrganizationResponse implements \JsonSerializable
@@ -128,9 +111,7 @@ class CopilotGetCopilotCodingAgentPermissionsOrganizationResponse implements \Js
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) {
-            throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null");
-        }
+        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) { throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null"); }
         return new self(
             enabledRepositories: SdkClient::hydrateStringEnumOrString($data->enabled_repositories, CopilotGetCopilotCodingAgentPermissionsOrganizationResponseEnabledRepositoriesEnum::class),
             selectedRepositoriesUrl: (property_exists($data, "selected_repositories_url") && $data->selected_repositories_url !== null ? SdkClient::stringValue($data->selected_repositories_url) : SdkNotGiven::Value),
@@ -175,12 +156,8 @@ class CopilotListCopilotCodingAgentSelectedRepositoriesForOrganizationResponse i
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "repositories") || $data->repositories === null) {
-            throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "repositories") || $data->repositories === null) { throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             repositories: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MinimalRepository::class), SdkClient::arrayValue($data->repositories))),
@@ -295,18 +272,10 @@ class CopilotGetCopilotCloudAgentConfigurationResponseEnabledTools implements \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "codeql") || $data->codeql === null) {
-            throw new SdkValidationError("codeql", 'required', "Required property 'codeql' is missing or null");
-        }
-        if (!property_exists($data, "copilot_code_review") || $data->copilot_code_review === null) {
-            throw new SdkValidationError("copilot_code_review", 'required', "Required property 'copilot_code_review' is missing or null");
-        }
-        if (!property_exists($data, "secret_scanning") || $data->secret_scanning === null) {
-            throw new SdkValidationError("secret_scanning", 'required', "Required property 'secret_scanning' is missing or null");
-        }
-        if (!property_exists($data, "dependency_vulnerability_checks") || $data->dependency_vulnerability_checks === null) {
-            throw new SdkValidationError("dependency_vulnerability_checks", 'required', "Required property 'dependency_vulnerability_checks' is missing or null");
-        }
+        if (!property_exists($data, "codeql") || $data->codeql === null) { throw new SdkValidationError("codeql", 'required', "Required property 'codeql' is missing or null"); }
+        if (!property_exists($data, "copilot_code_review") || $data->copilot_code_review === null) { throw new SdkValidationError("copilot_code_review", 'required', "Required property 'copilot_code_review' is missing or null"); }
+        if (!property_exists($data, "secret_scanning") || $data->secret_scanning === null) { throw new SdkValidationError("secret_scanning", 'required', "Required property 'secret_scanning' is missing or null"); }
+        if (!property_exists($data, "dependency_vulnerability_checks") || $data->dependency_vulnerability_checks === null) { throw new SdkValidationError("dependency_vulnerability_checks", 'required', "Required property 'dependency_vulnerability_checks' is missing or null"); }
         return new self(
             codeql: SdkClient::boolValue($data->codeql),
             copilotCodeReview: SdkClient::boolValue($data->copilot_code_review),

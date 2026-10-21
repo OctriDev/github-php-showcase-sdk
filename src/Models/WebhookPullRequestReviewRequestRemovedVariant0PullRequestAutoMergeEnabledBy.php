@@ -204,12 +204,8 @@ class WebhookPullRequestReviewRequestRemovedVariant0PullRequestAutoMergeEnabledB
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "login") || $data->login === null) {
-            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             login: SdkClient::stringValue($data->login),
@@ -246,26 +242,11 @@ final readonly class WebhookPullRequestReviewRequestRemovedVariant0PullRequestAu
     public const SQUASH = "squash";
     public const REBASE = "rebase";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -332,18 +313,10 @@ class WebhookPullRequestReviewRequestRemovedVariant0PullRequestAutoMerge impleme
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "commit_message")) {
-            throw new SdkValidationError("commit_message", 'required', "Missing required property 'commit_message'");
-        }
-        if (!property_exists($data, "commit_title")) {
-            throw new SdkValidationError("commit_title", 'required', "Missing required property 'commit_title'");
-        }
-        if (!property_exists($data, "enabled_by")) {
-            throw new SdkValidationError("enabled_by", 'required', "Missing required property 'enabled_by'");
-        }
-        if (!property_exists($data, "merge_method") || $data->merge_method === null) {
-            throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null");
-        }
+        if (!property_exists($data, "commit_message")) { throw new SdkValidationError("commit_message", 'required', "Missing required property 'commit_message'"); }
+        if (!property_exists($data, "commit_title")) { throw new SdkValidationError("commit_title", 'required', "Missing required property 'commit_title'"); }
+        if (!property_exists($data, "enabled_by")) { throw new SdkValidationError("enabled_by", 'required', "Missing required property 'enabled_by'"); }
+        if (!property_exists($data, "merge_method") || $data->merge_method === null) { throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null"); }
         return new self(
             commitMessage: ($data->commit_message === null ? null : SdkClient::stringValue($data->commit_message)),
             commitTitle: ($data->commit_title === null ? null : SdkClient::stringValue($data->commit_title)),
@@ -361,24 +334,9 @@ final readonly class WebhookPullRequestReviewRequestRemovedVariant0PullRequestBa
     public const ALL = "all";
     public const COLLABORATORS_ONLY = "collaborators_only";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

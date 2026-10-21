@@ -137,33 +137,15 @@ class DiscussionCategory implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "description") || $data->description === null) {
-            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
-        }
-        if (!property_exists($data, "emoji") || $data->emoji === null) {
-            throw new SdkValidationError("emoji", 'required', "Required property 'emoji' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "is_answerable") || $data->is_answerable === null) {
-            throw new SdkValidationError("is_answerable", 'required', "Required property 'is_answerable' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
-            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
-        }
-        if (!property_exists($data, "slug") || $data->slug === null) {
-            throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
+        if (!property_exists($data, "emoji") || $data->emoji === null) { throw new SdkValidationError("emoji", 'required', "Required property 'emoji' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "is_answerable") || $data->is_answerable === null) { throw new SdkValidationError("is_answerable", 'required', "Required property 'is_answerable' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
+        if (!property_exists($data, "slug") || $data->slug === null) { throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
         return new self(
             createdAt: SdkClient::stringValue($data->created_at),
             description: SdkClient::stringValue($data->description),
@@ -307,36 +289,16 @@ class DiscussionReactions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "+1") || get_object_vars($data)["+1"] === null) {
-            throw new SdkValidationError("+1", 'required', "Required property '+1' is missing or null");
-        }
-        if (!property_exists($data, "-1") || get_object_vars($data)["-1"] === null) {
-            throw new SdkValidationError("-1", 'required', "Required property '-1' is missing or null");
-        }
-        if (!property_exists($data, "confused") || $data->confused === null) {
-            throw new SdkValidationError("confused", 'required', "Required property 'confused' is missing or null");
-        }
-        if (!property_exists($data, "eyes") || $data->eyes === null) {
-            throw new SdkValidationError("eyes", 'required', "Required property 'eyes' is missing or null");
-        }
-        if (!property_exists($data, "heart") || $data->heart === null) {
-            throw new SdkValidationError("heart", 'required', "Required property 'heart' is missing or null");
-        }
-        if (!property_exists($data, "hooray") || $data->hooray === null) {
-            throw new SdkValidationError("hooray", 'required', "Required property 'hooray' is missing or null");
-        }
-        if (!property_exists($data, "laugh") || $data->laugh === null) {
-            throw new SdkValidationError("laugh", 'required', "Required property 'laugh' is missing or null");
-        }
-        if (!property_exists($data, "rocket") || $data->rocket === null) {
-            throw new SdkValidationError("rocket", 'required', "Required property 'rocket' is missing or null");
-        }
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "+1") || get_object_vars($data)["+1"] === null) { throw new SdkValidationError("+1", 'required', "Required property '+1' is missing or null"); }
+        if (!property_exists($data, "-1") || get_object_vars($data)["-1"] === null) { throw new SdkValidationError("-1", 'required', "Required property '-1' is missing or null"); }
+        if (!property_exists($data, "confused") || $data->confused === null) { throw new SdkValidationError("confused", 'required', "Required property 'confused' is missing or null"); }
+        if (!property_exists($data, "eyes") || $data->eyes === null) { throw new SdkValidationError("eyes", 'required', "Required property 'eyes' is missing or null"); }
+        if (!property_exists($data, "heart") || $data->heart === null) { throw new SdkValidationError("heart", 'required', "Required property 'heart' is missing or null"); }
+        if (!property_exists($data, "hooray") || $data->hooray === null) { throw new SdkValidationError("hooray", 'required', "Required property 'hooray' is missing or null"); }
+        if (!property_exists($data, "laugh") || $data->laugh === null) { throw new SdkValidationError("laugh", 'required', "Required property 'laugh' is missing or null"); }
+        if (!property_exists($data, "rocket") || $data->rocket === null) { throw new SdkValidationError("rocket", 'required', "Required property 'rocket' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             plus1: SdkClient::intValue(get_object_vars($data)["+1"]),
             minus1: SdkClient::intValue(get_object_vars($data)["-1"]),
@@ -363,26 +325,11 @@ final readonly class DiscussionStateEnum implements SdkOpenEnum
     public const CONVERTING = "converting";
     public const TRANSFERRING = "transferring";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -395,24 +342,9 @@ final readonly class DiscussionStateReasonEnum implements SdkOpenEnum
     public const DUPLICATE = "duplicate";
     public const REOPENED = "reopened";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

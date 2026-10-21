@@ -23,7 +23,7 @@ trait ReposAddUserAccessRestrictionsMethods
     public static function reposAddUserAccessRestrictions(ClientConfig $clientConfig, string $owner, string $repo, string $branch, array $users, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/restrictions/users", $clientConfig, body: ['users' => $users], decoder: 'json', operationId: 'reposAddUserAccessRestrictions', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/restrictions/users", $clientConfig, body: ['users' => $users], decoder: 'json', operationId: 'reposAddUserAccessRestrictions', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -42,7 +42,7 @@ trait ReposAddUserAccessRestrictionsMethods
     public static function reposSetUserAccessRestrictions(ClientConfig $clientConfig, string $owner, string $repo, string $branch, array $users, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/restrictions/users", $clientConfig, body: ['users' => $users], decoder: 'json', operationId: 'reposSetUserAccessRestrictions', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/restrictions/users", $clientConfig, body: ['users' => $users], decoder: 'json', operationId: 'reposSetUserAccessRestrictions', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -61,7 +61,7 @@ trait ReposAddUserAccessRestrictionsMethods
     public static function reposRemoveUserAccessRestrictions(ClientConfig $clientConfig, string $owner, string $repo, string $branch, array $users, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/restrictions/users", $clientConfig, body: ['users' => $users], decoder: 'json', operationId: 'reposRemoveUserAccessRestrictions', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/restrictions/users", $clientConfig, body: ['users' => $users], decoder: 'json', operationId: 'reposRemoveUserAccessRestrictions', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -80,7 +80,7 @@ trait ReposAddUserAccessRestrictionsMethods
     public static function reposRenameBranch(ClientConfig $clientConfig, string $owner, string $repo, string $branch, string $newName, ?RequestOptions $requestOptions = null): BranchWithProtection
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/rename", $clientConfig, body: ['new_name' => $newName], returnType: BranchWithProtection::class, decoder: 'json', operationId: 'reposRenameBranch', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/rename", $clientConfig, body: ['new_name' => $newName], returnType: BranchWithProtection::class, decoder: 'json', operationId: 'reposRenameBranch', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, BranchWithProtection::class));
     }
 }

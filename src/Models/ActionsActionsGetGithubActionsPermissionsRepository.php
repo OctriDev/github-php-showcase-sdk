@@ -81,9 +81,7 @@ class ActionsRepositoryPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled") || $data->enabled === null) {
-            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
-        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
         return new self(
             enabled: SdkClient::boolValue($data->enabled),
             allowedActions: (property_exists($data, "allowed_actions") && $data->allowed_actions !== null ? SdkClient::hydrateStringEnumOrString($data->allowed_actions, AllowedActions::class) : SdkNotGiven::Value),

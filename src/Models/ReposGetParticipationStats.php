@@ -55,12 +55,8 @@ class ParticipationStats implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "all") || $data->all === null) {
-            throw new SdkValidationError("all", 'required', "Required property 'all' is missing or null");
-        }
-        if (!property_exists($data, "owner") || $data->owner === null) {
-            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
-        }
+        if (!property_exists($data, "all") || $data->all === null) { throw new SdkValidationError("all", 'required', "Required property 'all' is missing or null"); }
+        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
         return new self(
             all: array_values(array_map(static fn($item) => SdkClient::intValue($item), SdkClient::arrayValue($data->all))),
             owner: array_values(array_map(static fn($item) => SdkClient::intValue($item), SdkClient::arrayValue($data->owner))),

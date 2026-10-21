@@ -77,15 +77,9 @@ class PageDeployment implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "status_url") || $data->status_url === null) {
-            throw new SdkValidationError("status_url", 'required', "Required property 'status_url' is missing or null");
-        }
-        if (!property_exists($data, "page_url") || $data->page_url === null) {
-            throw new SdkValidationError("page_url", 'required', "Required property 'page_url' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "status_url") || $data->status_url === null) { throw new SdkValidationError("status_url", 'required', "Required property 'status_url' is missing or null"); }
+        if (!property_exists($data, "page_url") || $data->page_url === null) { throw new SdkValidationError("page_url", 'required', "Required property 'page_url' is missing or null"); }
         return new self(
             id: (is_int($data->id) ? SdkClient::intValue($data->id) : SdkClient::stringValue($data->id)),
             statusUrl: SdkClient::stringValue($data->status_url),

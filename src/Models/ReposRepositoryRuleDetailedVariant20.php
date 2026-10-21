@@ -78,9 +78,7 @@ class RepositoryRuleDetailedVariant20 implements RepositoryRuleDetailed, \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant20TypeEnum::class),
             rulesetSourceType: (property_exists($data, "ruleset_source_type") && $data->ruleset_source_type !== null ? SdkClient::hydrateStringEnumOrString($data->ruleset_source_type, RepositoryRuleDetailedVariant20RulesetSourceTypeEnum::class) : SdkNotGiven::Value),
@@ -136,9 +134,7 @@ class RepositoryRuleDetailedVariant21Parameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "restricted_file_paths") || $data->restricted_file_paths === null) {
-            throw new SdkValidationError("restricted_file_paths", 'required', "Required property 'restricted_file_paths' is missing or null");
-        }
+        if (!property_exists($data, "restricted_file_paths") || $data->restricted_file_paths === null) { throw new SdkValidationError("restricted_file_paths", 'required', "Required property 'restricted_file_paths' is missing or null"); }
         return new self(
             restrictedFilePaths: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->restricted_file_paths))),
         );
@@ -153,26 +149,11 @@ final readonly class RepositoryRuleDetailedVariant21RulesetSourceTypeEnum implem
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class RepositoryRuleDetailedVariant21 implements RepositoryRuleDetailed, \JsonSerializable
@@ -258,9 +239,7 @@ class RepositoryRuleDetailedVariant21 implements RepositoryRuleDetailed, \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant21TypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleDetailedVariant21Parameters::class) : SdkNotGiven::Value),
@@ -317,9 +296,7 @@ class RepositoryRuleDetailedVariant22Parameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "max_file_path_length") || $data->max_file_path_length === null) {
-            throw new SdkValidationError("max_file_path_length", 'required', "Required property 'max_file_path_length' is missing or null");
-        }
+        if (!property_exists($data, "max_file_path_length") || $data->max_file_path_length === null) { throw new SdkValidationError("max_file_path_length", 'required', "Required property 'max_file_path_length' is missing or null"); }
         return new self(
             maxFilePathLength: SdkClient::intValue($data->max_file_path_length),
         );
@@ -334,24 +311,9 @@ final readonly class RepositoryRuleDetailedVariant22RulesetSourceTypeEnum implem
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

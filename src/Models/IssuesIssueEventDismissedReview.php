@@ -77,15 +77,9 @@ class IssueEventDismissedReview implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
-        if (!property_exists($data, "review_id") || $data->review_id === null) {
-            throw new SdkValidationError("review_id", 'required', "Required property 'review_id' is missing or null");
-        }
-        if (!property_exists($data, "dismissal_message")) {
-            throw new SdkValidationError("dismissal_message", 'required', "Missing required property 'dismissal_message'");
-        }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "review_id") || $data->review_id === null) { throw new SdkValidationError("review_id", 'required', "Required property 'review_id' is missing or null"); }
+        if (!property_exists($data, "dismissal_message")) { throw new SdkValidationError("dismissal_message", 'required', "Missing required property 'dismissal_message'"); }
         return new self(
             state: SdkClient::stringValue($data->state),
             reviewId: SdkClient::intValue($data->review_id),
@@ -143,12 +137,8 @@ class IssueEventLabel implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name")) {
-            throw new SdkValidationError("name", 'required', "Missing required property 'name'");
-        }
-        if (!property_exists($data, "color")) {
-            throw new SdkValidationError("color", 'required', "Missing required property 'color'");
-        }
+        if (!property_exists($data, "name")) { throw new SdkValidationError("name", 'required', "Missing required property 'name'"); }
+        if (!property_exists($data, "color")) { throw new SdkValidationError("color", 'required', "Missing required property 'color'"); }
         return new self(
             name: ($data->name === null ? null : SdkClient::stringValue($data->name)),
             color: ($data->color === null ? null : SdkClient::stringValue($data->color)),
@@ -194,9 +184,7 @@ class IssueEventMilestone implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "title") || $data->title === null) {
-            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
-        }
+        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
         return new self(
             title: SdkClient::stringValue($data->title),
         );
@@ -293,21 +281,11 @@ class IssueEventProjectCard implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "project_url") || $data->project_url === null) {
-            throw new SdkValidationError("project_url", 'required', "Required property 'project_url' is missing or null");
-        }
-        if (!property_exists($data, "project_id") || $data->project_id === null) {
-            throw new SdkValidationError("project_id", 'required', "Required property 'project_id' is missing or null");
-        }
-        if (!property_exists($data, "column_name") || $data->column_name === null) {
-            throw new SdkValidationError("column_name", 'required', "Required property 'column_name' is missing or null");
-        }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "project_url") || $data->project_url === null) { throw new SdkValidationError("project_url", 'required', "Required property 'project_url' is missing or null"); }
+        if (!property_exists($data, "project_id") || $data->project_id === null) { throw new SdkValidationError("project_id", 'required', "Required property 'project_id' is missing or null"); }
+        if (!property_exists($data, "column_name") || $data->column_name === null) { throw new SdkValidationError("column_name", 'required', "Required property 'column_name' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
             id: SdkClient::intValue($data->id),
@@ -367,12 +345,8 @@ class IssueEventRename implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
-        }
-        if (!property_exists($data, "to") || $data->to === null) {
-            throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null");
-        }
+        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "to") || $data->to === null) { throw new SdkValidationError("to", 'required', "Required property 'to' is missing or null"); }
         return new self(
             from: SdkClient::stringValue($data->from),
             to: SdkClient::stringValue($data->to),

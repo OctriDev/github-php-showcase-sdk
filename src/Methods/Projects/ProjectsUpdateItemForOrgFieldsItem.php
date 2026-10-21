@@ -52,12 +52,8 @@ class ProjectsUpdateItemForOrgFieldsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "value")) {
-            throw new SdkValidationError("value", 'required', "Missing required property 'value'");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "value")) { throw new SdkValidationError("value", 'required', "Missing required property 'value'"); }
         return new self(
             id: SdkClient::intValue($data->id),
             value: ($data->value === null ? null : (is_float($data->value) || is_int($data->value) ? SdkClient::floatValue($data->value) : SdkClient::stringValue($data->value))),
@@ -74,26 +70,11 @@ final readonly class ProjectsAddFieldForUserBodyVariant0DataTypeEnum implements 
     public const NUMBER = "number";
     public const DATE = "date";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class ProjectsAddFieldForUserBodyVariant0 implements \JsonSerializable
@@ -141,12 +122,8 @@ class ProjectsAddFieldForUserBodyVariant0 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "data_type") || $data->data_type === null) {
-            throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "data_type") || $data->data_type === null) { throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             dataType: SdkClient::hydrateStringEnumOrString($data->data_type, ProjectsAddFieldForUserBodyVariant0DataTypeEnum::class),
@@ -161,26 +138,11 @@ final readonly class ProjectsAddFieldForUserBodySingleSelectDataTypeEnum impleme
 {
     public const SINGLE_SELECT = "single_select";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class ProjectsAddFieldForUserBodySingleSelect implements \JsonSerializable
@@ -238,15 +200,9 @@ class ProjectsAddFieldForUserBodySingleSelect implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "data_type") || $data->data_type === null) {
-            throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null");
-        }
-        if (!property_exists($data, "single_select_options") || $data->single_select_options === null) {
-            throw new SdkValidationError("single_select_options", 'required', "Required property 'single_select_options' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "data_type") || $data->data_type === null) { throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null"); }
+        if (!property_exists($data, "single_select_options") || $data->single_select_options === null) { throw new SdkValidationError("single_select_options", 'required', "Required property 'single_select_options' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             dataType: SdkClient::hydrateStringEnumOrString($data->data_type, ProjectsAddFieldForUserBodySingleSelectDataTypeEnum::class),
@@ -262,26 +218,11 @@ final readonly class ProjectsAddFieldForUserBodyIterationDataTypeEnum implements
 {
     public const ITERATION = "iteration";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class ProjectsAddFieldForUserBodyIteration implements \JsonSerializable
@@ -339,15 +280,9 @@ class ProjectsAddFieldForUserBodyIteration implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "data_type") || $data->data_type === null) {
-            throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null");
-        }
-        if (!property_exists($data, "iteration_configuration") || $data->iteration_configuration === null) {
-            throw new SdkValidationError("iteration_configuration", 'required', "Required property 'iteration_configuration' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "data_type") || $data->data_type === null) { throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null"); }
+        if (!property_exists($data, "iteration_configuration") || $data->iteration_configuration === null) { throw new SdkValidationError("iteration_configuration", 'required', "Required property 'iteration_configuration' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             dataType: SdkClient::hydrateStringEnumOrString($data->data_type, ProjectsAddFieldForUserBodyIterationDataTypeEnum::class),
@@ -401,12 +336,8 @@ class ProjectsUpdateItemForUserFieldsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "value")) {
-            throw new SdkValidationError("value", 'required', "Missing required property 'value'");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "value")) { throw new SdkValidationError("value", 'required', "Missing required property 'value'"); }
         return new self(
             id: SdkClient::intValue($data->id),
             value: ($data->value === null ? null : (is_float($data->value) || is_int($data->value) ? SdkClient::floatValue($data->value) : SdkClient::stringValue($data->value))),

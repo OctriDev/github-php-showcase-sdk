@@ -20,7 +20,7 @@ trait AppsMarketplaceListingMethods
     public static function appsGetSubscriptionPlanForAccount(ClientConfig $clientConfig, int $accountId, ?RequestOptions $requestOptions = null): MarketplacePurchase
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/accounts/" . SdkClient::encodePathSegment($accountId) . "", $clientConfig, returnType: MarketplacePurchase::class, decoder: 'json', operationId: 'appsGetSubscriptionPlanForAccount', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/accounts/" . SdkClient::encodePathSegment($accountId) . "", $clientConfig, returnType: MarketplacePurchase::class, decoder: 'json', operationId: 'appsGetSubscriptionPlanForAccount', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, MarketplacePurchase::class));
     }
 
@@ -37,7 +37,7 @@ trait AppsMarketplaceListingMethods
     public static function appsListPlans(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/plans", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListPlans', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/plans", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListPlans', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MarketplaceListingPlan::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -57,7 +57,7 @@ trait AppsMarketplaceListingMethods
     public static function appsListAccountsForPlan(ClientConfig $clientConfig, int $planId, AppsListAccountsForPlanSort|SdkNotGiven $sort = SdkNotGiven::Value, AppsListAccountsForPlanDirection|SdkNotGiven $direction = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/plans/" . SdkClient::encodePathSegment($planId) . "/accounts", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListAccountsForPlan', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/plans/" . SdkClient::encodePathSegment($planId) . "/accounts", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListAccountsForPlan', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MarketplacePurchase::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -73,7 +73,7 @@ trait AppsMarketplaceListingMethods
     public static function appsGetSubscriptionPlanForAccountStubbed(ClientConfig $clientConfig, int $accountId, ?RequestOptions $requestOptions = null): MarketplacePurchase
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/accounts/" . SdkClient::encodePathSegment($accountId) . "", $clientConfig, returnType: MarketplacePurchase::class, decoder: 'json', operationId: 'appsGetSubscriptionPlanForAccountStubbed', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/accounts/" . SdkClient::encodePathSegment($accountId) . "", $clientConfig, returnType: MarketplacePurchase::class, decoder: 'json', operationId: 'appsGetSubscriptionPlanForAccountStubbed', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, MarketplacePurchase::class));
     }
 
@@ -90,7 +90,7 @@ trait AppsMarketplaceListingMethods
     public static function appsListPlansStubbed(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/plans", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListPlansStubbed', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/plans", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListPlansStubbed', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MarketplaceListingPlan::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -110,7 +110,7 @@ trait AppsMarketplaceListingMethods
     public static function appsListAccountsForPlanStubbed(ClientConfig $clientConfig, int $planId, AppsListAccountsForPlanStubbedSort|SdkNotGiven $sort = SdkNotGiven::Value, AppsListAccountsForPlanStubbedDirection|SdkNotGiven $direction = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/plans/" . SdkClient::encodePathSegment($planId) . "/accounts", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListAccountsForPlanStubbed', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/plans/" . SdkClient::encodePathSegment($planId) . "/accounts", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListAccountsForPlanStubbed', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MarketplacePurchase::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

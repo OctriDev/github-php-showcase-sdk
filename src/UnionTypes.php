@@ -69,7 +69,9 @@ interface WebhooksPullRequest5RequestedReviewersItem {}
 /** A tagged union member whose tag names no branch this SDK knows, kept as received. */
 abstract class SdkUnknownMember implements \JsonSerializable
 {
-    final public function __construct(public readonly mixed $raw) {}
+    final public function __construct(public readonly mixed $raw)
+    {
+    }
 
     public function jsonSerialize(): mixed
     {
@@ -78,13 +80,21 @@ abstract class SdkUnknownMember implements \JsonSerializable
 }
 
 /** A `ActionsRule` whose tag names no branch this SDK knows, kept as received. */
-final class UnknownActionsRule extends SdkUnknownMember implements ActionsRule {}
+final class UnknownActionsRule extends SdkUnknownMember implements ActionsRule
+{
+}
 
 /** A `RepositoryRule` whose tag names no branch this SDK knows, kept as received. */
-final class UnknownRepositoryRule extends SdkUnknownMember implements RepositoryRule {}
+final class UnknownRepositoryRule extends SdkUnknownMember implements RepositoryRule
+{
+}
 
 /** A `OrgRules` whose tag names no branch this SDK knows, kept as received. */
-final class UnknownOrgRules extends SdkUnknownMember implements OrgRules {}
+final class UnknownOrgRules extends SdkUnknownMember implements OrgRules
+{
+}
 
 /** A `RuleSuiteRuleEvaluationsItemMetadata` whose tag names no branch this SDK knows, kept as received. */
-final class UnknownRuleSuiteRuleEvaluationsItemMetadata extends SdkUnknownMember implements RuleSuiteRuleEvaluationsItemMetadata {}
+final class UnknownRuleSuiteRuleEvaluationsItemMetadata extends SdkUnknownMember implements RuleSuiteRuleEvaluationsItemMetadata
+{
+}

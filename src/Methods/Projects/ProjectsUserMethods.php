@@ -23,7 +23,7 @@ trait ProjectsUserMethods
     public static function projectsCreateDraftItemForAuthenticatedUser(ClientConfig $clientConfig, string $userId, int $projectNumber, string $title, string|SdkNotGiven $body = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ProjectsV2ItemSimple
     {
 
-        $sdkResponse = SdkClient::request('POST', "/user/" . SdkClient::encodePathSegment($userId) . "/projectsV2/" . SdkClient::encodePathSegment($projectNumber) . "/drafts", $clientConfig, body: ['title' => $title, 'body' => $body], returnType: ProjectsV2ItemSimple::class, decoder: 'json', operationId: 'projectsCreateDraftItemForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/user/" . SdkClient::encodePathSegment($userId) . "/projectsV2/" . SdkClient::encodePathSegment($projectNumber) . "/drafts", $clientConfig, body: ['title' => $title, 'body' => $body], returnType: ProjectsV2ItemSimple::class, decoder: 'json', operationId: 'projectsCreateDraftItemForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ProjectsV2ItemSimple::class));
     }
 }

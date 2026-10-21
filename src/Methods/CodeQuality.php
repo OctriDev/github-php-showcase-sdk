@@ -12,26 +12,11 @@ final readonly class CodeQualityListFindingsForRepoDirection implements SdkOpenE
     public const ASC = "asc";
     public const DESC = "desc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class CodeQualityListFindingsForRepoState implements SdkOpenEnum
@@ -39,26 +24,11 @@ final readonly class CodeQualityListFindingsForRepoState implements SdkOpenEnum
     public const OPEN = "open";
     public const DISMISSED = "dismissed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class CodeQualityUpdateSetupState implements SdkOpenEnum
@@ -66,26 +36,11 @@ final readonly class CodeQualityUpdateSetupState implements SdkOpenEnum
     public const CONFIGURED = "configured";
     public const NOT_CONFIGURED = "not-configured";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class CodeQualityUpdateSetupRunnerType implements SdkOpenEnum
@@ -93,26 +48,11 @@ final readonly class CodeQualityUpdateSetupRunnerType implements SdkOpenEnum
     public const STANDARD = "standard";
     public const LABELED = "labeled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class CodeQualityUpdateSetupAiFindingsOption implements SdkOpenEnum
@@ -120,26 +60,11 @@ final readonly class CodeQualityUpdateSetupAiFindingsOption implements SdkOpenEn
     public const DISABLED = "disabled";
     public const ON_PUSH = "on_push";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class CodeQuality
@@ -161,7 +86,7 @@ class CodeQuality
     public static function codeQualityListFindingsForRepo(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $perPage = SdkNotGiven::Value, CodeQualityListFindingsForRepoDirection|SdkNotGiven $direction = SdkNotGiven::Value, string|SdkNotGiven $before = SdkNotGiven::Value, string|SdkNotGiven $after = SdkNotGiven::Value, CodeQualityListFindingsForRepoState|SdkNotGiven $state = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-quality/findings", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'before' => new SdkQueryValue($before, "form", true), 'after' => new SdkQueryValue($after, "form", true), 'state' => new SdkQueryValue($state, "form", true)], decoder: 'json', operationId: 'codeQualityListFindingsForRepo', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-quality/findings", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'before' => new SdkQueryValue($before, "form", true), 'after' => new SdkQueryValue($after, "form", true), 'state' => new SdkQueryValue($state, "form", true)], decoder: 'json', operationId: 'codeQualityListFindingsForRepo', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CodeQualityFinding::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -179,7 +104,7 @@ class CodeQuality
     public static function codeQualityGetFinding(ClientConfig $clientConfig, string $owner, string $repo, int $findingNumber, ?RequestOptions $requestOptions = null): CodeQualityFinding
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-quality/findings/" . SdkClient::encodePathSegment($findingNumber) . "", $clientConfig, returnType: CodeQualityFinding::class, decoder: 'json', operationId: 'codeQualityGetFinding', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-quality/findings/" . SdkClient::encodePathSegment($findingNumber) . "", $clientConfig, returnType: CodeQualityFinding::class, decoder: 'json', operationId: 'codeQualityGetFinding', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeQualityFinding::class));
     }
 
@@ -196,7 +121,7 @@ class CodeQuality
     public static function codeQualityGetSetup(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): CodeQualitySetup
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-quality/setup", $clientConfig, returnType: CodeQualitySetup::class, decoder: 'json', operationId: 'codeQualityGetSetup', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-quality/setup", $clientConfig, returnType: CodeQualitySetup::class, decoder: 'json', operationId: 'codeQualityGetSetup', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeQualitySetup::class));
     }
 
@@ -218,7 +143,7 @@ class CodeQuality
     public static function codeQualityUpdateSetup(ClientConfig $clientConfig, string $owner, string $repo, CodeQualityUpdateSetupState|SdkNotGiven $state = SdkNotGiven::Value, CodeQualityUpdateSetupRunnerType|SdkNotGiven $runnerType = SdkNotGiven::Value, string|null|SdkNotGiven $runnerLabel = SdkNotGiven::Value, array|SdkNotGiven $languages = SdkNotGiven::Value, CodeQualityUpdateSetupAiFindingsOption|SdkNotGiven $aiFindingsOption = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-quality/setup", $clientConfig, body: ['state' => $state, 'runner_type' => $runnerType, 'runner_label' => $runnerLabel, 'languages' => $languages, 'ai_findings_option' => $aiFindingsOption], returnType: EmptyObject::class, decoder: 'json', operationId: 'codeQualityUpdateSetup', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-quality/setup", $clientConfig, body: ['state' => $state, 'runner_type' => $runnerType, 'runner_label' => $runnerLabel, 'languages' => $languages, 'ai_findings_option' => $aiFindingsOption], returnType: EmptyObject::class, decoder: 'json', operationId: 'codeQualityUpdateSetup', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 }

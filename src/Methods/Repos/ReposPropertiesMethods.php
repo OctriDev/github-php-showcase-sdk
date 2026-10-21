@@ -21,7 +21,7 @@ trait ReposPropertiesMethods
     public static function reposCustomPropertiesForReposGetRepositoryValues(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/properties/values", $clientConfig, decoder: 'json', operationId: 'reposCustomPropertiesForReposGetRepositoryValues', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/properties/values", $clientConfig, decoder: 'json', operationId: 'reposCustomPropertiesForReposGetRepositoryValues', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CustomPropertyValue::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -38,6 +38,6 @@ trait ReposPropertiesMethods
     public static function reposCustomPropertiesForReposCreateOrUpdateRepositoryValues(ClientConfig $clientConfig, string $owner, string $repo, array $properties, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/properties/values", $clientConfig, body: ['properties' => $properties], decoder: 'empty', operationId: 'reposCustomPropertiesForReposCreateOrUpdateRepositoryValues', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/properties/values", $clientConfig, body: ['properties' => $properties], decoder: 'empty', operationId: 'reposCustomPropertiesForReposCreateOrUpdateRepositoryValues', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 }

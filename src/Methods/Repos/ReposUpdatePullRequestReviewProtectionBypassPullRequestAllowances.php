@@ -126,9 +126,7 @@ class ReposUpdateStatusCheckProtectionChecksItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "context") || $data->context === null) {
-            throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null");
-        }
+        if (!property_exists($data, "context") || $data->context === null) { throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null"); }
         return new self(
             context: SdkClient::stringValue($data->context),
             appId: (property_exists($data, "app_id") && $data->app_id !== null ? SdkClient::intValue($data->app_id) : SdkNotGiven::Value),
@@ -171,9 +169,7 @@ class ReposAddStatusCheckContextsBodyVariant0 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "contexts") || $data->contexts === null) {
-            throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null");
-        }
+        if (!property_exists($data, "contexts") || $data->contexts === null) { throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null"); }
         return new self(
             contexts: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->contexts))),
         );
@@ -215,9 +211,7 @@ class ReposSetStatusCheckContextsBodyVariant0 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "contexts") || $data->contexts === null) {
-            throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null");
-        }
+        if (!property_exists($data, "contexts") || $data->contexts === null) { throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null"); }
         return new self(
             contexts: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->contexts))),
         );
@@ -259,9 +253,7 @@ class ReposRemoveStatusCheckContextsBodyVariant0 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "contexts") || $data->contexts === null) {
-            throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null");
-        }
+        if (!property_exists($data, "contexts") || $data->contexts === null) { throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null"); }
         return new self(
             contexts: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->contexts))),
         );
@@ -303,9 +295,7 @@ class ReposAddTeamAccessRestrictionsBodyVariant0 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "teams") || $data->teams === null) {
-            throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null");
-        }
+        if (!property_exists($data, "teams") || $data->teams === null) { throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null"); }
         return new self(
             teams: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->teams))),
         );
@@ -347,9 +337,7 @@ class ReposSetTeamAccessRestrictionsBodyVariant0 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "teams") || $data->teams === null) {
-            throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null");
-        }
+        if (!property_exists($data, "teams") || $data->teams === null) { throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null"); }
         return new self(
             teams: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->teams))),
         );

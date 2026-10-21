@@ -22,7 +22,7 @@ trait ReposAttestationsMethods
     public static function reposCreateAttestation(ClientConfig $clientConfig, string $owner, string $repo, ReposCreateAttestationBundle $bundle, ?RequestOptions $requestOptions = null): ReposCreateAttestationResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/attestations", $clientConfig, body: ['bundle' => $bundle], returnType: ReposCreateAttestationResponse::class, decoder: 'json', operationId: 'reposCreateAttestation', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/attestations", $clientConfig, body: ['bundle' => $bundle], returnType: ReposCreateAttestationResponse::class, decoder: 'json', operationId: 'reposCreateAttestation', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ReposCreateAttestationResponse::class));
     }
 

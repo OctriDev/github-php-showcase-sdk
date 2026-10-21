@@ -35,8 +35,7 @@ class SdkClient
     private const IDEMPOTENT_METHODS = ['GET', 'HEAD', 'PUT', 'DELETE', 'OPTIONS'];
     private const ALWAYS_RETRYABLE = [429, 503];// A request to an operation that declares its own server goes there, unless
     // the consumer configured a base URL.
-    private const OPERATION_SERVERS = ["reposUploadReleaseAsset" => "https://uploads.github.com"];
-    private const REDIRECT_STATUSES = [301, 302, 303, 307, 308];
+    private const OPERATION_SERVERS = ["reposUploadReleaseAsset" => "https://uploads.github.com"];    private const REDIRECT_STATUSES = [301, 302, 303, 307, 308];
     private const MAX_REDIRECTS = 5;
     /** Headers another origin never sees when a redirect is followed. */
     private const CREDENTIAL_HEADERS = ['authorization', 'proxy-authorization', 'cookie'];

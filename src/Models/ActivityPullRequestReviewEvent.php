@@ -65,15 +65,9 @@ class PullRequestReviewEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "review") || $data->review === null) {
-            throw new SdkValidationError("review", 'required', "Required property 'review' is missing or null");
-        }
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
-            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "review") || $data->review === null) { throw new SdkValidationError("review", 'required', "Required property 'review' is missing or null"); }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
         return new self(
             action: SdkClient::stringValue($data->action),
             review: SdkClient::hydrateClass($data->review, PullRequestReviewEventReview::class),
@@ -160,21 +154,11 @@ class PushEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
-            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
-        }
-        if (!property_exists($data, "push_id") || $data->push_id === null) {
-            throw new SdkValidationError("push_id", 'required', "Required property 'push_id' is missing or null");
-        }
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
-        }
-        if (!property_exists($data, "head") || $data->head === null) {
-            throw new SdkValidationError("head", 'required', "Required property 'head' is missing or null");
-        }
-        if (!property_exists($data, "before") || $data->before === null) {
-            throw new SdkValidationError("before", 'required', "Required property 'before' is missing or null");
-        }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
+        if (!property_exists($data, "push_id") || $data->push_id === null) { throw new SdkValidationError("push_id", 'required', "Required property 'push_id' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "head") || $data->head === null) { throw new SdkValidationError("head", 'required', "Required property 'head' is missing or null"); }
+        if (!property_exists($data, "before") || $data->before === null) { throw new SdkValidationError("before", 'required', "Required property 'before' is missing or null"); }
         return new self(
             repositoryId: SdkClient::intValue($data->repository_id),
             pushId: SdkClient::intValue($data->push_id),

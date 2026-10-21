@@ -65,15 +65,9 @@ class WorkflowDispatchResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "workflow_run_id") || $data->workflow_run_id === null) {
-            throw new SdkValidationError("workflow_run_id", 'required', "Required property 'workflow_run_id' is missing or null");
-        }
-        if (!property_exists($data, "run_url") || $data->run_url === null) {
-            throw new SdkValidationError("run_url", 'required', "Required property 'run_url' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
+        if (!property_exists($data, "workflow_run_id") || $data->workflow_run_id === null) { throw new SdkValidationError("workflow_run_id", 'required', "Required property 'workflow_run_id' is missing or null"); }
+        if (!property_exists($data, "run_url") || $data->run_url === null) { throw new SdkValidationError("run_url", 'required', "Required property 'run_url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
         return new self(
             workflowRunId: SdkClient::intValue($data->workflow_run_id),
             runUrl: SdkClient::stringValue($data->run_url),

@@ -23,7 +23,7 @@ trait CopilotMetricsMethods
 
         Validation::validateDate('day', $day);
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/enterprise-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotEnterpriseOneDayUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/enterprise-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotEnterpriseOneDayUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics1DayReport::class));
     }
 
@@ -39,7 +39,7 @@ trait CopilotMetricsMethods
     public static function copilotCopilotEnterpriseUsageMetrics(ClientConfig $clientConfig, string $enterprise, ?RequestOptions $requestOptions = null): CopilotUsageMetrics28DayReport
     {
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/enterprise-28-day/latest", $clientConfig, returnType: CopilotUsageMetrics28DayReport::class, decoder: 'json', operationId: 'copilotCopilotEnterpriseUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/enterprise-28-day/latest", $clientConfig, returnType: CopilotUsageMetrics28DayReport::class, decoder: 'json', operationId: 'copilotCopilotEnterpriseUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics28DayReport::class));
     }
 
@@ -58,7 +58,7 @@ trait CopilotMetricsMethods
 
         Validation::validateDate('day', $day);
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/repos-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotEnterpriseReposOneDayReport', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/repos-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotEnterpriseReposOneDayReport', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics1DayReport::class));
     }
 
@@ -77,7 +77,7 @@ trait CopilotMetricsMethods
 
         Validation::validateDate('day', $day);
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/user-teams-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotEnterpriseUserTeamsOneDayReport', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/user-teams-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotEnterpriseUserTeamsOneDayReport', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics1DayReport::class));
     }
 
@@ -96,7 +96,7 @@ trait CopilotMetricsMethods
 
         Validation::validateDate('day', $day);
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/users-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotUsersOneDayUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/users-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotUsersOneDayUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics1DayReport::class));
     }
 
@@ -112,7 +112,7 @@ trait CopilotMetricsMethods
     public static function copilotCopilotUsersUsageMetrics(ClientConfig $clientConfig, string $enterprise, ?RequestOptions $requestOptions = null): CopilotUsageMetrics28DayReport
     {
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/users-28-day/latest", $clientConfig, returnType: CopilotUsageMetrics28DayReport::class, decoder: 'json', operationId: 'copilotCopilotUsersUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/metrics/reports/users-28-day/latest", $clientConfig, returnType: CopilotUsageMetrics28DayReport::class, decoder: 'json', operationId: 'copilotCopilotUsersUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics28DayReport::class));
     }
 
@@ -131,7 +131,7 @@ trait CopilotMetricsMethods
 
         Validation::validateDate('day', $day);
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/organization-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationOneDayUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/organization-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationOneDayUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics1DayReport::class));
     }
 
@@ -147,7 +147,7 @@ trait CopilotMetricsMethods
     public static function copilotCopilotOrganizationUsageMetrics(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): CopilotUsageMetrics28DayReport
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/organization-28-day/latest", $clientConfig, returnType: CopilotUsageMetrics28DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/organization-28-day/latest", $clientConfig, returnType: CopilotUsageMetrics28DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics28DayReport::class));
     }
 
@@ -166,7 +166,7 @@ trait CopilotMetricsMethods
 
         Validation::validateDate('day', $day);
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/repos-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationReposOneDayReport', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/repos-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationReposOneDayReport', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics1DayReport::class));
     }
 
@@ -185,7 +185,7 @@ trait CopilotMetricsMethods
 
         Validation::validateDate('day', $day);
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/user-teams-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationUserTeamsOneDayReport', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/user-teams-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationUserTeamsOneDayReport', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics1DayReport::class));
     }
 
@@ -204,7 +204,7 @@ trait CopilotMetricsMethods
 
         Validation::validateDate('day', $day);
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/users-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationUsersOneDayUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/users-1-day", $clientConfig, query: ['day' => new SdkQueryValue($day, "form", true)], returnType: CopilotUsageMetrics1DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationUsersOneDayUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics1DayReport::class));
     }
 
@@ -220,7 +220,7 @@ trait CopilotMetricsMethods
     public static function copilotCopilotOrganizationUsersUsageMetrics(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): CopilotUsageMetrics28DayReport
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/users-28-day/latest", $clientConfig, returnType: CopilotUsageMetrics28DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationUsersUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/copilot/metrics/reports/users-28-day/latest", $clientConfig, returnType: CopilotUsageMetrics28DayReport::class, decoder: 'json', operationId: 'copilotCopilotOrganizationUsersUsageMetrics', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotUsageMetrics28DayReport::class));
     }
 }

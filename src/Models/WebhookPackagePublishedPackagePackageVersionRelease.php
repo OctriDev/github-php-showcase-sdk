@@ -145,39 +145,17 @@ class WebhookPackagePublishedPackagePackageVersionRelease implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author")) {
-            throw new SdkValidationError("author", 'required', "Missing required property 'author'");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "draft") || $data->draft === null) {
-            throw new SdkValidationError("draft", 'required', "Required property 'draft' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name")) {
-            throw new SdkValidationError("name", 'required', "Missing required property 'name'");
-        }
-        if (!property_exists($data, "prerelease") || $data->prerelease === null) {
-            throw new SdkValidationError("prerelease", 'required', "Required property 'prerelease' is missing or null");
-        }
-        if (!property_exists($data, "published_at") || $data->published_at === null) {
-            throw new SdkValidationError("published_at", 'required', "Required property 'published_at' is missing or null");
-        }
-        if (!property_exists($data, "tag_name") || $data->tag_name === null) {
-            throw new SdkValidationError("tag_name", 'required', "Required property 'tag_name' is missing or null");
-        }
-        if (!property_exists($data, "target_commitish") || $data->target_commitish === null) {
-            throw new SdkValidationError("target_commitish", 'required', "Required property 'target_commitish' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "author")) { throw new SdkValidationError("author", 'required', "Missing required property 'author'"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "draft") || $data->draft === null) { throw new SdkValidationError("draft", 'required', "Required property 'draft' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name")) { throw new SdkValidationError("name", 'required', "Missing required property 'name'"); }
+        if (!property_exists($data, "prerelease") || $data->prerelease === null) { throw new SdkValidationError("prerelease", 'required', "Required property 'prerelease' is missing or null"); }
+        if (!property_exists($data, "published_at") || $data->published_at === null) { throw new SdkValidationError("published_at", 'required', "Required property 'published_at' is missing or null"); }
+        if (!property_exists($data, "tag_name") || $data->tag_name === null) { throw new SdkValidationError("tag_name", 'required', "Required property 'tag_name' is missing or null"); }
+        if (!property_exists($data, "target_commitish") || $data->target_commitish === null) { throw new SdkValidationError("target_commitish", 'required', "Required property 'target_commitish' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             author: ($data->author === null ? null : SdkClient::hydrateClass($data->author, WebhookPackagePublishedPackagePackageVersionReleaseAuthor::class)),
             createdAt: SdkClient::stringValue($data->created_at),

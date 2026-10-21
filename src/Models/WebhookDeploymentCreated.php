@@ -131,24 +131,12 @@ class WebhookDeploymentCreated implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "deployment") || $data->deployment === null) {
-            throw new SdkValidationError("deployment", 'required', "Required property 'deployment' is missing or null");
-        }
-        if (!property_exists($data, "repository") || $data->repository === null) {
-            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
-        }
-        if (!property_exists($data, "sender") || $data->sender === null) {
-            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
-        }
-        if (!property_exists($data, "workflow")) {
-            throw new SdkValidationError("workflow", 'required', "Missing required property 'workflow'");
-        }
-        if (!property_exists($data, "workflow_run")) {
-            throw new SdkValidationError("workflow_run", 'required', "Missing required property 'workflow_run'");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "deployment") || $data->deployment === null) { throw new SdkValidationError("deployment", 'required', "Required property 'deployment' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "workflow")) { throw new SdkValidationError("workflow", 'required', "Missing required property 'workflow'"); }
+        if (!property_exists($data, "workflow_run")) { throw new SdkValidationError("workflow_run", 'required', "Missing required property 'workflow_run'"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookDeploymentCreatedActionEnum::class),
             deployment: SdkClient::hydrateClass($data->deployment, WebhookDeploymentCreatedDeployment::class),

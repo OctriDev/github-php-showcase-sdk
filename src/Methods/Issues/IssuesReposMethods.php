@@ -23,7 +23,7 @@ trait IssuesReposMethods
     public static function issuesListAssignees(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/assignees", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListAssignees', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/assignees", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListAssignees', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -40,7 +40,7 @@ trait IssuesReposMethods
     public static function issuesCheckUserCanBeAssigned(ClientConfig $clientConfig, string $owner, string $repo, string $assignee, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/assignees/" . SdkClient::encodePathSegment($assignee) . "", $clientConfig, decoder: 'empty', operationId: 'issuesCheckUserCanBeAssigned', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/assignees/" . SdkClient::encodePathSegment($assignee) . "", $clientConfig, decoder: 'empty', operationId: 'issuesCheckUserCanBeAssigned', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -58,7 +58,7 @@ trait IssuesReposMethods
     public static function issuesListLabelsForRepo(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/labels", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListLabelsForRepo', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/labels", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListLabelsForRepo', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Label::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -78,7 +78,7 @@ trait IssuesReposMethods
     public static function issuesCreateLabel(ClientConfig $clientConfig, string $owner, string $repo, string $name, string|SdkNotGiven $color = SdkNotGiven::Value, string|SdkNotGiven $description = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Label
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/labels", $clientConfig, body: ['name' => $name, 'color' => $color, 'description' => $description], returnType: Label::class, decoder: 'json', operationId: 'issuesCreateLabel', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/labels", $clientConfig, body: ['name' => $name, 'color' => $color, 'description' => $description], returnType: Label::class, decoder: 'json', operationId: 'issuesCreateLabel', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Label::class));
     }
 
@@ -96,7 +96,7 @@ trait IssuesReposMethods
     public static function issuesGetLabel(ClientConfig $clientConfig, string $owner, string $repo, string $name, ?RequestOptions $requestOptions = null): Label
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/labels/" . SdkClient::encodePathSegment($name) . "", $clientConfig, returnType: Label::class, decoder: 'json', operationId: 'issuesGetLabel', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/labels/" . SdkClient::encodePathSegment($name) . "", $clientConfig, returnType: Label::class, decoder: 'json', operationId: 'issuesGetLabel', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Label::class));
     }
 
@@ -156,7 +156,7 @@ trait IssuesReposMethods
     public static function issuesListMilestones(ClientConfig $clientConfig, string $owner, string $repo, IssuesListMilestonesState|SdkNotGiven $state = SdkNotGiven::Value, IssuesListMilestonesSort|SdkNotGiven $sort = SdkNotGiven::Value, IssuesListMilestonesDirection|SdkNotGiven $direction = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/milestones", $clientConfig, query: ['state' => new SdkQueryValue($state, "form", true), 'sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListMilestones', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/milestones", $clientConfig, query: ['state' => new SdkQueryValue($state, "form", true), 'sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'issuesListMilestones', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Milestone::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -181,7 +181,7 @@ trait IssuesReposMethods
             Validation::validateDateTime('due_on', $dueOn);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/milestones", $clientConfig, body: ['title' => $title, 'state' => $state, 'description' => $description, 'due_on' => $dueOn], returnType: Milestone::class, decoder: 'json', operationId: 'issuesCreateMilestone', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/milestones", $clientConfig, body: ['title' => $title, 'state' => $state, 'description' => $description, 'due_on' => $dueOn], returnType: Milestone::class, decoder: 'json', operationId: 'issuesCreateMilestone', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Milestone::class));
     }
 
@@ -199,7 +199,7 @@ trait IssuesReposMethods
     public static function issuesGetMilestone(ClientConfig $clientConfig, string $owner, string $repo, int $milestoneNumber, ?RequestOptions $requestOptions = null): Milestone
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/milestones/" . SdkClient::encodePathSegment($milestoneNumber) . "", $clientConfig, returnType: Milestone::class, decoder: 'json', operationId: 'issuesGetMilestone', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/milestones/" . SdkClient::encodePathSegment($milestoneNumber) . "", $clientConfig, returnType: Milestone::class, decoder: 'json', operationId: 'issuesGetMilestone', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Milestone::class));
     }
 
@@ -242,7 +242,7 @@ trait IssuesReposMethods
     public static function issuesDeleteMilestone(ClientConfig $clientConfig, string $owner, string $repo, int $milestoneNumber, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/milestones/" . SdkClient::encodePathSegment($milestoneNumber) . "", $clientConfig, decoder: 'empty', operationId: 'issuesDeleteMilestone', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/milestones/" . SdkClient::encodePathSegment($milestoneNumber) . "", $clientConfig, decoder: 'empty', operationId: 'issuesDeleteMilestone', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

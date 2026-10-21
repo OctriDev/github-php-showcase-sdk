@@ -21,26 +21,11 @@ final readonly class ActionsRuleParamsActorTypeEnum implements SdkOpenEnum
     public const APP = "App";
     public const REPOSITORYROLE = "RepositoryRole";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -91,12 +76,8 @@ class ActionsRuleParamsActor implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             type: SdkClient::hydrateStringEnumOrString($data->type, ActionsRuleParamsActorTypeEnum::class),
@@ -154,26 +135,11 @@ final readonly class ActionsRuleRestrictActionEventsParametersAllowedEventsItemE
     public const WORKFLOW_DISPATCH = "workflow_dispatch";
     public const WORKFLOW_RUN = "workflow_run";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -214,9 +180,7 @@ class ActionsRuleRestrictActionEventsParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "allowed_events") || $data->allowed_events === null) {
-            throw new SdkValidationError("allowed_events", 'required', "Required property 'allowed_events' is missing or null");
-        }
+        if (!property_exists($data, "allowed_events") || $data->allowed_events === null) { throw new SdkValidationError("allowed_events", 'required', "Required property 'allowed_events' is missing or null"); }
         return new self(
             allowedEvents: array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, ActionsRuleRestrictActionEventsParametersAllowedEventsItemEnum::class), SdkClient::arrayValue($data->allowed_events))),
         );
@@ -273,9 +237,7 @@ class ActionsRuleRestrictActionEvents implements ActionsRule, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, ActionsRuleRestrictActionEventsTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, ActionsRuleRestrictActionEventsParameters::class) : SdkNotGiven::Value),
@@ -329,9 +291,7 @@ class ActionsRuleRestrictActionsActorsParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "allowed_actors") || $data->allowed_actors === null) {
-            throw new SdkValidationError("allowed_actors", 'required', "Required property 'allowed_actors' is missing or null");
-        }
+        if (!property_exists($data, "allowed_actors") || $data->allowed_actors === null) { throw new SdkValidationError("allowed_actors", 'required', "Required property 'allowed_actors' is missing or null"); }
         return new self(
             allowedActors: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsRuleParamsActor::class), SdkClient::arrayValue($data->allowed_actors))),
         );

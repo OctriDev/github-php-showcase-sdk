@@ -24,7 +24,7 @@ trait ReposBranchesMethods
     public static function reposListBranches(ClientConfig $clientConfig, string $owner, string $repo, bool|SdkNotGiven $protected = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches", $clientConfig, query: ['protected' => new SdkQueryValue($protected, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListBranches', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches", $clientConfig, query: ['protected' => new SdkQueryValue($protected, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListBranches', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ShortBranch::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -42,7 +42,7 @@ trait ReposBranchesMethods
     public static function reposGetBranch(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): BranchWithProtection
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "", $clientConfig, returnType: BranchWithProtection::class, decoder: 'json', operationId: 'reposGetBranch', requestOptions: $requestOptions, errors: [301 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "", $clientConfig, returnType: BranchWithProtection::class, decoder: 'json', operationId: 'reposGetBranch', requestOptions: $requestOptions, errors: [301 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, BranchWithProtection::class));
     }
 
@@ -60,7 +60,7 @@ trait ReposBranchesMethods
     public static function reposGetBranchProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): BranchProtection
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, returnType: BranchProtection::class, decoder: 'json', operationId: 'reposGetBranchProtection', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, returnType: BranchProtection::class, decoder: 'json', operationId: 'reposGetBranchProtection', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, BranchProtection::class));
     }
 
@@ -89,7 +89,7 @@ trait ReposBranchesMethods
     public static function reposUpdateBranchProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?ReposUpdateBranchProtectionRequiredStatusChecks $requiredStatusChecks, ?bool $enforceAdmins, ?ReposUpdateBranchProtectionRequiredPullRequestReviews $requiredPullRequestReviews, ?ReposUpdateBranchProtectionRestrictions $restrictions, bool|SdkNotGiven $requiredLinearHistory = SdkNotGiven::Value, bool|null|SdkNotGiven $allowForcePushes = SdkNotGiven::Value, bool|SdkNotGiven $allowDeletions = SdkNotGiven::Value, bool|SdkNotGiven $blockCreations = SdkNotGiven::Value, bool|SdkNotGiven $requiredConversationResolution = SdkNotGiven::Value, bool|SdkNotGiven $lockBranch = SdkNotGiven::Value, bool|SdkNotGiven $allowForkSyncing = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ProtectedBranch
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, body: ['required_status_checks' => $requiredStatusChecks, 'enforce_admins' => $enforceAdmins, 'required_pull_request_reviews' => $requiredPullRequestReviews, 'restrictions' => $restrictions, 'required_linear_history' => $requiredLinearHistory, 'allow_force_pushes' => $allowForcePushes, 'allow_deletions' => $allowDeletions, 'block_creations' => $blockCreations, 'required_conversation_resolution' => $requiredConversationResolution, 'lock_branch' => $lockBranch, 'allow_fork_syncing' => $allowForkSyncing], returnType: ProtectedBranch::class, decoder: 'json', operationId: 'reposUpdateBranchProtection', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, body: ['required_status_checks' => $requiredStatusChecks, 'enforce_admins' => $enforceAdmins, 'required_pull_request_reviews' => $requiredPullRequestReviews, 'restrictions' => $restrictions, 'required_linear_history' => $requiredLinearHistory, 'allow_force_pushes' => $allowForcePushes, 'allow_deletions' => $allowDeletions, 'block_creations' => $blockCreations, 'required_conversation_resolution' => $requiredConversationResolution, 'lock_branch' => $lockBranch, 'allow_fork_syncing' => $allowForkSyncing], returnType: ProtectedBranch::class, decoder: 'json', operationId: 'reposUpdateBranchProtection', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ProtectedBranch::class));
     }
 
@@ -106,7 +106,7 @@ trait ReposBranchesMethods
     public static function reposDeleteBranchProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, decoder: 'empty', operationId: 'reposDeleteBranchProtection', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection", $clientConfig, decoder: 'empty', operationId: 'reposDeleteBranchProtection', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -158,7 +158,7 @@ trait ReposBranchesMethods
     public static function reposDeleteAdminBranchProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/enforce_admins", $clientConfig, decoder: 'empty', operationId: 'reposDeleteAdminBranchProtection', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/enforce_admins", $clientConfig, decoder: 'empty', operationId: 'reposDeleteAdminBranchProtection', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -199,7 +199,7 @@ trait ReposBranchesMethods
     public static function reposUpdatePullRequestReviewProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ReposUpdatePullRequestReviewProtectionDismissalRestrictions|SdkNotGiven $dismissalRestrictions = SdkNotGiven::Value, bool|SdkNotGiven $dismissStaleReviews = SdkNotGiven::Value, bool|SdkNotGiven $requireCodeOwnerReviews = SdkNotGiven::Value, int|SdkNotGiven $requiredApprovingReviewCount = SdkNotGiven::Value, bool|SdkNotGiven $requireLastPushApproval = SdkNotGiven::Value, ReposUpdatePullRequestReviewProtectionBypassPullRequestAllowances|SdkNotGiven $bypassPullRequestAllowances = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ProtectedBranchPullRequestReview
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_pull_request_reviews", $clientConfig, body: ['dismissal_restrictions' => $dismissalRestrictions, 'dismiss_stale_reviews' => $dismissStaleReviews, 'require_code_owner_reviews' => $requireCodeOwnerReviews, 'required_approving_review_count' => $requiredApprovingReviewCount, 'require_last_push_approval' => $requireLastPushApproval, 'bypass_pull_request_allowances' => $bypassPullRequestAllowances], returnType: ProtectedBranchPullRequestReview::class, decoder: 'json', operationId: 'reposUpdatePullRequestReviewProtection', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_pull_request_reviews", $clientConfig, body: ['dismissal_restrictions' => $dismissalRestrictions, 'dismiss_stale_reviews' => $dismissStaleReviews, 'require_code_owner_reviews' => $requireCodeOwnerReviews, 'required_approving_review_count' => $requiredApprovingReviewCount, 'require_last_push_approval' => $requireLastPushApproval, 'bypass_pull_request_allowances' => $bypassPullRequestAllowances], returnType: ProtectedBranchPullRequestReview::class, decoder: 'json', operationId: 'reposUpdatePullRequestReviewProtection', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ProtectedBranchPullRequestReview::class));
     }
 
@@ -216,7 +216,7 @@ trait ReposBranchesMethods
     public static function reposDeletePullRequestReviewProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_pull_request_reviews", $clientConfig, decoder: 'empty', operationId: 'reposDeletePullRequestReviewProtection', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_pull_request_reviews", $clientConfig, decoder: 'empty', operationId: 'reposDeletePullRequestReviewProtection', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -233,7 +233,7 @@ trait ReposBranchesMethods
     public static function reposGetCommitSignatureProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): ProtectedBranchAdminEnforced
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_signatures", $clientConfig, returnType: ProtectedBranchAdminEnforced::class, decoder: 'json', operationId: 'reposGetCommitSignatureProtection', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_signatures", $clientConfig, returnType: ProtectedBranchAdminEnforced::class, decoder: 'json', operationId: 'reposGetCommitSignatureProtection', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ProtectedBranchAdminEnforced::class));
     }
 
@@ -251,7 +251,7 @@ trait ReposBranchesMethods
     public static function reposCreateCommitSignatureProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): ProtectedBranchAdminEnforced
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_signatures", $clientConfig, returnType: ProtectedBranchAdminEnforced::class, decoder: 'json', operationId: 'reposCreateCommitSignatureProtection', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_signatures", $clientConfig, returnType: ProtectedBranchAdminEnforced::class, decoder: 'json', operationId: 'reposCreateCommitSignatureProtection', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ProtectedBranchAdminEnforced::class));
     }
 
@@ -268,7 +268,7 @@ trait ReposBranchesMethods
     public static function reposDeleteCommitSignatureProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_signatures", $clientConfig, decoder: 'empty', operationId: 'reposDeleteCommitSignatureProtection', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_signatures", $clientConfig, decoder: 'empty', operationId: 'reposDeleteCommitSignatureProtection', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -285,7 +285,7 @@ trait ReposBranchesMethods
     public static function reposGetStatusChecksProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, ?RequestOptions $requestOptions = null): StatusCheckPolicy
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_status_checks", $clientConfig, returnType: StatusCheckPolicy::class, decoder: 'json', operationId: 'reposGetStatusChecksProtection', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_status_checks", $clientConfig, returnType: StatusCheckPolicy::class, decoder: 'json', operationId: 'reposGetStatusChecksProtection', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, StatusCheckPolicy::class));
     }
 
@@ -306,7 +306,7 @@ trait ReposBranchesMethods
     public static function reposUpdateStatusCheckProtection(ClientConfig $clientConfig, string $owner, string $repo, string $branch, bool|SdkNotGiven $strict = SdkNotGiven::Value, array|SdkNotGiven $contexts = SdkNotGiven::Value, array|SdkNotGiven $checks = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): StatusCheckPolicy
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_status_checks", $clientConfig, body: ['strict' => $strict, 'contexts' => $contexts, 'checks' => $checks], returnType: StatusCheckPolicy::class, decoder: 'json', operationId: 'reposUpdateStatusCheckProtection', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/branches/" . SdkClient::encodePathSegment($branch) . "/protection/required_status_checks", $clientConfig, body: ['strict' => $strict, 'contexts' => $contexts, 'checks' => $checks], returnType: StatusCheckPolicy::class, decoder: 'json', operationId: 'reposUpdateStatusCheckProtection', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, StatusCheckPolicy::class));
     }
 }

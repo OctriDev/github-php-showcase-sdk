@@ -16,26 +16,11 @@ final readonly class ActionsCreateHostedRunnerForOrgImageSourceEnum implements S
     public const PARTNER = "partner";
     public const CUSTOM = "custom";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -147,12 +132,8 @@ class ActionsListCustomImagesForOrgResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "images") || $data->images === null) {
-            throw new SdkValidationError("images", 'required', "Required property 'images' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "images") || $data->images === null) { throw new SdkValidationError("images", 'required', "Required property 'images' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             images: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsHostedRunnerCustomImage::class), SdkClient::arrayValue($data->images))),
@@ -197,12 +178,8 @@ class ActionsListCustomImageVersionsForOrgResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "image_versions") || $data->image_versions === null) {
-            throw new SdkValidationError("image_versions", 'required', "Required property 'image_versions' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "image_versions") || $data->image_versions === null) { throw new SdkValidationError("image_versions", 'required', "Required property 'image_versions' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             imageVersions: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsHostedRunnerCustomImageVersion::class), SdkClient::arrayValue($data->image_versions))),
@@ -247,12 +224,8 @@ class ActionsGetHostedRunnersGithubOwnedImagesForOrgResponse implements \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "images") || $data->images === null) {
-            throw new SdkValidationError("images", 'required', "Required property 'images' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "images") || $data->images === null) { throw new SdkValidationError("images", 'required', "Required property 'images' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             images: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsHostedRunnerCuratedImage::class), SdkClient::arrayValue($data->images))),
@@ -297,12 +270,8 @@ class ActionsGetHostedRunnersPartnerImagesForOrgResponse implements \JsonSeriali
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "images") || $data->images === null) {
-            throw new SdkValidationError("images", 'required', "Required property 'images' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "images") || $data->images === null) { throw new SdkValidationError("images", 'required', "Required property 'images' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             images: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsHostedRunnerCuratedImage::class), SdkClient::arrayValue($data->images))),
@@ -347,12 +316,8 @@ class ActionsGetHostedRunnersMachineSpecsForOrgResponse implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) {
-            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
-        }
-        if (!property_exists($data, "machine_specs") || $data->machine_specs === null) {
-            throw new SdkValidationError("machine_specs", 'required', "Required property 'machine_specs' is missing or null");
-        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
+        if (!property_exists($data, "machine_specs") || $data->machine_specs === null) { throw new SdkValidationError("machine_specs", 'required', "Required property 'machine_specs' is missing or null"); }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             machineSpecs: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ActionsHostedRunnerMachineSpec::class), SdkClient::arrayValue($data->machine_specs))),

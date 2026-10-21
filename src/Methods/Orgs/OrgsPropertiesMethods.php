@@ -20,7 +20,7 @@ trait OrgsPropertiesMethods
     public static function orgsExternalPropertiesForReposGetOrganizationAppInstallations(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations", $clientConfig, decoder: 'json', operationId: 'orgsExternalPropertiesForReposGetOrganizationAppInstallations', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations", $clientConfig, decoder: 'json', operationId: 'orgsExternalPropertiesForReposGetOrganizationAppInstallations', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OrganizationExternalPropertyInstallation::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -41,7 +41,7 @@ trait OrgsPropertiesMethods
         Validation::validateLength('display_name', $displayName, min: 1, max: 15);
         Validation::validatePattern('display_name', $displayName, '^[a-zA-Z0-9]+$');
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations", $clientConfig, body: ['display_name' => $displayName, 'installation_id' => $installationId], returnType: OrganizationExternalPropertyInstallation::class, decoder: 'json', operationId: 'orgsExternalPropertiesForReposRegisterOrganizationAppInstallation', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations", $clientConfig, body: ['display_name' => $displayName, 'installation_id' => $installationId], returnType: OrganizationExternalPropertyInstallation::class, decoder: 'json', operationId: 'orgsExternalPropertiesForReposRegisterOrganizationAppInstallation', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrganizationExternalPropertyInstallation::class));
     }
 
@@ -57,7 +57,7 @@ trait OrgsPropertiesMethods
     public static function orgsExternalPropertiesForReposGetOrganizationDefinitions(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations/schema", $clientConfig, decoder: 'json', operationId: 'orgsExternalPropertiesForReposGetOrganizationDefinitions', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations/schema", $clientConfig, decoder: 'json', operationId: 'orgsExternalPropertiesForReposGetOrganizationDefinitions', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ExternalProperty::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -76,7 +76,7 @@ trait OrgsPropertiesMethods
 
         Validation::validateItems('repository_names', $repositoryNames, min: 1, max: 30);
 
-        return SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations/values", $clientConfig, body: ['repository_names' => $repositoryNames, 'properties' => $properties], decoder: 'empty', operationId: 'orgsExternalPropertiesForReposCreateOrUpdateOrganizationValues', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations/values", $clientConfig, body: ['repository_names' => $repositoryNames, 'properties' => $properties], decoder: 'empty', operationId: 'orgsExternalPropertiesForReposCreateOrUpdateOrganizationValues', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -94,7 +94,7 @@ trait OrgsPropertiesMethods
 
         Validation::validateItems('repository_values', $repositoryValues, min: 1, max: 100);
 
-        return SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations/values/" . SdkClient::encodePathSegment($propertyName) . "", $clientConfig, body: ['repository_values' => $repositoryValues], decoder: 'empty', operationId: 'orgsExternalPropertiesForReposCreateOrUpdateValuesForOrganizationProperty', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations/values/" . SdkClient::encodePathSegment($propertyName) . "", $clientConfig, body: ['repository_values' => $repositoryValues], decoder: 'empty', operationId: 'orgsExternalPropertiesForReposCreateOrUpdateValuesForOrganizationProperty', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -109,7 +109,7 @@ trait OrgsPropertiesMethods
     public static function orgsExternalPropertiesForReposDeleteOrganizationValues(ClientConfig $clientConfig, string $org, string $propertyName, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations/values/" . SdkClient::encodePathSegment($propertyName) . "", $clientConfig, decoder: 'empty', operationId: 'orgsExternalPropertiesForReposDeleteOrganizationValues', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/installations/values/" . SdkClient::encodePathSegment($propertyName) . "", $clientConfig, decoder: 'empty', operationId: 'orgsExternalPropertiesForReposDeleteOrganizationValues', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -124,7 +124,7 @@ trait OrgsPropertiesMethods
     public static function orgsCustomPropertiesForReposGetOrganizationDefinitions(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema", $clientConfig, decoder: 'json', operationId: 'orgsCustomPropertiesForReposGetOrganizationDefinitions', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema", $clientConfig, decoder: 'json', operationId: 'orgsCustomPropertiesForReposGetOrganizationDefinitions', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CustomProperty::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -143,7 +143,7 @@ trait OrgsPropertiesMethods
 
         Validation::validateItems('properties', $properties, min: 1, max: 100);
 
-        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema", $clientConfig, body: ['properties' => $properties], decoder: 'json', operationId: 'orgsCustomPropertiesForReposCreateOrUpdateOrganizationDefinitions', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema", $clientConfig, body: ['properties' => $properties], decoder: 'json', operationId: 'orgsCustomPropertiesForReposCreateOrUpdateOrganizationDefinitions', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CustomProperty::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -160,7 +160,7 @@ trait OrgsPropertiesMethods
     public static function orgsCustomPropertiesForReposGetOrganizationDefinition(ClientConfig $clientConfig, string $org, string $customPropertyName, ?RequestOptions $requestOptions = null): CustomProperty
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, returnType: CustomProperty::class, decoder: 'json', operationId: 'orgsCustomPropertiesForReposGetOrganizationDefinition', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, returnType: CustomProperty::class, decoder: 'json', operationId: 'orgsCustomPropertiesForReposGetOrganizationDefinition', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CustomProperty::class));
     }
 
@@ -184,7 +184,7 @@ trait OrgsPropertiesMethods
     public static function orgsCustomPropertiesForReposCreateOrUpdateOrganizationDefinition(ClientConfig $clientConfig, string $org, string $customPropertyName, OrgsCustomPropertiesForReposCreateOrUpdateOrganizationDefinitionValueType $valueType, bool|SdkNotGiven $required = SdkNotGiven::Value, string|array|null|SdkNotGiven $defaultValue = SdkNotGiven::Value, string|null|SdkNotGiven $description = SdkNotGiven::Value, array|null|SdkNotGiven $allowedValues = SdkNotGiven::Value, OrgsCustomPropertiesForReposCreateOrUpdateOrganizationDefinitionValuesEditableBy|null|SdkNotGiven $valuesEditableBy = SdkNotGiven::Value, bool|SdkNotGiven $requireExplicitValues = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CustomProperty
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, body: ['value_type' => $valueType, 'required' => $required, 'default_value' => $defaultValue, 'description' => $description, 'allowed_values' => $allowedValues, 'values_editable_by' => $valuesEditableBy, 'require_explicit_values' => $requireExplicitValues], returnType: CustomProperty::class, decoder: 'json', operationId: 'orgsCustomPropertiesForReposCreateOrUpdateOrganizationDefinition', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, body: ['value_type' => $valueType, 'required' => $required, 'default_value' => $defaultValue, 'description' => $description, 'allowed_values' => $allowedValues, 'values_editable_by' => $valuesEditableBy, 'require_explicit_values' => $requireExplicitValues], returnType: CustomProperty::class, decoder: 'json', operationId: 'orgsCustomPropertiesForReposCreateOrUpdateOrganizationDefinition', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CustomProperty::class));
     }
 
@@ -200,7 +200,7 @@ trait OrgsPropertiesMethods
     public static function orgsCustomPropertiesForReposDeleteOrganizationDefinition(ClientConfig $clientConfig, string $org, string $customPropertyName, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, decoder: 'empty', operationId: 'orgsCustomPropertiesForReposDeleteOrganizationDefinition', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/schema/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, decoder: 'empty', operationId: 'orgsCustomPropertiesForReposDeleteOrganizationDefinition', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -218,7 +218,7 @@ trait OrgsPropertiesMethods
     public static function orgsCustomPropertiesForReposGetOrganizationValues(ClientConfig $clientConfig, string $org, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, string|SdkNotGiven $repositoryQuery = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/values", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'repository_query' => new SdkQueryValue($repositoryQuery, "form", true)], decoder: 'json', operationId: 'orgsCustomPropertiesForReposGetOrganizationValues', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/values", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'repository_query' => new SdkQueryValue($repositoryQuery, "form", true)], decoder: 'json', operationId: 'orgsCustomPropertiesForReposGetOrganizationValues', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OrgRepoCustomPropertyValues::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -237,6 +237,6 @@ trait OrgsPropertiesMethods
 
         Validation::validateItems('repository_names', $repositoryNames, min: 1, max: 30);
 
-        return SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/values", $clientConfig, body: ['repository_names' => $repositoryNames, 'properties' => $properties], decoder: 'empty', operationId: 'orgsCustomPropertiesForReposCreateOrUpdateOrganizationValues', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/properties/values", $clientConfig, body: ['repository_names' => $repositoryNames, 'properties' => $properties], decoder: 'empty', operationId: 'orgsCustomPropertiesForReposCreateOrUpdateOrganizationValues', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 }

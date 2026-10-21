@@ -57,9 +57,7 @@ class RepositoryRuleCommitAuthorEmailPattern implements RepositoryRule, OrgRules
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleCommitAuthorEmailPatternTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleCommitAuthorEmailPatternParameters::class) : SdkNotGiven::Value),
@@ -85,26 +83,11 @@ final readonly class RepositoryRuleCommitMessagePatternParametersOperatorEnum im
     public const CONTAINS = "contains";
     public const REGEX = "regex";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -179,12 +162,8 @@ class RepositoryRuleCommitMessagePatternParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "operator") || $data->operator === null) {
-            throw new SdkValidationError("operator", 'required', "Required property 'operator' is missing or null");
-        }
-        if (!property_exists($data, "pattern") || $data->pattern === null) {
-            throw new SdkValidationError("pattern", 'required', "Required property 'pattern' is missing or null");
-        }
+        if (!property_exists($data, "operator") || $data->operator === null) { throw new SdkValidationError("operator", 'required', "Required property 'operator' is missing or null"); }
+        if (!property_exists($data, "pattern") || $data->pattern === null) { throw new SdkValidationError("pattern", 'required', "Required property 'pattern' is missing or null"); }
         return new self(
             operator: SdkClient::hydrateStringEnumOrString($data->operator, RepositoryRuleCommitMessagePatternParametersOperatorEnum::class),
             pattern: SdkClient::stringValue($data->pattern),
@@ -244,9 +223,7 @@ class RepositoryRuleCommitMessagePattern implements RepositoryRule, OrgRules, \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleCommitMessagePatternTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleCommitMessagePatternParameters::class) : SdkNotGiven::Value),
@@ -272,26 +249,11 @@ final readonly class RepositoryRuleCommitterEmailPatternParametersOperatorEnum i
     public const CONTAINS = "contains";
     public const REGEX = "regex";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -366,12 +328,8 @@ class RepositoryRuleCommitterEmailPatternParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "operator") || $data->operator === null) {
-            throw new SdkValidationError("operator", 'required', "Required property 'operator' is missing or null");
-        }
-        if (!property_exists($data, "pattern") || $data->pattern === null) {
-            throw new SdkValidationError("pattern", 'required', "Required property 'pattern' is missing or null");
-        }
+        if (!property_exists($data, "operator") || $data->operator === null) { throw new SdkValidationError("operator", 'required', "Required property 'operator' is missing or null"); }
+        if (!property_exists($data, "pattern") || $data->pattern === null) { throw new SdkValidationError("pattern", 'required', "Required property 'pattern' is missing or null"); }
         return new self(
             operator: SdkClient::hydrateStringEnumOrString($data->operator, RepositoryRuleCommitterEmailPatternParametersOperatorEnum::class),
             pattern: SdkClient::stringValue($data->pattern),

@@ -87,18 +87,10 @@ class IssueSearchResultItemPullRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "diff_url")) {
-            throw new SdkValidationError("diff_url", 'required', "Missing required property 'diff_url'");
-        }
-        if (!property_exists($data, "html_url")) {
-            throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'");
-        }
-        if (!property_exists($data, "patch_url")) {
-            throw new SdkValidationError("patch_url", 'required', "Missing required property 'patch_url'");
-        }
-        if (!property_exists($data, "url")) {
-            throw new SdkValidationError("url", 'required', "Missing required property 'url'");
-        }
+        if (!property_exists($data, "diff_url")) { throw new SdkValidationError("diff_url", 'required', "Missing required property 'diff_url'"); }
+        if (!property_exists($data, "html_url")) { throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'"); }
+        if (!property_exists($data, "patch_url")) { throw new SdkValidationError("patch_url", 'required', "Missing required property 'patch_url'"); }
+        if (!property_exists($data, "url")) { throw new SdkValidationError("url", 'required', "Missing required property 'url'"); }
         return new self(
             diffUrl: ($data->diff_url === null ? null : SdkClient::stringValue($data->diff_url)),
             htmlUrl: ($data->html_url === null ? null : SdkClient::stringValue($data->html_url)),

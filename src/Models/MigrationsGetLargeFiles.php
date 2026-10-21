@@ -75,18 +75,10 @@ class PorterLargeFile implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ref_name") || $data->ref_name === null) {
-            throw new SdkValidationError("ref_name", 'required', "Required property 'ref_name' is missing or null");
-        }
-        if (!property_exists($data, "path") || $data->path === null) {
-            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
-        }
-        if (!property_exists($data, "oid") || $data->oid === null) {
-            throw new SdkValidationError("oid", 'required', "Required property 'oid' is missing or null");
-        }
-        if (!property_exists($data, "size") || $data->size === null) {
-            throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null");
-        }
+        if (!property_exists($data, "ref_name") || $data->ref_name === null) { throw new SdkValidationError("ref_name", 'required', "Required property 'ref_name' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
+        if (!property_exists($data, "oid") || $data->oid === null) { throw new SdkValidationError("oid", 'required', "Required property 'oid' is missing or null"); }
+        if (!property_exists($data, "size") || $data->size === null) { throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null"); }
         return new self(
             refName: SdkClient::stringValue($data->ref_name),
             path: SdkClient::stringValue($data->path),

@@ -325,21 +325,11 @@ class OrgPrivateRegistryConfigurationWithSelectedRepositories implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "registry_type") || $data->registry_type === null) {
-            throw new SdkValidationError("registry_type", 'required', "Required property 'registry_type' is missing or null");
-        }
-        if (!property_exists($data, "visibility") || $data->visibility === null) {
-            throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "registry_type") || $data->registry_type === null) { throw new SdkValidationError("registry_type", 'required', "Required property 'registry_type' is missing or null"); }
+        if (!property_exists($data, "visibility") || $data->visibility === null) { throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             registryType: SdkClient::hydrateStringEnumOrString($data->registry_type, OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryTypeEnum::class),

@@ -135,36 +135,16 @@ class CheckAnnotation implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) {
-            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
-        }
-        if (!property_exists($data, "start_line") || $data->start_line === null) {
-            throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null");
-        }
-        if (!property_exists($data, "end_line") || $data->end_line === null) {
-            throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null");
-        }
-        if (!property_exists($data, "start_column")) {
-            throw new SdkValidationError("start_column", 'required', "Missing required property 'start_column'");
-        }
-        if (!property_exists($data, "end_column")) {
-            throw new SdkValidationError("end_column", 'required', "Missing required property 'end_column'");
-        }
-        if (!property_exists($data, "annotation_level")) {
-            throw new SdkValidationError("annotation_level", 'required', "Missing required property 'annotation_level'");
-        }
-        if (!property_exists($data, "title")) {
-            throw new SdkValidationError("title", 'required', "Missing required property 'title'");
-        }
-        if (!property_exists($data, "message")) {
-            throw new SdkValidationError("message", 'required', "Missing required property 'message'");
-        }
-        if (!property_exists($data, "raw_details")) {
-            throw new SdkValidationError("raw_details", 'required', "Missing required property 'raw_details'");
-        }
-        if (!property_exists($data, "blob_href") || $data->blob_href === null) {
-            throw new SdkValidationError("blob_href", 'required', "Required property 'blob_href' is missing or null");
-        }
+        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
+        if (!property_exists($data, "start_line") || $data->start_line === null) { throw new SdkValidationError("start_line", 'required', "Required property 'start_line' is missing or null"); }
+        if (!property_exists($data, "end_line") || $data->end_line === null) { throw new SdkValidationError("end_line", 'required', "Required property 'end_line' is missing or null"); }
+        if (!property_exists($data, "start_column")) { throw new SdkValidationError("start_column", 'required', "Missing required property 'start_column'"); }
+        if (!property_exists($data, "end_column")) { throw new SdkValidationError("end_column", 'required', "Missing required property 'end_column'"); }
+        if (!property_exists($data, "annotation_level")) { throw new SdkValidationError("annotation_level", 'required', "Missing required property 'annotation_level'"); }
+        if (!property_exists($data, "title")) { throw new SdkValidationError("title", 'required', "Missing required property 'title'"); }
+        if (!property_exists($data, "message")) { throw new SdkValidationError("message", 'required', "Missing required property 'message'"); }
+        if (!property_exists($data, "raw_details")) { throw new SdkValidationError("raw_details", 'required', "Missing required property 'raw_details'"); }
+        if (!property_exists($data, "blob_href") || $data->blob_href === null) { throw new SdkValidationError("blob_href", 'required', "Required property 'blob_href' is missing or null"); }
         return new self(
             path: SdkClient::stringValue($data->path),
             startLine: SdkClient::intValue($data->start_line),

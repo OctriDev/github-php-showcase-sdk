@@ -80,30 +80,14 @@ class WebhookPullRequestReviewRequestedVariant0PullRequestLinks implements \Json
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "comments") || $data->comments === null) {
-            throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null");
-        }
-        if (!property_exists($data, "commits") || $data->commits === null) {
-            throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null");
-        }
-        if (!property_exists($data, "html") || $data->html === null) {
-            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
-        }
-        if (!property_exists($data, "issue") || $data->issue === null) {
-            throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null");
-        }
-        if (!property_exists($data, "review_comment") || $data->review_comment === null) {
-            throw new SdkValidationError("review_comment", 'required', "Required property 'review_comment' is missing or null");
-        }
-        if (!property_exists($data, "review_comments") || $data->review_comments === null) {
-            throw new SdkValidationError("review_comments", 'required', "Required property 'review_comments' is missing or null");
-        }
-        if (!property_exists($data, "self") || $data->self === null) {
-            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
-        }
-        if (!property_exists($data, "statuses") || $data->statuses === null) {
-            throw new SdkValidationError("statuses", 'required', "Required property 'statuses' is missing or null");
-        }
+        if (!property_exists($data, "comments") || $data->comments === null) { throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null"); }
+        if (!property_exists($data, "commits") || $data->commits === null) { throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null"); }
+        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
+        if (!property_exists($data, "issue") || $data->issue === null) { throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null"); }
+        if (!property_exists($data, "review_comment") || $data->review_comment === null) { throw new SdkValidationError("review_comment", 'required', "Required property 'review_comment' is missing or null"); }
+        if (!property_exists($data, "review_comments") || $data->review_comments === null) { throw new SdkValidationError("review_comments", 'required', "Required property 'review_comments' is missing or null"); }
+        if (!property_exists($data, "self") || $data->self === null) { throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null"); }
+        if (!property_exists($data, "statuses") || $data->statuses === null) { throw new SdkValidationError("statuses", 'required', "Required property 'statuses' is missing or null"); }
         return new self(
             comments: SdkClient::hydrateClass($data->comments, WebhookPullRequestReviewRequestedVariant0PullRequestLinksComments::class),
             commits: SdkClient::hydrateClass($data->commits, WebhookPullRequestReviewRequestedVariant0PullRequestLinksCommits::class),
@@ -124,26 +108,11 @@ final readonly class WebhookPullRequestReviewRequestedVariant0PullRequestActiveL
     public const TOO_HEATED = "too heated";
     public const SPAM = "spam";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class WebhookPullRequestReviewRequestedVariant0PullRequestAssigneeTypeEnum implements SdkOpenEnum
@@ -153,26 +122,11 @@ final readonly class WebhookPullRequestReviewRequestedVariant0PullRequestAssigne
     public const ORGANIZATION = "Organization";
     public const MANNEQUIN = "Mannequin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class WebhookPullRequestReviewRequestedVariant0PullRequestAssignee implements \JsonSerializable
@@ -372,12 +326,8 @@ class WebhookPullRequestReviewRequestedVariant0PullRequestAssignee implements \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "login") || $data->login === null) {
-            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             login: SdkClient::stringValue($data->login),

@@ -45,9 +45,7 @@ class ActionsArtifactAndLogRetention implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "days") || $data->days === null) {
-            throw new SdkValidationError("days", 'required', "Required property 'days' is missing or null");
-        }
+        if (!property_exists($data, "days") || $data->days === null) { throw new SdkValidationError("days", 'required', "Required property 'days' is missing or null"); }
         return new self(
             days: SdkClient::intValue($data->days),
         );
@@ -102,12 +100,8 @@ class ActionsArtifactAndLogRetentionResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "days") || $data->days === null) {
-            throw new SdkValidationError("days", 'required', "Required property 'days' is missing or null");
-        }
-        if (!property_exists($data, "maximum_allowed_days") || $data->maximum_allowed_days === null) {
-            throw new SdkValidationError("maximum_allowed_days", 'required', "Required property 'maximum_allowed_days' is missing or null");
-        }
+        if (!property_exists($data, "days") || $data->days === null) { throw new SdkValidationError("days", 'required', "Required property 'days' is missing or null"); }
+        if (!property_exists($data, "maximum_allowed_days") || $data->maximum_allowed_days === null) { throw new SdkValidationError("maximum_allowed_days", 'required', "Required property 'maximum_allowed_days' is missing or null"); }
         return new self(
             days: SdkClient::intValue($data->days),
             maximumAllowedDays: SdkClient::intValue($data->maximum_allowed_days),

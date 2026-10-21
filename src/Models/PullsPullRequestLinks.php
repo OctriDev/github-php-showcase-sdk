@@ -115,30 +115,14 @@ class PullRequestLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "comments") || $data->comments === null) {
-            throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null");
-        }
-        if (!property_exists($data, "commits") || $data->commits === null) {
-            throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null");
-        }
-        if (!property_exists($data, "statuses") || $data->statuses === null) {
-            throw new SdkValidationError("statuses", 'required', "Required property 'statuses' is missing or null");
-        }
-        if (!property_exists($data, "html") || $data->html === null) {
-            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
-        }
-        if (!property_exists($data, "issue") || $data->issue === null) {
-            throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null");
-        }
-        if (!property_exists($data, "review_comments") || $data->review_comments === null) {
-            throw new SdkValidationError("review_comments", 'required', "Required property 'review_comments' is missing or null");
-        }
-        if (!property_exists($data, "review_comment") || $data->review_comment === null) {
-            throw new SdkValidationError("review_comment", 'required', "Required property 'review_comment' is missing or null");
-        }
-        if (!property_exists($data, "self") || $data->self === null) {
-            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
-        }
+        if (!property_exists($data, "comments") || $data->comments === null) { throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null"); }
+        if (!property_exists($data, "commits") || $data->commits === null) { throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null"); }
+        if (!property_exists($data, "statuses") || $data->statuses === null) { throw new SdkValidationError("statuses", 'required', "Required property 'statuses' is missing or null"); }
+        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
+        if (!property_exists($data, "issue") || $data->issue === null) { throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null"); }
+        if (!property_exists($data, "review_comments") || $data->review_comments === null) { throw new SdkValidationError("review_comments", 'required', "Required property 'review_comments' is missing or null"); }
+        if (!property_exists($data, "review_comment") || $data->review_comment === null) { throw new SdkValidationError("review_comment", 'required', "Required property 'review_comment' is missing or null"); }
+        if (!property_exists($data, "self") || $data->self === null) { throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null"); }
         return new self(
             comments: SdkClient::hydrateClass($data->comments, Link::class),
             commits: SdkClient::hydrateClass($data->commits, Link::class),

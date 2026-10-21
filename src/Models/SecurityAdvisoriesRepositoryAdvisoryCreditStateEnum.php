@@ -16,26 +16,11 @@ final readonly class RepositoryAdvisoryCreditStateEnum implements SdkOpenEnum
     public const DECLINED = "declined";
     public const PENDING = "pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -96,15 +81,9 @@ class RepositoryAdvisoryCredit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "user") || $data->user === null) {
-            throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
-        }
+        if (!property_exists($data, "user") || $data->user === null) { throw new SdkValidationError("user", 'required', "Required property 'user' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
         return new self(
             user: SdkClient::hydrateClass($data->user, SimpleUser::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, SecurityAdvisoryCreditTypes::class),
@@ -235,9 +214,7 @@ class RepositoryAdvisoryDescriptionValidationErrorErrorsItem implements \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "code") || $data->code === null) {
-            throw new SdkValidationError("code", 'required', "Required property 'code' is missing or null");
-        }
+        if (!property_exists($data, "code") || $data->code === null) { throw new SdkValidationError("code", 'required', "Required property 'code' is missing or null"); }
         return new self(
             code: SdkClient::stringValue($data->code),
             resource_: (property_exists($data, "resource") && $data->resource !== null ? SdkClient::stringValue($data->resource) : SdkNotGiven::Value),
@@ -311,12 +288,8 @@ class RepositoryAdvisoryDescriptionValidationError implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "documentation_url") || $data->documentation_url === null) {
-            throw new SdkValidationError("documentation_url", 'required', "Required property 'documentation_url' is missing or null");
-        }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "documentation_url") || $data->documentation_url === null) { throw new SdkValidationError("documentation_url", 'required', "Required property 'documentation_url' is missing or null"); }
         return new self(
             message: SdkClient::stringValue($data->message),
             documentationUrl: SdkClient::stringValue($data->documentation_url),

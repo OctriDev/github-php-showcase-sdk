@@ -41,7 +41,7 @@ trait OrgsOutsideCollaboratorsMethods
     public static function orgsConvertMemberToOutsideCollaborator(ClientConfig $clientConfig, string $org, string $username, bool|SdkNotGiven $async = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/outside_collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['async' => $async], decoder: 'json', operationId: 'orgsConvertMemberToOutsideCollaborator', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/outside_collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['async' => $async], decoder: 'json', operationId: 'orgsConvertMemberToOutsideCollaborator', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::stringMapValue($sdkResponse->data));
     }
 

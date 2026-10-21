@@ -20,7 +20,7 @@ class Oidc
     public static function oidcListOidcCustomPropertyInclusionsForEnterprise(ClientConfig $clientConfig, string $enterprise, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/oidc/customization/properties/repo", $clientConfig, decoder: 'json', operationId: 'oidcListOidcCustomPropertyInclusionsForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/oidc/customization/properties/repo", $clientConfig, decoder: 'json', operationId: 'oidcListOidcCustomPropertyInclusionsForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OidcCustomPropertyInclusion::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -37,7 +37,7 @@ class Oidc
     public static function oidcCreateOidcCustomPropertyInclusionForEnterprise(ClientConfig $clientConfig, string $enterprise, string $customPropertyName, ?RequestOptions $requestOptions = null): OidcCustomPropertyInclusion
     {
 
-        $sdkResponse = SdkClient::request('POST', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/oidc/customization/properties/repo", $clientConfig, body: ['custom_property_name' => $customPropertyName], returnType: OidcCustomPropertyInclusion::class, decoder: 'json', operationId: 'oidcCreateOidcCustomPropertyInclusionForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/oidc/customization/properties/repo", $clientConfig, body: ['custom_property_name' => $customPropertyName], returnType: OidcCustomPropertyInclusion::class, decoder: 'json', operationId: 'oidcCreateOidcCustomPropertyInclusionForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OidcCustomPropertyInclusion::class));
     }
 
@@ -53,7 +53,7 @@ class Oidc
     public static function oidcDeleteOidcCustomPropertyInclusionForEnterprise(ClientConfig $clientConfig, string $enterprise, string $customPropertyName, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/oidc/customization/properties/repo/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, decoder: 'empty', operationId: 'oidcDeleteOidcCustomPropertyInclusionForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/actions/oidc/customization/properties/repo/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, decoder: 'empty', operationId: 'oidcDeleteOidcCustomPropertyInclusionForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -68,7 +68,7 @@ class Oidc
     public static function oidcListOidcCustomPropertyInclusionsForOrg(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/oidc/customization/properties/repo", $clientConfig, decoder: 'json', operationId: 'oidcListOidcCustomPropertyInclusionsForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/oidc/customization/properties/repo", $clientConfig, decoder: 'json', operationId: 'oidcListOidcCustomPropertyInclusionsForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OidcCustomPropertyInclusion::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -85,7 +85,7 @@ class Oidc
     public static function oidcCreateOidcCustomPropertyInclusionForOrg(ClientConfig $clientConfig, string $org, string $customPropertyName, ?RequestOptions $requestOptions = null): OidcCustomPropertyInclusion
     {
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/oidc/customization/properties/repo", $clientConfig, body: ['custom_property_name' => $customPropertyName], returnType: OidcCustomPropertyInclusion::class, decoder: 'json', operationId: 'oidcCreateOidcCustomPropertyInclusionForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/oidc/customization/properties/repo", $clientConfig, body: ['custom_property_name' => $customPropertyName], returnType: OidcCustomPropertyInclusion::class, decoder: 'json', operationId: 'oidcCreateOidcCustomPropertyInclusionForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OidcCustomPropertyInclusion::class));
     }
 
@@ -101,7 +101,7 @@ class Oidc
     public static function oidcDeleteOidcCustomPropertyInclusionForOrg(ClientConfig $clientConfig, string $org, string $customPropertyName, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/oidc/customization/properties/repo/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, decoder: 'empty', operationId: 'oidcDeleteOidcCustomPropertyInclusionForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/oidc/customization/properties/repo/" . SdkClient::encodePathSegment($customPropertyName) . "", $clientConfig, decoder: 'empty', operationId: 'oidcDeleteOidcCustomPropertyInclusionForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -134,7 +134,7 @@ class Oidc
     public static function oidcUpdateOidcCustomSubTemplateForOrg(ClientConfig $clientConfig, string $org, array|SdkNotGiven $includeClaimKeys = SdkNotGiven::Value, bool|SdkNotGiven $useImmutableSubject = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/oidc/customization/sub", $clientConfig, body: ['include_claim_keys' => $includeClaimKeys, 'use_immutable_subject' => $useImmutableSubject], returnType: EmptyObject::class, decoder: 'json', operationId: 'oidcUpdateOidcCustomSubTemplateForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/oidc/customization/sub", $clientConfig, body: ['include_claim_keys' => $includeClaimKeys, 'use_immutable_subject' => $useImmutableSubject], returnType: EmptyObject::class, decoder: 'json', operationId: 'oidcUpdateOidcCustomSubTemplateForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 }

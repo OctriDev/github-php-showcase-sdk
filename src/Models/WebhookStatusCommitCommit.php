@@ -105,27 +105,13 @@ class WebhookStatusCommitCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author") || $data->author === null) {
-            throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null");
-        }
-        if (!property_exists($data, "comment_count") || $data->comment_count === null) {
-            throw new SdkValidationError("comment_count", 'required', "Required property 'comment_count' is missing or null");
-        }
-        if (!property_exists($data, "committer") || $data->committer === null) {
-            throw new SdkValidationError("committer", 'required', "Required property 'committer' is missing or null");
-        }
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "tree") || $data->tree === null) {
-            throw new SdkValidationError("tree", 'required', "Required property 'tree' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "verification") || $data->verification === null) {
-            throw new SdkValidationError("verification", 'required', "Required property 'verification' is missing or null");
-        }
+        if (!property_exists($data, "author") || $data->author === null) { throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null"); }
+        if (!property_exists($data, "comment_count") || $data->comment_count === null) { throw new SdkValidationError("comment_count", 'required', "Required property 'comment_count' is missing or null"); }
+        if (!property_exists($data, "committer") || $data->committer === null) { throw new SdkValidationError("committer", 'required', "Required property 'committer' is missing or null"); }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "tree") || $data->tree === null) { throw new SdkValidationError("tree", 'required', "Required property 'tree' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "verification") || $data->verification === null) { throw new SdkValidationError("verification", 'required', "Required property 'verification' is missing or null"); }
         return new self(
             author: SdkClient::hydrateClass($data->author, WebhookStatusCommitCommitAuthor::class),
             commentCount: SdkClient::intValue($data->comment_count),
@@ -147,24 +133,9 @@ final readonly class WebhookStatusCommitCommitterTypeEnum implements SdkOpenEnum
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

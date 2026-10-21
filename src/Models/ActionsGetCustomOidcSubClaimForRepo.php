@@ -81,9 +81,7 @@ class OidcCustomSubRepo implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "use_default") || $data->use_default === null) {
-            throw new SdkValidationError("use_default", 'required', "Required property 'use_default' is missing or null");
-        }
+        if (!property_exists($data, "use_default") || $data->use_default === null) { throw new SdkValidationError("use_default", 'required', "Required property 'use_default' is missing or null"); }
         return new self(
             useDefault: SdkClient::boolValue($data->use_default),
             includeClaimKeys: (property_exists($data, "include_claim_keys") && $data->include_claim_keys !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include_claim_keys))) : SdkNotGiven::Value),

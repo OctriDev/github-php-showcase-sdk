@@ -33,7 +33,7 @@ trait ActivityApiNotificationsMethods
             Validation::validateDateTime('before', $before);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/notifications", $clientConfig, query: ['all' => new SdkQueryValue($all, "form", true), 'participating' => new SdkQueryValue($participating, "form", true), 'since' => new SdkQueryValue($since, "form", true), 'before' => new SdkQueryValue($before, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], decoder: 'json', operationId: 'activityListNotificationsForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/notifications", $clientConfig, query: ['all' => new SdkQueryValue($all, "form", true), 'participating' => new SdkQueryValue($participating, "form", true), 'since' => new SdkQueryValue($since, "form", true), 'before' => new SdkQueryValue($before, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], decoder: 'json', operationId: 'activityListNotificationsForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Thread::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -54,7 +54,7 @@ trait ActivityApiNotificationsMethods
             Validation::validateDateTime('last_read_at', $lastReadAt);
         }
 
-        $sdkResponse = SdkClient::request('PUT', "/notifications", $clientConfig, body: ['last_read_at' => $lastReadAt, 'read' => $read], returnType: ActivityMarkNotificationsAsReadResponse::class, decoder: 'json', operationId: 'activityMarkNotificationsAsRead', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/notifications", $clientConfig, body: ['last_read_at' => $lastReadAt, 'read' => $read], returnType: ActivityMarkNotificationsAsReadResponse::class, decoder: 'json', operationId: 'activityMarkNotificationsAsRead', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActivityMarkNotificationsAsReadResponse::class));
     }
 
@@ -70,7 +70,7 @@ trait ActivityApiNotificationsMethods
     public static function activityGetThread(ClientConfig $clientConfig, int $threadId, ?RequestOptions $requestOptions = null): Thread
     {
 
-        $sdkResponse = SdkClient::request('GET', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "", $clientConfig, returnType: Thread::class, decoder: 'json', operationId: 'activityGetThread', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "", $clientConfig, returnType: Thread::class, decoder: 'json', operationId: 'activityGetThread', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Thread::class));
     }
 
@@ -85,7 +85,7 @@ trait ActivityApiNotificationsMethods
     public static function activityMarkThreadAsRead(ClientConfig $clientConfig, int $threadId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PATCH', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "", $clientConfig, decoder: 'empty', operationId: 'activityMarkThreadAsRead', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PATCH', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "", $clientConfig, decoder: 'empty', operationId: 'activityMarkThreadAsRead', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -114,7 +114,7 @@ trait ActivityApiNotificationsMethods
     public static function activityGetThreadSubscriptionForAuthenticatedUser(ClientConfig $clientConfig, int $threadId, ?RequestOptions $requestOptions = null): ThreadSubscription
     {
 
-        $sdkResponse = SdkClient::request('GET', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "/subscription", $clientConfig, returnType: ThreadSubscription::class, decoder: 'json', operationId: 'activityGetThreadSubscriptionForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "/subscription", $clientConfig, returnType: ThreadSubscription::class, decoder: 'json', operationId: 'activityGetThreadSubscriptionForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ThreadSubscription::class));
     }
 
@@ -131,7 +131,7 @@ trait ActivityApiNotificationsMethods
     public static function activitySetThreadSubscription(ClientConfig $clientConfig, int $threadId, bool|SdkNotGiven $ignored = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ThreadSubscription
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "/subscription", $clientConfig, body: ['ignored' => $ignored], returnType: ThreadSubscription::class, decoder: 'json', operationId: 'activitySetThreadSubscription', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "/subscription", $clientConfig, body: ['ignored' => $ignored], returnType: ThreadSubscription::class, decoder: 'json', operationId: 'activitySetThreadSubscription', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ThreadSubscription::class));
     }
 
@@ -146,6 +146,6 @@ trait ActivityApiNotificationsMethods
     public static function activityDeleteThreadSubscription(ClientConfig $clientConfig, int $threadId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "/subscription", $clientConfig, decoder: 'empty', operationId: 'activityDeleteThreadSubscription', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/notifications/threads/" . SdkClient::encodePathSegment($threadId) . "/subscription", $clientConfig, decoder: 'empty', operationId: 'activityDeleteThreadSubscription', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

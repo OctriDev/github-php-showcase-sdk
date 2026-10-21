@@ -15,26 +15,11 @@ final readonly class AgentAutomationsGetRepoAutomationResponseTriggersIssueComme
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class AgentAutomationsGetRepoAutomationResponseTriggersIssueComment implements \JsonSerializable
@@ -98,26 +83,11 @@ final readonly class AgentAutomationsGetRepoAutomationResponseTriggersPullReques
     public const TIMELINE_COMMENT = "timeline_comment";
     public const REVIEW_COMMENT = "review_comment";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -128,26 +98,11 @@ final readonly class AgentAutomationsGetRepoAutomationResponseTriggersPullReques
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class AgentAutomationsGetRepoAutomationResponseTriggersPullRequestComment implements \JsonSerializable
@@ -209,9 +164,7 @@ class AgentAutomationsGetRepoAutomationResponseTriggersPullRequestComment implem
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "comment_types") || $data->comment_types === null) {
-            throw new SdkValidationError("comment_types", 'required', "Required property 'comment_types' is missing or null");
-        }
+        if (!property_exists($data, "comment_types") || $data->comment_types === null) { throw new SdkValidationError("comment_types", 'required', "Required property 'comment_types' is missing or null"); }
         return new self(
             commentTypes: array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, AgentAutomationsGetRepoAutomationResponseTriggersPullRequestCommentCommentTypesItemEnum::class), SdkClient::arrayValue($data->comment_types))),
             bodySubstring: (property_exists($data, "body_substring") && $data->body_substring !== null ? SdkClient::stringValue($data->body_substring) : SdkNotGiven::Value),
@@ -228,26 +181,11 @@ final readonly class AgentAutomationsGetRepoAutomationResponseTriggersDiscussion
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class AgentAutomationsGetRepoAutomationResponseTriggersDiscussionOpened implements \JsonSerializable
@@ -327,26 +265,11 @@ final readonly class AgentAutomationsGetRepoAutomationResponseTriggersDiscussion
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class AgentAutomationsGetRepoAutomationResponseTriggersDiscussionUpdated implements \JsonSerializable

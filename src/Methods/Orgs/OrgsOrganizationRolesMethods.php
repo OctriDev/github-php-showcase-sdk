@@ -20,7 +20,7 @@ trait OrgsOrganizationRolesMethods
     public static function orgsListOrgRoles(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): OrgsListOrgRolesResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/organization-roles", $clientConfig, returnType: OrgsListOrgRolesResponse::class, decoder: 'json', operationId: 'orgsListOrgRoles', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/organization-roles", $clientConfig, returnType: OrgsListOrgRolesResponse::class, decoder: 'json', operationId: 'orgsListOrgRoles', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrgsListOrgRolesResponse::class));
     }
 
@@ -131,7 +131,7 @@ trait OrgsOrganizationRolesMethods
     public static function orgsGetOrgRole(ClientConfig $clientConfig, string $org, int $roleId, ?RequestOptions $requestOptions = null): OrganizationRole
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/organization-roles/" . SdkClient::encodePathSegment($roleId) . "", $clientConfig, returnType: OrganizationRole::class, decoder: 'json', operationId: 'orgsGetOrgRole', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/organization-roles/" . SdkClient::encodePathSegment($roleId) . "", $clientConfig, returnType: OrganizationRole::class, decoder: 'json', operationId: 'orgsGetOrgRole', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrganizationRole::class));
     }
 

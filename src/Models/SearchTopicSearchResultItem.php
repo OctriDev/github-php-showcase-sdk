@@ -205,39 +205,17 @@ class TopicSearchResultItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "display_name")) {
-            throw new SdkValidationError("display_name", 'required', "Missing required property 'display_name'");
-        }
-        if (!property_exists($data, "short_description")) {
-            throw new SdkValidationError("short_description", 'required', "Missing required property 'short_description'");
-        }
-        if (!property_exists($data, "description")) {
-            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
-        }
-        if (!property_exists($data, "created_by")) {
-            throw new SdkValidationError("created_by", 'required', "Missing required property 'created_by'");
-        }
-        if (!property_exists($data, "released")) {
-            throw new SdkValidationError("released", 'required', "Missing required property 'released'");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
-        if (!property_exists($data, "featured") || $data->featured === null) {
-            throw new SdkValidationError("featured", 'required', "Required property 'featured' is missing or null");
-        }
-        if (!property_exists($data, "curated") || $data->curated === null) {
-            throw new SdkValidationError("curated", 'required', "Required property 'curated' is missing or null");
-        }
-        if (!property_exists($data, "score") || $data->score === null) {
-            throw new SdkValidationError("score", 'required', "Required property 'score' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "display_name")) { throw new SdkValidationError("display_name", 'required', "Missing required property 'display_name'"); }
+        if (!property_exists($data, "short_description")) { throw new SdkValidationError("short_description", 'required', "Missing required property 'short_description'"); }
+        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
+        if (!property_exists($data, "created_by")) { throw new SdkValidationError("created_by", 'required', "Missing required property 'created_by'"); }
+        if (!property_exists($data, "released")) { throw new SdkValidationError("released", 'required', "Missing required property 'released'"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "featured") || $data->featured === null) { throw new SdkValidationError("featured", 'required', "Required property 'featured' is missing or null"); }
+        if (!property_exists($data, "curated") || $data->curated === null) { throw new SdkValidationError("curated", 'required', "Required property 'curated' is missing or null"); }
+        if (!property_exists($data, "score") || $data->score === null) { throw new SdkValidationError("score", 'required', "Required property 'score' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             displayName: ($data->display_name === null ? null : SdkClient::stringValue($data->display_name)),

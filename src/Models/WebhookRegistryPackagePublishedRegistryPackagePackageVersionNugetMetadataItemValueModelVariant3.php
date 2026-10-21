@@ -302,39 +302,17 @@ class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesIt
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "content_type") || $data->content_type === null) {
-            throw new SdkValidationError("content_type", 'required', "Required property 'content_type' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "download_url") || $data->download_url === null) {
-            throw new SdkValidationError("download_url", 'required', "Required property 'download_url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "md5")) {
-            throw new SdkValidationError("md5", 'required', "Missing required property 'md5'");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "sha1")) {
-            throw new SdkValidationError("sha1", 'required', "Missing required property 'sha1'");
-        }
-        if (!property_exists($data, "sha256")) {
-            throw new SdkValidationError("sha256", 'required', "Missing required property 'sha256'");
-        }
-        if (!property_exists($data, "size") || $data->size === null) {
-            throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null");
-        }
-        if (!property_exists($data, "state")) {
-            throw new SdkValidationError("state", 'required', "Missing required property 'state'");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
+        if (!property_exists($data, "content_type") || $data->content_type === null) { throw new SdkValidationError("content_type", 'required', "Required property 'content_type' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "download_url") || $data->download_url === null) { throw new SdkValidationError("download_url", 'required', "Required property 'download_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "md5")) { throw new SdkValidationError("md5", 'required', "Missing required property 'md5'"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "sha1")) { throw new SdkValidationError("sha1", 'required', "Missing required property 'sha1'"); }
+        if (!property_exists($data, "sha256")) { throw new SdkValidationError("sha256", 'required', "Missing required property 'sha256'"); }
+        if (!property_exists($data, "size") || $data->size === null) { throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null"); }
+        if (!property_exists($data, "state")) { throw new SdkValidationError("state", 'required', "Missing required property 'state'"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
         return new self(
             contentType: SdkClient::stringValue($data->content_type),
             createdAt: SdkClient::stringValue($data->created_at),

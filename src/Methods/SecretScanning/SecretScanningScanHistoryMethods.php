@@ -21,7 +21,7 @@ trait SecretScanningScanHistoryMethods
     public static function secretScanningGetScanHistory(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): SecretScanningScanHistory
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/secret-scanning/scan-history", $clientConfig, returnType: SecretScanningScanHistory::class, decoder: 'json', operationId: 'secretScanningGetScanHistory', requestOptions: $requestOptions, errors: [503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/secret-scanning/scan-history", $clientConfig, returnType: SecretScanningScanHistory::class, decoder: 'json', operationId: 'secretScanningGetScanHistory', requestOptions: $requestOptions, errors: [503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SecretScanningScanHistory::class));
     }
 }

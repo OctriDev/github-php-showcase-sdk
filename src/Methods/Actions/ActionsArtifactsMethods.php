@@ -76,6 +76,6 @@ trait ActionsArtifactsMethods
     public static function actionsDownloadArtifact(ClientConfig $clientConfig, string $owner, string $repo, int $artifactId, string $archiveFormat, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/artifacts/" . SdkClient::encodePathSegment($artifactId) . "/" . SdkClient::encodePathSegment($archiveFormat) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDownloadArtifact', requestOptions: $requestOptions, errors: [410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/artifacts/" . SdkClient::encodePathSegment($artifactId) . "/" . SdkClient::encodePathSegment($archiveFormat) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDownloadArtifact', requestOptions: $requestOptions, errors: [410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

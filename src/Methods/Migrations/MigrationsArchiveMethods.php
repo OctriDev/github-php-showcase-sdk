@@ -20,7 +20,7 @@ trait MigrationsArchiveMethods
     public static function migrationsDownloadArchiveForOrg(ClientConfig $clientConfig, string $org, int $migrationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/migrations/" . SdkClient::encodePathSegment($migrationId) . "/archive", $clientConfig, decoder: 'empty', operationId: 'migrationsDownloadArchiveForOrg', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/migrations/" . SdkClient::encodePathSegment($migrationId) . "/archive", $clientConfig, decoder: 'empty', operationId: 'migrationsDownloadArchiveForOrg', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -35,7 +35,7 @@ trait MigrationsArchiveMethods
     public static function migrationsDeleteArchiveForOrg(ClientConfig $clientConfig, string $org, int $migrationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/migrations/" . SdkClient::encodePathSegment($migrationId) . "/archive", $clientConfig, decoder: 'empty', operationId: 'migrationsDeleteArchiveForOrg', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/migrations/" . SdkClient::encodePathSegment($migrationId) . "/archive", $clientConfig, decoder: 'empty', operationId: 'migrationsDeleteArchiveForOrg', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -49,7 +49,7 @@ trait MigrationsArchiveMethods
     public static function migrationsGetArchiveForAuthenticatedUser(ClientConfig $clientConfig, int $migrationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/user/migrations/" . SdkClient::encodePathSegment($migrationId) . "/archive", $clientConfig, decoder: 'empty', operationId: 'migrationsGetArchiveForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/user/migrations/" . SdkClient::encodePathSegment($migrationId) . "/archive", $clientConfig, decoder: 'empty', operationId: 'migrationsGetArchiveForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -63,6 +63,6 @@ trait MigrationsArchiveMethods
     public static function migrationsDeleteArchiveForAuthenticatedUser(ClientConfig $clientConfig, int $migrationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/user/migrations/" . SdkClient::encodePathSegment($migrationId) . "/archive", $clientConfig, decoder: 'empty', operationId: 'migrationsDeleteArchiveForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/user/migrations/" . SdkClient::encodePathSegment($migrationId) . "/archive", $clientConfig, decoder: 'empty', operationId: 'migrationsDeleteArchiveForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

@@ -79,12 +79,8 @@ class WebhookCheckSuiteRequestedCheckSuiteHeadCommitCommitter implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email")) {
-            throw new SdkValidationError("email", 'required', "Missing required property 'email'");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "email")) { throw new SdkValidationError("email", 'required', "Missing required property 'email'"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             email: ($data->email === null ? null : SdkClient::stringValue($data->email)),
             name: SdkClient::stringValue($data->name),
@@ -182,24 +178,12 @@ class WebhookCheckSuiteRequestedCheckSuiteHeadCommit implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author") || $data->author === null) {
-            throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null");
-        }
-        if (!property_exists($data, "committer") || $data->committer === null) {
-            throw new SdkValidationError("committer", 'required', "Required property 'committer' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "message") || $data->message === null) {
-            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
-        }
-        if (!property_exists($data, "timestamp") || $data->timestamp === null) {
-            throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null");
-        }
-        if (!property_exists($data, "tree_id") || $data->tree_id === null) {
-            throw new SdkValidationError("tree_id", 'required', "Required property 'tree_id' is missing or null");
-        }
+        if (!property_exists($data, "author") || $data->author === null) { throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null"); }
+        if (!property_exists($data, "committer") || $data->committer === null) { throw new SdkValidationError("committer", 'required', "Required property 'committer' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
+        if (!property_exists($data, "timestamp") || $data->timestamp === null) { throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null"); }
+        if (!property_exists($data, "tree_id") || $data->tree_id === null) { throw new SdkValidationError("tree_id", 'required', "Required property 'tree_id' is missing or null"); }
         return new self(
             author: SdkClient::hydrateClass($data->author, WebhookCheckSuiteRequestedCheckSuiteHeadCommitAuthor::class),
             committer: SdkClient::hydrateClass($data->committer, WebhookCheckSuiteRequestedCheckSuiteHeadCommitCommitter::class),
@@ -269,15 +253,9 @@ class WebhookCheckSuiteRequestedCheckSuitePullRequestsItemBaseRepo implements \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),
@@ -344,15 +322,9 @@ class WebhookCheckSuiteRequestedCheckSuitePullRequestsItemBase implements \JsonS
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
-        }
-        if (!property_exists($data, "repo") || $data->repo === null) {
-            throw new SdkValidationError("repo", 'required', "Required property 'repo' is missing or null");
-        }
-        if (!property_exists($data, "sha") || $data->sha === null) {
-            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
-        }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "repo") || $data->repo === null) { throw new SdkValidationError("repo", 'required', "Required property 'repo' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
         return new self(
             ref: SdkClient::stringValue($data->ref),
             repo: SdkClient::hydrateClass($data->repo, WebhookCheckSuiteRequestedCheckSuitePullRequestsItemBaseRepo::class),

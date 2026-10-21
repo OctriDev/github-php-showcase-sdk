@@ -172,9 +172,7 @@ class OrgRulesetConditionsVariant2 implements OrgRulesetConditions, RepositoryRu
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_property") || $data->repository_property === null) {
-            throw new SdkValidationError("repository_property", 'required', "Required property 'repository_property' is missing or null");
-        }
+        if (!property_exists($data, "repository_property") || $data->repository_property === null) { throw new SdkValidationError("repository_property", 'required', "Required property 'repository_property' is missing or null"); }
         return new self(
             repositoryProperty: SdkClient::hydrateClass($data->repository_property, OrgRulesetConditionsVariant2RepositoryProperty::class),
             refName: (property_exists($data, "ref_name") && $data->ref_name !== null ? SdkClient::hydrateClass($data->ref_name, OrgRulesetConditionsVariant2RefName::class) : SdkNotGiven::Value),

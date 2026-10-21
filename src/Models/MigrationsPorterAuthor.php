@@ -105,27 +105,13 @@ class PorterAuthor implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "remote_id") || $data->remote_id === null) {
-            throw new SdkValidationError("remote_id", 'required', "Required property 'remote_id' is missing or null");
-        }
-        if (!property_exists($data, "remote_name") || $data->remote_name === null) {
-            throw new SdkValidationError("remote_name", 'required', "Required property 'remote_name' is missing or null");
-        }
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        if (!property_exists($data, "import_url") || $data->import_url === null) {
-            throw new SdkValidationError("import_url", 'required', "Required property 'import_url' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "remote_id") || $data->remote_id === null) { throw new SdkValidationError("remote_id", 'required', "Required property 'remote_id' is missing or null"); }
+        if (!property_exists($data, "remote_name") || $data->remote_name === null) { throw new SdkValidationError("remote_name", 'required', "Required property 'remote_name' is missing or null"); }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "import_url") || $data->import_url === null) { throw new SdkValidationError("import_url", 'required', "Required property 'import_url' is missing or null"); }
         return new self(
             id: SdkClient::intValue($data->id),
             remoteId: SdkClient::stringValue($data->remote_id),

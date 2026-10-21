@@ -80,7 +80,7 @@ trait CodespacesSecretsMethods
             Validation::validatePattern('encrypted_value', $encryptedValue, '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$');
         }
 
-        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "", $clientConfig, body: ['visibility' => $visibility, 'encrypted_value' => $encryptedValue, 'key_id' => $keyId, 'selected_repository_ids' => $selectedRepositoryIds], returnType: EmptyObject::class, decoder: 'json', operationId: 'codespacesCreateOrUpdateOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "", $clientConfig, body: ['visibility' => $visibility, 'encrypted_value' => $encryptedValue, 'key_id' => $keyId, 'selected_repository_ids' => $selectedRepositoryIds], returnType: EmptyObject::class, decoder: 'json', operationId: 'codespacesCreateOrUpdateOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 
@@ -96,7 +96,7 @@ trait CodespacesSecretsMethods
     public static function codespacesDeleteOrgSecret(ClientConfig $clientConfig, string $org, string $secretName, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "", $clientConfig, decoder: 'empty', operationId: 'codespacesDeleteOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "", $clientConfig, decoder: 'empty', operationId: 'codespacesDeleteOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -114,7 +114,7 @@ trait CodespacesSecretsMethods
     public static function codespacesListSelectedReposForOrgSecret(ClientConfig $clientConfig, string $org, string $secretName, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CodespacesListSelectedReposForOrgSecretResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "/repositories", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: CodespacesListSelectedReposForOrgSecretResponse::class, decoder: 'json', operationId: 'codespacesListSelectedReposForOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "/repositories", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: CodespacesListSelectedReposForOrgSecretResponse::class, decoder: 'json', operationId: 'codespacesListSelectedReposForOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodespacesListSelectedReposForOrgSecretResponse::class));
     }
 
@@ -131,7 +131,7 @@ trait CodespacesSecretsMethods
     public static function codespacesSetSelectedReposForOrgSecret(ClientConfig $clientConfig, string $org, string $secretName, array $selectedRepositoryIds, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "/repositories", $clientConfig, body: ['selected_repository_ids' => $selectedRepositoryIds], decoder: 'empty', operationId: 'codespacesSetSelectedReposForOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "/repositories", $clientConfig, body: ['selected_repository_ids' => $selectedRepositoryIds], decoder: 'empty', operationId: 'codespacesSetSelectedReposForOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -147,7 +147,7 @@ trait CodespacesSecretsMethods
     public static function codespacesAddSelectedRepoToOrgSecret(ClientConfig $clientConfig, string $org, string $secretName, int $repositoryId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "/repositories/" . SdkClient::encodePathSegment($repositoryId) . "", $clientConfig, decoder: 'empty', operationId: 'codespacesAddSelectedRepoToOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "/repositories/" . SdkClient::encodePathSegment($repositoryId) . "", $clientConfig, decoder: 'empty', operationId: 'codespacesAddSelectedRepoToOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -163,7 +163,7 @@ trait CodespacesSecretsMethods
     public static function codespacesRemoveSelectedRepoFromOrgSecret(ClientConfig $clientConfig, string $org, string $secretName, int $repositoryId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "/repositories/" . SdkClient::encodePathSegment($repositoryId) . "", $clientConfig, decoder: 'empty', operationId: 'codespacesRemoveSelectedRepoFromOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/secrets/" . SdkClient::encodePathSegment($secretName) . "/repositories/" . SdkClient::encodePathSegment($repositoryId) . "", $clientConfig, decoder: 'empty', operationId: 'codespacesRemoveSelectedRepoFromOrgSecret', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 

@@ -52,12 +52,8 @@ class WebhooksLabelUnarchivedVariant1 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "archived_at")) {
-            throw new SdkValidationError("archived_at", 'required', "Missing required property 'archived_at'");
-        }
-        if (!property_exists($data, "archived_by")) {
-            throw new SdkValidationError("archived_by", 'required', "Missing required property 'archived_by'");
-        }
+        if (!property_exists($data, "archived_at")) { throw new SdkValidationError("archived_at", 'required', "Missing required property 'archived_at'"); }
+        if (!property_exists($data, "archived_by")) { throw new SdkValidationError("archived_by", 'required', "Missing required property 'archived_by'"); }
         return new self(
             archivedAt: ($data->archived_at === null ? null : SdkClient::stringValue($data->archived_at)),
             archivedBy: ($data->archived_by === null ? null : SdkClient::hydrateClass($data->archived_by, SimpleUser::class)),
@@ -183,33 +179,15 @@ class WebhooksLabelUnarchived implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "color") || $data->color === null) {
-            throw new SdkValidationError("color", 'required', "Required property 'color' is missing or null");
-        }
-        if (!property_exists($data, "default") || $data->default === null) {
-            throw new SdkValidationError("default", 'required', "Required property 'default' is missing or null");
-        }
-        if (!property_exists($data, "description")) {
-            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
-        }
-        if (!property_exists($data, "archived_at")) {
-            throw new SdkValidationError("archived_at", 'required', "Missing required property 'archived_at'");
-        }
-        if (!property_exists($data, "archived_by")) {
-            throw new SdkValidationError("archived_by", 'required', "Missing required property 'archived_by'");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
+        if (!property_exists($data, "color") || $data->color === null) { throw new SdkValidationError("color", 'required', "Required property 'color' is missing or null"); }
+        if (!property_exists($data, "default") || $data->default === null) { throw new SdkValidationError("default", 'required', "Required property 'default' is missing or null"); }
+        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
+        if (!property_exists($data, "archived_at")) { throw new SdkValidationError("archived_at", 'required', "Missing required property 'archived_at'"); }
+        if (!property_exists($data, "archived_by")) { throw new SdkValidationError("archived_by", 'required', "Missing required property 'archived_by'"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
         return new self(
             color: SdkClient::stringValue($data->color),
             default_: SdkClient::boolValue($data->default),
