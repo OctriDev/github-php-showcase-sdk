@@ -8,287 +8,93 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required object value serialized in the `config` wire field.
+ * Typed representation of the `WebhookPing` API schema.
  */
-class WebhookPingHookConfig implements \JsonSerializable
+class WebhookPing implements \JsonSerializable
 {
     /**
-     * The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.
+     * The webhook that is being pinged
      *
-     * @var string|SdkNotGiven
+     * @var WebhookPingHook|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $contentType;
+    public readonly WebhookPingHook|SdkNotGiven $hook;
     /**
-     * Optional API value serialized in the `insecure_ssl` wire field.
-     *
-     * @var string|float|SdkNotGiven
-     */
-    public readonly string|float|SdkNotGiven $insecureSsl;
-    /**
-     * If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $secret;
-    /**
-     * The URL to which the payloads will be delivered.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $url;
-
-    /**
-     * @param string|SdkNotGiven $contentType
-     * @param string|float|SdkNotGiven $insecureSsl
-     * @param string|SdkNotGiven $secret
-     * @param string|SdkNotGiven $url
-     */
-    public function __construct(
-        string|SdkNotGiven $contentType = SdkNotGiven::Value,
-        string|float|SdkNotGiven $insecureSsl = SdkNotGiven::Value,
-        string|SdkNotGiven $secret = SdkNotGiven::Value,
-        string|SdkNotGiven $url = SdkNotGiven::Value,
-    ) {
-        $this->contentType = $contentType;
-        $this->insecureSsl = $insecureSsl;
-        $this->secret = $secret;
-        $this->url = $url;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->contentType !== SdkNotGiven::Value) {
-            $values["content_type"] = $this->contentType;
-        }
-        if ($this->insecureSsl !== SdkNotGiven::Value) {
-            $values["insecure_ssl"] = $this->insecureSsl;
-        }
-        if ($this->secret !== SdkNotGiven::Value) {
-            $values["secret"] = $this->secret;
-        }
-        if ($this->url !== SdkNotGiven::Value) {
-            $values["url"] = $this->url;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            contentType: (property_exists($data, "content_type") && $data->content_type !== null ? SdkClient::stringValue($data->content_type) : SdkNotGiven::Value),
-            insecureSsl: (property_exists($data, "insecure_ssl") && $data->insecure_ssl !== null ? (is_float($data->insecure_ssl) || is_int($data->insecure_ssl) ? SdkClient::floatValue($data->insecure_ssl) : SdkClient::stringValue($data->insecure_ssl)) : SdkNotGiven::Value),
-            secret: (property_exists($data, "secret") && $data->secret !== null ? SdkClient::stringValue($data->secret) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * The type of webhook. The only valid value is 'web'.
- */
-final readonly class WebhookPingHookNameEnum implements SdkOpenEnum
-{
-    public const WEB = "web";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * The webhook that is being pinged
- */
-class WebhookPingHook implements \JsonSerializable
-{
-    /**
-     * Determines whether the hook is actually triggered for the events it subscribes to.
-     *
-     * @var bool
-     */
-    public readonly bool $active;
-    /**
-     * Only included for GitHub Apps. When you register a new GitHub App, GitHub sends a ping event to the webhook URL you specified during registration. The GitHub App ID sent in this field is required for authenticating an app.
+     * The ID of the webhook that triggered the ping.
      *
      * @var int|SdkNotGiven
      */
-    public readonly int|SdkNotGiven $appId;
+    public readonly int|SdkNotGiven $hookId;
     /**
-     * Required object value serialized in the `config` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var WebhookPingHookConfig
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly WebhookPingHookConfig $config;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
-     * Required `date-time`-formatted value serialized in the `created_at` wire field.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var string
+     * @var RepositoryWebhooks|SdkNotGiven
      */
-    public readonly string $createdAt;
+    public readonly RepositoryWebhooks|SdkNotGiven $repository;
     /**
-     * Optional `uri`-formatted value serialized in the `deliveries_url` wire field.
+     * A GitHub user.
      *
-     * @var string|SdkNotGiven
+     * @var SimpleUser|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $deliveriesUrl;
+    public readonly SimpleUser|SdkNotGiven $sender;
     /**
-     * Determines what events the hook is triggered for. Default: ['push'].
-     *
-     * @var list<string>
-     */
-    public readonly array $events;
-    /**
-     * Unique identifier of the webhook.
-     *
-     * @var int
-     */
-    public readonly int $id;
-    /**
-     * Optional object value serialized in the `last_response` wire field.
-     *
-     * @var HookResponse|SdkNotGiven
-     */
-    public readonly HookResponse|SdkNotGiven $lastResponse;
-    /**
-     * The type of webhook. The only valid value is 'web'.
-     *
-     * @var WebhookPingHookNameEnum|string
-     */
-    public readonly WebhookPingHookNameEnum|string $name;
-    /**
-     * Optional `uri`-formatted value serialized in the `ping_url` wire field.
+     * Random string of GitHub zen.
      *
      * @var string|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $pingUrl;
-    /**
-     * Optional `uri`-formatted value serialized in the `test_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $testUrl;
-    /**
-     * Required `string` value serialized in the `type` wire field.
-     *
-     * @var string
-     */
-    public readonly string $type;
-    /**
-     * Required `date-time`-formatted value serialized in the `updated_at` wire field.
-     *
-     * @var string
-     */
-    public readonly string $updatedAt;
-    /**
-     * Optional `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $url;
+    public readonly string|SdkNotGiven $zen;
 
     /**
-     * @param bool $active
-     * @param WebhookPingHookConfig $config
-     * @param string $createdAt
-     * @param list<string> $events
-     * @param int $id
-     * @param WebhookPingHookNameEnum|string $name
-     * @param string $type
-     * @param string $updatedAt
-     * @param int|SdkNotGiven $appId
-     * @param string|SdkNotGiven $deliveriesUrl
-     * @param HookResponse|SdkNotGiven $lastResponse
-     * @param string|SdkNotGiven $pingUrl
-     * @param string|SdkNotGiven $testUrl
-     * @param string|SdkNotGiven $url
+     * @param WebhookPingHook|SdkNotGiven $hook
+     * @param int|SdkNotGiven $hookId
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param RepositoryWebhooks|SdkNotGiven $repository
+     * @param SimpleUser|SdkNotGiven $sender
+     * @param string|SdkNotGiven $zen
      */
     public function __construct(
-        bool $active,
-        WebhookPingHookConfig $config,
-        string $createdAt,
-        array $events,
-        int $id,
-        WebhookPingHookNameEnum|string $name,
-        string $type,
-        string $updatedAt,
-        int|SdkNotGiven $appId = SdkNotGiven::Value,
-        string|SdkNotGiven $deliveriesUrl = SdkNotGiven::Value,
-        HookResponse|SdkNotGiven $lastResponse = SdkNotGiven::Value,
-        string|SdkNotGiven $pingUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $testUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $url = SdkNotGiven::Value,
+        WebhookPingHook|SdkNotGiven $hook = SdkNotGiven::Value,
+        int|SdkNotGiven $hookId = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        RepositoryWebhooks|SdkNotGiven $repository = SdkNotGiven::Value,
+        SimpleUser|SdkNotGiven $sender = SdkNotGiven::Value,
+        string|SdkNotGiven $zen = SdkNotGiven::Value,
     ) {
-        $this->active = $active;
-        $this->config = $config;
-        $this->createdAt = $createdAt;
-        $this->events = $events;
-        $this->id = $id;
-        $this->name = $name;
-        $this->type = $type;
-        $this->updatedAt = $updatedAt;
-        $this->appId = $appId;
-        $this->deliveriesUrl = $deliveriesUrl;
-        $this->lastResponse = $lastResponse;
-        $this->pingUrl = $pingUrl;
-        $this->testUrl = $testUrl;
-        $this->url = $url;
+        $this->hook = $hook;
+        $this->hookId = $hookId;
+        $this->organization = $organization;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->zen = $zen;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "active" => $this->active,
-            "config" => $this->config,
-            "created_at" => $this->createdAt,
-            "events" => $this->events,
-            "id" => $this->id,
-            "name" => $this->name,
-            "type" => $this->type,
-            "updated_at" => $this->updatedAt,
         ];
-        if ($this->appId !== SdkNotGiven::Value) {
-            $values["app_id"] = $this->appId;
+        if ($this->hook !== SdkNotGiven::Value) {
+            $values["hook"] = $this->hook;
         }
-        if ($this->deliveriesUrl !== SdkNotGiven::Value) {
-            $values["deliveries_url"] = $this->deliveriesUrl;
+        if ($this->hookId !== SdkNotGiven::Value) {
+            $values["hook_id"] = $this->hookId;
         }
-        if ($this->lastResponse !== SdkNotGiven::Value) {
-            $values["last_response"] = $this->lastResponse;
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
         }
-        if ($this->pingUrl !== SdkNotGiven::Value) {
-            $values["ping_url"] = $this->pingUrl;
+        if ($this->repository !== SdkNotGiven::Value) {
+            $values["repository"] = $this->repository;
         }
-        if ($this->testUrl !== SdkNotGiven::Value) {
-            $values["test_url"] = $this->testUrl;
+        if ($this->sender !== SdkNotGiven::Value) {
+            $values["sender"] = $this->sender;
         }
-        if ($this->url !== SdkNotGiven::Value) {
-            $values["url"] = $this->url;
+        if ($this->zen !== SdkNotGiven::Value) {
+            $values["zen"] = $this->zen;
         }
         return $values;
     }
@@ -301,45 +107,13 @@ class WebhookPingHook implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "active") || $data->active === null) {
-            throw new SdkValidationError("active", 'required', "Required property 'active' is missing or null");
-        }
-        if (!property_exists($data, "config") || $data->config === null) {
-            throw new SdkValidationError("config", 'required', "Required property 'config' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "events") || $data->events === null) {
-            throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
-        }
         return new self(
-            active: SdkClient::boolValue($data->active),
-            config: SdkClient::hydrateClass($data->config, WebhookPingHookConfig::class),
-            createdAt: SdkClient::stringValue($data->created_at),
-            events: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->events))),
-            id: SdkClient::intValue($data->id),
-            name: SdkClient::hydrateStringEnumOrString($data->name, WebhookPingHookNameEnum::class),
-            type: SdkClient::stringValue($data->type),
-            updatedAt: SdkClient::stringValue($data->updated_at),
-            appId: (property_exists($data, "app_id") && $data->app_id !== null ? SdkClient::intValue($data->app_id) : SdkNotGiven::Value),
-            deliveriesUrl: (property_exists($data, "deliveries_url") && $data->deliveries_url !== null ? SdkClient::stringValue($data->deliveries_url) : SdkNotGiven::Value),
-            lastResponse: (property_exists($data, "last_response") && $data->last_response !== null ? SdkClient::hydrateClass($data->last_response, HookResponse::class) : SdkNotGiven::Value),
-            pingUrl: (property_exists($data, "ping_url") && $data->ping_url !== null ? SdkClient::stringValue($data->ping_url) : SdkNotGiven::Value),
-            testUrl: (property_exists($data, "test_url") && $data->test_url !== null ? SdkClient::stringValue($data->test_url) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
+            hook: (property_exists($data, "hook") && $data->hook !== null ? SdkClient::hydrateClass($data->hook, WebhookPingHook::class) : SdkNotGiven::Value),
+            hookId: (property_exists($data, "hook_id") && $data->hook_id !== null ? SdkClient::intValue($data->hook_id) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            repository: (property_exists($data, "repository") && $data->repository !== null ? SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class) : SdkNotGiven::Value),
+            sender: (property_exists($data, "sender") && $data->sender !== null ? SdkClient::hydrateClass($data->sender, SimpleUser::class) : SdkNotGiven::Value),
+            zen: (property_exists($data, "zen") && $data->zen !== null ? SdkClient::stringValue($data->zen) : SdkNotGiven::Value),
         );
     }
 }

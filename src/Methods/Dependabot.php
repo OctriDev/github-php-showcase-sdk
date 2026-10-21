@@ -9,6 +9,7 @@ namespace octridev_github;
 
 class Dependabot
 {
-    use DependabotMethodsPart1;
-    use DependabotMethodsPart2;
+    use DependabotAlertsMethods;
+    use DependabotRepositoryAccessMethods;
+    use DependabotSecretsMethods;
 }

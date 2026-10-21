@@ -8,93 +8,153 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * The target of the policy
+ * An Actions policy defines rules for workflow execution protection.
  */
-final readonly class ActionsPolicyTargetEnum implements SdkOpenEnum
-{
-    public const ACTIONS = "actions";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * The type of the source of the policy
- */
-final readonly class ActionsPolicySourceTypeEnum implements SdkOpenEnum
-{
-    public const REPOSITORY = "Repository";
-    public const ORGANIZATION = "Organization";
-    public const ENTERPRISE = "Enterprise";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Optional object value serialized in the `self` wire field.
- */
-class ActionsPolicyLinksSelf implements \JsonSerializable
+class ActionsPolicy implements \JsonSerializable
 {
     /**
-     * The URL of the policy
+     * The ID of the policy
+     *
+     * @var int
+     */
+    public readonly int $id;
+    /**
+     * The name of the policy
+     *
+     * @var string
+     */
+    public readonly string $name;
+    /**
+     * The target of the policy
+     *
+     * @var ActionsPolicyTargetEnum|string
+     */
+    public readonly ActionsPolicyTargetEnum|string $target;
+    /**
+     * The type of the source of the policy
+     *
+     * @var ActionsPolicySourceTypeEnum|string
+     */
+    public readonly ActionsPolicySourceTypeEnum|string $sourceType;
+    /**
+     * The name of the source
+     *
+     * @var string
+     */
+    public readonly string $source;
+    /**
+     * The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
+     *
+     * @var RepositoryRuleEnforcement|string
+     */
+    public readonly RepositoryRuleEnforcement|string $enforcement;
+    /**
+     * When workflow path targeting is available, detailed responses represent an omitted stored workflow condition as `workflow_path` with `include` set to `["~ALL"]` and `exclude` set to `[]`. When workflow path targeting is unavailable, an omitted stored condition remains omitted.
+     *
+     * @var ActionsPolicyConditions|null|SdkNotGiven
+     */
+    public readonly ActionsPolicyConditions|null|SdkNotGiven $conditions;
+    /**
+     * An array of rules within the policy
+     *
+     * @var list<ActionsRule>|SdkNotGiven
+     */
+    public readonly array|SdkNotGiven $rules;
+    /**
+     * Optional `string` value serialized in the `node_id` wire field.
      *
      * @var string|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $href;
+    public readonly string|SdkNotGiven $nodeId;
+    /**
+     * Optional object value serialized in the `_links` wire field.
+     *
+     * @var ActionsPolicyLinks|SdkNotGiven
+     */
+    public readonly ActionsPolicyLinks|SdkNotGiven $links;
+    /**
+     * Optional `date-time`-formatted value serialized in the `created_at` wire field.
+     *
+     * @var string|SdkNotGiven
+     */
+    public readonly string|SdkNotGiven $createdAt;
+    /**
+     * Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+     *
+     * @var string|SdkNotGiven
+     */
+    public readonly string|SdkNotGiven $updatedAt;
 
     /**
-     * @param string|SdkNotGiven $href
+     * @param int $id
+     * @param string $name
+     * @param ActionsPolicyTargetEnum|string $target
+     * @param ActionsPolicySourceTypeEnum|string $sourceType
+     * @param string $source
+     * @param RepositoryRuleEnforcement|string $enforcement
+     * @param ActionsPolicyConditions|null|SdkNotGiven $conditions
+     * @param list<ActionsRule>|SdkNotGiven $rules
+     * @param string|SdkNotGiven $nodeId
+     * @param ActionsPolicyLinks|SdkNotGiven $links
+     * @param string|SdkNotGiven $createdAt
+     * @param string|SdkNotGiven $updatedAt
      */
     public function __construct(
-        string|SdkNotGiven $href = SdkNotGiven::Value,
+        int $id,
+        string $name,
+        ActionsPolicyTargetEnum|string $target,
+        ActionsPolicySourceTypeEnum|string $sourceType,
+        string $source,
+        RepositoryRuleEnforcement|string $enforcement,
+        ActionsPolicyConditions|null|SdkNotGiven $conditions = SdkNotGiven::Value,
+        array|SdkNotGiven $rules = SdkNotGiven::Value,
+        string|SdkNotGiven $nodeId = SdkNotGiven::Value,
+        ActionsPolicyLinks|SdkNotGiven $links = SdkNotGiven::Value,
+        string|SdkNotGiven $createdAt = SdkNotGiven::Value,
+        string|SdkNotGiven $updatedAt = SdkNotGiven::Value,
     ) {
-        $this->href = $href;
+        $this->id = $id;
+        $this->name = $name;
+        $this->target = $target;
+        $this->sourceType = $sourceType;
+        $this->source = $source;
+        $this->enforcement = $enforcement;
+        $this->conditions = $conditions;
+        $this->rules = $rules;
+        $this->nodeId = $nodeId;
+        $this->links = $links;
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $updatedAt;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
+            "id" => $this->id,
+            "name" => $this->name,
+            "target" => $this->target,
+            "source_type" => $this->sourceType,
+            "source" => $this->source,
+            "enforcement" => $this->enforcement,
         ];
-        if ($this->href !== SdkNotGiven::Value) {
-            $values["href"] = $this->href;
+        if ($this->conditions !== SdkNotGiven::Value) {
+            $values["conditions"] = $this->conditions;
+        }
+        if ($this->rules !== SdkNotGiven::Value) {
+            $values["rules"] = $this->rules;
+        }
+        if ($this->nodeId !== SdkNotGiven::Value) {
+            $values["node_id"] = $this->nodeId;
+        }
+        if ($this->links !== SdkNotGiven::Value) {
+            $values["_links"] = $this->links;
+        }
+        if ($this->createdAt !== SdkNotGiven::Value) {
+            $values["created_at"] = $this->createdAt;
+        }
+        if ($this->updatedAt !== SdkNotGiven::Value) {
+            $values["updated_at"] = $this->updatedAt;
         }
         return $values;
     }
@@ -107,31 +167,69 @@ class ActionsPolicyLinksSelf implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "target") || $data->target === null) {
+            throw new SdkValidationError("target", 'required', "Required property 'target' is missing or null");
+        }
+        if (!property_exists($data, "source_type") || $data->source_type === null) {
+            throw new SdkValidationError("source_type", 'required', "Required property 'source_type' is missing or null");
+        }
+        if (!property_exists($data, "source") || $data->source === null) {
+            throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null");
+        }
+        if (!property_exists($data, "enforcement") || $data->enforcement === null) {
+            throw new SdkValidationError("enforcement", 'required', "Required property 'enforcement' is missing or null");
+        }
         return new self(
-            href: (property_exists($data, "href") && $data->href !== null ? SdkClient::stringValue($data->href) : SdkNotGiven::Value),
+            id: SdkClient::intValue($data->id),
+            name: SdkClient::stringValue($data->name),
+            target: SdkClient::hydrateStringEnumOrString($data->target, ActionsPolicyTargetEnum::class),
+            sourceType: SdkClient::hydrateStringEnumOrString($data->source_type, ActionsPolicySourceTypeEnum::class),
+            source: SdkClient::stringValue($data->source),
+            enforcement: SdkClient::hydrateStringEnumOrString($data->enforcement, RepositoryRuleEnforcement::class),
+            conditions: (property_exists($data, "conditions") ? ($data->conditions === null ? null : SdkClient::hydrateUnionAs($data->conditions, ActionsPolicyConditions::class, [ActionsPolicyRepoConditionsVariant1::class, ActionsPolicyOrgConditionsVariant0::class, ActionsPolicyOrgConditionsVariant1::class, ActionsPolicyOrgConditionsVariant2::class, ActionsPolicyEnterpriseConditionsVariant0::class, ActionsPolicyEnterpriseConditionsVariant1::class, ActionsPolicyEnterpriseConditionsVariant2::class, ActionsPolicyEnterpriseConditionsVariant3::class, ActionsPolicyEnterpriseConditionsVariant4::class, ActionsPolicyEnterpriseConditionsVariant5::class], null, [])) : SdkNotGiven::Value),
+            rules: (property_exists($data, "rules") && $data->rules !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateUnionAs($item, ActionsRule::class, [ActionsRuleRestrictActionsActors::class, ActionsRuleRestrictActionEvents::class], "type", ["restrict_actions_actors" => ActionsRuleRestrictActionsActors::class, "restrict_action_events" => ActionsRuleRestrictActionEvents::class], UnknownActionsRule::class), SdkClient::arrayValue($data->rules))) : SdkNotGiven::Value),
+            nodeId: (property_exists($data, "node_id") && $data->node_id !== null ? SdkClient::stringValue($data->node_id) : SdkNotGiven::Value),
+            links: (property_exists($data, "_links") && $data->_links !== null ? SdkClient::hydrateClass($data->_links, ActionsPolicyLinks::class) : SdkNotGiven::Value),
+            createdAt: (property_exists($data, "created_at") && $data->created_at !== null ? SdkClient::stringValue($data->created_at) : SdkNotGiven::Value),
+            updatedAt: (property_exists($data, "updated_at") && $data->updated_at !== null ? SdkClient::stringValue($data->updated_at) : SdkNotGiven::Value),
         );
     }
 }
 
 /**
- * Optional object value serialized in the `html` wire field.
+ * Required object value serialized in the `organization_name` wire field.
  */
-class ActionsPolicyLinksHtml implements \JsonSerializable
+class ActionsPolicyEnterpriseConditionsVariant0OrganizationName implements \JsonSerializable
 {
     /**
-     * The html URL of the policy
+     * Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts.
      *
-     * @var string|SdkNotGiven
+     * @var list<string>|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $href;
+    public readonly array|SdkNotGiven $include_;
+    /**
+     * Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match.
+     *
+     * @var list<string>|SdkNotGiven
+     */
+    public readonly array|SdkNotGiven $exclude;
 
     /**
-     * @param string|SdkNotGiven $href
+     * @param list<string>|SdkNotGiven $include_
+     * @param list<string>|SdkNotGiven $exclude
      */
     public function __construct(
-        string|SdkNotGiven $href = SdkNotGiven::Value,
+        array|SdkNotGiven $include_ = SdkNotGiven::Value,
+        array|SdkNotGiven $exclude = SdkNotGiven::Value,
     ) {
-        $this->href = $href;
+        $this->include_ = $include_;
+        $this->exclude = $exclude;
     }
 
     /** @return array<array-key, mixed> */
@@ -139,8 +237,11 @@ class ActionsPolicyLinksHtml implements \JsonSerializable
     {
         $values = [
         ];
-        if ($this->href !== SdkNotGiven::Value) {
-            $values["href"] = $this->href;
+        if ($this->include_ !== SdkNotGiven::Value) {
+            $values["include"] = $this->include_;
+        }
+        if ($this->exclude !== SdkNotGiven::Value) {
+            $values["exclude"] = $this->exclude;
         }
         return $values;
     }
@@ -154,39 +255,49 @@ class ActionsPolicyLinksHtml implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            href: (property_exists($data, "href") && $data->href !== null ? SdkClient::stringValue($data->href) : SdkNotGiven::Value),
+            include_: (property_exists($data, "include") && $data->include !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include))) : SdkNotGiven::Value),
+            exclude: (property_exists($data, "exclude") && $data->exclude !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->exclude))) : SdkNotGiven::Value),
         );
     }
 }
 
 /**
- * Optional object value serialized in the `_links` wire field.
+ * Required object value serialized in the `repository_name` wire field.
  */
-class ActionsPolicyLinks implements \JsonSerializable
+class ActionsPolicyEnterpriseConditionsVariant0RepositoryName implements \JsonSerializable
 {
     /**
-     * Optional object value serialized in the `self` wire field.
+     * Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.
      *
-     * @var ActionsPolicyLinksSelf|SdkNotGiven
+     * @var list<string>|SdkNotGiven
      */
-    public readonly ActionsPolicyLinksSelf|SdkNotGiven $self_;
+    public readonly array|SdkNotGiven $include_;
     /**
-     * Optional object value serialized in the `html` wire field.
+     * Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.
      *
-     * @var ActionsPolicyLinksHtml|SdkNotGiven
+     * @var list<string>|SdkNotGiven
      */
-    public readonly ActionsPolicyLinksHtml|SdkNotGiven $html;
+    public readonly array|SdkNotGiven $exclude;
+    /**
+     * Whether renaming of target repositories is prevented.
+     *
+     * @var bool|SdkNotGiven
+     */
+    public readonly bool|SdkNotGiven $protected_;
 
     /**
-     * @param ActionsPolicyLinksSelf|SdkNotGiven $self_
-     * @param ActionsPolicyLinksHtml|SdkNotGiven $html
+     * @param list<string>|SdkNotGiven $include_
+     * @param list<string>|SdkNotGiven $exclude
+     * @param bool|SdkNotGiven $protected_
      */
     public function __construct(
-        ActionsPolicyLinksSelf|SdkNotGiven $self_ = SdkNotGiven::Value,
-        ActionsPolicyLinksHtml|SdkNotGiven $html = SdkNotGiven::Value,
+        array|SdkNotGiven $include_ = SdkNotGiven::Value,
+        array|SdkNotGiven $exclude = SdkNotGiven::Value,
+        bool|SdkNotGiven $protected_ = SdkNotGiven::Value,
     ) {
-        $this->self_ = $self_;
-        $this->html = $html;
+        $this->include_ = $include_;
+        $this->exclude = $exclude;
+        $this->protected_ = $protected_;
     }
 
     /** @return array<array-key, mixed> */
@@ -194,11 +305,14 @@ class ActionsPolicyLinks implements \JsonSerializable
     {
         $values = [
         ];
-        if ($this->self_ !== SdkNotGiven::Value) {
-            $values["self"] = $this->self_;
+        if ($this->include_ !== SdkNotGiven::Value) {
+            $values["include"] = $this->include_;
         }
-        if ($this->html !== SdkNotGiven::Value) {
-            $values["html"] = $this->html;
+        if ($this->exclude !== SdkNotGiven::Value) {
+            $values["exclude"] = $this->exclude;
+        }
+        if ($this->protected_ !== SdkNotGiven::Value) {
+            $values["protected"] = $this->protected_;
         }
         return $values;
     }
@@ -212,8 +326,9 @@ class ActionsPolicyLinks implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         return new self(
-            self_: (property_exists($data, "self") && $data->self !== null ? SdkClient::hydrateClass($data->self, ActionsPolicyLinksSelf::class) : SdkNotGiven::Value),
-            html: (property_exists($data, "html") && $data->html !== null ? SdkClient::hydrateClass($data->html, ActionsPolicyLinksHtml::class) : SdkNotGiven::Value),
+            include_: (property_exists($data, "include") && $data->include !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include))) : SdkNotGiven::Value),
+            exclude: (property_exists($data, "exclude") && $data->exclude !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->exclude))) : SdkNotGiven::Value),
+            protected_: (property_exists($data, "protected") && $data->protected !== null ? SdkClient::boolValue($data->protected) : SdkNotGiven::Value),
         );
     }
 }

@@ -9,6 +9,7 @@ namespace octridev_github;
 
 class CopilotSpaces
 {
-    use CopilotSpacesMethodsPart1;
-    use CopilotSpacesMethodsPart2;
+    use CopilotSpacesMethods;
+    use CopilotSpacesCollaboratorsMethods;
+    use CopilotSpacesResourcesMethods;
 }

@@ -9,6 +9,7 @@ namespace octridev_github;
 
 class CodeSecurity
 {
-    use CodeSecurityMethodsPart1;
-    use CodeSecurityMethodsPart2;
+    use CodeSecurityConfigurationsMethods;
+    use CodeSecurityGetConfigurationMethods;
+    use CodeSecurityReposMethods;
 }

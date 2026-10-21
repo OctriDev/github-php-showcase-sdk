@@ -8,110 +8,97 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * The action that was performed.
+ * Typed representation of the `WebhookIssuesClosed` API schema.
  */
-final readonly class WebhookIssuesClosedActionEnum implements SdkOpenEnum
-{
-    public const CLOSED = "closed";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Optional object value serialized in the `pull_request` wire field.
- */
-class WebhookIssuesClosedIssuePullRequest implements \JsonSerializable
+class WebhookIssuesClosed implements \JsonSerializable
 {
     /**
-     * Optional `uri`-formatted value serialized in the `diff_url` wire field.
+     * The action that was performed.
      *
-     * @var string|SdkNotGiven
+     * @var WebhookIssuesClosedActionEnum|string
      */
-    public readonly string|SdkNotGiven $diffUrl;
+    public readonly WebhookIssuesClosedActionEnum|string $action;
     /**
-     * Optional `uri`-formatted value serialized in the `html_url` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var string|SdkNotGiven
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $htmlUrl;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Optional `date-time`-formatted value serialized in the `merged_at` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var string|null|SdkNotGiven
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly string|null|SdkNotGiven $mergedAt;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * Optional `uri`-formatted value serialized in the `patch_url` wire field.
+     * The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
      *
-     * @var string|SdkNotGiven
+     * @var WebhookIssuesClosedIssue
      */
-    public readonly string|SdkNotGiven $patchUrl;
+    public readonly WebhookIssuesClosedIssue $issue;
     /**
-     * Optional `uri`-formatted value serialized in the `url` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var string|SdkNotGiven
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $url;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
+    /**
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+     *
+     * @var RepositoryWebhooks
+     */
+    public readonly RepositoryWebhooks $repository;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
 
     /**
-     * @param string|SdkNotGiven $diffUrl
-     * @param string|SdkNotGiven $htmlUrl
-     * @param string|null|SdkNotGiven $mergedAt
-     * @param string|SdkNotGiven $patchUrl
-     * @param string|SdkNotGiven $url
+     * @param WebhookIssuesClosedActionEnum|string $action
+     * @param WebhookIssuesClosedIssue $issue
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
      */
     public function __construct(
-        string|SdkNotGiven $diffUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $htmlUrl = SdkNotGiven::Value,
-        string|null|SdkNotGiven $mergedAt = SdkNotGiven::Value,
-        string|SdkNotGiven $patchUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $url = SdkNotGiven::Value,
+        WebhookIssuesClosedActionEnum|string $action,
+        WebhookIssuesClosedIssue $issue,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
     ) {
-        $this->diffUrl = $diffUrl;
-        $this->htmlUrl = $htmlUrl;
-        $this->mergedAt = $mergedAt;
-        $this->patchUrl = $patchUrl;
-        $this->url = $url;
+        $this->action = $action;
+        $this->issue = $issue;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
+            "action" => $this->action,
+            "issue" => $this->issue,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
-        if ($this->diffUrl !== SdkNotGiven::Value) {
-            $values["diff_url"] = $this->diffUrl;
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
         }
-        if ($this->htmlUrl !== SdkNotGiven::Value) {
-            $values["html_url"] = $this->htmlUrl;
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
         }
-        if ($this->mergedAt !== SdkNotGiven::Value) {
-            $values["merged_at"] = $this->mergedAt;
-        }
-        if ($this->patchUrl !== SdkNotGiven::Value) {
-            $values["patch_url"] = $this->patchUrl;
-        }
-        if ($this->url !== SdkNotGiven::Value) {
-            $values["url"] = $this->url;
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
         }
         return $values;
     }
@@ -124,205 +111,26 @@ class WebhookIssuesClosedIssuePullRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "issue") || $data->issue === null) {
+            throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
-            diffUrl: (property_exists($data, "diff_url") && $data->diff_url !== null ? SdkClient::stringValue($data->diff_url) : SdkNotGiven::Value),
-            htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
-            mergedAt: (property_exists($data, "merged_at") ? ($data->merged_at === null ? null : SdkClient::stringValue($data->merged_at)) : SdkNotGiven::Value),
-            patchUrl: (property_exists($data, "patch_url") && $data->patch_url !== null ? SdkClient::stringValue($data->patch_url) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookIssuesClosedActionEnum::class),
+            issue: SdkClient::hydrateClass($data->issue, WebhookIssuesClosedIssue::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
         );
-    }
-}
-
-/**
- * Required object value serialized in the `reactions` wire field.
- */
-class WebhookIssuesClosedIssueReactions implements \JsonSerializable
-{
-    /**
-     * Optional `integer` value serialized in the `+1` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $plus1;
-    /**
-     * Optional `integer` value serialized in the `-1` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $minus1;
-    /**
-     * Optional `integer` value serialized in the `confused` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $confused;
-    /**
-     * Optional `integer` value serialized in the `eyes` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $eyes;
-    /**
-     * Optional `integer` value serialized in the `heart` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $heart;
-    /**
-     * Optional `integer` value serialized in the `hooray` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $hooray;
-    /**
-     * Optional `integer` value serialized in the `laugh` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $laugh;
-    /**
-     * Optional `integer` value serialized in the `rocket` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $rocket;
-    /**
-     * Optional `integer` value serialized in the `total_count` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $totalCount;
-    /**
-     * Optional `string` value serialized in the `url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $url;
-
-    /**
-     * @param int|SdkNotGiven $plus1
-     * @param int|SdkNotGiven $minus1
-     * @param int|SdkNotGiven $confused
-     * @param int|SdkNotGiven $eyes
-     * @param int|SdkNotGiven $heart
-     * @param int|SdkNotGiven $hooray
-     * @param int|SdkNotGiven $laugh
-     * @param int|SdkNotGiven $rocket
-     * @param int|SdkNotGiven $totalCount
-     * @param string|SdkNotGiven $url
-     */
-    public function __construct(
-        int|SdkNotGiven $plus1 = SdkNotGiven::Value,
-        int|SdkNotGiven $minus1 = SdkNotGiven::Value,
-        int|SdkNotGiven $confused = SdkNotGiven::Value,
-        int|SdkNotGiven $eyes = SdkNotGiven::Value,
-        int|SdkNotGiven $heart = SdkNotGiven::Value,
-        int|SdkNotGiven $hooray = SdkNotGiven::Value,
-        int|SdkNotGiven $laugh = SdkNotGiven::Value,
-        int|SdkNotGiven $rocket = SdkNotGiven::Value,
-        int|SdkNotGiven $totalCount = SdkNotGiven::Value,
-        string|SdkNotGiven $url = SdkNotGiven::Value,
-    ) {
-        $this->plus1 = $plus1;
-        $this->minus1 = $minus1;
-        $this->confused = $confused;
-        $this->eyes = $eyes;
-        $this->heart = $heart;
-        $this->hooray = $hooray;
-        $this->laugh = $laugh;
-        $this->rocket = $rocket;
-        $this->totalCount = $totalCount;
-        $this->url = $url;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->plus1 !== SdkNotGiven::Value) {
-            $values["+1"] = $this->plus1;
-        }
-        if ($this->minus1 !== SdkNotGiven::Value) {
-            $values["-1"] = $this->minus1;
-        }
-        if ($this->confused !== SdkNotGiven::Value) {
-            $values["confused"] = $this->confused;
-        }
-        if ($this->eyes !== SdkNotGiven::Value) {
-            $values["eyes"] = $this->eyes;
-        }
-        if ($this->heart !== SdkNotGiven::Value) {
-            $values["heart"] = $this->heart;
-        }
-        if ($this->hooray !== SdkNotGiven::Value) {
-            $values["hooray"] = $this->hooray;
-        }
-        if ($this->laugh !== SdkNotGiven::Value) {
-            $values["laugh"] = $this->laugh;
-        }
-        if ($this->rocket !== SdkNotGiven::Value) {
-            $values["rocket"] = $this->rocket;
-        }
-        if ($this->totalCount !== SdkNotGiven::Value) {
-            $values["total_count"] = $this->totalCount;
-        }
-        if ($this->url !== SdkNotGiven::Value) {
-            $values["url"] = $this->url;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            plus1: (property_exists($data, "+1") && get_object_vars($data)["+1"] !== null ? SdkClient::intValue(get_object_vars($data)["+1"]) : SdkNotGiven::Value),
-            minus1: (property_exists($data, "-1") && get_object_vars($data)["-1"] !== null ? SdkClient::intValue(get_object_vars($data)["-1"]) : SdkNotGiven::Value),
-            confused: (property_exists($data, "confused") && $data->confused !== null ? SdkClient::intValue($data->confused) : SdkNotGiven::Value),
-            eyes: (property_exists($data, "eyes") && $data->eyes !== null ? SdkClient::intValue($data->eyes) : SdkNotGiven::Value),
-            heart: (property_exists($data, "heart") && $data->heart !== null ? SdkClient::intValue($data->heart) : SdkNotGiven::Value),
-            hooray: (property_exists($data, "hooray") && $data->hooray !== null ? SdkClient::intValue($data->hooray) : SdkNotGiven::Value),
-            laugh: (property_exists($data, "laugh") && $data->laugh !== null ? SdkClient::intValue($data->laugh) : SdkNotGiven::Value),
-            rocket: (property_exists($data, "rocket") && $data->rocket !== null ? SdkClient::intValue($data->rocket) : SdkNotGiven::Value),
-            totalCount: (property_exists($data, "total_count") && $data->total_count !== null ? SdkClient::intValue($data->total_count) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Required enumerated value serialized in the `state` wire field.
- */
-final readonly class WebhookIssuesClosedIssueStateEnum implements SdkOpenEnum
-{
-    public const CLOSED = "closed";
-    public const OPEN = "open";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
     }
 }

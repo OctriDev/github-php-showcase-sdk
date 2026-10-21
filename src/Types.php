@@ -13,3 +13,4 @@ require_once __DIR__ . '/TypesLoaders/Part2.php';
 require_once __DIR__ . '/TypesLoaders/Part3.php';
 require_once __DIR__ . '/TypesLoaders/Part4.php';
 require_once __DIR__ . '/TypesLoaders/Part5.php';
+require_once __DIR__ . '/TypesLoaders/Part6.php';

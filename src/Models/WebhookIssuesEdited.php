@@ -8,168 +8,119 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookIssuesEdited` API schema.
  */
-final readonly class WebhookIssuesEditedActionEnum implements SdkOpenEnum
-{
-    public const EDITED = "edited";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Optional object value serialized in the `body` wire field.
- */
-class WebhookIssuesEditedChangesBody implements \JsonSerializable
+class WebhookIssuesEdited implements \JsonSerializable
 {
     /**
-     * The previous version of the body.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string
+     * @var WebhookIssuesEditedActionEnum|string
      */
-    public readonly string $from;
+    public readonly WebhookIssuesEditedActionEnum|string $action;
+    /**
+     * The changes to the issue.
+     *
+     * @var WebhookIssuesEditedChanges
+     */
+    public readonly WebhookIssuesEditedChanges $changes;
+    /**
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
+     *
+     * @var EnterpriseWebhooks|SdkNotGiven
+     */
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
+    /**
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+     *
+     * @var SimpleInstallation|SdkNotGiven
+     */
+    public readonly SimpleInstallation|SdkNotGiven $installation;
+    /**
+     * The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
+     *
+     * @var WebhookIssuesEditedIssue
+     */
+    public readonly WebhookIssuesEditedIssue $issue;
+    /**
+     * Optional object value serialized in the `label` wire field.
+     *
+     * @var WebhooksLabel|SdkNotGiven
+     */
+    public readonly WebhooksLabel|SdkNotGiven $label;
+    /**
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+     *
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
+     */
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
+    /**
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+     *
+     * @var RepositoryWebhooks
+     */
+    public readonly RepositoryWebhooks $repository;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
 
     /**
-     * @param string $from
+     * @param WebhookIssuesEditedActionEnum|string $action
+     * @param WebhookIssuesEditedChanges $changes
+     * @param WebhookIssuesEditedIssue $issue
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param WebhooksLabel|SdkNotGiven $label
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
      */
     public function __construct(
-        string $from,
+        WebhookIssuesEditedActionEnum|string $action,
+        WebhookIssuesEditedChanges $changes,
+        WebhookIssuesEditedIssue $issue,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        WebhooksLabel|SdkNotGiven $label = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
     ) {
-        $this->from = $from;
+        $this->action = $action;
+        $this->changes = $changes;
+        $this->issue = $issue;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->label = $label;
+        $this->organization = $organization;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "from" => $this->from,
+            "action" => $this->action,
+            "changes" => $this->changes,
+            "issue" => $this->issue,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
         }
-        return new self(
-            from: SdkClient::stringValue($data->from),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `title` wire field.
- */
-class WebhookIssuesEditedChangesTitle implements \JsonSerializable
-{
-    /**
-     * The previous version of the title.
-     *
-     * @var string
-     */
-    public readonly string $from;
-
-    /**
-     * @param string $from
-     */
-    public function __construct(
-        string $from,
-    ) {
-        $this->from = $from;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "from" => $this->from,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
         }
-        return new self(
-            from: SdkClient::stringValue($data->from),
-        );
-    }
-}
-
-/**
- * The changes to the issue.
- */
-class WebhookIssuesEditedChanges implements \JsonSerializable
-{
-    /**
-     * Optional object value serialized in the `body` wire field.
-     *
-     * @var WebhookIssuesEditedChangesBody|SdkNotGiven
-     */
-    public readonly WebhookIssuesEditedChangesBody|SdkNotGiven $body;
-    /**
-     * Optional object value serialized in the `title` wire field.
-     *
-     * @var WebhookIssuesEditedChangesTitle|SdkNotGiven
-     */
-    public readonly WebhookIssuesEditedChangesTitle|SdkNotGiven $title;
-
-    /**
-     * @param WebhookIssuesEditedChangesBody|SdkNotGiven $body
-     * @param WebhookIssuesEditedChangesTitle|SdkNotGiven $title
-     */
-    public function __construct(
-        WebhookIssuesEditedChangesBody|SdkNotGiven $body = SdkNotGiven::Value,
-        WebhookIssuesEditedChangesTitle|SdkNotGiven $title = SdkNotGiven::Value,
-    ) {
-        $this->body = $body;
-        $this->title = $title;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->body !== SdkNotGiven::Value) {
-            $values["body"] = $this->body;
+        if ($this->label !== SdkNotGiven::Value) {
+            $values["label"] = $this->label;
         }
-        if ($this->title !== SdkNotGiven::Value) {
-            $values["title"] = $this->title;
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
         }
         return $values;
     }
@@ -182,73 +133,31 @@ class WebhookIssuesEditedChanges implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "changes") || $data->changes === null) {
+            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
+        }
+        if (!property_exists($data, "issue") || $data->issue === null) {
+            throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
-            body: (property_exists($data, "body") && $data->body !== null ? SdkClient::hydrateClass($data->body, WebhookIssuesEditedChangesBody::class) : SdkNotGiven::Value),
-            title: (property_exists($data, "title") && $data->title !== null ? SdkClient::hydrateClass($data->title, WebhookIssuesEditedChangesTitle::class) : SdkNotGiven::Value),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookIssuesEditedActionEnum::class),
+            changes: SdkClient::hydrateClass($data->changes, WebhookIssuesEditedChanges::class),
+            issue: SdkClient::hydrateClass($data->issue, WebhookIssuesEditedIssue::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            label: (property_exists($data, "label") && $data->label !== null ? SdkClient::hydrateClass($data->label, WebhooksLabel::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
         );
-    }
-}
-
-/**
- * Required enumerated value serialized in the `active_lock_reason` wire field.
- */
-final readonly class WebhookIssuesEditedIssueActiveLockReasonEnum implements SdkOpenEnum
-{
-    public const RESOLVED = "resolved";
-    public const OFF_TOPIC = "off-topic";
-    public const TOO_HEATED = "too heated";
-    public const SPAM = "spam";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Optional enumerated value serialized in the `type` wire field.
- */
-final readonly class WebhookIssuesEditedIssueAssigneeTypeEnum implements SdkOpenEnum
-{
-    public const BOT = "Bot";
-    public const USER = "User";
-    public const ORGANIZATION = "Organization";
-    public const MANNEQUIN = "Mannequin";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
     }
 }

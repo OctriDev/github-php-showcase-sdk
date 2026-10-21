@@ -9,6 +9,10 @@ namespace octridev_github;
 
 class Packages
 {
-    use PackagesMethodsPart1;
-    use PackagesMethodsPart2;
+    use PackagesOrgsMethods;
+    use PackagesMethods;
+    use PackagesRestoreMethods;
+    use PackagesVersionsMethods;
+    use PackagesUserMethods;
+    use PackagesUsersMethods;
 }

@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class Reactions
 {
-    use ReactionsMethodsPart1;
+    use ReactionsMethods;
 }

@@ -9,9 +9,19 @@ namespace octridev_github;
 
 class Issues
 {
-    use IssuesMethodsPart1;
-    use IssuesMethodsPart2;
-    use IssuesMethodsPart3;
-    use IssuesMethodsPart4;
-    use IssuesMethodsPart5;
+    use IssuesMethods;
+    use IssuesReposMethods;
+    use IssuesCommentsMethods;
+    use IssuesEventsMethods;
+    use IssuesAssigneesMethods;
+    use IssuesDependenciesMethods;
+    use IssuesIssueFieldValuesMethods;
+    use IssuesLabelsMethods;
+    use IssuesLockMethods;
+    use IssuesParentMethods;
+    use IssuesRelatesToMethods;
+    use IssuesSubIssueMethods;
+    use IssuesSubIssuesMethods;
+    use IssuesSuggestionsMethods;
+    use IssuesTimelineMethods;
 }

@@ -8,329 +8,112 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookMetaDeleted` API schema.
  */
-final readonly class WebhookMetaDeletedActionEnum implements SdkOpenEnum
-{
-    public const DELETED = "deleted";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required enumerated value serialized in the `content_type` wire field.
- */
-final readonly class WebhookMetaDeletedHookConfigContentTypeEnum implements SdkOpenEnum
-{
-    public const JSON = "json";
-    public const FORM = "form";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required object value serialized in the `config` wire field.
- */
-class WebhookMetaDeletedHookConfig implements \JsonSerializable
+class WebhookMetaDeleted implements \JsonSerializable
 {
     /**
-     * Required enumerated value serialized in the `content_type` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var WebhookMetaDeletedHookConfigContentTypeEnum|string
+     * @var WebhookMetaDeletedActionEnum|string
      */
-    public readonly WebhookMetaDeletedHookConfigContentTypeEnum|string $contentType;
+    public readonly WebhookMetaDeletedActionEnum|string $action;
     /**
-     * Required `string` value serialized in the `insecure_ssl` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var string
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly string $insecureSsl;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Optional `string` value serialized in the `secret` wire field.
+     * The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace.
      *
-     * @var string|SdkNotGiven
+     * @var WebhookMetaDeletedHook
      */
-    public readonly string|SdkNotGiven $secret;
+    public readonly WebhookMetaDeletedHook $hook;
     /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $url;
-
-    /**
-     * @param WebhookMetaDeletedHookConfigContentTypeEnum|string $contentType
-     * @param string $insecureSsl
-     * @param string $url
-     * @param string|SdkNotGiven $secret
-     */
-    public function __construct(
-        WebhookMetaDeletedHookConfigContentTypeEnum|string $contentType,
-        string $insecureSsl,
-        string $url,
-        string|SdkNotGiven $secret = SdkNotGiven::Value,
-    ) {
-        $this->contentType = $contentType;
-        $this->insecureSsl = $insecureSsl;
-        $this->url = $url;
-        $this->secret = $secret;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "content_type" => $this->contentType,
-            "insecure_ssl" => $this->insecureSsl,
-            "url" => $this->url,
-        ];
-        if ($this->secret !== SdkNotGiven::Value) {
-            $values["secret"] = $this->secret;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "content_type") || $data->content_type === null) {
-            throw new SdkValidationError("content_type", 'required', "Required property 'content_type' is missing or null");
-        }
-        if (!property_exists($data, "insecure_ssl") || $data->insecure_ssl === null) {
-            throw new SdkValidationError("insecure_ssl", 'required', "Required property 'insecure_ssl' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
-        }
-        return new self(
-            contentType: SdkClient::hydrateStringEnumOrString($data->content_type, WebhookMetaDeletedHookConfigContentTypeEnum::class),
-            insecureSsl: SdkClient::stringValue($data->insecure_ssl),
-            url: SdkClient::stringValue($data->url),
-            secret: (property_exists($data, "secret") && $data->secret !== null ? SdkClient::stringValue($data->secret) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Required enumerated value serialized in the `events[]` wire field.
- */
-final readonly class WebhookMetaDeletedHookEventsItemEnum implements SdkOpenEnum
-{
-    public const UNKNOWN = "*";
-    public const BRANCH_PROTECTION_RULE = "branch_protection_rule";
-    public const CHECK_RUN = "check_run";
-    public const CHECK_SUITE = "check_suite";
-    public const CODE_SCANNING_ALERT = "code_scanning_alert";
-    public const COMMIT_COMMENT = "commit_comment";
-    public const CREATE = "create";
-    public const DELETE = "delete";
-    public const DEPLOYMENT = "deployment";
-    public const DEPLOYMENT_STATUS = "deployment_status";
-    public const DEPLOY_KEY = "deploy_key";
-    public const DISCUSSION = "discussion";
-    public const DISCUSSION_COMMENT = "discussion_comment";
-    public const FORK = "fork";
-    public const GOLLUM = "gollum";
-    public const ISSUES = "issues";
-    public const ISSUE_COMMENT = "issue_comment";
-    public const LABEL = "label";
-    public const MEMBER = "member";
-    public const MEMBERSHIP = "membership";
-    public const META = "meta";
-    public const MILESTONE = "milestone";
-    public const ORGANIZATION = "organization";
-    public const ORG_BLOCK = "org_block";
-    public const PACKAGE = "package";
-    public const PAGE_BUILD = "page_build";
-    public const PROJECT = "project";
-    public const PROJECT_CARD = "project_card";
-    public const PROJECT_COLUMN = "project_column";
-    public const PUBLIC = "public";
-    public const PULL_REQUEST = "pull_request";
-    public const PULL_REQUEST_REVIEW = "pull_request_review";
-    public const PULL_REQUEST_REVIEW_COMMENT = "pull_request_review_comment";
-    public const PULL_REQUEST_REVIEW_THREAD = "pull_request_review_thread";
-    public const PUSH = "push";
-    public const REGISTRY_PACKAGE = "registry_package";
-    public const RELEASE = "release";
-    public const REPOSITORY = "repository";
-    public const REPOSITORY_IMPORT = "repository_import";
-    public const REPOSITORY_VULNERABILITY_ALERT = "repository_vulnerability_alert";
-    public const SECRET_SCANNING_ALERT = "secret_scanning_alert";
-    public const SECRET_SCANNING_ALERT_LOCATION = "secret_scanning_alert_location";
-    public const SECURITY_AND_ANALYSIS = "security_and_analysis";
-    public const STAR = "star";
-    public const STATUS = "status";
-    public const TEAM = "team";
-    public const TEAM_ADD = "team_add";
-    public const WATCH = "watch";
-    public const WORKFLOW_JOB = "workflow_job";
-    public const WORKFLOW_RUN = "workflow_run";
-    public const REPOSITORY_DISPATCH = "repository_dispatch";
-    public const PROJECTS_V2_ITEM = "projects_v2_item";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace.
- */
-class WebhookMetaDeletedHook implements \JsonSerializable
-{
-    /**
-     * Required `boolean` value serialized in the `active` wire field.
-     *
-     * @var bool
-     */
-    public readonly bool $active;
-    /**
-     * Required object value serialized in the `config` wire field.
-     *
-     * @var WebhookMetaDeletedHookConfig
-     */
-    public readonly WebhookMetaDeletedHookConfig $config;
-    /**
-     * Required `string` value serialized in the `created_at` wire field.
-     *
-     * @var string
-     */
-    public readonly string $createdAt;
-    /**
-     * Required array value serialized in the `events` wire field.
-     *
-     * @var list<WebhookMetaDeletedHookEventsItemEnum|string>
-     */
-    public readonly array $events;
-    /**
-     * Required `integer` value serialized in the `id` wire field.
+     * The id of the modified webhook.
      *
      * @var int
      */
-    public readonly int $id;
+    public readonly int $hookId;
     /**
-     * Required `string` value serialized in the `name` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var string
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly string $name;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * Required `string` value serialized in the `type` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var string
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly string $type;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
-     * Required `string` value serialized in the `updated_at` wire field.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var string
+     * @var NullableRepositoryWebhooks|null|SdkNotGiven
      */
-    public readonly string $updatedAt;
+    public readonly NullableRepositoryWebhooks|null|SdkNotGiven $repository;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser|SdkNotGiven
+     */
+    public readonly SimpleUser|SdkNotGiven $sender;
 
     /**
-     * @param bool $active
-     * @param WebhookMetaDeletedHookConfig $config
-     * @param string $createdAt
-     * @param list<WebhookMetaDeletedHookEventsItemEnum|string> $events
-     * @param int $id
-     * @param string $name
-     * @param string $type
-     * @param string $updatedAt
+     * @param WebhookMetaDeletedActionEnum|string $action
+     * @param WebhookMetaDeletedHook $hook
+     * @param int $hookId
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param NullableRepositoryWebhooks|null|SdkNotGiven $repository
+     * @param SimpleUser|SdkNotGiven $sender
      */
     public function __construct(
-        bool $active,
-        WebhookMetaDeletedHookConfig $config,
-        string $createdAt,
-        array $events,
-        int $id,
-        string $name,
-        string $type,
-        string $updatedAt,
+        WebhookMetaDeletedActionEnum|string $action,
+        WebhookMetaDeletedHook $hook,
+        int $hookId,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        NullableRepositoryWebhooks|null|SdkNotGiven $repository = SdkNotGiven::Value,
+        SimpleUser|SdkNotGiven $sender = SdkNotGiven::Value,
     ) {
-        $this->active = $active;
-        $this->config = $config;
-        $this->createdAt = $createdAt;
-        $this->events = $events;
-        $this->id = $id;
-        $this->name = $name;
-        $this->type = $type;
-        $this->updatedAt = $updatedAt;
+        $this->action = $action;
+        $this->hook = $hook;
+        $this->hookId = $hookId;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
+        $this->repository = $repository;
+        $this->sender = $sender;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "active" => $this->active,
-            "config" => $this->config,
-            "created_at" => $this->createdAt,
-            "events" => $this->events,
-            "id" => $this->id,
-            "name" => $this->name,
-            "type" => $this->type,
-            "updated_at" => $this->updatedAt,
+            "action" => $this->action,
+            "hook" => $this->hook,
+            "hook_id" => $this->hookId,
         ];
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
+        if ($this->repository !== SdkNotGiven::Value) {
+            $values["repository"] = $this->repository;
+        }
+        if ($this->sender !== SdkNotGiven::Value) {
+            $values["sender"] = $this->sender;
+        }
         return $values;
     }
 
@@ -342,39 +125,24 @@ class WebhookMetaDeletedHook implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "active") || $data->active === null) {
-            throw new SdkValidationError("active", 'required', "Required property 'active' is missing or null");
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
         }
-        if (!property_exists($data, "config") || $data->config === null) {
-            throw new SdkValidationError("config", 'required', "Required property 'config' is missing or null");
+        if (!property_exists($data, "hook") || $data->hook === null) {
+            throw new SdkValidationError("hook", 'required', "Required property 'hook' is missing or null");
         }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "events") || $data->events === null) {
-            throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
-            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        if (!property_exists($data, "hook_id") || $data->hook_id === null) {
+            throw new SdkValidationError("hook_id", 'required', "Required property 'hook_id' is missing or null");
         }
         return new self(
-            active: SdkClient::boolValue($data->active),
-            config: SdkClient::hydrateClass($data->config, WebhookMetaDeletedHookConfig::class),
-            createdAt: SdkClient::stringValue($data->created_at),
-            events: array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, WebhookMetaDeletedHookEventsItemEnum::class), SdkClient::arrayValue($data->events))),
-            id: SdkClient::intValue($data->id),
-            name: SdkClient::stringValue($data->name),
-            type: SdkClient::stringValue($data->type),
-            updatedAt: SdkClient::stringValue($data->updated_at),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookMetaDeletedActionEnum::class),
+            hook: SdkClient::hydrateClass($data->hook, WebhookMetaDeletedHook::class),
+            hookId: SdkClient::intValue($data->hook_id),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            repository: (property_exists($data, "repository") ? ($data->repository === null ? null : SdkClient::hydrateClass($data->repository, NullableRepositoryWebhooks::class)) : SdkNotGiven::Value),
+            sender: (property_exists($data, "sender") && $data->sender !== null ? SdkClient::hydrateClass($data->sender, SimpleUser::class) : SdkNotGiven::Value),
         );
     }
 }

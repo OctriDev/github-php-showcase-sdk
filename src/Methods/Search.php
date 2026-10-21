@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class Search
 {
-    use SearchMethodsPart1;
+    use SearchMethods;
 }

@@ -8,74 +8,83 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookProjectsV2ProjectEdited` API schema.
  */
-final readonly class WebhookProjectsV2ProjectEditedActionEnum implements SdkOpenEnum
-{
-    public const EDITED = "edited";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Optional object value serialized in the `description` wire field.
- */
-class WebhookProjectsV2ProjectEditedChangesDescription implements \JsonSerializable
+class WebhookProjectsV2ProjectEdited implements \JsonSerializable
 {
     /**
-     * Optional `string` value serialized in the `from` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string|null|SdkNotGiven
+     * @var WebhookProjectsV2ProjectEditedActionEnum|string
      */
-    public readonly string|null|SdkNotGiven $from;
+    public readonly WebhookProjectsV2ProjectEditedActionEnum|string $action;
     /**
-     * Optional `string` value serialized in the `to` wire field.
+     * Required object value serialized in the `changes` wire field.
      *
-     * @var string|null|SdkNotGiven
+     * @var WebhookProjectsV2ProjectEditedChanges
      */
-    public readonly string|null|SdkNotGiven $to;
+    public readonly WebhookProjectsV2ProjectEditedChanges $changes;
+    /**
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+     *
+     * @var SimpleInstallation|SdkNotGiven
+     */
+    public readonly SimpleInstallation|SdkNotGiven $installation;
+    /**
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+     *
+     * @var OrganizationSimpleWebhooks
+     */
+    public readonly OrganizationSimpleWebhooks $organization;
+    /**
+     * A projects v2 project
+     *
+     * @var ProjectsV2
+     */
+    public readonly ProjectsV2 $projectsV2;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
 
     /**
-     * @param string|null|SdkNotGiven $from
-     * @param string|null|SdkNotGiven $to
+     * @param WebhookProjectsV2ProjectEditedActionEnum|string $action
+     * @param WebhookProjectsV2ProjectEditedChanges $changes
+     * @param OrganizationSimpleWebhooks $organization
+     * @param ProjectsV2 $projectsV2
+     * @param SimpleUser $sender
+     * @param SimpleInstallation|SdkNotGiven $installation
      */
     public function __construct(
-        string|null|SdkNotGiven $from = SdkNotGiven::Value,
-        string|null|SdkNotGiven $to = SdkNotGiven::Value,
+        WebhookProjectsV2ProjectEditedActionEnum|string $action,
+        WebhookProjectsV2ProjectEditedChanges $changes,
+        OrganizationSimpleWebhooks $organization,
+        ProjectsV2 $projectsV2,
+        SimpleUser $sender,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
     ) {
-        $this->from = $from;
-        $this->to = $to;
+        $this->action = $action;
+        $this->changes = $changes;
+        $this->organization = $organization;
+        $this->projectsV2 = $projectsV2;
+        $this->sender = $sender;
+        $this->installation = $installation;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
+            "action" => $this->action,
+            "changes" => $this->changes,
+            "organization" => $this->organization,
+            "projects_v2" => $this->projectsV2,
+            "sender" => $this->sender,
         ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
-        }
-        if ($this->to !== SdkNotGiven::Value) {
-            $values["to"] = $this->to;
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
         }
         return $values;
     }
@@ -88,271 +97,28 @@ class WebhookProjectsV2ProjectEditedChangesDescription implements \JsonSerializa
 
     public static function fromObject(object $data): self
     {
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "changes") || $data->changes === null) {
+            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
+        }
+        if (!property_exists($data, "organization") || $data->organization === null) {
+            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
+        }
+        if (!property_exists($data, "projects_v2") || $data->projects_v2 === null) {
+            throw new SdkValidationError("projects_v2", 'required', "Required property 'projects_v2' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
-            from: (property_exists($data, "from") ? ($data->from === null ? null : SdkClient::stringValue($data->from)) : SdkNotGiven::Value),
-            to: (property_exists($data, "to") ? ($data->to === null ? null : SdkClient::stringValue($data->to)) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `public` wire field.
- */
-class WebhookProjectsV2ProjectEditedChangesPublic implements \JsonSerializable
-{
-    /**
-     * Optional `boolean` value serialized in the `from` wire field.
-     *
-     * @var bool|SdkNotGiven
-     */
-    public readonly bool|SdkNotGiven $from;
-    /**
-     * Optional `boolean` value serialized in the `to` wire field.
-     *
-     * @var bool|SdkNotGiven
-     */
-    public readonly bool|SdkNotGiven $to;
-
-    /**
-     * @param bool|SdkNotGiven $from
-     * @param bool|SdkNotGiven $to
-     */
-    public function __construct(
-        bool|SdkNotGiven $from = SdkNotGiven::Value,
-        bool|SdkNotGiven $to = SdkNotGiven::Value,
-    ) {
-        $this->from = $from;
-        $this->to = $to;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
-        }
-        if ($this->to !== SdkNotGiven::Value) {
-            $values["to"] = $this->to;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::boolValue($data->from) : SdkNotGiven::Value),
-            to: (property_exists($data, "to") && $data->to !== null ? SdkClient::boolValue($data->to) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `short_description` wire field.
- */
-class WebhookProjectsV2ProjectEditedChangesShortDescription implements \JsonSerializable
-{
-    /**
-     * Optional `string` value serialized in the `from` wire field.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $from;
-    /**
-     * Optional `string` value serialized in the `to` wire field.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $to;
-
-    /**
-     * @param string|null|SdkNotGiven $from
-     * @param string|null|SdkNotGiven $to
-     */
-    public function __construct(
-        string|null|SdkNotGiven $from = SdkNotGiven::Value,
-        string|null|SdkNotGiven $to = SdkNotGiven::Value,
-    ) {
-        $this->from = $from;
-        $this->to = $to;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
-        }
-        if ($this->to !== SdkNotGiven::Value) {
-            $values["to"] = $this->to;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            from: (property_exists($data, "from") ? ($data->from === null ? null : SdkClient::stringValue($data->from)) : SdkNotGiven::Value),
-            to: (property_exists($data, "to") ? ($data->to === null ? null : SdkClient::stringValue($data->to)) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `title` wire field.
- */
-class WebhookProjectsV2ProjectEditedChangesTitle implements \JsonSerializable
-{
-    /**
-     * Optional `string` value serialized in the `from` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $from;
-    /**
-     * Optional `string` value serialized in the `to` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $to;
-
-    /**
-     * @param string|SdkNotGiven $from
-     * @param string|SdkNotGiven $to
-     */
-    public function __construct(
-        string|SdkNotGiven $from = SdkNotGiven::Value,
-        string|SdkNotGiven $to = SdkNotGiven::Value,
-    ) {
-        $this->from = $from;
-        $this->to = $to;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
-        }
-        if ($this->to !== SdkNotGiven::Value) {
-            $values["to"] = $this->to;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
-            to: (property_exists($data, "to") && $data->to !== null ? SdkClient::stringValue($data->to) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `changes` wire field.
- */
-class WebhookProjectsV2ProjectEditedChanges implements \JsonSerializable
-{
-    /**
-     * Optional object value serialized in the `description` wire field.
-     *
-     * @var WebhookProjectsV2ProjectEditedChangesDescription|SdkNotGiven
-     */
-    public readonly WebhookProjectsV2ProjectEditedChangesDescription|SdkNotGiven $description;
-    /**
-     * Optional object value serialized in the `public` wire field.
-     *
-     * @var WebhookProjectsV2ProjectEditedChangesPublic|SdkNotGiven
-     */
-    public readonly WebhookProjectsV2ProjectEditedChangesPublic|SdkNotGiven $public_;
-    /**
-     * Optional object value serialized in the `short_description` wire field.
-     *
-     * @var WebhookProjectsV2ProjectEditedChangesShortDescription|SdkNotGiven
-     */
-    public readonly WebhookProjectsV2ProjectEditedChangesShortDescription|SdkNotGiven $shortDescription;
-    /**
-     * Optional object value serialized in the `title` wire field.
-     *
-     * @var WebhookProjectsV2ProjectEditedChangesTitle|SdkNotGiven
-     */
-    public readonly WebhookProjectsV2ProjectEditedChangesTitle|SdkNotGiven $title;
-
-    /**
-     * @param WebhookProjectsV2ProjectEditedChangesDescription|SdkNotGiven $description
-     * @param WebhookProjectsV2ProjectEditedChangesPublic|SdkNotGiven $public_
-     * @param WebhookProjectsV2ProjectEditedChangesShortDescription|SdkNotGiven $shortDescription
-     * @param WebhookProjectsV2ProjectEditedChangesTitle|SdkNotGiven $title
-     */
-    public function __construct(
-        WebhookProjectsV2ProjectEditedChangesDescription|SdkNotGiven $description = SdkNotGiven::Value,
-        WebhookProjectsV2ProjectEditedChangesPublic|SdkNotGiven $public_ = SdkNotGiven::Value,
-        WebhookProjectsV2ProjectEditedChangesShortDescription|SdkNotGiven $shortDescription = SdkNotGiven::Value,
-        WebhookProjectsV2ProjectEditedChangesTitle|SdkNotGiven $title = SdkNotGiven::Value,
-    ) {
-        $this->description = $description;
-        $this->public_ = $public_;
-        $this->shortDescription = $shortDescription;
-        $this->title = $title;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->description !== SdkNotGiven::Value) {
-            $values["description"] = $this->description;
-        }
-        if ($this->public_ !== SdkNotGiven::Value) {
-            $values["public"] = $this->public_;
-        }
-        if ($this->shortDescription !== SdkNotGiven::Value) {
-            $values["short_description"] = $this->shortDescription;
-        }
-        if ($this->title !== SdkNotGiven::Value) {
-            $values["title"] = $this->title;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            description: (property_exists($data, "description") && $data->description !== null ? SdkClient::hydrateClass($data->description, WebhookProjectsV2ProjectEditedChangesDescription::class) : SdkNotGiven::Value),
-            public_: (property_exists($data, "public") && $data->public !== null ? SdkClient::hydrateClass($data->public, WebhookProjectsV2ProjectEditedChangesPublic::class) : SdkNotGiven::Value),
-            shortDescription: (property_exists($data, "short_description") && $data->short_description !== null ? SdkClient::hydrateClass($data->short_description, WebhookProjectsV2ProjectEditedChangesShortDescription::class) : SdkNotGiven::Value),
-            title: (property_exists($data, "title") && $data->title !== null ? SdkClient::hydrateClass($data->title, WebhookProjectsV2ProjectEditedChangesTitle::class) : SdkNotGiven::Value),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookProjectsV2ProjectEditedActionEnum::class),
+            changes: SdkClient::hydrateClass($data->changes, WebhookProjectsV2ProjectEditedChanges::class),
+            organization: SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class),
+            projectsV2: SdkClient::hydrateClass($data->projects_v2, ProjectsV2::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
         );
     }
 }

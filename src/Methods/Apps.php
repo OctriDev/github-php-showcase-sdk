@@ -9,7 +9,14 @@ namespace octridev_github;
 
 class Apps
 {
-    use AppsMethodsPart1;
-    use AppsMethodsPart2;
-    use AppsMethodsPart3;
+    use AppsAppMethods;
+    use AppsAppManifestsMethods;
+    use AppsApplicationsMethods;
+    use AppsMethods;
+    use AppsInstallationMethods;
+    use AppsMarketplaceListingMethods;
+    use AppsOrgsMethods;
+    use AppsReposMethods;
+    use AppsUserMethods;
+    use AppsUsersMethods;
 }

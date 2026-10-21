@@ -8,95 +8,40 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Optional enumerated value serialized in the `type` wire field.
+ * Typed representation of the `WebhooksProject` API schema.
  */
-final readonly class WebhooksProjectCreatorTypeEnum implements SdkOpenEnum
-{
-    public const BOT = "Bot";
-    public const USER = "User";
-    public const ORGANIZATION = "Organization";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required object value serialized in the `creator` wire field.
- */
-class WebhooksProjectCreator implements \JsonSerializable
+class WebhooksProject implements \JsonSerializable
 {
     /**
-     * Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+     * Body of the project
      *
-     * @var string|SdkNotGiven
+     * @var string|null
      */
-    public readonly string|SdkNotGiven $avatarUrl;
+    public readonly string|null $body;
     /**
-     * Optional `boolean` value serialized in the `deleted` wire field.
+     * Required `uri`-formatted value serialized in the `columns_url` wire field.
      *
-     * @var bool|SdkNotGiven
+     * @var string
      */
-    public readonly bool|SdkNotGiven $deleted;
+    public readonly string $columnsUrl;
     /**
-     * Optional `string` value serialized in the `email` wire field.
+     * Required `date-time`-formatted value serialized in the `created_at` wire field.
      *
-     * @var string|null|SdkNotGiven
+     * @var string
      */
-    public readonly string|null|SdkNotGiven $email;
+    public readonly string $createdAt;
     /**
-     * Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+     * Required object value serialized in the `creator` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var WebhooksProjectCreator|null
      */
-    public readonly string|SdkNotGiven $eventsUrl;
+    public readonly WebhooksProjectCreator|null $creator;
     /**
-     * Optional `uri`-formatted value serialized in the `followers_url` wire field.
+     * Required `uri`-formatted value serialized in the `html_url` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var string
      */
-    public readonly string|SdkNotGiven $followersUrl;
-    /**
-     * Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $followingUrl;
-    /**
-     * Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $gistsUrl;
-    /**
-     * Optional `string` value serialized in the `gravatar_id` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $gravatarId;
-    /**
-     * Optional `uri`-formatted value serialized in the `html_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $htmlUrl;
+    public readonly string $htmlUrl;
     /**
      * Required `integer` value serialized in the `id` wire field.
      *
@@ -104,217 +49,111 @@ class WebhooksProjectCreator implements \JsonSerializable
      */
     public readonly int $id;
     /**
-     * Required `string` value serialized in the `login` wire field.
+     * Name of the project
      *
      * @var string
      */
-    public readonly string $login;
+    public readonly string $name;
     /**
-     * Optional `string` value serialized in the `name` wire field.
+     * Required `string` value serialized in the `node_id` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var string
      */
-    public readonly string|SdkNotGiven $name;
+    public readonly string $nodeId;
     /**
-     * Optional `string` value serialized in the `node_id` wire field.
+     * Required `integer` value serialized in the `number` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var int
      */
-    public readonly string|SdkNotGiven $nodeId;
+    public readonly int $number;
     /**
-     * Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+     * Required `uri`-formatted value serialized in the `owner_url` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var string
      */
-    public readonly string|SdkNotGiven $organizationsUrl;
+    public readonly string $ownerUrl;
     /**
-     * Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+     * State of the project; either 'open' or 'closed'
      *
-     * @var string|SdkNotGiven
+     * @var WebhooksProjectStateEnum|string
      */
-    public readonly string|SdkNotGiven $receivedEventsUrl;
+    public readonly WebhooksProjectStateEnum|string $state;
     /**
-     * Optional `uri`-formatted value serialized in the `repos_url` wire field.
+     * Required `date-time`-formatted value serialized in the `updated_at` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var string
      */
-    public readonly string|SdkNotGiven $reposUrl;
+    public readonly string $updatedAt;
     /**
-     * Optional `boolean` value serialized in the `site_admin` wire field.
+     * Required `uri`-formatted value serialized in the `url` wire field.
      *
-     * @var bool|SdkNotGiven
+     * @var string
      */
-    public readonly bool|SdkNotGiven $siteAdmin;
-    /**
-     * Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $starredUrl;
-    /**
-     * Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $subscriptionsUrl;
-    /**
-     * Optional enumerated value serialized in the `type` wire field.
-     *
-     * @var WebhooksProjectCreatorTypeEnum|string|SdkNotGiven
-     */
-    public readonly WebhooksProjectCreatorTypeEnum|string|SdkNotGiven $type;
-    /**
-     * Optional `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $url;
-    /**
-     * Optional `string` value serialized in the `user_view_type` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $userViewType;
+    public readonly string $url;
 
     /**
+     * @param string|null $body
+     * @param string $columnsUrl
+     * @param string $createdAt
+     * @param WebhooksProjectCreator|null $creator
+     * @param string $htmlUrl
      * @param int $id
-     * @param string $login
-     * @param string|SdkNotGiven $avatarUrl
-     * @param bool|SdkNotGiven $deleted
-     * @param string|null|SdkNotGiven $email
-     * @param string|SdkNotGiven $eventsUrl
-     * @param string|SdkNotGiven $followersUrl
-     * @param string|SdkNotGiven $followingUrl
-     * @param string|SdkNotGiven $gistsUrl
-     * @param string|SdkNotGiven $gravatarId
-     * @param string|SdkNotGiven $htmlUrl
-     * @param string|SdkNotGiven $name
-     * @param string|SdkNotGiven $nodeId
-     * @param string|SdkNotGiven $organizationsUrl
-     * @param string|SdkNotGiven $receivedEventsUrl
-     * @param string|SdkNotGiven $reposUrl
-     * @param bool|SdkNotGiven $siteAdmin
-     * @param string|SdkNotGiven $starredUrl
-     * @param string|SdkNotGiven $subscriptionsUrl
-     * @param WebhooksProjectCreatorTypeEnum|string|SdkNotGiven $type
-     * @param string|SdkNotGiven $url
-     * @param string|SdkNotGiven $userViewType
+     * @param string $name
+     * @param string $nodeId
+     * @param int $number
+     * @param string $ownerUrl
+     * @param WebhooksProjectStateEnum|string $state
+     * @param string $updatedAt
+     * @param string $url
      */
     public function __construct(
+        string|null $body,
+        string $columnsUrl,
+        string $createdAt,
+        WebhooksProjectCreator|null $creator,
+        string $htmlUrl,
         int $id,
-        string $login,
-        string|SdkNotGiven $avatarUrl = SdkNotGiven::Value,
-        bool|SdkNotGiven $deleted = SdkNotGiven::Value,
-        string|null|SdkNotGiven $email = SdkNotGiven::Value,
-        string|SdkNotGiven $eventsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $followersUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $followingUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $gistsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $gravatarId = SdkNotGiven::Value,
-        string|SdkNotGiven $htmlUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $name = SdkNotGiven::Value,
-        string|SdkNotGiven $nodeId = SdkNotGiven::Value,
-        string|SdkNotGiven $organizationsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $receivedEventsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $reposUrl = SdkNotGiven::Value,
-        bool|SdkNotGiven $siteAdmin = SdkNotGiven::Value,
-        string|SdkNotGiven $starredUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $subscriptionsUrl = SdkNotGiven::Value,
-        WebhooksProjectCreatorTypeEnum|string|SdkNotGiven $type = SdkNotGiven::Value,
-        string|SdkNotGiven $url = SdkNotGiven::Value,
-        string|SdkNotGiven $userViewType = SdkNotGiven::Value,
+        string $name,
+        string $nodeId,
+        int $number,
+        string $ownerUrl,
+        WebhooksProjectStateEnum|string $state,
+        string $updatedAt,
+        string $url,
     ) {
-        $this->id = $id;
-        $this->login = $login;
-        $this->avatarUrl = $avatarUrl;
-        $this->deleted = $deleted;
-        $this->email = $email;
-        $this->eventsUrl = $eventsUrl;
-        $this->followersUrl = $followersUrl;
-        $this->followingUrl = $followingUrl;
-        $this->gistsUrl = $gistsUrl;
-        $this->gravatarId = $gravatarId;
+        $this->body = $body;
+        $this->columnsUrl = $columnsUrl;
+        $this->createdAt = $createdAt;
+        $this->creator = $creator;
         $this->htmlUrl = $htmlUrl;
+        $this->id = $id;
         $this->name = $name;
         $this->nodeId = $nodeId;
-        $this->organizationsUrl = $organizationsUrl;
-        $this->receivedEventsUrl = $receivedEventsUrl;
-        $this->reposUrl = $reposUrl;
-        $this->siteAdmin = $siteAdmin;
-        $this->starredUrl = $starredUrl;
-        $this->subscriptionsUrl = $subscriptionsUrl;
-        $this->type = $type;
+        $this->number = $number;
+        $this->ownerUrl = $ownerUrl;
+        $this->state = $state;
+        $this->updatedAt = $updatedAt;
         $this->url = $url;
-        $this->userViewType = $userViewType;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
+            "body" => $this->body,
+            "columns_url" => $this->columnsUrl,
+            "created_at" => $this->createdAt,
+            "creator" => $this->creator,
+            "html_url" => $this->htmlUrl,
             "id" => $this->id,
-            "login" => $this->login,
+            "name" => $this->name,
+            "node_id" => $this->nodeId,
+            "number" => $this->number,
+            "owner_url" => $this->ownerUrl,
+            "state" => $this->state,
+            "updated_at" => $this->updatedAt,
+            "url" => $this->url,
         ];
-        if ($this->avatarUrl !== SdkNotGiven::Value) {
-            $values["avatar_url"] = $this->avatarUrl;
-        }
-        if ($this->deleted !== SdkNotGiven::Value) {
-            $values["deleted"] = $this->deleted;
-        }
-        if ($this->email !== SdkNotGiven::Value) {
-            $values["email"] = $this->email;
-        }
-        if ($this->eventsUrl !== SdkNotGiven::Value) {
-            $values["events_url"] = $this->eventsUrl;
-        }
-        if ($this->followersUrl !== SdkNotGiven::Value) {
-            $values["followers_url"] = $this->followersUrl;
-        }
-        if ($this->followingUrl !== SdkNotGiven::Value) {
-            $values["following_url"] = $this->followingUrl;
-        }
-        if ($this->gistsUrl !== SdkNotGiven::Value) {
-            $values["gists_url"] = $this->gistsUrl;
-        }
-        if ($this->gravatarId !== SdkNotGiven::Value) {
-            $values["gravatar_id"] = $this->gravatarId;
-        }
-        if ($this->htmlUrl !== SdkNotGiven::Value) {
-            $values["html_url"] = $this->htmlUrl;
-        }
-        if ($this->name !== SdkNotGiven::Value) {
-            $values["name"] = $this->name;
-        }
-        if ($this->nodeId !== SdkNotGiven::Value) {
-            $values["node_id"] = $this->nodeId;
-        }
-        if ($this->organizationsUrl !== SdkNotGiven::Value) {
-            $values["organizations_url"] = $this->organizationsUrl;
-        }
-        if ($this->receivedEventsUrl !== SdkNotGiven::Value) {
-            $values["received_events_url"] = $this->receivedEventsUrl;
-        }
-        if ($this->reposUrl !== SdkNotGiven::Value) {
-            $values["repos_url"] = $this->reposUrl;
-        }
-        if ($this->siteAdmin !== SdkNotGiven::Value) {
-            $values["site_admin"] = $this->siteAdmin;
-        }
-        if ($this->starredUrl !== SdkNotGiven::Value) {
-            $values["starred_url"] = $this->starredUrl;
-        }
-        if ($this->subscriptionsUrl !== SdkNotGiven::Value) {
-            $values["subscriptions_url"] = $this->subscriptionsUrl;
-        }
-        if ($this->type !== SdkNotGiven::Value) {
-            $values["type"] = $this->type;
-        }
-        if ($this->url !== SdkNotGiven::Value) {
-            $values["url"] = $this->url;
-        }
-        if ($this->userViewType !== SdkNotGiven::Value) {
-            $values["user_view_type"] = $this->userViewType;
-        }
         return $values;
     }
 
@@ -326,46 +165,71 @@ class WebhooksProjectCreator implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
+        if (!property_exists($data, "body")) {
+            throw new SdkValidationError("body", 'required', "Missing required property 'body'");
+        }
+        if (!property_exists($data, "columns_url") || $data->columns_url === null) {
+            throw new SdkValidationError("columns_url", 'required', "Required property 'columns_url' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "creator")) {
+            throw new SdkValidationError("creator", 'required', "Missing required property 'creator'");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
         if (!property_exists($data, "id") || $data->id === null) {
             throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
         }
-        if (!property_exists($data, "login") || $data->login === null) {
-            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "number") || $data->number === null) {
+            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
+        }
+        if (!property_exists($data, "owner_url") || $data->owner_url === null) {
+            throw new SdkValidationError("owner_url", 'required', "Required property 'owner_url' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
         }
         return new self(
+            body: ($data->body === null ? null : SdkClient::stringValue($data->body)),
+            columnsUrl: SdkClient::stringValue($data->columns_url),
+            createdAt: SdkClient::stringValue($data->created_at),
+            creator: ($data->creator === null ? null : SdkClient::hydrateClass($data->creator, WebhooksProjectCreator::class)),
+            htmlUrl: SdkClient::stringValue($data->html_url),
             id: SdkClient::intValue($data->id),
-            login: SdkClient::stringValue($data->login),
-            avatarUrl: (property_exists($data, "avatar_url") && $data->avatar_url !== null ? SdkClient::stringValue($data->avatar_url) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
-            email: (property_exists($data, "email") ? ($data->email === null ? null : SdkClient::stringValue($data->email)) : SdkNotGiven::Value),
-            eventsUrl: (property_exists($data, "events_url") && $data->events_url !== null ? SdkClient::stringValue($data->events_url) : SdkNotGiven::Value),
-            followersUrl: (property_exists($data, "followers_url") && $data->followers_url !== null ? SdkClient::stringValue($data->followers_url) : SdkNotGiven::Value),
-            followingUrl: (property_exists($data, "following_url") && $data->following_url !== null ? SdkClient::stringValue($data->following_url) : SdkNotGiven::Value),
-            gistsUrl: (property_exists($data, "gists_url") && $data->gists_url !== null ? SdkClient::stringValue($data->gists_url) : SdkNotGiven::Value),
-            gravatarId: (property_exists($data, "gravatar_id") && $data->gravatar_id !== null ? SdkClient::stringValue($data->gravatar_id) : SdkNotGiven::Value),
-            htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            nodeId: (property_exists($data, "node_id") && $data->node_id !== null ? SdkClient::stringValue($data->node_id) : SdkNotGiven::Value),
-            organizationsUrl: (property_exists($data, "organizations_url") && $data->organizations_url !== null ? SdkClient::stringValue($data->organizations_url) : SdkNotGiven::Value),
-            receivedEventsUrl: (property_exists($data, "received_events_url") && $data->received_events_url !== null ? SdkClient::stringValue($data->received_events_url) : SdkNotGiven::Value),
-            reposUrl: (property_exists($data, "repos_url") && $data->repos_url !== null ? SdkClient::stringValue($data->repos_url) : SdkNotGiven::Value),
-            siteAdmin: (property_exists($data, "site_admin") && $data->site_admin !== null ? SdkClient::boolValue($data->site_admin) : SdkNotGiven::Value),
-            starredUrl: (property_exists($data, "starred_url") && $data->starred_url !== null ? SdkClient::stringValue($data->starred_url) : SdkNotGiven::Value),
-            subscriptionsUrl: (property_exists($data, "subscriptions_url") && $data->subscriptions_url !== null ? SdkClient::stringValue($data->subscriptions_url) : SdkNotGiven::Value),
-            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::hydrateStringEnumOrString($data->type, WebhooksProjectCreatorTypeEnum::class) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
-            userViewType: (property_exists($data, "user_view_type") && $data->user_view_type !== null ? SdkClient::stringValue($data->user_view_type) : SdkNotGiven::Value),
+            name: SdkClient::stringValue($data->name),
+            nodeId: SdkClient::stringValue($data->node_id),
+            number: SdkClient::intValue($data->number),
+            ownerUrl: SdkClient::stringValue($data->owner_url),
+            state: SdkClient::hydrateStringEnumOrString($data->state, WebhooksProjectStateEnum::class),
+            updatedAt: SdkClient::stringValue($data->updated_at),
+            url: SdkClient::stringValue($data->url),
         );
     }
 }
 
 /**
- * State of the project; either 'open' or 'closed'
+ * Optional enumerated value serialized in the `type` wire field.
  */
-final readonly class WebhooksProjectStateEnum implements SdkOpenEnum
+final readonly class WebhooksProjectCardCreatorTypeEnum implements SdkOpenEnum
 {
-    public const OPEN = "open";
-    public const CLOSED = "closed";
+    public const BOT = "Bot";
+    public const USER = "User";
+    public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
     public static function from(string|int $value): static
     {

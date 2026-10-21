@@ -8,61 +8,120 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookPullRequestAutoMergeEnabled` API schema.
  */
-final readonly class WebhookPullRequestAutoMergeEnabledActionEnum implements SdkOpenEnum
-{
-    public const AUTO_MERGE_ENABLED = "auto_merge_enabled";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required object value serialized in the `comments` wire field.
- */
-class WebhookPullRequestAutoMergeEnabledPullRequestLinksComments implements \JsonSerializable
+class WebhookPullRequestAutoMergeEnabled implements \JsonSerializable
 {
     /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string
+     * @var WebhookPullRequestAutoMergeEnabledActionEnum|string
      */
-    public readonly string $href;
+    public readonly WebhookPullRequestAutoMergeEnabledActionEnum|string $action;
+    /**
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
+     *
+     * @var EnterpriseWebhooks|SdkNotGiven
+     */
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
+    /**
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+     *
+     * @var SimpleInstallation|SdkNotGiven
+     */
+    public readonly SimpleInstallation|SdkNotGiven $installation;
+    /**
+     * The pull request number.
+     *
+     * @var int
+     */
+    public readonly int $number;
+    /**
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+     *
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
+     */
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
+    /**
+     * Required object value serialized in the `pull_request` wire field.
+     *
+     * @var WebhookPullRequestAutoMergeEnabledPullRequest
+     */
+    public readonly WebhookPullRequestAutoMergeEnabledPullRequest $pullRequest;
+    /**
+     * Optional `string` value serialized in the `reason` wire field.
+     *
+     * @var string|SdkNotGiven
+     */
+    public readonly string|SdkNotGiven $reason;
+    /**
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+     *
+     * @var RepositoryWebhooks
+     */
+    public readonly RepositoryWebhooks $repository;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
 
     /**
-     * @param string $href
+     * @param WebhookPullRequestAutoMergeEnabledActionEnum|string $action
+     * @param int $number
+     * @param WebhookPullRequestAutoMergeEnabledPullRequest $pullRequest
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param string|SdkNotGiven $reason
      */
     public function __construct(
-        string $href,
+        WebhookPullRequestAutoMergeEnabledActionEnum|string $action,
+        int $number,
+        WebhookPullRequestAutoMergeEnabledPullRequest $pullRequest,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        string|SdkNotGiven $reason = SdkNotGiven::Value,
     ) {
-        $this->href = $href;
+        $this->action = $action;
+        $this->number = $number;
+        $this->pullRequest = $pullRequest;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
+        $this->reason = $reason;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "href" => $this->href,
+            "action" => $this->action,
+            "number" => $this->number,
+            "pull_request" => $this->pullRequest,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
+        if ($this->reason !== SdkNotGiven::Value) {
+            $values["reason"] = $this->reason;
+        }
         return $values;
     }
 
@@ -74,293 +133,31 @@ class WebhookPullRequestAutoMergeEnabledPullRequestLinksComments implements \Jso
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "number") || $data->number === null) {
+            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
+        }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
+            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
         }
         return new self(
-            href: SdkClient::stringValue($data->href),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `commits` wire field.
- */
-class WebhookPullRequestAutoMergeEnabledPullRequestLinksCommits implements \JsonSerializable
-{
-    /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
-     *
-     * @var string
-     */
-    public readonly string $href;
-
-    /**
-     * @param string $href
-     */
-    public function __construct(
-        string $href,
-    ) {
-        $this->href = $href;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "href" => $this->href,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        return new self(
-            href: SdkClient::stringValue($data->href),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `html` wire field.
- */
-class WebhookPullRequestAutoMergeEnabledPullRequestLinksHtml implements \JsonSerializable
-{
-    /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
-     *
-     * @var string
-     */
-    public readonly string $href;
-
-    /**
-     * @param string $href
-     */
-    public function __construct(
-        string $href,
-    ) {
-        $this->href = $href;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "href" => $this->href,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        return new self(
-            href: SdkClient::stringValue($data->href),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `issue` wire field.
- */
-class WebhookPullRequestAutoMergeEnabledPullRequestLinksIssue implements \JsonSerializable
-{
-    /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
-     *
-     * @var string
-     */
-    public readonly string $href;
-
-    /**
-     * @param string $href
-     */
-    public function __construct(
-        string $href,
-    ) {
-        $this->href = $href;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "href" => $this->href,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        return new self(
-            href: SdkClient::stringValue($data->href),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `review_comment` wire field.
- */
-class WebhookPullRequestAutoMergeEnabledPullRequestLinksReviewComment implements \JsonSerializable
-{
-    /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
-     *
-     * @var string
-     */
-    public readonly string $href;
-
-    /**
-     * @param string $href
-     */
-    public function __construct(
-        string $href,
-    ) {
-        $this->href = $href;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "href" => $this->href,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        return new self(
-            href: SdkClient::stringValue($data->href),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `review_comments` wire field.
- */
-class WebhookPullRequestAutoMergeEnabledPullRequestLinksReviewComments implements \JsonSerializable
-{
-    /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
-     *
-     * @var string
-     */
-    public readonly string $href;
-
-    /**
-     * @param string $href
-     */
-    public function __construct(
-        string $href,
-    ) {
-        $this->href = $href;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "href" => $this->href,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        return new self(
-            href: SdkClient::stringValue($data->href),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `self` wire field.
- */
-class WebhookPullRequestAutoMergeEnabledPullRequestLinksSelf implements \JsonSerializable
-{
-    /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
-     *
-     * @var string
-     */
-    public readonly string $href;
-
-    /**
-     * @param string $href
-     */
-    public function __construct(
-        string $href,
-    ) {
-        $this->href = $href;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "href" => $this->href,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        return new self(
-            href: SdkClient::stringValue($data->href),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookPullRequestAutoMergeEnabledActionEnum::class),
+            number: SdkClient::intValue($data->number),
+            pullRequest: SdkClient::hydrateClass($data->pull_request, WebhookPullRequestAutoMergeEnabledPullRequest::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            reason: (property_exists($data, "reason") && $data->reason !== null ? SdkClient::stringValue($data->reason) : SdkNotGiven::Value),
         );
     }
 }

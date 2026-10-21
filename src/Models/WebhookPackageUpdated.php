@@ -8,341 +8,97 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookPackageUpdated` API schema.
  */
-final readonly class WebhookPackageUpdatedActionEnum implements SdkOpenEnum
-{
-    public const UPDATED = "updated";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Optional enumerated value serialized in the `type` wire field.
- */
-final readonly class WebhookPackageUpdatedPackageOwnerTypeEnum implements SdkOpenEnum
-{
-    public const BOT = "Bot";
-    public const USER = "User";
-    public const ORGANIZATION = "Organization";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required object value serialized in the `owner` wire field.
- */
-class WebhookPackageUpdatedPackageOwner implements \JsonSerializable
+class WebhookPackageUpdated implements \JsonSerializable
 {
     /**
-     * Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var WebhookPackageUpdatedActionEnum|string
      */
-    public readonly string|SdkNotGiven $avatarUrl;
+    public readonly WebhookPackageUpdatedActionEnum|string $action;
     /**
-     * Optional `boolean` value serialized in the `deleted` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var bool|SdkNotGiven
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly bool|SdkNotGiven $deleted;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Optional `string` value serialized in the `email` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var string|null|SdkNotGiven
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly string|null|SdkNotGiven $email;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var string|SdkNotGiven
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $eventsUrl;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
-     * Optional `uri`-formatted value serialized in the `followers_url` wire field.
+     * Information about the package.
      *
-     * @var string|SdkNotGiven
+     * @var WebhookPackageUpdatedPackage
      */
-    public readonly string|SdkNotGiven $followersUrl;
+    public readonly WebhookPackageUpdatedPackage $package;
     /**
-     * Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var string|SdkNotGiven
+     * @var RepositoryWebhooks
      */
-    public readonly string|SdkNotGiven $followingUrl;
+    public readonly RepositoryWebhooks $repository;
     /**
-     * Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+     * A GitHub user.
      *
-     * @var string|SdkNotGiven
+     * @var SimpleUser
      */
-    public readonly string|SdkNotGiven $gistsUrl;
-    /**
-     * Optional `string` value serialized in the `gravatar_id` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $gravatarId;
-    /**
-     * Optional `uri`-formatted value serialized in the `html_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $htmlUrl;
-    /**
-     * Required `integer` value serialized in the `id` wire field.
-     *
-     * @var int
-     */
-    public readonly int $id;
-    /**
-     * Required `string` value serialized in the `login` wire field.
-     *
-     * @var string
-     */
-    public readonly string $login;
-    /**
-     * Optional `string` value serialized in the `name` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $name;
-    /**
-     * Optional `string` value serialized in the `node_id` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $nodeId;
-    /**
-     * Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $organizationsUrl;
-    /**
-     * Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $receivedEventsUrl;
-    /**
-     * Optional `uri`-formatted value serialized in the `repos_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $reposUrl;
-    /**
-     * Optional `boolean` value serialized in the `site_admin` wire field.
-     *
-     * @var bool|SdkNotGiven
-     */
-    public readonly bool|SdkNotGiven $siteAdmin;
-    /**
-     * Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $starredUrl;
-    /**
-     * Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $subscriptionsUrl;
-    /**
-     * Optional enumerated value serialized in the `type` wire field.
-     *
-     * @var WebhookPackageUpdatedPackageOwnerTypeEnum|string|SdkNotGiven
-     */
-    public readonly WebhookPackageUpdatedPackageOwnerTypeEnum|string|SdkNotGiven $type;
-    /**
-     * Optional `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $url;
-    /**
-     * Optional `string` value serialized in the `user_view_type` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $userViewType;
+    public readonly SimpleUser $sender;
 
     /**
-     * @param int $id
-     * @param string $login
-     * @param string|SdkNotGiven $avatarUrl
-     * @param bool|SdkNotGiven $deleted
-     * @param string|null|SdkNotGiven $email
-     * @param string|SdkNotGiven $eventsUrl
-     * @param string|SdkNotGiven $followersUrl
-     * @param string|SdkNotGiven $followingUrl
-     * @param string|SdkNotGiven $gistsUrl
-     * @param string|SdkNotGiven $gravatarId
-     * @param string|SdkNotGiven $htmlUrl
-     * @param string|SdkNotGiven $name
-     * @param string|SdkNotGiven $nodeId
-     * @param string|SdkNotGiven $organizationsUrl
-     * @param string|SdkNotGiven $receivedEventsUrl
-     * @param string|SdkNotGiven $reposUrl
-     * @param bool|SdkNotGiven $siteAdmin
-     * @param string|SdkNotGiven $starredUrl
-     * @param string|SdkNotGiven $subscriptionsUrl
-     * @param WebhookPackageUpdatedPackageOwnerTypeEnum|string|SdkNotGiven $type
-     * @param string|SdkNotGiven $url
-     * @param string|SdkNotGiven $userViewType
+     * @param WebhookPackageUpdatedActionEnum|string $action
+     * @param WebhookPackageUpdatedPackage $package
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
      */
     public function __construct(
-        int $id,
-        string $login,
-        string|SdkNotGiven $avatarUrl = SdkNotGiven::Value,
-        bool|SdkNotGiven $deleted = SdkNotGiven::Value,
-        string|null|SdkNotGiven $email = SdkNotGiven::Value,
-        string|SdkNotGiven $eventsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $followersUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $followingUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $gistsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $gravatarId = SdkNotGiven::Value,
-        string|SdkNotGiven $htmlUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $name = SdkNotGiven::Value,
-        string|SdkNotGiven $nodeId = SdkNotGiven::Value,
-        string|SdkNotGiven $organizationsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $receivedEventsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $reposUrl = SdkNotGiven::Value,
-        bool|SdkNotGiven $siteAdmin = SdkNotGiven::Value,
-        string|SdkNotGiven $starredUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $subscriptionsUrl = SdkNotGiven::Value,
-        WebhookPackageUpdatedPackageOwnerTypeEnum|string|SdkNotGiven $type = SdkNotGiven::Value,
-        string|SdkNotGiven $url = SdkNotGiven::Value,
-        string|SdkNotGiven $userViewType = SdkNotGiven::Value,
+        WebhookPackageUpdatedActionEnum|string $action,
+        WebhookPackageUpdatedPackage $package,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
     ) {
-        $this->id = $id;
-        $this->login = $login;
-        $this->avatarUrl = $avatarUrl;
-        $this->deleted = $deleted;
-        $this->email = $email;
-        $this->eventsUrl = $eventsUrl;
-        $this->followersUrl = $followersUrl;
-        $this->followingUrl = $followingUrl;
-        $this->gistsUrl = $gistsUrl;
-        $this->gravatarId = $gravatarId;
-        $this->htmlUrl = $htmlUrl;
-        $this->name = $name;
-        $this->nodeId = $nodeId;
-        $this->organizationsUrl = $organizationsUrl;
-        $this->receivedEventsUrl = $receivedEventsUrl;
-        $this->reposUrl = $reposUrl;
-        $this->siteAdmin = $siteAdmin;
-        $this->starredUrl = $starredUrl;
-        $this->subscriptionsUrl = $subscriptionsUrl;
-        $this->type = $type;
-        $this->url = $url;
-        $this->userViewType = $userViewType;
+        $this->action = $action;
+        $this->package = $package;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "id" => $this->id,
-            "login" => $this->login,
+            "action" => $this->action,
+            "package" => $this->package,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
-        if ($this->avatarUrl !== SdkNotGiven::Value) {
-            $values["avatar_url"] = $this->avatarUrl;
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
         }
-        if ($this->deleted !== SdkNotGiven::Value) {
-            $values["deleted"] = $this->deleted;
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
         }
-        if ($this->email !== SdkNotGiven::Value) {
-            $values["email"] = $this->email;
-        }
-        if ($this->eventsUrl !== SdkNotGiven::Value) {
-            $values["events_url"] = $this->eventsUrl;
-        }
-        if ($this->followersUrl !== SdkNotGiven::Value) {
-            $values["followers_url"] = $this->followersUrl;
-        }
-        if ($this->followingUrl !== SdkNotGiven::Value) {
-            $values["following_url"] = $this->followingUrl;
-        }
-        if ($this->gistsUrl !== SdkNotGiven::Value) {
-            $values["gists_url"] = $this->gistsUrl;
-        }
-        if ($this->gravatarId !== SdkNotGiven::Value) {
-            $values["gravatar_id"] = $this->gravatarId;
-        }
-        if ($this->htmlUrl !== SdkNotGiven::Value) {
-            $values["html_url"] = $this->htmlUrl;
-        }
-        if ($this->name !== SdkNotGiven::Value) {
-            $values["name"] = $this->name;
-        }
-        if ($this->nodeId !== SdkNotGiven::Value) {
-            $values["node_id"] = $this->nodeId;
-        }
-        if ($this->organizationsUrl !== SdkNotGiven::Value) {
-            $values["organizations_url"] = $this->organizationsUrl;
-        }
-        if ($this->receivedEventsUrl !== SdkNotGiven::Value) {
-            $values["received_events_url"] = $this->receivedEventsUrl;
-        }
-        if ($this->reposUrl !== SdkNotGiven::Value) {
-            $values["repos_url"] = $this->reposUrl;
-        }
-        if ($this->siteAdmin !== SdkNotGiven::Value) {
-            $values["site_admin"] = $this->siteAdmin;
-        }
-        if ($this->starredUrl !== SdkNotGiven::Value) {
-            $values["starred_url"] = $this->starredUrl;
-        }
-        if ($this->subscriptionsUrl !== SdkNotGiven::Value) {
-            $values["subscriptions_url"] = $this->subscriptionsUrl;
-        }
-        if ($this->type !== SdkNotGiven::Value) {
-            $values["type"] = $this->type;
-        }
-        if ($this->url !== SdkNotGiven::Value) {
-            $values["url"] = $this->url;
-        }
-        if ($this->userViewType !== SdkNotGiven::Value) {
-            $values["user_view_type"] = $this->userViewType;
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
         }
         return $values;
     }
@@ -355,35 +111,26 @@ class WebhookPackageUpdatedPackageOwner implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
         }
-        if (!property_exists($data, "login") || $data->login === null) {
-            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
+        if (!property_exists($data, "package") || $data->package === null) {
+            throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
         }
         return new self(
-            id: SdkClient::intValue($data->id),
-            login: SdkClient::stringValue($data->login),
-            avatarUrl: (property_exists($data, "avatar_url") && $data->avatar_url !== null ? SdkClient::stringValue($data->avatar_url) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
-            email: (property_exists($data, "email") ? ($data->email === null ? null : SdkClient::stringValue($data->email)) : SdkNotGiven::Value),
-            eventsUrl: (property_exists($data, "events_url") && $data->events_url !== null ? SdkClient::stringValue($data->events_url) : SdkNotGiven::Value),
-            followersUrl: (property_exists($data, "followers_url") && $data->followers_url !== null ? SdkClient::stringValue($data->followers_url) : SdkNotGiven::Value),
-            followingUrl: (property_exists($data, "following_url") && $data->following_url !== null ? SdkClient::stringValue($data->following_url) : SdkNotGiven::Value),
-            gistsUrl: (property_exists($data, "gists_url") && $data->gists_url !== null ? SdkClient::stringValue($data->gists_url) : SdkNotGiven::Value),
-            gravatarId: (property_exists($data, "gravatar_id") && $data->gravatar_id !== null ? SdkClient::stringValue($data->gravatar_id) : SdkNotGiven::Value),
-            htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            nodeId: (property_exists($data, "node_id") && $data->node_id !== null ? SdkClient::stringValue($data->node_id) : SdkNotGiven::Value),
-            organizationsUrl: (property_exists($data, "organizations_url") && $data->organizations_url !== null ? SdkClient::stringValue($data->organizations_url) : SdkNotGiven::Value),
-            receivedEventsUrl: (property_exists($data, "received_events_url") && $data->received_events_url !== null ? SdkClient::stringValue($data->received_events_url) : SdkNotGiven::Value),
-            reposUrl: (property_exists($data, "repos_url") && $data->repos_url !== null ? SdkClient::stringValue($data->repos_url) : SdkNotGiven::Value),
-            siteAdmin: (property_exists($data, "site_admin") && $data->site_admin !== null ? SdkClient::boolValue($data->site_admin) : SdkNotGiven::Value),
-            starredUrl: (property_exists($data, "starred_url") && $data->starred_url !== null ? SdkClient::stringValue($data->starred_url) : SdkNotGiven::Value),
-            subscriptionsUrl: (property_exists($data, "subscriptions_url") && $data->subscriptions_url !== null ? SdkClient::stringValue($data->subscriptions_url) : SdkNotGiven::Value),
-            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::hydrateStringEnumOrString($data->type, WebhookPackageUpdatedPackageOwnerTypeEnum::class) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
-            userViewType: (property_exists($data, "user_view_type") && $data->user_view_type !== null ? SdkClient::stringValue($data->user_view_type) : SdkNotGiven::Value),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookPackageUpdatedActionEnum::class),
+            package: SdkClient::hydrateClass($data->package, WebhookPackageUpdatedPackage::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
         );
     }
 }

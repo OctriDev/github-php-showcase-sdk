@@ -8,222 +8,108 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookPullRequestReviewCommentCreated` API schema.
  */
-final readonly class WebhookPullRequestReviewCommentCreatedActionEnum implements SdkOpenEnum
-{
-    public const CREATED = "created";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required object value serialized in the `html` wire field.
- */
-class WebhookPullRequestReviewCommentCreatedCommentLinksHtml implements \JsonSerializable
+class WebhookPullRequestReviewCommentCreated implements \JsonSerializable
 {
     /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string
+     * @var WebhookPullRequestReviewCommentCreatedActionEnum|string
      */
-    public readonly string $href;
-
+    public readonly WebhookPullRequestReviewCommentCreatedActionEnum|string $action;
     /**
-     * @param string $href
-     */
-    public function __construct(
-        string $href,
-    ) {
-        $this->href = $href;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "href" => $this->href,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        return new self(
-            href: SdkClient::stringValue($data->href),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `pull_request` wire field.
- */
-class WebhookPullRequestReviewCommentCreatedCommentLinksPullRequest implements \JsonSerializable
-{
-    /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
+     * The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
      *
-     * @var string
+     * @var WebhookPullRequestReviewCommentCreatedComment
      */
-    public readonly string $href;
-
+    public readonly WebhookPullRequestReviewCommentCreatedComment $comment;
     /**
-     * @param string $href
-     */
-    public function __construct(
-        string $href,
-    ) {
-        $this->href = $href;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "href" => $this->href,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        return new self(
-            href: SdkClient::stringValue($data->href),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `self` wire field.
- */
-class WebhookPullRequestReviewCommentCreatedCommentLinksSelf implements \JsonSerializable
-{
-    /**
-     * Required `uri-template`-formatted value serialized in the `href` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var string
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly string $href;
-
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * @param string $href
-     */
-    public function __construct(
-        string $href,
-    ) {
-        $this->href = $href;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "href" => $this->href,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "href") || $data->href === null) {
-            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
-        }
-        return new self(
-            href: SdkClient::stringValue($data->href),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `_links` wire field.
- */
-class WebhookPullRequestReviewCommentCreatedCommentLinks implements \JsonSerializable
-{
-    /**
-     * Required object value serialized in the `html` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var WebhookPullRequestReviewCommentCreatedCommentLinksHtml
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly WebhookPullRequestReviewCommentCreatedCommentLinksHtml $html;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
+    /**
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+     *
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
+     */
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
      * Required object value serialized in the `pull_request` wire field.
      *
-     * @var WebhookPullRequestReviewCommentCreatedCommentLinksPullRequest
+     * @var WebhookPullRequestReviewCommentCreatedPullRequest
      */
-    public readonly WebhookPullRequestReviewCommentCreatedCommentLinksPullRequest $pullRequest;
+    public readonly WebhookPullRequestReviewCommentCreatedPullRequest $pullRequest;
     /**
-     * Required object value serialized in the `self` wire field.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var WebhookPullRequestReviewCommentCreatedCommentLinksSelf
+     * @var RepositoryWebhooks
      */
-    public readonly WebhookPullRequestReviewCommentCreatedCommentLinksSelf $self_;
+    public readonly RepositoryWebhooks $repository;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
 
     /**
-     * @param WebhookPullRequestReviewCommentCreatedCommentLinksHtml $html
-     * @param WebhookPullRequestReviewCommentCreatedCommentLinksPullRequest $pullRequest
-     * @param WebhookPullRequestReviewCommentCreatedCommentLinksSelf $self_
+     * @param WebhookPullRequestReviewCommentCreatedActionEnum|string $action
+     * @param WebhookPullRequestReviewCommentCreatedComment $comment
+     * @param WebhookPullRequestReviewCommentCreatedPullRequest $pullRequest
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
      */
     public function __construct(
-        WebhookPullRequestReviewCommentCreatedCommentLinksHtml $html,
-        WebhookPullRequestReviewCommentCreatedCommentLinksPullRequest $pullRequest,
-        WebhookPullRequestReviewCommentCreatedCommentLinksSelf $self_,
+        WebhookPullRequestReviewCommentCreatedActionEnum|string $action,
+        WebhookPullRequestReviewCommentCreatedComment $comment,
+        WebhookPullRequestReviewCommentCreatedPullRequest $pullRequest,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
     ) {
-        $this->html = $html;
+        $this->action = $action;
+        $this->comment = $comment;
         $this->pullRequest = $pullRequest;
-        $this->self_ = $self_;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "html" => $this->html,
+            "action" => $this->action,
+            "comment" => $this->comment,
             "pull_request" => $this->pullRequest,
-            "self" => $this->self_,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
         return $values;
     }
 
@@ -235,55 +121,30 @@ class WebhookPullRequestReviewCommentCreatedCommentLinks implements \JsonSeriali
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "html") || $data->html === null) {
-            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "comment") || $data->comment === null) {
+            throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null");
         }
         if (!property_exists($data, "pull_request") || $data->pull_request === null) {
             throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
         }
-        if (!property_exists($data, "self") || $data->self === null) {
-            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
         }
         return new self(
-            html: SdkClient::hydrateClass($data->html, WebhookPullRequestReviewCommentCreatedCommentLinksHtml::class),
-            pullRequest: SdkClient::hydrateClass($data->pull_request, WebhookPullRequestReviewCommentCreatedCommentLinksPullRequest::class),
-            self_: SdkClient::hydrateClass($data->self, WebhookPullRequestReviewCommentCreatedCommentLinksSelf::class),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookPullRequestReviewCommentCreatedActionEnum::class),
+            comment: SdkClient::hydrateClass($data->comment, WebhookPullRequestReviewCommentCreatedComment::class),
+            pullRequest: SdkClient::hydrateClass($data->pull_request, WebhookPullRequestReviewCommentCreatedPullRequest::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
         );
-    }
-}
-
-/**
- * How the author is associated with the repository.
- */
-final readonly class WebhookPullRequestReviewCommentCreatedCommentAuthorAssociationEnum implements SdkOpenEnum
-{
-    public const COLLABORATOR = "COLLABORATOR";
-    public const CONTRIBUTOR = "CONTRIBUTOR";
-    public const FIRST_TIMER = "FIRST_TIMER";
-    public const FIRST_TIME_CONTRIBUTOR = "FIRST_TIME_CONTRIBUTOR";
-    public const MANNEQUIN = "MANNEQUIN";
-    public const MEMBER = "MEMBER";
-    public const NONE = "NONE";
-    public const OWNER = "OWNER";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
     }
 }

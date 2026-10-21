@@ -9,6 +9,8 @@ namespace octridev_github;
 
 class Migrations
 {
-    use MigrationsMethodsPart1;
-    use MigrationsMethodsPart2;
+    use MigrationsMethods;
+    use MigrationsArchiveMethods;
+    use MigrationsReposMethods;
+    use MigrationsRepositoriesMethods;
 }

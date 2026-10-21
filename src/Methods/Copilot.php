@@ -9,6 +9,11 @@ namespace octridev_github;
 
 class Copilot
 {
-    use CopilotMethodsPart1;
-    use CopilotMethodsPart2;
+    use CopilotMetricsMethods;
+    use CopilotPoliciesMethods;
+    use CopilotBillingMethods;
+    use CopilotCodingAgentMethods;
+    use CopilotContentExclusionMethods;
+    use CopilotMethods;
+    use CopilotCloudAgentMethods;
 }

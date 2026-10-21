@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class AgentAutomations
 {
-    use AgentAutomationsMethodsPart1;
+    use AgentAutomationsMethods;
 }

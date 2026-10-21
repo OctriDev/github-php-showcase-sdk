@@ -8,208 +8,110 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookWorkflowJobWaiting` API schema.
  */
-final readonly class WebhookWorkflowJobWaitingActionEnum implements SdkOpenEnum
-{
-    public const WAITING = "waiting";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required enumerated value serialized in the `status` wire field.
- */
-final readonly class WebhookWorkflowJobWaitingWorkflowJobStatusEnum implements SdkOpenEnum
-{
-    public const QUEUED = "queued";
-    public const IN_PROGRESS = "in_progress";
-    public const COMPLETED = "completed";
-    public const WAITING = "waiting";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required enumerated value serialized in the `conclusion` wire field.
- */
-final readonly class WebhookWorkflowJobWaitingWorkflowJobStepsItemConclusionEnum implements SdkOpenEnum
-{
-    public const FAILURE = "failure";
-    public const SKIPPED = "skipped";
-    public const SUCCESS = "success";
-    public const CANCELLED = "cancelled";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required enumerated value serialized in the `status` wire field.
- */
-final readonly class WebhookWorkflowJobWaitingWorkflowJobStepsItemStatusEnum implements SdkOpenEnum
-{
-    public const COMPLETED = "completed";
-    public const IN_PROGRESS = "in_progress";
-    public const QUEUED = "queued";
-    public const PENDING = "pending";
-    public const WAITING = "waiting";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Required object value serialized in the `steps[]` wire field.
- */
-class WebhookWorkflowJobWaitingWorkflowJobStepsItem implements \JsonSerializable
+class WebhookWorkflowJobWaiting implements \JsonSerializable
 {
     /**
-     * Required `string` value serialized in the `completed_at` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string|null
+     * @var WebhookWorkflowJobWaitingActionEnum|string
      */
-    public readonly string|null $completedAt;
+    public readonly WebhookWorkflowJobWaitingActionEnum|string $action;
     /**
-     * Required enumerated value serialized in the `conclusion` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var WebhookWorkflowJobWaitingWorkflowJobStepsItemConclusionEnum|string|null
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly WebhookWorkflowJobWaitingWorkflowJobStepsItemConclusionEnum|string|null $conclusion;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Required `string` value serialized in the `name` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var string
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly string $name;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * Required `integer` value serialized in the `number` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var int
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly int $number;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
-     * Required `string` value serialized in the `started_at` wire field.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var string|null
+     * @var RepositoryWebhooks
      */
-    public readonly string|null $startedAt;
+    public readonly RepositoryWebhooks $repository;
     /**
-     * Required enumerated value serialized in the `status` wire field.
+     * A GitHub user.
      *
-     * @var WebhookWorkflowJobWaitingWorkflowJobStepsItemStatusEnum|string
+     * @var SimpleUser
      */
-    public readonly WebhookWorkflowJobWaitingWorkflowJobStepsItemStatusEnum|string $status;
+    public readonly SimpleUser $sender;
+    /**
+     * Required object value serialized in the `workflow_job` wire field.
+     *
+     * @var WebhookWorkflowJobWaitingWorkflowJob
+     */
+    public readonly WebhookWorkflowJobWaitingWorkflowJob $workflowJob;
+    /**
+     * A request for a specific ref(branch,sha,tag) to be deployed
+     *
+     * @var Deployment|SdkNotGiven
+     */
+    public readonly Deployment|SdkNotGiven $deployment;
 
     /**
-     * @param string|null $completedAt
-     * @param WebhookWorkflowJobWaitingWorkflowJobStepsItemConclusionEnum|string|null $conclusion
-     * @param string $name
-     * @param int $number
-     * @param string|null $startedAt
-     * @param WebhookWorkflowJobWaitingWorkflowJobStepsItemStatusEnum|string $status
+     * @param WebhookWorkflowJobWaitingActionEnum|string $action
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param WebhookWorkflowJobWaitingWorkflowJob $workflowJob
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param Deployment|SdkNotGiven $deployment
      */
     public function __construct(
-        string|null $completedAt,
-        WebhookWorkflowJobWaitingWorkflowJobStepsItemConclusionEnum|string|null $conclusion,
-        string $name,
-        int $number,
-        string|null $startedAt,
-        WebhookWorkflowJobWaitingWorkflowJobStepsItemStatusEnum|string $status,
+        WebhookWorkflowJobWaitingActionEnum|string $action,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        WebhookWorkflowJobWaitingWorkflowJob $workflowJob,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        Deployment|SdkNotGiven $deployment = SdkNotGiven::Value,
     ) {
-        $this->completedAt = $completedAt;
-        $this->conclusion = $conclusion;
-        $this->name = $name;
-        $this->number = $number;
-        $this->startedAt = $startedAt;
-        $this->status = $status;
+        $this->action = $action;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->workflowJob = $workflowJob;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
+        $this->deployment = $deployment;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "completed_at" => $this->completedAt,
-            "conclusion" => $this->conclusion,
-            "name" => $this->name,
-            "number" => $this->number,
-            "started_at" => $this->startedAt,
-            "status" => $this->status,
+            "action" => $this->action,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
+            "workflow_job" => $this->workflowJob,
         ];
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
+        if ($this->deployment !== SdkNotGiven::Value) {
+            $values["deployment"] = $this->deployment;
+        }
         return $values;
     }
 
@@ -221,31 +123,27 @@ class WebhookWorkflowJobWaitingWorkflowJobStepsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "completed_at")) {
-            throw new SdkValidationError("completed_at", 'required', "Missing required property 'completed_at'");
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
         }
-        if (!property_exists($data, "conclusion")) {
-            throw new SdkValidationError("conclusion", 'required', "Missing required property 'conclusion'");
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
         }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
         }
-        if (!property_exists($data, "number") || $data->number === null) {
-            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
-        }
-        if (!property_exists($data, "started_at")) {
-            throw new SdkValidationError("started_at", 'required', "Missing required property 'started_at'");
-        }
-        if (!property_exists($data, "status") || $data->status === null) {
-            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        if (!property_exists($data, "workflow_job") || $data->workflow_job === null) {
+            throw new SdkValidationError("workflow_job", 'required', "Required property 'workflow_job' is missing or null");
         }
         return new self(
-            completedAt: ($data->completed_at === null ? null : SdkClient::stringValue($data->completed_at)),
-            conclusion: ($data->conclusion === null ? null : SdkClient::hydrateStringEnumOrString($data->conclusion, WebhookWorkflowJobWaitingWorkflowJobStepsItemConclusionEnum::class)),
-            name: SdkClient::stringValue($data->name),
-            number: SdkClient::intValue($data->number),
-            startedAt: ($data->started_at === null ? null : SdkClient::stringValue($data->started_at)),
-            status: SdkClient::hydrateStringEnumOrString($data->status, WebhookWorkflowJobWaitingWorkflowJobStepsItemStatusEnum::class),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookWorkflowJobWaitingActionEnum::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            workflowJob: SdkClient::hydrateClass($data->workflow_job, WebhookWorkflowJobWaitingWorkflowJob::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            deployment: (property_exists($data, "deployment") && $data->deployment !== null ? SdkClient::hydrateClass($data->deployment, Deployment::class) : SdkNotGiven::Value),
         );
     }
 }

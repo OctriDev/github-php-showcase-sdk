@@ -9,6 +9,9 @@ namespace octridev_github;
 
 class SecretScanning
 {
-    use SecretScanningMethodsPart1;
-    use SecretScanningMethodsPart2;
+    use SecretScanningAlertsMethods;
+    use SecretScanningCustomPatternsMethods;
+    use SecretScanningPatternConfigurationsMethods;
+    use SecretScanningPushProtectionBypassesMethods;
+    use SecretScanningScanHistoryMethods;
 }

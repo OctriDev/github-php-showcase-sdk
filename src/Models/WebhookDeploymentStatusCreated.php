@@ -8,240 +8,144 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookDeploymentStatusCreated` API schema.
  */
-final readonly class WebhookDeploymentStatusCreatedActionEnum implements SdkOpenEnum
-{
-    public const CREATED = "created";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * The result of the completed check run. This value will be `null` until the check run has completed.
- */
-final readonly class WebhookDeploymentStatusCreatedCheckRunConclusionEnum implements SdkOpenEnum
-{
-    public const SUCCESS = "success";
-    public const FAILURE = "failure";
-    public const NEUTRAL = "neutral";
-    public const CANCELLED = "cancelled";
-    public const TIMED_OUT = "timed_out";
-    public const ACTION_REQUIRED = "action_required";
-    public const STALE = "stale";
-    public const SKIPPED = "skipped";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
- */
-final readonly class WebhookDeploymentStatusCreatedCheckRunStatusEnum implements SdkOpenEnum
-{
-    public const QUEUED = "queued";
-    public const IN_PROGRESS = "in_progress";
-    public const COMPLETED = "completed";
-    public const WAITING = "waiting";
-    public const PENDING = "pending";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Optional object value serialized in the `check_run` wire field.
- */
-class WebhookDeploymentStatusCreatedCheckRun implements \JsonSerializable
+class WebhookDeploymentStatusCreated implements \JsonSerializable
 {
     /**
-     * Required `date-time`-formatted value serialized in the `completed_at` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string|null
+     * @var WebhookDeploymentStatusCreatedActionEnum|string
      */
-    public readonly string|null $completedAt;
+    public readonly WebhookDeploymentStatusCreatedActionEnum|string $action;
     /**
-     * The result of the completed check run. This value will be `null` until the check run has completed.
+     * Optional object value serialized in the `check_run` wire field.
      *
-     * @var WebhookDeploymentStatusCreatedCheckRunConclusionEnum|string|null
+     * @var WebhookDeploymentStatusCreatedCheckRun|null|SdkNotGiven
      */
-    public readonly WebhookDeploymentStatusCreatedCheckRunConclusionEnum|string|null $conclusion;
+    public readonly WebhookDeploymentStatusCreatedCheckRun|null|SdkNotGiven $checkRun;
     /**
-     * Required `uri`-formatted value serialized in the `details_url` wire field.
+     * The [deployment](https://docs.github.com/rest/deployments/deployments#list-deployments).
      *
-     * @var string
+     * @var WebhookDeploymentStatusCreatedDeployment
      */
-    public readonly string $detailsUrl;
+    public readonly WebhookDeploymentStatusCreatedDeployment $deployment;
     /**
-     * Required `string` value serialized in the `external_id` wire field.
+     * The [deployment status](https://docs.github.com/rest/deployments/statuses#list-deployment-statuses).
      *
-     * @var string
+     * @var WebhookDeploymentStatusCreatedDeploymentStatus
      */
-    public readonly string $externalId;
+    public readonly WebhookDeploymentStatusCreatedDeploymentStatus $deploymentStatus;
     /**
-     * The SHA of the commit that is being checked.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var string
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly string $headSha;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Required `uri`-formatted value serialized in the `html_url` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var string
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly string $htmlUrl;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * The id of the check.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var int
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly int $id;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
-     * The name of the check run.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var string
+     * @var RepositoryWebhooks
      */
-    public readonly string $name;
+    public readonly RepositoryWebhooks $repository;
     /**
-     * Required `string` value serialized in the `node_id` wire field.
+     * A GitHub user.
      *
-     * @var string
+     * @var SimpleUser
      */
-    public readonly string $nodeId;
+    public readonly SimpleUser $sender;
     /**
-     * Required `date-time`-formatted value serialized in the `started_at` wire field.
+     * Optional object value serialized in the `workflow` wire field.
      *
-     * @var string
+     * @var WebhooksWorkflow|null|SdkNotGiven
      */
-    public readonly string $startedAt;
+    public readonly WebhooksWorkflow|null|SdkNotGiven $workflow;
     /**
-     * The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
+     * Optional object value serialized in the `workflow_run` wire field.
      *
-     * @var WebhookDeploymentStatusCreatedCheckRunStatusEnum|string
+     * @var WebhookDeploymentStatusCreatedWorkflowRun|null|SdkNotGiven
      */
-    public readonly WebhookDeploymentStatusCreatedCheckRunStatusEnum|string $status;
-    /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $url;
+    public readonly WebhookDeploymentStatusCreatedWorkflowRun|null|SdkNotGiven $workflowRun;
 
     /**
-     * @param string|null $completedAt
-     * @param WebhookDeploymentStatusCreatedCheckRunConclusionEnum|string|null $conclusion
-     * @param string $detailsUrl
-     * @param string $externalId
-     * @param string $headSha
-     * @param string $htmlUrl
-     * @param int $id
-     * @param string $name
-     * @param string $nodeId
-     * @param string $startedAt
-     * @param WebhookDeploymentStatusCreatedCheckRunStatusEnum|string $status
-     * @param string $url
+     * @param WebhookDeploymentStatusCreatedActionEnum|string $action
+     * @param WebhookDeploymentStatusCreatedDeployment $deployment
+     * @param WebhookDeploymentStatusCreatedDeploymentStatus $deploymentStatus
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param WebhookDeploymentStatusCreatedCheckRun|null|SdkNotGiven $checkRun
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param WebhooksWorkflow|null|SdkNotGiven $workflow
+     * @param WebhookDeploymentStatusCreatedWorkflowRun|null|SdkNotGiven $workflowRun
      */
     public function __construct(
-        string|null $completedAt,
-        WebhookDeploymentStatusCreatedCheckRunConclusionEnum|string|null $conclusion,
-        string $detailsUrl,
-        string $externalId,
-        string $headSha,
-        string $htmlUrl,
-        int $id,
-        string $name,
-        string $nodeId,
-        string $startedAt,
-        WebhookDeploymentStatusCreatedCheckRunStatusEnum|string $status,
-        string $url,
+        WebhookDeploymentStatusCreatedActionEnum|string $action,
+        WebhookDeploymentStatusCreatedDeployment $deployment,
+        WebhookDeploymentStatusCreatedDeploymentStatus $deploymentStatus,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        WebhookDeploymentStatusCreatedCheckRun|null|SdkNotGiven $checkRun = SdkNotGiven::Value,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        WebhooksWorkflow|null|SdkNotGiven $workflow = SdkNotGiven::Value,
+        WebhookDeploymentStatusCreatedWorkflowRun|null|SdkNotGiven $workflowRun = SdkNotGiven::Value,
     ) {
-        $this->completedAt = $completedAt;
-        $this->conclusion = $conclusion;
-        $this->detailsUrl = $detailsUrl;
-        $this->externalId = $externalId;
-        $this->headSha = $headSha;
-        $this->htmlUrl = $htmlUrl;
-        $this->id = $id;
-        $this->name = $name;
-        $this->nodeId = $nodeId;
-        $this->startedAt = $startedAt;
-        $this->status = $status;
-        $this->url = $url;
+        $this->action = $action;
+        $this->deployment = $deployment;
+        $this->deploymentStatus = $deploymentStatus;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->checkRun = $checkRun;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
+        $this->workflow = $workflow;
+        $this->workflowRun = $workflowRun;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "completed_at" => $this->completedAt,
-            "conclusion" => $this->conclusion,
-            "details_url" => $this->detailsUrl,
-            "external_id" => $this->externalId,
-            "head_sha" => $this->headSha,
-            "html_url" => $this->htmlUrl,
-            "id" => $this->id,
-            "name" => $this->name,
-            "node_id" => $this->nodeId,
-            "started_at" => $this->startedAt,
-            "status" => $this->status,
-            "url" => $this->url,
+            "action" => $this->action,
+            "deployment" => $this->deployment,
+            "deployment_status" => $this->deploymentStatus,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
+        if ($this->checkRun !== SdkNotGiven::Value) {
+            $values["check_run"] = $this->checkRun;
+        }
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
+        if ($this->workflow !== SdkNotGiven::Value) {
+            $values["workflow"] = $this->workflow;
+        }
+        if ($this->workflowRun !== SdkNotGiven::Value) {
+            $values["workflow_run"] = $this->workflowRun;
+        }
         return $values;
     }
 
@@ -253,86 +157,33 @@ class WebhookDeploymentStatusCreatedCheckRun implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "completed_at")) {
-            throw new SdkValidationError("completed_at", 'required', "Missing required property 'completed_at'");
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
         }
-        if (!property_exists($data, "conclusion")) {
-            throw new SdkValidationError("conclusion", 'required', "Missing required property 'conclusion'");
+        if (!property_exists($data, "deployment") || $data->deployment === null) {
+            throw new SdkValidationError("deployment", 'required', "Required property 'deployment' is missing or null");
         }
-        if (!property_exists($data, "details_url") || $data->details_url === null) {
-            throw new SdkValidationError("details_url", 'required', "Required property 'details_url' is missing or null");
+        if (!property_exists($data, "deployment_status") || $data->deployment_status === null) {
+            throw new SdkValidationError("deployment_status", 'required', "Required property 'deployment_status' is missing or null");
         }
-        if (!property_exists($data, "external_id") || $data->external_id === null) {
-            throw new SdkValidationError("external_id", 'required', "Required property 'external_id' is missing or null");
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
         }
-        if (!property_exists($data, "head_sha") || $data->head_sha === null) {
-            throw new SdkValidationError("head_sha", 'required', "Required property 'head_sha' is missing or null");
-        }
-        if (!property_exists($data, "html_url") || $data->html_url === null) {
-            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "node_id") || $data->node_id === null) {
-            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
-        }
-        if (!property_exists($data, "started_at") || $data->started_at === null) {
-            throw new SdkValidationError("started_at", 'required', "Required property 'started_at' is missing or null");
-        }
-        if (!property_exists($data, "status") || $data->status === null) {
-            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
-        }
-        if (!property_exists($data, "url") || $data->url === null) {
-            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
         }
         return new self(
-            completedAt: ($data->completed_at === null ? null : SdkClient::stringValue($data->completed_at)),
-            conclusion: ($data->conclusion === null ? null : SdkClient::hydrateStringEnumOrString($data->conclusion, WebhookDeploymentStatusCreatedCheckRunConclusionEnum::class)),
-            detailsUrl: SdkClient::stringValue($data->details_url),
-            externalId: SdkClient::stringValue($data->external_id),
-            headSha: SdkClient::stringValue($data->head_sha),
-            htmlUrl: SdkClient::stringValue($data->html_url),
-            id: SdkClient::intValue($data->id),
-            name: SdkClient::stringValue($data->name),
-            nodeId: SdkClient::stringValue($data->node_id),
-            startedAt: SdkClient::stringValue($data->started_at),
-            status: SdkClient::hydrateStringEnumOrString($data->status, WebhookDeploymentStatusCreatedCheckRunStatusEnum::class),
-            url: SdkClient::stringValue($data->url),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookDeploymentStatusCreatedActionEnum::class),
+            deployment: SdkClient::hydrateClass($data->deployment, WebhookDeploymentStatusCreatedDeployment::class),
+            deploymentStatus: SdkClient::hydrateClass($data->deployment_status, WebhookDeploymentStatusCreatedDeploymentStatus::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            checkRun: (property_exists($data, "check_run") ? ($data->check_run === null ? null : SdkClient::hydrateClass($data->check_run, WebhookDeploymentStatusCreatedCheckRun::class)) : SdkNotGiven::Value),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            workflow: (property_exists($data, "workflow") ? ($data->workflow === null ? null : SdkClient::hydrateClass($data->workflow, WebhooksWorkflow::class)) : SdkNotGiven::Value),
+            workflowRun: (property_exists($data, "workflow_run") ? ($data->workflow_run === null ? null : SdkClient::hydrateClass($data->workflow_run, WebhookDeploymentStatusCreatedWorkflowRun::class)) : SdkNotGiven::Value),
         );
-    }
-}
-
-/**
- * Optional enumerated value serialized in the `type` wire field.
- */
-final readonly class WebhookDeploymentStatusCreatedDeploymentCreatorTypeEnum implements SdkOpenEnum
-{
-    public const BOT = "Bot";
-    public const USER = "User";
-    public const ORGANIZATION = "Organization";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
     }
 }

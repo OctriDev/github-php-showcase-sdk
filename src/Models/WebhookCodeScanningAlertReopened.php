@@ -8,325 +8,117 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookCodeScanningAlertReopened` API schema.
  */
-final readonly class WebhookCodeScanningAlertReopenedActionEnum implements SdkOpenEnum
-{
-    public const REOPENED = "reopened";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Optional object value serialized in the `location` wire field.
- */
-class WebhookCodeScanningAlertReopenedAlertMostRecentInstanceLocation implements \JsonSerializable
+class WebhookCodeScanningAlertReopened implements \JsonSerializable
 {
     /**
-     * Optional `integer` value serialized in the `end_column` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var int|SdkNotGiven
+     * @var WebhookCodeScanningAlertReopenedActionEnum|string
      */
-    public readonly int|SdkNotGiven $endColumn;
+    public readonly WebhookCodeScanningAlertReopenedActionEnum|string $action;
     /**
-     * Optional `integer` value serialized in the `end_line` wire field.
+     * The code scanning alert involved in the event.
      *
-     * @var int|SdkNotGiven
+     * @var WebhookCodeScanningAlertReopenedAlert
      */
-    public readonly int|SdkNotGiven $endLine;
+    public readonly WebhookCodeScanningAlertReopenedAlert $alert;
     /**
-     * Optional `string` value serialized in the `path` wire field.
+     * The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.
      *
-     * @var string|SdkNotGiven
+     * @var string|null
      */
-    public readonly string|SdkNotGiven $path;
+    public readonly string|null $commitOid;
     /**
-     * Optional `integer` value serialized in the `start_column` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var int|SdkNotGiven
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly int|SdkNotGiven $startColumn;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Optional `integer` value serialized in the `start_line` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var int|SdkNotGiven
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly int|SdkNotGiven $startLine;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
+    /**
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+     *
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
+     */
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
+    /**
+     * The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.
+     *
+     * @var string|null
+     */
+    public readonly string|null $ref;
+    /**
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+     *
+     * @var RepositoryWebhooks
+     */
+    public readonly RepositoryWebhooks $repository;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
 
     /**
-     * @param int|SdkNotGiven $endColumn
-     * @param int|SdkNotGiven $endLine
-     * @param string|SdkNotGiven $path
-     * @param int|SdkNotGiven $startColumn
-     * @param int|SdkNotGiven $startLine
+     * @param WebhookCodeScanningAlertReopenedActionEnum|string $action
+     * @param WebhookCodeScanningAlertReopenedAlert $alert
+     * @param string|null $commitOid
+     * @param string|null $ref
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
      */
     public function __construct(
-        int|SdkNotGiven $endColumn = SdkNotGiven::Value,
-        int|SdkNotGiven $endLine = SdkNotGiven::Value,
-        string|SdkNotGiven $path = SdkNotGiven::Value,
-        int|SdkNotGiven $startColumn = SdkNotGiven::Value,
-        int|SdkNotGiven $startLine = SdkNotGiven::Value,
+        WebhookCodeScanningAlertReopenedActionEnum|string $action,
+        WebhookCodeScanningAlertReopenedAlert $alert,
+        string|null $commitOid,
+        string|null $ref,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
     ) {
-        $this->endColumn = $endColumn;
-        $this->endLine = $endLine;
-        $this->path = $path;
-        $this->startColumn = $startColumn;
-        $this->startLine = $startLine;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->endColumn !== SdkNotGiven::Value) {
-            $values["end_column"] = $this->endColumn;
-        }
-        if ($this->endLine !== SdkNotGiven::Value) {
-            $values["end_line"] = $this->endLine;
-        }
-        if ($this->path !== SdkNotGiven::Value) {
-            $values["path"] = $this->path;
-        }
-        if ($this->startColumn !== SdkNotGiven::Value) {
-            $values["start_column"] = $this->startColumn;
-        }
-        if ($this->startLine !== SdkNotGiven::Value) {
-            $values["start_line"] = $this->startLine;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            endColumn: (property_exists($data, "end_column") && $data->end_column !== null ? SdkClient::intValue($data->end_column) : SdkNotGiven::Value),
-            endLine: (property_exists($data, "end_line") && $data->end_line !== null ? SdkClient::intValue($data->end_line) : SdkNotGiven::Value),
-            path: (property_exists($data, "path") && $data->path !== null ? SdkClient::stringValue($data->path) : SdkNotGiven::Value),
-            startColumn: (property_exists($data, "start_column") && $data->start_column !== null ? SdkClient::intValue($data->start_column) : SdkNotGiven::Value),
-            startLine: (property_exists($data, "start_line") && $data->start_line !== null ? SdkClient::intValue($data->start_line) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `message` wire field.
- */
-class WebhookCodeScanningAlertReopenedAlertMostRecentInstanceMessage implements \JsonSerializable
-{
-    /**
-     * Optional `string` value serialized in the `text` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $text;
-
-    /**
-     * @param string|SdkNotGiven $text
-     */
-    public function __construct(
-        string|SdkNotGiven $text = SdkNotGiven::Value,
-    ) {
-        $this->text = $text;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->text !== SdkNotGiven::Value) {
-            $values["text"] = $this->text;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            text: (property_exists($data, "text") && $data->text !== null ? SdkClient::stringValue($data->text) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * State of a code scanning alert.
- */
-final readonly class WebhookCodeScanningAlertReopenedAlertMostRecentInstanceStateEnum implements SdkOpenEnum
-{
-    public const OPEN = "open";
-    public const DISMISSED = "dismissed";
-    public const FIXED = "fixed";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
-}
-
-/**
- * Optional object value serialized in the `most_recent_instance` wire field.
- */
-class WebhookCodeScanningAlertReopenedAlertMostRecentInstance implements \JsonSerializable
-{
-    /**
-     * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
-     *
-     * @var string
-     */
-    public readonly string $analysisKey;
-    /**
-     * Identifies the configuration under which the analysis was executed.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $category;
-    /**
-     * Optional array value serialized in the `classifications` wire field.
-     *
-     * @var list<string>|SdkNotGiven
-     */
-    public readonly array|SdkNotGiven $classifications;
-    /**
-     * Optional `string` value serialized in the `commit_sha` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $commitSha;
-    /**
-     * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
-     *
-     * @var string
-     */
-    public readonly string $environment;
-    /**
-     * Optional object value serialized in the `location` wire field.
-     *
-     * @var WebhookCodeScanningAlertReopenedAlertMostRecentInstanceLocation|SdkNotGiven
-     */
-    public readonly WebhookCodeScanningAlertReopenedAlertMostRecentInstanceLocation|SdkNotGiven $location;
-    /**
-     * Optional object value serialized in the `message` wire field.
-     *
-     * @var WebhookCodeScanningAlertReopenedAlertMostRecentInstanceMessage|SdkNotGiven
-     */
-    public readonly WebhookCodeScanningAlertReopenedAlertMostRecentInstanceMessage|SdkNotGiven $message;
-    /**
-     * The full Git reference, formatted as `refs/heads/<branch name>`.
-     *
-     * @var string
-     */
-    public readonly string $ref;
-    /**
-     * State of a code scanning alert.
-     *
-     * @var WebhookCodeScanningAlertReopenedAlertMostRecentInstanceStateEnum|string
-     */
-    public readonly WebhookCodeScanningAlertReopenedAlertMostRecentInstanceStateEnum|string $state;
-
-    /**
-     * @param string $analysisKey
-     * @param string $environment
-     * @param string $ref
-     * @param WebhookCodeScanningAlertReopenedAlertMostRecentInstanceStateEnum|string $state
-     * @param string|SdkNotGiven $category
-     * @param list<string>|SdkNotGiven $classifications
-     * @param string|SdkNotGiven $commitSha
-     * @param WebhookCodeScanningAlertReopenedAlertMostRecentInstanceLocation|SdkNotGiven $location
-     * @param WebhookCodeScanningAlertReopenedAlertMostRecentInstanceMessage|SdkNotGiven $message
-     */
-    public function __construct(
-        string $analysisKey,
-        string $environment,
-        string $ref,
-        WebhookCodeScanningAlertReopenedAlertMostRecentInstanceStateEnum|string $state,
-        string|SdkNotGiven $category = SdkNotGiven::Value,
-        array|SdkNotGiven $classifications = SdkNotGiven::Value,
-        string|SdkNotGiven $commitSha = SdkNotGiven::Value,
-        WebhookCodeScanningAlertReopenedAlertMostRecentInstanceLocation|SdkNotGiven $location = SdkNotGiven::Value,
-        WebhookCodeScanningAlertReopenedAlertMostRecentInstanceMessage|SdkNotGiven $message = SdkNotGiven::Value,
-    ) {
-        $this->analysisKey = $analysisKey;
-        $this->environment = $environment;
+        $this->action = $action;
+        $this->alert = $alert;
+        $this->commitOid = $commitOid;
         $this->ref = $ref;
-        $this->state = $state;
-        $this->category = $category;
-        $this->classifications = $classifications;
-        $this->commitSha = $commitSha;
-        $this->location = $location;
-        $this->message = $message;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "analysis_key" => $this->analysisKey,
-            "environment" => $this->environment,
+            "action" => $this->action,
+            "alert" => $this->alert,
+            "commit_oid" => $this->commitOid,
             "ref" => $this->ref,
-            "state" => $this->state,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
-        if ($this->category !== SdkNotGiven::Value) {
-            $values["category"] = $this->category;
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
         }
-        if ($this->classifications !== SdkNotGiven::Value) {
-            $values["classifications"] = $this->classifications;
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
         }
-        if ($this->commitSha !== SdkNotGiven::Value) {
-            $values["commit_sha"] = $this->commitSha;
-        }
-        if ($this->location !== SdkNotGiven::Value) {
-            $values["location"] = $this->location;
-        }
-        if ($this->message !== SdkNotGiven::Value) {
-            $values["message"] = $this->message;
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
         }
         return $values;
     }
@@ -339,60 +131,34 @@ class WebhookCodeScanningAlertReopenedAlertMostRecentInstance implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "analysis_key") || $data->analysis_key === null) {
-            throw new SdkValidationError("analysis_key", 'required', "Required property 'analysis_key' is missing or null");
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
         }
-        if (!property_exists($data, "environment") || $data->environment === null) {
-            throw new SdkValidationError("environment", 'required', "Required property 'environment' is missing or null");
+        if (!property_exists($data, "alert") || $data->alert === null) {
+            throw new SdkValidationError("alert", 'required', "Required property 'alert' is missing or null");
         }
-        if (!property_exists($data, "ref") || $data->ref === null) {
-            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
+        if (!property_exists($data, "commit_oid")) {
+            throw new SdkValidationError("commit_oid", 'required', "Missing required property 'commit_oid'");
         }
-        if (!property_exists($data, "state") || $data->state === null) {
-            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        if (!property_exists($data, "ref")) {
+            throw new SdkValidationError("ref", 'required', "Missing required property 'ref'");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
         }
         return new self(
-            analysisKey: SdkClient::stringValue($data->analysis_key),
-            environment: SdkClient::stringValue($data->environment),
-            ref: SdkClient::stringValue($data->ref),
-            state: SdkClient::hydrateStringEnumOrString($data->state, WebhookCodeScanningAlertReopenedAlertMostRecentInstanceStateEnum::class),
-            category: (property_exists($data, "category") && $data->category !== null ? SdkClient::stringValue($data->category) : SdkNotGiven::Value),
-            classifications: (property_exists($data, "classifications") && $data->classifications !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->classifications))) : SdkNotGiven::Value),
-            commitSha: (property_exists($data, "commit_sha") && $data->commit_sha !== null ? SdkClient::stringValue($data->commit_sha) : SdkNotGiven::Value),
-            location: (property_exists($data, "location") && $data->location !== null ? SdkClient::hydrateClass($data->location, WebhookCodeScanningAlertReopenedAlertMostRecentInstanceLocation::class) : SdkNotGiven::Value),
-            message: (property_exists($data, "message") && $data->message !== null ? SdkClient::hydrateClass($data->message, WebhookCodeScanningAlertReopenedAlertMostRecentInstanceMessage::class) : SdkNotGiven::Value),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookCodeScanningAlertReopenedActionEnum::class),
+            alert: SdkClient::hydrateClass($data->alert, WebhookCodeScanningAlertReopenedAlert::class),
+            commitOid: ($data->commit_oid === null ? null : SdkClient::stringValue($data->commit_oid)),
+            ref: ($data->ref === null ? null : SdkClient::stringValue($data->ref)),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
         );
-    }
-}
-
-/**
- * The severity of the alert.
- */
-final readonly class WebhookCodeScanningAlertReopenedAlertRuleSeverityEnum implements SdkOpenEnum
-{
-    public const NONE = "none";
-    public const NOTE = "note";
-    public const WARNING = "warning";
-    public const ERROR = "error";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
     }
 }

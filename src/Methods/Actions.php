@@ -9,17 +9,26 @@ namespace octridev_github;
 
 class Actions
 {
-    use ActionsMethodsPart1;
-    use ActionsMethodsPart2;
-    use ActionsMethodsPart3;
-    use ActionsMethodsPart4;
-    use ActionsMethodsPart5;
-    use ActionsMethodsPart6;
-    use ActionsMethodsPart7;
-    use ActionsMethodsPart8;
-    use ActionsMethodsPart9;
-    use ActionsMethodsPart10;
-    use ActionsMethodsPart11;
-    use ActionsMethodsPart12;
-    use ActionsMethodsPart13;
+    use ActionsCacheMethods;
+    use ActionsHostedRunnersMethods;
+    use ActionsPermissionsMethods;
+    use ActionsEnableSelectedRepositorySelfHostedRunnersOrganizationMethods;
+    use ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryMethods;
+    use ActionsPoliciesMethods;
+    use ActionsRunnerGroupsMethods;
+    use ActionsRunnersMethods;
+    use ActionsGenerateRunnerJitconfigForRepoMethods;
+    use ActionsSecretsMethods;
+    use ActionsVariablesMethods;
+    use ActionsArtifactsMethods;
+    use ActionsCachesMethods;
+    use ActionsConcurrencyGroupsMethods;
+    use ActionsJobsMethods;
+    use ActionsOidcMethods;
+    use ActionsOrganizationSecretsMethods;
+    use ActionsOrganizationVariablesMethods;
+    use ActionsRunsMethods;
+    use ActionsDeleteWorkflowRunLogsMethods;
+    use ActionsWorkflowsMethods;
+    use ActionsReposMethods;
 }

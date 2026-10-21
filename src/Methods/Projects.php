@@ -9,6 +9,7 @@ namespace octridev_github;
 
 class Projects
 {
-    use ProjectsMethodsPart1;
-    use ProjectsMethodsPart2;
+    use ProjectsOrgsMethods;
+    use ProjectsUserMethods;
+    use ProjectsUsersMethods;
 }
