@@ -14,10 +14,10 @@ class Gitignore
      *
      * @return list<string>
      */
-    public static function gitignoreGetAllTemplates(ClientConfig $clientConfig, ?RequestOptions $requestOptions = null): array
+    public static function listTemplates(ClientConfig $clientConfig, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/gitignore/templates", $clientConfig, decoder: 'json', operationId: 'gitignoreGetAllTemplates', requestOptions: $requestOptions);
+        $sdkResponse = SdkClient::request('GET', "/gitignore/templates", $clientConfig, decoder: 'json', operationId: 'listTemplates', requestOptions: $requestOptions);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($sdkResponse->data))));
     }
 

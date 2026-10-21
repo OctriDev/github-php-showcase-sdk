@@ -9,7 +9,16 @@ namespace octridev_github;
 
 class Codespaces
 {
-    use CodespacesMethodsPart1;
-    use CodespacesMethodsPart2;
-    use CodespacesMethodsPart3;
+    use CodespacesMethods;
+    use CodespacesAccessMethods;
+    use CodespacesSecretsMethods;
+    use CodespacesCreateOrUpdateSecretForAuthenticatedUserMethods;
+    use CodespacesStopMethods;
+    use CodespacesDevcontainersMethods;
+    use CodespacesMachinesMethods;
+    use CodespacesNewMethods;
+    use CodespacesPermissionsCheckMethods;
+    use CodespacesExportsMethods;
+    use CodespacesPublishMethods;
+    use CodespacesStartMethods;
 }

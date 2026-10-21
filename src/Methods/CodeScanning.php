@@ -9,6 +9,10 @@ namespace octridev_github;
 
 class CodeScanning
 {
-    use CodeScanningMethodsPart1;
-    use CodeScanningMethodsPart2;
+    use CodeScanningAiScanMethods;
+    use CodeScanningAlertsMethods;
+    use CodeScanningAnalysesMethods;
+    use CodeScanningCodeqlMethods;
+    use CodeScanningDefaultSetupMethods;
+    use CodeScanningSarifsMethods;
 }

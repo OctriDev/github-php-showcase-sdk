@@ -8,227 +8,99 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookRegistryPackagePublished` API schema.
  */
-final readonly class WebhookRegistryPackagePublishedActionEnum implements SdkOpenEnum
-{
-    public const PUBLISHED = "published";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Required object value serialized in the `owner` wire field.
- */
-class WebhookRegistryPackagePublishedRegistryPackageOwner implements \JsonSerializable
+class WebhookRegistryPackagePublished implements \JsonSerializable
 {
     /**
-     * Required `string` value serialized in the `avatar_url` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string
+     * @var WebhookRegistryPackagePublishedActionEnum|string
      */
-    public readonly string $avatarUrl;
+    public readonly WebhookRegistryPackagePublishedActionEnum|string $action;
     /**
-     * Required `string` value serialized in the `events_url` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var string
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly string $eventsUrl;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Required `string` value serialized in the `followers_url` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var string
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly string $followersUrl;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * Required `string` value serialized in the `following_url` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var string
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly string $followingUrl;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
-     * Required `string` value serialized in the `gists_url` wire field.
+     * Required object value serialized in the `registry_package` wire field.
      *
-     * @var string
+     * @var WebhookRegistryPackagePublishedRegistryPackage
      */
-    public readonly string $gistsUrl;
+    public readonly WebhookRegistryPackagePublishedRegistryPackage $registryPackage;
     /**
-     * Required `string` value serialized in the `gravatar_id` wire field.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var string
+     * @var RepositoryWebhooks|SdkNotGiven
      */
-    public readonly string $gravatarId;
+    public readonly RepositoryWebhooks|SdkNotGiven $repository;
     /**
-     * Required `string` value serialized in the `html_url` wire field.
+     * A GitHub user.
      *
-     * @var string
+     * @var SimpleUser
      */
-    public readonly string $htmlUrl;
-    /**
-     * Required `integer` value serialized in the `id` wire field.
-     *
-     * @var int
-     */
-    public readonly int $id;
-    /**
-     * Required `string` value serialized in the `login` wire field.
-     *
-     * @var string
-     */
-    public readonly string $login;
-    /**
-     * Required `string` value serialized in the `node_id` wire field.
-     *
-     * @var string
-     */
-    public readonly string $nodeId;
-    /**
-     * Required `string` value serialized in the `organizations_url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $organizationsUrl;
-    /**
-     * Required `string` value serialized in the `received_events_url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $receivedEventsUrl;
-    /**
-     * Required `string` value serialized in the `repos_url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $reposUrl;
-    /**
-     * Required `boolean` value serialized in the `site_admin` wire field.
-     *
-     * @var bool
-     */
-    public readonly bool $siteAdmin;
-    /**
-     * Required `string` value serialized in the `starred_url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $starredUrl;
-    /**
-     * Required `string` value serialized in the `subscriptions_url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $subscriptionsUrl;
-    /**
-     * Required `string` value serialized in the `type` wire field.
-     *
-     * @var string
-     */
-    public readonly string $type;
-    /**
-     * Required `string` value serialized in the `url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $url;
-    /**
-     * Optional `string` value serialized in the `user_view_type` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $userViewType;
+    public readonly SimpleUser $sender;
 
     /**
-     * @param string $avatarUrl
-     * @param string $eventsUrl
-     * @param string $followersUrl
-     * @param string $followingUrl
-     * @param string $gistsUrl
-     * @param string $gravatarId
-     * @param string $htmlUrl
-     * @param int $id
-     * @param string $login
-     * @param string $nodeId
-     * @param string $organizationsUrl
-     * @param string $receivedEventsUrl
-     * @param string $reposUrl
-     * @param bool $siteAdmin
-     * @param string $starredUrl
-     * @param string $subscriptionsUrl
-     * @param string $type
-     * @param string $url
-     * @param string|SdkNotGiven $userViewType
+     * @param WebhookRegistryPackagePublishedActionEnum|string $action
+     * @param WebhookRegistryPackagePublishedRegistryPackage $registryPackage
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param RepositoryWebhooks|SdkNotGiven $repository
      */
     public function __construct(
-        string $avatarUrl,
-        string $eventsUrl,
-        string $followersUrl,
-        string $followingUrl,
-        string $gistsUrl,
-        string $gravatarId,
-        string $htmlUrl,
-        int $id,
-        string $login,
-        string $nodeId,
-        string $organizationsUrl,
-        string $receivedEventsUrl,
-        string $reposUrl,
-        bool $siteAdmin,
-        string $starredUrl,
-        string $subscriptionsUrl,
-        string $type,
-        string $url,
-        string|SdkNotGiven $userViewType = SdkNotGiven::Value,
+        WebhookRegistryPackagePublishedActionEnum|string $action,
+        WebhookRegistryPackagePublishedRegistryPackage $registryPackage,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        RepositoryWebhooks|SdkNotGiven $repository = SdkNotGiven::Value,
     ) {
-        $this->avatarUrl = $avatarUrl;
-        $this->eventsUrl = $eventsUrl;
-        $this->followersUrl = $followersUrl;
-        $this->followingUrl = $followingUrl;
-        $this->gistsUrl = $gistsUrl;
-        $this->gravatarId = $gravatarId;
-        $this->htmlUrl = $htmlUrl;
-        $this->id = $id;
-        $this->login = $login;
-        $this->nodeId = $nodeId;
-        $this->organizationsUrl = $organizationsUrl;
-        $this->receivedEventsUrl = $receivedEventsUrl;
-        $this->reposUrl = $reposUrl;
-        $this->siteAdmin = $siteAdmin;
-        $this->starredUrl = $starredUrl;
-        $this->subscriptionsUrl = $subscriptionsUrl;
-        $this->type = $type;
-        $this->url = $url;
-        $this->userViewType = $userViewType;
+        $this->action = $action;
+        $this->registryPackage = $registryPackage;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
+        $this->repository = $repository;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "avatar_url" => $this->avatarUrl,
-            "events_url" => $this->eventsUrl,
-            "followers_url" => $this->followersUrl,
-            "following_url" => $this->followingUrl,
-            "gists_url" => $this->gistsUrl,
-            "gravatar_id" => $this->gravatarId,
-            "html_url" => $this->htmlUrl,
-            "id" => $this->id,
-            "login" => $this->login,
-            "node_id" => $this->nodeId,
-            "organizations_url" => $this->organizationsUrl,
-            "received_events_url" => $this->receivedEventsUrl,
-            "repos_url" => $this->reposUrl,
-            "site_admin" => $this->siteAdmin,
-            "starred_url" => $this->starredUrl,
-            "subscriptions_url" => $this->subscriptionsUrl,
-            "type" => $this->type,
-            "url" => $this->url,
+            "action" => $this->action,
+            "registry_package" => $this->registryPackage,
+            "sender" => $this->sender,
         ];
-        if ($this->userViewType !== SdkNotGiven::Value) {
-            $values["user_view_type"] = $this->userViewType;
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
+        if ($this->repository !== SdkNotGiven::Value) {
+            $values["repository"] = $this->repository;
         }
         return $values;
     }
@@ -241,44 +113,17 @@ class WebhookRegistryPackagePublishedRegistryPackageOwner implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "avatar_url") || $data->avatar_url === null) { throw new SdkValidationError("avatar_url", 'required', "Required property 'avatar_url' is missing or null"); }
-        if (!property_exists($data, "events_url") || $data->events_url === null) { throw new SdkValidationError("events_url", 'required', "Required property 'events_url' is missing or null"); }
-        if (!property_exists($data, "followers_url") || $data->followers_url === null) { throw new SdkValidationError("followers_url", 'required', "Required property 'followers_url' is missing or null"); }
-        if (!property_exists($data, "following_url") || $data->following_url === null) { throw new SdkValidationError("following_url", 'required', "Required property 'following_url' is missing or null"); }
-        if (!property_exists($data, "gists_url") || $data->gists_url === null) { throw new SdkValidationError("gists_url", 'required', "Required property 'gists_url' is missing or null"); }
-        if (!property_exists($data, "gravatar_id") || $data->gravatar_id === null) { throw new SdkValidationError("gravatar_id", 'required', "Required property 'gravatar_id' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "organizations_url") || $data->organizations_url === null) { throw new SdkValidationError("organizations_url", 'required', "Required property 'organizations_url' is missing or null"); }
-        if (!property_exists($data, "received_events_url") || $data->received_events_url === null) { throw new SdkValidationError("received_events_url", 'required', "Required property 'received_events_url' is missing or null"); }
-        if (!property_exists($data, "repos_url") || $data->repos_url === null) { throw new SdkValidationError("repos_url", 'required', "Required property 'repos_url' is missing or null"); }
-        if (!property_exists($data, "site_admin") || $data->site_admin === null) { throw new SdkValidationError("site_admin", 'required', "Required property 'site_admin' is missing or null"); }
-        if (!property_exists($data, "starred_url") || $data->starred_url === null) { throw new SdkValidationError("starred_url", 'required', "Required property 'starred_url' is missing or null"); }
-        if (!property_exists($data, "subscriptions_url") || $data->subscriptions_url === null) { throw new SdkValidationError("subscriptions_url", 'required', "Required property 'subscriptions_url' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "registry_package") || $data->registry_package === null) { throw new SdkValidationError("registry_package", 'required', "Required property 'registry_package' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
-            avatarUrl: SdkClient::stringValue($data->avatar_url),
-            eventsUrl: SdkClient::stringValue($data->events_url),
-            followersUrl: SdkClient::stringValue($data->followers_url),
-            followingUrl: SdkClient::stringValue($data->following_url),
-            gistsUrl: SdkClient::stringValue($data->gists_url),
-            gravatarId: SdkClient::stringValue($data->gravatar_id),
-            htmlUrl: SdkClient::stringValue($data->html_url),
-            id: SdkClient::intValue($data->id),
-            login: SdkClient::stringValue($data->login),
-            nodeId: SdkClient::stringValue($data->node_id),
-            organizationsUrl: SdkClient::stringValue($data->organizations_url),
-            receivedEventsUrl: SdkClient::stringValue($data->received_events_url),
-            reposUrl: SdkClient::stringValue($data->repos_url),
-            siteAdmin: SdkClient::boolValue($data->site_admin),
-            starredUrl: SdkClient::stringValue($data->starred_url),
-            subscriptionsUrl: SdkClient::stringValue($data->subscriptions_url),
-            type: SdkClient::stringValue($data->type),
-            url: SdkClient::stringValue($data->url),
-            userViewType: (property_exists($data, "user_view_type") && $data->user_view_type !== null ? SdkClient::stringValue($data->user_view_type) : SdkNotGiven::Value),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookRegistryPackagePublishedActionEnum::class),
+            registryPackage: SdkClient::hydrateClass($data->registry_package, WebhookRegistryPackagePublishedRegistryPackage::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            repository: (property_exists($data, "repository") && $data->repository !== null ? SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class) : SdkNotGiven::Value),
         );
     }
 }

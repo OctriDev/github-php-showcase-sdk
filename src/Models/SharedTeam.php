@@ -8,72 +8,214 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Optional object value serialized in the `permissions` wire field.
+ * Groups of organization members that gives permissions on specified repositories.
  */
-class TeamPermissions implements \JsonSerializable
+class Team implements CopilotSeatDetailsAssigningTeam, PendingDeploymentReviewersItemReviewer, \JsonSerializable
 {
     /**
-     * Required `boolean` value serialized in the `pull` wire field.
+     * Required `integer` value serialized in the `id` wire field.
      *
-     * @var bool
+     * @var int
      */
-    public readonly bool $pull;
+    public readonly int $id;
     /**
-     * Required `boolean` value serialized in the `triage` wire field.
+     * Required `string` value serialized in the `node_id` wire field.
      *
-     * @var bool
+     * @var string
      */
-    public readonly bool $triage;
+    public readonly string $nodeId;
     /**
-     * Required `boolean` value serialized in the `push` wire field.
+     * Required `string` value serialized in the `name` wire field.
      *
-     * @var bool
+     * @var string
      */
-    public readonly bool $push;
+    public readonly string $name;
     /**
-     * Required `boolean` value serialized in the `maintain` wire field.
+     * Required `string` value serialized in the `slug` wire field.
      *
-     * @var bool
+     * @var string
      */
-    public readonly bool $maintain;
+    public readonly string $slug;
     /**
-     * Required `boolean` value serialized in the `admin` wire field.
+     * Required `string` value serialized in the `description` wire field.
      *
-     * @var bool
+     * @var string|null
      */
-    public readonly bool $admin;
+    public readonly string|null $description;
+    /**
+     * Optional `string` value serialized in the `privacy` wire field.
+     *
+     * @var string|SdkNotGiven
+     */
+    public readonly string|SdkNotGiven $privacy;
+    /**
+     * Optional `string` value serialized in the `notification_setting` wire field.
+     *
+     * @var string|SdkNotGiven
+     */
+    public readonly string|SdkNotGiven $notificationSetting;
+    /**
+     * Required `string` value serialized in the `permission` wire field.
+     *
+     * @var string
+     */
+    public readonly string $permission;
+    /**
+     * Optional object value serialized in the `permissions` wire field.
+     *
+     * @var TeamPermissions|SdkNotGiven
+     */
+    public readonly TeamPermissions|SdkNotGiven $permissions;
+    /**
+     * Required `uri`-formatted value serialized in the `url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $url;
+    /**
+     * Required `uri`-formatted value serialized in the `html_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $htmlUrl;
+    /**
+     * Required `string` value serialized in the `members_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $membersUrl;
+    /**
+     * Required `uri`-formatted value serialized in the `repositories_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $repositoriesUrl;
+    /**
+     * The ownership type of the team
+     *
+     * @var TeamTypeEnum|string
+     */
+    public readonly TeamTypeEnum|string $type;
+    /**
+     * How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`.
+     *
+     * @var TeamAccessSourceEnum|string|SdkNotGiven
+     */
+    public readonly TeamAccessSourceEnum|string|SdkNotGiven $accessSource;
+    /**
+     * Unique identifier of the organization to which this team belongs
+     *
+     * @var int|SdkNotGiven
+     */
+    public readonly int|SdkNotGiven $organizationId;
+    /**
+     * Unique identifier of the enterprise to which this team belongs
+     *
+     * @var int|SdkNotGiven
+     */
+    public readonly int|SdkNotGiven $enterpriseId;
+    /**
+     * Groups of organization members that gives permissions on specified repositories.
+     *
+     * @var NullableTeamSimple|null
+     */
+    public readonly NullableTeamSimple|null $parent_;
 
     /**
-     * @param bool $pull
-     * @param bool $triage
-     * @param bool $push
-     * @param bool $maintain
-     * @param bool $admin
+     * @param int $id
+     * @param string $nodeId
+     * @param string $name
+     * @param string $slug
+     * @param string|null $description
+     * @param string $permission
+     * @param string $url
+     * @param string $htmlUrl
+     * @param string $membersUrl
+     * @param string $repositoriesUrl
+     * @param TeamTypeEnum|string $type
+     * @param NullableTeamSimple|null $parent_
+     * @param string|SdkNotGiven $privacy
+     * @param string|SdkNotGiven $notificationSetting
+     * @param TeamPermissions|SdkNotGiven $permissions
+     * @param TeamAccessSourceEnum|string|SdkNotGiven $accessSource
+     * @param int|SdkNotGiven $organizationId
+     * @param int|SdkNotGiven $enterpriseId
      */
     public function __construct(
-        bool $pull,
-        bool $triage,
-        bool $push,
-        bool $maintain,
-        bool $admin,
+        int $id,
+        string $nodeId,
+        string $name,
+        string $slug,
+        string|null $description,
+        string $permission,
+        string $url,
+        string $htmlUrl,
+        string $membersUrl,
+        string $repositoriesUrl,
+        TeamTypeEnum|string $type,
+        NullableTeamSimple|null $parent_,
+        string|SdkNotGiven $privacy = SdkNotGiven::Value,
+        string|SdkNotGiven $notificationSetting = SdkNotGiven::Value,
+        TeamPermissions|SdkNotGiven $permissions = SdkNotGiven::Value,
+        TeamAccessSourceEnum|string|SdkNotGiven $accessSource = SdkNotGiven::Value,
+        int|SdkNotGiven $organizationId = SdkNotGiven::Value,
+        int|SdkNotGiven $enterpriseId = SdkNotGiven::Value,
     ) {
-        $this->pull = $pull;
-        $this->triage = $triage;
-        $this->push = $push;
-        $this->maintain = $maintain;
-        $this->admin = $admin;
+        $this->id = $id;
+        $this->nodeId = $nodeId;
+        $this->name = $name;
+        $this->slug = $slug;
+        $this->description = $description;
+        $this->permission = $permission;
+        $this->url = $url;
+        $this->htmlUrl = $htmlUrl;
+        $this->membersUrl = $membersUrl;
+        $this->repositoriesUrl = $repositoriesUrl;
+        $this->type = $type;
+        $this->parent_ = $parent_;
+        $this->privacy = $privacy;
+        $this->notificationSetting = $notificationSetting;
+        $this->permissions = $permissions;
+        $this->accessSource = $accessSource;
+        $this->organizationId = $organizationId;
+        $this->enterpriseId = $enterpriseId;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "pull" => $this->pull,
-            "triage" => $this->triage,
-            "push" => $this->push,
-            "maintain" => $this->maintain,
-            "admin" => $this->admin,
+            "id" => $this->id,
+            "node_id" => $this->nodeId,
+            "name" => $this->name,
+            "slug" => $this->slug,
+            "description" => $this->description,
+            "permission" => $this->permission,
+            "url" => $this->url,
+            "html_url" => $this->htmlUrl,
+            "members_url" => $this->membersUrl,
+            "repositories_url" => $this->repositoriesUrl,
+            "type" => $this->type,
+            "parent" => $this->parent_,
         ];
+        if ($this->privacy !== SdkNotGiven::Value) {
+            $values["privacy"] = $this->privacy;
+        }
+        if ($this->notificationSetting !== SdkNotGiven::Value) {
+            $values["notification_setting"] = $this->notificationSetting;
+        }
+        if ($this->permissions !== SdkNotGiven::Value) {
+            $values["permissions"] = $this->permissions;
+        }
+        if ($this->accessSource !== SdkNotGiven::Value) {
+            $values["access_source"] = $this->accessSource;
+        }
+        if ($this->organizationId !== SdkNotGiven::Value) {
+            $values["organization_id"] = $this->organizationId;
+        }
+        if ($this->enterpriseId !== SdkNotGiven::Value) {
+            $values["enterprise_id"] = $this->enterpriseId;
+        }
         return $values;
     }
 
@@ -85,17 +227,37 @@ class TeamPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pull") || $data->pull === null) { throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null"); }
-        if (!property_exists($data, "triage") || $data->triage === null) { throw new SdkValidationError("triage", 'required', "Required property 'triage' is missing or null"); }
-        if (!property_exists($data, "push") || $data->push === null) { throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null"); }
-        if (!property_exists($data, "maintain") || $data->maintain === null) { throw new SdkValidationError("maintain", 'required', "Required property 'maintain' is missing or null"); }
-        if (!property_exists($data, "admin") || $data->admin === null) { throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "slug") || $data->slug === null) { throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null"); }
+        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
+        if (!property_exists($data, "permission") || $data->permission === null) { throw new SdkValidationError("permission", 'required', "Required property 'permission' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "members_url") || $data->members_url === null) { throw new SdkValidationError("members_url", 'required', "Required property 'members_url' is missing or null"); }
+        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) { throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "parent")) { throw new SdkValidationError("parent", 'required', "Missing required property 'parent'"); }
         return new self(
-            pull: SdkClient::boolValue($data->pull),
-            triage: SdkClient::boolValue($data->triage),
-            push: SdkClient::boolValue($data->push),
-            maintain: SdkClient::boolValue($data->maintain),
-            admin: SdkClient::boolValue($data->admin),
+            id: SdkClient::intValue($data->id),
+            nodeId: SdkClient::stringValue($data->node_id),
+            name: SdkClient::stringValue($data->name),
+            slug: SdkClient::stringValue($data->slug),
+            description: ($data->description === null ? null : SdkClient::stringValue($data->description)),
+            permission: SdkClient::stringValue($data->permission),
+            url: SdkClient::stringValue($data->url),
+            htmlUrl: SdkClient::stringValue($data->html_url),
+            membersUrl: SdkClient::stringValue($data->members_url),
+            repositoriesUrl: SdkClient::stringValue($data->repositories_url),
+            type: SdkClient::hydrateStringEnumOrString($data->type, TeamTypeEnum::class),
+            parent_: ($data->parent === null ? null : SdkClient::hydrateClass($data->parent, NullableTeamSimple::class)),
+            privacy: (property_exists($data, "privacy") && $data->privacy !== null ? SdkClient::stringValue($data->privacy) : SdkNotGiven::Value),
+            notificationSetting: (property_exists($data, "notification_setting") && $data->notification_setting !== null ? SdkClient::stringValue($data->notification_setting) : SdkNotGiven::Value),
+            permissions: (property_exists($data, "permissions") && $data->permissions !== null ? SdkClient::hydrateClass($data->permissions, TeamPermissions::class) : SdkNotGiven::Value),
+            accessSource: (property_exists($data, "access_source") && $data->access_source !== null ? SdkClient::hydrateStringEnumOrString($data->access_source, TeamAccessSourceEnum::class) : SdkNotGiven::Value),
+            organizationId: (property_exists($data, "organization_id") && $data->organization_id !== null ? SdkClient::intValue($data->organization_id) : SdkNotGiven::Value),
+            enterpriseId: (property_exists($data, "enterprise_id") && $data->enterprise_id !== null ? SdkClient::intValue($data->enterprise_id) : SdkNotGiven::Value),
         );
     }
 }
@@ -103,26 +265,10 @@ class TeamPermissions implements \JsonSerializable
 /**
  * The ownership type of the team
  */
-final readonly class TeamTypeEnum implements SdkOpenEnum
+final readonly class TeamSimpleTypeEnum implements SdkOpenEnum
 {
     public const ENTERPRISE = "enterprise";
     public const ORGANIZATION = "organization";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`.
- */
-final readonly class TeamAccessSourceEnum implements SdkOpenEnum
-{
-    public const DIRECT = "direct";
-    public const ORGANIZATION = "organization";
-    public const ENTERPRISE = "enterprise";
     private function __construct(public string $value) {}
     public static function from(string|int $value): static { return new self((string) $value); }
     public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }

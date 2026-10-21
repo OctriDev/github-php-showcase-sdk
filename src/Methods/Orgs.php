@@ -9,12 +9,27 @@ namespace octridev_github;
 
 class Orgs
 {
-    use OrgsMethodsPart1;
-    use OrgsMethodsPart2;
-    use OrgsMethodsPart3;
-    use OrgsMethodsPart4;
-    use OrgsMethodsPart5;
-    use OrgsMethodsPart6;
-    use OrgsMethodsPart7;
-    use OrgsMethodsPart8;
+    use OrgsOrganizationsMethods;
+    use OrgsMethods;
+    use OrgsArtifactsMethods;
+    use OrgsAttestationsMethods;
+    use OrgsBlocksMethods;
+    use OrgsFailedInvitationsMethods;
+    use OrgsHooksMethods;
+    use OrgsInsightsMethods;
+    use OrgsInstallationsMethods;
+    use OrgsInvitationsMethods;
+    use OrgsIssueFieldsMethods;
+    use OrgsIssueTypesMethods;
+    use OrgsMembersMethods;
+    use OrgsMembershipsMethods;
+    use OrgsOrganizationRolesMethods;
+    use OrgsOutsideCollaboratorsMethods;
+    use OrgsPersonalAccessTokenRequestsMethods;
+    use OrgsPersonalAccessTokensMethods;
+    use OrgsPropertiesMethods;
+    use OrgsPublicMembersMethods;
+    use OrgsRulesetsMethods;
+    use OrgsSecurityManagersMethods;
+    use OrgsSettingsMethods;
 }

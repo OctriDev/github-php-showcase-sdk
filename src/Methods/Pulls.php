@@ -9,7 +9,14 @@ namespace octridev_github;
 
 class Pulls
 {
-    use PullsMethodsPart1;
-    use PullsMethodsPart2;
-    use PullsMethodsPart3;
+    use PullsMethods;
+    use PullsCommentsMethods;
+    use PullsCommitsMethods;
+    use PullsFilesMethods;
+    use PullsMergeMethods;
+    use PullsMergeAsyncMethods;
+    use PullsRequestedReviewersMethods;
+    use PullsReviewsMethods;
+    use PullsUpdateBranchMethods;
+    use PullsReposMethods;
 }

@@ -9,6 +9,11 @@ namespace octridev_github;
 
 class Gists
 {
-    use GistsMethodsPart1;
-    use GistsMethodsPart2;
+    use GistsMethods;
+    use GistsPublicMethods;
+    use GistsStarredMethods;
+    use GistsCommentsMethods;
+    use GistsCommitsMethods;
+    use GistsForksMethods;
+    use GistsStarMethods;
 }

@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class PrivateRegistries
 {
-    use PrivateRegistriesMethodsPart1;
+    use PrivateRegistriesMethods;
 }

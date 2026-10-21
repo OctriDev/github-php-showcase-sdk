@@ -8,170 +8,131 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookIssuesFieldAdded` API schema.
  */
-final readonly class WebhookIssuesFieldAddedActionEnum implements SdkOpenEnum
-{
-    public const FIELD_ADDED = "field_added";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * The data type of the issue field.
- */
-final readonly class WebhookIssuesFieldAddedIssueFieldFieldTypeEnum implements SdkOpenEnum
-{
-    public const TEXT = "text";
-    public const DATE = "date";
-    public const SINGLE_SELECT = "single_select";
-    public const MULTI_SELECT = "multi_select";
-    public const NUMBER = "number";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * The issue field whose value was set or updated on the issue.
- */
-class WebhookIssuesFieldAddedIssueField implements \JsonSerializable
+class WebhookIssuesFieldAdded implements \JsonSerializable
 {
     /**
-     * The unique identifier of the issue field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var int
+     * @var WebhookIssuesFieldAddedActionEnum|string
      */
-    public readonly int $id;
+    public readonly WebhookIssuesFieldAddedActionEnum|string $action;
     /**
-     * The name of the issue field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var string
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly string $name;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * The data type of the issue field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var WebhookIssuesFieldAddedIssueFieldFieldTypeEnum|string
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly WebhookIssuesFieldAddedIssueFieldFieldTypeEnum|string $fieldType;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
+    /**
+     * The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
+     *
+     * @var WebhooksIssue
+     */
+    public readonly WebhooksIssue $issue;
+    /**
+     * The issue field whose value was set or updated on the issue.
+     *
+     * @var WebhookIssuesFieldAddedIssueField
+     */
+    public readonly WebhookIssuesFieldAddedIssueField $issueField;
+    /**
+     * The value that was set or updated for the issue field. When updating an existing value, the previous value is available in `changes`.
+     *
+     * @var WebhookIssuesFieldAddedIssueFieldValue|SdkNotGiven
+     */
+    public readonly WebhookIssuesFieldAddedIssueFieldValue|SdkNotGiven $issueFieldValue;
+    /**
+     * The previous field value, present when an existing value was updated.
+     *
+     * @var WebhookIssuesFieldAddedChanges|SdkNotGiven
+     */
+    public readonly WebhookIssuesFieldAddedChanges|SdkNotGiven $changes;
+    /**
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+     *
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
+     */
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
+    /**
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+     *
+     * @var RepositoryWebhooks
+     */
+    public readonly RepositoryWebhooks $repository;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
 
     /**
-     * @param int $id
-     * @param string $name
-     * @param WebhookIssuesFieldAddedIssueFieldFieldTypeEnum|string $fieldType
+     * @param WebhookIssuesFieldAddedActionEnum|string $action
+     * @param WebhooksIssue $issue
+     * @param WebhookIssuesFieldAddedIssueField $issueField
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param WebhookIssuesFieldAddedIssueFieldValue|SdkNotGiven $issueFieldValue
+     * @param WebhookIssuesFieldAddedChanges|SdkNotGiven $changes
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
      */
     public function __construct(
-        int $id,
-        string $name,
-        WebhookIssuesFieldAddedIssueFieldFieldTypeEnum|string $fieldType,
+        WebhookIssuesFieldAddedActionEnum|string $action,
+        WebhooksIssue $issue,
+        WebhookIssuesFieldAddedIssueField $issueField,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        WebhookIssuesFieldAddedIssueFieldValue|SdkNotGiven $issueFieldValue = SdkNotGiven::Value,
+        WebhookIssuesFieldAddedChanges|SdkNotGiven $changes = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
     ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->fieldType = $fieldType;
+        $this->action = $action;
+        $this->issue = $issue;
+        $this->issueField = $issueField;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->issueFieldValue = $issueFieldValue;
+        $this->changes = $changes;
+        $this->organization = $organization;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "id" => $this->id,
-            "name" => $this->name,
-            "field_type" => $this->fieldType,
+            "action" => $this->action,
+            "issue" => $this->issue,
+            "issue_field" => $this->issueField,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "field_type") || $data->field_type === null) { throw new SdkValidationError("field_type", 'required', "Required property 'field_type' is missing or null"); }
-        return new self(
-            id: SdkClient::intValue($data->id),
-            name: SdkClient::stringValue($data->name),
-            fieldType: SdkClient::hydrateStringEnumOrString($data->field_type, WebhookIssuesFieldAddedIssueFieldFieldTypeEnum::class),
-        );
-    }
-}
-
-/**
- * The selected option details. Present for single_select field types.
- */
-class WebhookIssuesFieldAddedIssueFieldValueOption implements \JsonSerializable
-{
-    /**
-     * Optional `integer` value serialized in the `id` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $id;
-    /**
-     * Optional `string` value serialized in the `name` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $name;
-    /**
-     * Optional `string` value serialized in the `color` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $color;
-    /**
-     * Optional `string` value serialized in the `description` wire field.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $description;
-
-    /**
-     * @param int|SdkNotGiven $id
-     * @param string|SdkNotGiven $name
-     * @param string|SdkNotGiven $color
-     * @param string|null|SdkNotGiven $description
-     */
-    public function __construct(
-        int|SdkNotGiven $id = SdkNotGiven::Value,
-        string|SdkNotGiven $name = SdkNotGiven::Value,
-        string|SdkNotGiven $color = SdkNotGiven::Value,
-        string|null|SdkNotGiven $description = SdkNotGiven::Value,
-    ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->color = $color;
-        $this->description = $description;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->id !== SdkNotGiven::Value) {
-            $values["id"] = $this->id;
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
         }
-        if ($this->name !== SdkNotGiven::Value) {
-            $values["name"] = $this->name;
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
         }
-        if ($this->color !== SdkNotGiven::Value) {
-            $values["color"] = $this->color;
+        if ($this->issueFieldValue !== SdkNotGiven::Value) {
+            $values["issue_field_value"] = $this->issueFieldValue;
         }
-        if ($this->description !== SdkNotGiven::Value) {
-            $values["description"] = $this->description;
+        if ($this->changes !== SdkNotGiven::Value) {
+            $values["changes"] = $this->changes;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
         }
         return $values;
     }
@@ -184,96 +145,22 @@ class WebhookIssuesFieldAddedIssueFieldValueOption implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "issue") || $data->issue === null) { throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null"); }
+        if (!property_exists($data, "issue_field") || $data->issue_field === null) { throw new SdkValidationError("issue_field", 'required', "Required property 'issue_field' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
-            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::intValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            color: (property_exists($data, "color") && $data->color !== null ? SdkClient::stringValue($data->color) : SdkNotGiven::Value),
-            description: (property_exists($data, "description") ? ($data->description === null ? null : SdkClient::stringValue($data->description)) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `options[]` wire field.
- */
-class WebhookIssuesFieldAddedIssueFieldValueOptionsItem implements \JsonSerializable
-{
-    /**
-     * Optional `integer` value serialized in the `id` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $id;
-    /**
-     * Optional `string` value serialized in the `name` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $name;
-    /**
-     * Optional `string` value serialized in the `color` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $color;
-    /**
-     * Optional `string` value serialized in the `description` wire field.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $description;
-
-    /**
-     * @param int|SdkNotGiven $id
-     * @param string|SdkNotGiven $name
-     * @param string|SdkNotGiven $color
-     * @param string|null|SdkNotGiven $description
-     */
-    public function __construct(
-        int|SdkNotGiven $id = SdkNotGiven::Value,
-        string|SdkNotGiven $name = SdkNotGiven::Value,
-        string|SdkNotGiven $color = SdkNotGiven::Value,
-        string|null|SdkNotGiven $description = SdkNotGiven::Value,
-    ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->color = $color;
-        $this->description = $description;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->id !== SdkNotGiven::Value) {
-            $values["id"] = $this->id;
-        }
-        if ($this->name !== SdkNotGiven::Value) {
-            $values["name"] = $this->name;
-        }
-        if ($this->color !== SdkNotGiven::Value) {
-            $values["color"] = $this->color;
-        }
-        if ($this->description !== SdkNotGiven::Value) {
-            $values["description"] = $this->description;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::intValue($data->id) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            color: (property_exists($data, "color") && $data->color !== null ? SdkClient::stringValue($data->color) : SdkNotGiven::Value),
-            description: (property_exists($data, "description") ? ($data->description === null ? null : SdkClient::stringValue($data->description)) : SdkNotGiven::Value),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookIssuesFieldAddedActionEnum::class),
+            issue: SdkClient::hydrateClass($data->issue, WebhooksIssue::class),
+            issueField: SdkClient::hydrateClass($data->issue_field, WebhookIssuesFieldAddedIssueField::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            issueFieldValue: (property_exists($data, "issue_field_value") && $data->issue_field_value !== null ? SdkClient::hydrateClass($data->issue_field_value, WebhookIssuesFieldAddedIssueFieldValue::class) : SdkNotGiven::Value),
+            changes: (property_exists($data, "changes") && $data->changes !== null ? SdkClient::hydrateClass($data->changes, WebhookIssuesFieldAddedChanges::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
         );
     }
 }

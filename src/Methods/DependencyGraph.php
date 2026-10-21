@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class DependencyGraph
 {
-    use DependencyGraphMethodsPart1;
+    use DependencyGraphMethods;
 }

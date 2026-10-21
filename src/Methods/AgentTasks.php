@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class AgentTasks
 {
-    use AgentTasksMethodsPart1;
+    use AgentTasksMethods;
 }

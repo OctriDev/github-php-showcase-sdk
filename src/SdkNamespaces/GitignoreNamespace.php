@@ -19,9 +19,9 @@ class GitignoreNamespace
      *
      * @return list<string>
      */
-    public function getAllTemplates(?RequestOptions $requestOptions = null): array
+    public function listTemplates(?RequestOptions $requestOptions = null): array
     {
-        return Gitignore::gitignoreGetAllTemplates($this->clientConfig, $requestOptions);
+        return Gitignore::listTemplates($this->clientConfig, $requestOptions);
     }
     /**
      * Retrieves the content of a gitignore template by name. The `application/vnd.github.raw+json` media type returns the raw `.gitignore` contents; the response object includes the template name and source.

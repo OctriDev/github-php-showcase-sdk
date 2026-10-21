@@ -8,56 +8,102 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookSecurityAdvisoryWithdrawn` API schema.
  */
-final readonly class WebhookSecurityAdvisoryWithdrawnActionEnum implements SdkOpenEnum
-{
-    public const WITHDRAWN = "withdrawn";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Required object value serialized in the `cvss` wire field.
- */
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss implements \JsonSerializable
+class WebhookSecurityAdvisoryWithdrawn implements \JsonSerializable
 {
     /**
-     * Required `number` value serialized in the `score` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var float
+     * @var WebhookSecurityAdvisoryWithdrawnActionEnum|string
      */
-    public readonly float $score;
+    public readonly WebhookSecurityAdvisoryWithdrawnActionEnum|string $action;
     /**
-     * Required `string` value serialized in the `vector_string` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var string|null
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly string|null $vectorString;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
+    /**
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+     *
+     * @var SimpleInstallation|SdkNotGiven
+     */
+    public readonly SimpleInstallation|SdkNotGiven $installation;
+    /**
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+     *
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
+     */
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
+    /**
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+     *
+     * @var RepositoryWebhooks|SdkNotGiven
+     */
+    public readonly RepositoryWebhooks|SdkNotGiven $repository;
+    /**
+     * The details of the security advisory, including summary, description, and severity.
+     *
+     * @var WebhookSecurityAdvisoryWithdrawnSecurityAdvisory
+     */
+    public readonly WebhookSecurityAdvisoryWithdrawnSecurityAdvisory $securityAdvisory;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser|SdkNotGiven
+     */
+    public readonly SimpleUser|SdkNotGiven $sender;
 
     /**
-     * @param float $score
-     * @param string|null $vectorString
+     * @param WebhookSecurityAdvisoryWithdrawnActionEnum|string $action
+     * @param WebhookSecurityAdvisoryWithdrawnSecurityAdvisory $securityAdvisory
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param RepositoryWebhooks|SdkNotGiven $repository
+     * @param SimpleUser|SdkNotGiven $sender
      */
     public function __construct(
-        float $score,
-        string|null $vectorString,
+        WebhookSecurityAdvisoryWithdrawnActionEnum|string $action,
+        WebhookSecurityAdvisoryWithdrawnSecurityAdvisory $securityAdvisory,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        RepositoryWebhooks|SdkNotGiven $repository = SdkNotGiven::Value,
+        SimpleUser|SdkNotGiven $sender = SdkNotGiven::Value,
     ) {
-        $this->score = $score;
-        $this->vectorString = $vectorString;
+        $this->action = $action;
+        $this->securityAdvisory = $securityAdvisory;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
+        $this->repository = $repository;
+        $this->sender = $sender;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "score" => $this->score,
-            "vector_string" => $this->vectorString,
+            "action" => $this->action,
+            "security_advisory" => $this->securityAdvisory,
         ];
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
+        if ($this->repository !== SdkNotGiven::Value) {
+            $values["repository"] = $this->repository;
+        }
+        if ($this->sender !== SdkNotGiven::Value) {
+            $values["sender"] = $this->sender;
+        }
         return $values;
     }
 
@@ -69,272 +115,16 @@ class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "score") || $data->score === null) { throw new SdkValidationError("score", 'required', "Required property 'score' is missing or null"); }
-        if (!property_exists($data, "vector_string")) { throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'"); }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "security_advisory") || $data->security_advisory === null) { throw new SdkValidationError("security_advisory", 'required', "Required property 'security_advisory' is missing or null"); }
         return new self(
-            score: SdkClient::floatValue($data->score),
-            vectorString: ($data->vector_string === null ? null : SdkClient::stringValue($data->vector_string)),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `cwes[]` wire field.
- */
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem implements \JsonSerializable
-{
-    /**
-     * Required `string` value serialized in the `cwe_id` wire field.
-     *
-     * @var string
-     */
-    public readonly string $cweId;
-    /**
-     * Required `string` value serialized in the `name` wire field.
-     *
-     * @var string
-     */
-    public readonly string $name;
-
-    /**
-     * @param string $cweId
-     * @param string $name
-     */
-    public function __construct(
-        string $cweId,
-        string $name,
-    ) {
-        $this->cweId = $cweId;
-        $this->name = $name;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "cwe_id" => $this->cweId,
-            "name" => $this->name,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "cwe_id") || $data->cwe_id === null) { throw new SdkValidationError("cwe_id", 'required', "Required property 'cwe_id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        return new self(
-            cweId: SdkClient::stringValue($data->cwe_id),
-            name: SdkClient::stringValue($data->name),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `identifiers[]` wire field.
- */
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem implements \JsonSerializable
-{
-    /**
-     * Required `string` value serialized in the `type` wire field.
-     *
-     * @var string
-     */
-    public readonly string $type;
-    /**
-     * Required `string` value serialized in the `value` wire field.
-     *
-     * @var string
-     */
-    public readonly string $value;
-
-    /**
-     * @param string $type
-     * @param string $value
-     */
-    public function __construct(
-        string $type,
-        string $value,
-    ) {
-        $this->type = $type;
-        $this->value = $value;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "type" => $this->type,
-            "value" => $this->value,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "value") || $data->value === null) { throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null"); }
-        return new self(
-            type: SdkClient::stringValue($data->type),
-            value: SdkClient::stringValue($data->value),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `references[]` wire field.
- */
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem implements \JsonSerializable
-{
-    /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $url;
-
-    /**
-     * @param string $url
-     */
-    public function __construct(
-        string $url,
-    ) {
-        $this->url = $url;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "url" => $this->url,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        return new self(
-            url: SdkClient::stringValue($data->url),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `first_patched_version` wire field.
- */
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion implements \JsonSerializable
-{
-    /**
-     * Required `string` value serialized in the `identifier` wire field.
-     *
-     * @var string
-     */
-    public readonly string $identifier;
-
-    /**
-     * @param string $identifier
-     */
-    public function __construct(
-        string $identifier,
-    ) {
-        $this->identifier = $identifier;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "identifier" => $this->identifier,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "identifier") || $data->identifier === null) { throw new SdkValidationError("identifier", 'required', "Required property 'identifier' is missing or null"); }
-        return new self(
-            identifier: SdkClient::stringValue($data->identifier),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `package` wire field.
- */
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemPackage implements \JsonSerializable
-{
-    /**
-     * Required `string` value serialized in the `ecosystem` wire field.
-     *
-     * @var string
-     */
-    public readonly string $ecosystem;
-    /**
-     * Required `string` value serialized in the `name` wire field.
-     *
-     * @var string
-     */
-    public readonly string $name;
-
-    /**
-     * @param string $ecosystem
-     * @param string $name
-     */
-    public function __construct(
-        string $ecosystem,
-        string $name,
-    ) {
-        $this->ecosystem = $ecosystem;
-        $this->name = $name;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "ecosystem" => $this->ecosystem,
-            "name" => $this->name,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) { throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        return new self(
-            ecosystem: SdkClient::stringValue($data->ecosystem),
-            name: SdkClient::stringValue($data->name),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookSecurityAdvisoryWithdrawnActionEnum::class),
+            securityAdvisory: SdkClient::hydrateClass($data->security_advisory, WebhookSecurityAdvisoryWithdrawnSecurityAdvisory::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            repository: (property_exists($data, "repository") && $data->repository !== null ? SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class) : SdkNotGiven::Value),
+            sender: (property_exists($data, "sender") && $data->sender !== null ? SdkClient::hydrateClass($data->sender, SimpleUser::class) : SdkNotGiven::Value),
         );
     }
 }

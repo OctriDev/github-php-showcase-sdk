@@ -8,73 +8,64 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required object value serialized in the `commit` wire field.
+ * Typed representation of the `WebhookStatus` API schema.
  */
-class WebhookStatusBranchesItemCommit implements \JsonSerializable
+class WebhookStatus implements \JsonSerializable
 {
     /**
-     * Required `string` value serialized in the `sha` wire field.
+     * Optional `uri`-formatted value serialized in the `avatar_url` wire field.
      *
-     * @var string|null
+     * @var string|null|SdkNotGiven
      */
-    public readonly string|null $sha;
+    public readonly string|null|SdkNotGiven $avatarUrl;
     /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
+     * An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the SHA may or may not be the head of the branch. The array includes a maximum of 10 branches.
      *
-     * @var string|null
+     * @var list<WebhookStatusBranchesItem>
      */
-    public readonly string|null $url;
-
-    /**
-     * @param string|null $sha
-     * @param string|null $url
-     */
-    public function __construct(
-        string|null $sha,
-        string|null $url,
-    ) {
-        $this->sha = $sha;
-        $this->url = $url;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "sha" => $this->sha,
-            "url" => $this->url,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "sha")) { throw new SdkValidationError("sha", 'required', "Missing required property 'sha'"); }
-        if (!property_exists($data, "url")) { throw new SdkValidationError("url", 'required', "Missing required property 'url'"); }
-        return new self(
-            sha: ($data->sha === null ? null : SdkClient::stringValue($data->sha)),
-            url: ($data->url === null ? null : SdkClient::stringValue($data->url)),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `branches[]` wire field.
- */
-class WebhookStatusBranchesItem implements \JsonSerializable
-{
+    public readonly array $branches;
     /**
      * Required object value serialized in the `commit` wire field.
      *
-     * @var WebhookStatusBranchesItemCommit
+     * @var WebhookStatusCommit
      */
-    public readonly WebhookStatusBranchesItemCommit $commit;
+    public readonly WebhookStatusCommit $commit;
+    /**
+     * Required `string` value serialized in the `context` wire field.
+     *
+     * @var string
+     */
+    public readonly string $context;
+    /**
+     * Required `string` value serialized in the `created_at` wire field.
+     *
+     * @var string
+     */
+    public readonly string $createdAt;
+    /**
+     * The optional human-readable description added to the status.
+     *
+     * @var string|null
+     */
+    public readonly string|null $description;
+    /**
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
+     *
+     * @var EnterpriseWebhooks|SdkNotGiven
+     */
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
+    /**
+     * The unique identifier of the status.
+     *
+     * @var int
+     */
+    public readonly int $id;
+    /**
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+     *
+     * @var SimpleInstallation|SdkNotGiven
+     */
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
      * Required `string` value serialized in the `name` wire field.
      *
@@ -82,35 +73,135 @@ class WebhookStatusBranchesItem implements \JsonSerializable
      */
     public readonly string $name;
     /**
-     * Required `boolean` value serialized in the `protected` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var bool
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly bool $protected_;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
+    /**
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+     *
+     * @var RepositoryWebhooks
+     */
+    public readonly RepositoryWebhooks $repository;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
+    /**
+     * The Commit SHA.
+     *
+     * @var string
+     */
+    public readonly string $sha;
+    /**
+     * The new state. Can be `pending`, `success`, `failure`, or `error`.
+     *
+     * @var WebhookStatusStateEnum|string
+     */
+    public readonly WebhookStatusStateEnum|string $state;
+    /**
+     * The optional link added to the status.
+     *
+     * @var string|null
+     */
+    public readonly string|null $targetUrl;
+    /**
+     * Required `string` value serialized in the `updated_at` wire field.
+     *
+     * @var string
+     */
+    public readonly string $updatedAt;
 
     /**
-     * @param WebhookStatusBranchesItemCommit $commit
+     * @param list<WebhookStatusBranchesItem> $branches
+     * @param WebhookStatusCommit $commit
+     * @param string $context
+     * @param string $createdAt
+     * @param string|null $description
+     * @param int $id
      * @param string $name
-     * @param bool $protected_
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param string $sha
+     * @param WebhookStatusStateEnum|string $state
+     * @param string|null $targetUrl
+     * @param string $updatedAt
+     * @param string|null|SdkNotGiven $avatarUrl
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
      */
     public function __construct(
-        WebhookStatusBranchesItemCommit $commit,
+        array $branches,
+        WebhookStatusCommit $commit,
+        string $context,
+        string $createdAt,
+        string|null $description,
+        int $id,
         string $name,
-        bool $protected_,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        string $sha,
+        WebhookStatusStateEnum|string $state,
+        string|null $targetUrl,
+        string $updatedAt,
+        string|null|SdkNotGiven $avatarUrl = SdkNotGiven::Value,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
     ) {
+        $this->branches = $branches;
         $this->commit = $commit;
+        $this->context = $context;
+        $this->createdAt = $createdAt;
+        $this->description = $description;
+        $this->id = $id;
         $this->name = $name;
-        $this->protected_ = $protected_;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->sha = $sha;
+        $this->state = $state;
+        $this->targetUrl = $targetUrl;
+        $this->updatedAt = $updatedAt;
+        $this->avatarUrl = $avatarUrl;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
+            "branches" => $this->branches,
             "commit" => $this->commit,
+            "context" => $this->context,
+            "created_at" => $this->createdAt,
+            "description" => $this->description,
+            "id" => $this->id,
             "name" => $this->name,
-            "protected" => $this->protected_,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
+            "sha" => $this->sha,
+            "state" => $this->state,
+            "target_url" => $this->targetUrl,
+            "updated_at" => $this->updatedAt,
         ];
+        if ($this->avatarUrl !== SdkNotGiven::Value) {
+            $values["avatar_url"] = $this->avatarUrl;
+        }
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
         return $values;
     }
 
@@ -122,29 +213,37 @@ class WebhookStatusBranchesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
+        if (!property_exists($data, "branches") || $data->branches === null) { throw new SdkValidationError("branches", 'required', "Required property 'branches' is missing or null"); }
         if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
+        if (!property_exists($data, "context") || $data->context === null) { throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
         if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "protected") || $data->protected === null) { throw new SdkValidationError("protected", 'required', "Required property 'protected' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "target_url")) { throw new SdkValidationError("target_url", 'required', "Missing required property 'target_url'"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
         return new self(
-            commit: SdkClient::hydrateClass($data->commit, WebhookStatusBranchesItemCommit::class),
+            branches: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhookStatusBranchesItem::class), SdkClient::arrayValue($data->branches))),
+            commit: SdkClient::hydrateClass($data->commit, WebhookStatusCommit::class),
+            context: SdkClient::stringValue($data->context),
+            createdAt: SdkClient::stringValue($data->created_at),
+            description: ($data->description === null ? null : SdkClient::stringValue($data->description)),
+            id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),
-            protected_: SdkClient::boolValue($data->protected),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            sha: SdkClient::stringValue($data->sha),
+            state: SdkClient::hydrateStringEnumOrString($data->state, WebhookStatusStateEnum::class),
+            targetUrl: ($data->target_url === null ? null : SdkClient::stringValue($data->target_url)),
+            updatedAt: SdkClient::stringValue($data->updated_at),
+            avatarUrl: (property_exists($data, "avatar_url") ? ($data->avatar_url === null ? null : SdkClient::stringValue($data->avatar_url)) : SdkNotGiven::Value),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
         );
     }
-}
-
-/**
- * Optional enumerated value serialized in the `type` wire field.
- */
-final readonly class WebhookStatusCommitAuthorTypeEnum implements SdkOpenEnum
-{
-    public const BOT = "Bot";
-    public const USER = "User";
-    public const ORGANIZATION = "Organization";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
 }

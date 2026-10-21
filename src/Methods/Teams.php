@@ -9,6 +9,9 @@ namespace octridev_github;
 
 class Teams
 {
-    use TeamsMethodsPart1;
-    use TeamsMethodsPart2;
+    use TeamsMethods;
+    use TeamsInvitationsMethods;
+    use TeamsMembersMethods;
+    use TeamsMembershipsMethods;
+    use TeamsReposMethods;
 }

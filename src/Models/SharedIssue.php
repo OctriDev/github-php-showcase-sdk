@@ -8,227 +8,461 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * The reason for the current state
+ * Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
  */
-final readonly class IssueStateReasonEnum implements SdkOpenEnum
-{
-    public const COMPLETED = "completed";
-    public const REOPENED = "reopened";
-    public const NOT_PLANNED = "not_planned";
-    public const DUPLICATE = "duplicate";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Required object value serialized in the `labels[]` wire field.
- */
-class IssueLabelsItemVariant1 implements \JsonSerializable
+class Issue implements ProjectsV2ItemSimpleContent, \JsonSerializable
 {
     /**
-     * Optional `int64`-formatted value serialized in the `id` wire field.
+     * Required `int64`-formatted value serialized in the `id` wire field.
      *
-     * @var int|SdkNotGiven
+     * @var int
      */
-    public readonly int|SdkNotGiven $id;
+    public readonly int $id;
     /**
-     * Optional `string` value serialized in the `node_id` wire field.
+     * Required `string` value serialized in the `node_id` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var string
      */
-    public readonly string|SdkNotGiven $nodeId;
+    public readonly string $nodeId;
     /**
-     * Optional `uri`-formatted value serialized in the `url` wire field.
+     * URL for the issue
      *
-     * @var string|SdkNotGiven
+     * @var string
      */
-    public readonly string|SdkNotGiven $url;
+    public readonly string $url;
     /**
-     * Optional `string` value serialized in the `name` wire field.
+     * Required `uri`-formatted value serialized in the `repository_url` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var string
      */
-    public readonly string|SdkNotGiven $name;
+    public readonly string $repositoryUrl;
     /**
-     * Optional `string` value serialized in the `description` wire field.
+     * Required `string` value serialized in the `labels_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $labelsUrl;
+    /**
+     * Required `uri`-formatted value serialized in the `comments_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $commentsUrl;
+    /**
+     * Required `uri`-formatted value serialized in the `events_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $eventsUrl;
+    /**
+     * Required `uri`-formatted value serialized in the `html_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $htmlUrl;
+    /**
+     * Number uniquely identifying the issue within its repository
+     *
+     * @var int
+     */
+    public readonly int $number;
+    /**
+     * State of the issue; either 'open' or 'closed'
+     *
+     * @var string
+     */
+    public readonly string $state;
+    /**
+     * The reason for the current state
+     *
+     * @var IssueStateReasonEnum|string|null|SdkNotGiven
+     */
+    public readonly IssueStateReasonEnum|string|null|SdkNotGiven $stateReason;
+    /**
+     * Title of the issue
+     *
+     * @var string
+     */
+    public readonly string $title;
+    /**
+     * Contents of the issue
      *
      * @var string|null|SdkNotGiven
      */
-    public readonly string|null|SdkNotGiven $description;
+    public readonly string|null|SdkNotGiven $body;
     /**
-     * Optional `string` value serialized in the `color` wire field.
+     * A GitHub user.
+     *
+     * @var NullableSimpleUser|null
+     */
+    public readonly NullableSimpleUser|null $user;
+    /**
+     * Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
+     *
+     * @var list<string|IssueLabelsItemVariant1>
+     */
+    public readonly array $labels;
+    /**
+     * A GitHub user.
+     *
+     * @var NullableSimpleUser|null
+     */
+    public readonly NullableSimpleUser|null $assignee;
+    /**
+     * Optional array value serialized in the `assignees` wire field.
+     *
+     * @var list<SimpleUser>|SdkNotGiven
+     */
+    public readonly array|SdkNotGiven $assignees;
+    /**
+     * A collection of related issues and pull requests.
+     *
+     * @var NullableMilestone|null
+     */
+    public readonly NullableMilestone|null $milestone;
+    /**
+     * Required `boolean` value serialized in the `locked` wire field.
+     *
+     * @var bool
+     */
+    public readonly bool $locked;
+    /**
+     * Optional `string` value serialized in the `active_lock_reason` wire field.
      *
      * @var string|null|SdkNotGiven
      */
-    public readonly string|null|SdkNotGiven $color;
+    public readonly string|null|SdkNotGiven $activeLockReason;
     /**
-     * Optional `boolean` value serialized in the `default` wire field.
+     * Required `integer` value serialized in the `comments` wire field.
+     *
+     * @var int
+     */
+    public readonly int $comments;
+    /**
+     * Optional object value serialized in the `pull_request` wire field.
+     *
+     * @var IssuePullRequest|SdkNotGiven
+     */
+    public readonly IssuePullRequest|SdkNotGiven $pullRequest;
+    /**
+     * Required `date-time`-formatted value serialized in the `closed_at` wire field.
+     *
+     * @var string|null
+     */
+    public readonly string|null $closedAt;
+    /**
+     * Required `date-time`-formatted value serialized in the `created_at` wire field.
+     *
+     * @var string
+     */
+    public readonly string $createdAt;
+    /**
+     * Required `date-time`-formatted value serialized in the `updated_at` wire field.
+     *
+     * @var string
+     */
+    public readonly string $updatedAt;
+    /**
+     * Optional `boolean` value serialized in the `draft` wire field.
      *
      * @var bool|SdkNotGiven
      */
-    public readonly bool|SdkNotGiven $default_;
+    public readonly bool|SdkNotGiven $draft;
     /**
-     * The user who archived the label, or `null` if it has not been archived.
+     * A GitHub user.
      *
-     * @var SimpleUser|null|SdkNotGiven
+     * @var NullableSimpleUser|null|SdkNotGiven
      */
-    public readonly SimpleUser|null|SdkNotGiven $archivedBy;
+    public readonly NullableSimpleUser|null|SdkNotGiven $closedBy;
+    /**
+     * Optional `string` value serialized in the `body_html` wire field.
+     *
+     * @var string|SdkNotGiven
+     */
+    public readonly string|SdkNotGiven $bodyHtml;
+    /**
+     * Optional `string` value serialized in the `body_text` wire field.
+     *
+     * @var string|SdkNotGiven
+     */
+    public readonly string|SdkNotGiven $bodyText;
+    /**
+     * Optional `uri`-formatted value serialized in the `timeline_url` wire field.
+     *
+     * @var string|SdkNotGiven
+     */
+    public readonly string|SdkNotGiven $timelineUrl;
+    /**
+     * The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
+     *
+     * @var IssueType|null|SdkNotGiven
+     */
+    public readonly IssueType|null|SdkNotGiven $type;
+    /**
+     * A repository on GitHub.
+     *
+     * @var Repository|SdkNotGiven
+     */
+    public readonly Repository|SdkNotGiven $repository;
+    /**
+     * GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+     *
+     * @var NullableIntegration|null|SdkNotGiven
+     */
+    public readonly NullableIntegration|null|SdkNotGiven $performedViaGithubApp;
+    /**
+     * How the author is associated with the repository.
+     *
+     * @var AuthorAssociation|string|SdkNotGiven
+     */
+    public readonly AuthorAssociation|string|SdkNotGiven $authorAssociation;
+    /**
+     * Optional object value serialized in the `reactions` wire field.
+     *
+     * @var ReactionRollup|SdkNotGiven
+     */
+    public readonly ReactionRollup|SdkNotGiven $reactions;
+    /**
+     * Optional object value serialized in the `sub_issues_summary` wire field.
+     *
+     * @var SubIssuesSummary|SdkNotGiven
+     */
+    public readonly SubIssuesSummary|SdkNotGiven $subIssuesSummary;
+    /**
+     * URL to get the parent issue of this issue, if it is a sub-issue
+     *
+     * @var string|null|SdkNotGiven
+     */
+    public readonly string|null|SdkNotGiven $parentIssueUrl;
+    /**
+     * Comments provide a way for people to collaborate on an issue.
+     *
+     * @var NullableIssueComment|null|SdkNotGiven
+     */
+    public readonly NullableIssueComment|null|SdkNotGiven $pinnedComment;
+    /**
+     * Optional object value serialized in the `issue_dependencies_summary` wire field.
+     *
+     * @var IssueDependenciesSummary|SdkNotGiven
+     */
+    public readonly IssueDependenciesSummary|SdkNotGiven $issueDependenciesSummary;
+    /**
+     * Optional array value serialized in the `issue_field_values` wire field.
+     *
+     * @var list<IssueFieldValue>|SdkNotGiven
+     */
+    public readonly array|SdkNotGiven $issueFieldValues;
 
     /**
-     * @param int|SdkNotGiven $id
-     * @param string|SdkNotGiven $nodeId
-     * @param string|SdkNotGiven $url
-     * @param string|SdkNotGiven $name
-     * @param string|null|SdkNotGiven $description
-     * @param string|null|SdkNotGiven $color
-     * @param bool|SdkNotGiven $default_
-     * @param SimpleUser|null|SdkNotGiven $archivedBy
+     * @param int $id
+     * @param string $nodeId
+     * @param string $url
+     * @param string $repositoryUrl
+     * @param string $labelsUrl
+     * @param string $commentsUrl
+     * @param string $eventsUrl
+     * @param string $htmlUrl
+     * @param int $number
+     * @param string $state
+     * @param string $title
+     * @param NullableSimpleUser|null $user
+     * @param list<string|IssueLabelsItemVariant1> $labels
+     * @param NullableSimpleUser|null $assignee
+     * @param NullableMilestone|null $milestone
+     * @param bool $locked
+     * @param int $comments
+     * @param string|null $closedAt
+     * @param string $createdAt
+     * @param string $updatedAt
+     * @param IssueStateReasonEnum|string|null|SdkNotGiven $stateReason
+     * @param string|null|SdkNotGiven $body
+     * @param list<SimpleUser>|SdkNotGiven $assignees
+     * @param string|null|SdkNotGiven $activeLockReason
+     * @param IssuePullRequest|SdkNotGiven $pullRequest
+     * @param bool|SdkNotGiven $draft
+     * @param NullableSimpleUser|null|SdkNotGiven $closedBy
+     * @param string|SdkNotGiven $bodyHtml
+     * @param string|SdkNotGiven $bodyText
+     * @param string|SdkNotGiven $timelineUrl
+     * @param IssueType|null|SdkNotGiven $type
+     * @param Repository|SdkNotGiven $repository
+     * @param NullableIntegration|null|SdkNotGiven $performedViaGithubApp
+     * @param AuthorAssociation|string|SdkNotGiven $authorAssociation
+     * @param ReactionRollup|SdkNotGiven $reactions
+     * @param SubIssuesSummary|SdkNotGiven $subIssuesSummary
+     * @param string|null|SdkNotGiven $parentIssueUrl
+     * @param NullableIssueComment|null|SdkNotGiven $pinnedComment
+     * @param IssueDependenciesSummary|SdkNotGiven $issueDependenciesSummary
+     * @param list<IssueFieldValue>|SdkNotGiven $issueFieldValues
      */
     public function __construct(
-        int|SdkNotGiven $id = SdkNotGiven::Value,
-        string|SdkNotGiven $nodeId = SdkNotGiven::Value,
-        string|SdkNotGiven $url = SdkNotGiven::Value,
-        string|SdkNotGiven $name = SdkNotGiven::Value,
-        string|null|SdkNotGiven $description = SdkNotGiven::Value,
-        string|null|SdkNotGiven $color = SdkNotGiven::Value,
-        bool|SdkNotGiven $default_ = SdkNotGiven::Value,
-        SimpleUser|null|SdkNotGiven $archivedBy = SdkNotGiven::Value,
+        int $id,
+        string $nodeId,
+        string $url,
+        string $repositoryUrl,
+        string $labelsUrl,
+        string $commentsUrl,
+        string $eventsUrl,
+        string $htmlUrl,
+        int $number,
+        string $state,
+        string $title,
+        NullableSimpleUser|null $user,
+        array $labels,
+        NullableSimpleUser|null $assignee,
+        NullableMilestone|null $milestone,
+        bool $locked,
+        int $comments,
+        string|null $closedAt,
+        string $createdAt,
+        string $updatedAt,
+        IssueStateReasonEnum|string|null|SdkNotGiven $stateReason = SdkNotGiven::Value,
+        string|null|SdkNotGiven $body = SdkNotGiven::Value,
+        array|SdkNotGiven $assignees = SdkNotGiven::Value,
+        string|null|SdkNotGiven $activeLockReason = SdkNotGiven::Value,
+        IssuePullRequest|SdkNotGiven $pullRequest = SdkNotGiven::Value,
+        bool|SdkNotGiven $draft = SdkNotGiven::Value,
+        NullableSimpleUser|null|SdkNotGiven $closedBy = SdkNotGiven::Value,
+        string|SdkNotGiven $bodyHtml = SdkNotGiven::Value,
+        string|SdkNotGiven $bodyText = SdkNotGiven::Value,
+        string|SdkNotGiven $timelineUrl = SdkNotGiven::Value,
+        IssueType|null|SdkNotGiven $type = SdkNotGiven::Value,
+        Repository|SdkNotGiven $repository = SdkNotGiven::Value,
+        NullableIntegration|null|SdkNotGiven $performedViaGithubApp = SdkNotGiven::Value,
+        AuthorAssociation|string|SdkNotGiven $authorAssociation = SdkNotGiven::Value,
+        ReactionRollup|SdkNotGiven $reactions = SdkNotGiven::Value,
+        SubIssuesSummary|SdkNotGiven $subIssuesSummary = SdkNotGiven::Value,
+        string|null|SdkNotGiven $parentIssueUrl = SdkNotGiven::Value,
+        NullableIssueComment|null|SdkNotGiven $pinnedComment = SdkNotGiven::Value,
+        IssueDependenciesSummary|SdkNotGiven $issueDependenciesSummary = SdkNotGiven::Value,
+        array|SdkNotGiven $issueFieldValues = SdkNotGiven::Value,
     ) {
         $this->id = $id;
         $this->nodeId = $nodeId;
         $this->url = $url;
-        $this->name = $name;
-        $this->description = $description;
-        $this->color = $color;
-        $this->default_ = $default_;
-        $this->archivedBy = $archivedBy;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->id !== SdkNotGiven::Value) {
-            $values["id"] = $this->id;
-        }
-        if ($this->nodeId !== SdkNotGiven::Value) {
-            $values["node_id"] = $this->nodeId;
-        }
-        if ($this->url !== SdkNotGiven::Value) {
-            $values["url"] = $this->url;
-        }
-        if ($this->name !== SdkNotGiven::Value) {
-            $values["name"] = $this->name;
-        }
-        if ($this->description !== SdkNotGiven::Value) {
-            $values["description"] = $this->description;
-        }
-        if ($this->color !== SdkNotGiven::Value) {
-            $values["color"] = $this->color;
-        }
-        if ($this->default_ !== SdkNotGiven::Value) {
-            $values["default"] = $this->default_;
-        }
-        if ($this->archivedBy !== SdkNotGiven::Value) {
-            $values["archived_by"] = $this->archivedBy;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            id: (property_exists($data, "id") && $data->id !== null ? SdkClient::intValue($data->id) : SdkNotGiven::Value),
-            nodeId: (property_exists($data, "node_id") && $data->node_id !== null ? SdkClient::stringValue($data->node_id) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            description: (property_exists($data, "description") ? ($data->description === null ? null : SdkClient::stringValue($data->description)) : SdkNotGiven::Value),
-            color: (property_exists($data, "color") ? ($data->color === null ? null : SdkClient::stringValue($data->color)) : SdkNotGiven::Value),
-            default_: (property_exists($data, "default") && $data->default !== null ? SdkClient::boolValue($data->default) : SdkNotGiven::Value),
-            archivedBy: (property_exists($data, "archived_by") ? ($data->archived_by === null ? null : SdkClient::hydrateClass($data->archived_by, SimpleUser::class)) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `pull_request` wire field.
- */
-class IssuePullRequest implements \JsonSerializable
-{
-    /**
-     * Optional `date-time`-formatted value serialized in the `merged_at` wire field.
-     *
-     * @var string|null|SdkNotGiven
-     */
-    public readonly string|null|SdkNotGiven $mergedAt;
-    /**
-     * Required `uri`-formatted value serialized in the `diff_url` wire field.
-     *
-     * @var string|null
-     */
-    public readonly string|null $diffUrl;
-    /**
-     * Required `uri`-formatted value serialized in the `html_url` wire field.
-     *
-     * @var string|null
-     */
-    public readonly string|null $htmlUrl;
-    /**
-     * Required `uri`-formatted value serialized in the `patch_url` wire field.
-     *
-     * @var string|null
-     */
-    public readonly string|null $patchUrl;
-    /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string|null
-     */
-    public readonly string|null $url;
-
-    /**
-     * @param string|null $diffUrl
-     * @param string|null $htmlUrl
-     * @param string|null $patchUrl
-     * @param string|null $url
-     * @param string|null|SdkNotGiven $mergedAt
-     */
-    public function __construct(
-        string|null $diffUrl,
-        string|null $htmlUrl,
-        string|null $patchUrl,
-        string|null $url,
-        string|null|SdkNotGiven $mergedAt = SdkNotGiven::Value,
-    ) {
-        $this->diffUrl = $diffUrl;
+        $this->repositoryUrl = $repositoryUrl;
+        $this->labelsUrl = $labelsUrl;
+        $this->commentsUrl = $commentsUrl;
+        $this->eventsUrl = $eventsUrl;
         $this->htmlUrl = $htmlUrl;
-        $this->patchUrl = $patchUrl;
-        $this->url = $url;
-        $this->mergedAt = $mergedAt;
+        $this->number = $number;
+        $this->state = $state;
+        $this->title = $title;
+        $this->user = $user;
+        $this->labels = $labels;
+        $this->assignee = $assignee;
+        $this->milestone = $milestone;
+        $this->locked = $locked;
+        $this->comments = $comments;
+        $this->closedAt = $closedAt;
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $updatedAt;
+        $this->stateReason = $stateReason;
+        $this->body = $body;
+        $this->assignees = $assignees;
+        $this->activeLockReason = $activeLockReason;
+        $this->pullRequest = $pullRequest;
+        $this->draft = $draft;
+        $this->closedBy = $closedBy;
+        $this->bodyHtml = $bodyHtml;
+        $this->bodyText = $bodyText;
+        $this->timelineUrl = $timelineUrl;
+        $this->type = $type;
+        $this->repository = $repository;
+        $this->performedViaGithubApp = $performedViaGithubApp;
+        $this->authorAssociation = $authorAssociation;
+        $this->reactions = $reactions;
+        $this->subIssuesSummary = $subIssuesSummary;
+        $this->parentIssueUrl = $parentIssueUrl;
+        $this->pinnedComment = $pinnedComment;
+        $this->issueDependenciesSummary = $issueDependenciesSummary;
+        $this->issueFieldValues = $issueFieldValues;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "diff_url" => $this->diffUrl,
-            "html_url" => $this->htmlUrl,
-            "patch_url" => $this->patchUrl,
+            "id" => $this->id,
+            "node_id" => $this->nodeId,
             "url" => $this->url,
+            "repository_url" => $this->repositoryUrl,
+            "labels_url" => $this->labelsUrl,
+            "comments_url" => $this->commentsUrl,
+            "events_url" => $this->eventsUrl,
+            "html_url" => $this->htmlUrl,
+            "number" => $this->number,
+            "state" => $this->state,
+            "title" => $this->title,
+            "user" => $this->user,
+            "labels" => $this->labels,
+            "assignee" => $this->assignee,
+            "milestone" => $this->milestone,
+            "locked" => $this->locked,
+            "comments" => $this->comments,
+            "closed_at" => $this->closedAt,
+            "created_at" => $this->createdAt,
+            "updated_at" => $this->updatedAt,
         ];
-        if ($this->mergedAt !== SdkNotGiven::Value) {
-            $values["merged_at"] = $this->mergedAt;
+        if ($this->stateReason !== SdkNotGiven::Value) {
+            $values["state_reason"] = $this->stateReason;
+        }
+        if ($this->body !== SdkNotGiven::Value) {
+            $values["body"] = $this->body;
+        }
+        if ($this->assignees !== SdkNotGiven::Value) {
+            $values["assignees"] = $this->assignees;
+        }
+        if ($this->activeLockReason !== SdkNotGiven::Value) {
+            $values["active_lock_reason"] = $this->activeLockReason;
+        }
+        if ($this->pullRequest !== SdkNotGiven::Value) {
+            $values["pull_request"] = $this->pullRequest;
+        }
+        if ($this->draft !== SdkNotGiven::Value) {
+            $values["draft"] = $this->draft;
+        }
+        if ($this->closedBy !== SdkNotGiven::Value) {
+            $values["closed_by"] = $this->closedBy;
+        }
+        if ($this->bodyHtml !== SdkNotGiven::Value) {
+            $values["body_html"] = $this->bodyHtml;
+        }
+        if ($this->bodyText !== SdkNotGiven::Value) {
+            $values["body_text"] = $this->bodyText;
+        }
+        if ($this->timelineUrl !== SdkNotGiven::Value) {
+            $values["timeline_url"] = $this->timelineUrl;
+        }
+        if ($this->type !== SdkNotGiven::Value) {
+            $values["type"] = $this->type;
+        }
+        if ($this->repository !== SdkNotGiven::Value) {
+            $values["repository"] = $this->repository;
+        }
+        if ($this->performedViaGithubApp !== SdkNotGiven::Value) {
+            $values["performed_via_github_app"] = $this->performedViaGithubApp;
+        }
+        if ($this->authorAssociation !== SdkNotGiven::Value) {
+            $values["author_association"] = $this->authorAssociation;
+        }
+        if ($this->reactions !== SdkNotGiven::Value) {
+            $values["reactions"] = $this->reactions;
+        }
+        if ($this->subIssuesSummary !== SdkNotGiven::Value) {
+            $values["sub_issues_summary"] = $this->subIssuesSummary;
+        }
+        if ($this->parentIssueUrl !== SdkNotGiven::Value) {
+            $values["parent_issue_url"] = $this->parentIssueUrl;
+        }
+        if ($this->pinnedComment !== SdkNotGiven::Value) {
+            $values["pinned_comment"] = $this->pinnedComment;
+        }
+        if ($this->issueDependenciesSummary !== SdkNotGiven::Value) {
+            $values["issue_dependencies_summary"] = $this->issueDependenciesSummary;
+        }
+        if ($this->issueFieldValues !== SdkNotGiven::Value) {
+            $values["issue_field_values"] = $this->issueFieldValues;
         }
         return $values;
     }
@@ -241,16 +475,67 @@ class IssuePullRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "diff_url")) { throw new SdkValidationError("diff_url", 'required', "Missing required property 'diff_url'"); }
-        if (!property_exists($data, "html_url")) { throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'"); }
-        if (!property_exists($data, "patch_url")) { throw new SdkValidationError("patch_url", 'required', "Missing required property 'patch_url'"); }
-        if (!property_exists($data, "url")) { throw new SdkValidationError("url", 'required', "Missing required property 'url'"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "repository_url") || $data->repository_url === null) { throw new SdkValidationError("repository_url", 'required', "Required property 'repository_url' is missing or null"); }
+        if (!property_exists($data, "labels_url") || $data->labels_url === null) { throw new SdkValidationError("labels_url", 'required', "Required property 'labels_url' is missing or null"); }
+        if (!property_exists($data, "comments_url") || $data->comments_url === null) { throw new SdkValidationError("comments_url", 'required', "Required property 'comments_url' is missing or null"); }
+        if (!property_exists($data, "events_url") || $data->events_url === null) { throw new SdkValidationError("events_url", 'required', "Required property 'events_url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
+        if (!property_exists($data, "user")) { throw new SdkValidationError("user", 'required', "Missing required property 'user'"); }
+        if (!property_exists($data, "labels") || $data->labels === null) { throw new SdkValidationError("labels", 'required', "Required property 'labels' is missing or null"); }
+        if (!property_exists($data, "assignee")) { throw new SdkValidationError("assignee", 'required', "Missing required property 'assignee'"); }
+        if (!property_exists($data, "milestone")) { throw new SdkValidationError("milestone", 'required', "Missing required property 'milestone'"); }
+        if (!property_exists($data, "locked") || $data->locked === null) { throw new SdkValidationError("locked", 'required', "Required property 'locked' is missing or null"); }
+        if (!property_exists($data, "comments") || $data->comments === null) { throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null"); }
+        if (!property_exists($data, "closed_at")) { throw new SdkValidationError("closed_at", 'required', "Missing required property 'closed_at'"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
         return new self(
-            diffUrl: ($data->diff_url === null ? null : SdkClient::stringValue($data->diff_url)),
-            htmlUrl: ($data->html_url === null ? null : SdkClient::stringValue($data->html_url)),
-            patchUrl: ($data->patch_url === null ? null : SdkClient::stringValue($data->patch_url)),
-            url: ($data->url === null ? null : SdkClient::stringValue($data->url)),
-            mergedAt: (property_exists($data, "merged_at") ? ($data->merged_at === null ? null : SdkClient::stringValue($data->merged_at)) : SdkNotGiven::Value),
+            id: SdkClient::intValue($data->id),
+            nodeId: SdkClient::stringValue($data->node_id),
+            url: SdkClient::stringValue($data->url),
+            repositoryUrl: SdkClient::stringValue($data->repository_url),
+            labelsUrl: SdkClient::stringValue($data->labels_url),
+            commentsUrl: SdkClient::stringValue($data->comments_url),
+            eventsUrl: SdkClient::stringValue($data->events_url),
+            htmlUrl: SdkClient::stringValue($data->html_url),
+            number: SdkClient::intValue($data->number),
+            state: SdkClient::stringValue($data->state),
+            title: SdkClient::stringValue($data->title),
+            user: ($data->user === null ? null : SdkClient::hydrateClass($data->user, NullableSimpleUser::class)),
+            labels: array_values(array_map(static fn($item) => (is_object($item) ? SdkClient::hydrateClass($item, IssueLabelsItemVariant1::class) : (is_string($item) ? SdkClient::stringValue($item) : SdkClient::hydrateClass($item, IssueLabelsItemVariant1::class))), SdkClient::arrayValue($data->labels))),
+            assignee: ($data->assignee === null ? null : SdkClient::hydrateClass($data->assignee, NullableSimpleUser::class)),
+            milestone: ($data->milestone === null ? null : SdkClient::hydrateClass($data->milestone, NullableMilestone::class)),
+            locked: SdkClient::boolValue($data->locked),
+            comments: SdkClient::intValue($data->comments),
+            closedAt: ($data->closed_at === null ? null : SdkClient::stringValue($data->closed_at)),
+            createdAt: SdkClient::stringValue($data->created_at),
+            updatedAt: SdkClient::stringValue($data->updated_at),
+            stateReason: (property_exists($data, "state_reason") ? ($data->state_reason === null ? null : SdkClient::hydrateStringEnumOrString($data->state_reason, IssueStateReasonEnum::class)) : SdkNotGiven::Value),
+            body: (property_exists($data, "body") ? ($data->body === null ? null : SdkClient::stringValue($data->body)) : SdkNotGiven::Value),
+            assignees: (property_exists($data, "assignees") && $data->assignees !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($data->assignees))) : SdkNotGiven::Value),
+            activeLockReason: (property_exists($data, "active_lock_reason") ? ($data->active_lock_reason === null ? null : SdkClient::stringValue($data->active_lock_reason)) : SdkNotGiven::Value),
+            pullRequest: (property_exists($data, "pull_request") && $data->pull_request !== null ? SdkClient::hydrateClass($data->pull_request, IssuePullRequest::class) : SdkNotGiven::Value),
+            draft: (property_exists($data, "draft") && $data->draft !== null ? SdkClient::boolValue($data->draft) : SdkNotGiven::Value),
+            closedBy: (property_exists($data, "closed_by") ? ($data->closed_by === null ? null : SdkClient::hydrateClass($data->closed_by, NullableSimpleUser::class)) : SdkNotGiven::Value),
+            bodyHtml: (property_exists($data, "body_html") && $data->body_html !== null ? SdkClient::stringValue($data->body_html) : SdkNotGiven::Value),
+            bodyText: (property_exists($data, "body_text") && $data->body_text !== null ? SdkClient::stringValue($data->body_text) : SdkNotGiven::Value),
+            timelineUrl: (property_exists($data, "timeline_url") && $data->timeline_url !== null ? SdkClient::stringValue($data->timeline_url) : SdkNotGiven::Value),
+            type: (property_exists($data, "type") ? ($data->type === null ? null : SdkClient::hydrateClass($data->type, IssueType::class)) : SdkNotGiven::Value),
+            repository: (property_exists($data, "repository") && $data->repository !== null ? SdkClient::hydrateClass($data->repository, Repository::class) : SdkNotGiven::Value),
+            performedViaGithubApp: (property_exists($data, "performed_via_github_app") ? ($data->performed_via_github_app === null ? null : SdkClient::hydrateClass($data->performed_via_github_app, NullableIntegration::class)) : SdkNotGiven::Value),
+            authorAssociation: (property_exists($data, "author_association") && $data->author_association !== null ? SdkClient::hydrateStringEnumOrString($data->author_association, AuthorAssociation::class) : SdkNotGiven::Value),
+            reactions: (property_exists($data, "reactions") && $data->reactions !== null ? SdkClient::hydrateClass($data->reactions, ReactionRollup::class) : SdkNotGiven::Value),
+            subIssuesSummary: (property_exists($data, "sub_issues_summary") && $data->sub_issues_summary !== null ? SdkClient::hydrateClass($data->sub_issues_summary, SubIssuesSummary::class) : SdkNotGiven::Value),
+            parentIssueUrl: (property_exists($data, "parent_issue_url") ? ($data->parent_issue_url === null ? null : SdkClient::stringValue($data->parent_issue_url)) : SdkNotGiven::Value),
+            pinnedComment: (property_exists($data, "pinned_comment") ? ($data->pinned_comment === null ? null : SdkClient::hydrateClass($data->pinned_comment, NullableIssueComment::class)) : SdkNotGiven::Value),
+            issueDependenciesSummary: (property_exists($data, "issue_dependencies_summary") && $data->issue_dependencies_summary !== null ? SdkClient::hydrateClass($data->issue_dependencies_summary, IssueDependenciesSummary::class) : SdkNotGiven::Value),
+            issueFieldValues: (property_exists($data, "issue_field_values") && $data->issue_field_values !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, IssueFieldValue::class), SdkClient::arrayValue($data->issue_field_values))) : SdkNotGiven::Value),
         );
     }
 }

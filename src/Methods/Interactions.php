@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class Interactions
 {
-    use InteractionsMethodsPart1;
+    use InteractionsMethods;
 }

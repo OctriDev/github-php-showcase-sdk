@@ -8,86 +8,100 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookTeamAddedToRepository` API schema.
  */
-final readonly class WebhookTeamAddedToRepositoryActionEnum implements SdkOpenEnum
-{
-    public const ADDED_TO_REPOSITORY = "added_to_repository";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Required object value serialized in the `license` wire field.
- */
-class WebhookTeamAddedToRepositoryRepositoryLicense implements \JsonSerializable
+class WebhookTeamAddedToRepository implements \JsonSerializable
 {
     /**
-     * Required `string` value serialized in the `key` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string
+     * @var WebhookTeamAddedToRepositoryActionEnum|string
      */
-    public readonly string $key;
+    public readonly WebhookTeamAddedToRepositoryActionEnum|string $action;
     /**
-     * Required `string` value serialized in the `name` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var string
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly string $name;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Required `string` value serialized in the `node_id` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var string
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly string $nodeId;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * Required `string` value serialized in the `spdx_id` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var string
+     * @var OrganizationSimpleWebhooks
      */
-    public readonly string $spdxId;
+    public readonly OrganizationSimpleWebhooks $organization;
     /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
+     * A git repository
      *
-     * @var string|null
+     * @var WebhookTeamAddedToRepositoryRepository|SdkNotGiven
      */
-    public readonly string|null $url;
+    public readonly WebhookTeamAddedToRepositoryRepository|SdkNotGiven $repository;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser|SdkNotGiven
+     */
+    public readonly SimpleUser|SdkNotGiven $sender;
+    /**
+     * Groups of organization members that gives permissions on specified repositories.
+     *
+     * @var WebhooksTeam1
+     */
+    public readonly WebhooksTeam1 $team;
 
     /**
-     * @param string $key
-     * @param string $name
-     * @param string $nodeId
-     * @param string $spdxId
-     * @param string|null $url
+     * @param WebhookTeamAddedToRepositoryActionEnum|string $action
+     * @param OrganizationSimpleWebhooks $organization
+     * @param WebhooksTeam1 $team
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param WebhookTeamAddedToRepositoryRepository|SdkNotGiven $repository
+     * @param SimpleUser|SdkNotGiven $sender
      */
     public function __construct(
-        string $key,
-        string $name,
-        string $nodeId,
-        string $spdxId,
-        string|null $url,
+        WebhookTeamAddedToRepositoryActionEnum|string $action,
+        OrganizationSimpleWebhooks $organization,
+        WebhooksTeam1 $team,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        WebhookTeamAddedToRepositoryRepository|SdkNotGiven $repository = SdkNotGiven::Value,
+        SimpleUser|SdkNotGiven $sender = SdkNotGiven::Value,
     ) {
-        $this->key = $key;
-        $this->name = $name;
-        $this->nodeId = $nodeId;
-        $this->spdxId = $spdxId;
-        $this->url = $url;
+        $this->action = $action;
+        $this->organization = $organization;
+        $this->team = $team;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->repository = $repository;
+        $this->sender = $sender;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "key" => $this->key,
-            "name" => $this->name,
-            "node_id" => $this->nodeId,
-            "spdx_id" => $this->spdxId,
-            "url" => $this->url,
+            "action" => $this->action,
+            "organization" => $this->organization,
+            "team" => $this->team,
         ];
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->repository !== SdkNotGiven::Value) {
+            $values["repository"] = $this->repository;
+        }
+        if ($this->sender !== SdkNotGiven::Value) {
+            $values["sender"] = $this->sender;
+        }
         return $values;
     }
 
@@ -99,33 +113,17 @@ class WebhookTeamAddedToRepositoryRepositoryLicense implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "spdx_id") || $data->spdx_id === null) { throw new SdkValidationError("spdx_id", 'required', "Required property 'spdx_id' is missing or null"); }
-        if (!property_exists($data, "url")) { throw new SdkValidationError("url", 'required', "Missing required property 'url'"); }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
+        if (!property_exists($data, "team") || $data->team === null) { throw new SdkValidationError("team", 'required', "Required property 'team' is missing or null"); }
         return new self(
-            key: SdkClient::stringValue($data->key),
-            name: SdkClient::stringValue($data->name),
-            nodeId: SdkClient::stringValue($data->node_id),
-            spdxId: SdkClient::stringValue($data->spdx_id),
-            url: ($data->url === null ? null : SdkClient::stringValue($data->url)),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookTeamAddedToRepositoryActionEnum::class),
+            organization: SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class),
+            team: SdkClient::hydrateClass($data->team, WebhooksTeam1::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            repository: (property_exists($data, "repository") && $data->repository !== null ? SdkClient::hydrateClass($data->repository, WebhookTeamAddedToRepositoryRepository::class) : SdkNotGiven::Value),
+            sender: (property_exists($data, "sender") && $data->sender !== null ? SdkClient::hydrateClass($data->sender, SimpleUser::class) : SdkNotGiven::Value),
         );
     }
-}
-
-/**
- * Optional enumerated value serialized in the `type` wire field.
- */
-final readonly class WebhookTeamAddedToRepositoryRepositoryOwnerTypeEnum implements SdkOpenEnum
-{
-    public const BOT = "Bot";
-    public const USER = "User";
-    public const ORGANIZATION = "Organization";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
 }

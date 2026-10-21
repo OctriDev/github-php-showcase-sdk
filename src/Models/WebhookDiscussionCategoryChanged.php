@@ -8,137 +8,107 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookDiscussionCategoryChanged` API schema.
  */
-final readonly class WebhookDiscussionCategoryChangedActionEnum implements SdkOpenEnum
-{
-    public const CATEGORY_CHANGED = "category_changed";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Required object value serialized in the `from` wire field.
- */
-class WebhookDiscussionCategoryChangedChangesCategoryFrom implements \JsonSerializable
+class WebhookDiscussionCategoryChanged implements \JsonSerializable
 {
     /**
-     * Required `date-time`-formatted value serialized in the `created_at` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string
+     * @var WebhookDiscussionCategoryChangedActionEnum|string
      */
-    public readonly string $createdAt;
+    public readonly WebhookDiscussionCategoryChangedActionEnum|string $action;
     /**
-     * Required `string` value serialized in the `description` wire field.
+     * Required object value serialized in the `changes` wire field.
      *
-     * @var string
+     * @var WebhookDiscussionCategoryChangedChanges
      */
-    public readonly string $description;
+    public readonly WebhookDiscussionCategoryChangedChanges $changes;
     /**
-     * Required `string` value serialized in the `emoji` wire field.
+     * A Discussion in a repository.
      *
-     * @var string
+     * @var Discussion
      */
-    public readonly string $emoji;
+    public readonly Discussion $discussion;
     /**
-     * Required `integer` value serialized in the `id` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var int
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly int $id;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Required `boolean` value serialized in the `is_answerable` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var bool
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly bool $isAnswerable;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * Required `string` value serialized in the `name` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var string
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly string $name;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
-     * Optional `string` value serialized in the `node_id` wire field.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var string|SdkNotGiven
+     * @var RepositoryWebhooks
      */
-    public readonly string|SdkNotGiven $nodeId;
+    public readonly RepositoryWebhooks $repository;
     /**
-     * Required `integer` value serialized in the `repository_id` wire field.
+     * A GitHub user.
      *
-     * @var int
+     * @var SimpleUser
      */
-    public readonly int $repositoryId;
-    /**
-     * Required `string` value serialized in the `slug` wire field.
-     *
-     * @var string
-     */
-    public readonly string $slug;
-    /**
-     * Required `string` value serialized in the `updated_at` wire field.
-     *
-     * @var string
-     */
-    public readonly string $updatedAt;
+    public readonly SimpleUser $sender;
 
     /**
-     * @param string $createdAt
-     * @param string $description
-     * @param string $emoji
-     * @param int $id
-     * @param bool $isAnswerable
-     * @param string $name
-     * @param int $repositoryId
-     * @param string $slug
-     * @param string $updatedAt
-     * @param string|SdkNotGiven $nodeId
+     * @param WebhookDiscussionCategoryChangedActionEnum|string $action
+     * @param WebhookDiscussionCategoryChangedChanges $changes
+     * @param Discussion $discussion
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
      */
     public function __construct(
-        string $createdAt,
-        string $description,
-        string $emoji,
-        int $id,
-        bool $isAnswerable,
-        string $name,
-        int $repositoryId,
-        string $slug,
-        string $updatedAt,
-        string|SdkNotGiven $nodeId = SdkNotGiven::Value,
+        WebhookDiscussionCategoryChangedActionEnum|string $action,
+        WebhookDiscussionCategoryChangedChanges $changes,
+        Discussion $discussion,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
     ) {
-        $this->createdAt = $createdAt;
-        $this->description = $description;
-        $this->emoji = $emoji;
-        $this->id = $id;
-        $this->isAnswerable = $isAnswerable;
-        $this->name = $name;
-        $this->repositoryId = $repositoryId;
-        $this->slug = $slug;
-        $this->updatedAt = $updatedAt;
-        $this->nodeId = $nodeId;
+        $this->action = $action;
+        $this->changes = $changes;
+        $this->discussion = $discussion;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "created_at" => $this->createdAt,
-            "description" => $this->description,
-            "emoji" => $this->emoji,
-            "id" => $this->id,
-            "is_answerable" => $this->isAnswerable,
-            "name" => $this->name,
-            "repository_id" => $this->repositoryId,
-            "slug" => $this->slug,
-            "updated_at" => $this->updatedAt,
+            "action" => $this->action,
+            "changes" => $this->changes,
+            "discussion" => $this->discussion,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
-        if ($this->nodeId !== SdkNotGiven::Value) {
-            $values["node_id"] = $this->nodeId;
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
         }
         return $values;
     }
@@ -151,116 +121,20 @@ class WebhookDiscussionCategoryChangedChangesCategoryFrom implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
-        if (!property_exists($data, "emoji") || $data->emoji === null) { throw new SdkValidationError("emoji", 'required', "Required property 'emoji' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "is_answerable") || $data->is_answerable === null) { throw new SdkValidationError("is_answerable", 'required', "Required property 'is_answerable' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
-        if (!property_exists($data, "slug") || $data->slug === null) { throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "changes") || $data->changes === null) { throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null"); }
+        if (!property_exists($data, "discussion") || $data->discussion === null) { throw new SdkValidationError("discussion", 'required', "Required property 'discussion' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
-            createdAt: SdkClient::stringValue($data->created_at),
-            description: SdkClient::stringValue($data->description),
-            emoji: SdkClient::stringValue($data->emoji),
-            id: SdkClient::intValue($data->id),
-            isAnswerable: SdkClient::boolValue($data->is_answerable),
-            name: SdkClient::stringValue($data->name),
-            repositoryId: SdkClient::intValue($data->repository_id),
-            slug: SdkClient::stringValue($data->slug),
-            updatedAt: SdkClient::stringValue($data->updated_at),
-            nodeId: (property_exists($data, "node_id") && $data->node_id !== null ? SdkClient::stringValue($data->node_id) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `category` wire field.
- */
-class WebhookDiscussionCategoryChangedChangesCategory implements \JsonSerializable
-{
-    /**
-     * Required object value serialized in the `from` wire field.
-     *
-     * @var WebhookDiscussionCategoryChangedChangesCategoryFrom
-     */
-    public readonly WebhookDiscussionCategoryChangedChangesCategoryFrom $from;
-
-    /**
-     * @param WebhookDiscussionCategoryChangedChangesCategoryFrom $from
-     */
-    public function __construct(
-        WebhookDiscussionCategoryChangedChangesCategoryFrom $from,
-    ) {
-        $this->from = $from;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "from" => $this->from,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
-        return new self(
-            from: SdkClient::hydrateClass($data->from, WebhookDiscussionCategoryChangedChangesCategoryFrom::class),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `changes` wire field.
- */
-class WebhookDiscussionCategoryChangedChanges implements \JsonSerializable
-{
-    /**
-     * Required object value serialized in the `category` wire field.
-     *
-     * @var WebhookDiscussionCategoryChangedChangesCategory
-     */
-    public readonly WebhookDiscussionCategoryChangedChangesCategory $category;
-
-    /**
-     * @param WebhookDiscussionCategoryChangedChangesCategory $category
-     */
-    public function __construct(
-        WebhookDiscussionCategoryChangedChangesCategory $category,
-    ) {
-        $this->category = $category;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "category" => $this->category,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "category") || $data->category === null) { throw new SdkValidationError("category", 'required', "Required property 'category' is missing or null"); }
-        return new self(
-            category: SdkClient::hydrateClass($data->category, WebhookDiscussionCategoryChangedChangesCategory::class),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookDiscussionCategoryChangedActionEnum::class),
+            changes: SdkClient::hydrateClass($data->changes, WebhookDiscussionCategoryChangedChanges::class),
+            discussion: SdkClient::hydrateClass($data->discussion, Discussion::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
         );
     }
 }

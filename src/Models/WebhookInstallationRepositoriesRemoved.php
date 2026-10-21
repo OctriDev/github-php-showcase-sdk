@@ -8,86 +8,128 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookInstallationRepositoriesRemoved` API schema.
  */
-final readonly class WebhookInstallationRepositoriesRemovedActionEnum implements SdkOpenEnum
-{
-    public const REMOVED = "removed";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Required object value serialized in the `repositories_added[]` wire field.
- */
-class WebhookInstallationRepositoriesRemovedRepositoriesAddedItem implements \JsonSerializable
+class WebhookInstallationRepositoriesRemoved implements \JsonSerializable
 {
     /**
-     * Required `string` value serialized in the `full_name` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string
+     * @var WebhookInstallationRepositoriesRemovedActionEnum|string
      */
-    public readonly string $fullName;
+    public readonly WebhookInstallationRepositoriesRemovedActionEnum|string $action;
     /**
-     * Unique identifier of the repository
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var int
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly int $id;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * The name of the repository.
+     * Installation
      *
-     * @var string
+     * @var Installation
      */
-    public readonly string $name;
+    public readonly Installation $installation;
     /**
-     * Required `string` value serialized in the `node_id` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var string
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly string $nodeId;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
-     * Whether the repository is private or public.
+     * An array of repository objects, which were added to the installation.
      *
-     * @var bool
+     * @var list<WebhooksRepositoriesAddedItem>
      */
-    public readonly bool $private_;
+    public readonly array $repositoriesAdded;
+    /**
+     * An array of repository objects, which were removed from the installation. When `repository_selection` changes from `all` to `selected`, this array is empty.
+     *
+     * @var list<WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem>
+     */
+    public readonly array $repositoriesRemoved;
+    /**
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+     *
+     * @var RepositoryWebhooks|SdkNotGiven
+     */
+    public readonly RepositoryWebhooks|SdkNotGiven $repository;
+    /**
+     * Describe whether all repositories have been selected or there's a selection involved
+     *
+     * @var WebhooksRepositorySelection|string
+     */
+    public readonly WebhooksRepositorySelection|string $repositorySelection;
+    /**
+     * Required object value serialized in the `requester` wire field.
+     *
+     * @var WebhooksUser|null
+     */
+    public readonly WebhooksUser|null $requester;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
 
     /**
-     * @param string $fullName
-     * @param int $id
-     * @param string $name
-     * @param string $nodeId
-     * @param bool $private_
+     * @param WebhookInstallationRepositoriesRemovedActionEnum|string $action
+     * @param Installation $installation
+     * @param list<WebhooksRepositoriesAddedItem> $repositoriesAdded
+     * @param list<WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem> $repositoriesRemoved
+     * @param WebhooksRepositorySelection|string $repositorySelection
+     * @param WebhooksUser|null $requester
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param RepositoryWebhooks|SdkNotGiven $repository
      */
     public function __construct(
-        string $fullName,
-        int $id,
-        string $name,
-        string $nodeId,
-        bool $private_,
+        WebhookInstallationRepositoriesRemovedActionEnum|string $action,
+        Installation $installation,
+        array $repositoriesAdded,
+        array $repositoriesRemoved,
+        WebhooksRepositorySelection|string $repositorySelection,
+        WebhooksUser|null $requester,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        RepositoryWebhooks|SdkNotGiven $repository = SdkNotGiven::Value,
     ) {
-        $this->fullName = $fullName;
-        $this->id = $id;
-        $this->name = $name;
-        $this->nodeId = $nodeId;
-        $this->private_ = $private_;
+        $this->action = $action;
+        $this->installation = $installation;
+        $this->repositoriesAdded = $repositoriesAdded;
+        $this->repositoriesRemoved = $repositoriesRemoved;
+        $this->repositorySelection = $repositorySelection;
+        $this->requester = $requester;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->organization = $organization;
+        $this->repository = $repository;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "full_name" => $this->fullName,
-            "id" => $this->id,
-            "name" => $this->name,
-            "node_id" => $this->nodeId,
-            "private" => $this->private_,
+            "action" => $this->action,
+            "installation" => $this->installation,
+            "repositories_added" => $this->repositoriesAdded,
+            "repositories_removed" => $this->repositoriesRemoved,
+            "repository_selection" => $this->repositorySelection,
+            "requester" => $this->requester,
+            "sender" => $this->sender,
         ];
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
+        if ($this->repository !== SdkNotGiven::Value) {
+            $values["repository"] = $this->repository;
+        }
         return $values;
     }
 
@@ -99,110 +141,24 @@ class WebhookInstallationRepositoriesRemovedRepositoriesAddedItem implements \Js
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "full_name") || $data->full_name === null) { throw new SdkValidationError("full_name", 'required', "Required property 'full_name' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "private") || $data->private === null) { throw new SdkValidationError("private", 'required', "Required property 'private' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "installation") || $data->installation === null) { throw new SdkValidationError("installation", 'required', "Required property 'installation' is missing or null"); }
+        if (!property_exists($data, "repositories_added") || $data->repositories_added === null) { throw new SdkValidationError("repositories_added", 'required', "Required property 'repositories_added' is missing or null"); }
+        if (!property_exists($data, "repositories_removed") || $data->repositories_removed === null) { throw new SdkValidationError("repositories_removed", 'required', "Required property 'repositories_removed' is missing or null"); }
+        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) { throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null"); }
+        if (!property_exists($data, "requester")) { throw new SdkValidationError("requester", 'required', "Missing required property 'requester'"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
-            fullName: SdkClient::stringValue($data->full_name),
-            id: SdkClient::intValue($data->id),
-            name: SdkClient::stringValue($data->name),
-            nodeId: SdkClient::stringValue($data->node_id),
-            private_: SdkClient::boolValue($data->private),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `repositories_removed[]` wire field.
- */
-class WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem implements \JsonSerializable
-{
-    /**
-     * Required `string` value serialized in the `full_name` wire field.
-     *
-     * @var string
-     */
-    public readonly string $fullName;
-    /**
-     * Unique identifier of the repository
-     *
-     * @var int
-     */
-    public readonly int $id;
-    /**
-     * The name of the repository.
-     *
-     * @var string
-     */
-    public readonly string $name;
-    /**
-     * Required `string` value serialized in the `node_id` wire field.
-     *
-     * @var string
-     */
-    public readonly string $nodeId;
-    /**
-     * Whether the repository is private or public.
-     *
-     * @var bool
-     */
-    public readonly bool $private_;
-
-    /**
-     * @param string $fullName
-     * @param int $id
-     * @param string $name
-     * @param string $nodeId
-     * @param bool $private_
-     */
-    public function __construct(
-        string $fullName,
-        int $id,
-        string $name,
-        string $nodeId,
-        bool $private_,
-    ) {
-        $this->fullName = $fullName;
-        $this->id = $id;
-        $this->name = $name;
-        $this->nodeId = $nodeId;
-        $this->private_ = $private_;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "full_name" => $this->fullName,
-            "id" => $this->id,
-            "name" => $this->name,
-            "node_id" => $this->nodeId,
-            "private" => $this->private_,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "full_name") || $data->full_name === null) { throw new SdkValidationError("full_name", 'required', "Required property 'full_name' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "private") || $data->private === null) { throw new SdkValidationError("private", 'required', "Required property 'private' is missing or null"); }
-        return new self(
-            fullName: SdkClient::stringValue($data->full_name),
-            id: SdkClient::intValue($data->id),
-            name: SdkClient::stringValue($data->name),
-            nodeId: SdkClient::stringValue($data->node_id),
-            private_: SdkClient::boolValue($data->private),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookInstallationRepositoriesRemovedActionEnum::class),
+            installation: SdkClient::hydrateClass($data->installation, Installation::class),
+            repositoriesAdded: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhooksRepositoriesAddedItem::class), SdkClient::arrayValue($data->repositories_added))),
+            repositoriesRemoved: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem::class), SdkClient::arrayValue($data->repositories_removed))),
+            repositorySelection: SdkClient::hydrateStringEnumOrString($data->repository_selection, WebhooksRepositorySelection::class),
+            requester: ($data->requester === null ? null : SdkClient::hydrateClass($data->requester, WebhooksUser::class)),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            repository: (property_exists($data, "repository") && $data->repository !== null ? SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class) : SdkNotGiven::Value),
         );
     }
 }

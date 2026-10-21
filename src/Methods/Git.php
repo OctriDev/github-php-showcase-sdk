@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class Git
 {
-    use GitMethodsPart1;
+    use GitMethods;
 }

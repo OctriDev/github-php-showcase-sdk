@@ -8,9 +8,187 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
+ * The review that was affected.
+ */
+class WebhooksReview implements \JsonSerializable
+{
+    /**
+     * Required object value serialized in the `_links` wire field.
+     *
+     * @var WebhooksReviewLinks
+     */
+    public readonly WebhooksReviewLinks $links;
+    /**
+     * How the author is associated with the repository.
+     *
+     * @var WebhooksReviewAuthorAssociationEnum|string
+     */
+    public readonly WebhooksReviewAuthorAssociationEnum|string $authorAssociation;
+    /**
+     * The text of the review.
+     *
+     * @var string|null
+     */
+    public readonly string|null $body;
+    /**
+     * A commit SHA for the review.
+     *
+     * @var string
+     */
+    public readonly string $commitId;
+    /**
+     * Required `uri`-formatted value serialized in the `html_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $htmlUrl;
+    /**
+     * Unique identifier of the review
+     *
+     * @var int
+     */
+    public readonly int $id;
+    /**
+     * Required `string` value serialized in the `node_id` wire field.
+     *
+     * @var string
+     */
+    public readonly string $nodeId;
+    /**
+     * Required `uri`-formatted value serialized in the `pull_request_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $pullRequestUrl;
+    /**
+     * Required `string` value serialized in the `state` wire field.
+     *
+     * @var string
+     */
+    public readonly string $state;
+    /**
+     * Required `date-time`-formatted value serialized in the `submitted_at` wire field.
+     *
+     * @var string|null
+     */
+    public readonly string|null $submittedAt;
+    /**
+     * Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+     *
+     * @var string|null|SdkNotGiven
+     */
+    public readonly string|null|SdkNotGiven $updatedAt;
+    /**
+     * Required object value serialized in the `user` wire field.
+     *
+     * @var WebhooksReviewUser|null
+     */
+    public readonly WebhooksReviewUser|null $user;
+
+    /**
+     * @param WebhooksReviewLinks $links
+     * @param WebhooksReviewAuthorAssociationEnum|string $authorAssociation
+     * @param string|null $body
+     * @param string $commitId
+     * @param string $htmlUrl
+     * @param int $id
+     * @param string $nodeId
+     * @param string $pullRequestUrl
+     * @param string $state
+     * @param string|null $submittedAt
+     * @param WebhooksReviewUser|null $user
+     * @param string|null|SdkNotGiven $updatedAt
+     */
+    public function __construct(
+        WebhooksReviewLinks $links,
+        WebhooksReviewAuthorAssociationEnum|string $authorAssociation,
+        string|null $body,
+        string $commitId,
+        string $htmlUrl,
+        int $id,
+        string $nodeId,
+        string $pullRequestUrl,
+        string $state,
+        string|null $submittedAt,
+        WebhooksReviewUser|null $user,
+        string|null|SdkNotGiven $updatedAt = SdkNotGiven::Value,
+    ) {
+        $this->links = $links;
+        $this->authorAssociation = $authorAssociation;
+        $this->body = $body;
+        $this->commitId = $commitId;
+        $this->htmlUrl = $htmlUrl;
+        $this->id = $id;
+        $this->nodeId = $nodeId;
+        $this->pullRequestUrl = $pullRequestUrl;
+        $this->state = $state;
+        $this->submittedAt = $submittedAt;
+        $this->user = $user;
+        $this->updatedAt = $updatedAt;
+    }
+
+    /** @return array<array-key, mixed> */
+    public function toArray(): array
+    {
+        $values = [
+            "_links" => $this->links,
+            "author_association" => $this->authorAssociation,
+            "body" => $this->body,
+            "commit_id" => $this->commitId,
+            "html_url" => $this->htmlUrl,
+            "id" => $this->id,
+            "node_id" => $this->nodeId,
+            "pull_request_url" => $this->pullRequestUrl,
+            "state" => $this->state,
+            "submitted_at" => $this->submittedAt,
+            "user" => $this->user,
+        ];
+        if ($this->updatedAt !== SdkNotGiven::Value) {
+            $values["updated_at"] = $this->updatedAt;
+        }
+        return $values;
+    }
+
+    /** @return object */
+    public function jsonSerialize(): object
+    {
+        return (object) $this->toArray();
+    }
+
+    public static function fromObject(object $data): self
+    {
+        if (!property_exists($data, "_links") || $data->_links === null) { throw new SdkValidationError("_links", 'required', "Required property '_links' is missing or null"); }
+        if (!property_exists($data, "author_association") || $data->author_association === null) { throw new SdkValidationError("author_association", 'required', "Required property 'author_association' is missing or null"); }
+        if (!property_exists($data, "body")) { throw new SdkValidationError("body", 'required', "Missing required property 'body'"); }
+        if (!property_exists($data, "commit_id") || $data->commit_id === null) { throw new SdkValidationError("commit_id", 'required', "Required property 'commit_id' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "pull_request_url") || $data->pull_request_url === null) { throw new SdkValidationError("pull_request_url", 'required', "Required property 'pull_request_url' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "submitted_at")) { throw new SdkValidationError("submitted_at", 'required', "Missing required property 'submitted_at'"); }
+        if (!property_exists($data, "user")) { throw new SdkValidationError("user", 'required', "Missing required property 'user'"); }
+        return new self(
+            links: SdkClient::hydrateClass($data->_links, WebhooksReviewLinks::class),
+            authorAssociation: SdkClient::hydrateStringEnumOrString($data->author_association, WebhooksReviewAuthorAssociationEnum::class),
+            body: ($data->body === null ? null : SdkClient::stringValue($data->body)),
+            commitId: SdkClient::stringValue($data->commit_id),
+            htmlUrl: SdkClient::stringValue($data->html_url),
+            id: SdkClient::intValue($data->id),
+            nodeId: SdkClient::stringValue($data->node_id),
+            pullRequestUrl: SdkClient::stringValue($data->pull_request_url),
+            state: SdkClient::stringValue($data->state),
+            submittedAt: ($data->submitted_at === null ? null : SdkClient::stringValue($data->submitted_at)),
+            user: ($data->user === null ? null : SdkClient::hydrateClass($data->user, WebhooksReviewUser::class)),
+            updatedAt: (property_exists($data, "updated_at") ? ($data->updated_at === null ? null : SdkClient::stringValue($data->updated_at)) : SdkNotGiven::Value),
+        );
+    }
+}
+
+/**
  * Required object value serialized in the `html` wire field.
  */
-class WebhooksReviewLinksHtml implements \JsonSerializable
+class WebhooksReviewCommentLinksHtml implements \JsonSerializable
 {
     /**
      * Required `uri-template`-formatted value serialized in the `href` wire field.
@@ -55,7 +233,7 @@ class WebhooksReviewLinksHtml implements \JsonSerializable
 /**
  * Required object value serialized in the `pull_request` wire field.
  */
-class WebhooksReviewLinksPullRequest implements \JsonSerializable
+class WebhooksReviewCommentLinksPullRequest implements \JsonSerializable
 {
     /**
      * Required `uri-template`-formatted value serialized in the `href` wire field.
@@ -98,41 +276,31 @@ class WebhooksReviewLinksPullRequest implements \JsonSerializable
 }
 
 /**
- * Required object value serialized in the `_links` wire field.
+ * Required object value serialized in the `self` wire field.
  */
-class WebhooksReviewLinks implements \JsonSerializable
+class WebhooksReviewCommentLinksSelf implements \JsonSerializable
 {
     /**
-     * Required object value serialized in the `html` wire field.
+     * Required `uri-template`-formatted value serialized in the `href` wire field.
      *
-     * @var WebhooksReviewLinksHtml
+     * @var string
      */
-    public readonly WebhooksReviewLinksHtml $html;
-    /**
-     * Required object value serialized in the `pull_request` wire field.
-     *
-     * @var WebhooksReviewLinksPullRequest
-     */
-    public readonly WebhooksReviewLinksPullRequest $pullRequest;
+    public readonly string $href;
 
     /**
-     * @param WebhooksReviewLinksHtml $html
-     * @param WebhooksReviewLinksPullRequest $pullRequest
+     * @param string $href
      */
     public function __construct(
-        WebhooksReviewLinksHtml $html,
-        WebhooksReviewLinksPullRequest $pullRequest,
+        string $href,
     ) {
-        $this->html = $html;
-        $this->pullRequest = $pullRequest;
+        $this->href = $href;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "html" => $this->html,
-            "pull_request" => $this->pullRequest,
+            "href" => $this->href,
         ];
         return $values;
     }
@@ -145,48 +313,9 @@ class WebhooksReviewLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
+        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
         return new self(
-            html: SdkClient::hydrateClass($data->html, WebhooksReviewLinksHtml::class),
-            pullRequest: SdkClient::hydrateClass($data->pull_request, WebhooksReviewLinksPullRequest::class),
+            href: SdkClient::stringValue($data->href),
         );
     }
-}
-
-/**
- * How the author is associated with the repository.
- */
-final readonly class WebhooksReviewAuthorAssociationEnum implements SdkOpenEnum
-{
-    public const COLLABORATOR = "COLLABORATOR";
-    public const CONTRIBUTOR = "CONTRIBUTOR";
-    public const FIRST_TIMER = "FIRST_TIMER";
-    public const FIRST_TIME_CONTRIBUTOR = "FIRST_TIME_CONTRIBUTOR";
-    public const MANNEQUIN = "MANNEQUIN";
-    public const MEMBER = "MEMBER";
-    public const NONE = "NONE";
-    public const OWNER = "OWNER";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Optional enumerated value serialized in the `type` wire field.
- */
-final readonly class WebhooksReviewUserTypeEnum implements SdkOpenEnum
-{
-    public const BOT = "Bot";
-    public const USER = "User";
-    public const ORGANIZATION = "Organization";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
 }

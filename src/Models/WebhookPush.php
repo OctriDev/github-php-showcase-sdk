@@ -8,303 +8,189 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Metaproperties for Git author/committer information.
+ * Typed representation of the `WebhookPush` API schema.
  */
-class WebhookPushCommitsItemAuthor implements \JsonSerializable
+class WebhookPush implements \JsonSerializable
 {
     /**
-     * Optional `date-time`-formatted value serialized in the `date` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $date;
-    /**
-     * Required `email`-formatted value serialized in the `email` wire field.
-     *
-     * @var string|null
-     */
-    public readonly string|null $email;
-    /**
-     * The git author's name.
+     * The SHA of the most recent commit on `ref` after the push.
      *
      * @var string
      */
-    public readonly string $name;
+    public readonly string $after;
     /**
-     * Optional `string` value serialized in the `username` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $username;
-
-    /**
-     * @param string|null $email
-     * @param string $name
-     * @param string|SdkNotGiven $date
-     * @param string|SdkNotGiven $username
-     */
-    public function __construct(
-        string|null $email,
-        string $name,
-        string|SdkNotGiven $date = SdkNotGiven::Value,
-        string|SdkNotGiven $username = SdkNotGiven::Value,
-    ) {
-        $this->email = $email;
-        $this->name = $name;
-        $this->date = $date;
-        $this->username = $username;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "email" => $this->email,
-            "name" => $this->name,
-        ];
-        if ($this->date !== SdkNotGiven::Value) {
-            $values["date"] = $this->date;
-        }
-        if ($this->username !== SdkNotGiven::Value) {
-            $values["username"] = $this->username;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "email")) { throw new SdkValidationError("email", 'required', "Missing required property 'email'"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        return new self(
-            email: ($data->email === null ? null : SdkClient::stringValue($data->email)),
-            name: SdkClient::stringValue($data->name),
-            date: (property_exists($data, "date") && $data->date !== null ? SdkClient::stringValue($data->date) : SdkNotGiven::Value),
-            username: (property_exists($data, "username") && $data->username !== null ? SdkClient::stringValue($data->username) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Metaproperties for Git author/committer information.
- */
-class WebhookPushCommitsItemCommitter implements \JsonSerializable
-{
-    /**
-     * Optional `date-time`-formatted value serialized in the `date` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $date;
-    /**
-     * Required `email`-formatted value serialized in the `email` wire field.
+     * Required `string` value serialized in the `base_ref` wire field.
      *
      * @var string|null
      */
-    public readonly string|null $email;
+    public readonly string|null $baseRef;
     /**
-     * The git author's name.
+     * The SHA of the most recent commit on `ref` before the push.
      *
      * @var string
      */
-    public readonly string $name;
+    public readonly string $before;
     /**
-     * Optional `string` value serialized in the `username` wire field.
+     * An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 2048 commits. If necessary, you can use the [Commits API](https://docs.github.com/rest/commits) to fetch additional commits.
      *
-     * @var string|SdkNotGiven
+     * @var list<WebhookPushCommitsItem>
      */
-    public readonly string|SdkNotGiven $username;
-
+    public readonly array $commits;
     /**
-     * @param string|null $email
-     * @param string $name
-     * @param string|SdkNotGiven $date
-     * @param string|SdkNotGiven $username
-     */
-    public function __construct(
-        string|null $email,
-        string $name,
-        string|SdkNotGiven $date = SdkNotGiven::Value,
-        string|SdkNotGiven $username = SdkNotGiven::Value,
-    ) {
-        $this->email = $email;
-        $this->name = $name;
-        $this->date = $date;
-        $this->username = $username;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "email" => $this->email,
-            "name" => $this->name,
-        ];
-        if ($this->date !== SdkNotGiven::Value) {
-            $values["date"] = $this->date;
-        }
-        if ($this->username !== SdkNotGiven::Value) {
-            $values["username"] = $this->username;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "email")) { throw new SdkValidationError("email", 'required', "Missing required property 'email'"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        return new self(
-            email: ($data->email === null ? null : SdkClient::stringValue($data->email)),
-            name: SdkClient::stringValue($data->name),
-            date: (property_exists($data, "date") && $data->date !== null ? SdkClient::stringValue($data->date) : SdkNotGiven::Value),
-            username: (property_exists($data, "username") && $data->username !== null ? SdkClient::stringValue($data->username) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `commits[]` wire field.
- */
-class WebhookPushCommitsItem implements \JsonSerializable
-{
-    /**
-     * An array of files added in the commit. A maximum of 3000 changed files will be reported per commit.
+     * URL that shows the changes in this `ref` update, from the `before` commit to the `after` commit. For a newly created `ref` that is directly based on the default branch, this is the comparison between the head of the default branch and the `after` commit. Otherwise, this shows all commits until the `after` commit.
      *
-     * @var list<string>|SdkNotGiven
+     * @var string
      */
-    public readonly array|SdkNotGiven $added;
+    public readonly string $compare;
     /**
-     * Metaproperties for Git author/committer information.
-     *
-     * @var WebhookPushCommitsItemAuthor
-     */
-    public readonly WebhookPushCommitsItemAuthor $author;
-    /**
-     * Metaproperties for Git author/committer information.
-     *
-     * @var WebhookPushCommitsItemCommitter
-     */
-    public readonly WebhookPushCommitsItemCommitter $committer;
-    /**
-     * Whether this commit is distinct from any that have been pushed before.
+     * Whether this push created the `ref`.
      *
      * @var bool
      */
-    public readonly bool $distinct;
+    public readonly bool $created;
     /**
-     * Required `string` value serialized in the `id` wire field.
+     * Whether this push deleted the `ref`.
+     *
+     * @var bool
+     */
+    public readonly bool $deleted;
+    /**
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
+     *
+     * @var EnterpriseWebhooks|SdkNotGiven
+     */
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
+    /**
+     * Whether this push was a force push of the `ref`.
+     *
+     * @var bool
+     */
+    public readonly bool $forced;
+    /**
+     * Required object value serialized in the `head_commit` wire field.
+     *
+     * @var WebhookPushHeadCommit|null
+     */
+    public readonly WebhookPushHeadCommit|null $headCommit;
+    /**
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+     *
+     * @var SimpleInstallation|SdkNotGiven
+     */
+    public readonly SimpleInstallation|SdkNotGiven $installation;
+    /**
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+     *
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
+     */
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
+    /**
+     * Metaproperties for Git author/committer information.
+     *
+     * @var WebhookPushPusher
+     */
+    public readonly WebhookPushPusher $pusher;
+    /**
+     * The full git ref that was pushed. Example: `refs/heads/main` or `refs/tags/v3.14.1`.
      *
      * @var string
      */
-    public readonly string $id;
+    public readonly string $ref;
     /**
-     * The commit message.
+     * A git repository
      *
-     * @var string
+     * @var WebhookPushRepository
      */
-    public readonly string $message;
+    public readonly WebhookPushRepository $repository;
     /**
-     * An array of files modified by the commit. A maximum of 3000 changed files will be reported per commit.
+     * A GitHub user.
      *
-     * @var list<string>|SdkNotGiven
+     * @var SimpleUser|SdkNotGiven
      */
-    public readonly array|SdkNotGiven $modified;
-    /**
-     * An array of files removed in the commit. A maximum of 3000 changed files will be reported per commit.
-     *
-     * @var list<string>|SdkNotGiven
-     */
-    public readonly array|SdkNotGiven $removed;
-    /**
-     * The ISO 8601 timestamp of the commit.
-     *
-     * @var string
-     */
-    public readonly string $timestamp;
-    /**
-     * Required `string` value serialized in the `tree_id` wire field.
-     *
-     * @var string
-     */
-    public readonly string $treeId;
-    /**
-     * URL that points to the commit API resource.
-     *
-     * @var string
-     */
-    public readonly string $url;
+    public readonly SimpleUser|SdkNotGiven $sender;
 
     /**
-     * @param WebhookPushCommitsItemAuthor $author
-     * @param WebhookPushCommitsItemCommitter $committer
-     * @param bool $distinct
-     * @param string $id
-     * @param string $message
-     * @param string $timestamp
-     * @param string $treeId
-     * @param string $url
-     * @param list<string>|SdkNotGiven $added
-     * @param list<string>|SdkNotGiven $modified
-     * @param list<string>|SdkNotGiven $removed
+     * @param string $after
+     * @param string|null $baseRef
+     * @param string $before
+     * @param list<WebhookPushCommitsItem> $commits
+     * @param string $compare
+     * @param bool $created
+     * @param bool $deleted
+     * @param bool $forced
+     * @param WebhookPushHeadCommit|null $headCommit
+     * @param WebhookPushPusher $pusher
+     * @param string $ref
+     * @param WebhookPushRepository $repository
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param SimpleUser|SdkNotGiven $sender
      */
     public function __construct(
-        WebhookPushCommitsItemAuthor $author,
-        WebhookPushCommitsItemCommitter $committer,
-        bool $distinct,
-        string $id,
-        string $message,
-        string $timestamp,
-        string $treeId,
-        string $url,
-        array|SdkNotGiven $added = SdkNotGiven::Value,
-        array|SdkNotGiven $modified = SdkNotGiven::Value,
-        array|SdkNotGiven $removed = SdkNotGiven::Value,
+        string $after,
+        string|null $baseRef,
+        string $before,
+        array $commits,
+        string $compare,
+        bool $created,
+        bool $deleted,
+        bool $forced,
+        WebhookPushHeadCommit|null $headCommit,
+        WebhookPushPusher $pusher,
+        string $ref,
+        WebhookPushRepository $repository,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        SimpleUser|SdkNotGiven $sender = SdkNotGiven::Value,
     ) {
-        $this->author = $author;
-        $this->committer = $committer;
-        $this->distinct = $distinct;
-        $this->id = $id;
-        $this->message = $message;
-        $this->timestamp = $timestamp;
-        $this->treeId = $treeId;
-        $this->url = $url;
-        $this->added = $added;
-        $this->modified = $modified;
-        $this->removed = $removed;
+        $this->after = $after;
+        $this->baseRef = $baseRef;
+        $this->before = $before;
+        $this->commits = $commits;
+        $this->compare = $compare;
+        $this->created = $created;
+        $this->deleted = $deleted;
+        $this->forced = $forced;
+        $this->headCommit = $headCommit;
+        $this->pusher = $pusher;
+        $this->ref = $ref;
+        $this->repository = $repository;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
+        $this->sender = $sender;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "author" => $this->author,
-            "committer" => $this->committer,
-            "distinct" => $this->distinct,
-            "id" => $this->id,
-            "message" => $this->message,
-            "timestamp" => $this->timestamp,
-            "tree_id" => $this->treeId,
-            "url" => $this->url,
+            "after" => $this->after,
+            "base_ref" => $this->baseRef,
+            "before" => $this->before,
+            "commits" => $this->commits,
+            "compare" => $this->compare,
+            "created" => $this->created,
+            "deleted" => $this->deleted,
+            "forced" => $this->forced,
+            "head_commit" => $this->headCommit,
+            "pusher" => $this->pusher,
+            "ref" => $this->ref,
+            "repository" => $this->repository,
         ];
-        if ($this->added !== SdkNotGiven::Value) {
-            $values["added"] = $this->added;
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
         }
-        if ($this->modified !== SdkNotGiven::Value) {
-            $values["modified"] = $this->modified;
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
         }
-        if ($this->removed !== SdkNotGiven::Value) {
-            $values["removed"] = $this->removed;
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
+        if ($this->sender !== SdkNotGiven::Value) {
+            $values["sender"] = $this->sender;
         }
         return $values;
     }
@@ -317,26 +203,35 @@ class WebhookPushCommitsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author") || $data->author === null) { throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null"); }
-        if (!property_exists($data, "committer") || $data->committer === null) { throw new SdkValidationError("committer", 'required', "Required property 'committer' is missing or null"); }
-        if (!property_exists($data, "distinct") || $data->distinct === null) { throw new SdkValidationError("distinct", 'required', "Required property 'distinct' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
-        if (!property_exists($data, "timestamp") || $data->timestamp === null) { throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null"); }
-        if (!property_exists($data, "tree_id") || $data->tree_id === null) { throw new SdkValidationError("tree_id", 'required', "Required property 'tree_id' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "after") || $data->after === null) { throw new SdkValidationError("after", 'required', "Required property 'after' is missing or null"); }
+        if (!property_exists($data, "base_ref")) { throw new SdkValidationError("base_ref", 'required', "Missing required property 'base_ref'"); }
+        if (!property_exists($data, "before") || $data->before === null) { throw new SdkValidationError("before", 'required', "Required property 'before' is missing or null"); }
+        if (!property_exists($data, "commits") || $data->commits === null) { throw new SdkValidationError("commits", 'required', "Required property 'commits' is missing or null"); }
+        if (!property_exists($data, "compare") || $data->compare === null) { throw new SdkValidationError("compare", 'required', "Required property 'compare' is missing or null"); }
+        if (!property_exists($data, "created") || $data->created === null) { throw new SdkValidationError("created", 'required', "Required property 'created' is missing or null"); }
+        if (!property_exists($data, "deleted") || $data->deleted === null) { throw new SdkValidationError("deleted", 'required', "Required property 'deleted' is missing or null"); }
+        if (!property_exists($data, "forced") || $data->forced === null) { throw new SdkValidationError("forced", 'required', "Required property 'forced' is missing or null"); }
+        if (!property_exists($data, "head_commit")) { throw new SdkValidationError("head_commit", 'required', "Missing required property 'head_commit'"); }
+        if (!property_exists($data, "pusher") || $data->pusher === null) { throw new SdkValidationError("pusher", 'required', "Required property 'pusher' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
         return new self(
-            author: SdkClient::hydrateClass($data->author, WebhookPushCommitsItemAuthor::class),
-            committer: SdkClient::hydrateClass($data->committer, WebhookPushCommitsItemCommitter::class),
-            distinct: SdkClient::boolValue($data->distinct),
-            id: SdkClient::stringValue($data->id),
-            message: SdkClient::stringValue($data->message),
-            timestamp: SdkClient::stringValue($data->timestamp),
-            treeId: SdkClient::stringValue($data->tree_id),
-            url: SdkClient::stringValue($data->url),
-            added: (property_exists($data, "added") && $data->added !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->added))) : SdkNotGiven::Value),
-            modified: (property_exists($data, "modified") && $data->modified !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->modified))) : SdkNotGiven::Value),
-            removed: (property_exists($data, "removed") && $data->removed !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->removed))) : SdkNotGiven::Value),
+            after: SdkClient::stringValue($data->after),
+            baseRef: ($data->base_ref === null ? null : SdkClient::stringValue($data->base_ref)),
+            before: SdkClient::stringValue($data->before),
+            commits: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhookPushCommitsItem::class), SdkClient::arrayValue($data->commits))),
+            compare: SdkClient::stringValue($data->compare),
+            created: SdkClient::boolValue($data->created),
+            deleted: SdkClient::boolValue($data->deleted),
+            forced: SdkClient::boolValue($data->forced),
+            headCommit: ($data->head_commit === null ? null : SdkClient::hydrateClass($data->head_commit, WebhookPushHeadCommit::class)),
+            pusher: SdkClient::hydrateClass($data->pusher, WebhookPushPusher::class),
+            ref: SdkClient::stringValue($data->ref),
+            repository: SdkClient::hydrateClass($data->repository, WebhookPushRepository::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            sender: (property_exists($data, "sender") && $data->sender !== null ? SdkClient::hydrateClass($data->sender, SimpleUser::class) : SdkNotGiven::Value),
         );
     }
 }

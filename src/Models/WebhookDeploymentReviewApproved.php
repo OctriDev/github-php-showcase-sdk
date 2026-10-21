@@ -8,299 +8,165 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookDeploymentReviewApproved` API schema.
  */
-final readonly class WebhookDeploymentReviewApprovedActionEnum implements SdkOpenEnum
-{
-    public const APPROVED = "approved";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Optional enumerated value serialized in the `type` wire field.
- */
-final readonly class WebhookDeploymentReviewApprovedReviewersItemReviewerTypeEnum implements SdkOpenEnum
-{
-    public const BOT = "Bot";
-    public const USER = "User";
-    public const ORGANIZATION = "Organization";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Optional object value serialized in the `reviewer` wire field.
- */
-class WebhookDeploymentReviewApprovedReviewersItemReviewer implements \JsonSerializable
+class WebhookDeploymentReviewApproved implements \JsonSerializable
 {
     /**
-     * Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+     * Required enumerated value serialized in the `action` wire field.
+     *
+     * @var WebhookDeploymentReviewApprovedActionEnum|string
+     */
+    public readonly WebhookDeploymentReviewApprovedActionEnum|string $action;
+    /**
+     * Optional object value serialized in the `approver` wire field.
+     *
+     * @var WebhooksApprover|SdkNotGiven
+     */
+    public readonly WebhooksApprover|SdkNotGiven $approver;
+    /**
+     * Optional `string` value serialized in the `comment` wire field.
      *
      * @var string|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $avatarUrl;
+    public readonly string|SdkNotGiven $comment;
     /**
-     * Optional `boolean` value serialized in the `deleted` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var bool|SdkNotGiven
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly bool|SdkNotGiven $deleted;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Optional `string` value serialized in the `email` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var string|null|SdkNotGiven
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly string|null|SdkNotGiven $email;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var string|SdkNotGiven
+     * @var OrganizationSimpleWebhooks
      */
-    public readonly string|SdkNotGiven $eventsUrl;
+    public readonly OrganizationSimpleWebhooks $organization;
     /**
-     * Optional `uri`-formatted value serialized in the `followers_url` wire field.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var string|SdkNotGiven
+     * @var RepositoryWebhooks
      */
-    public readonly string|SdkNotGiven $followersUrl;
+    public readonly RepositoryWebhooks $repository;
     /**
-     * Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+     * Optional array value serialized in the `reviewers` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var list<WebhooksReviewersItem>|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $followingUrl;
+    public readonly array|SdkNotGiven $reviewers;
     /**
-     * Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+     * A GitHub user.
      *
-     * @var string|SdkNotGiven
+     * @var SimpleUser
      */
-    public readonly string|SdkNotGiven $gistsUrl;
+    public readonly SimpleUser $sender;
     /**
-     * Optional `string` value serialized in the `gravatar_id` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $gravatarId;
-    /**
-     * Optional `uri`-formatted value serialized in the `html_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $htmlUrl;
-    /**
-     * Required `integer` value serialized in the `id` wire field.
-     *
-     * @var int
-     */
-    public readonly int $id;
-    /**
-     * Required `string` value serialized in the `login` wire field.
+     * Required `string` value serialized in the `since` wire field.
      *
      * @var string
      */
-    public readonly string $login;
+    public readonly string $since;
     /**
-     * Optional `string` value serialized in the `name` wire field.
+     * Optional object value serialized in the `workflow_job_run` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var WebhooksWorkflowJobRun|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $name;
+    public readonly WebhooksWorkflowJobRun|SdkNotGiven $workflowJobRun;
     /**
-     * Optional `string` value serialized in the `node_id` wire field.
+     * Optional array value serialized in the `workflow_job_runs` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var list<WebhookDeploymentReviewApprovedWorkflowJobRunsItem>|SdkNotGiven
      */
-    public readonly string|SdkNotGiven $nodeId;
+    public readonly array|SdkNotGiven $workflowJobRuns;
     /**
-     * Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+     * Required object value serialized in the `workflow_run` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var WebhookDeploymentReviewApprovedWorkflowRun|null
      */
-    public readonly string|SdkNotGiven $organizationsUrl;
-    /**
-     * Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $receivedEventsUrl;
-    /**
-     * Optional `uri`-formatted value serialized in the `repos_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $reposUrl;
-    /**
-     * Optional `boolean` value serialized in the `site_admin` wire field.
-     *
-     * @var bool|SdkNotGiven
-     */
-    public readonly bool|SdkNotGiven $siteAdmin;
-    /**
-     * Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $starredUrl;
-    /**
-     * Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $subscriptionsUrl;
-    /**
-     * Optional enumerated value serialized in the `type` wire field.
-     *
-     * @var WebhookDeploymentReviewApprovedReviewersItemReviewerTypeEnum|string|SdkNotGiven
-     */
-    public readonly WebhookDeploymentReviewApprovedReviewersItemReviewerTypeEnum|string|SdkNotGiven $type;
-    /**
-     * Optional `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $url;
+    public readonly WebhookDeploymentReviewApprovedWorkflowRun|null $workflowRun;
 
     /**
-     * @param int $id
-     * @param string $login
-     * @param string|SdkNotGiven $avatarUrl
-     * @param bool|SdkNotGiven $deleted
-     * @param string|null|SdkNotGiven $email
-     * @param string|SdkNotGiven $eventsUrl
-     * @param string|SdkNotGiven $followersUrl
-     * @param string|SdkNotGiven $followingUrl
-     * @param string|SdkNotGiven $gistsUrl
-     * @param string|SdkNotGiven $gravatarId
-     * @param string|SdkNotGiven $htmlUrl
-     * @param string|SdkNotGiven $name
-     * @param string|SdkNotGiven $nodeId
-     * @param string|SdkNotGiven $organizationsUrl
-     * @param string|SdkNotGiven $receivedEventsUrl
-     * @param string|SdkNotGiven $reposUrl
-     * @param bool|SdkNotGiven $siteAdmin
-     * @param string|SdkNotGiven $starredUrl
-     * @param string|SdkNotGiven $subscriptionsUrl
-     * @param WebhookDeploymentReviewApprovedReviewersItemReviewerTypeEnum|string|SdkNotGiven $type
-     * @param string|SdkNotGiven $url
+     * @param WebhookDeploymentReviewApprovedActionEnum|string $action
+     * @param OrganizationSimpleWebhooks $organization
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param string $since
+     * @param WebhookDeploymentReviewApprovedWorkflowRun|null $workflowRun
+     * @param WebhooksApprover|SdkNotGiven $approver
+     * @param string|SdkNotGiven $comment
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param list<WebhooksReviewersItem>|SdkNotGiven $reviewers
+     * @param WebhooksWorkflowJobRun|SdkNotGiven $workflowJobRun
+     * @param list<WebhookDeploymentReviewApprovedWorkflowJobRunsItem>|SdkNotGiven $workflowJobRuns
      */
     public function __construct(
-        int $id,
-        string $login,
-        string|SdkNotGiven $avatarUrl = SdkNotGiven::Value,
-        bool|SdkNotGiven $deleted = SdkNotGiven::Value,
-        string|null|SdkNotGiven $email = SdkNotGiven::Value,
-        string|SdkNotGiven $eventsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $followersUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $followingUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $gistsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $gravatarId = SdkNotGiven::Value,
-        string|SdkNotGiven $htmlUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $name = SdkNotGiven::Value,
-        string|SdkNotGiven $nodeId = SdkNotGiven::Value,
-        string|SdkNotGiven $organizationsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $receivedEventsUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $reposUrl = SdkNotGiven::Value,
-        bool|SdkNotGiven $siteAdmin = SdkNotGiven::Value,
-        string|SdkNotGiven $starredUrl = SdkNotGiven::Value,
-        string|SdkNotGiven $subscriptionsUrl = SdkNotGiven::Value,
-        WebhookDeploymentReviewApprovedReviewersItemReviewerTypeEnum|string|SdkNotGiven $type = SdkNotGiven::Value,
-        string|SdkNotGiven $url = SdkNotGiven::Value,
+        WebhookDeploymentReviewApprovedActionEnum|string $action,
+        OrganizationSimpleWebhooks $organization,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        string $since,
+        WebhookDeploymentReviewApprovedWorkflowRun|null $workflowRun,
+        WebhooksApprover|SdkNotGiven $approver = SdkNotGiven::Value,
+        string|SdkNotGiven $comment = SdkNotGiven::Value,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        array|SdkNotGiven $reviewers = SdkNotGiven::Value,
+        WebhooksWorkflowJobRun|SdkNotGiven $workflowJobRun = SdkNotGiven::Value,
+        array|SdkNotGiven $workflowJobRuns = SdkNotGiven::Value,
     ) {
-        $this->id = $id;
-        $this->login = $login;
-        $this->avatarUrl = $avatarUrl;
-        $this->deleted = $deleted;
-        $this->email = $email;
-        $this->eventsUrl = $eventsUrl;
-        $this->followersUrl = $followersUrl;
-        $this->followingUrl = $followingUrl;
-        $this->gistsUrl = $gistsUrl;
-        $this->gravatarId = $gravatarId;
-        $this->htmlUrl = $htmlUrl;
-        $this->name = $name;
-        $this->nodeId = $nodeId;
-        $this->organizationsUrl = $organizationsUrl;
-        $this->receivedEventsUrl = $receivedEventsUrl;
-        $this->reposUrl = $reposUrl;
-        $this->siteAdmin = $siteAdmin;
-        $this->starredUrl = $starredUrl;
-        $this->subscriptionsUrl = $subscriptionsUrl;
-        $this->type = $type;
-        $this->url = $url;
+        $this->action = $action;
+        $this->organization = $organization;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->since = $since;
+        $this->workflowRun = $workflowRun;
+        $this->approver = $approver;
+        $this->comment = $comment;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->reviewers = $reviewers;
+        $this->workflowJobRun = $workflowJobRun;
+        $this->workflowJobRuns = $workflowJobRuns;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "id" => $this->id,
-            "login" => $this->login,
+            "action" => $this->action,
+            "organization" => $this->organization,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
+            "since" => $this->since,
+            "workflow_run" => $this->workflowRun,
         ];
-        if ($this->avatarUrl !== SdkNotGiven::Value) {
-            $values["avatar_url"] = $this->avatarUrl;
+        if ($this->approver !== SdkNotGiven::Value) {
+            $values["approver"] = $this->approver;
         }
-        if ($this->deleted !== SdkNotGiven::Value) {
-            $values["deleted"] = $this->deleted;
+        if ($this->comment !== SdkNotGiven::Value) {
+            $values["comment"] = $this->comment;
         }
-        if ($this->email !== SdkNotGiven::Value) {
-            $values["email"] = $this->email;
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
         }
-        if ($this->eventsUrl !== SdkNotGiven::Value) {
-            $values["events_url"] = $this->eventsUrl;
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
         }
-        if ($this->followersUrl !== SdkNotGiven::Value) {
-            $values["followers_url"] = $this->followersUrl;
+        if ($this->reviewers !== SdkNotGiven::Value) {
+            $values["reviewers"] = $this->reviewers;
         }
-        if ($this->followingUrl !== SdkNotGiven::Value) {
-            $values["following_url"] = $this->followingUrl;
+        if ($this->workflowJobRun !== SdkNotGiven::Value) {
+            $values["workflow_job_run"] = $this->workflowJobRun;
         }
-        if ($this->gistsUrl !== SdkNotGiven::Value) {
-            $values["gists_url"] = $this->gistsUrl;
-        }
-        if ($this->gravatarId !== SdkNotGiven::Value) {
-            $values["gravatar_id"] = $this->gravatarId;
-        }
-        if ($this->htmlUrl !== SdkNotGiven::Value) {
-            $values["html_url"] = $this->htmlUrl;
-        }
-        if ($this->name !== SdkNotGiven::Value) {
-            $values["name"] = $this->name;
-        }
-        if ($this->nodeId !== SdkNotGiven::Value) {
-            $values["node_id"] = $this->nodeId;
-        }
-        if ($this->organizationsUrl !== SdkNotGiven::Value) {
-            $values["organizations_url"] = $this->organizationsUrl;
-        }
-        if ($this->receivedEventsUrl !== SdkNotGiven::Value) {
-            $values["received_events_url"] = $this->receivedEventsUrl;
-        }
-        if ($this->reposUrl !== SdkNotGiven::Value) {
-            $values["repos_url"] = $this->reposUrl;
-        }
-        if ($this->siteAdmin !== SdkNotGiven::Value) {
-            $values["site_admin"] = $this->siteAdmin;
-        }
-        if ($this->starredUrl !== SdkNotGiven::Value) {
-            $values["starred_url"] = $this->starredUrl;
-        }
-        if ($this->subscriptionsUrl !== SdkNotGiven::Value) {
-            $values["subscriptions_url"] = $this->subscriptionsUrl;
-        }
-        if ($this->type !== SdkNotGiven::Value) {
-            $values["type"] = $this->type;
-        }
-        if ($this->url !== SdkNotGiven::Value) {
-            $values["url"] = $this->url;
+        if ($this->workflowJobRuns !== SdkNotGiven::Value) {
+            $values["workflow_job_runs"] = $this->workflowJobRuns;
         }
         return $values;
     }
@@ -313,44 +179,26 @@ class WebhookDeploymentReviewApprovedReviewersItemReviewer implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "since") || $data->since === null) { throw new SdkValidationError("since", 'required', "Required property 'since' is missing or null"); }
+        if (!property_exists($data, "workflow_run")) { throw new SdkValidationError("workflow_run", 'required', "Missing required property 'workflow_run'"); }
         return new self(
-            id: SdkClient::intValue($data->id),
-            login: SdkClient::stringValue($data->login),
-            avatarUrl: (property_exists($data, "avatar_url") && $data->avatar_url !== null ? SdkClient::stringValue($data->avatar_url) : SdkNotGiven::Value),
-            deleted: (property_exists($data, "deleted") && $data->deleted !== null ? SdkClient::boolValue($data->deleted) : SdkNotGiven::Value),
-            email: (property_exists($data, "email") ? ($data->email === null ? null : SdkClient::stringValue($data->email)) : SdkNotGiven::Value),
-            eventsUrl: (property_exists($data, "events_url") && $data->events_url !== null ? SdkClient::stringValue($data->events_url) : SdkNotGiven::Value),
-            followersUrl: (property_exists($data, "followers_url") && $data->followers_url !== null ? SdkClient::stringValue($data->followers_url) : SdkNotGiven::Value),
-            followingUrl: (property_exists($data, "following_url") && $data->following_url !== null ? SdkClient::stringValue($data->following_url) : SdkNotGiven::Value),
-            gistsUrl: (property_exists($data, "gists_url") && $data->gists_url !== null ? SdkClient::stringValue($data->gists_url) : SdkNotGiven::Value),
-            gravatarId: (property_exists($data, "gravatar_id") && $data->gravatar_id !== null ? SdkClient::stringValue($data->gravatar_id) : SdkNotGiven::Value),
-            htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
-            name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
-            nodeId: (property_exists($data, "node_id") && $data->node_id !== null ? SdkClient::stringValue($data->node_id) : SdkNotGiven::Value),
-            organizationsUrl: (property_exists($data, "organizations_url") && $data->organizations_url !== null ? SdkClient::stringValue($data->organizations_url) : SdkNotGiven::Value),
-            receivedEventsUrl: (property_exists($data, "received_events_url") && $data->received_events_url !== null ? SdkClient::stringValue($data->received_events_url) : SdkNotGiven::Value),
-            reposUrl: (property_exists($data, "repos_url") && $data->repos_url !== null ? SdkClient::stringValue($data->repos_url) : SdkNotGiven::Value),
-            siteAdmin: (property_exists($data, "site_admin") && $data->site_admin !== null ? SdkClient::boolValue($data->site_admin) : SdkNotGiven::Value),
-            starredUrl: (property_exists($data, "starred_url") && $data->starred_url !== null ? SdkClient::stringValue($data->starred_url) : SdkNotGiven::Value),
-            subscriptionsUrl: (property_exists($data, "subscriptions_url") && $data->subscriptions_url !== null ? SdkClient::stringValue($data->subscriptions_url) : SdkNotGiven::Value),
-            type: (property_exists($data, "type") && $data->type !== null ? SdkClient::hydrateStringEnumOrString($data->type, WebhookDeploymentReviewApprovedReviewersItemReviewerTypeEnum::class) : SdkNotGiven::Value),
-            url: (property_exists($data, "url") && $data->url !== null ? SdkClient::stringValue($data->url) : SdkNotGiven::Value),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookDeploymentReviewApprovedActionEnum::class),
+            organization: SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            since: SdkClient::stringValue($data->since),
+            workflowRun: ($data->workflow_run === null ? null : SdkClient::hydrateClass($data->workflow_run, WebhookDeploymentReviewApprovedWorkflowRun::class)),
+            approver: (property_exists($data, "approver") && $data->approver !== null ? SdkClient::hydrateClass($data->approver, WebhooksApprover::class) : SdkNotGiven::Value),
+            comment: (property_exists($data, "comment") && $data->comment !== null ? SdkClient::stringValue($data->comment) : SdkNotGiven::Value),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            reviewers: (property_exists($data, "reviewers") && $data->reviewers !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhooksReviewersItem::class), SdkClient::arrayValue($data->reviewers))) : SdkNotGiven::Value),
+            workflowJobRun: (property_exists($data, "workflow_job_run") && $data->workflow_job_run !== null ? SdkClient::hydrateClass($data->workflow_job_run, WebhooksWorkflowJobRun::class) : SdkNotGiven::Value),
+            workflowJobRuns: (property_exists($data, "workflow_job_runs") && $data->workflow_job_runs !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhookDeploymentReviewApprovedWorkflowJobRunsItem::class), SdkClient::arrayValue($data->workflow_job_runs))) : SdkNotGiven::Value),
         );
     }
-}
-
-/**
- * Optional enumerated value serialized in the `type` wire field.
- */
-final readonly class WebhookDeploymentReviewApprovedReviewersItemTypeEnum implements SdkOpenEnum
-{
-    public const USER = "User";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
 }

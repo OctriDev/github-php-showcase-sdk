@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class Billing
 {
-    use BillingMethodsPart1;
+    use BillingMethods;
 }

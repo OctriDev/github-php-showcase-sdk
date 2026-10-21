@@ -8,10 +8,16 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required object value serialized in the `tree` wire field.
+ * Commit
  */
-class CommitCommitTree implements \JsonSerializable
+class Commit implements \JsonSerializable
 {
+    /**
+     * Required `uri`-formatted value serialized in the `url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $url;
     /**
      * Required `string` value serialized in the `sha` wire field.
      *
@@ -19,124 +25,97 @@ class CommitCommitTree implements \JsonSerializable
      */
     public readonly string $sha;
     /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
+     * Required `string` value serialized in the `node_id` wire field.
      *
      * @var string
      */
-    public readonly string $url;
+    public readonly string $nodeId;
+    /**
+     * Required `uri`-formatted value serialized in the `html_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $htmlUrl;
+    /**
+     * Required `uri`-formatted value serialized in the `comments_url` wire field.
+     *
+     * @var string
+     */
+    public readonly string $commentsUrl;
+    /**
+     * Required object value serialized in the `commit` wire field.
+     *
+     * @var CommitCommit
+     */
+    public readonly CommitCommit $commit;
+    /**
+     * Required API value serialized in the `author` wire field.
+     *
+     * @var CommitAuthor|null
+     */
+    public readonly CommitAuthor|null $author;
+    /**
+     * Required API value serialized in the `committer` wire field.
+     *
+     * @var CommitCommitter|null
+     */
+    public readonly CommitCommitter|null $committer;
+    /**
+     * Required array value serialized in the `parents` wire field.
+     *
+     * @var list<CommitParentsItem>
+     */
+    public readonly array $parents;
+    /**
+     * Optional object value serialized in the `stats` wire field.
+     *
+     * @var CommitStats|SdkNotGiven
+     */
+    public readonly CommitStats|SdkNotGiven $stats;
+    /**
+     * Optional array value serialized in the `files` wire field.
+     *
+     * @var list<DiffEntry>|SdkNotGiven
+     */
+    public readonly array|SdkNotGiven $files;
 
     /**
+     * @param string $url
      * @param string $sha
-     * @param string $url
+     * @param string $nodeId
+     * @param string $htmlUrl
+     * @param string $commentsUrl
+     * @param CommitCommit $commit
+     * @param CommitAuthor|null $author
+     * @param CommitCommitter|null $committer
+     * @param list<CommitParentsItem> $parents
+     * @param CommitStats|SdkNotGiven $stats
+     * @param list<DiffEntry>|SdkNotGiven $files
      */
     public function __construct(
+        string $url,
         string $sha,
-        string $url,
+        string $nodeId,
+        string $htmlUrl,
+        string $commentsUrl,
+        CommitCommit $commit,
+        CommitAuthor|null $author,
+        CommitCommitter|null $committer,
+        array $parents,
+        CommitStats|SdkNotGiven $stats = SdkNotGiven::Value,
+        array|SdkNotGiven $files = SdkNotGiven::Value,
     ) {
+        $this->url = $url;
         $this->sha = $sha;
-        $this->url = $url;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "sha" => $this->sha,
-            "url" => $this->url,
-        ];
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        return new self(
-            sha: SdkClient::stringValue($data->sha),
-            url: SdkClient::stringValue($data->url),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `commit` wire field.
- */
-class CommitCommit implements \JsonSerializable
-{
-    /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $url;
-    /**
-     * Metaproperties for Git author/committer information.
-     *
-     * @var NullableGitUser|null
-     */
-    public readonly NullableGitUser|null $author;
-    /**
-     * Metaproperties for Git author/committer information.
-     *
-     * @var NullableGitUser|null
-     */
-    public readonly NullableGitUser|null $committer;
-    /**
-     * Required `string` value serialized in the `message` wire field.
-     *
-     * @var string
-     */
-    public readonly string $message;
-    /**
-     * Required `integer` value serialized in the `comment_count` wire field.
-     *
-     * @var int
-     */
-    public readonly int $commentCount;
-    /**
-     * Required object value serialized in the `tree` wire field.
-     *
-     * @var CommitCommitTree
-     */
-    public readonly CommitCommitTree $tree;
-    /**
-     * Optional object value serialized in the `verification` wire field.
-     *
-     * @var Verification|SdkNotGiven
-     */
-    public readonly Verification|SdkNotGiven $verification;
-
-    /**
-     * @param string $url
-     * @param NullableGitUser|null $author
-     * @param NullableGitUser|null $committer
-     * @param string $message
-     * @param int $commentCount
-     * @param CommitCommitTree $tree
-     * @param Verification|SdkNotGiven $verification
-     */
-    public function __construct(
-        string $url,
-        NullableGitUser|null $author,
-        NullableGitUser|null $committer,
-        string $message,
-        int $commentCount,
-        CommitCommitTree $tree,
-        Verification|SdkNotGiven $verification = SdkNotGiven::Value,
-    ) {
-        $this->url = $url;
+        $this->nodeId = $nodeId;
+        $this->htmlUrl = $htmlUrl;
+        $this->commentsUrl = $commentsUrl;
+        $this->commit = $commit;
         $this->author = $author;
         $this->committer = $committer;
-        $this->message = $message;
-        $this->commentCount = $commentCount;
-        $this->tree = $tree;
-        $this->verification = $verification;
+        $this->parents = $parents;
+        $this->stats = $stats;
+        $this->files = $files;
     }
 
     /** @return array<array-key, mixed> */
@@ -144,14 +123,20 @@ class CommitCommit implements \JsonSerializable
     {
         $values = [
             "url" => $this->url,
+            "sha" => $this->sha,
+            "node_id" => $this->nodeId,
+            "html_url" => $this->htmlUrl,
+            "comments_url" => $this->commentsUrl,
+            "commit" => $this->commit,
             "author" => $this->author,
             "committer" => $this->committer,
-            "message" => $this->message,
-            "comment_count" => $this->commentCount,
-            "tree" => $this->tree,
+            "parents" => $this->parents,
         ];
-        if ($this->verification !== SdkNotGiven::Value) {
-            $values["verification"] = $this->verification;
+        if ($this->stats !== SdkNotGiven::Value) {
+            $values["stats"] = $this->stats;
+        }
+        if ($this->files !== SdkNotGiven::Value) {
+            $values["files"] = $this->files;
         }
         return $values;
     }
@@ -165,161 +150,26 @@ class CommitCommit implements \JsonSerializable
     public static function fromObject(object $data): self
     {
         if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
+        if (!property_exists($data, "comments_url") || $data->comments_url === null) { throw new SdkValidationError("comments_url", 'required', "Required property 'comments_url' is missing or null"); }
+        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
         if (!property_exists($data, "author")) { throw new SdkValidationError("author", 'required', "Missing required property 'author'"); }
         if (!property_exists($data, "committer")) { throw new SdkValidationError("committer", 'required', "Missing required property 'committer'"); }
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
-        if (!property_exists($data, "comment_count") || $data->comment_count === null) { throw new SdkValidationError("comment_count", 'required', "Required property 'comment_count' is missing or null"); }
-        if (!property_exists($data, "tree") || $data->tree === null) { throw new SdkValidationError("tree", 'required', "Required property 'tree' is missing or null"); }
+        if (!property_exists($data, "parents") || $data->parents === null) { throw new SdkValidationError("parents", 'required', "Required property 'parents' is missing or null"); }
         return new self(
             url: SdkClient::stringValue($data->url),
-            author: ($data->author === null ? null : SdkClient::hydrateClass($data->author, NullableGitUser::class)),
-            committer: ($data->committer === null ? null : SdkClient::hydrateClass($data->committer, NullableGitUser::class)),
-            message: SdkClient::stringValue($data->message),
-            commentCount: SdkClient::intValue($data->comment_count),
-            tree: SdkClient::hydrateClass($data->tree, CommitCommitTree::class),
-            verification: (property_exists($data, "verification") && $data->verification !== null ? SdkClient::hydrateClass($data->verification, Verification::class) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Required object value serialized in the `parents[]` wire field.
- */
-class CommitParentsItem implements \JsonSerializable
-{
-    /**
-     * Required `string` value serialized in the `sha` wire field.
-     *
-     * @var string
-     */
-    public readonly string $sha;
-    /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $url;
-    /**
-     * Optional `uri`-formatted value serialized in the `html_url` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $htmlUrl;
-
-    /**
-     * @param string $sha
-     * @param string $url
-     * @param string|SdkNotGiven $htmlUrl
-     */
-    public function __construct(
-        string $sha,
-        string $url,
-        string|SdkNotGiven $htmlUrl = SdkNotGiven::Value,
-    ) {
-        $this->sha = $sha;
-        $this->url = $url;
-        $this->htmlUrl = $htmlUrl;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-            "sha" => $this->sha,
-            "url" => $this->url,
-        ];
-        if ($this->htmlUrl !== SdkNotGiven::Value) {
-            $values["html_url"] = $this->htmlUrl;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        return new self(
             sha: SdkClient::stringValue($data->sha),
-            url: SdkClient::stringValue($data->url),
-            htmlUrl: (property_exists($data, "html_url") && $data->html_url !== null ? SdkClient::stringValue($data->html_url) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `stats` wire field.
- */
-class CommitStats implements \JsonSerializable
-{
-    /**
-     * Optional `integer` value serialized in the `additions` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $additions;
-    /**
-     * Optional `integer` value serialized in the `deletions` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $deletions;
-    /**
-     * Optional `integer` value serialized in the `total` wire field.
-     *
-     * @var int|SdkNotGiven
-     */
-    public readonly int|SdkNotGiven $total;
-
-    /**
-     * @param int|SdkNotGiven $additions
-     * @param int|SdkNotGiven $deletions
-     * @param int|SdkNotGiven $total
-     */
-    public function __construct(
-        int|SdkNotGiven $additions = SdkNotGiven::Value,
-        int|SdkNotGiven $deletions = SdkNotGiven::Value,
-        int|SdkNotGiven $total = SdkNotGiven::Value,
-    ) {
-        $this->additions = $additions;
-        $this->deletions = $deletions;
-        $this->total = $total;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->additions !== SdkNotGiven::Value) {
-            $values["additions"] = $this->additions;
-        }
-        if ($this->deletions !== SdkNotGiven::Value) {
-            $values["deletions"] = $this->deletions;
-        }
-        if ($this->total !== SdkNotGiven::Value) {
-            $values["total"] = $this->total;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            additions: (property_exists($data, "additions") && $data->additions !== null ? SdkClient::intValue($data->additions) : SdkNotGiven::Value),
-            deletions: (property_exists($data, "deletions") && $data->deletions !== null ? SdkClient::intValue($data->deletions) : SdkNotGiven::Value),
-            total: (property_exists($data, "total") && $data->total !== null ? SdkClient::intValue($data->total) : SdkNotGiven::Value),
+            nodeId: SdkClient::stringValue($data->node_id),
+            htmlUrl: SdkClient::stringValue($data->html_url),
+            commentsUrl: SdkClient::stringValue($data->comments_url),
+            commit: SdkClient::hydrateClass($data->commit, CommitCommit::class),
+            author: ($data->author === null ? null : SdkClient::hydrateUnionAs($data->author, CommitAuthor::class, [SimpleUser::class, EmptyObject::class], null, [])),
+            committer: ($data->committer === null ? null : SdkClient::hydrateUnionAs($data->committer, CommitCommitter::class, [SimpleUser::class, EmptyObject::class], null, [])),
+            parents: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CommitParentsItem::class), SdkClient::arrayValue($data->parents))),
+            stats: (property_exists($data, "stats") && $data->stats !== null ? SdkClient::hydrateClass($data->stats, CommitStats::class) : SdkNotGiven::Value),
+            files: (property_exists($data, "files") && $data->files !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, DiffEntry::class), SdkClient::arrayValue($data->files))) : SdkNotGiven::Value),
         );
     }
 }

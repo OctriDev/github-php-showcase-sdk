@@ -8,47 +8,111 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookRepositoryRulesetEdited` API schema.
  */
-final readonly class WebhookRepositoryRulesetEditedActionEnum implements SdkOpenEnum
-{
-    public const EDITED = "edited";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Optional object value serialized in the `name` wire field.
- */
-class WebhookRepositoryRulesetEditedChangesName implements \JsonSerializable
+class WebhookRepositoryRulesetEdited implements \JsonSerializable
 {
     /**
-     * Optional `string` value serialized in the `from` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var string|SdkNotGiven
+     * @var WebhookRepositoryRulesetEditedActionEnum|string
      */
-    public readonly string|SdkNotGiven $from;
+    public readonly WebhookRepositoryRulesetEditedActionEnum|string $action;
+    /**
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
+     *
+     * @var EnterpriseWebhooks|SdkNotGiven
+     */
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
+    /**
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+     *
+     * @var SimpleInstallation|SdkNotGiven
+     */
+    public readonly SimpleInstallation|SdkNotGiven $installation;
+    /**
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+     *
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
+     */
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
+    /**
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+     *
+     * @var RepositoryWebhooks|SdkNotGiven
+     */
+    public readonly RepositoryWebhooks|SdkNotGiven $repository;
+    /**
+     * A set of rules to apply when specified conditions are met.
+     *
+     * @var RepositoryRuleset
+     */
+    public readonly RepositoryRuleset $repositoryRuleset;
+    /**
+     * Optional object value serialized in the `changes` wire field.
+     *
+     * @var WebhookRepositoryRulesetEditedChanges|SdkNotGiven
+     */
+    public readonly WebhookRepositoryRulesetEditedChanges|SdkNotGiven $changes;
+    /**
+     * A GitHub user.
+     *
+     * @var SimpleUser
+     */
+    public readonly SimpleUser $sender;
 
     /**
-     * @param string|SdkNotGiven $from
+     * @param WebhookRepositoryRulesetEditedActionEnum|string $action
+     * @param RepositoryRuleset $repositoryRuleset
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
+     * @param RepositoryWebhooks|SdkNotGiven $repository
+     * @param WebhookRepositoryRulesetEditedChanges|SdkNotGiven $changes
      */
     public function __construct(
-        string|SdkNotGiven $from = SdkNotGiven::Value,
+        WebhookRepositoryRulesetEditedActionEnum|string $action,
+        RepositoryRuleset $repositoryRuleset,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
+        RepositoryWebhooks|SdkNotGiven $repository = SdkNotGiven::Value,
+        WebhookRepositoryRulesetEditedChanges|SdkNotGiven $changes = SdkNotGiven::Value,
     ) {
-        $this->from = $from;
+        $this->action = $action;
+        $this->repositoryRuleset = $repositoryRuleset;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
+        $this->repository = $repository;
+        $this->changes = $changes;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
+            "action" => $this->action,
+            "repository_ruleset" => $this->repositoryRuleset,
+            "sender" => $this->sender,
         ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
+        if ($this->repository !== SdkNotGiven::Value) {
+            $values["repository"] = $this->repository;
+        }
+        if ($this->changes !== SdkNotGiven::Value) {
+            $values["changes"] = $this->changes;
         }
         return $values;
     }
@@ -61,238 +125,18 @@ class WebhookRepositoryRulesetEditedChangesName implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "repository_ruleset") || $data->repository_ruleset === null) { throw new SdkValidationError("repository_ruleset", 'required', "Required property 'repository_ruleset' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
-            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `enforcement` wire field.
- */
-class WebhookRepositoryRulesetEditedChangesEnforcement implements \JsonSerializable
-{
-    /**
-     * Optional `string` value serialized in the `from` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $from;
-
-    /**
-     * @param string|SdkNotGiven $from
-     */
-    public function __construct(
-        string|SdkNotGiven $from = SdkNotGiven::Value,
-    ) {
-        $this->from = $from;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `condition_type` wire field.
- */
-class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesConditionType implements \JsonSerializable
-{
-    /**
-     * Optional `string` value serialized in the `from` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $from;
-
-    /**
-     * @param string|SdkNotGiven $from
-     */
-    public function __construct(
-        string|SdkNotGiven $from = SdkNotGiven::Value,
-    ) {
-        $this->from = $from;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `target` wire field.
- */
-class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTarget implements \JsonSerializable
-{
-    /**
-     * Optional `string` value serialized in the `from` wire field.
-     *
-     * @var string|SdkNotGiven
-     */
-    public readonly string|SdkNotGiven $from;
-
-    /**
-     * @param string|SdkNotGiven $from
-     */
-    public function __construct(
-        string|SdkNotGiven $from = SdkNotGiven::Value,
-    ) {
-        $this->from = $from;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            from: (property_exists($data, "from") && $data->from !== null ? SdkClient::stringValue($data->from) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `include` wire field.
- */
-class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesInclude implements \JsonSerializable
-{
-    /**
-     * Optional array value serialized in the `from` wire field.
-     *
-     * @var list<string>|SdkNotGiven
-     */
-    public readonly array|SdkNotGiven $from;
-
-    /**
-     * @param list<string>|SdkNotGiven $from
-     */
-    public function __construct(
-        array|SdkNotGiven $from = SdkNotGiven::Value,
-    ) {
-        $this->from = $from;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            from: (property_exists($data, "from") && $data->from !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->from))) : SdkNotGiven::Value),
-        );
-    }
-}
-
-/**
- * Optional object value serialized in the `exclude` wire field.
- */
-class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExclude implements \JsonSerializable
-{
-    /**
-     * Optional array value serialized in the `from` wire field.
-     *
-     * @var list<string>|SdkNotGiven
-     */
-    public readonly array|SdkNotGiven $from;
-
-    /**
-     * @param list<string>|SdkNotGiven $from
-     */
-    public function __construct(
-        array|SdkNotGiven $from = SdkNotGiven::Value,
-    ) {
-        $this->from = $from;
-    }
-
-    /** @return array<array-key, mixed> */
-    public function toArray(): array
-    {
-        $values = [
-        ];
-        if ($this->from !== SdkNotGiven::Value) {
-            $values["from"] = $this->from;
-        }
-        return $values;
-    }
-
-    /** @return object */
-    public function jsonSerialize(): object
-    {
-        return (object) $this->toArray();
-    }
-
-    public static function fromObject(object $data): self
-    {
-        return new self(
-            from: (property_exists($data, "from") && $data->from !== null ? array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->from))) : SdkNotGiven::Value),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookRepositoryRulesetEditedActionEnum::class),
+            repositoryRuleset: SdkClient::hydrateClass($data->repository_ruleset, RepositoryRuleset::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
+            repository: (property_exists($data, "repository") && $data->repository !== null ? SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class) : SdkNotGiven::Value),
+            changes: (property_exists($data, "changes") && $data->changes !== null ? SdkClient::hydrateClass($data->changes, WebhookRepositoryRulesetEditedChanges::class) : SdkNotGiven::Value),
         );
     }
 }

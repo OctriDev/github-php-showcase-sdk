@@ -9,5 +9,5 @@ namespace octridev_github;
 
 class SecurityAdvisories
 {
-    use SecurityAdvisoriesMethodsPart1;
+    use SecurityAdvisoriesMethods;
 }

@@ -9,7 +9,15 @@ namespace octridev_github;
 
 class Users
 {
-    use UsersMethodsPart1;
-    use UsersMethodsPart2;
-    use UsersMethodsPart3;
+    use UsersUserMethods;
+    use UsersDeleteGpgKeyForAuthenticatedUserMethods;
+    use UsersMethods;
+    use UsersAttestationsMethods;
+    use UsersFollowersMethods;
+    use UsersFollowingMethods;
+    use UsersGpgKeysMethods;
+    use UsersHovercardMethods;
+    use UsersKeysMethods;
+    use UsersSocialAccountsMethods;
+    use UsersSshSigningKeysMethods;
 }

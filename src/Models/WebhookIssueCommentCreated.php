@@ -8,157 +8,108 @@ declare(strict_types=1);
 namespace octridev_github;
 
 /**
- * Required enumerated value serialized in the `action` wire field.
+ * Typed representation of the `WebhookIssueCommentCreated` API schema.
  */
-final readonly class WebhookIssueCommentCreatedActionEnum implements SdkOpenEnum
-{
-    public const CREATED = "created";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * How the author is associated with the repository.
- */
-final readonly class WebhookIssueCommentCreatedCommentAuthorAssociationEnum implements SdkOpenEnum
-{
-    public const COLLABORATOR = "COLLABORATOR";
-    public const CONTRIBUTOR = "CONTRIBUTOR";
-    public const FIRST_TIMER = "FIRST_TIMER";
-    public const FIRST_TIME_CONTRIBUTOR = "FIRST_TIME_CONTRIBUTOR";
-    public const MANNEQUIN = "MANNEQUIN";
-    public const MEMBER = "MEMBER";
-    public const NONE = "NONE";
-    public const OWNER = "OWNER";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
-}
-
-/**
- * Required object value serialized in the `reactions` wire field.
- */
-class WebhookIssueCommentCreatedCommentReactions implements \JsonSerializable
+class WebhookIssueCommentCreated implements \JsonSerializable
 {
     /**
-     * Required `integer` value serialized in the `+1` wire field.
+     * Required enumerated value serialized in the `action` wire field.
      *
-     * @var int
+     * @var WebhookIssueCommentCreatedActionEnum|string
      */
-    public readonly int $plus1;
+    public readonly WebhookIssueCommentCreatedActionEnum|string $action;
     /**
-     * Required `integer` value serialized in the `-1` wire field.
+     * The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.
      *
-     * @var int
+     * @var WebhookIssueCommentCreatedComment
      */
-    public readonly int $minus1;
+    public readonly WebhookIssueCommentCreatedComment $comment;
     /**
-     * Required `integer` value serialized in the `confused` wire field.
+     * An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
      *
-     * @var int
+     * @var EnterpriseWebhooks|SdkNotGiven
      */
-    public readonly int $confused;
+    public readonly EnterpriseWebhooks|SdkNotGiven $enterprise;
     /**
-     * Required `integer` value serialized in the `eyes` wire field.
+     * The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
      *
-     * @var int
+     * @var SimpleInstallation|SdkNotGiven
      */
-    public readonly int $eyes;
+    public readonly SimpleInstallation|SdkNotGiven $installation;
     /**
-     * Required `integer` value serialized in the `heart` wire field.
+     * The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to.
      *
-     * @var int
+     * @var WebhookIssueCommentCreatedIssue
      */
-    public readonly int $heart;
+    public readonly WebhookIssueCommentCreatedIssue $issue;
     /**
-     * Required `integer` value serialized in the `hooray` wire field.
+     * A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
      *
-     * @var int
+     * @var OrganizationSimpleWebhooks|SdkNotGiven
      */
-    public readonly int $hooray;
+    public readonly OrganizationSimpleWebhooks|SdkNotGiven $organization;
     /**
-     * Required `integer` value serialized in the `laugh` wire field.
+     * The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
      *
-     * @var int
+     * @var RepositoryWebhooks
      */
-    public readonly int $laugh;
+    public readonly RepositoryWebhooks $repository;
     /**
-     * Required `integer` value serialized in the `rocket` wire field.
+     * A GitHub user.
      *
-     * @var int
+     * @var SimpleUser
      */
-    public readonly int $rocket;
-    /**
-     * Required `integer` value serialized in the `total_count` wire field.
-     *
-     * @var int
-     */
-    public readonly int $totalCount;
-    /**
-     * Required `uri`-formatted value serialized in the `url` wire field.
-     *
-     * @var string
-     */
-    public readonly string $url;
+    public readonly SimpleUser $sender;
 
     /**
-     * @param int $plus1
-     * @param int $minus1
-     * @param int $confused
-     * @param int $eyes
-     * @param int $heart
-     * @param int $hooray
-     * @param int $laugh
-     * @param int $rocket
-     * @param int $totalCount
-     * @param string $url
+     * @param WebhookIssueCommentCreatedActionEnum|string $action
+     * @param WebhookIssueCommentCreatedComment $comment
+     * @param WebhookIssueCommentCreatedIssue $issue
+     * @param RepositoryWebhooks $repository
+     * @param SimpleUser $sender
+     * @param EnterpriseWebhooks|SdkNotGiven $enterprise
+     * @param SimpleInstallation|SdkNotGiven $installation
+     * @param OrganizationSimpleWebhooks|SdkNotGiven $organization
      */
     public function __construct(
-        int $plus1,
-        int $minus1,
-        int $confused,
-        int $eyes,
-        int $heart,
-        int $hooray,
-        int $laugh,
-        int $rocket,
-        int $totalCount,
-        string $url,
+        WebhookIssueCommentCreatedActionEnum|string $action,
+        WebhookIssueCommentCreatedComment $comment,
+        WebhookIssueCommentCreatedIssue $issue,
+        RepositoryWebhooks $repository,
+        SimpleUser $sender,
+        EnterpriseWebhooks|SdkNotGiven $enterprise = SdkNotGiven::Value,
+        SimpleInstallation|SdkNotGiven $installation = SdkNotGiven::Value,
+        OrganizationSimpleWebhooks|SdkNotGiven $organization = SdkNotGiven::Value,
     ) {
-        $this->plus1 = $plus1;
-        $this->minus1 = $minus1;
-        $this->confused = $confused;
-        $this->eyes = $eyes;
-        $this->heart = $heart;
-        $this->hooray = $hooray;
-        $this->laugh = $laugh;
-        $this->rocket = $rocket;
-        $this->totalCount = $totalCount;
-        $this->url = $url;
+        $this->action = $action;
+        $this->comment = $comment;
+        $this->issue = $issue;
+        $this->repository = $repository;
+        $this->sender = $sender;
+        $this->enterprise = $enterprise;
+        $this->installation = $installation;
+        $this->organization = $organization;
     }
 
     /** @return array<array-key, mixed> */
     public function toArray(): array
     {
         $values = [
-            "+1" => $this->plus1,
-            "-1" => $this->minus1,
-            "confused" => $this->confused,
-            "eyes" => $this->eyes,
-            "heart" => $this->heart,
-            "hooray" => $this->hooray,
-            "laugh" => $this->laugh,
-            "rocket" => $this->rocket,
-            "total_count" => $this->totalCount,
-            "url" => $this->url,
+            "action" => $this->action,
+            "comment" => $this->comment,
+            "issue" => $this->issue,
+            "repository" => $this->repository,
+            "sender" => $this->sender,
         ];
+        if ($this->enterprise !== SdkNotGiven::Value) {
+            $values["enterprise"] = $this->enterprise;
+        }
+        if ($this->installation !== SdkNotGiven::Value) {
+            $values["installation"] = $this->installation;
+        }
+        if ($this->organization !== SdkNotGiven::Value) {
+            $values["organization"] = $this->organization;
+        }
         return $values;
     }
 
@@ -170,43 +121,20 @@ class WebhookIssueCommentCreatedCommentReactions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "+1") || get_object_vars($data)["+1"] === null) { throw new SdkValidationError("+1", 'required', "Required property '+1' is missing or null"); }
-        if (!property_exists($data, "-1") || get_object_vars($data)["-1"] === null) { throw new SdkValidationError("-1", 'required', "Required property '-1' is missing or null"); }
-        if (!property_exists($data, "confused") || $data->confused === null) { throw new SdkValidationError("confused", 'required', "Required property 'confused' is missing or null"); }
-        if (!property_exists($data, "eyes") || $data->eyes === null) { throw new SdkValidationError("eyes", 'required', "Required property 'eyes' is missing or null"); }
-        if (!property_exists($data, "heart") || $data->heart === null) { throw new SdkValidationError("heart", 'required', "Required property 'heart' is missing or null"); }
-        if (!property_exists($data, "hooray") || $data->hooray === null) { throw new SdkValidationError("hooray", 'required', "Required property 'hooray' is missing or null"); }
-        if (!property_exists($data, "laugh") || $data->laugh === null) { throw new SdkValidationError("laugh", 'required', "Required property 'laugh' is missing or null"); }
-        if (!property_exists($data, "rocket") || $data->rocket === null) { throw new SdkValidationError("rocket", 'required', "Required property 'rocket' is missing or null"); }
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "comment") || $data->comment === null) { throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null"); }
+        if (!property_exists($data, "issue") || $data->issue === null) { throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null"); }
+        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
         return new self(
-            plus1: SdkClient::intValue(get_object_vars($data)["+1"]),
-            minus1: SdkClient::intValue(get_object_vars($data)["-1"]),
-            confused: SdkClient::intValue($data->confused),
-            eyes: SdkClient::intValue($data->eyes),
-            heart: SdkClient::intValue($data->heart),
-            hooray: SdkClient::intValue($data->hooray),
-            laugh: SdkClient::intValue($data->laugh),
-            rocket: SdkClient::intValue($data->rocket),
-            totalCount: SdkClient::intValue($data->total_count),
-            url: SdkClient::stringValue($data->url),
+            action: SdkClient::hydrateStringEnumOrString($data->action, WebhookIssueCommentCreatedActionEnum::class),
+            comment: SdkClient::hydrateClass($data->comment, WebhookIssueCommentCreatedComment::class),
+            issue: SdkClient::hydrateClass($data->issue, WebhookIssueCommentCreatedIssue::class),
+            repository: SdkClient::hydrateClass($data->repository, RepositoryWebhooks::class),
+            sender: SdkClient::hydrateClass($data->sender, SimpleUser::class),
+            enterprise: (property_exists($data, "enterprise") && $data->enterprise !== null ? SdkClient::hydrateClass($data->enterprise, EnterpriseWebhooks::class) : SdkNotGiven::Value),
+            installation: (property_exists($data, "installation") && $data->installation !== null ? SdkClient::hydrateClass($data->installation, SimpleInstallation::class) : SdkNotGiven::Value),
+            organization: (property_exists($data, "organization") && $data->organization !== null ? SdkClient::hydrateClass($data->organization, OrganizationSimpleWebhooks::class) : SdkNotGiven::Value),
         );
     }
-}
-
-/**
- * Optional enumerated value serialized in the `type` wire field.
- */
-final readonly class WebhookIssueCommentCreatedCommentUserTypeEnum implements SdkOpenEnum
-{
-    public const BOT = "Bot";
-    public const USER = "User";
-    public const ORGANIZATION = "Organization";
-    private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
 }

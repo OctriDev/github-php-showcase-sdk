@@ -9,6 +9,8 @@ namespace octridev_github;
 
 class Agents
 {
-    use AgentsMethodsPart1;
-    use AgentsMethodsPart2;
+    use AgentsSecretsMethods;
+    use AgentsVariablesMethods;
+    use AgentsOrganizationSecretsMethods;
+    use AgentsOrganizationVariablesMethods;
 }

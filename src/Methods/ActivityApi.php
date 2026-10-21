@@ -9,7 +9,12 @@ namespace octridev_github;
 
 class ActivityApi
 {
-    use ActivityApiMethodsPart1;
-    use ActivityApiMethodsPart2;
-    use ActivityApiMethodsPart3;
+    use ActivityApiEventsMethods;
+    use ActivityApiFeedsMethods;
+    use ActivityApiNetworksMethods;
+    use ActivityApiNotificationsMethods;
+    use ActivityApiOrgsMethods;
+    use ActivityApiReposMethods;
+    use ActivityApiUserMethods;
+    use ActivityApiUsersMethods;
 }
