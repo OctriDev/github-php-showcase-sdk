@@ -24,7 +24,7 @@ trait OrgsMembersMethods
     public static function orgsListMembers(ClientConfig $clientConfig, string $org, OrgsListMembersFilter|SdkNotGiven $filter = SdkNotGiven::Value, OrgsListMembersRole|SdkNotGiven $role = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/members", $clientConfig, query: ['filter' => new SdkQueryValue($filter, "form", true), 'role' => new SdkQueryValue($role, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListMembers', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/members", $clientConfig, query: ['filter' => new SdkQueryValue($filter, "form", true), 'role' => new SdkQueryValue($role, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListMembers', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -55,6 +55,6 @@ trait OrgsMembersMethods
     public static function orgsRemoveMember(ClientConfig $clientConfig, string $org, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/members/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsRemoveMember', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/members/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsRemoveMember', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

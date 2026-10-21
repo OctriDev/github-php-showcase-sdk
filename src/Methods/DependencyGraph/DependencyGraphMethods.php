@@ -23,7 +23,7 @@ trait DependencyGraphMethods
     public static function dependencyGraphDiffRange(ClientConfig $clientConfig, string $owner, string $repo, string $basehead, string|SdkNotGiven $name = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dependency-graph/compare/" . SdkClient::encodePathSegment($basehead) . "", $clientConfig, query: ['name' => new SdkQueryValue($name, "form", true)], decoder: 'json', operationId: 'dependencyGraphDiffRange', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dependency-graph/compare/" . SdkClient::encodePathSegment($basehead) . "", $clientConfig, query: ['name' => new SdkQueryValue($name, "form", true)], decoder: 'json', operationId: 'dependencyGraphDiffRange', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, DependencyGraphDiffItem::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -42,7 +42,7 @@ trait DependencyGraphMethods
     public static function dependencyGraphExportSbom(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): DependencyGraphSpdxSbom
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dependency-graph/sbom", $clientConfig, returnType: DependencyGraphSpdxSbom::class, decoder: 'json', operationId: 'dependencyGraphExportSbom', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dependency-graph/sbom", $clientConfig, returnType: DependencyGraphSpdxSbom::class, decoder: 'json', operationId: 'dependencyGraphExportSbom', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DependencyGraphSpdxSbom::class));
     }
 
@@ -59,7 +59,7 @@ trait DependencyGraphMethods
     public static function dependencyGraphFetchSbomReport(ClientConfig $clientConfig, string $owner, string $repo, string $sbomUuid, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dependency-graph/sbom/fetch-report/" . SdkClient::encodePathSegment($sbomUuid) . "", $clientConfig, decoder: 'empty', operationId: 'dependencyGraphFetchSbomReport', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dependency-graph/sbom/fetch-report/" . SdkClient::encodePathSegment($sbomUuid) . "", $clientConfig, decoder: 'empty', operationId: 'dependencyGraphFetchSbomReport', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -75,7 +75,7 @@ trait DependencyGraphMethods
     public static function dependencyGraphGenerateSbomReport(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): DependencyGraphGenerateSbomReportResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dependency-graph/sbom/generate-report", $clientConfig, returnType: DependencyGraphGenerateSbomReportResponse::class, decoder: 'json', operationId: 'dependencyGraphGenerateSbomReport', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/dependency-graph/sbom/generate-report", $clientConfig, returnType: DependencyGraphGenerateSbomReportResponse::class, decoder: 'json', operationId: 'dependencyGraphGenerateSbomReport', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DependencyGraphGenerateSbomReportResponse::class));
     }
 

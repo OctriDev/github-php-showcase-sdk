@@ -183,7 +183,9 @@ class OrgsDeleteAttestationsBulkBodyVariant0 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "subject_digests") || $data->subject_digests === null) { throw new SdkValidationError("subject_digests", 'required', "Required property 'subject_digests' is missing or null"); }
+        if (!property_exists($data, "subject_digests") || $data->subject_digests === null) {
+            throw new SdkValidationError("subject_digests", 'required', "Required property 'subject_digests' is missing or null");
+        }
         return new self(
             subjectDigests: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->subject_digests))),
         );
@@ -225,7 +227,9 @@ class OrgsDeleteAttestationsBulkBodyVariant1 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "attestation_ids") || $data->attestation_ids === null) { throw new SdkValidationError("attestation_ids", 'required', "Required property 'attestation_ids' is missing or null"); }
+        if (!property_exists($data, "attestation_ids") || $data->attestation_ids === null) {
+            throw new SdkValidationError("attestation_ids", 'required', "Required property 'attestation_ids' is missing or null");
+        }
         return new self(
             attestationIds: array_values(array_map(static fn($item) => SdkClient::intValue($item), SdkClient::arrayValue($data->attestation_ids))),
         );

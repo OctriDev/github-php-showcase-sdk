@@ -72,10 +72,18 @@ class SearchIssuesAndPullRequestsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) { throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null"); }
-        if (!property_exists($data, "items") || $data->items === null) { throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null"); }
-        if (!property_exists($data, "search_type") || $data->search_type === null) { throw new SdkValidationError("search_type", 'required', "Required property 'search_type' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) {
+            throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null");
+        }
+        if (!property_exists($data, "items") || $data->items === null) {
+            throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null");
+        }
+        if (!property_exists($data, "search_type") || $data->search_type === null) {
+            throw new SdkValidationError("search_type", 'required', "Required property 'search_type' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             incompleteResults: SdkClient::boolValue($data->incomplete_results),
@@ -129,9 +137,15 @@ class SearchLabelsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) { throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null"); }
-        if (!property_exists($data, "items") || $data->items === null) { throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) {
+            throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null");
+        }
+        if (!property_exists($data, "items") || $data->items === null) {
+            throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             incompleteResults: SdkClient::boolValue($data->incomplete_results),
@@ -183,9 +197,15 @@ class SearchReposResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) { throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null"); }
-        if (!property_exists($data, "items") || $data->items === null) { throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) {
+            throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null");
+        }
+        if (!property_exists($data, "items") || $data->items === null) {
+            throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             incompleteResults: SdkClient::boolValue($data->incomplete_results),
@@ -237,9 +257,15 @@ class SearchTopicsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) { throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null"); }
-        if (!property_exists($data, "items") || $data->items === null) { throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) {
+            throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null");
+        }
+        if (!property_exists($data, "items") || $data->items === null) {
+            throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             incompleteResults: SdkClient::boolValue($data->incomplete_results),
@@ -291,9 +317,15 @@ class SearchUsersResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) { throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null"); }
-        if (!property_exists($data, "items") || $data->items === null) { throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) {
+            throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null");
+        }
+        if (!property_exists($data, "items") || $data->items === null) {
+            throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             incompleteResults: SdkClient::boolValue($data->incomplete_results),

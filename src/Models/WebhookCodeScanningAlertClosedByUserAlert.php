@@ -195,16 +195,36 @@ class WebhookCodeScanningAlertClosedByUserAlert implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "dismissed_at") || $data->dismissed_at === null) { throw new SdkValidationError("dismissed_at", 'required', "Required property 'dismissed_at' is missing or null"); }
-        if (!property_exists($data, "dismissed_by")) { throw new SdkValidationError("dismissed_by", 'required', "Missing required property 'dismissed_by'"); }
-        if (!property_exists($data, "dismissed_reason")) { throw new SdkValidationError("dismissed_reason", 'required', "Missing required property 'dismissed_reason'"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
-        if (!property_exists($data, "rule") || $data->rule === null) { throw new SdkValidationError("rule", 'required', "Required property 'rule' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
-        if (!property_exists($data, "tool") || $data->tool === null) { throw new SdkValidationError("tool", 'required', "Required property 'tool' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "dismissed_at") || $data->dismissed_at === null) {
+            throw new SdkValidationError("dismissed_at", 'required', "Required property 'dismissed_at' is missing or null");
+        }
+        if (!property_exists($data, "dismissed_by")) {
+            throw new SdkValidationError("dismissed_by", 'required', "Missing required property 'dismissed_by'");
+        }
+        if (!property_exists($data, "dismissed_reason")) {
+            throw new SdkValidationError("dismissed_reason", 'required', "Missing required property 'dismissed_reason'");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "number") || $data->number === null) {
+            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
+        }
+        if (!property_exists($data, "rule") || $data->rule === null) {
+            throw new SdkValidationError("rule", 'required', "Required property 'rule' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "tool") || $data->tool === null) {
+            throw new SdkValidationError("tool", 'required', "Required property 'tool' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             createdAt: SdkClient::stringValue($data->created_at),
             dismissedAt: SdkClient::stringValue($data->dismissed_at),

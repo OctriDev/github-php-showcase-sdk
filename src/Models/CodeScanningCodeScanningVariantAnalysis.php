@@ -179,12 +179,24 @@ class CodeScanningVariantAnalysis implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "controller_repo") || $data->controller_repo === null) { throw new SdkValidationError("controller_repo", 'required', "Required property 'controller_repo' is missing or null"); }
-        if (!property_exists($data, "actor") || $data->actor === null) { throw new SdkValidationError("actor", 'required', "Required property 'actor' is missing or null"); }
-        if (!property_exists($data, "query_language") || $data->query_language === null) { throw new SdkValidationError("query_language", 'required', "Required property 'query_language' is missing or null"); }
-        if (!property_exists($data, "query_pack_url") || $data->query_pack_url === null) { throw new SdkValidationError("query_pack_url", 'required', "Required property 'query_pack_url' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "controller_repo") || $data->controller_repo === null) {
+            throw new SdkValidationError("controller_repo", 'required', "Required property 'controller_repo' is missing or null");
+        }
+        if (!property_exists($data, "actor") || $data->actor === null) {
+            throw new SdkValidationError("actor", 'required', "Required property 'actor' is missing or null");
+        }
+        if (!property_exists($data, "query_language") || $data->query_language === null) {
+            throw new SdkValidationError("query_language", 'required', "Required property 'query_language' is missing or null");
+        }
+        if (!property_exists($data, "query_pack_url") || $data->query_pack_url === null) {
+            throw new SdkValidationError("query_pack_url", 'required', "Required property 'query_pack_url' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             controllerRepo: SdkClient::hydrateClass($data->controller_repo, SimpleRepository::class),
@@ -219,11 +231,26 @@ final readonly class CodeScanningVariantAnalysisLanguage implements SdkOpenEnum
     public const RUST = "rust";
     public const SWIFT = "swift";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -314,12 +341,24 @@ class CodeScanningVariantAnalysisRepository implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "full_name") || $data->full_name === null) { throw new SdkValidationError("full_name", 'required', "Required property 'full_name' is missing or null"); }
-        if (!property_exists($data, "private") || $data->private === null) { throw new SdkValidationError("private", 'required', "Required property 'private' is missing or null"); }
-        if (!property_exists($data, "stargazers_count") || $data->stargazers_count === null) { throw new SdkValidationError("stargazers_count", 'required', "Required property 'stargazers_count' is missing or null"); }
-        if (!property_exists($data, "updated_at")) { throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "full_name") || $data->full_name === null) {
+            throw new SdkValidationError("full_name", 'required', "Required property 'full_name' is missing or null");
+        }
+        if (!property_exists($data, "private") || $data->private === null) {
+            throw new SdkValidationError("private", 'required', "Required property 'private' is missing or null");
+        }
+        if (!property_exists($data, "stargazers_count") || $data->stargazers_count === null) {
+            throw new SdkValidationError("stargazers_count", 'required', "Required property 'stargazers_count' is missing or null");
+        }
+        if (!property_exists($data, "updated_at")) {
+            throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),

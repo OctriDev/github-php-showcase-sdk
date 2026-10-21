@@ -175,13 +175,27 @@ class WebhooksChanges8TierFrom implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
-        if (!property_exists($data, "is_one_time") || $data->is_one_time === null) { throw new SdkValidationError("is_one_time", 'required', "Required property 'is_one_time' is missing or null"); }
-        if (!property_exists($data, "monthly_price_in_cents") || $data->monthly_price_in_cents === null) { throw new SdkValidationError("monthly_price_in_cents", 'required', "Required property 'monthly_price_in_cents' is missing or null"); }
-        if (!property_exists($data, "monthly_price_in_dollars") || $data->monthly_price_in_dollars === null) { throw new SdkValidationError("monthly_price_in_dollars", 'required', "Required property 'monthly_price_in_dollars' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "description") || $data->description === null) {
+            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
+        }
+        if (!property_exists($data, "is_one_time") || $data->is_one_time === null) {
+            throw new SdkValidationError("is_one_time", 'required', "Required property 'is_one_time' is missing or null");
+        }
+        if (!property_exists($data, "monthly_price_in_cents") || $data->monthly_price_in_cents === null) {
+            throw new SdkValidationError("monthly_price_in_cents", 'required', "Required property 'monthly_price_in_cents' is missing or null");
+        }
+        if (!property_exists($data, "monthly_price_in_dollars") || $data->monthly_price_in_dollars === null) {
+            throw new SdkValidationError("monthly_price_in_dollars", 'required', "Required property 'monthly_price_in_dollars' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
         return new self(
             createdAt: SdkClient::stringValue($data->created_at),
             description: SdkClient::stringValue($data->description),
@@ -234,7 +248,9 @@ class WebhooksChanges8Tier implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
         return new self(
             from: SdkClient::hydrateClass($data->from, WebhooksChanges8TierFrom::class),
         );
@@ -279,7 +295,9 @@ class WebhooksChanges8 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "tier") || $data->tier === null) { throw new SdkValidationError("tier", 'required', "Required property 'tier' is missing or null"); }
+        if (!property_exists($data, "tier") || $data->tier === null) {
+            throw new SdkValidationError("tier", 'required', "Required property 'tier' is missing or null");
+        }
         return new self(
             tier: SdkClient::hydrateClass($data->tier, WebhooksChanges8Tier::class),
         );
@@ -300,9 +318,24 @@ final readonly class WebhooksCommentAuthorAssociationEnum implements SdkOpenEnum
     public const NONE = "NONE";
     public const OWNER = "OWNER";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

@@ -55,8 +55,12 @@ class PullRequestReviewRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "users") || $data->users === null) { throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null"); }
-        if (!property_exists($data, "teams") || $data->teams === null) { throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null"); }
+        if (!property_exists($data, "users") || $data->users === null) {
+            throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null");
+        }
+        if (!property_exists($data, "teams") || $data->teams === null) {
+            throw new SdkValidationError("teams", 'required', "Required property 'teams' is missing or null");
+        }
         return new self(
             users: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($data->users))),
             teams: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Team::class), SdkClient::arrayValue($data->teams))),

@@ -187,20 +187,48 @@ class GpgKey implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "primary_key_id")) { throw new SdkValidationError("primary_key_id", 'required', "Missing required property 'primary_key_id'"); }
-        if (!property_exists($data, "key_id") || $data->key_id === null) { throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null"); }
-        if (!property_exists($data, "public_key") || $data->public_key === null) { throw new SdkValidationError("public_key", 'required', "Required property 'public_key' is missing or null"); }
-        if (!property_exists($data, "emails") || $data->emails === null) { throw new SdkValidationError("emails", 'required', "Required property 'emails' is missing or null"); }
-        if (!property_exists($data, "subkeys") || $data->subkeys === null) { throw new SdkValidationError("subkeys", 'required', "Required property 'subkeys' is missing or null"); }
-        if (!property_exists($data, "can_sign") || $data->can_sign === null) { throw new SdkValidationError("can_sign", 'required', "Required property 'can_sign' is missing or null"); }
-        if (!property_exists($data, "can_encrypt_comms") || $data->can_encrypt_comms === null) { throw new SdkValidationError("can_encrypt_comms", 'required', "Required property 'can_encrypt_comms' is missing or null"); }
-        if (!property_exists($data, "can_encrypt_storage") || $data->can_encrypt_storage === null) { throw new SdkValidationError("can_encrypt_storage", 'required', "Required property 'can_encrypt_storage' is missing or null"); }
-        if (!property_exists($data, "can_certify") || $data->can_certify === null) { throw new SdkValidationError("can_certify", 'required', "Required property 'can_certify' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "expires_at")) { throw new SdkValidationError("expires_at", 'required', "Missing required property 'expires_at'"); }
-        if (!property_exists($data, "revoked") || $data->revoked === null) { throw new SdkValidationError("revoked", 'required', "Required property 'revoked' is missing or null"); }
-        if (!property_exists($data, "raw_key")) { throw new SdkValidationError("raw_key", 'required', "Missing required property 'raw_key'"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "primary_key_id")) {
+            throw new SdkValidationError("primary_key_id", 'required', "Missing required property 'primary_key_id'");
+        }
+        if (!property_exists($data, "key_id") || $data->key_id === null) {
+            throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null");
+        }
+        if (!property_exists($data, "public_key") || $data->public_key === null) {
+            throw new SdkValidationError("public_key", 'required', "Required property 'public_key' is missing or null");
+        }
+        if (!property_exists($data, "emails") || $data->emails === null) {
+            throw new SdkValidationError("emails", 'required', "Required property 'emails' is missing or null");
+        }
+        if (!property_exists($data, "subkeys") || $data->subkeys === null) {
+            throw new SdkValidationError("subkeys", 'required', "Required property 'subkeys' is missing or null");
+        }
+        if (!property_exists($data, "can_sign") || $data->can_sign === null) {
+            throw new SdkValidationError("can_sign", 'required', "Required property 'can_sign' is missing or null");
+        }
+        if (!property_exists($data, "can_encrypt_comms") || $data->can_encrypt_comms === null) {
+            throw new SdkValidationError("can_encrypt_comms", 'required', "Required property 'can_encrypt_comms' is missing or null");
+        }
+        if (!property_exists($data, "can_encrypt_storage") || $data->can_encrypt_storage === null) {
+            throw new SdkValidationError("can_encrypt_storage", 'required', "Required property 'can_encrypt_storage' is missing or null");
+        }
+        if (!property_exists($data, "can_certify") || $data->can_certify === null) {
+            throw new SdkValidationError("can_certify", 'required', "Required property 'can_certify' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "expires_at")) {
+            throw new SdkValidationError("expires_at", 'required', "Missing required property 'expires_at'");
+        }
+        if (!property_exists($data, "revoked") || $data->revoked === null) {
+            throw new SdkValidationError("revoked", 'required', "Required property 'revoked' is missing or null");
+        }
+        if (!property_exists($data, "raw_key")) {
+            throw new SdkValidationError("raw_key", 'required', "Missing required property 'raw_key'");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             primaryKeyId: ($data->primary_key_id === null ? null : SdkClient::intValue($data->primary_key_id)),
@@ -331,13 +359,27 @@ class Key implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "verified") || $data->verified === null) { throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null"); }
-        if (!property_exists($data, "read_only") || $data->read_only === null) { throw new SdkValidationError("read_only", 'required', "Required property 'read_only' is missing or null"); }
+        if (!property_exists($data, "key") || $data->key === null) {
+            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "verified") || $data->verified === null) {
+            throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null");
+        }
+        if (!property_exists($data, "read_only") || $data->read_only === null) {
+            throw new SdkValidationError("read_only", 'required', "Required property 'read_only' is missing or null");
+        }
         return new self(
             key: SdkClient::stringValue($data->key),
             id: SdkClient::intValue($data->id),

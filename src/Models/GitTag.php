@@ -117,13 +117,27 @@ class GitTag implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "tag") || $data->tag === null) { throw new SdkValidationError("tag", 'required', "Required property 'tag' is missing or null"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
-        if (!property_exists($data, "tagger") || $data->tagger === null) { throw new SdkValidationError("tagger", 'required', "Required property 'tagger' is missing or null"); }
-        if (!property_exists($data, "object") || $data->object === null) { throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null"); }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "tag") || $data->tag === null) {
+            throw new SdkValidationError("tag", 'required', "Required property 'tag' is missing or null");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "message") || $data->message === null) {
+            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
+        }
+        if (!property_exists($data, "tagger") || $data->tagger === null) {
+            throw new SdkValidationError("tagger", 'required', "Required property 'tagger' is missing or null");
+        }
+        if (!property_exists($data, "object") || $data->object === null) {
+            throw new SdkValidationError("object", 'required', "Required property 'object' is missing or null");
+        }
         return new self(
             nodeId: SdkClient::stringValue($data->node_id),
             tag: SdkClient::stringValue($data->tag),
@@ -229,10 +243,18 @@ class GitTreeTreeItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
-        if (!property_exists($data, "mode") || $data->mode === null) { throw new SdkValidationError("mode", 'required', "Required property 'mode' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) {
+            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
+        }
+        if (!property_exists($data, "mode") || $data->mode === null) {
+            throw new SdkValidationError("mode", 'required', "Required property 'mode' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
         return new self(
             path: SdkClient::stringValue($data->path),
             mode: SdkClient::stringValue($data->mode),
@@ -314,9 +336,15 @@ class GitTree implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "truncated") || $data->truncated === null) { throw new SdkValidationError("truncated", 'required', "Required property 'truncated' is missing or null"); }
-        if (!property_exists($data, "tree") || $data->tree === null) { throw new SdkValidationError("tree", 'required', "Required property 'tree' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
+        if (!property_exists($data, "truncated") || $data->truncated === null) {
+            throw new SdkValidationError("truncated", 'required', "Required property 'truncated' is missing or null");
+        }
+        if (!property_exists($data, "tree") || $data->tree === null) {
+            throw new SdkValidationError("tree", 'required', "Required property 'tree' is missing or null");
+        }
         return new self(
             sha: SdkClient::stringValue($data->sha),
             truncated: SdkClient::boolValue($data->truncated),

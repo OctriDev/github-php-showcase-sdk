@@ -54,7 +54,9 @@ class AgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant0 implements Age
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             globalId: (property_exists($data, "global_id") && $data->global_id !== null ? SdkClient::stringValue($data->global_id) : SdkNotGiven::Value),
@@ -107,8 +109,12 @@ class AgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant1 implements Age
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "head_ref") || $data->head_ref === null) { throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null"); }
-        if (!property_exists($data, "base_ref") || $data->base_ref === null) { throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null"); }
+        if (!property_exists($data, "head_ref") || $data->head_ref === null) {
+            throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null");
+        }
+        if (!property_exists($data, "base_ref") || $data->base_ref === null) {
+            throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null");
+        }
         return new self(
             headRef: SdkClient::stringValue($data->head_ref),
             baseRef: SdkClient::stringValue($data->base_ref),
@@ -163,7 +169,9 @@ class AgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant0 imple
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             globalId: (property_exists($data, "global_id") && $data->global_id !== null ? SdkClient::stringValue($data->global_id) : SdkNotGiven::Value),
@@ -216,8 +224,12 @@ class AgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant1 imple
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "head_ref") || $data->head_ref === null) { throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null"); }
-        if (!property_exists($data, "base_ref") || $data->base_ref === null) { throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null"); }
+        if (!property_exists($data, "head_ref") || $data->head_ref === null) {
+            throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null");
+        }
+        if (!property_exists($data, "base_ref") || $data->base_ref === null) {
+            throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null");
+        }
         return new self(
             headRef: SdkClient::stringValue($data->head_ref),
             baseRef: SdkClient::stringValue($data->base_ref),
@@ -272,7 +284,9 @@ class AgentTasksListTasksResponseTasksItemArtifactsItemDataVariant0 implements A
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             globalId: (property_exists($data, "global_id") && $data->global_id !== null ? SdkClient::stringValue($data->global_id) : SdkNotGiven::Value),
@@ -325,8 +339,12 @@ class AgentTasksListTasksResponseTasksItemArtifactsItemDataVariant1 implements A
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "head_ref") || $data->head_ref === null) { throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null"); }
-        if (!property_exists($data, "base_ref") || $data->base_ref === null) { throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null"); }
+        if (!property_exists($data, "head_ref") || $data->head_ref === null) {
+            throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null");
+        }
+        if (!property_exists($data, "base_ref") || $data->base_ref === null) {
+            throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null");
+        }
         return new self(
             headRef: SdkClient::stringValue($data->head_ref),
             baseRef: SdkClient::stringValue($data->base_ref),

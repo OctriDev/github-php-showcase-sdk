@@ -42,7 +42,7 @@ trait PullsRequestedReviewersMethods
     public static function pullsRequestReviewers(ClientConfig $clientConfig, string $owner, string $repo, int $pullNumber, array|SdkNotGiven $reviewers = SdkNotGiven::Value, array|SdkNotGiven $teamReviewers = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PullRequestSimple
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/requested_reviewers", $clientConfig, body: ['reviewers' => $reviewers, 'team_reviewers' => $teamReviewers], returnType: PullRequestSimple::class, decoder: 'json', operationId: 'pullsRequestReviewers', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/requested_reviewers", $clientConfig, body: ['reviewers' => $reviewers, 'team_reviewers' => $teamReviewers], returnType: PullRequestSimple::class, decoder: 'json', operationId: 'pullsRequestReviewers', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestSimple::class));
     }
 
@@ -62,7 +62,7 @@ trait PullsRequestedReviewersMethods
     public static function pullsRemoveRequestedReviewers(ClientConfig $clientConfig, string $owner, string $repo, int $pullNumber, array $reviewers, array|SdkNotGiven $teamReviewers = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PullRequestSimple
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/requested_reviewers", $clientConfig, body: ['reviewers' => $reviewers, 'team_reviewers' => $teamReviewers], returnType: PullRequestSimple::class, decoder: 'json', operationId: 'pullsRemoveRequestedReviewers', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/requested_reviewers", $clientConfig, body: ['reviewers' => $reviewers, 'team_reviewers' => $teamReviewers], returnType: PullRequestSimple::class, decoder: 'json', operationId: 'pullsRemoveRequestedReviewers', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestSimple::class));
     }
 
@@ -82,7 +82,7 @@ trait PullsRequestedReviewersMethods
     public static function pullsRerequestReviewers(ClientConfig $clientConfig, string $owner, string $repo, int $pullNumber, array|SdkNotGiven $reviewers = SdkNotGiven::Value, array|SdkNotGiven $teamReviewers = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PullRequestSimple
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/requested_reviewers/rerequest", $clientConfig, body: ['reviewers' => $reviewers, 'team_reviewers' => $teamReviewers], returnType: PullRequestSimple::class, decoder: 'json', operationId: 'pullsRerequestReviewers', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/requested_reviewers/rerequest", $clientConfig, body: ['reviewers' => $reviewers, 'team_reviewers' => $teamReviewers], returnType: PullRequestSimple::class, decoder: 'json', operationId: 'pullsRerequestReviewers', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullRequestSimple::class));
     }
 }

@@ -15,11 +15,26 @@ final readonly class CodeScanningAiScanEnablementPrScanEnum implements SdkOpenEn
     public const ENABLED = "enabled";
     public const DISABLED = "disabled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -60,7 +75,9 @@ class CodeScanningAiScanEnablement implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pr_scan") || $data->pr_scan === null) { throw new SdkValidationError("pr_scan", 'required', "Required property 'pr_scan' is missing or null"); }
+        if (!property_exists($data, "pr_scan") || $data->pr_scan === null) {
+            throw new SdkValidationError("pr_scan", 'required', "Required property 'pr_scan' is missing or null");
+        }
         return new self(
             prScan: SdkClient::hydrateStringEnumOrString($data->pr_scan, CodeScanningAiScanEnablementPrScanEnum::class),
         );
@@ -75,11 +92,26 @@ final readonly class CodeScanningAiScanEnablementUpdatePrScanEnum implements Sdk
     public const ENABLED = "enabled";
     public const DISABLED = "disabled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -136,11 +168,26 @@ final readonly class CodeScanningAiScanOrgEnablementUpdatePrScanEnum implements 
     public const ENABLED = "enabled";
     public const DISABLED = "disabled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -197,11 +244,26 @@ final readonly class CodeScanningAiScanOrgSettingsPrScanEnum implements SdkOpenE
     public const ENABLED = "enabled";
     public const DISABLED = "disabled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -242,7 +304,9 @@ class CodeScanningAiScanOrgSettings implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pr_scan") || $data->pr_scan === null) { throw new SdkValidationError("pr_scan", 'required', "Required property 'pr_scan' is missing or null"); }
+        if (!property_exists($data, "pr_scan") || $data->pr_scan === null) {
+            throw new SdkValidationError("pr_scan", 'required', "Required property 'pr_scan' is missing or null");
+        }
         return new self(
             prScan: SdkClient::hydrateStringEnumOrString($data->pr_scan, CodeScanningAiScanOrgSettingsPrScanEnum::class),
         );

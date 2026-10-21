@@ -121,11 +121,21 @@ class MarketplacePurchase implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
-        if (!property_exists($data, "marketplace_purchase") || $data->marketplace_purchase === null) { throw new SdkValidationError("marketplace_purchase", 'required', "Required property 'marketplace_purchase' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "login") || $data->login === null) {
+            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
+        }
+        if (!property_exists($data, "marketplace_purchase") || $data->marketplace_purchase === null) {
+            throw new SdkValidationError("marketplace_purchase", 'required', "Required property 'marketplace_purchase' is missing or null");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
             type: SdkClient::stringValue($data->type),
@@ -147,11 +157,26 @@ final readonly class NullableScopedInstallationRepositorySelectionEnum implement
     public const ALL = "all";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -256,11 +281,21 @@ class NullableScopedInstallation implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "permissions") || $data->permissions === null) { throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null"); }
-        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) { throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null"); }
-        if (!property_exists($data, "single_file_name")) { throw new SdkValidationError("single_file_name", 'required', "Missing required property 'single_file_name'"); }
-        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) { throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null"); }
-        if (!property_exists($data, "account") || $data->account === null) { throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null"); }
+        if (!property_exists($data, "permissions") || $data->permissions === null) {
+            throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null");
+        }
+        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) {
+            throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null");
+        }
+        if (!property_exists($data, "single_file_name")) {
+            throw new SdkValidationError("single_file_name", 'required', "Missing required property 'single_file_name'");
+        }
+        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) {
+            throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null");
+        }
+        if (!property_exists($data, "account") || $data->account === null) {
+            throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null");
+        }
         return new self(
             permissions: SdkClient::hydrateClass($data->permissions, AppPermissions::class),
             repositorySelection: SdkClient::hydrateStringEnumOrString($data->repository_selection, NullableScopedInstallationRepositorySelectionEnum::class),

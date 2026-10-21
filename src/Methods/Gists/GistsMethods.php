@@ -26,7 +26,7 @@ trait GistsMethods
             Validation::validateDateTime('since', $since);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/gists", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'gistsList', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/gists", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'gistsList', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BaseGist::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -44,7 +44,7 @@ trait GistsMethods
     public static function gistsCreate(ClientConfig $clientConfig, array $files, string|SdkNotGiven $description = SdkNotGiven::Value, bool|GistsCreatePublicEnum|string|SdkNotGiven $public = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): GistSimple
     {
 
-        $sdkResponse = SdkClient::request('POST', "/gists", $clientConfig, body: ['files' => $files, 'description' => $description, 'public' => $public], returnType: GistSimple::class, decoder: 'json', operationId: 'gistsCreate', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/gists", $clientConfig, body: ['files' => $files, 'description' => $description, 'public' => $public], returnType: GistSimple::class, decoder: 'json', operationId: 'gistsCreate', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GistSimple::class));
     }
 
@@ -60,7 +60,7 @@ trait GistsMethods
     public static function gistsGet(ClientConfig $clientConfig, string $gistId, ?RequestOptions $requestOptions = null): GistSimple
     {
 
-        $sdkResponse = SdkClient::request('GET', "/gists/" . SdkClient::encodePathSegment($gistId) . "", $clientConfig, returnType: GistSimple::class, decoder: 'json', operationId: 'gistsGet', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ForbiddenGist::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/gists/" . SdkClient::encodePathSegment($gistId) . "", $clientConfig, returnType: GistSimple::class, decoder: 'json', operationId: 'gistsGet', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ForbiddenGist::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GistSimple::class));
     }
 
@@ -78,7 +78,7 @@ trait GistsMethods
     public static function gistsUpdate(ClientConfig $clientConfig, string $gistId, string|SdkNotGiven $description = SdkNotGiven::Value, array|SdkNotGiven $files = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): GistSimple
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/gists/" . SdkClient::encodePathSegment($gistId) . "", $clientConfig, body: ['description' => $description, 'files' => $files], returnType: GistSimple::class, decoder: 'json', operationId: 'gistsUpdate', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/gists/" . SdkClient::encodePathSegment($gistId) . "", $clientConfig, body: ['description' => $description, 'files' => $files], returnType: GistSimple::class, decoder: 'json', operationId: 'gistsUpdate', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GistSimple::class));
     }
 
@@ -93,7 +93,7 @@ trait GistsMethods
     public static function gistsDelete(ClientConfig $clientConfig, string $gistId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/gists/" . SdkClient::encodePathSegment($gistId) . "", $clientConfig, decoder: 'empty', operationId: 'gistsDelete', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/gists/" . SdkClient::encodePathSegment($gistId) . "", $clientConfig, decoder: 'empty', operationId: 'gistsDelete', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -109,7 +109,7 @@ trait GistsMethods
     public static function gistsGetRevision(ClientConfig $clientConfig, string $gistId, string $sha, ?RequestOptions $requestOptions = null): GistSimple
     {
 
-        $sdkResponse = SdkClient::request('GET', "/gists/" . SdkClient::encodePathSegment($gistId) . "/" . SdkClient::encodePathSegment($sha) . "", $clientConfig, returnType: GistSimple::class, decoder: 'json', operationId: 'gistsGetRevision', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/gists/" . SdkClient::encodePathSegment($gistId) . "/" . SdkClient::encodePathSegment($sha) . "", $clientConfig, returnType: GistSimple::class, decoder: 'json', operationId: 'gistsGetRevision', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GistSimple::class));
     }
 
@@ -132,7 +132,7 @@ trait GistsMethods
             Validation::validateDateTime('since', $since);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/gists", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'gistsListForUser', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/gists", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'gistsListForUser', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BaseGist::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

@@ -15,11 +15,26 @@ final readonly class ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersIte
     public const IN_PROGRESS = "in_progress";
     public const PENDING = "pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -168,13 +183,27 @@ class ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem implements \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "run_id") || $data->run_id === null) { throw new SdkValidationError("run_id", 'required', "Required property 'run_id' is missing or null"); }
-        if (!property_exists($data, "run_name") || $data->run_name === null) { throw new SdkValidationError("run_name", 'required', "Required property 'run_name' is missing or null"); }
-        if (!property_exists($data, "run_url")) { throw new SdkValidationError("run_url", 'required', "Missing required property 'run_url'"); }
-        if (!property_exists($data, "run_html_url")) { throw new SdkValidationError("run_html_url", 'required', "Missing required property 'run_html_url'"); }
-        if (!property_exists($data, "position") || $data->position === null) { throw new SdkValidationError("position", 'required', "Required property 'position' is missing or null"); }
-        if (!property_exists($data, "position_url") || $data->position_url === null) { throw new SdkValidationError("position_url", 'required', "Required property 'position_url' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
+        if (!property_exists($data, "run_id") || $data->run_id === null) {
+            throw new SdkValidationError("run_id", 'required', "Required property 'run_id' is missing or null");
+        }
+        if (!property_exists($data, "run_name") || $data->run_name === null) {
+            throw new SdkValidationError("run_name", 'required', "Required property 'run_name' is missing or null");
+        }
+        if (!property_exists($data, "run_url")) {
+            throw new SdkValidationError("run_url", 'required', "Missing required property 'run_url'");
+        }
+        if (!property_exists($data, "run_html_url")) {
+            throw new SdkValidationError("run_html_url", 'required', "Missing required property 'run_html_url'");
+        }
+        if (!property_exists($data, "position") || $data->position === null) {
+            throw new SdkValidationError("position", 'required', "Required property 'position' is missing or null");
+        }
+        if (!property_exists($data, "position_url") || $data->position_url === null) {
+            throw new SdkValidationError("position_url", 'required', "Required property 'position_url' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
         return new self(
             runId: SdkClient::intValue($data->run_id),
             runName: SdkClient::stringValue($data->run_name),
@@ -249,9 +278,15 @@ class ConcurrencyGroupRunListConcurrencyGroupsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "group_name") || $data->group_name === null) { throw new SdkValidationError("group_name", 'required', "Required property 'group_name' is missing or null"); }
-        if (!property_exists($data, "group_url") || $data->group_url === null) { throw new SdkValidationError("group_url", 'required', "Required property 'group_url' is missing or null"); }
-        if (!property_exists($data, "group_members") || $data->group_members === null) { throw new SdkValidationError("group_members", 'required', "Required property 'group_members' is missing or null"); }
+        if (!property_exists($data, "group_name") || $data->group_name === null) {
+            throw new SdkValidationError("group_name", 'required', "Required property 'group_name' is missing or null");
+        }
+        if (!property_exists($data, "group_url") || $data->group_url === null) {
+            throw new SdkValidationError("group_url", 'required', "Required property 'group_url' is missing or null");
+        }
+        if (!property_exists($data, "group_members") || $data->group_members === null) {
+            throw new SdkValidationError("group_members", 'required', "Required property 'group_members' is missing or null");
+        }
         return new self(
             groupName: SdkClient::stringValue($data->group_name),
             groupUrl: SdkClient::stringValue($data->group_url),
@@ -308,8 +343,12 @@ class ConcurrencyGroupRunList implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "concurrency_groups") || $data->concurrency_groups === null) { throw new SdkValidationError("concurrency_groups", 'required', "Required property 'concurrency_groups' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "concurrency_groups") || $data->concurrency_groups === null) {
+            throw new SdkValidationError("concurrency_groups", 'required', "Required property 'concurrency_groups' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             concurrencyGroups: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ConcurrencyGroupRunListConcurrencyGroupsItem::class), SdkClient::arrayValue($data->concurrency_groups))),

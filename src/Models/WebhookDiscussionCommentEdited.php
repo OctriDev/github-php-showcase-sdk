@@ -14,11 +14,26 @@ final readonly class WebhookDiscussionCommentEditedActionEnum implements SdkOpen
 {
     public const EDITED = "edited";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -59,7 +74,9 @@ class WebhookDiscussionCommentEditedChangesBody implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
         return new self(
             from: SdkClient::stringValue($data->from),
         );
@@ -104,7 +121,9 @@ class WebhookDiscussionCommentEditedChanges implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "body") || $data->body === null) { throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null"); }
+        if (!property_exists($data, "body") || $data->body === null) {
+            throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null");
+        }
         return new self(
             body: SdkClient::hydrateClass($data->body, WebhookDiscussionCommentEditedChangesBody::class),
         );
@@ -235,12 +254,24 @@ class WebhookDiscussionCommentEdited implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "changes") || $data->changes === null) { throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null"); }
-        if (!property_exists($data, "comment") || $data->comment === null) { throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null"); }
-        if (!property_exists($data, "discussion") || $data->discussion === null) { throw new SdkValidationError("discussion", 'required', "Required property 'discussion' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "changes") || $data->changes === null) {
+            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
+        }
+        if (!property_exists($data, "comment") || $data->comment === null) {
+            throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null");
+        }
+        if (!property_exists($data, "discussion") || $data->discussion === null) {
+            throw new SdkValidationError("discussion", 'required', "Required property 'discussion' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookDiscussionCommentEditedActionEnum::class),
             changes: SdkClient::hydrateClass($data->changes, WebhookDiscussionCommentEditedChanges::class),

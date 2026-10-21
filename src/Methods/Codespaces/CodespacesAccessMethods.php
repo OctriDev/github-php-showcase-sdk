@@ -27,7 +27,7 @@ trait CodespacesAccessMethods
             Validation::validateItems('selected_usernames', $selectedUsernames, max: 100);
         }
 
-        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/access", $clientConfig, body: ['visibility' => $visibility, 'selected_usernames' => $selectedUsernames], decoder: 'empty', operationId: 'codespacesSetCodespacesAccess', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/access", $clientConfig, body: ['visibility' => $visibility, 'selected_usernames' => $selectedUsernames], decoder: 'empty', operationId: 'codespacesSetCodespacesAccess', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -46,7 +46,7 @@ trait CodespacesAccessMethods
 
         Validation::validateItems('selected_usernames', $selectedUsernames, max: 100);
 
-        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/access/selected_users", $clientConfig, body: ['selected_usernames' => $selectedUsernames], decoder: 'empty', operationId: 'codespacesSetCodespacesAccessUsers', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/access/selected_users", $clientConfig, body: ['selected_usernames' => $selectedUsernames], decoder: 'empty', operationId: 'codespacesSetCodespacesAccessUsers', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -65,6 +65,6 @@ trait CodespacesAccessMethods
 
         Validation::validateItems('selected_usernames', $selectedUsernames, max: 100);
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/access/selected_users", $clientConfig, body: ['selected_usernames' => $selectedUsernames], decoder: 'empty', operationId: 'codespacesDeleteCodespacesAccessUsers', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/codespaces/access/selected_users", $clientConfig, body: ['selected_usernames' => $selectedUsernames], decoder: 'empty', operationId: 'codespacesDeleteCodespacesAccessUsers', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

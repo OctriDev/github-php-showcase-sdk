@@ -22,7 +22,7 @@ trait IssuesParentMethods
     public static function issuesGetParent(ClientConfig $clientConfig, string $owner, string $repo, int $issueNumber, ?RequestOptions $requestOptions = null): Issue
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/parent", $clientConfig, returnType: Issue::class, decoder: 'json', operationId: 'issuesGetParent', requestOptions: $requestOptions, errors: [301 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/parent", $clientConfig, returnType: Issue::class, decoder: 'json', operationId: 'issuesGetParent', requestOptions: $requestOptions, errors: [301 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Issue::class));
     }
 }

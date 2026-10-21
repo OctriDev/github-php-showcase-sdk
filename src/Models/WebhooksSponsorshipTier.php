@@ -129,13 +129,27 @@ class WebhooksSponsorshipTier implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
-        if (!property_exists($data, "is_one_time") || $data->is_one_time === null) { throw new SdkValidationError("is_one_time", 'required', "Required property 'is_one_time' is missing or null"); }
-        if (!property_exists($data, "monthly_price_in_cents") || $data->monthly_price_in_cents === null) { throw new SdkValidationError("monthly_price_in_cents", 'required', "Required property 'monthly_price_in_cents' is missing or null"); }
-        if (!property_exists($data, "monthly_price_in_dollars") || $data->monthly_price_in_dollars === null) { throw new SdkValidationError("monthly_price_in_dollars", 'required', "Required property 'monthly_price_in_dollars' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "description") || $data->description === null) {
+            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
+        }
+        if (!property_exists($data, "is_one_time") || $data->is_one_time === null) {
+            throw new SdkValidationError("is_one_time", 'required', "Required property 'is_one_time' is missing or null");
+        }
+        if (!property_exists($data, "monthly_price_in_cents") || $data->monthly_price_in_cents === null) {
+            throw new SdkValidationError("monthly_price_in_cents", 'required', "Required property 'monthly_price_in_cents' is missing or null");
+        }
+        if (!property_exists($data, "monthly_price_in_dollars") || $data->monthly_price_in_dollars === null) {
+            throw new SdkValidationError("monthly_price_in_dollars", 'required', "Required property 'monthly_price_in_dollars' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
         return new self(
             createdAt: SdkClient::stringValue($data->created_at),
             description: SdkClient::stringValue($data->description),
@@ -250,12 +264,24 @@ class WebhooksSponsorship implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "privacy_level") || $data->privacy_level === null) { throw new SdkValidationError("privacy_level", 'required', "Required property 'privacy_level' is missing or null"); }
-        if (!property_exists($data, "sponsor")) { throw new SdkValidationError("sponsor", 'required', "Missing required property 'sponsor'"); }
-        if (!property_exists($data, "sponsorable")) { throw new SdkValidationError("sponsorable", 'required', "Missing required property 'sponsorable'"); }
-        if (!property_exists($data, "tier") || $data->tier === null) { throw new SdkValidationError("tier", 'required', "Required property 'tier' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "privacy_level") || $data->privacy_level === null) {
+            throw new SdkValidationError("privacy_level", 'required', "Required property 'privacy_level' is missing or null");
+        }
+        if (!property_exists($data, "sponsor")) {
+            throw new SdkValidationError("sponsor", 'required', "Missing required property 'sponsor'");
+        }
+        if (!property_exists($data, "sponsorable")) {
+            throw new SdkValidationError("sponsorable", 'required', "Missing required property 'sponsorable'");
+        }
+        if (!property_exists($data, "tier") || $data->tier === null) {
+            throw new SdkValidationError("tier", 'required', "Required property 'tier' is missing or null");
+        }
         return new self(
             createdAt: SdkClient::stringValue($data->created_at),
             nodeId: SdkClient::stringValue($data->node_id),
@@ -277,11 +303,26 @@ final readonly class WebhooksTeamParentPrivacyEnum implements SdkOpenEnum
     public const CLOSED = "closed";
     public const SECRET = "secret";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -292,11 +333,26 @@ final readonly class WebhooksTeamParentNotificationSettingEnum implements SdkOpe
     public const NOTIFICATIONS_ENABLED = "notifications_enabled";
     public const NOTIFICATIONS_DISABLED = "notifications_disabled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -307,9 +363,24 @@ final readonly class WebhooksTeamParentTypeEnum implements SdkOpenEnum
     public const ENTERPRISE = "enterprise";
     public const ORGANIZATION = "organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

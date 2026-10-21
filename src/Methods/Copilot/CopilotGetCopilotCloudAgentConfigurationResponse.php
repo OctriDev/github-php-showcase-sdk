@@ -112,14 +112,30 @@ class CopilotGetCopilotCloudAgentConfigurationResponse implements \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "mcp_configuration")) { throw new SdkValidationError("mcp_configuration", 'required', "Missing required property 'mcp_configuration'"); }
-        if (!property_exists($data, "enabled_tools") || $data->enabled_tools === null) { throw new SdkValidationError("enabled_tools", 'required', "Required property 'enabled_tools' is missing or null"); }
-        if (!property_exists($data, "require_actions_workflow_approval") || $data->require_actions_workflow_approval === null) { throw new SdkValidationError("require_actions_workflow_approval", 'required', "Required property 'require_actions_workflow_approval' is missing or null"); }
-        if (!property_exists($data, "is_firewall_enabled") || $data->is_firewall_enabled === null) { throw new SdkValidationError("is_firewall_enabled", 'required', "Required property 'is_firewall_enabled' is missing or null"); }
-        if (!property_exists($data, "is_firewall_recommended_allowlist_enabled") || $data->is_firewall_recommended_allowlist_enabled === null) { throw new SdkValidationError("is_firewall_recommended_allowlist_enabled", 'required', "Required property 'is_firewall_recommended_allowlist_enabled' is missing or null"); }
-        if (!property_exists($data, "custom_allowlist") || $data->custom_allowlist === null) { throw new SdkValidationError("custom_allowlist", 'required', "Required property 'custom_allowlist' is missing or null"); }
-        if (!property_exists($data, "is_automations_enabled") || $data->is_automations_enabled === null) { throw new SdkValidationError("is_automations_enabled", 'required', "Required property 'is_automations_enabled' is missing or null"); }
-        if (!property_exists($data, "require_write_access_for_automation_triggers") || $data->require_write_access_for_automation_triggers === null) { throw new SdkValidationError("require_write_access_for_automation_triggers", 'required', "Required property 'require_write_access_for_automation_triggers' is missing or null"); }
+        if (!property_exists($data, "mcp_configuration")) {
+            throw new SdkValidationError("mcp_configuration", 'required', "Missing required property 'mcp_configuration'");
+        }
+        if (!property_exists($data, "enabled_tools") || $data->enabled_tools === null) {
+            throw new SdkValidationError("enabled_tools", 'required', "Required property 'enabled_tools' is missing or null");
+        }
+        if (!property_exists($data, "require_actions_workflow_approval") || $data->require_actions_workflow_approval === null) {
+            throw new SdkValidationError("require_actions_workflow_approval", 'required', "Required property 'require_actions_workflow_approval' is missing or null");
+        }
+        if (!property_exists($data, "is_firewall_enabled") || $data->is_firewall_enabled === null) {
+            throw new SdkValidationError("is_firewall_enabled", 'required', "Required property 'is_firewall_enabled' is missing or null");
+        }
+        if (!property_exists($data, "is_firewall_recommended_allowlist_enabled") || $data->is_firewall_recommended_allowlist_enabled === null) {
+            throw new SdkValidationError("is_firewall_recommended_allowlist_enabled", 'required', "Required property 'is_firewall_recommended_allowlist_enabled' is missing or null");
+        }
+        if (!property_exists($data, "custom_allowlist") || $data->custom_allowlist === null) {
+            throw new SdkValidationError("custom_allowlist", 'required', "Required property 'custom_allowlist' is missing or null");
+        }
+        if (!property_exists($data, "is_automations_enabled") || $data->is_automations_enabled === null) {
+            throw new SdkValidationError("is_automations_enabled", 'required', "Required property 'is_automations_enabled' is missing or null");
+        }
+        if (!property_exists($data, "require_write_access_for_automation_triggers") || $data->require_write_access_for_automation_triggers === null) {
+            throw new SdkValidationError("require_write_access_for_automation_triggers", 'required', "Required property 'require_write_access_for_automation_triggers' is missing or null");
+        }
         return new self(
             mcpConfiguration: ($data->mcp_configuration === null ? null : SdkClient::stringMapValue($data->mcp_configuration)),
             enabledTools: SdkClient::hydrateClass($data->enabled_tools, CopilotGetCopilotCloudAgentConfigurationResponseEnabledTools::class),

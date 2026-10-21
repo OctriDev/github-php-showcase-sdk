@@ -20,7 +20,7 @@ trait AppsApplicationsMethods
     public static function appsDeleteAuthorization(ClientConfig $clientConfig, string $clientId, string $accessToken, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/applications/" . SdkClient::encodePathSegment($clientId) . "/grant", $clientConfig, body: ['access_token' => $accessToken], decoder: 'empty', operationId: 'appsDeleteAuthorization', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/applications/" . SdkClient::encodePathSegment($clientId) . "/grant", $clientConfig, body: ['access_token' => $accessToken], decoder: 'empty', operationId: 'appsDeleteAuthorization', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -36,7 +36,7 @@ trait AppsApplicationsMethods
     public static function appsCheckToken(ClientConfig $clientConfig, string $clientId, string $accessToken, ?RequestOptions $requestOptions = null): Authorization
     {
 
-        $sdkResponse = SdkClient::request('POST', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], returnType: Authorization::class, decoder: 'json', operationId: 'appsCheckToken', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], returnType: Authorization::class, decoder: 'json', operationId: 'appsCheckToken', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Authorization::class));
     }
 
@@ -53,7 +53,7 @@ trait AppsApplicationsMethods
     public static function appsResetToken(ClientConfig $clientConfig, string $clientId, string $accessToken, ?RequestOptions $requestOptions = null): Authorization
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], returnType: Authorization::class, decoder: 'json', operationId: 'appsResetToken', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], returnType: Authorization::class, decoder: 'json', operationId: 'appsResetToken', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Authorization::class));
     }
 
@@ -69,7 +69,7 @@ trait AppsApplicationsMethods
     public static function appsDeleteToken(ClientConfig $clientConfig, string $clientId, string $accessToken, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], decoder: 'empty', operationId: 'appsDeleteToken', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], decoder: 'empty', operationId: 'appsDeleteToken', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -90,7 +90,7 @@ trait AppsApplicationsMethods
     public static function appsScopeToken(ClientConfig $clientConfig, string $clientId, string $accessToken, string|SdkNotGiven $target = SdkNotGiven::Value, int|SdkNotGiven $targetId = SdkNotGiven::Value, array|SdkNotGiven $repositories = SdkNotGiven::Value, array|SdkNotGiven $repositoryIds = SdkNotGiven::Value, AppPermissions|SdkNotGiven $permissions = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Authorization
     {
 
-        $sdkResponse = SdkClient::request('POST', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token/scoped", $clientConfig, body: ['access_token' => $accessToken, 'target' => $target, 'target_id' => $targetId, 'repositories' => $repositories, 'repository_ids' => $repositoryIds, 'permissions' => $permissions], returnType: Authorization::class, decoder: 'json', operationId: 'appsScopeToken', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token/scoped", $clientConfig, body: ['access_token' => $accessToken, 'target' => $target, 'target_id' => $targetId, 'repositories' => $repositories, 'repository_ids' => $repositoryIds, 'permissions' => $permissions], returnType: Authorization::class, decoder: 'json', operationId: 'appsScopeToken', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Authorization::class));
     }
 }

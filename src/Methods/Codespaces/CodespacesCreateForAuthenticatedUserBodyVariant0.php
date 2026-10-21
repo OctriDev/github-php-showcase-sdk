@@ -174,7 +174,9 @@ class CodespacesCreateForAuthenticatedUserBodyVariant0 implements \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
+            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
+        }
         return new self(
             repositoryId: SdkClient::intValue($data->repository_id),
             ref: (property_exists($data, "ref") && $data->ref !== null ? SdkClient::stringValue($data->ref) : SdkNotGiven::Value),
@@ -240,8 +242,12 @@ class CodespacesCreateForAuthenticatedUserBodyVariant1PullRequest implements \Js
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pull_request_number") || $data->pull_request_number === null) { throw new SdkValidationError("pull_request_number", 'required', "Required property 'pull_request_number' is missing or null"); }
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
+        if (!property_exists($data, "pull_request_number") || $data->pull_request_number === null) {
+            throw new SdkValidationError("pull_request_number", 'required', "Required property 'pull_request_number' is missing or null");
+        }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
+            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
+        }
         return new self(
             pullRequestNumber: SdkClient::intValue($data->pull_request_number),
             repositoryId: SdkClient::intValue($data->repository_id),
@@ -259,9 +265,24 @@ final readonly class CodespacesCreateForAuthenticatedUserBodyVariant1GeoEnum imp
     public const USEAST = "UsEast";
     public const USWEST = "UsWest";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

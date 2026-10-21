@@ -16,11 +16,26 @@ final readonly class OrganizationProgrammaticAccessGrantRepositorySelectionEnum 
     public const ALL = "all";
     public const SUBSET = "subset";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -233,17 +248,39 @@ class OrganizationProgrammaticAccessGrant implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
-        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) { throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null"); }
-        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) { throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null"); }
-        if (!property_exists($data, "permissions") || $data->permissions === null) { throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null"); }
-        if (!property_exists($data, "access_granted_at") || $data->access_granted_at === null) { throw new SdkValidationError("access_granted_at", 'required', "Required property 'access_granted_at' is missing or null"); }
-        if (!property_exists($data, "token_id") || $data->token_id === null) { throw new SdkValidationError("token_id", 'required', "Required property 'token_id' is missing or null"); }
-        if (!property_exists($data, "token_name") || $data->token_name === null) { throw new SdkValidationError("token_name", 'required', "Required property 'token_name' is missing or null"); }
-        if (!property_exists($data, "token_expired") || $data->token_expired === null) { throw new SdkValidationError("token_expired", 'required', "Required property 'token_expired' is missing or null"); }
-        if (!property_exists($data, "token_expires_at")) { throw new SdkValidationError("token_expires_at", 'required', "Missing required property 'token_expires_at'"); }
-        if (!property_exists($data, "token_last_used_at")) { throw new SdkValidationError("token_last_used_at", 'required', "Missing required property 'token_last_used_at'"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "owner") || $data->owner === null) {
+            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
+        }
+        if (!property_exists($data, "repository_selection") || $data->repository_selection === null) {
+            throw new SdkValidationError("repository_selection", 'required', "Required property 'repository_selection' is missing or null");
+        }
+        if (!property_exists($data, "repositories_url") || $data->repositories_url === null) {
+            throw new SdkValidationError("repositories_url", 'required', "Required property 'repositories_url' is missing or null");
+        }
+        if (!property_exists($data, "permissions") || $data->permissions === null) {
+            throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null");
+        }
+        if (!property_exists($data, "access_granted_at") || $data->access_granted_at === null) {
+            throw new SdkValidationError("access_granted_at", 'required', "Required property 'access_granted_at' is missing or null");
+        }
+        if (!property_exists($data, "token_id") || $data->token_id === null) {
+            throw new SdkValidationError("token_id", 'required', "Required property 'token_id' is missing or null");
+        }
+        if (!property_exists($data, "token_name") || $data->token_name === null) {
+            throw new SdkValidationError("token_name", 'required', "Required property 'token_name' is missing or null");
+        }
+        if (!property_exists($data, "token_expired") || $data->token_expired === null) {
+            throw new SdkValidationError("token_expired", 'required', "Required property 'token_expired' is missing or null");
+        }
+        if (!property_exists($data, "token_expires_at")) {
+            throw new SdkValidationError("token_expires_at", 'required', "Missing required property 'token_expires_at'");
+        }
+        if (!property_exists($data, "token_last_used_at")) {
+            throw new SdkValidationError("token_last_used_at", 'required', "Missing required property 'token_last_used_at'");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             owner: SdkClient::hydrateClass($data->owner, SimpleUser::class),

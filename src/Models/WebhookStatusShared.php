@@ -55,8 +55,12 @@ class WebhookStatusBranchesItemCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha")) { throw new SdkValidationError("sha", 'required', "Missing required property 'sha'"); }
-        if (!property_exists($data, "url")) { throw new SdkValidationError("url", 'required', "Missing required property 'url'"); }
+        if (!property_exists($data, "sha")) {
+            throw new SdkValidationError("sha", 'required', "Missing required property 'sha'");
+        }
+        if (!property_exists($data, "url")) {
+            throw new SdkValidationError("url", 'required', "Missing required property 'url'");
+        }
         return new self(
             sha: ($data->sha === null ? null : SdkClient::stringValue($data->sha)),
             url: ($data->url === null ? null : SdkClient::stringValue($data->url)),
@@ -122,9 +126,15 @@ class WebhookStatusBranchesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "protected") || $data->protected === null) { throw new SdkValidationError("protected", 'required', "Required property 'protected' is missing or null"); }
+        if (!property_exists($data, "commit") || $data->commit === null) {
+            throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "protected") || $data->protected === null) {
+            throw new SdkValidationError("protected", 'required', "Required property 'protected' is missing or null");
+        }
         return new self(
             commit: SdkClient::hydrateClass($data->commit, WebhookStatusBranchesItemCommit::class),
             name: SdkClient::stringValue($data->name),
@@ -142,9 +152,24 @@ final readonly class WebhookStatusCommitAuthorTypeEnum implements SdkOpenEnum
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

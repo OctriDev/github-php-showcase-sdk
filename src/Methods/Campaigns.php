@@ -12,11 +12,26 @@ final readonly class CampaignsListOrgCampaignsDirection implements SdkOpenEnum
     public const ASC = "asc";
     public const DESC = "desc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class CampaignsListOrgCampaignsSort implements SdkOpenEnum
@@ -26,11 +41,26 @@ final readonly class CampaignsListOrgCampaignsSort implements SdkOpenEnum
     public const ENDS_AT = "ends_at";
     public const PUBLISHED = "published";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class CampaignsCreateCampaignCodeScanningAlertsItem implements \JsonSerializable
@@ -78,8 +108,12 @@ class CampaignsCreateCampaignCodeScanningAlertsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
-        if (!property_exists($data, "alert_numbers") || $data->alert_numbers === null) { throw new SdkValidationError("alert_numbers", 'required', "Required property 'alert_numbers' is missing or null"); }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
+            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
+        }
+        if (!property_exists($data, "alert_numbers") || $data->alert_numbers === null) {
+            throw new SdkValidationError("alert_numbers", 'required', "Required property 'alert_numbers' is missing or null");
+        }
         return new self(
             repositoryId: SdkClient::intValue($data->repository_id),
             alertNumbers: array_values(array_map(static fn($item) => SdkClient::intValue($item), SdkClient::arrayValue($data->alert_numbers))),
@@ -105,7 +139,7 @@ class Campaigns
     public static function campaignsListOrgCampaigns(ClientConfig $clientConfig, string $org, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, CampaignsListOrgCampaignsDirection|SdkNotGiven $direction = SdkNotGiven::Value, CampaignState|SdkNotGiven $state = SdkNotGiven::Value, CampaignsListOrgCampaignsSort|SdkNotGiven $sort = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'state' => new SdkQueryValue($state, "form", true), 'sort' => new SdkQueryValue($sort, "form", true)], decoder: 'json', operationId: 'campaignsListOrgCampaigns', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'state' => new SdkQueryValue($state, "form", true), 'sort' => new SdkQueryValue($sort, "form", true)], decoder: 'json', operationId: 'campaignsListOrgCampaigns', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CampaignSummary::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -151,7 +185,7 @@ class Campaigns
             Validation::validateItems('code_scanning_alerts', $codeScanningAlerts, min: 1);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns", $clientConfig, body: ['name' => $name, 'description' => $description, 'ends_at' => $endsAt, 'managers' => $managers, 'team_managers' => $teamManagers, 'contact_link' => $contactLink, 'code_scanning_alerts' => $codeScanningAlerts, 'generate_issues' => $generateIssues], returnType: CampaignSummary::class, decoder: 'json', operationId: 'campaignsCreateCampaign', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns", $clientConfig, body: ['name' => $name, 'description' => $description, 'ends_at' => $endsAt, 'managers' => $managers, 'team_managers' => $teamManagers, 'contact_link' => $contactLink, 'code_scanning_alerts' => $codeScanningAlerts, 'generate_issues' => $generateIssues], returnType: CampaignSummary::class, decoder: 'json', operationId: 'campaignsCreateCampaign', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CampaignSummary::class));
     }
 
@@ -168,7 +202,7 @@ class Campaigns
     public static function campaignsGetCampaignSummary(ClientConfig $clientConfig, string $org, int $campaignNumber, ?RequestOptions $requestOptions = null): CampaignSummary
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns/" . SdkClient::encodePathSegment($campaignNumber) . "", $clientConfig, returnType: CampaignSummary::class, decoder: 'json', operationId: 'campaignsGetCampaignSummary', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns/" . SdkClient::encodePathSegment($campaignNumber) . "", $clientConfig, returnType: CampaignSummary::class, decoder: 'json', operationId: 'campaignsGetCampaignSummary', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CampaignSummary::class));
     }
 
@@ -216,7 +250,7 @@ class Campaigns
             Validation::validateUri('contact_link', $contactLink);
         }
 
-        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns/" . SdkClient::encodePathSegment($campaignNumber) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'managers' => $managers, 'team_managers' => $teamManagers, 'ends_at' => $endsAt, 'contact_link' => $contactLink, 'state' => $state], returnType: CampaignSummary::class, decoder: 'json', operationId: 'campaignsUpdateCampaign', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns/" . SdkClient::encodePathSegment($campaignNumber) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'managers' => $managers, 'team_managers' => $teamManagers, 'ends_at' => $endsAt, 'contact_link' => $contactLink, 'state' => $state], returnType: CampaignSummary::class, decoder: 'json', operationId: 'campaignsUpdateCampaign', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CampaignSummary::class));
     }
 
@@ -232,6 +266,6 @@ class Campaigns
     public static function campaignsDeleteCampaign(ClientConfig $clientConfig, string $org, int $campaignNumber, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns/" . SdkClient::encodePathSegment($campaignNumber) . "", $clientConfig, decoder: 'empty', operationId: 'campaignsDeleteCampaign', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/campaigns/" . SdkClient::encodePathSegment($campaignNumber) . "", $clientConfig, decoder: 'empty', operationId: 'campaignsDeleteCampaign', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)])->data;
     }
 }

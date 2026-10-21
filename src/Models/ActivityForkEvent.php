@@ -55,8 +55,12 @@ class ForkEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "forkee") || $data->forkee === null) { throw new SdkValidationError("forkee", 'required', "Required property 'forkee' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "forkee") || $data->forkee === null) {
+            throw new SdkValidationError("forkee", 'required', "Required property 'forkee' is missing or null");
+        }
         return new self(
             action: SdkClient::stringValue($data->action),
             forkee: SdkClient::hydrateClass($data->forkee, ForkEventForkee::class),
@@ -213,7 +217,9 @@ class GollumEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pages") || $data->pages === null) { throw new SdkValidationError("pages", 'required', "Required property 'pages' is missing or null"); }
+        if (!property_exists($data, "pages") || $data->pages === null) {
+            throw new SdkValidationError("pages", 'required', "Required property 'pages' is missing or null");
+        }
         return new self(
             pages: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, GollumEventPagesItem::class), SdkClient::arrayValue($data->pages))),
         );
@@ -278,9 +284,15 @@ class IssueCommentEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "issue") || $data->issue === null) { throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null"); }
-        if (!property_exists($data, "comment") || $data->comment === null) { throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "issue") || $data->issue === null) {
+            throw new SdkValidationError("issue", 'required', "Required property 'issue' is missing or null");
+        }
+        if (!property_exists($data, "comment") || $data->comment === null) {
+            throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null");
+        }
         return new self(
             action: SdkClient::stringValue($data->action),
             issue: SdkClient::hydrateClass($data->issue, Issue::class),

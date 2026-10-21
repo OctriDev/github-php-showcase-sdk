@@ -23,7 +23,7 @@ trait IssuesSubIssueMethods
     public static function issuesRemoveSubIssue(ClientConfig $clientConfig, string $owner, string $repo, int $issueNumber, int $subIssueId, ?RequestOptions $requestOptions = null): Issue
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/sub_issue", $clientConfig, body: ['sub_issue_id' => $subIssueId], returnType: Issue::class, decoder: 'json', operationId: 'issuesRemoveSubIssue', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/sub_issue", $clientConfig, body: ['sub_issue_id' => $subIssueId], returnType: Issue::class, decoder: 'json', operationId: 'issuesRemoveSubIssue', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Issue::class));
     }
 }

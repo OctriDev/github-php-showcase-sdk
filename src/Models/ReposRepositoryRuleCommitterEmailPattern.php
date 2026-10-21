@@ -57,7 +57,9 @@ class RepositoryRuleCommitterEmailPattern implements RepositoryRule, OrgRules, \
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleCommitterEmailPatternTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleCommitterEmailPatternParameters::class) : SdkNotGiven::Value),
@@ -182,7 +184,9 @@ class RepositoryRuleCopilotCodeReview implements RepositoryRule, OrgRules, \Json
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleCopilotCodeReviewTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleCopilotCodeReviewParameters::class) : SdkNotGiven::Value),
@@ -236,7 +240,9 @@ class RepositoryRuleCreation implements RepositoryRule, OrgRules, \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleCreationTypeEnum::class),
         );
@@ -289,7 +295,9 @@ class RepositoryRuleDeletion implements RepositoryRule, OrgRules, \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDeletionTypeEnum::class),
         );
@@ -342,7 +350,9 @@ class RepositoryRuleFileExtensionRestrictionParameters implements \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "restricted_file_extensions") || $data->restricted_file_extensions === null) { throw new SdkValidationError("restricted_file_extensions", 'required', "Required property 'restricted_file_extensions' is missing or null"); }
+        if (!property_exists($data, "restricted_file_extensions") || $data->restricted_file_extensions === null) {
+            throw new SdkValidationError("restricted_file_extensions", 'required', "Required property 'restricted_file_extensions' is missing or null");
+        }
         return new self(
             restrictedFileExtensions: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->restricted_file_extensions))),
         );

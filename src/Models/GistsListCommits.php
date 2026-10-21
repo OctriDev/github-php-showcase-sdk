@@ -157,11 +157,21 @@ class GistCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "version") || $data->version === null) { throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null"); }
-        if (!property_exists($data, "user")) { throw new SdkValidationError("user", 'required', "Missing required property 'user'"); }
-        if (!property_exists($data, "change_status") || $data->change_status === null) { throw new SdkValidationError("change_status", 'required', "Required property 'change_status' is missing or null"); }
-        if (!property_exists($data, "committed_at") || $data->committed_at === null) { throw new SdkValidationError("committed_at", 'required', "Required property 'committed_at' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "version") || $data->version === null) {
+            throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null");
+        }
+        if (!property_exists($data, "user")) {
+            throw new SdkValidationError("user", 'required', "Missing required property 'user'");
+        }
+        if (!property_exists($data, "change_status") || $data->change_status === null) {
+            throw new SdkValidationError("change_status", 'required', "Required property 'change_status' is missing or null");
+        }
+        if (!property_exists($data, "committed_at") || $data->committed_at === null) {
+            throw new SdkValidationError("committed_at", 'required', "Required property 'committed_at' is missing or null");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
             version: SdkClient::stringValue($data->version),

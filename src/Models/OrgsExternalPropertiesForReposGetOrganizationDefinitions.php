@@ -45,7 +45,9 @@ class ExternalProperty implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "property_name") || $data->property_name === null) { throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null"); }
+        if (!property_exists($data, "property_name") || $data->property_name === null) {
+            throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null");
+        }
         return new self(
             propertyName: SdkClient::stringValue($data->property_name),
         );

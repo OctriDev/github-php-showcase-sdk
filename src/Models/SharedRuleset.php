@@ -124,9 +124,15 @@ class RulesetVersion implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "version_id") || $data->version_id === null) { throw new SdkValidationError("version_id", 'required', "Required property 'version_id' is missing or null"); }
-        if (!property_exists($data, "actor") || $data->actor === null) { throw new SdkValidationError("actor", 'required', "Required property 'actor' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "version_id") || $data->version_id === null) {
+            throw new SdkValidationError("version_id", 'required', "Required property 'version_id' is missing or null");
+        }
+        if (!property_exists($data, "actor") || $data->actor === null) {
+            throw new SdkValidationError("actor", 'required', "Required property 'actor' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
         return new self(
             versionId: SdkClient::intValue($data->version_id),
             actor: SdkClient::hydrateClass($data->actor, RulesetVersionActor::class),
@@ -170,7 +176,9 @@ class RulesetVersionWithStateVariant1 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
         return new self(
             state: SdkClient::stringMapValue($data->state),
         );
@@ -304,10 +312,18 @@ class RulesetVersionWithState implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "version_id") || $data->version_id === null) { throw new SdkValidationError("version_id", 'required', "Required property 'version_id' is missing or null"); }
-        if (!property_exists($data, "actor") || $data->actor === null) { throw new SdkValidationError("actor", 'required', "Required property 'actor' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "version_id") || $data->version_id === null) {
+            throw new SdkValidationError("version_id", 'required', "Required property 'version_id' is missing or null");
+        }
+        if (!property_exists($data, "actor") || $data->actor === null) {
+            throw new SdkValidationError("actor", 'required', "Required property 'actor' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
         return new self(
             versionId: SdkClient::intValue($data->version_id),
             actor: SdkClient::hydrateClass($data->actor, RulesetVersionWithStateActor::class),

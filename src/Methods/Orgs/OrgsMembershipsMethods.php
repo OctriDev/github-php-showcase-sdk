@@ -21,7 +21,7 @@ trait OrgsMembershipsMethods
     public static function orgsGetMembershipForUser(ClientConfig $clientConfig, string $org, string $username, ?RequestOptions $requestOptions = null): OrgMembership
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, returnType: OrgMembership::class, decoder: 'json', operationId: 'orgsGetMembershipForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, returnType: OrgMembership::class, decoder: 'json', operationId: 'orgsGetMembershipForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrgMembership::class));
     }
 
@@ -39,7 +39,7 @@ trait OrgsMembershipsMethods
     public static function orgsSetMembershipForUser(ClientConfig $clientConfig, string $org, string $username, OrgsSetMembershipForUserRole|SdkNotGiven $role = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OrgMembership
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['role' => $role], returnType: OrgMembership::class, decoder: 'json', operationId: 'orgsSetMembershipForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['role' => $role], returnType: OrgMembership::class, decoder: 'json', operationId: 'orgsSetMembershipForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrgMembership::class));
     }
 
@@ -55,6 +55,6 @@ trait OrgsMembershipsMethods
     public static function orgsRemoveMembershipForUser(ClientConfig $clientConfig, string $org, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsRemoveMembershipForUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsRemoveMembershipForUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

@@ -76,7 +76,7 @@ trait TeamsMembershipsMethods
     public static function teamsGetMembershipForUserLegacy(ClientConfig $clientConfig, int $teamId, string $username, ?RequestOptions $requestOptions = null): TeamMembership
     {
 
-        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, returnType: TeamMembership::class, decoder: 'json', operationId: 'teamsGetMembershipForUserLegacy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, returnType: TeamMembership::class, decoder: 'json', operationId: 'teamsGetMembershipForUserLegacy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TeamMembership::class));
     }
 
@@ -96,7 +96,7 @@ trait TeamsMembershipsMethods
     public static function teamsAddOrUpdateMembershipForUserLegacy(ClientConfig $clientConfig, int $teamId, string $username, TeamsAddOrUpdateMembershipForUserLegacyRole|SdkNotGiven $role = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TeamMembership
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['role' => $role], returnType: TeamMembership::class, decoder: 'json', operationId: 'teamsAddOrUpdateMembershipForUserLegacy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/memberships/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['role' => $role], returnType: TeamMembership::class, decoder: 'json', operationId: 'teamsAddOrUpdateMembershipForUserLegacy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TeamMembership::class));
     }
 

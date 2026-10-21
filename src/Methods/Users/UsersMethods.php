@@ -37,7 +37,7 @@ trait UsersMethods
     public static function usersGetByUsername(ClientConfig $clientConfig, string $username, ?RequestOptions $requestOptions = null): PrivateUser|PublicUser
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'json', operationId: 'usersGetByUsername', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'json', operationId: 'usersGetByUsername', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::hydrateUnion($sdkResponse->data, [PrivateUser::class, PublicUser::class]));
     }
 }

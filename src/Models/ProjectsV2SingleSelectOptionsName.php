@@ -55,8 +55,12 @@ class ProjectsV2SingleSelectOptionsName implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "raw") || $data->raw === null) { throw new SdkValidationError("raw", 'required', "Required property 'raw' is missing or null"); }
-        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
+        if (!property_exists($data, "raw") || $data->raw === null) {
+            throw new SdkValidationError("raw", 'required', "Required property 'raw' is missing or null");
+        }
+        if (!property_exists($data, "html") || $data->html === null) {
+            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
+        }
         return new self(
             raw: SdkClient::stringValue($data->raw),
             html: SdkClient::stringValue($data->html),
@@ -112,8 +116,12 @@ class ProjectsV2SingleSelectOptionsDescription implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "raw") || $data->raw === null) { throw new SdkValidationError("raw", 'required', "Required property 'raw' is missing or null"); }
-        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
+        if (!property_exists($data, "raw") || $data->raw === null) {
+            throw new SdkValidationError("raw", 'required', "Required property 'raw' is missing or null");
+        }
+        if (!property_exists($data, "html") || $data->html === null) {
+            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
+        }
         return new self(
             raw: SdkClient::stringValue($data->raw),
             html: SdkClient::stringValue($data->html),
@@ -189,10 +197,18 @@ class ProjectsV2SingleSelectOptions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
-        if (!property_exists($data, "color") || $data->color === null) { throw new SdkValidationError("color", 'required', "Required property 'color' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "description") || $data->description === null) {
+            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
+        }
+        if (!property_exists($data, "color") || $data->color === null) {
+            throw new SdkValidationError("color", 'required', "Required property 'color' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             name: SdkClient::hydrateClass($data->name, ProjectsV2SingleSelectOptionsName::class),
@@ -213,9 +229,24 @@ final readonly class ProjectsV2StatusUpdateStatusEnum implements SdkOpenEnum
     public const OFF_TRACK = "OFF_TRACK";
     public const COMPLETE = "COMPLETE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

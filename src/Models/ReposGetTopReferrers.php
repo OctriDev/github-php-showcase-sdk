@@ -65,9 +65,15 @@ class ReferrerTraffic implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "referrer") || $data->referrer === null) { throw new SdkValidationError("referrer", 'required', "Required property 'referrer' is missing or null"); }
-        if (!property_exists($data, "count") || $data->count === null) { throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null"); }
-        if (!property_exists($data, "uniques") || $data->uniques === null) { throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null"); }
+        if (!property_exists($data, "referrer") || $data->referrer === null) {
+            throw new SdkValidationError("referrer", 'required', "Required property 'referrer' is missing or null");
+        }
+        if (!property_exists($data, "count") || $data->count === null) {
+            throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null");
+        }
+        if (!property_exists($data, "uniques") || $data->uniques === null) {
+            throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null");
+        }
         return new self(
             referrer: SdkClient::stringValue($data->referrer),
             count: SdkClient::intValue($data->count),

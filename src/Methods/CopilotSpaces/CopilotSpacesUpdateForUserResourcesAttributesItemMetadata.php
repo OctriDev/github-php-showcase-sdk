@@ -196,7 +196,9 @@ class CopilotSpacesListCollaboratorsForUserResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "collaborators") || $data->collaborators === null) { throw new SdkValidationError("collaborators", 'required', "Required property 'collaborators' is missing or null"); }
+        if (!property_exists($data, "collaborators") || $data->collaborators === null) {
+            throw new SdkValidationError("collaborators", 'required', "Required property 'collaborators' is missing or null");
+        }
         return new self(
             collaborators: array_values(array_map(static fn($item) => SdkClient::hydrateUnionAs($item, CopilotSpaceCollaborator::class, [CopilotSpaceCollaboratorVariant0::class, CopilotSpaceCollaboratorVariant1::class], null, []), SdkClient::arrayValue($data->collaborators))),
         );
@@ -238,7 +240,9 @@ class CopilotSpacesListResourcesForUserResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "resources") || $data->resources === null) { throw new SdkValidationError("resources", 'required', "Required property 'resources' is missing or null"); }
+        if (!property_exists($data, "resources") || $data->resources === null) {
+            throw new SdkValidationError("resources", 'required', "Required property 'resources' is missing or null");
+        }
         return new self(
             resources: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CopilotSpaceResource::class), SdkClient::arrayValue($data->resources))),
         );

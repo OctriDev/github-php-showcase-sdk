@@ -87,10 +87,18 @@ class IntegrationInstallationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "account") || $data->account === null) { throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null"); }
-        if (!property_exists($data, "requester") || $data->requester === null) { throw new SdkValidationError("requester", 'required', "Required property 'requester' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "account") || $data->account === null) {
+            throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null");
+        }
+        if (!property_exists($data, "requester") || $data->requester === null) {
+            throw new SdkValidationError("requester", 'required', "Required property 'requester' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             account: SdkClient::hydrateUnionAs($data->account, IntegrationInstallationRequestAccount::class, [SimpleUser::class, Enterprise::class], null, []),

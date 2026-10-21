@@ -14,11 +14,26 @@ final readonly class CopilotSetEnterpriseCodingAgentPolicyPolicyState implements
     public const ENABLED_FOR_SELECTED_ORGS = "enabled_for_selected_orgs";
     public const CONFIGURED_BY_ORG_ADMINS = "configured_by_org_admins";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class CopilotSetCopilotCodingAgentPermissionsOrganizationEnabledRepositories implements SdkOpenEnum
@@ -27,11 +42,26 @@ final readonly class CopilotSetCopilotCodingAgentPermissionsOrganizationEnabledR
     public const SELECTED = "selected";
     public const NONE = "none";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class CopilotAddOrganizationsToEnterpriseCodingAgentPolicyCustomPropertiesItem implements \JsonSerializable
@@ -79,8 +109,12 @@ class CopilotAddOrganizationsToEnterpriseCodingAgentPolicyCustomPropertiesItem i
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "property_name") || $data->property_name === null) { throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null"); }
-        if (!property_exists($data, "values") || $data->values === null) { throw new SdkValidationError("values", 'required', "Required property 'values' is missing or null"); }
+        if (!property_exists($data, "property_name") || $data->property_name === null) {
+            throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null");
+        }
+        if (!property_exists($data, "values") || $data->values === null) {
+            throw new SdkValidationError("values", 'required', "Required property 'values' is missing or null");
+        }
         return new self(
             propertyName: SdkClient::stringValue($data->property_name),
             values: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->values))),
@@ -133,8 +167,12 @@ class CopilotRemoveOrganizationsFromEnterpriseCodingAgentPolicyCustomPropertiesI
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "property_name") || $data->property_name === null) { throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null"); }
-        if (!property_exists($data, "values") || $data->values === null) { throw new SdkValidationError("values", 'required', "Required property 'values' is missing or null"); }
+        if (!property_exists($data, "property_name") || $data->property_name === null) {
+            throw new SdkValidationError("property_name", 'required', "Required property 'property_name' is missing or null");
+        }
+        if (!property_exists($data, "values") || $data->values === null) {
+            throw new SdkValidationError("values", 'required', "Required property 'values' is missing or null");
+        }
         return new self(
             propertyName: SdkClient::stringValue($data->property_name),
             values: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->values))),
@@ -228,7 +266,9 @@ class CopilotAddCopilotSeatsForTeamsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "seats_created") || $data->seats_created === null) { throw new SdkValidationError("seats_created", 'required', "Required property 'seats_created' is missing or null"); }
+        if (!property_exists($data, "seats_created") || $data->seats_created === null) {
+            throw new SdkValidationError("seats_created", 'required', "Required property 'seats_created' is missing or null");
+        }
         return new self(
             seatsCreated: SdkClient::intValue($data->seats_created),
         );
@@ -269,7 +309,9 @@ class CopilotCancelCopilotSeatAssignmentForTeamsResponse implements \JsonSeriali
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "seats_cancelled") || $data->seats_cancelled === null) { throw new SdkValidationError("seats_cancelled", 'required', "Required property 'seats_cancelled' is missing or null"); }
+        if (!property_exists($data, "seats_cancelled") || $data->seats_cancelled === null) {
+            throw new SdkValidationError("seats_cancelled", 'required', "Required property 'seats_cancelled' is missing or null");
+        }
         return new self(
             seatsCancelled: SdkClient::intValue($data->seats_cancelled),
         );
@@ -310,7 +352,9 @@ class CopilotAddCopilotSeatsForUsersResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "seats_created") || $data->seats_created === null) { throw new SdkValidationError("seats_created", 'required', "Required property 'seats_created' is missing or null"); }
+        if (!property_exists($data, "seats_created") || $data->seats_created === null) {
+            throw new SdkValidationError("seats_created", 'required', "Required property 'seats_created' is missing or null");
+        }
         return new self(
             seatsCreated: SdkClient::intValue($data->seats_created),
         );

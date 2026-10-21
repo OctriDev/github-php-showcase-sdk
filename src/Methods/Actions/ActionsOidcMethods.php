@@ -21,7 +21,7 @@ trait ActionsOidcMethods
     public static function actionsGetCustomOidcSubClaimForRepo(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): OidcCustomSubRepo
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/oidc/customization/sub", $clientConfig, returnType: OidcCustomSubRepo::class, decoder: 'json', operationId: 'actionsGetCustomOidcSubClaimForRepo', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/oidc/customization/sub", $clientConfig, returnType: OidcCustomSubRepo::class, decoder: 'json', operationId: 'actionsGetCustomOidcSubClaimForRepo', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OidcCustomSubRepo::class));
     }
 
@@ -41,7 +41,7 @@ trait ActionsOidcMethods
     public static function actionsSetCustomOidcSubClaimForRepo(ClientConfig $clientConfig, string $owner, string $repo, bool $useDefault, array|SdkNotGiven $includeClaimKeys = SdkNotGiven::Value, bool|SdkNotGiven $useImmutableSubject = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/oidc/customization/sub", $clientConfig, body: ['use_default' => $useDefault, 'include_claim_keys' => $includeClaimKeys, 'use_immutable_subject' => $useImmutableSubject], returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsSetCustomOidcSubClaimForRepo', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/oidc/customization/sub", $clientConfig, body: ['use_default' => $useDefault, 'include_claim_keys' => $includeClaimKeys, 'use_immutable_subject' => $useImmutableSubject], returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsSetCustomOidcSubClaimForRepo', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 }

@@ -20,7 +20,7 @@ trait OrgsIssueFieldsMethods
     public static function orgsListIssueFields(ClientConfig $clientConfig, string $org, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/issue-fields", $clientConfig, decoder: 'json', operationId: 'orgsListIssueFields', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/issue-fields", $clientConfig, decoder: 'json', operationId: 'orgsListIssueFields', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, IssueField::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -41,7 +41,7 @@ trait OrgsIssueFieldsMethods
     public static function orgsCreateIssueField(ClientConfig $clientConfig, string $org, string $name, OrgsCreateIssueFieldDataType $dataType, string|null|SdkNotGiven $description = SdkNotGiven::Value, OrgsCreateIssueFieldVisibility|SdkNotGiven $visibility = SdkNotGiven::Value, array|null|SdkNotGiven $options = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): IssueField|null
     {
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/issue-fields", $clientConfig, body: ['name' => $name, 'data_type' => $dataType, 'description' => $description, 'visibility' => $visibility, 'options' => $options], returnType: IssueField::class, decoder: 'json', operationId: 'orgsCreateIssueField', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/issue-fields", $clientConfig, body: ['name' => $name, 'data_type' => $dataType, 'description' => $description, 'visibility' => $visibility, 'options' => $options], returnType: IssueField::class, decoder: 'json', operationId: 'orgsCreateIssueField', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, IssueField::class));
     }
 
@@ -62,7 +62,7 @@ trait OrgsIssueFieldsMethods
     public static function orgsUpdateIssueField(ClientConfig $clientConfig, string $org, int $issueFieldId, string|SdkNotGiven $name = SdkNotGiven::Value, string|null|SdkNotGiven $description = SdkNotGiven::Value, OrgsUpdateIssueFieldVisibility|SdkNotGiven $visibility = SdkNotGiven::Value, array|SdkNotGiven $options = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): IssueField|null
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/issue-fields/" . SdkClient::encodePathSegment($issueFieldId) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'visibility' => $visibility, 'options' => $options], returnType: IssueField::class, decoder: 'json', operationId: 'orgsUpdateIssueField', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/issue-fields/" . SdkClient::encodePathSegment($issueFieldId) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'visibility' => $visibility, 'options' => $options], returnType: IssueField::class, decoder: 'json', operationId: 'orgsUpdateIssueField', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, IssueField::class));
     }
 
@@ -78,6 +78,6 @@ trait OrgsIssueFieldsMethods
     public static function orgsDeleteIssueField(ClientConfig $clientConfig, string $org, int $issueFieldId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/issue-fields/" . SdkClient::encodePathSegment($issueFieldId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteIssueField', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/issue-fields/" . SdkClient::encodePathSegment($issueFieldId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsDeleteIssueField', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)])->data;
     }
 }

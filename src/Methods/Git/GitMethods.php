@@ -23,7 +23,7 @@ trait GitMethods
     public static function gitCreateBlob(ClientConfig $clientConfig, string $owner, string $repo, string $content, string|SdkNotGiven $encoding = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ShortBlob
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/blobs", $clientConfig, body: ['content' => $content, 'encoding' => $encoding], returnType: ShortBlob::class, decoder: 'json', operationId: 'gitCreateBlob', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/blobs", $clientConfig, body: ['content' => $content, 'encoding' => $encoding], returnType: ShortBlob::class, decoder: 'json', operationId: 'gitCreateBlob', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ShortBlob::class));
     }
 
@@ -41,7 +41,7 @@ trait GitMethods
     public static function gitGetBlob(ClientConfig $clientConfig, string $owner, string $repo, string $fileSha, ?RequestOptions $requestOptions = null): Blob
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/blobs/" . SdkClient::encodePathSegment($fileSha) . "", $clientConfig, returnType: Blob::class, decoder: 'json', operationId: 'gitGetBlob', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/blobs/" . SdkClient::encodePathSegment($fileSha) . "", $clientConfig, returnType: Blob::class, decoder: 'json', operationId: 'gitGetBlob', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Blob::class));
     }
 
@@ -64,7 +64,7 @@ trait GitMethods
     public static function gitCreateCommit(ClientConfig $clientConfig, string $owner, string $repo, string $message, string $tree, array|SdkNotGiven $parents = SdkNotGiven::Value, GitCreateCommitAuthor|SdkNotGiven $author = SdkNotGiven::Value, GitCreateCommitCommitter|SdkNotGiven $committer = SdkNotGiven::Value, string|SdkNotGiven $signature = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): GitCommit
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/commits", $clientConfig, body: ['message' => $message, 'tree' => $tree, 'parents' => $parents, 'author' => $author, 'committer' => $committer, 'signature' => $signature], returnType: GitCommit::class, decoder: 'json', operationId: 'gitCreateCommit', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/commits", $clientConfig, body: ['message' => $message, 'tree' => $tree, 'parents' => $parents, 'author' => $author, 'committer' => $committer, 'signature' => $signature], returnType: GitCommit::class, decoder: 'json', operationId: 'gitCreateCommit', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GitCommit::class));
     }
 
@@ -82,7 +82,7 @@ trait GitMethods
     public static function gitGetCommit(ClientConfig $clientConfig, string $owner, string $repo, string $commitSha, ?RequestOptions $requestOptions = null): GitCommit
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/commits/" . SdkClient::encodePathSegment($commitSha) . "", $clientConfig, returnType: GitCommit::class, decoder: 'json', operationId: 'gitGetCommit', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/commits/" . SdkClient::encodePathSegment($commitSha) . "", $clientConfig, returnType: GitCommit::class, decoder: 'json', operationId: 'gitGetCommit', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GitCommit::class));
     }
 
@@ -100,7 +100,7 @@ trait GitMethods
     public static function gitListMatchingRefs(ClientConfig $clientConfig, string $owner, string $repo, string $ref, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/matching-refs/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, decoder: 'json', operationId: 'gitListMatchingRefs', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/matching-refs/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, decoder: 'json', operationId: 'gitListMatchingRefs', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, GitRef::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -118,7 +118,7 @@ trait GitMethods
     public static function gitGetRef(ClientConfig $clientConfig, string $owner, string $repo, string $ref, ?RequestOptions $requestOptions = null): GitRef
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/ref/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, returnType: GitRef::class, decoder: 'json', operationId: 'gitGetRef', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/ref/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, returnType: GitRef::class, decoder: 'json', operationId: 'gitGetRef', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GitRef::class));
     }
 
@@ -137,7 +137,7 @@ trait GitMethods
     public static function gitCreateRef(ClientConfig $clientConfig, string $owner, string $repo, string $ref, string $sha, ?RequestOptions $requestOptions = null): GitRef
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/refs", $clientConfig, body: ['ref' => $ref, 'sha' => $sha], returnType: GitRef::class, decoder: 'json', operationId: 'gitCreateRef', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/refs", $clientConfig, body: ['ref' => $ref, 'sha' => $sha], returnType: GitRef::class, decoder: 'json', operationId: 'gitCreateRef', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GitRef::class));
     }
 
@@ -157,7 +157,7 @@ trait GitMethods
     public static function gitUpdateRef(ClientConfig $clientConfig, string $owner, string $repo, string $ref, string $sha, bool|SdkNotGiven $force = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): GitRef
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/refs/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, body: ['sha' => $sha, 'force' => $force], returnType: GitRef::class, decoder: 'json', operationId: 'gitUpdateRef', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/refs/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, body: ['sha' => $sha, 'force' => $force], returnType: GitRef::class, decoder: 'json', operationId: 'gitUpdateRef', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GitRef::class));
     }
 
@@ -174,7 +174,7 @@ trait GitMethods
     public static function gitDeleteRef(ClientConfig $clientConfig, string $owner, string $repo, string $ref, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/refs/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, decoder: 'empty', operationId: 'gitDeleteRef', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/refs/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, decoder: 'empty', operationId: 'gitDeleteRef', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -195,7 +195,7 @@ trait GitMethods
     public static function gitCreateTag(ClientConfig $clientConfig, string $owner, string $repo, string $tag, string $message, string $object, GitCreateTagType $type, GitCreateTagTagger|SdkNotGiven $tagger = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): GitTag
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/tags", $clientConfig, body: ['tag' => $tag, 'message' => $message, 'object' => $object, 'type' => $type, 'tagger' => $tagger], returnType: GitTag::class, decoder: 'json', operationId: 'gitCreateTag', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/tags", $clientConfig, body: ['tag' => $tag, 'message' => $message, 'object' => $object, 'type' => $type, 'tagger' => $tagger], returnType: GitTag::class, decoder: 'json', operationId: 'gitCreateTag', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GitTag::class));
     }
 
@@ -213,7 +213,7 @@ trait GitMethods
     public static function gitGetTag(ClientConfig $clientConfig, string $owner, string $repo, string $tagSha, ?RequestOptions $requestOptions = null): GitTag
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/tags/" . SdkClient::encodePathSegment($tagSha) . "", $clientConfig, returnType: GitTag::class, decoder: 'json', operationId: 'gitGetTag', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/tags/" . SdkClient::encodePathSegment($tagSha) . "", $clientConfig, returnType: GitTag::class, decoder: 'json', operationId: 'gitGetTag', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GitTag::class));
     }
 
@@ -232,7 +232,7 @@ trait GitMethods
     public static function gitCreateTree(ClientConfig $clientConfig, string $owner, string $repo, array $tree, string|SdkNotGiven $baseTree = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): GitTree
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/trees", $clientConfig, body: ['tree' => $tree, 'base_tree' => $baseTree], returnType: GitTree::class, decoder: 'json', operationId: 'gitCreateTree', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/trees", $clientConfig, body: ['tree' => $tree, 'base_tree' => $baseTree], returnType: GitTree::class, decoder: 'json', operationId: 'gitCreateTree', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GitTree::class));
     }
 
@@ -251,7 +251,7 @@ trait GitMethods
     public static function gitGetTree(ClientConfig $clientConfig, string $owner, string $repo, string $treeSha, string|SdkNotGiven $recursive = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): GitTree
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/trees/" . SdkClient::encodePathSegment($treeSha) . "", $clientConfig, query: ['recursive' => new SdkQueryValue($recursive, "form", true)], returnType: GitTree::class, decoder: 'json', operationId: 'gitGetTree', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/git/trees/" . SdkClient::encodePathSegment($treeSha) . "", $clientConfig, query: ['recursive' => new SdkQueryValue($recursive, "form", true)], returnType: GitTree::class, decoder: 'json', operationId: 'gitGetTree', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, GitTree::class));
     }
 }

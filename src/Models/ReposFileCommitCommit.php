@@ -218,8 +218,12 @@ class FileCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "content")) { throw new SdkValidationError("content", 'required', "Missing required property 'content'"); }
-        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
+        if (!property_exists($data, "content")) {
+            throw new SdkValidationError("content", 'required', "Missing required property 'content'");
+        }
+        if (!property_exists($data, "commit") || $data->commit === null) {
+            throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null");
+        }
         return new self(
             content: ($data->content === null ? null : SdkClient::hydrateClass($data->content, FileCommitContent::class)),
             commit: SdkClient::hydrateClass($data->commit, FileCommitCommit::class),
@@ -265,7 +269,9 @@ class Topic implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "names") || $data->names === null) { throw new SdkValidationError("names", 'required', "Required property 'names' is missing or null"); }
+        if (!property_exists($data, "names") || $data->names === null) {
+            throw new SdkValidationError("names", 'required', "Required property 'names' is missing or null");
+        }
         return new self(
             names: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->names))),
         );
@@ -330,9 +336,15 @@ class Traffic implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "timestamp") || $data->timestamp === null) { throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null"); }
-        if (!property_exists($data, "uniques") || $data->uniques === null) { throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null"); }
-        if (!property_exists($data, "count") || $data->count === null) { throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null"); }
+        if (!property_exists($data, "timestamp") || $data->timestamp === null) {
+            throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null");
+        }
+        if (!property_exists($data, "uniques") || $data->uniques === null) {
+            throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null");
+        }
+        if (!property_exists($data, "count") || $data->count === null) {
+            throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null");
+        }
         return new self(
             timestamp: SdkClient::stringValue($data->timestamp),
             uniques: SdkClient::intValue($data->uniques),

@@ -15,11 +15,26 @@ final readonly class OidcCustomPropertyInclusionInclusionSourceEnum implements S
     public const ORGANIZATION = "organization";
     public const ENTERPRISE = "enterprise";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -70,8 +85,12 @@ class OidcCustomPropertyInclusion implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "custom_property_name") || $data->custom_property_name === null) { throw new SdkValidationError("custom_property_name", 'required', "Required property 'custom_property_name' is missing or null"); }
-        if (!property_exists($data, "inclusion_source") || $data->inclusion_source === null) { throw new SdkValidationError("inclusion_source", 'required', "Required property 'inclusion_source' is missing or null"); }
+        if (!property_exists($data, "custom_property_name") || $data->custom_property_name === null) {
+            throw new SdkValidationError("custom_property_name", 'required', "Required property 'custom_property_name' is missing or null");
+        }
+        if (!property_exists($data, "inclusion_source") || $data->inclusion_source === null) {
+            throw new SdkValidationError("inclusion_source", 'required', "Required property 'inclusion_source' is missing or null");
+        }
         return new self(
             customPropertyName: SdkClient::stringValue($data->custom_property_name),
             inclusionSource: SdkClient::hydrateStringEnumOrString($data->inclusion_source, OidcCustomPropertyInclusionInclusionSourceEnum::class),
@@ -117,7 +136,9 @@ class OidcCustomPropertyInclusionInput implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "custom_property_name") || $data->custom_property_name === null) { throw new SdkValidationError("custom_property_name", 'required', "Required property 'custom_property_name' is missing or null"); }
+        if (!property_exists($data, "custom_property_name") || $data->custom_property_name === null) {
+            throw new SdkValidationError("custom_property_name", 'required', "Required property 'custom_property_name' is missing or null");
+        }
         return new self(
             customPropertyName: SdkClient::stringValue($data->custom_property_name),
         );
@@ -174,7 +195,9 @@ class OidcCustomSub implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "include_claim_keys") || $data->include_claim_keys === null) { throw new SdkValidationError("include_claim_keys", 'required', "Required property 'include_claim_keys' is missing or null"); }
+        if (!property_exists($data, "include_claim_keys") || $data->include_claim_keys === null) {
+            throw new SdkValidationError("include_claim_keys", 'required', "Required property 'include_claim_keys' is missing or null");
+        }
         return new self(
             includeClaimKeys: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include_claim_keys))),
             useImmutableSubject: (property_exists($data, "use_immutable_subject") && $data->use_immutable_subject !== null ? SdkClient::boolValue($data->use_immutable_subject) : SdkNotGiven::Value),

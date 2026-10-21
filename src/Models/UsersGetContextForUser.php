@@ -55,8 +55,12 @@ class HovercardContextsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
-        if (!property_exists($data, "octicon") || $data->octicon === null) { throw new SdkValidationError("octicon", 'required', "Required property 'octicon' is missing or null"); }
+        if (!property_exists($data, "message") || $data->message === null) {
+            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
+        }
+        if (!property_exists($data, "octicon") || $data->octicon === null) {
+            throw new SdkValidationError("octicon", 'required', "Required property 'octicon' is missing or null");
+        }
         return new self(
             message: SdkClient::stringValue($data->message),
             octicon: SdkClient::stringValue($data->octicon),
@@ -102,7 +106,9 @@ class Hovercard implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "contexts") || $data->contexts === null) { throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null"); }
+        if (!property_exists($data, "contexts") || $data->contexts === null) {
+            throw new SdkValidationError("contexts", 'required', "Required property 'contexts' is missing or null");
+        }
         return new self(
             contexts: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, HovercardContextsItem::class), SdkClient::arrayValue($data->contexts))),
         );
