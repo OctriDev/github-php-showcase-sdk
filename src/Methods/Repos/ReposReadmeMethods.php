@@ -22,7 +22,7 @@ trait ReposReadmeMethods
     public static function reposGetReadme(ClientConfig $clientConfig, string $owner, string $repo, string|SdkNotGiven $ref = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContentFile
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/readme", $clientConfig, query: ['ref' => new SdkQueryValue($ref, "form", true)], returnType: ContentFile::class, decoder: 'json', operationId: 'reposGetReadme', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/readme", $clientConfig, query: ['ref' => new SdkQueryValue($ref, "form", true)], returnType: ContentFile::class, decoder: 'json', operationId: 'reposGetReadme', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContentFile::class));
     }
 
@@ -41,7 +41,7 @@ trait ReposReadmeMethods
     public static function reposGetReadmeInDirectory(ClientConfig $clientConfig, string $owner, string $repo, string $dir, string|SdkNotGiven $ref = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContentFile
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/readme/" . SdkClient::encodePathSegment($dir) . "", $clientConfig, query: ['ref' => new SdkQueryValue($ref, "form", true)], returnType: ContentFile::class, decoder: 'json', operationId: 'reposGetReadmeInDirectory', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/readme/" . SdkClient::encodePathSegment($dir) . "", $clientConfig, query: ['ref' => new SdkQueryValue($ref, "form", true)], returnType: ContentFile::class, decoder: 'json', operationId: 'reposGetReadmeInDirectory', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContentFile::class));
     }
 }

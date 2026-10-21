@@ -45,7 +45,9 @@ class PullRequestReviewCommentEventCommentLinksHtml implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
+        if (!property_exists($data, "href") || $data->href === null) {
+            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
+        }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -90,7 +92,9 @@ class PullRequestReviewCommentEventCommentLinksPullRequest implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
+        if (!property_exists($data, "href") || $data->href === null) {
+            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
+        }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -135,7 +139,9 @@ class PullRequestReviewCommentEventCommentLinksSelf implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
+        if (!property_exists($data, "href") || $data->href === null) {
+            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
+        }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -200,9 +206,15 @@ class PullRequestReviewCommentEventCommentLinks implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
-        if (!property_exists($data, "self") || $data->self === null) { throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null"); }
+        if (!property_exists($data, "html") || $data->html === null) {
+            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
+        }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
+            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
+        }
+        if (!property_exists($data, "self") || $data->self === null) {
+            throw new SdkValidationError("self", 'required', "Required property 'self' is missing or null");
+        }
         return new self(
             html: SdkClient::hydrateClass($data->html, PullRequestReviewCommentEventCommentLinksHtml::class),
             pullRequest: SdkClient::hydrateClass($data->pull_request, PullRequestReviewCommentEventCommentLinksPullRequest::class),

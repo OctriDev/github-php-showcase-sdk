@@ -97,11 +97,21 @@ class Actor implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
-        if (!property_exists($data, "gravatar_id")) { throw new SdkValidationError("gravatar_id", 'required', "Missing required property 'gravatar_id'"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "avatar_url") || $data->avatar_url === null) { throw new SdkValidationError("avatar_url", 'required', "Required property 'avatar_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "login") || $data->login === null) {
+            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
+        }
+        if (!property_exists($data, "gravatar_id")) {
+            throw new SdkValidationError("gravatar_id", 'required', "Missing required property 'gravatar_id'");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "avatar_url") || $data->avatar_url === null) {
+            throw new SdkValidationError("avatar_url", 'required', "Required property 'avatar_url' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             login: SdkClient::stringValue($data->login),

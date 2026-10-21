@@ -165,19 +165,45 @@ class LicenseContent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "size") || $data->size === null) { throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "html_url")) { throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'"); }
-        if (!property_exists($data, "git_url")) { throw new SdkValidationError("git_url", 'required', "Missing required property 'git_url'"); }
-        if (!property_exists($data, "download_url")) { throw new SdkValidationError("download_url", 'required', "Missing required property 'download_url'"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "content") || $data->content === null) { throw new SdkValidationError("content", 'required', "Required property 'content' is missing or null"); }
-        if (!property_exists($data, "encoding") || $data->encoding === null) { throw new SdkValidationError("encoding", 'required', "Required property 'encoding' is missing or null"); }
-        if (!property_exists($data, "_links") || $data->_links === null) { throw new SdkValidationError("_links", 'required', "Required property '_links' is missing or null"); }
-        if (!property_exists($data, "license")) { throw new SdkValidationError("license", 'required', "Missing required property 'license'"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "path") || $data->path === null) {
+            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
+        if (!property_exists($data, "size") || $data->size === null) {
+            throw new SdkValidationError("size", 'required', "Required property 'size' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "html_url")) {
+            throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'");
+        }
+        if (!property_exists($data, "git_url")) {
+            throw new SdkValidationError("git_url", 'required', "Missing required property 'git_url'");
+        }
+        if (!property_exists($data, "download_url")) {
+            throw new SdkValidationError("download_url", 'required', "Missing required property 'download_url'");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "content") || $data->content === null) {
+            throw new SdkValidationError("content", 'required', "Required property 'content' is missing or null");
+        }
+        if (!property_exists($data, "encoding") || $data->encoding === null) {
+            throw new SdkValidationError("encoding", 'required', "Required property 'encoding' is missing or null");
+        }
+        if (!property_exists($data, "_links") || $data->_links === null) {
+            throw new SdkValidationError("_links", 'required', "Required property '_links' is missing or null");
+        }
+        if (!property_exists($data, "license")) {
+            throw new SdkValidationError("license", 'required', "Missing required property 'license'");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             path: SdkClient::stringValue($data->path),
@@ -286,11 +312,21 @@ class LicenseSimple implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "url")) { throw new SdkValidationError("url", 'required', "Missing required property 'url'"); }
-        if (!property_exists($data, "spdx_id")) { throw new SdkValidationError("spdx_id", 'required', "Missing required property 'spdx_id'"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "key") || $data->key === null) {
+            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "url")) {
+            throw new SdkValidationError("url", 'required', "Missing required property 'url'");
+        }
+        if (!property_exists($data, "spdx_id")) {
+            throw new SdkValidationError("spdx_id", 'required', "Missing required property 'spdx_id'");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
         return new self(
             key: SdkClient::stringValue($data->key),
             name: SdkClient::stringValue($data->name),

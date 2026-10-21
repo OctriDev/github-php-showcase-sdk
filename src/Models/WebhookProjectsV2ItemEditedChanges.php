@@ -153,7 +153,9 @@ class WebhookProjectsV2ItemEditedChangesVariant0 implements WebhookProjectsV2Ite
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "field_value") || $data->field_value === null) { throw new SdkValidationError("field_value", 'required', "Required property 'field_value' is missing or null"); }
+        if (!property_exists($data, "field_value") || $data->field_value === null) {
+            throw new SdkValidationError("field_value", 'required', "Required property 'field_value' is missing or null");
+        }
         return new self(
             fieldValue: SdkClient::hydrateClass($data->field_value, WebhookProjectsV2ItemEditedChangesVariant0FieldValue::class),
         );
@@ -254,7 +256,9 @@ class WebhookProjectsV2ItemEditedChangesVariant1 implements WebhookProjectsV2Ite
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "body") || $data->body === null) { throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null"); }
+        if (!property_exists($data, "body") || $data->body === null) {
+            throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null");
+        }
         return new self(
             body: SdkClient::hydrateClass($data->body, WebhookProjectsV2ItemEditedChangesVariant1Body::class),
         );

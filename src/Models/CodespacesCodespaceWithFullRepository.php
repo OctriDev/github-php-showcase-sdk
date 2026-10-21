@@ -363,28 +363,72 @@ class CodespaceWithFullRepository implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "environment_id")) { throw new SdkValidationError("environment_id", 'required', "Missing required property 'environment_id'"); }
-        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
-        if (!property_exists($data, "billable_owner") || $data->billable_owner === null) { throw new SdkValidationError("billable_owner", 'required', "Required property 'billable_owner' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "machine")) { throw new SdkValidationError("machine", 'required', "Missing required property 'machine'"); }
-        if (!property_exists($data, "prebuild")) { throw new SdkValidationError("prebuild", 'required', "Missing required property 'prebuild'"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "last_used_at") || $data->last_used_at === null) { throw new SdkValidationError("last_used_at", 'required', "Required property 'last_used_at' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "git_status") || $data->git_status === null) { throw new SdkValidationError("git_status", 'required', "Required property 'git_status' is missing or null"); }
-        if (!property_exists($data, "location") || $data->location === null) { throw new SdkValidationError("location", 'required', "Required property 'location' is missing or null"); }
-        if (!property_exists($data, "idle_timeout_minutes")) { throw new SdkValidationError("idle_timeout_minutes", 'required', "Missing required property 'idle_timeout_minutes'"); }
-        if (!property_exists($data, "web_url") || $data->web_url === null) { throw new SdkValidationError("web_url", 'required', "Required property 'web_url' is missing or null"); }
-        if (!property_exists($data, "machines_url") || $data->machines_url === null) { throw new SdkValidationError("machines_url", 'required', "Required property 'machines_url' is missing or null"); }
-        if (!property_exists($data, "start_url") || $data->start_url === null) { throw new SdkValidationError("start_url", 'required', "Required property 'start_url' is missing or null"); }
-        if (!property_exists($data, "stop_url") || $data->stop_url === null) { throw new SdkValidationError("stop_url", 'required', "Required property 'stop_url' is missing or null"); }
-        if (!property_exists($data, "pulls_url")) { throw new SdkValidationError("pulls_url", 'required', "Missing required property 'pulls_url'"); }
-        if (!property_exists($data, "recent_folders") || $data->recent_folders === null) { throw new SdkValidationError("recent_folders", 'required', "Required property 'recent_folders' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "environment_id")) {
+            throw new SdkValidationError("environment_id", 'required', "Missing required property 'environment_id'");
+        }
+        if (!property_exists($data, "owner") || $data->owner === null) {
+            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
+        }
+        if (!property_exists($data, "billable_owner") || $data->billable_owner === null) {
+            throw new SdkValidationError("billable_owner", 'required', "Required property 'billable_owner' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "machine")) {
+            throw new SdkValidationError("machine", 'required', "Missing required property 'machine'");
+        }
+        if (!property_exists($data, "prebuild")) {
+            throw new SdkValidationError("prebuild", 'required', "Missing required property 'prebuild'");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "last_used_at") || $data->last_used_at === null) {
+            throw new SdkValidationError("last_used_at", 'required', "Required property 'last_used_at' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "git_status") || $data->git_status === null) {
+            throw new SdkValidationError("git_status", 'required', "Required property 'git_status' is missing or null");
+        }
+        if (!property_exists($data, "location") || $data->location === null) {
+            throw new SdkValidationError("location", 'required', "Required property 'location' is missing or null");
+        }
+        if (!property_exists($data, "idle_timeout_minutes")) {
+            throw new SdkValidationError("idle_timeout_minutes", 'required', "Missing required property 'idle_timeout_minutes'");
+        }
+        if (!property_exists($data, "web_url") || $data->web_url === null) {
+            throw new SdkValidationError("web_url", 'required', "Required property 'web_url' is missing or null");
+        }
+        if (!property_exists($data, "machines_url") || $data->machines_url === null) {
+            throw new SdkValidationError("machines_url", 'required', "Required property 'machines_url' is missing or null");
+        }
+        if (!property_exists($data, "start_url") || $data->start_url === null) {
+            throw new SdkValidationError("start_url", 'required', "Required property 'start_url' is missing or null");
+        }
+        if (!property_exists($data, "stop_url") || $data->stop_url === null) {
+            throw new SdkValidationError("stop_url", 'required', "Required property 'stop_url' is missing or null");
+        }
+        if (!property_exists($data, "pulls_url")) {
+            throw new SdkValidationError("pulls_url", 'required', "Missing required property 'pulls_url'");
+        }
+        if (!property_exists($data, "recent_folders") || $data->recent_folders === null) {
+            throw new SdkValidationError("recent_folders", 'required', "Required property 'recent_folders' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),

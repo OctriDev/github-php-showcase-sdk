@@ -65,9 +65,15 @@ class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo implements \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             name: SdkClient::stringValue($data->name),
@@ -134,9 +140,15 @@ class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead implements \JsonS
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
-        if (!property_exists($data, "repo") || $data->repo === null) { throw new SdkValidationError("repo", 'required', "Required property 'repo' is missing or null"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "ref") || $data->ref === null) {
+            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
+        }
+        if (!property_exists($data, "repo") || $data->repo === null) {
+            throw new SdkValidationError("repo", 'required', "Required property 'repo' is missing or null");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
         return new self(
             ref: SdkClient::stringValue($data->ref),
             repo: SdkClient::hydrateClass($data->repo, WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo::class),
@@ -223,11 +235,21 @@ class WebhookCheckSuiteCompletedCheckSuitePullRequestsItem implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "base") || $data->base === null) { throw new SdkValidationError("base", 'required', "Required property 'base' is missing or null"); }
-        if (!property_exists($data, "head") || $data->head === null) { throw new SdkValidationError("head", 'required', "Required property 'head' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "base") || $data->base === null) {
+            throw new SdkValidationError("base", 'required', "Required property 'base' is missing or null");
+        }
+        if (!property_exists($data, "head") || $data->head === null) {
+            throw new SdkValidationError("head", 'required', "Required property 'head' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "number") || $data->number === null) {
+            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             base: SdkClient::hydrateClass($data->base, WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBase::class),
             head: SdkClient::hydrateClass($data->head, WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead::class),
@@ -249,9 +271,24 @@ final readonly class WebhookCheckSuiteCompletedCheckSuiteStatusEnum implements S
     public const QUEUED = "queued";
     public const PENDING = "pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

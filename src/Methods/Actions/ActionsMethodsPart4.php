@@ -25,7 +25,7 @@ trait ActionsMethodsPart4
     public static function actionsUpdateOrgActionsPolicy(ClientConfig $clientConfig, string $org, int $policyId, string|SdkNotGiven $name = SdkNotGiven::Value, RepositoryRuleEnforcement|SdkNotGiven $enforcement = SdkNotGiven::Value, ActionsPolicyOrgConditions|SdkNotGiven $conditions = SdkNotGiven::Value, array|SdkNotGiven $rules = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActionsPolicy
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsUpdateOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, body: ['name' => $name, 'enforcement' => $enforcement, 'conditions' => $conditions, 'rules' => $rules], returnType: ActionsPolicy::class, decoder: 'json', operationId: 'actionsUpdateOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsPolicy::class));
     }
 
@@ -41,7 +41,7 @@ trait ActionsMethodsPart4
     public static function actionsDeleteOrgActionsPolicy(ClientConfig $clientConfig, string $org, int $policyId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/policies/" . SdkClient::encodePathSegment($policyId) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteOrgActionsPolicy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

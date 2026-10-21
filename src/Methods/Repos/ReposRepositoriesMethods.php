@@ -20,7 +20,7 @@ trait ReposRepositoriesMethods
     public static function reposListPublic(ClientConfig $clientConfig, int|SdkNotGiven $since = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repositories", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true)], decoder: 'json', operationId: 'reposListPublic', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repositories", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true)], decoder: 'json', operationId: 'reposListPublic', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MinimalRepository::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

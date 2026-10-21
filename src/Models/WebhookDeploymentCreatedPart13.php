@@ -85,11 +85,21 @@ class WebhookDeploymentCreatedWorkflowRunPullRequestsItem implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "base") || $data->base === null) { throw new SdkValidationError("base", 'required', "Required property 'base' is missing or null"); }
-        if (!property_exists($data, "head") || $data->head === null) { throw new SdkValidationError("head", 'required', "Required property 'head' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "base") || $data->base === null) {
+            throw new SdkValidationError("base", 'required', "Required property 'base' is missing or null");
+        }
+        if (!property_exists($data, "head") || $data->head === null) {
+            throw new SdkValidationError("head", 'required', "Required property 'head' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "number") || $data->number === null) {
+            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             base: SdkClient::hydrateClass($data->base, WebhookDeploymentCreatedWorkflowRunPullRequestsItemBase::class),
             head: SdkClient::hydrateClass($data->head, WebhookDeploymentCreatedWorkflowRunPullRequestsItemHead::class),
@@ -160,8 +170,12 @@ class WebhookDeploymentCreatedWorkflowRunReferencedWorkflowsItem implements \Jso
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) {
+            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
         return new self(
             path: SdkClient::stringValue($data->path),
             sha: SdkClient::stringValue($data->sha),

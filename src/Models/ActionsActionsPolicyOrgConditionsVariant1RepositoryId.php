@@ -101,8 +101,12 @@ class ActionsPolicyOrgConditionsVariant1WorkflowPath implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "include") || $data->include === null) { throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null"); }
-        if (!property_exists($data, "exclude") || $data->exclude === null) { throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null"); }
+        if (!property_exists($data, "include") || $data->include === null) {
+            throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null");
+        }
+        if (!property_exists($data, "exclude") || $data->exclude === null) {
+            throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null");
+        }
         return new self(
             include_: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include))),
             exclude: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->exclude))),
@@ -157,7 +161,9 @@ class ActionsPolicyOrgConditionsVariant1 implements ActionsPolicyOrgConditions, 
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
+            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
+        }
         return new self(
             repositoryId: SdkClient::hydrateClass($data->repository_id, ActionsPolicyOrgConditionsVariant1RepositoryId::class),
             workflowPath: (property_exists($data, "workflow_path") && $data->workflow_path !== null ? SdkClient::hydrateClass($data->workflow_path, ActionsPolicyOrgConditionsVariant1WorkflowPath::class) : SdkNotGiven::Value),
@@ -272,8 +278,12 @@ class ActionsPolicyOrgConditionsVariant2WorkflowPath implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "include") || $data->include === null) { throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null"); }
-        if (!property_exists($data, "exclude") || $data->exclude === null) { throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null"); }
+        if (!property_exists($data, "include") || $data->include === null) {
+            throw new SdkValidationError("include", 'required', "Required property 'include' is missing or null");
+        }
+        if (!property_exists($data, "exclude") || $data->exclude === null) {
+            throw new SdkValidationError("exclude", 'required', "Required property 'exclude' is missing or null");
+        }
         return new self(
             include_: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->include))),
             exclude: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->exclude))),
@@ -328,7 +338,9 @@ class ActionsPolicyOrgConditionsVariant2 implements ActionsPolicyOrgConditions, 
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_property") || $data->repository_property === null) { throw new SdkValidationError("repository_property", 'required', "Required property 'repository_property' is missing or null"); }
+        if (!property_exists($data, "repository_property") || $data->repository_property === null) {
+            throw new SdkValidationError("repository_property", 'required', "Required property 'repository_property' is missing or null");
+        }
         return new self(
             repositoryProperty: SdkClient::hydrateClass($data->repository_property, ActionsPolicyOrgConditionsVariant2RepositoryProperty::class),
             workflowPath: (property_exists($data, "workflow_path") && $data->workflow_path !== null ? SdkClient::hydrateClass($data->workflow_path, ActionsPolicyOrgConditionsVariant2WorkflowPath::class) : SdkNotGiven::Value),

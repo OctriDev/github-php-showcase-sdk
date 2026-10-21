@@ -85,11 +85,21 @@ class WebhookPullRequestUnassignedPullRequestHead implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "label")) { throw new SdkValidationError("label", 'required', "Missing required property 'label'"); }
-        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
-        if (!property_exists($data, "repo")) { throw new SdkValidationError("repo", 'required', "Missing required property 'repo'"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "user")) { throw new SdkValidationError("user", 'required', "Missing required property 'user'"); }
+        if (!property_exists($data, "label")) {
+            throw new SdkValidationError("label", 'required', "Missing required property 'label'");
+        }
+        if (!property_exists($data, "ref") || $data->ref === null) {
+            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
+        }
+        if (!property_exists($data, "repo")) {
+            throw new SdkValidationError("repo", 'required', "Missing required property 'repo'");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
+        if (!property_exists($data, "user")) {
+            throw new SdkValidationError("user", 'required', "Missing required property 'user'");
+        }
         return new self(
             label: ($data->label === null ? null : SdkClient::stringValue($data->label)),
             ref: SdkClient::stringValue($data->ref),
@@ -198,13 +208,27 @@ class WebhookPullRequestUnassignedPullRequestLabelsItem implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "color") || $data->color === null) { throw new SdkValidationError("color", 'required', "Required property 'color' is missing or null"); }
-        if (!property_exists($data, "default") || $data->default === null) { throw new SdkValidationError("default", 'required', "Required property 'default' is missing or null"); }
-        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "color") || $data->color === null) {
+            throw new SdkValidationError("color", 'required', "Required property 'color' is missing or null");
+        }
+        if (!property_exists($data, "default") || $data->default === null) {
+            throw new SdkValidationError("default", 'required', "Required property 'default' is missing or null");
+        }
+        if (!property_exists($data, "description")) {
+            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             color: SdkClient::stringValue($data->color),
             default_: SdkClient::boolValue($data->default),
@@ -227,9 +251,24 @@ final readonly class WebhookPullRequestUnassignedPullRequestMergedByTypeEnum imp
     public const ORGANIZATION = "Organization";
     public const MANNEQUIN = "Mannequin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

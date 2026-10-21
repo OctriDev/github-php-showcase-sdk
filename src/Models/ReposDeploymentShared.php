@@ -15,11 +15,26 @@ final readonly class DeploymentBranchPolicyTypeEnum implements SdkOpenEnum
     public const BRANCH = "branch";
     public const TAG = "tag";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -155,8 +170,12 @@ class DeploymentBranchPolicySettings implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "protected_branches") || $data->protected_branches === null) { throw new SdkValidationError("protected_branches", 'required', "Required property 'protected_branches' is missing or null"); }
-        if (!property_exists($data, "custom_branch_policies") || $data->custom_branch_policies === null) { throw new SdkValidationError("custom_branch_policies", 'required', "Required property 'custom_branch_policies' is missing or null"); }
+        if (!property_exists($data, "protected_branches") || $data->protected_branches === null) {
+            throw new SdkValidationError("protected_branches", 'required', "Required property 'protected_branches' is missing or null");
+        }
+        if (!property_exists($data, "custom_branch_policies") || $data->custom_branch_policies === null) {
+            throw new SdkValidationError("custom_branch_policies", 'required', "Required property 'custom_branch_policies' is missing or null");
+        }
         return new self(
             protectedBranches: SdkClient::boolValue($data->protected_branches),
             customBranchPolicies: SdkClient::boolValue($data->custom_branch_policies),
@@ -232,10 +251,18 @@ class DeploymentProtectionRule implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "enabled") || $data->enabled === null) { throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null"); }
-        if (!property_exists($data, "app") || $data->app === null) { throw new SdkValidationError("app", 'required', "Required property 'app' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "enabled") || $data->enabled === null) {
+            throw new SdkValidationError("enabled", 'required', "Required property 'enabled' is missing or null");
+        }
+        if (!property_exists($data, "app") || $data->app === null) {
+            throw new SdkValidationError("app", 'required', "Required property 'app' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             nodeId: SdkClient::stringValue($data->node_id),
@@ -258,9 +285,24 @@ final readonly class DeploymentStatusStateEnum implements SdkOpenEnum
     public const QUEUED = "queued";
     public const IN_PROGRESS = "in_progress";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

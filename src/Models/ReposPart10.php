@@ -147,16 +147,36 @@ class SimpleCommitStatus implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
-        if (!property_exists($data, "context") || $data->context === null) { throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null"); }
-        if (!property_exists($data, "target_url")) { throw new SdkValidationError("target_url", 'required', "Missing required property 'target_url'"); }
-        if (!property_exists($data, "avatar_url")) { throw new SdkValidationError("avatar_url", 'required', "Missing required property 'avatar_url'"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "description")) {
+            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "context") || $data->context === null) {
+            throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null");
+        }
+        if (!property_exists($data, "target_url")) {
+            throw new SdkValidationError("target_url", 'required', "Missing required property 'target_url'");
+        }
+        if (!property_exists($data, "avatar_url")) {
+            throw new SdkValidationError("avatar_url", 'required', "Missing required property 'avatar_url'");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
         return new self(
             description: ($data->description === null ? null : SdkClient::stringValue($data->description)),
             id: SdkClient::intValue($data->id),
@@ -221,8 +241,12 @@ class TagCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             sha: SdkClient::stringValue($data->sha),
             url: SdkClient::stringValue($data->url),
@@ -308,11 +332,21 @@ class Tag implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
-        if (!property_exists($data, "zipball_url") || $data->zipball_url === null) { throw new SdkValidationError("zipball_url", 'required', "Required property 'zipball_url' is missing or null"); }
-        if (!property_exists($data, "tarball_url") || $data->tarball_url === null) { throw new SdkValidationError("tarball_url", 'required', "Required property 'tarball_url' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "commit") || $data->commit === null) {
+            throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null");
+        }
+        if (!property_exists($data, "zipball_url") || $data->zipball_url === null) {
+            throw new SdkValidationError("zipball_url", 'required', "Required property 'zipball_url' is missing or null");
+        }
+        if (!property_exists($data, "tarball_url") || $data->tarball_url === null) {
+            throw new SdkValidationError("tarball_url", 'required', "Required property 'tarball_url' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             commit: SdkClient::hydrateClass($data->commit, TagCommit::class),

@@ -90,7 +90,9 @@ class RepositoryRuleDetailedVariant14 implements RepositoryRuleDetailed, \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant14TypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleDetailedVariant14Parameters::class) : SdkNotGiven::Value),
@@ -159,7 +161,9 @@ class RepositoryRuleDetailedVariant15Parameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "workflows") || $data->workflows === null) { throw new SdkValidationError("workflows", 'required', "Required property 'workflows' is missing or null"); }
+        if (!property_exists($data, "workflows") || $data->workflows === null) {
+            throw new SdkValidationError("workflows", 'required', "Required property 'workflows' is missing or null");
+        }
         return new self(
             workflows: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RepositoryRuleParamsWorkflowFileReference::class), SdkClient::arrayValue($data->workflows))),
             doNotEnforceOnCreate: (property_exists($data, "do_not_enforce_on_create") && $data->do_not_enforce_on_create !== null ? SdkClient::boolValue($data->do_not_enforce_on_create) : SdkNotGiven::Value),
@@ -175,11 +179,26 @@ final readonly class RepositoryRuleDetailedVariant15RulesetSourceTypeEnum implem
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class RepositoryRuleDetailedVariant15 implements RepositoryRuleDetailed, \JsonSerializable
@@ -265,7 +284,9 @@ class RepositoryRuleDetailedVariant15 implements RepositoryRuleDetailed, \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant15TypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleDetailedVariant15Parameters::class) : SdkNotGiven::Value),
@@ -322,7 +343,9 @@ class RepositoryRuleDetailedVariant16Parameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "code_scanning_tools") || $data->code_scanning_tools === null) { throw new SdkValidationError("code_scanning_tools", 'required', "Required property 'code_scanning_tools' is missing or null"); }
+        if (!property_exists($data, "code_scanning_tools") || $data->code_scanning_tools === null) {
+            throw new SdkValidationError("code_scanning_tools", 'required', "Required property 'code_scanning_tools' is missing or null");
+        }
         return new self(
             codeScanningTools: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, RepositoryRuleParamsCodeScanningTool::class), SdkClient::arrayValue($data->code_scanning_tools))),
         );
@@ -337,9 +360,24 @@ final readonly class RepositoryRuleDetailedVariant16RulesetSourceTypeEnum implem
     public const REPOSITORY = "Repository";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

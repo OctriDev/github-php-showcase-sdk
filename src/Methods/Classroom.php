@@ -21,7 +21,7 @@ class Classroom
     public static function classroomGetAnAssignment(ClientConfig $clientConfig, int $assignmentId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/assignments/" . SdkClient::encodePathSegment($assignmentId) . "", $clientConfig, decoder: 'empty', operationId: 'classroomGetAnAssignment', requestOptions: $requestOptions, errors: [410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/assignments/" . SdkClient::encodePathSegment($assignmentId) . "", $clientConfig, decoder: 'empty', operationId: 'classroomGetAnAssignment', requestOptions: $requestOptions, errors: [410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -37,7 +37,7 @@ class Classroom
     public static function classroomListAcceptedAssignmentsForAnAssignment(ClientConfig $clientConfig, int $assignmentId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/assignments/" . SdkClient::encodePathSegment($assignmentId) . "/accepted_assignments", $clientConfig, decoder: 'empty', operationId: 'classroomListAcceptedAssignmentsForAnAssignment', requestOptions: $requestOptions, errors: [410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/assignments/" . SdkClient::encodePathSegment($assignmentId) . "/accepted_assignments", $clientConfig, decoder: 'empty', operationId: 'classroomListAcceptedAssignmentsForAnAssignment', requestOptions: $requestOptions, errors: [410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -53,7 +53,7 @@ class Classroom
     public static function classroomGetAssignmentGrades(ClientConfig $clientConfig, int $assignmentId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/assignments/" . SdkClient::encodePathSegment($assignmentId) . "/grades", $clientConfig, decoder: 'empty', operationId: 'classroomGetAssignmentGrades', requestOptions: $requestOptions, errors: [410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/assignments/" . SdkClient::encodePathSegment($assignmentId) . "/grades", $clientConfig, decoder: 'empty', operationId: 'classroomGetAssignmentGrades', requestOptions: $requestOptions, errors: [410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -68,7 +68,7 @@ class Classroom
     public static function classroomListClassrooms(ClientConfig $clientConfig, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/classrooms", $clientConfig, decoder: 'empty', operationId: 'classroomListClassrooms', requestOptions: $requestOptions, errors: [410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/classrooms", $clientConfig, decoder: 'empty', operationId: 'classroomListClassrooms', requestOptions: $requestOptions, errors: [410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -84,7 +84,7 @@ class Classroom
     public static function classroomGetAClassroom(ClientConfig $clientConfig, int $classroomId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/classrooms/" . SdkClient::encodePathSegment($classroomId) . "", $clientConfig, decoder: 'empty', operationId: 'classroomGetAClassroom', requestOptions: $requestOptions, errors: [410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/classrooms/" . SdkClient::encodePathSegment($classroomId) . "", $clientConfig, decoder: 'empty', operationId: 'classroomGetAClassroom', requestOptions: $requestOptions, errors: [410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -100,6 +100,6 @@ class Classroom
     public static function classroomListAssignmentsForAClassroom(ClientConfig $clientConfig, int $classroomId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/classrooms/" . SdkClient::encodePathSegment($classroomId) . "/assignments", $clientConfig, decoder: 'empty', operationId: 'classroomListAssignmentsForAClassroom', requestOptions: $requestOptions, errors: [410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/classrooms/" . SdkClient::encodePathSegment($classroomId) . "/assignments", $clientConfig, decoder: 'empty', operationId: 'classroomListAssignmentsForAClassroom', requestOptions: $requestOptions, errors: [410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

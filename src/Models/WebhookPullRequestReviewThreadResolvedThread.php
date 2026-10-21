@@ -55,8 +55,12 @@ class WebhookPullRequestReviewThreadResolvedThread implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "comments") || $data->comments === null) { throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "comments") || $data->comments === null) {
+            throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
         return new self(
             comments: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, WebhookPullRequestReviewThreadResolvedThreadCommentsItem::class), SdkClient::arrayValue($data->comments))),
             nodeId: SdkClient::stringValue($data->node_id),
@@ -192,10 +196,18 @@ class WebhookPullRequestReviewThreadResolved implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "pull_request") || $data->pull_request === null) { throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "thread") || $data->thread === null) { throw new SdkValidationError("thread", 'required', "Required property 'thread' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "pull_request") || $data->pull_request === null) {
+            throw new SdkValidationError("pull_request", 'required', "Required property 'pull_request' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "thread") || $data->thread === null) {
+            throw new SdkValidationError("thread", 'required', "Required property 'thread' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookPullRequestReviewThreadResolvedActionEnum::class),
             pullRequest: SdkClient::hydrateClass($data->pull_request, WebhookPullRequestReviewThreadResolvedPullRequest::class),

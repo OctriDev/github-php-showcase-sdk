@@ -16,11 +16,26 @@ final readonly class SelfHostedRunnersSettingsEnabledRepositoriesEnum implements
     public const SELECTED = "selected";
     public const NONE = "none";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -73,7 +88,9 @@ class SelfHostedRunnersSettings implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) { throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null"); }
+        if (!property_exists($data, "enabled_repositories") || $data->enabled_repositories === null) {
+            throw new SdkValidationError("enabled_repositories", 'required', "Required property 'enabled_repositories' is missing or null");
+        }
         return new self(
             enabledRepositories: SdkClient::hydrateStringEnumOrString($data->enabled_repositories, SelfHostedRunnersSettingsEnabledRepositoriesEnum::class),
             selectedRepositoriesUrl: (property_exists($data, "selected_repositories_url") && $data->selected_repositories_url !== null ? SdkClient::stringValue($data->selected_repositories_url) : SdkNotGiven::Value),

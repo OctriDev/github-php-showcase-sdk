@@ -15,11 +15,26 @@ final readonly class AgentTasksGetTaskByIdResponseCreatorTypeEnum implements Sdk
     public const USER = "user";
     public const ORGANIZATION = "organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -174,11 +189,26 @@ final readonly class AgentTasksGetTaskByIdResponseStateEnum implements SdkOpenEn
     public const TIMED_OUT = "timed_out";
     public const CANCELLED = "cancelled";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -188,11 +218,26 @@ final readonly class AgentTasksGetTaskByIdResponseArtifactsItemProviderEnum impl
 {
     public const GITHUB = "github";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -203,11 +248,26 @@ final readonly class AgentTasksGetTaskByIdResponseArtifactsItemTypeEnum implemen
     public const PULL = "pull";
     public const BRANCH = "branch";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -260,7 +320,9 @@ class AgentTasksGetTaskByIdResponseArtifactsItemDataVariant0 implements \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             globalId: (property_exists($data, "global_id") && $data->global_id !== null ? SdkClient::stringValue($data->global_id) : SdkNotGiven::Value),
@@ -316,8 +378,12 @@ class AgentTasksGetTaskByIdResponseArtifactsItemDataVariant1 implements \JsonSer
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "head_ref") || $data->head_ref === null) { throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null"); }
-        if (!property_exists($data, "base_ref") || $data->base_ref === null) { throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null"); }
+        if (!property_exists($data, "head_ref") || $data->head_ref === null) {
+            throw new SdkValidationError("head_ref", 'required', "Required property 'head_ref' is missing or null");
+        }
+        if (!property_exists($data, "base_ref") || $data->base_ref === null) {
+            throw new SdkValidationError("base_ref", 'required', "Required property 'base_ref' is missing or null");
+        }
         return new self(
             headRef: SdkClient::stringValue($data->head_ref),
             baseRef: SdkClient::stringValue($data->base_ref),

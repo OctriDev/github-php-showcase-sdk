@@ -41,7 +41,7 @@ trait ReposCommentsMethods
     public static function reposGetCommitComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ?RequestOptions $requestOptions = null): CommitComment
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, returnType: CommitComment::class, decoder: 'json', operationId: 'reposGetCommitComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, returnType: CommitComment::class, decoder: 'json', operationId: 'reposGetCommitComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CommitComment::class));
     }
 
@@ -60,7 +60,7 @@ trait ReposCommentsMethods
     public static function reposUpdateCommitComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, string $body, ?RequestOptions $requestOptions = null): CommitComment
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, body: ['body' => $body], returnType: CommitComment::class, decoder: 'json', operationId: 'reposUpdateCommitComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, body: ['body' => $body], returnType: CommitComment::class, decoder: 'json', operationId: 'reposUpdateCommitComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CommitComment::class));
     }
 
@@ -77,6 +77,6 @@ trait ReposCommentsMethods
     public static function reposDeleteCommitComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteCommitComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteCommitComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

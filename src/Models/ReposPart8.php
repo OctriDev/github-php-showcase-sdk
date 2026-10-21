@@ -218,8 +218,12 @@ class FileCommit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "content")) { throw new SdkValidationError("content", 'required', "Missing required property 'content'"); }
-        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
+        if (!property_exists($data, "content")) {
+            throw new SdkValidationError("content", 'required', "Missing required property 'content'");
+        }
+        if (!property_exists($data, "commit") || $data->commit === null) {
+            throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null");
+        }
         return new self(
             content: ($data->content === null ? null : SdkClient::hydrateClass($data->content, FileCommitContent::class)),
             commit: SdkClient::hydrateClass($data->commit, FileCommitCommit::class),
@@ -236,11 +240,26 @@ final readonly class MergedUpstreamMergeTypeEnum implements SdkOpenEnum
     public const FAST_FORWARD = "fast-forward";
     public const NONE = "none";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**

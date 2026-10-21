@@ -131,12 +131,24 @@ class WebhookCodeScanningAlertFixed implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "alert") || $data->alert === null) { throw new SdkValidationError("alert", 'required', "Required property 'alert' is missing or null"); }
-        if (!property_exists($data, "commit_oid") || $data->commit_oid === null) { throw new SdkValidationError("commit_oid", 'required', "Required property 'commit_oid' is missing or null"); }
-        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "alert") || $data->alert === null) {
+            throw new SdkValidationError("alert", 'required', "Required property 'alert' is missing or null");
+        }
+        if (!property_exists($data, "commit_oid") || $data->commit_oid === null) {
+            throw new SdkValidationError("commit_oid", 'required', "Required property 'commit_oid' is missing or null");
+        }
+        if (!property_exists($data, "ref") || $data->ref === null) {
+            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookCodeScanningAlertFixedActionEnum::class),
             alert: SdkClient::hydrateClass($data->alert, WebhookCodeScanningAlertFixedAlert::class),

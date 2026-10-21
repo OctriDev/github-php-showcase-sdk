@@ -181,17 +181,39 @@ class NullableIntegration implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
-        if (!property_exists($data, "external_url") || $data->external_url === null) { throw new SdkValidationError("external_url", 'required', "Required property 'external_url' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "permissions") || $data->permissions === null) { throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null"); }
-        if (!property_exists($data, "events") || $data->events === null) { throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "owner") || $data->owner === null) {
+            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "description")) {
+            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
+        }
+        if (!property_exists($data, "external_url") || $data->external_url === null) {
+            throw new SdkValidationError("external_url", 'required', "Required property 'external_url' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "permissions") || $data->permissions === null) {
+            throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null");
+        }
+        if (!property_exists($data, "events") || $data->events === null) {
+            throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             nodeId: SdkClient::stringValue($data->node_id),

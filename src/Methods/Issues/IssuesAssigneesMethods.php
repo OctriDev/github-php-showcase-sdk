@@ -60,6 +60,6 @@ trait IssuesAssigneesMethods
     public static function issuesCheckUserCanBeAssignedToIssue(ClientConfig $clientConfig, string $owner, string $repo, int $issueNumber, string $assignee, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/assignees/" . SdkClient::encodePathSegment($assignee) . "", $clientConfig, decoder: 'empty', operationId: 'issuesCheckUserCanBeAssignedToIssue', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/issues/" . SdkClient::encodePathSegment($issueNumber) . "/assignees/" . SdkClient::encodePathSegment($assignee) . "", $clientConfig, decoder: 'empty', operationId: 'issuesCheckUserCanBeAssignedToIssue', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

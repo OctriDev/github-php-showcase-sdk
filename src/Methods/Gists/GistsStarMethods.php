@@ -19,7 +19,7 @@ trait GistsStarMethods
     public static function gistsCheckIsStarred(ClientConfig $clientConfig, string $gistId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/gists/" . SdkClient::encodePathSegment($gistId) . "/star", $clientConfig, decoder: 'empty', operationId: 'gistsCheckIsStarred', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('GET', "/gists/" . SdkClient::encodePathSegment($gistId) . "/star", $clientConfig, decoder: 'empty', operationId: 'gistsCheckIsStarred', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -33,7 +33,7 @@ trait GistsStarMethods
     public static function gistsStar(ClientConfig $clientConfig, string $gistId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/gists/" . SdkClient::encodePathSegment($gistId) . "/star", $clientConfig, decoder: 'empty', operationId: 'gistsStar', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/gists/" . SdkClient::encodePathSegment($gistId) . "/star", $clientConfig, decoder: 'empty', operationId: 'gistsStar', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -47,6 +47,6 @@ trait GistsStarMethods
     public static function gistsUnstar(ClientConfig $clientConfig, string $gistId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/gists/" . SdkClient::encodePathSegment($gistId) . "/star", $clientConfig, decoder: 'empty', operationId: 'gistsUnstar', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/gists/" . SdkClient::encodePathSegment($gistId) . "/star", $clientConfig, decoder: 'empty', operationId: 'gistsUnstar', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

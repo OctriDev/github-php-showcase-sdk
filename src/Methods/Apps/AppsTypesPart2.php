@@ -196,21 +196,51 @@ class AppsCreateFromManifestResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "client_id") || $data->client_id === null) { throw new SdkValidationError("client_id", 'required', "Required property 'client_id' is missing or null"); }
-        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
-        if (!property_exists($data, "external_url") || $data->external_url === null) { throw new SdkValidationError("external_url", 'required', "Required property 'external_url' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "permissions") || $data->permissions === null) { throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null"); }
-        if (!property_exists($data, "events") || $data->events === null) { throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null"); }
-        if (!property_exists($data, "client_secret") || $data->client_secret === null) { throw new SdkValidationError("client_secret", 'required', "Required property 'client_secret' is missing or null"); }
-        if (!property_exists($data, "webhook_secret")) { throw new SdkValidationError("webhook_secret", 'required', "Missing required property 'webhook_secret'"); }
-        if (!property_exists($data, "pem") || $data->pem === null) { throw new SdkValidationError("pem", 'required', "Required property 'pem' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "client_id") || $data->client_id === null) {
+            throw new SdkValidationError("client_id", 'required', "Required property 'client_id' is missing or null");
+        }
+        if (!property_exists($data, "owner") || $data->owner === null) {
+            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "description")) {
+            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
+        }
+        if (!property_exists($data, "external_url") || $data->external_url === null) {
+            throw new SdkValidationError("external_url", 'required', "Required property 'external_url' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "permissions") || $data->permissions === null) {
+            throw new SdkValidationError("permissions", 'required', "Required property 'permissions' is missing or null");
+        }
+        if (!property_exists($data, "events") || $data->events === null) {
+            throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null");
+        }
+        if (!property_exists($data, "client_secret") || $data->client_secret === null) {
+            throw new SdkValidationError("client_secret", 'required', "Required property 'client_secret' is missing or null");
+        }
+        if (!property_exists($data, "webhook_secret")) {
+            throw new SdkValidationError("webhook_secret", 'required', "Missing required property 'webhook_secret'");
+        }
+        if (!property_exists($data, "pem") || $data->pem === null) {
+            throw new SdkValidationError("pem", 'required', "Required property 'pem' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             nodeId: SdkClient::stringValue($data->node_id),
@@ -316,9 +346,15 @@ class AppsListReposAccessibleToInstallationResponseRepositoriesItemPermissions i
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "admin") || $data->admin === null) { throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null"); }
-        if (!property_exists($data, "pull") || $data->pull === null) { throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null"); }
-        if (!property_exists($data, "push") || $data->push === null) { throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null"); }
+        if (!property_exists($data, "admin") || $data->admin === null) {
+            throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null");
+        }
+        if (!property_exists($data, "pull") || $data->pull === null) {
+            throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null");
+        }
+        if (!property_exists($data, "push") || $data->push === null) {
+            throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null");
+        }
         return new self(
             admin: SdkClient::boolValue($data->admin),
             pull: SdkClient::boolValue($data->pull),
@@ -337,9 +373,24 @@ final readonly class AppsListReposAccessibleToInstallationResponseRepositoriesIt
     public const ALL = "all";
     public const COLLABORATORS_ONLY = "collaborators_only";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

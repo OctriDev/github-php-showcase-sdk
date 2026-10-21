@@ -17,11 +17,26 @@ final readonly class WebhookPullRequestAssignedPullRequestRequestedReviewersItem
     public const ORGANIZATION = "Organization";
     public const MANNEQUIN = "Mannequin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class WebhookPullRequestAssignedPullRequestRequestedReviewersItemVariant0 implements WebhookPullRequestAssignedPullRequestRequestedReviewersItem, \JsonSerializable
@@ -309,8 +324,12 @@ class WebhookPullRequestAssignedPullRequestRequestedReviewersItemVariant0 implem
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "login") || $data->login === null) {
+            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             login: SdkClient::stringValue($data->login),
@@ -347,9 +366,24 @@ final readonly class WebhookPullRequestAssignedPullRequestRequestedReviewersItem
     public const CLOSED = "closed";
     public const SECRET = "secret";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

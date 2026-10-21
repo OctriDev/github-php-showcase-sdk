@@ -157,17 +157,39 @@ class WebhookOrganizationMemberInvitedInvitation implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "email")) { throw new SdkValidationError("email", 'required', "Missing required property 'email'"); }
-        if (!property_exists($data, "failed_at")) { throw new SdkValidationError("failed_at", 'required', "Missing required property 'failed_at'"); }
-        if (!property_exists($data, "failed_reason")) { throw new SdkValidationError("failed_reason", 'required', "Missing required property 'failed_reason'"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "invitation_teams_url") || $data->invitation_teams_url === null) { throw new SdkValidationError("invitation_teams_url", 'required', "Required property 'invitation_teams_url' is missing or null"); }
-        if (!property_exists($data, "inviter")) { throw new SdkValidationError("inviter", 'required', "Missing required property 'inviter'"); }
-        if (!property_exists($data, "login")) { throw new SdkValidationError("login", 'required', "Missing required property 'login'"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "role") || $data->role === null) { throw new SdkValidationError("role", 'required', "Required property 'role' is missing or null"); }
-        if (!property_exists($data, "team_count") || $data->team_count === null) { throw new SdkValidationError("team_count", 'required', "Required property 'team_count' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "email")) {
+            throw new SdkValidationError("email", 'required', "Missing required property 'email'");
+        }
+        if (!property_exists($data, "failed_at")) {
+            throw new SdkValidationError("failed_at", 'required', "Missing required property 'failed_at'");
+        }
+        if (!property_exists($data, "failed_reason")) {
+            throw new SdkValidationError("failed_reason", 'required', "Missing required property 'failed_reason'");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "invitation_teams_url") || $data->invitation_teams_url === null) {
+            throw new SdkValidationError("invitation_teams_url", 'required', "Required property 'invitation_teams_url' is missing or null");
+        }
+        if (!property_exists($data, "inviter")) {
+            throw new SdkValidationError("inviter", 'required', "Missing required property 'inviter'");
+        }
+        if (!property_exists($data, "login")) {
+            throw new SdkValidationError("login", 'required', "Missing required property 'login'");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "role") || $data->role === null) {
+            throw new SdkValidationError("role", 'required', "Required property 'role' is missing or null");
+        }
+        if (!property_exists($data, "team_count") || $data->team_count === null) {
+            throw new SdkValidationError("team_count", 'required', "Required property 'team_count' is missing or null");
+        }
         return new self(
             createdAt: SdkClient::stringValue($data->created_at),
             email: ($data->email === null ? null : SdkClient::stringValue($data->email)),
@@ -301,10 +323,18 @@ class WebhookOrganizationMemberInvited implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "invitation") || $data->invitation === null) { throw new SdkValidationError("invitation", 'required', "Required property 'invitation' is missing or null"); }
-        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "invitation") || $data->invitation === null) {
+            throw new SdkValidationError("invitation", 'required', "Required property 'invitation' is missing or null");
+        }
+        if (!property_exists($data, "organization") || $data->organization === null) {
+            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookOrganizationMemberInvitedActionEnum::class),
             invitation: SdkClient::hydrateClass($data->invitation, WebhookOrganizationMemberInvitedInvitation::class),

@@ -75,10 +75,18 @@ class WebhookPullRequestReviewCommentDeletedPullRequestAutoMerge implements \Jso
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "commit_message")) { throw new SdkValidationError("commit_message", 'required', "Missing required property 'commit_message'"); }
-        if (!property_exists($data, "commit_title")) { throw new SdkValidationError("commit_title", 'required', "Missing required property 'commit_title'"); }
-        if (!property_exists($data, "enabled_by")) { throw new SdkValidationError("enabled_by", 'required', "Missing required property 'enabled_by'"); }
-        if (!property_exists($data, "merge_method") || $data->merge_method === null) { throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null"); }
+        if (!property_exists($data, "commit_message")) {
+            throw new SdkValidationError("commit_message", 'required', "Missing required property 'commit_message'");
+        }
+        if (!property_exists($data, "commit_title")) {
+            throw new SdkValidationError("commit_title", 'required', "Missing required property 'commit_title'");
+        }
+        if (!property_exists($data, "enabled_by")) {
+            throw new SdkValidationError("enabled_by", 'required', "Missing required property 'enabled_by'");
+        }
+        if (!property_exists($data, "merge_method") || $data->merge_method === null) {
+            throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null");
+        }
         return new self(
             commitMessage: ($data->commit_message === null ? null : SdkClient::stringValue($data->commit_message)),
             commitTitle: ($data->commit_title === null ? null : SdkClient::stringValue($data->commit_title)),
@@ -96,11 +104,26 @@ final readonly class WebhookPullRequestReviewCommentDeletedPullRequestBaseRepoPu
     public const ALL = "all";
     public const COLLABORATORS_ONLY = "collaborators_only";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -181,11 +204,21 @@ class WebhookPullRequestReviewCommentDeletedPullRequestBaseRepoLicense implement
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "spdx_id") || $data->spdx_id === null) { throw new SdkValidationError("spdx_id", 'required', "Required property 'spdx_id' is missing or null"); }
-        if (!property_exists($data, "url")) { throw new SdkValidationError("url", 'required', "Missing required property 'url'"); }
+        if (!property_exists($data, "key") || $data->key === null) {
+            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "spdx_id") || $data->spdx_id === null) {
+            throw new SdkValidationError("spdx_id", 'required', "Required property 'spdx_id' is missing or null");
+        }
+        if (!property_exists($data, "url")) {
+            throw new SdkValidationError("url", 'required', "Missing required property 'url'");
+        }
         return new self(
             key: SdkClient::stringValue($data->key),
             name: SdkClient::stringValue($data->name),
@@ -205,11 +238,26 @@ final readonly class WebhookPullRequestReviewCommentDeletedPullRequestBaseRepoMe
     public const PR_TITLE = "PR_TITLE";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -220,11 +268,26 @@ final readonly class WebhookPullRequestReviewCommentDeletedPullRequestBaseRepoMe
     public const PR_TITLE = "PR_TITLE";
     public const MERGE_MESSAGE = "MERGE_MESSAGE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -236,9 +299,24 @@ final readonly class WebhookPullRequestReviewCommentDeletedPullRequestBaseRepoOw
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

@@ -121,11 +121,21 @@ class WebhookWorkflowDispatch implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "inputs")) { throw new SdkValidationError("inputs", 'required', "Missing required property 'inputs'"); }
-        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
-        if (!property_exists($data, "workflow") || $data->workflow === null) { throw new SdkValidationError("workflow", 'required', "Required property 'workflow' is missing or null"); }
+        if (!property_exists($data, "inputs")) {
+            throw new SdkValidationError("inputs", 'required', "Missing required property 'inputs'");
+        }
+        if (!property_exists($data, "ref") || $data->ref === null) {
+            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
+        if (!property_exists($data, "workflow") || $data->workflow === null) {
+            throw new SdkValidationError("workflow", 'required', "Required property 'workflow' is missing or null");
+        }
         return new self(
             inputs: ($data->inputs === null ? null : SdkClient::stringMapValue($data->inputs)),
             ref: SdkClient::stringValue($data->ref),

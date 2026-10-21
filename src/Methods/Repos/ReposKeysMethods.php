@@ -43,7 +43,7 @@ trait ReposKeysMethods
     public static function reposCreateDeployKey(ClientConfig $clientConfig, string $owner, string $repo, string $key, string|SdkNotGiven $title = SdkNotGiven::Value, bool|SdkNotGiven $readOnly = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeployKey
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/keys", $clientConfig, body: ['key' => $key, 'title' => $title, 'read_only' => $readOnly], returnType: DeployKey::class, decoder: 'json', operationId: 'reposCreateDeployKey', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/keys", $clientConfig, body: ['key' => $key, 'title' => $title, 'read_only' => $readOnly], returnType: DeployKey::class, decoder: 'json', operationId: 'reposCreateDeployKey', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeployKey::class));
     }
 
@@ -61,7 +61,7 @@ trait ReposKeysMethods
     public static function reposGetDeployKey(ClientConfig $clientConfig, string $owner, string $repo, int $keyId, ?RequestOptions $requestOptions = null): DeployKey
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/keys/" . SdkClient::encodePathSegment($keyId) . "", $clientConfig, returnType: DeployKey::class, decoder: 'json', operationId: 'reposGetDeployKey', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/keys/" . SdkClient::encodePathSegment($keyId) . "", $clientConfig, returnType: DeployKey::class, decoder: 'json', operationId: 'reposGetDeployKey', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeployKey::class));
     }
 

@@ -26,7 +26,7 @@ trait AppsMethodsPart2
     public static function appsScopeToken(ClientConfig $clientConfig, string $clientId, string $accessToken, string|SdkNotGiven $target = SdkNotGiven::Value, int|SdkNotGiven $targetId = SdkNotGiven::Value, array|SdkNotGiven $repositories = SdkNotGiven::Value, array|SdkNotGiven $repositoryIds = SdkNotGiven::Value, AppPermissions|SdkNotGiven $permissions = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Authorization
     {
 
-        $sdkResponse = SdkClient::request('POST', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token/scoped", $clientConfig, body: ['access_token' => $accessToken, 'target' => $target, 'target_id' => $targetId, 'repositories' => $repositories, 'repository_ids' => $repositoryIds, 'permissions' => $permissions], returnType: Authorization::class, decoder: 'json', operationId: 'appsScopeToken', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token/scoped", $clientConfig, body: ['access_token' => $accessToken, 'target' => $target, 'target_id' => $targetId, 'repositories' => $repositories, 'repository_ids' => $repositoryIds, 'permissions' => $permissions], returnType: Authorization::class, decoder: 'json', operationId: 'appsScopeToken', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Authorization::class));
     }
 
@@ -42,7 +42,7 @@ trait AppsMethodsPart2
     public static function appsGetBySlug(ClientConfig $clientConfig, string $appSlug, ?RequestOptions $requestOptions = null): Integration|null
     {
 
-        $sdkResponse = SdkClient::request('GET', "/apps/" . SdkClient::encodePathSegment($appSlug) . "", $clientConfig, returnType: Integration::class, decoder: 'json', operationId: 'appsGetBySlug', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/apps/" . SdkClient::encodePathSegment($appSlug) . "", $clientConfig, returnType: Integration::class, decoder: 'json', operationId: 'appsGetBySlug', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Integration::class));
     }
 
@@ -59,7 +59,7 @@ trait AppsMethodsPart2
     public static function appsListReposAccessibleToInstallation(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): AppsListReposAccessibleToInstallationResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/installation/repositories", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: AppsListReposAccessibleToInstallationResponse::class, decoder: 'json', operationId: 'appsListReposAccessibleToInstallation', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/installation/repositories", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: AppsListReposAccessibleToInstallationResponse::class, decoder: 'json', operationId: 'appsListReposAccessibleToInstallation', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AppsListReposAccessibleToInstallationResponse::class));
     }
 
@@ -85,7 +85,7 @@ trait AppsMethodsPart2
     public static function appsGetSubscriptionPlanForAccount(ClientConfig $clientConfig, int $accountId, ?RequestOptions $requestOptions = null): MarketplacePurchase
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/accounts/" . SdkClient::encodePathSegment($accountId) . "", $clientConfig, returnType: MarketplacePurchase::class, decoder: 'json', operationId: 'appsGetSubscriptionPlanForAccount', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/accounts/" . SdkClient::encodePathSegment($accountId) . "", $clientConfig, returnType: MarketplacePurchase::class, decoder: 'json', operationId: 'appsGetSubscriptionPlanForAccount', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, MarketplacePurchase::class));
     }
 
@@ -102,7 +102,7 @@ trait AppsMethodsPart2
     public static function appsListPlans(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/plans", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListPlans', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/plans", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListPlans', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MarketplaceListingPlan::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -122,7 +122,7 @@ trait AppsMethodsPart2
     public static function appsListAccountsForPlan(ClientConfig $clientConfig, int $planId, AppsListAccountsForPlanSort|SdkNotGiven $sort = SdkNotGiven::Value, AppsListAccountsForPlanDirection|SdkNotGiven $direction = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/plans/" . SdkClient::encodePathSegment($planId) . "/accounts", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListAccountsForPlan', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/plans/" . SdkClient::encodePathSegment($planId) . "/accounts", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListAccountsForPlan', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MarketplacePurchase::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -138,7 +138,7 @@ trait AppsMethodsPart2
     public static function appsGetSubscriptionPlanForAccountStubbed(ClientConfig $clientConfig, int $accountId, ?RequestOptions $requestOptions = null): MarketplacePurchase
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/accounts/" . SdkClient::encodePathSegment($accountId) . "", $clientConfig, returnType: MarketplacePurchase::class, decoder: 'json', operationId: 'appsGetSubscriptionPlanForAccountStubbed', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/accounts/" . SdkClient::encodePathSegment($accountId) . "", $clientConfig, returnType: MarketplacePurchase::class, decoder: 'json', operationId: 'appsGetSubscriptionPlanForAccountStubbed', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, MarketplacePurchase::class));
     }
 
@@ -155,7 +155,7 @@ trait AppsMethodsPart2
     public static function appsListPlansStubbed(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/plans", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListPlansStubbed', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/plans", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListPlansStubbed', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MarketplaceListingPlan::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -175,7 +175,7 @@ trait AppsMethodsPart2
     public static function appsListAccountsForPlanStubbed(ClientConfig $clientConfig, int $planId, AppsListAccountsForPlanStubbedSort|SdkNotGiven $sort = SdkNotGiven::Value, AppsListAccountsForPlanStubbedDirection|SdkNotGiven $direction = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/plans/" . SdkClient::encodePathSegment($planId) . "/accounts", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListAccountsForPlanStubbed', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/marketplace_listing/stubbed/plans/" . SdkClient::encodePathSegment($planId) . "/accounts", $clientConfig, query: ['sort' => new SdkQueryValue($sort, "form", true), 'direction' => new SdkQueryValue($direction, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListAccountsForPlanStubbed', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MarketplacePurchase::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -208,7 +208,7 @@ trait AppsMethodsPart2
     public static function appsGetRepoInstallation(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): Installation
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/installation", $clientConfig, returnType: Installation::class, decoder: 'json', operationId: 'appsGetRepoInstallation', requestOptions: $requestOptions, errors: [301 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/installation", $clientConfig, returnType: Installation::class, decoder: 'json', operationId: 'appsGetRepoInstallation', requestOptions: $requestOptions, errors: [301 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Installation::class));
     }
 
@@ -225,7 +225,7 @@ trait AppsMethodsPart2
     public static function appsListInstallationsForAuthenticatedUser(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): AppsListInstallationsForAuthenticatedUserResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/installations", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: AppsListInstallationsForAuthenticatedUserResponse::class, decoder: 'json', operationId: 'appsListInstallationsForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/installations", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: AppsListInstallationsForAuthenticatedUserResponse::class, decoder: 'json', operationId: 'appsListInstallationsForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AppsListInstallationsForAuthenticatedUserResponse::class));
     }
 
@@ -243,7 +243,7 @@ trait AppsMethodsPart2
     public static function appsListInstallationReposForAuthenticatedUser(ClientConfig $clientConfig, int $installationId, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): AppsListInstallationReposForAuthenticatedUserResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/installations/" . SdkClient::encodePathSegment($installationId) . "/repositories", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: AppsListInstallationReposForAuthenticatedUserResponse::class, decoder: 'json', operationId: 'appsListInstallationReposForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/installations/" . SdkClient::encodePathSegment($installationId) . "/repositories", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: AppsListInstallationReposForAuthenticatedUserResponse::class, decoder: 'json', operationId: 'appsListInstallationReposForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AppsListInstallationReposForAuthenticatedUserResponse::class));
     }
 
@@ -259,7 +259,7 @@ trait AppsMethodsPart2
     public static function appsAddRepoToInstallationForAuthenticatedUser(ClientConfig $clientConfig, int $installationId, int $repositoryId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/user/installations/" . SdkClient::encodePathSegment($installationId) . "/repositories/" . SdkClient::encodePathSegment($repositoryId) . "", $clientConfig, decoder: 'empty', operationId: 'appsAddRepoToInstallationForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/user/installations/" . SdkClient::encodePathSegment($installationId) . "/repositories/" . SdkClient::encodePathSegment($repositoryId) . "", $clientConfig, decoder: 'empty', operationId: 'appsAddRepoToInstallationForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -274,7 +274,7 @@ trait AppsMethodsPart2
     public static function appsRemoveRepoFromInstallationForAuthenticatedUser(ClientConfig $clientConfig, int $installationId, int $repositoryId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/user/installations/" . SdkClient::encodePathSegment($installationId) . "/repositories/" . SdkClient::encodePathSegment($repositoryId) . "", $clientConfig, decoder: 'empty', operationId: 'appsRemoveRepoFromInstallationForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/user/installations/" . SdkClient::encodePathSegment($installationId) . "/repositories/" . SdkClient::encodePathSegment($repositoryId) . "", $clientConfig, decoder: 'empty', operationId: 'appsRemoveRepoFromInstallationForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -290,7 +290,7 @@ trait AppsMethodsPart2
     public static function appsListSubscriptionsForAuthenticatedUser(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/user/marketplace_purchases", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListSubscriptionsForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/user/marketplace_purchases", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListSubscriptionsForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, UserMarketplacePurchase::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

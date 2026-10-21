@@ -125,9 +125,15 @@ class WebhookCodeScanningAlertClosedByUserAlertRule implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "severity")) { throw new SdkValidationError("severity", 'required', "Missing required property 'severity'"); }
+        if (!property_exists($data, "description") || $data->description === null) {
+            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "severity")) {
+            throw new SdkValidationError("severity", 'required', "Missing required property 'severity'");
+        }
         return new self(
             description: SdkClient::stringValue($data->description),
             id: SdkClient::stringValue($data->id),
@@ -149,11 +155,26 @@ final readonly class WebhookCodeScanningAlertClosedByUserAlertStateEnum implemen
     public const DISMISSED = "dismissed";
     public const FIXED = "fixed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -216,8 +237,12 @@ class WebhookCodeScanningAlertClosedByUserAlertTool implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "version")) { throw new SdkValidationError("version", 'required', "Missing required property 'version'"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "version")) {
+            throw new SdkValidationError("version", 'required', "Missing required property 'version'");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             version: ($data->version === null ? null : SdkClient::stringValue($data->version)),
@@ -235,9 +260,24 @@ final readonly class WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedB
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

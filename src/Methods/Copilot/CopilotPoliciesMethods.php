@@ -20,7 +20,7 @@ trait CopilotPoliciesMethods
     public static function copilotSetEnterpriseCodingAgentPolicy(ClientConfig $clientConfig, string $enterprise, CopilotSetEnterpriseCodingAgentPolicyPolicyState $policyState, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/policies/coding_agent", $clientConfig, body: ['policy_state' => $policyState], decoder: 'empty', operationId: 'copilotSetEnterpriseCodingAgentPolicy', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/policies/coding_agent", $clientConfig, body: ['policy_state' => $policyState], decoder: 'empty', operationId: 'copilotSetEnterpriseCodingAgentPolicy', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -36,7 +36,7 @@ trait CopilotPoliciesMethods
     public static function copilotAddOrganizationsToEnterpriseCodingAgentPolicy(ClientConfig $clientConfig, string $enterprise, array|SdkNotGiven $organizations = SdkNotGiven::Value, array|SdkNotGiven $customProperties = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/policies/coding_agent/organizations", $clientConfig, body: ['organizations' => $organizations, 'custom_properties' => $customProperties], decoder: 'empty', operationId: 'copilotAddOrganizationsToEnterpriseCodingAgentPolicy', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/policies/coding_agent/organizations", $clientConfig, body: ['organizations' => $organizations, 'custom_properties' => $customProperties], decoder: 'empty', operationId: 'copilotAddOrganizationsToEnterpriseCodingAgentPolicy', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -52,6 +52,6 @@ trait CopilotPoliciesMethods
     public static function copilotRemoveOrganizationsFromEnterpriseCodingAgentPolicy(ClientConfig $clientConfig, string $enterprise, array|SdkNotGiven $organizations = SdkNotGiven::Value, array|SdkNotGiven $customProperties = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/policies/coding_agent/organizations", $clientConfig, body: ['organizations' => $organizations, 'custom_properties' => $customProperties], decoder: 'empty', operationId: 'copilotRemoveOrganizationsFromEnterpriseCodingAgentPolicy', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/copilot/policies/coding_agent/organizations", $clientConfig, body: ['organizations' => $organizations, 'custom_properties' => $customProperties], decoder: 'empty', operationId: 'copilotRemoveOrganizationsFromEnterpriseCodingAgentPolicy', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

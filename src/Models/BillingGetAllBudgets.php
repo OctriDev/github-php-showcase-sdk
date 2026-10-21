@@ -93,7 +93,9 @@ class GetAllBudgets implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "budgets") || $data->budgets === null) { throw new SdkValidationError("budgets", 'required', "Required property 'budgets' is missing or null"); }
+        if (!property_exists($data, "budgets") || $data->budgets === null) {
+            throw new SdkValidationError("budgets", 'required', "Required property 'budgets' is missing or null");
+        }
         return new self(
             budgets: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Budget::class), SdkClient::arrayValue($data->budgets))),
             user: (property_exists($data, "user") && $data->user !== null ? SdkClient::stringValue($data->user) : SdkNotGiven::Value),

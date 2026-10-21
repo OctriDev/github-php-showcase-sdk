@@ -58,7 +58,7 @@ trait ActionsJobsMethods
     public static function actionsReRunJobForWorkflowRun(ClientConfig $clientConfig, string $owner, string $repo, int $jobId, bool|SdkNotGiven $enableDebugLogging = SdkNotGiven::Value, bool|SdkNotGiven $enableDebugger = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/jobs/" . SdkClient::encodePathSegment($jobId) . "/rerun", $clientConfig, body: ['enable_debug_logging' => $enableDebugLogging, 'enable_debugger' => $enableDebugger], returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsReRunJobForWorkflowRun', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/jobs/" . SdkClient::encodePathSegment($jobId) . "/rerun", $clientConfig, body: ['enable_debug_logging' => $enableDebugLogging, 'enable_debugger' => $enableDebugger], returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsReRunJobForWorkflowRun', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 

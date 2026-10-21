@@ -55,8 +55,12 @@ class HookDeliveryRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "headers")) { throw new SdkValidationError("headers", 'required', "Missing required property 'headers'"); }
-        if (!property_exists($data, "payload")) { throw new SdkValidationError("payload", 'required', "Missing required property 'payload'"); }
+        if (!property_exists($data, "headers")) {
+            throw new SdkValidationError("headers", 'required', "Missing required property 'headers'");
+        }
+        if (!property_exists($data, "payload")) {
+            throw new SdkValidationError("payload", 'required', "Missing required property 'payload'");
+        }
         return new self(
             headers: ($data->headers === null ? null : SdkClient::stringMapValue($data->headers)),
             payload: ($data->payload === null ? null : SdkClient::stringMapValue($data->payload)),
@@ -112,8 +116,12 @@ class HookDeliveryResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "headers")) { throw new SdkValidationError("headers", 'required', "Missing required property 'headers'"); }
-        if (!property_exists($data, "payload")) { throw new SdkValidationError("payload", 'required', "Missing required property 'payload'"); }
+        if (!property_exists($data, "headers")) {
+            throw new SdkValidationError("headers", 'required', "Missing required property 'headers'");
+        }
+        if (!property_exists($data, "payload")) {
+            throw new SdkValidationError("payload", 'required', "Missing required property 'payload'");
+        }
         return new self(
             headers: ($data->headers === null ? null : SdkClient::stringMapValue($data->headers)),
             payload: ($data->payload === null ? null : SdkClient::stringValue($data->payload)),
@@ -303,19 +311,45 @@ class HookDelivery implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "guid") || $data->guid === null) { throw new SdkValidationError("guid", 'required', "Required property 'guid' is missing or null"); }
-        if (!property_exists($data, "delivered_at") || $data->delivered_at === null) { throw new SdkValidationError("delivered_at", 'required', "Required property 'delivered_at' is missing or null"); }
-        if (!property_exists($data, "redelivery") || $data->redelivery === null) { throw new SdkValidationError("redelivery", 'required', "Required property 'redelivery' is missing or null"); }
-        if (!property_exists($data, "duration") || $data->duration === null) { throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
-        if (!property_exists($data, "status_code") || $data->status_code === null) { throw new SdkValidationError("status_code", 'required', "Required property 'status_code' is missing or null"); }
-        if (!property_exists($data, "event") || $data->event === null) { throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null"); }
-        if (!property_exists($data, "action")) { throw new SdkValidationError("action", 'required', "Missing required property 'action'"); }
-        if (!property_exists($data, "installation_id")) { throw new SdkValidationError("installation_id", 'required', "Missing required property 'installation_id'"); }
-        if (!property_exists($data, "repository_id")) { throw new SdkValidationError("repository_id", 'required', "Missing required property 'repository_id'"); }
-        if (!property_exists($data, "request") || $data->request === null) { throw new SdkValidationError("request", 'required', "Required property 'request' is missing or null"); }
-        if (!property_exists($data, "response") || $data->response === null) { throw new SdkValidationError("response", 'required', "Required property 'response' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "guid") || $data->guid === null) {
+            throw new SdkValidationError("guid", 'required', "Required property 'guid' is missing or null");
+        }
+        if (!property_exists($data, "delivered_at") || $data->delivered_at === null) {
+            throw new SdkValidationError("delivered_at", 'required', "Required property 'delivered_at' is missing or null");
+        }
+        if (!property_exists($data, "redelivery") || $data->redelivery === null) {
+            throw new SdkValidationError("redelivery", 'required', "Required property 'redelivery' is missing or null");
+        }
+        if (!property_exists($data, "duration") || $data->duration === null) {
+            throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
+        if (!property_exists($data, "status_code") || $data->status_code === null) {
+            throw new SdkValidationError("status_code", 'required', "Required property 'status_code' is missing or null");
+        }
+        if (!property_exists($data, "event") || $data->event === null) {
+            throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null");
+        }
+        if (!property_exists($data, "action")) {
+            throw new SdkValidationError("action", 'required', "Missing required property 'action'");
+        }
+        if (!property_exists($data, "installation_id")) {
+            throw new SdkValidationError("installation_id", 'required', "Missing required property 'installation_id'");
+        }
+        if (!property_exists($data, "repository_id")) {
+            throw new SdkValidationError("repository_id", 'required', "Missing required property 'repository_id'");
+        }
+        if (!property_exists($data, "request") || $data->request === null) {
+            throw new SdkValidationError("request", 'required', "Required property 'request' is missing or null");
+        }
+        if (!property_exists($data, "response") || $data->response === null) {
+            throw new SdkValidationError("response", 'required', "Required property 'response' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             guid: SdkClient::stringValue($data->guid),

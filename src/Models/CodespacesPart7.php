@@ -16,11 +16,26 @@ final readonly class NullableCodespaceMachinePrebuildAvailabilityEnum implements
     public const READY = "ready";
     public const IN_PROGRESS = "in_progress";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -121,13 +136,27 @@ class NullableCodespaceMachine implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "display_name") || $data->display_name === null) { throw new SdkValidationError("display_name", 'required', "Required property 'display_name' is missing or null"); }
-        if (!property_exists($data, "operating_system") || $data->operating_system === null) { throw new SdkValidationError("operating_system", 'required', "Required property 'operating_system' is missing or null"); }
-        if (!property_exists($data, "storage_in_bytes") || $data->storage_in_bytes === null) { throw new SdkValidationError("storage_in_bytes", 'required', "Required property 'storage_in_bytes' is missing or null"); }
-        if (!property_exists($data, "memory_in_bytes") || $data->memory_in_bytes === null) { throw new SdkValidationError("memory_in_bytes", 'required', "Required property 'memory_in_bytes' is missing or null"); }
-        if (!property_exists($data, "cpus") || $data->cpus === null) { throw new SdkValidationError("cpus", 'required', "Required property 'cpus' is missing or null"); }
-        if (!property_exists($data, "prebuild_availability")) { throw new SdkValidationError("prebuild_availability", 'required', "Missing required property 'prebuild_availability'"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "display_name") || $data->display_name === null) {
+            throw new SdkValidationError("display_name", 'required', "Required property 'display_name' is missing or null");
+        }
+        if (!property_exists($data, "operating_system") || $data->operating_system === null) {
+            throw new SdkValidationError("operating_system", 'required', "Required property 'operating_system' is missing or null");
+        }
+        if (!property_exists($data, "storage_in_bytes") || $data->storage_in_bytes === null) {
+            throw new SdkValidationError("storage_in_bytes", 'required', "Required property 'storage_in_bytes' is missing or null");
+        }
+        if (!property_exists($data, "memory_in_bytes") || $data->memory_in_bytes === null) {
+            throw new SdkValidationError("memory_in_bytes", 'required', "Required property 'memory_in_bytes' is missing or null");
+        }
+        if (!property_exists($data, "cpus") || $data->cpus === null) {
+            throw new SdkValidationError("cpus", 'required', "Required property 'cpus' is missing or null");
+        }
+        if (!property_exists($data, "prebuild_availability")) {
+            throw new SdkValidationError("prebuild_availability", 'required', "Missing required property 'prebuild_availability'");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             displayName: SdkClient::stringValue($data->display_name),
@@ -198,9 +227,15 @@ class RepoCodespacesSecret implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             createdAt: SdkClient::stringValue($data->created_at),

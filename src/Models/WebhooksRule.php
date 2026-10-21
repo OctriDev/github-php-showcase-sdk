@@ -321,31 +321,81 @@ class WebhooksRule implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "admin_enforced") || $data->admin_enforced === null) { throw new SdkValidationError("admin_enforced", 'required', "Required property 'admin_enforced' is missing or null"); }
-        if (!property_exists($data, "allow_deletions_enforcement_level") || $data->allow_deletions_enforcement_level === null) { throw new SdkValidationError("allow_deletions_enforcement_level", 'required', "Required property 'allow_deletions_enforcement_level' is missing or null"); }
-        if (!property_exists($data, "allow_force_pushes_enforcement_level") || $data->allow_force_pushes_enforcement_level === null) { throw new SdkValidationError("allow_force_pushes_enforcement_level", 'required', "Required property 'allow_force_pushes_enforcement_level' is missing or null"); }
-        if (!property_exists($data, "authorized_actor_names") || $data->authorized_actor_names === null) { throw new SdkValidationError("authorized_actor_names", 'required', "Required property 'authorized_actor_names' is missing or null"); }
-        if (!property_exists($data, "authorized_actors_only") || $data->authorized_actors_only === null) { throw new SdkValidationError("authorized_actors_only", 'required', "Required property 'authorized_actors_only' is missing or null"); }
-        if (!property_exists($data, "authorized_dismissal_actors_only") || $data->authorized_dismissal_actors_only === null) { throw new SdkValidationError("authorized_dismissal_actors_only", 'required', "Required property 'authorized_dismissal_actors_only' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "dismiss_stale_reviews_on_push") || $data->dismiss_stale_reviews_on_push === null) { throw new SdkValidationError("dismiss_stale_reviews_on_push", 'required', "Required property 'dismiss_stale_reviews_on_push' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "ignore_approvals_from_contributors") || $data->ignore_approvals_from_contributors === null) { throw new SdkValidationError("ignore_approvals_from_contributors", 'required', "Required property 'ignore_approvals_from_contributors' is missing or null"); }
-        if (!property_exists($data, "linear_history_requirement_enforcement_level") || $data->linear_history_requirement_enforcement_level === null) { throw new SdkValidationError("linear_history_requirement_enforcement_level", 'required', "Required property 'linear_history_requirement_enforcement_level' is missing or null"); }
-        if (!property_exists($data, "lock_branch_enforcement_level") || $data->lock_branch_enforcement_level === null) { throw new SdkValidationError("lock_branch_enforcement_level", 'required', "Required property 'lock_branch_enforcement_level' is missing or null"); }
-        if (!property_exists($data, "merge_queue_enforcement_level") || $data->merge_queue_enforcement_level === null) { throw new SdkValidationError("merge_queue_enforcement_level", 'required', "Required property 'merge_queue_enforcement_level' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "pull_request_reviews_enforcement_level") || $data->pull_request_reviews_enforcement_level === null) { throw new SdkValidationError("pull_request_reviews_enforcement_level", 'required', "Required property 'pull_request_reviews_enforcement_level' is missing or null"); }
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
-        if (!property_exists($data, "require_code_owner_review") || $data->require_code_owner_review === null) { throw new SdkValidationError("require_code_owner_review", 'required', "Required property 'require_code_owner_review' is missing or null"); }
-        if (!property_exists($data, "required_approving_review_count") || $data->required_approving_review_count === null) { throw new SdkValidationError("required_approving_review_count", 'required', "Required property 'required_approving_review_count' is missing or null"); }
-        if (!property_exists($data, "required_conversation_resolution_level") || $data->required_conversation_resolution_level === null) { throw new SdkValidationError("required_conversation_resolution_level", 'required', "Required property 'required_conversation_resolution_level' is missing or null"); }
-        if (!property_exists($data, "required_deployments_enforcement_level") || $data->required_deployments_enforcement_level === null) { throw new SdkValidationError("required_deployments_enforcement_level", 'required', "Required property 'required_deployments_enforcement_level' is missing or null"); }
-        if (!property_exists($data, "required_status_checks") || $data->required_status_checks === null) { throw new SdkValidationError("required_status_checks", 'required', "Required property 'required_status_checks' is missing or null"); }
-        if (!property_exists($data, "required_status_checks_enforcement_level") || $data->required_status_checks_enforcement_level === null) { throw new SdkValidationError("required_status_checks_enforcement_level", 'required', "Required property 'required_status_checks_enforcement_level' is missing or null"); }
-        if (!property_exists($data, "signature_requirement_enforcement_level") || $data->signature_requirement_enforcement_level === null) { throw new SdkValidationError("signature_requirement_enforcement_level", 'required', "Required property 'signature_requirement_enforcement_level' is missing or null"); }
-        if (!property_exists($data, "strict_required_status_checks_policy") || $data->strict_required_status_checks_policy === null) { throw new SdkValidationError("strict_required_status_checks_policy", 'required', "Required property 'strict_required_status_checks_policy' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "admin_enforced") || $data->admin_enforced === null) {
+            throw new SdkValidationError("admin_enforced", 'required', "Required property 'admin_enforced' is missing or null");
+        }
+        if (!property_exists($data, "allow_deletions_enforcement_level") || $data->allow_deletions_enforcement_level === null) {
+            throw new SdkValidationError("allow_deletions_enforcement_level", 'required', "Required property 'allow_deletions_enforcement_level' is missing or null");
+        }
+        if (!property_exists($data, "allow_force_pushes_enforcement_level") || $data->allow_force_pushes_enforcement_level === null) {
+            throw new SdkValidationError("allow_force_pushes_enforcement_level", 'required', "Required property 'allow_force_pushes_enforcement_level' is missing or null");
+        }
+        if (!property_exists($data, "authorized_actor_names") || $data->authorized_actor_names === null) {
+            throw new SdkValidationError("authorized_actor_names", 'required', "Required property 'authorized_actor_names' is missing or null");
+        }
+        if (!property_exists($data, "authorized_actors_only") || $data->authorized_actors_only === null) {
+            throw new SdkValidationError("authorized_actors_only", 'required', "Required property 'authorized_actors_only' is missing or null");
+        }
+        if (!property_exists($data, "authorized_dismissal_actors_only") || $data->authorized_dismissal_actors_only === null) {
+            throw new SdkValidationError("authorized_dismissal_actors_only", 'required', "Required property 'authorized_dismissal_actors_only' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "dismiss_stale_reviews_on_push") || $data->dismiss_stale_reviews_on_push === null) {
+            throw new SdkValidationError("dismiss_stale_reviews_on_push", 'required', "Required property 'dismiss_stale_reviews_on_push' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "ignore_approvals_from_contributors") || $data->ignore_approvals_from_contributors === null) {
+            throw new SdkValidationError("ignore_approvals_from_contributors", 'required', "Required property 'ignore_approvals_from_contributors' is missing or null");
+        }
+        if (!property_exists($data, "linear_history_requirement_enforcement_level") || $data->linear_history_requirement_enforcement_level === null) {
+            throw new SdkValidationError("linear_history_requirement_enforcement_level", 'required', "Required property 'linear_history_requirement_enforcement_level' is missing or null");
+        }
+        if (!property_exists($data, "lock_branch_enforcement_level") || $data->lock_branch_enforcement_level === null) {
+            throw new SdkValidationError("lock_branch_enforcement_level", 'required', "Required property 'lock_branch_enforcement_level' is missing or null");
+        }
+        if (!property_exists($data, "merge_queue_enforcement_level") || $data->merge_queue_enforcement_level === null) {
+            throw new SdkValidationError("merge_queue_enforcement_level", 'required', "Required property 'merge_queue_enforcement_level' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "pull_request_reviews_enforcement_level") || $data->pull_request_reviews_enforcement_level === null) {
+            throw new SdkValidationError("pull_request_reviews_enforcement_level", 'required', "Required property 'pull_request_reviews_enforcement_level' is missing or null");
+        }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
+            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
+        }
+        if (!property_exists($data, "require_code_owner_review") || $data->require_code_owner_review === null) {
+            throw new SdkValidationError("require_code_owner_review", 'required', "Required property 'require_code_owner_review' is missing or null");
+        }
+        if (!property_exists($data, "required_approving_review_count") || $data->required_approving_review_count === null) {
+            throw new SdkValidationError("required_approving_review_count", 'required', "Required property 'required_approving_review_count' is missing or null");
+        }
+        if (!property_exists($data, "required_conversation_resolution_level") || $data->required_conversation_resolution_level === null) {
+            throw new SdkValidationError("required_conversation_resolution_level", 'required', "Required property 'required_conversation_resolution_level' is missing or null");
+        }
+        if (!property_exists($data, "required_deployments_enforcement_level") || $data->required_deployments_enforcement_level === null) {
+            throw new SdkValidationError("required_deployments_enforcement_level", 'required', "Required property 'required_deployments_enforcement_level' is missing or null");
+        }
+        if (!property_exists($data, "required_status_checks") || $data->required_status_checks === null) {
+            throw new SdkValidationError("required_status_checks", 'required', "Required property 'required_status_checks' is missing or null");
+        }
+        if (!property_exists($data, "required_status_checks_enforcement_level") || $data->required_status_checks_enforcement_level === null) {
+            throw new SdkValidationError("required_status_checks_enforcement_level", 'required', "Required property 'required_status_checks_enforcement_level' is missing or null");
+        }
+        if (!property_exists($data, "signature_requirement_enforcement_level") || $data->signature_requirement_enforcement_level === null) {
+            throw new SdkValidationError("signature_requirement_enforcement_level", 'required', "Required property 'signature_requirement_enforcement_level' is missing or null");
+        }
+        if (!property_exists($data, "strict_required_status_checks_policy") || $data->strict_required_status_checks_policy === null) {
+            throw new SdkValidationError("strict_required_status_checks_policy", 'required', "Required property 'strict_required_status_checks_policy' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
         return new self(
             adminEnforced: SdkClient::boolValue($data->admin_enforced),
             allowDeletionsEnforcementLevel: SdkClient::hydrateStringEnumOrString($data->allow_deletions_enforcement_level, WebhooksRuleAllowDeletionsEnforcementLevelEnum::class),

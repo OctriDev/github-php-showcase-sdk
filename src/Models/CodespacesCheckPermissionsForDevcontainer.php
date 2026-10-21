@@ -45,7 +45,9 @@ class CodespacesPermissionsCheckForDevcontainer implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "accepted") || $data->accepted === null) { throw new SdkValidationError("accepted", 'required', "Required property 'accepted' is missing or null"); }
+        if (!property_exists($data, "accepted") || $data->accepted === null) {
+            throw new SdkValidationError("accepted", 'required', "Required property 'accepted' is missing or null");
+        }
         return new self(
             accepted: SdkClient::boolValue($data->accepted),
         );

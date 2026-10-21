@@ -125,15 +125,33 @@ class Thread implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "subject") || $data->subject === null) { throw new SdkValidationError("subject", 'required', "Required property 'subject' is missing or null"); }
-        if (!property_exists($data, "reason") || $data->reason === null) { throw new SdkValidationError("reason", 'required', "Required property 'reason' is missing or null"); }
-        if (!property_exists($data, "unread") || $data->unread === null) { throw new SdkValidationError("unread", 'required', "Required property 'unread' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "last_read_at")) { throw new SdkValidationError("last_read_at", 'required', "Missing required property 'last_read_at'"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "subscription_url") || $data->subscription_url === null) { throw new SdkValidationError("subscription_url", 'required', "Required property 'subscription_url' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "subject") || $data->subject === null) {
+            throw new SdkValidationError("subject", 'required', "Required property 'subject' is missing or null");
+        }
+        if (!property_exists($data, "reason") || $data->reason === null) {
+            throw new SdkValidationError("reason", 'required', "Required property 'reason' is missing or null");
+        }
+        if (!property_exists($data, "unread") || $data->unread === null) {
+            throw new SdkValidationError("unread", 'required', "Required property 'unread' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "last_read_at")) {
+            throw new SdkValidationError("last_read_at", 'required', "Missing required property 'last_read_at'");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "subscription_url") || $data->subscription_url === null) {
+            throw new SdkValidationError("subscription_url", 'required', "Required property 'subscription_url' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             repository: SdkClient::hydrateClass($data->repository, MinimalRepository::class),
@@ -250,11 +268,21 @@ class ThreadSubscription implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "subscribed") || $data->subscribed === null) { throw new SdkValidationError("subscribed", 'required', "Required property 'subscribed' is missing or null"); }
-        if (!property_exists($data, "ignored") || $data->ignored === null) { throw new SdkValidationError("ignored", 'required', "Required property 'ignored' is missing or null"); }
-        if (!property_exists($data, "reason")) { throw new SdkValidationError("reason", 'required', "Missing required property 'reason'"); }
-        if (!property_exists($data, "created_at")) { throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "subscribed") || $data->subscribed === null) {
+            throw new SdkValidationError("subscribed", 'required', "Required property 'subscribed' is missing or null");
+        }
+        if (!property_exists($data, "ignored") || $data->ignored === null) {
+            throw new SdkValidationError("ignored", 'required', "Required property 'ignored' is missing or null");
+        }
+        if (!property_exists($data, "reason")) {
+            throw new SdkValidationError("reason", 'required', "Missing required property 'reason'");
+        }
+        if (!property_exists($data, "created_at")) {
+            throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             subscribed: SdkClient::boolValue($data->subscribed),
             ignored: SdkClient::boolValue($data->ignored),
@@ -305,7 +333,9 @@ class WatchEvent implements EventPayload, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
         return new self(
             action: SdkClient::stringValue($data->action),
         );

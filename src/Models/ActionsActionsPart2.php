@@ -45,7 +45,9 @@ class ActionsWorkflowAccessToRepository implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "access_level") || $data->access_level === null) { throw new SdkValidationError("access_level", 'required', "Required property 'access_level' is missing or null"); }
+        if (!property_exists($data, "access_level") || $data->access_level === null) {
+            throw new SdkValidationError("access_level", 'required', "Required property 'access_level' is missing or null");
+        }
         return new self(
             accessLevel: SdkClient::hydrateStringEnumOrString($data->access_level, ActionsWorkflowAccessToRepositoryAccessLevelEnum::class),
         );

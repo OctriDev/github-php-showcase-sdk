@@ -139,14 +139,30 @@ class Enterprise implements IntegrationInstallationRequestAccount, NullableInteg
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "slug") || $data->slug === null) { throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null"); }
-        if (!property_exists($data, "created_at")) { throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'"); }
-        if (!property_exists($data, "updated_at")) { throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'"); }
-        if (!property_exists($data, "avatar_url") || $data->avatar_url === null) { throw new SdkValidationError("avatar_url", 'required', "Required property 'avatar_url' is missing or null"); }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "slug") || $data->slug === null) {
+            throw new SdkValidationError("slug", 'required', "Required property 'slug' is missing or null");
+        }
+        if (!property_exists($data, "created_at")) {
+            throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'");
+        }
+        if (!property_exists($data, "updated_at")) {
+            throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'");
+        }
+        if (!property_exists($data, "avatar_url") || $data->avatar_url === null) {
+            throw new SdkValidationError("avatar_url", 'required', "Required property 'avatar_url' is missing or null");
+        }
         return new self(
             htmlUrl: SdkClient::stringValue($data->html_url),
             id: SdkClient::intValue($data->id),
@@ -170,11 +186,26 @@ final readonly class FullRepositoryPullRequestCreationPolicyEnum implements SdkO
     public const ALL = "all";
     public const COLLABORATORS_ONLY = "collaborators_only";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -259,9 +290,15 @@ class FullRepositoryPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "admin") || $data->admin === null) { throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null"); }
-        if (!property_exists($data, "push") || $data->push === null) { throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null"); }
-        if (!property_exists($data, "pull") || $data->pull === null) { throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null"); }
+        if (!property_exists($data, "admin") || $data->admin === null) {
+            throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null");
+        }
+        if (!property_exists($data, "push") || $data->push === null) {
+            throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null");
+        }
+        if (!property_exists($data, "pull") || $data->pull === null) {
+            throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null");
+        }
         return new self(
             admin: SdkClient::boolValue($data->admin),
             push: SdkClient::boolValue($data->push),
@@ -280,11 +317,26 @@ final readonly class FullRepositorySquashMergeCommitTitleEnum implements SdkOpen
     public const PR_TITLE = "PR_TITLE";
     public const COMMIT_OR_PR_TITLE = "COMMIT_OR_PR_TITLE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -296,11 +348,26 @@ final readonly class FullRepositorySquashMergeCommitMessageEnum implements SdkOp
     public const COMMIT_MESSAGES = "COMMIT_MESSAGES";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -311,11 +378,26 @@ final readonly class FullRepositoryMergeCommitTitleEnum implements SdkOpenEnum
     public const PR_TITLE = "PR_TITLE";
     public const MERGE_MESSAGE = "MERGE_MESSAGE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -327,9 +409,24 @@ final readonly class FullRepositoryMergeCommitMessageEnum implements SdkOpenEnum
     public const PR_TITLE = "PR_TITLE";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

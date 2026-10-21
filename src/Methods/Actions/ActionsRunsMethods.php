@@ -106,7 +106,7 @@ trait ActionsRunsMethods
     public static function actionsApproveWorkflowRun(ClientConfig $clientConfig, string $owner, string $repo, int $runId, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/approve", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsApproveWorkflowRun', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/approve", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsApproveWorkflowRun', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 
@@ -169,7 +169,7 @@ trait ActionsRunsMethods
     public static function actionsListJobsForWorkflowRunAttempt(ClientConfig $clientConfig, string $owner, string $repo, int $runId, int $attemptNumber, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActionsListJobsForWorkflowRunAttemptResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/attempts/" . SdkClient::encodePathSegment($attemptNumber) . "/jobs", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: ActionsListJobsForWorkflowRunAttemptResponse::class, decoder: 'json', operationId: 'actionsListJobsForWorkflowRunAttempt', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/attempts/" . SdkClient::encodePathSegment($attemptNumber) . "/jobs", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: ActionsListJobsForWorkflowRunAttemptResponse::class, decoder: 'json', operationId: 'actionsListJobsForWorkflowRunAttempt', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsListJobsForWorkflowRunAttemptResponse::class));
     }
 
@@ -204,7 +204,7 @@ trait ActionsRunsMethods
     public static function actionsCancelWorkflowRun(ClientConfig $clientConfig, string $owner, string $repo, int $runId, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/cancel", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsCancelWorkflowRun', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/cancel", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsCancelWorkflowRun', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 
@@ -225,7 +225,7 @@ trait ActionsRunsMethods
     public static function actionsListConcurrencyGroupsForWorkflowRun(ClientConfig $clientConfig, string $owner, string $repo, int $runId, int|SdkNotGiven $perPage = SdkNotGiven::Value, string|SdkNotGiven $before = SdkNotGiven::Value, string|SdkNotGiven $after = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ConcurrencyGroupRunList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/concurrency_groups", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'before' => new SdkQueryValue($before, "form", true), 'after' => new SdkQueryValue($after, "form", true)], returnType: ConcurrencyGroupRunList::class, decoder: 'json', operationId: 'actionsListConcurrencyGroupsForWorkflowRun', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/concurrency_groups", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'before' => new SdkQueryValue($before, "form", true), 'after' => new SdkQueryValue($after, "form", true)], returnType: ConcurrencyGroupRunList::class, decoder: 'json', operationId: 'actionsListConcurrencyGroupsForWorkflowRun', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ConcurrencyGroupRunList::class));
     }
 
@@ -260,7 +260,7 @@ trait ActionsRunsMethods
     public static function actionsForceCancelWorkflowRun(ClientConfig $clientConfig, string $owner, string $repo, int $runId, ?RequestOptions $requestOptions = null): EmptyObject
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/force-cancel", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsForceCancelWorkflowRun', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/runs/" . SdkClient::encodePathSegment($runId) . "/force-cancel", $clientConfig, returnType: EmptyObject::class, decoder: 'json', operationId: 'actionsForceCancelWorkflowRun', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmptyObject::class));
     }
 

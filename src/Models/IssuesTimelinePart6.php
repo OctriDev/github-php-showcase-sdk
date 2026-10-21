@@ -125,15 +125,33 @@ class TimelineDisconnectedEvent implements TimelineIssueEvents, \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "actor") || $data->actor === null) { throw new SdkValidationError("actor", 'required', "Required property 'actor' is missing or null"); }
-        if (!property_exists($data, "event") || $data->event === null) { throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null"); }
-        if (!property_exists($data, "commit_id")) { throw new SdkValidationError("commit_id", 'required', "Missing required property 'commit_id'"); }
-        if (!property_exists($data, "commit_url")) { throw new SdkValidationError("commit_url", 'required', "Missing required property 'commit_url'"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "performed_via_github_app")) { throw new SdkValidationError("performed_via_github_app", 'required', "Missing required property 'performed_via_github_app'"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "actor") || $data->actor === null) {
+            throw new SdkValidationError("actor", 'required', "Required property 'actor' is missing or null");
+        }
+        if (!property_exists($data, "event") || $data->event === null) {
+            throw new SdkValidationError("event", 'required', "Required property 'event' is missing or null");
+        }
+        if (!property_exists($data, "commit_id")) {
+            throw new SdkValidationError("commit_id", 'required', "Missing required property 'commit_id'");
+        }
+        if (!property_exists($data, "commit_url")) {
+            throw new SdkValidationError("commit_url", 'required', "Missing required property 'commit_url'");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "performed_via_github_app")) {
+            throw new SdkValidationError("performed_via_github_app", 'required', "Missing required property 'performed_via_github_app'");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             nodeId: SdkClient::stringValue($data->node_id),
@@ -258,7 +276,9 @@ class TimelineReviewedEventLinksHtml implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
+        if (!property_exists($data, "href") || $data->href === null) {
+            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
+        }
         return new self(
             href: SdkClient::stringValue($data->href),
         );
@@ -303,7 +323,9 @@ class TimelineReviewedEventLinksPullRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "href") || $data->href === null) { throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null"); }
+        if (!property_exists($data, "href") || $data->href === null) {
+            throw new SdkValidationError("href", 'required', "Required property 'href' is missing or null");
+        }
         return new self(
             href: SdkClient::stringValue($data->href),
         );

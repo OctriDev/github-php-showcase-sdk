@@ -18,11 +18,26 @@ final readonly class InteractionExpiry implements SdkOpenEnum
     public const ONE_MONTH = "one_month";
     public const SIX_MONTHS = "six_months";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -34,11 +49,26 @@ final readonly class InteractionGroup implements SdkOpenEnum
     public const CONTRIBUTORS_ONLY = "contributors_only";
     public const COLLABORATORS_ONLY = "collaborators_only";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -91,7 +121,9 @@ class InteractionLimit implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "limit") || $data->limit === null) { throw new SdkValidationError("limit", 'required', "Required property 'limit' is missing or null"); }
+        if (!property_exists($data, "limit") || $data->limit === null) {
+            throw new SdkValidationError("limit", 'required', "Required property 'limit' is missing or null");
+        }
         return new self(
             limit: SdkClient::hydrateStringEnumOrString($data->limit, InteractionGroup::class),
             expiry: (property_exists($data, "expiry") && $data->expiry !== null ? SdkClient::hydrateStringEnumOrString($data->expiry, InteractionExpiry::class) : SdkNotGiven::Value),
@@ -137,7 +169,9 @@ class InteractionLimitPullRequestBypassList implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "users") || $data->users === null) { throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null"); }
+        if (!property_exists($data, "users") || $data->users === null) {
+            throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null");
+        }
         return new self(
             users: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->users))),
         );
@@ -202,9 +236,15 @@ class InteractionLimitResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "limit") || $data->limit === null) { throw new SdkValidationError("limit", 'required', "Required property 'limit' is missing or null"); }
-        if (!property_exists($data, "origin") || $data->origin === null) { throw new SdkValidationError("origin", 'required', "Required property 'origin' is missing or null"); }
-        if (!property_exists($data, "expires_at") || $data->expires_at === null) { throw new SdkValidationError("expires_at", 'required', "Required property 'expires_at' is missing or null"); }
+        if (!property_exists($data, "limit") || $data->limit === null) {
+            throw new SdkValidationError("limit", 'required', "Required property 'limit' is missing or null");
+        }
+        if (!property_exists($data, "origin") || $data->origin === null) {
+            throw new SdkValidationError("origin", 'required', "Required property 'origin' is missing or null");
+        }
+        if (!property_exists($data, "expires_at") || $data->expires_at === null) {
+            throw new SdkValidationError("expires_at", 'required', "Required property 'expires_at' is missing or null");
+        }
         return new self(
             limit: SdkClient::hydrateStringEnumOrString($data->limit, InteractionGroup::class),
             origin: SdkClient::stringValue($data->origin),

@@ -16,11 +16,26 @@ final readonly class CopilotOrganizationDetailsPublicCodeSuggestionsEnum impleme
     public const BLOCK = "block";
     public const UNCONFIGURED = "unconfigured";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -32,11 +47,26 @@ final readonly class CopilotOrganizationDetailsIdeChatEnum implements SdkOpenEnu
     public const DISABLED = "disabled";
     public const UNCONFIGURED = "unconfigured";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -48,11 +78,26 @@ final readonly class CopilotOrganizationDetailsPlatformChatEnum implements SdkOp
     public const DISABLED = "disabled";
     public const UNCONFIGURED = "unconfigured";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -64,11 +109,26 @@ final readonly class CopilotOrganizationDetailsCliEnum implements SdkOpenEnum
     public const DISABLED = "disabled";
     public const UNCONFIGURED = "unconfigured";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -81,11 +141,26 @@ final readonly class CopilotOrganizationDetailsSeatManagementSettingEnum impleme
     public const DISABLED = "disabled";
     public const UNCONFIGURED = "unconfigured";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -96,11 +171,26 @@ final readonly class CopilotOrganizationDetailsPlanTypeEnum implements SdkOpenEn
     public const BUSINESS = "business";
     public const ENTERPRISE = "enterprise";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -215,9 +305,15 @@ class CopilotOrganizationDetails implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "seat_breakdown") || $data->seat_breakdown === null) { throw new SdkValidationError("seat_breakdown", 'required', "Required property 'seat_breakdown' is missing or null"); }
-        if (!property_exists($data, "public_code_suggestions") || $data->public_code_suggestions === null) { throw new SdkValidationError("public_code_suggestions", 'required', "Required property 'public_code_suggestions' is missing or null"); }
-        if (!property_exists($data, "seat_management_setting") || $data->seat_management_setting === null) { throw new SdkValidationError("seat_management_setting", 'required', "Required property 'seat_management_setting' is missing or null"); }
+        if (!property_exists($data, "seat_breakdown") || $data->seat_breakdown === null) {
+            throw new SdkValidationError("seat_breakdown", 'required', "Required property 'seat_breakdown' is missing or null");
+        }
+        if (!property_exists($data, "public_code_suggestions") || $data->public_code_suggestions === null) {
+            throw new SdkValidationError("public_code_suggestions", 'required', "Required property 'public_code_suggestions' is missing or null");
+        }
+        if (!property_exists($data, "seat_management_setting") || $data->seat_management_setting === null) {
+            throw new SdkValidationError("seat_management_setting", 'required', "Required property 'seat_management_setting' is missing or null");
+        }
         return new self(
             seatBreakdown: SdkClient::hydrateClass($data->seat_breakdown, CopilotOrganizationSeatBreakdown::class),
             publicCodeSuggestions: SdkClient::hydrateStringEnumOrString($data->public_code_suggestions, CopilotOrganizationDetailsPublicCodeSuggestionsEnum::class),

@@ -87,10 +87,18 @@ class CodespacesOrgSecret implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "visibility") || $data->visibility === null) { throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "visibility") || $data->visibility === null) {
+            throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             createdAt: SdkClient::stringValue($data->created_at),
@@ -197,8 +205,12 @@ class CodespacesPublicKey implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key_id") || $data->key_id === null) { throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null"); }
-        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
+        if (!property_exists($data, "key_id") || $data->key_id === null) {
+            throw new SdkValidationError("key_id", 'required', "Required property 'key_id' is missing or null");
+        }
+        if (!property_exists($data, "key") || $data->key === null) {
+            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
+        }
         return new self(
             keyId: SdkClient::stringValue($data->key_id),
             key: SdkClient::stringValue($data->key),
@@ -219,11 +231,26 @@ final readonly class CodespacesSecretVisibilityEnum implements SdkOpenEnum
     public const PRIVATE = "private";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -304,11 +331,21 @@ class CodespacesSecret implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "visibility") || $data->visibility === null) { throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null"); }
-        if (!property_exists($data, "selected_repositories_url") || $data->selected_repositories_url === null) { throw new SdkValidationError("selected_repositories_url", 'required', "Required property 'selected_repositories_url' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "visibility") || $data->visibility === null) {
+            throw new SdkValidationError("visibility", 'required', "Required property 'visibility' is missing or null");
+        }
+        if (!property_exists($data, "selected_repositories_url") || $data->selected_repositories_url === null) {
+            throw new SdkValidationError("selected_repositories_url", 'required', "Required property 'selected_repositories_url' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             createdAt: SdkClient::stringValue($data->created_at),
@@ -328,9 +365,24 @@ final readonly class NullableCodespaceMachinePrebuildAvailabilityEnum implements
     public const READY = "ready";
     public const IN_PROGRESS = "in_progress";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

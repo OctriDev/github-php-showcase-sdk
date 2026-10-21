@@ -115,14 +115,30 @@ class ActionsHostedRunnerCustomImage implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "platform") || $data->platform === null) { throw new SdkValidationError("platform", 'required', "Required property 'platform' is missing or null"); }
-        if (!property_exists($data, "total_versions_size") || $data->total_versions_size === null) { throw new SdkValidationError("total_versions_size", 'required', "Required property 'total_versions_size' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "source") || $data->source === null) { throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null"); }
-        if (!property_exists($data, "versions_count") || $data->versions_count === null) { throw new SdkValidationError("versions_count", 'required', "Required property 'versions_count' is missing or null"); }
-        if (!property_exists($data, "latest_version") || $data->latest_version === null) { throw new SdkValidationError("latest_version", 'required', "Required property 'latest_version' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "platform") || $data->platform === null) {
+            throw new SdkValidationError("platform", 'required', "Required property 'platform' is missing or null");
+        }
+        if (!property_exists($data, "total_versions_size") || $data->total_versions_size === null) {
+            throw new SdkValidationError("total_versions_size", 'required', "Required property 'total_versions_size' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "source") || $data->source === null) {
+            throw new SdkValidationError("source", 'required', "Required property 'source' is missing or null");
+        }
+        if (!property_exists($data, "versions_count") || $data->versions_count === null) {
+            throw new SdkValidationError("versions_count", 'required', "Required property 'versions_count' is missing or null");
+        }
+        if (!property_exists($data, "latest_version") || $data->latest_version === null) {
+            throw new SdkValidationError("latest_version", 'required', "Required property 'latest_version' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             platform: SdkClient::stringValue($data->platform),
@@ -214,11 +230,21 @@ class ActionsHostedRunnerCustomImageVersion implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "version") || $data->version === null) { throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
-        if (!property_exists($data, "size_gb") || $data->size_gb === null) { throw new SdkValidationError("size_gb", 'required', "Required property 'size_gb' is missing or null"); }
-        if (!property_exists($data, "created_on") || $data->created_on === null) { throw new SdkValidationError("created_on", 'required', "Required property 'created_on' is missing or null"); }
-        if (!property_exists($data, "state_details") || $data->state_details === null) { throw new SdkValidationError("state_details", 'required', "Required property 'state_details' is missing or null"); }
+        if (!property_exists($data, "version") || $data->version === null) {
+            throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
+        if (!property_exists($data, "size_gb") || $data->size_gb === null) {
+            throw new SdkValidationError("size_gb", 'required', "Required property 'size_gb' is missing or null");
+        }
+        if (!property_exists($data, "created_on") || $data->created_on === null) {
+            throw new SdkValidationError("created_on", 'required', "Required property 'created_on' is missing or null");
+        }
+        if (!property_exists($data, "state_details") || $data->state_details === null) {
+            throw new SdkValidationError("state_details", 'required', "Required property 'state_details' is missing or null");
+        }
         return new self(
             version: SdkClient::stringValue($data->version),
             state: SdkClient::stringValue($data->state),
@@ -297,10 +323,18 @@ class ActionsHostedRunnerMachineSpec implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "cpu_cores") || $data->cpu_cores === null) { throw new SdkValidationError("cpu_cores", 'required', "Required property 'cpu_cores' is missing or null"); }
-        if (!property_exists($data, "memory_gb") || $data->memory_gb === null) { throw new SdkValidationError("memory_gb", 'required', "Required property 'memory_gb' is missing or null"); }
-        if (!property_exists($data, "storage_gb") || $data->storage_gb === null) { throw new SdkValidationError("storage_gb", 'required', "Required property 'storage_gb' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "cpu_cores") || $data->cpu_cores === null) {
+            throw new SdkValidationError("cpu_cores", 'required', "Required property 'cpu_cores' is missing or null");
+        }
+        if (!property_exists($data, "memory_gb") || $data->memory_gb === null) {
+            throw new SdkValidationError("memory_gb", 'required', "Required property 'memory_gb' is missing or null");
+        }
+        if (!property_exists($data, "storage_gb") || $data->storage_gb === null) {
+            throw new SdkValidationError("storage_gb", 'required', "Required property 'storage_gb' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             cpuCores: SdkClient::intValue($data->cpu_cores),

@@ -211,20 +211,48 @@ class ProjectsV2 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
-        if (!property_exists($data, "creator") || $data->creator === null) { throw new SdkValidationError("creator", 'required', "Required property 'creator' is missing or null"); }
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
-        if (!property_exists($data, "public") || $data->public === null) { throw new SdkValidationError("public", 'required', "Required property 'public' is missing or null"); }
-        if (!property_exists($data, "closed_at")) { throw new SdkValidationError("closed_at", 'required', "Missing required property 'closed_at'"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
-        if (!property_exists($data, "short_description")) { throw new SdkValidationError("short_description", 'required', "Missing required property 'short_description'"); }
-        if (!property_exists($data, "deleted_at")) { throw new SdkValidationError("deleted_at", 'required', "Missing required property 'deleted_at'"); }
-        if (!property_exists($data, "deleted_by")) { throw new SdkValidationError("deleted_by", 'required', "Missing required property 'deleted_by'"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "owner") || $data->owner === null) {
+            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
+        }
+        if (!property_exists($data, "creator") || $data->creator === null) {
+            throw new SdkValidationError("creator", 'required', "Required property 'creator' is missing or null");
+        }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "description")) {
+            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
+        }
+        if (!property_exists($data, "public") || $data->public === null) {
+            throw new SdkValidationError("public", 'required', "Required property 'public' is missing or null");
+        }
+        if (!property_exists($data, "closed_at")) {
+            throw new SdkValidationError("closed_at", 'required', "Missing required property 'closed_at'");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "number") || $data->number === null) {
+            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
+        }
+        if (!property_exists($data, "short_description")) {
+            throw new SdkValidationError("short_description", 'required', "Missing required property 'short_description'");
+        }
+        if (!property_exists($data, "deleted_at")) {
+            throw new SdkValidationError("deleted_at", 'required', "Missing required property 'deleted_at'");
+        }
+        if (!property_exists($data, "deleted_by")) {
+            throw new SdkValidationError("deleted_by", 'required', "Missing required property 'deleted_by'");
+        }
         return new self(
             id: SdkClient::floatValue($data->id),
             nodeId: SdkClient::stringValue($data->node_id),

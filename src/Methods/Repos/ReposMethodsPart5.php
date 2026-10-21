@@ -23,7 +23,7 @@ trait ReposMethodsPart5
     public static function reposAddCollaborator(ClientConfig $clientConfig, string $owner, string $repo, string $username, string|SdkNotGiven $permission = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): RepositoryInvitation
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['permission' => $permission], returnType: RepositoryInvitation::class, decoder: 'json', operationId: 'reposAddCollaborator', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, body: ['permission' => $permission], returnType: RepositoryInvitation::class, decoder: 'json', operationId: 'reposAddCollaborator', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RepositoryInvitation::class));
     }
 
@@ -40,7 +40,7 @@ trait ReposMethodsPart5
     public static function reposRemoveCollaborator(ClientConfig $clientConfig, string $owner, string $repo, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'reposRemoveCollaborator', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'reposRemoveCollaborator', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -57,7 +57,7 @@ trait ReposMethodsPart5
     public static function reposGetCollaboratorPermissionLevel(ClientConfig $clientConfig, string $owner, string $repo, string $username, ?RequestOptions $requestOptions = null): RepositoryCollaboratorPermission
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "/permission", $clientConfig, returnType: RepositoryCollaboratorPermission::class, decoder: 'json', operationId: 'reposGetCollaboratorPermissionLevel', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/collaborators/" . SdkClient::encodePathSegment($username) . "/permission", $clientConfig, returnType: RepositoryCollaboratorPermission::class, decoder: 'json', operationId: 'reposGetCollaboratorPermissionLevel', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RepositoryCollaboratorPermission::class));
     }
 
@@ -94,7 +94,7 @@ trait ReposMethodsPart5
     public static function reposGetCommitComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ?RequestOptions $requestOptions = null): CommitComment
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, returnType: CommitComment::class, decoder: 'json', operationId: 'reposGetCommitComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, returnType: CommitComment::class, decoder: 'json', operationId: 'reposGetCommitComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CommitComment::class));
     }
 
@@ -113,7 +113,7 @@ trait ReposMethodsPart5
     public static function reposUpdateCommitComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, string $body, ?RequestOptions $requestOptions = null): CommitComment
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, body: ['body' => $body], returnType: CommitComment::class, decoder: 'json', operationId: 'reposUpdateCommitComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, body: ['body' => $body], returnType: CommitComment::class, decoder: 'json', operationId: 'reposUpdateCommitComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CommitComment::class));
     }
 
@@ -130,7 +130,7 @@ trait ReposMethodsPart5
     public static function reposDeleteCommitComment(ClientConfig $clientConfig, string $owner, string $repo, int $commentId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteCommitComment', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/comments/" . SdkClient::encodePathSegment($commentId) . "", $clientConfig, decoder: 'empty', operationId: 'reposDeleteCommitComment', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -162,7 +162,7 @@ trait ReposMethodsPart5
             Validation::validateDateTime('until', $until);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits", $clientConfig, query: ['sha' => new SdkQueryValue($sha, "form", true), 'path' => new SdkQueryValue($path, "form", true), 'author' => new SdkQueryValue($author, "form", true), 'committer' => new SdkQueryValue($committer, "form", true), 'since' => new SdkQueryValue($since, "form", true), 'until' => new SdkQueryValue($until, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListCommits', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 429 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits", $clientConfig, query: ['sha' => new SdkQueryValue($sha, "form", true), 'path' => new SdkQueryValue($path, "form", true), 'author' => new SdkQueryValue($author, "form", true), 'committer' => new SdkQueryValue($committer, "form", true), 'since' => new SdkQueryValue($since, "form", true), 'until' => new SdkQueryValue($until, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListCommits', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 429 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Commit::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -180,7 +180,7 @@ trait ReposMethodsPart5
     public static function reposListBranchesForHeadCommit(ClientConfig $clientConfig, string $owner, string $repo, string $commitSha, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($commitSha) . "/branches-where-head", $clientConfig, decoder: 'json', operationId: 'reposListBranchesForHeadCommit', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($commitSha) . "/branches-where-head", $clientConfig, decoder: 'json', operationId: 'reposListBranchesForHeadCommit', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BranchShort::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -222,7 +222,7 @@ trait ReposMethodsPart5
     public static function reposCreateCommitComment(ClientConfig $clientConfig, string $owner, string $repo, string $commitSha, string $body, string|SdkNotGiven $path = SdkNotGiven::Value, int|SdkNotGiven $position = SdkNotGiven::Value, int|SdkNotGiven $line = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CommitComment
     {
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($commitSha) . "/comments", $clientConfig, body: ['body' => $body, 'path' => $path, 'position' => $position, 'line' => $line], returnType: CommitComment::class, decoder: 'json', operationId: 'reposCreateCommitComment', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($commitSha) . "/comments", $clientConfig, body: ['body' => $body, 'path' => $path, 'position' => $position, 'line' => $line], returnType: CommitComment::class, decoder: 'json', operationId: 'reposCreateCommitComment', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CommitComment::class));
     }
 
@@ -242,7 +242,7 @@ trait ReposMethodsPart5
     public static function reposListPullRequestsAssociatedWithCommit(ClientConfig $clientConfig, string $owner, string $repo, string $commitSha, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($commitSha) . "/pulls", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListPullRequestsAssociatedWithCommit', requestOptions: $requestOptions, errors: [409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($commitSha) . "/pulls", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListPullRequestsAssociatedWithCommit', requestOptions: $requestOptions, errors: [409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, PullRequestSimple::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -262,7 +262,7 @@ trait ReposMethodsPart5
     public static function reposGetCommit(ClientConfig $clientConfig, string $owner, string $repo, string $ref, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Commit
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: Commit::class, decoder: 'json', operationId: 'reposGetCommit', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 429 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($ref) . "", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: Commit::class, decoder: 'json', operationId: 'reposGetCommit', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 429 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Commit::class));
     }
 
@@ -282,7 +282,7 @@ trait ReposMethodsPart5
     public static function reposGetCombinedStatusForRef(ClientConfig $clientConfig, string $owner, string $repo, string $ref, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CombinedCommitStatus
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($ref) . "/status", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: CombinedCommitStatus::class, decoder: 'json', operationId: 'reposGetCombinedStatusForRef', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($ref) . "/status", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: CombinedCommitStatus::class, decoder: 'json', operationId: 'reposGetCombinedStatusForRef', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CombinedCommitStatus::class));
     }
 
@@ -302,7 +302,7 @@ trait ReposMethodsPart5
     public static function reposListCommitStatusesForRef(ClientConfig $clientConfig, string $owner, string $repo, string $ref, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($ref) . "/statuses", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListCommitStatusesForRef', requestOptions: $requestOptions, errors: [301 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/commits/" . SdkClient::encodePathSegment($ref) . "/statuses", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'reposListCommitStatusesForRef', requestOptions: $requestOptions, errors: [301 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Status::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

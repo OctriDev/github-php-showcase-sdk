@@ -15,11 +15,26 @@ final readonly class AgentAutomationsEditRepoAutomationResponseTriggersPullReque
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class AgentAutomationsEditRepoAutomationResponseTriggersPullRequestReviewSubmitted implements \JsonSerializable
@@ -93,7 +108,9 @@ class AgentAutomationsEditRepoAutomationResponseTriggersPullRequestReviewSubmitt
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "states") || $data->states === null) { throw new SdkValidationError("states", 'required', "Required property 'states' is missing or null"); }
+        if (!property_exists($data, "states") || $data->states === null) {
+            throw new SdkValidationError("states", 'required', "Required property 'states' is missing or null");
+        }
         return new self(
             states: array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, AgentAutomationsEditRepoAutomationResponseTriggersPullRequestReviewSubmittedStatesItemEnum::class), SdkClient::arrayValue($data->states))),
             query: (property_exists($data, "query") && $data->query !== null ? SdkClient::stringValue($data->query) : SdkNotGiven::Value),
@@ -111,11 +128,26 @@ final readonly class AgentAutomationsEditRepoAutomationResponseTriggersPullReque
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class AgentAutomationsEditRepoAutomationResponseTriggersPullRequestReviewRequested implements \JsonSerializable
@@ -195,11 +227,26 @@ final readonly class AgentAutomationsEditRepoAutomationResponseTriggersAutomatio
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class AgentAutomationsEditRepoAutomationResponseTriggersAutomationCompleted implements \JsonSerializable
@@ -249,7 +296,9 @@ class AgentAutomationsEditRepoAutomationResponseTriggersAutomationCompleted impl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "automation_ids") || $data->automation_ids === null) { throw new SdkValidationError("automation_ids", 'required', "Required property 'automation_ids' is missing or null"); }
+        if (!property_exists($data, "automation_ids") || $data->automation_ids === null) {
+            throw new SdkValidationError("automation_ids", 'required', "Required property 'automation_ids' is missing or null");
+        }
         return new self(
             automationIds: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->automation_ids))),
             writeScope: (property_exists($data, "write_scope") && $data->write_scope !== null ? SdkClient::hydrateStringEnumOrString($data->write_scope, AgentAutomationsEditRepoAutomationResponseTriggersAutomationCompletedWriteScopeEnum::class) : SdkNotGiven::Value),

@@ -143,12 +143,24 @@ class ProjectsV2Field implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "project_url") || $data->project_url === null) { throw new SdkValidationError("project_url", 'required', "Required property 'project_url' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "data_type") || $data->data_type === null) { throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "project_url") || $data->project_url === null) {
+            throw new SdkValidationError("project_url", 'required', "Required property 'project_url' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "data_type") || $data->data_type === null) {
+            throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             projectUrl: SdkClient::stringValue($data->project_url),
@@ -222,9 +234,15 @@ class ProjectsV2FieldIterationConfigurationIterationsItem implements \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "start_date") || $data->start_date === null) { throw new SdkValidationError("start_date", 'required', "Required property 'start_date' is missing or null"); }
-        if (!property_exists($data, "duration") || $data->duration === null) { throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null"); }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "start_date") || $data->start_date === null) {
+            throw new SdkValidationError("start_date", 'required', "Required property 'start_date' is missing or null");
+        }
+        if (!property_exists($data, "duration") || $data->duration === null) {
+            throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null");
+        }
         return new self(
             title: SdkClient::stringValue($data->title),
             startDate: SdkClient::stringValue($data->start_date),
@@ -293,8 +311,12 @@ class ProjectsV2FieldIterationConfiguration implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "start_date") || $data->start_date === null) { throw new SdkValidationError("start_date", 'required', "Required property 'start_date' is missing or null"); }
-        if (!property_exists($data, "duration") || $data->duration === null) { throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null"); }
+        if (!property_exists($data, "start_date") || $data->start_date === null) {
+            throw new SdkValidationError("start_date", 'required', "Required property 'start_date' is missing or null");
+        }
+        if (!property_exists($data, "duration") || $data->duration === null) {
+            throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null");
+        }
         return new self(
             startDate: SdkClient::stringValue($data->start_date),
             duration: SdkClient::intValue($data->duration),
@@ -317,9 +339,24 @@ final readonly class ProjectsV2FieldSingleSelectOptionColorEnum implements SdkOp
     public const RED = "RED";
     public const YELLOW = "YELLOW";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

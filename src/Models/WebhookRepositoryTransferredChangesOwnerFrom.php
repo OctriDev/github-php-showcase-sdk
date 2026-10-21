@@ -104,7 +104,9 @@ class WebhookRepositoryTransferredChangesOwner implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
         return new self(
             from: SdkClient::hydrateClass($data->from, WebhookRepositoryTransferredChangesOwnerFrom::class),
         );
@@ -149,7 +151,9 @@ class WebhookRepositoryTransferredChanges implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "owner") || $data->owner === null) { throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null"); }
+        if (!property_exists($data, "owner") || $data->owner === null) {
+            throw new SdkValidationError("owner", 'required', "Required property 'owner' is missing or null");
+        }
         return new self(
             owner: SdkClient::hydrateClass($data->owner, WebhookRepositoryTransferredChangesOwner::class),
         );
@@ -260,10 +264,18 @@ class WebhookRepositoryTransferred implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "changes") || $data->changes === null) { throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "changes") || $data->changes === null) {
+            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookRepositoryTransferredActionEnum::class),
             changes: SdkClient::hydrateClass($data->changes, WebhookRepositoryTransferredChanges::class),

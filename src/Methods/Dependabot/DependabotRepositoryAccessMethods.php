@@ -30,7 +30,7 @@ trait DependabotRepositoryAccessMethods
             Validation::validateRange('per_page', $perPage, min: 1, max: 100);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/dependabot/repository-access", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: DependabotRepositoryAccessDetails::class, decoder: 'json', operationId: 'dependabotRepositoryAccessForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/dependabot/repository-access", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: DependabotRepositoryAccessDetails::class, decoder: 'json', operationId: 'dependabotRepositoryAccessForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DependabotRepositoryAccessDetails::class));
     }
 
@@ -47,7 +47,7 @@ trait DependabotRepositoryAccessMethods
     public static function dependabotUpdateRepositoryAccessForEnterprise(ClientConfig $clientConfig, string $enterprise, array|SdkNotGiven $repositoryIdsToAdd = SdkNotGiven::Value, array|SdkNotGiven $repositoryIdsToRemove = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PATCH', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/dependabot/repository-access", $clientConfig, body: ['repository_ids_to_add' => $repositoryIdsToAdd, 'repository_ids_to_remove' => $repositoryIdsToRemove], decoder: 'empty', operationId: 'dependabotUpdateRepositoryAccessForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PATCH', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/dependabot/repository-access", $clientConfig, body: ['repository_ids_to_add' => $repositoryIdsToAdd, 'repository_ids_to_remove' => $repositoryIdsToRemove], decoder: 'empty', operationId: 'dependabotUpdateRepositoryAccessForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -62,7 +62,7 @@ trait DependabotRepositoryAccessMethods
     public static function dependabotSetRepositoryAccessDefaultLevelForEnterprise(ClientConfig $clientConfig, string $enterprise, DependabotSetRepositoryAccessDefaultLevelForEnterpriseDefaultLevel $defaultLevel, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/dependabot/repository-access/default-level", $clientConfig, body: ['default_level' => $defaultLevel], decoder: 'empty', operationId: 'dependabotSetRepositoryAccessDefaultLevelForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/enterprises/" . SdkClient::encodePathSegment($enterprise) . "/dependabot/repository-access/default-level", $clientConfig, body: ['default_level' => $defaultLevel], decoder: 'empty', operationId: 'dependabotSetRepositoryAccessDefaultLevelForEnterprise', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -87,7 +87,7 @@ trait DependabotRepositoryAccessMethods
             Validation::validateRange('per_page', $perPage, min: 1, max: 100);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/dependabot/repository-access", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: DependabotRepositoryAccessDetails::class, decoder: 'json', operationId: 'dependabotRepositoryAccessForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/dependabot/repository-access", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: DependabotRepositoryAccessDetails::class, decoder: 'json', operationId: 'dependabotRepositoryAccessForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DependabotRepositoryAccessDetails::class));
     }
 
@@ -104,7 +104,7 @@ trait DependabotRepositoryAccessMethods
     public static function dependabotUpdateRepositoryAccessForOrg(ClientConfig $clientConfig, string $org, array|SdkNotGiven $repositoryIdsToAdd = SdkNotGiven::Value, array|SdkNotGiven $repositoryIdsToRemove = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/dependabot/repository-access", $clientConfig, body: ['repository_ids_to_add' => $repositoryIdsToAdd, 'repository_ids_to_remove' => $repositoryIdsToRemove], decoder: 'empty', operationId: 'dependabotUpdateRepositoryAccessForOrg', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PATCH', "/orgs/" . SdkClient::encodePathSegment($org) . "/dependabot/repository-access", $clientConfig, body: ['repository_ids_to_add' => $repositoryIdsToAdd, 'repository_ids_to_remove' => $repositoryIdsToRemove], decoder: 'empty', operationId: 'dependabotUpdateRepositoryAccessForOrg', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -119,6 +119,6 @@ trait DependabotRepositoryAccessMethods
     public static function dependabotSetRepositoryAccessDefaultLevel(ClientConfig $clientConfig, string $org, DependabotSetRepositoryAccessDefaultLevelDefaultLevel $defaultLevel, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/dependabot/repository-access/default-level", $clientConfig, body: ['default_level' => $defaultLevel], decoder: 'empty', operationId: 'dependabotSetRepositoryAccessDefaultLevel', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/dependabot/repository-access/default-level", $clientConfig, body: ['default_level' => $defaultLevel], decoder: 'empty', operationId: 'dependabotSetRepositoryAccessDefaultLevel', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

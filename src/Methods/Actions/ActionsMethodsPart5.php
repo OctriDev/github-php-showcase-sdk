@@ -78,7 +78,7 @@ trait ActionsMethodsPart5
 
         Validation::validateItems('labels', $labels, min: 1, max: 100);
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/generate-jitconfig", $clientConfig, body: ['name' => $name, 'runner_group_id' => $runnerGroupId, 'labels' => $labels, 'work_folder' => $workFolder], returnType: ActionsRunnerJitconfig::class, decoder: 'json', operationId: 'actionsGenerateRunnerJitconfigForOrg', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/generate-jitconfig", $clientConfig, body: ['name' => $name, 'runner_group_id' => $runnerGroupId, 'labels' => $labels, 'work_folder' => $workFolder], returnType: ActionsRunnerJitconfig::class, decoder: 'json', operationId: 'actionsGenerateRunnerJitconfigForOrg', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsRunnerJitconfig::class));
     }
 
@@ -143,7 +143,7 @@ trait ActionsMethodsPart5
     public static function actionsDeleteSelfHostedRunnerFromOrg(ClientConfig $clientConfig, string $org, int $runnerId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteSelfHostedRunnerFromOrg', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "", $clientConfig, decoder: 'empty', operationId: 'actionsDeleteSelfHostedRunnerFromOrg', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)])->data;
     }
 
 
@@ -159,7 +159,7 @@ trait ActionsMethodsPart5
     public static function actionsListLabelsForSelfHostedRunnerForOrg(ClientConfig $clientConfig, string $org, int $runnerId, ?RequestOptions $requestOptions = null): ActionsRunnerLabels
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels", $clientConfig, returnType: ActionsRunnerLabels::class, decoder: 'json', operationId: 'actionsListLabelsForSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels", $clientConfig, returnType: ActionsRunnerLabels::class, decoder: 'json', operationId: 'actionsListLabelsForSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsRunnerLabels::class));
     }
 
@@ -179,7 +179,7 @@ trait ActionsMethodsPart5
 
         Validation::validateItems('labels', $labels, min: 1, max: 100);
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels", $clientConfig, body: ['labels' => $labels], returnType: ActionsRunnerLabels::class, decoder: 'json', operationId: 'actionsAddCustomLabelsToSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels", $clientConfig, body: ['labels' => $labels], returnType: ActionsRunnerLabels::class, decoder: 'json', operationId: 'actionsAddCustomLabelsToSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsRunnerLabels::class));
     }
 
@@ -199,7 +199,7 @@ trait ActionsMethodsPart5
 
         Validation::validateItems('labels', $labels, min: 0, max: 100);
 
-        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels", $clientConfig, body: ['labels' => $labels], returnType: ActionsRunnerLabels::class, decoder: 'json', operationId: 'actionsSetCustomLabelsForSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels", $clientConfig, body: ['labels' => $labels], returnType: ActionsRunnerLabels::class, decoder: 'json', operationId: 'actionsSetCustomLabelsForSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsRunnerLabels::class));
     }
 
@@ -216,7 +216,7 @@ trait ActionsMethodsPart5
     public static function actionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg(ClientConfig $clientConfig, string $org, int $runnerId, ?RequestOptions $requestOptions = null): ActionsRunnerLabelsReadonly
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels", $clientConfig, returnType: ActionsRunnerLabelsReadonly::class, decoder: 'json', operationId: 'actionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels", $clientConfig, returnType: ActionsRunnerLabelsReadonly::class, decoder: 'json', operationId: 'actionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsRunnerLabelsReadonly::class));
     }
 
@@ -234,7 +234,7 @@ trait ActionsMethodsPart5
     public static function actionsRemoveCustomLabelFromSelfHostedRunnerForOrg(ClientConfig $clientConfig, string $org, int $runnerId, string $name, ?RequestOptions $requestOptions = null): ActionsRunnerLabels
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels/" . SdkClient::encodePathSegment($name) . "", $clientConfig, returnType: ActionsRunnerLabels::class, decoder: 'json', operationId: 'actionsRemoveCustomLabelFromSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/actions/runners/" . SdkClient::encodePathSegment($runnerId) . "/labels/" . SdkClient::encodePathSegment($name) . "", $clientConfig, returnType: ActionsRunnerLabels::class, decoder: 'json', operationId: 'actionsRemoveCustomLabelFromSelfHostedRunnerForOrg', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActionsRunnerLabels::class));
     }
 

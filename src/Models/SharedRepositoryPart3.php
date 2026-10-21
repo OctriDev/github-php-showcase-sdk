@@ -16,11 +16,26 @@ final readonly class RepositoryRuleEnforcement implements SdkOpenEnum
     public const ACTIVE = "active";
     public const EVALUATE = "evaluate";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -107,7 +122,9 @@ class RepositoryRulesetConditionsRepositoryIdTarget implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
+            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
+        }
         return new self(
             repositoryId: SdkClient::hydrateClass($data->repository_id, RepositoryRulesetConditionsRepositoryIdTargetRepositoryId::class),
         );
@@ -224,7 +241,9 @@ class RepositoryRulesetConditionsRepositoryNameTarget implements \JsonSerializab
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_name") || $data->repository_name === null) { throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null"); }
+        if (!property_exists($data, "repository_name") || $data->repository_name === null) {
+            throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null");
+        }
         return new self(
             repositoryName: SdkClient::hydrateClass($data->repository_name, RepositoryRulesetConditionsRepositoryNameTargetRepositoryName::class),
         );
@@ -239,11 +258,26 @@ final readonly class RepositoryRulesetConditionsRepositoryPropertySpecSourceEnum
     public const CUSTOM = "custom";
     public const SYSTEM = "system";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -306,8 +340,12 @@ class RepositoryRulesetConditionsRepositoryPropertySpec implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "property_values") || $data->property_values === null) { throw new SdkValidationError("property_values", 'required', "Required property 'property_values' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "property_values") || $data->property_values === null) {
+            throw new SdkValidationError("property_values", 'required', "Required property 'property_values' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             propertyValues: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->property_values))),

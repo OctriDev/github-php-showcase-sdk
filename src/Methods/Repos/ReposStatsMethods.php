@@ -72,7 +72,7 @@ trait ReposStatsMethods
     public static function reposGetParticipationStats(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): ParticipationStats
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stats/participation", $clientConfig, returnType: ParticipationStats::class, decoder: 'json', operationId: 'reposGetParticipationStats', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stats/participation", $clientConfig, returnType: ParticipationStats::class, decoder: 'json', operationId: 'reposGetParticipationStats', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ParticipationStats::class));
     }
 

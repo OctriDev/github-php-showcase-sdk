@@ -41,7 +41,7 @@ trait CodeScanningSarifsMethods
             Validation::validateDateTime('started_at', $startedAt);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/sarifs", $clientConfig, body: ['commit_sha' => $commitSha, 'ref' => $ref, 'sarif' => $sarif, 'checkout_uri' => $checkoutUri, 'started_at' => $startedAt, 'tool_name' => $toolName, 'validate' => $validate], returnType: CodeScanningSarifsReceipt::class, decoder: 'json', operationId: 'codeScanningUploadSarif', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('POST', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/sarifs", $clientConfig, body: ['commit_sha' => $commitSha, 'ref' => $ref, 'sarif' => $sarif, 'checkout_uri' => $checkoutUri, 'started_at' => $startedAt, 'tool_name' => $toolName, 'validate' => $validate], returnType: CodeScanningSarifsReceipt::class, decoder: 'json', operationId: 'codeScanningUploadSarif', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningSarifsReceipt::class));
     }
 
@@ -59,7 +59,7 @@ trait CodeScanningSarifsMethods
     public static function codeScanningGetSarif(ClientConfig $clientConfig, string $owner, string $repo, string $sarifId, ?RequestOptions $requestOptions = null): CodeScanningSarifsStatus
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/sarifs/" . SdkClient::encodePathSegment($sarifId) . "", $clientConfig, returnType: CodeScanningSarifsStatus::class, decoder: 'json', operationId: 'codeScanningGetSarif', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/code-scanning/sarifs/" . SdkClient::encodePathSegment($sarifId) . "", $clientConfig, returnType: CodeScanningSarifsStatus::class, decoder: 'json', operationId: 'codeScanningGetSarif', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ServiceUnavailable::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeScanningSarifsStatus::class));
     }
 }

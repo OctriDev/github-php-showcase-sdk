@@ -11,11 +11,26 @@ final readonly class SearchCodeSort implements SdkOpenEnum
 {
     public const INDEXED = "indexed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchCodeOrder implements SdkOpenEnum
@@ -23,11 +38,26 @@ final readonly class SearchCodeOrder implements SdkOpenEnum
     public const DESC = "desc";
     public const ASC = "asc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchCommitsSort implements SdkOpenEnum
@@ -35,11 +65,26 @@ final readonly class SearchCommitsSort implements SdkOpenEnum
     public const AUTHOR_DATE = "author-date";
     public const COMMITTER_DATE = "committer-date";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchCommitsOrder implements SdkOpenEnum
@@ -47,11 +92,26 @@ final readonly class SearchCommitsOrder implements SdkOpenEnum
     public const DESC = "desc";
     public const ASC = "asc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchIssuesAndPullRequestsSort implements SdkOpenEnum
@@ -68,11 +128,26 @@ final readonly class SearchIssuesAndPullRequestsSort implements SdkOpenEnum
     public const CREATED = "created";
     public const UPDATED = "updated";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchIssuesAndPullRequestsOrder implements SdkOpenEnum
@@ -80,11 +155,26 @@ final readonly class SearchIssuesAndPullRequestsOrder implements SdkOpenEnum
     public const DESC = "desc";
     public const ASC = "asc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchIssuesAndPullRequestsSearchType implements SdkOpenEnum
@@ -92,11 +182,26 @@ final readonly class SearchIssuesAndPullRequestsSearchType implements SdkOpenEnu
     public const SEMANTIC = "semantic";
     public const HYBRID = "hybrid";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchLabelsSort implements SdkOpenEnum
@@ -104,11 +209,26 @@ final readonly class SearchLabelsSort implements SdkOpenEnum
     public const CREATED = "created";
     public const UPDATED = "updated";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchLabelsOrder implements SdkOpenEnum
@@ -116,11 +236,26 @@ final readonly class SearchLabelsOrder implements SdkOpenEnum
     public const DESC = "desc";
     public const ASC = "asc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchReposSort implements SdkOpenEnum
@@ -130,11 +265,26 @@ final readonly class SearchReposSort implements SdkOpenEnum
     public const HELP_WANTED_ISSUES = "help-wanted-issues";
     public const UPDATED = "updated";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchReposOrder implements SdkOpenEnum
@@ -142,11 +292,26 @@ final readonly class SearchReposOrder implements SdkOpenEnum
     public const DESC = "desc";
     public const ASC = "asc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchUsersSort implements SdkOpenEnum
@@ -155,11 +320,26 @@ final readonly class SearchUsersSort implements SdkOpenEnum
     public const REPOSITORIES = "repositories";
     public const JOINED = "joined";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchUsersOrder implements SdkOpenEnum
@@ -167,11 +347,26 @@ final readonly class SearchUsersOrder implements SdkOpenEnum
     public const DESC = "desc";
     public const ASC = "asc";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class SearchCodeResponse implements \JsonSerializable
@@ -217,9 +412,15 @@ class SearchCodeResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) { throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null"); }
-        if (!property_exists($data, "items") || $data->items === null) { throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) {
+            throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null");
+        }
+        if (!property_exists($data, "items") || $data->items === null) {
+            throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             incompleteResults: SdkClient::boolValue($data->incomplete_results),
@@ -271,9 +472,15 @@ class SearchCommitsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) { throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null"); }
-        if (!property_exists($data, "items") || $data->items === null) { throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "incomplete_results") || $data->incomplete_results === null) {
+            throw new SdkValidationError("incomplete_results", 'required', "Required property 'incomplete_results' is missing or null");
+        }
+        if (!property_exists($data, "items") || $data->items === null) {
+            throw new SdkValidationError("items", 'required', "Required property 'items' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             incompleteResults: SdkClient::boolValue($data->incomplete_results),
@@ -291,11 +498,26 @@ final readonly class SearchIssuesAndPullRequestsResponseSearchTypeEnum implement
     public const SEMANTIC = "semantic";
     public const HYBRID = "hybrid";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class SearchIssuesAndPullRequestsResponseLexicalFallbackReasonItemEnum implements SdkOpenEnum
@@ -309,9 +531,24 @@ final readonly class SearchIssuesAndPullRequestsResponseLexicalFallbackReasonIte
     public const ONLY_NON_SEMANTIC_FIELDS_REQUESTED = "only_non_semantic_fields_requested";
     public const SERVICE_UNAVAILABLE = "service_unavailable";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

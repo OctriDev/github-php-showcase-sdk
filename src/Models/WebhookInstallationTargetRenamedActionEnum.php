@@ -14,11 +14,26 @@ final readonly class WebhookInstallationTargetRenamedActionEnum implements SdkOp
 {
     public const RENAMED = "renamed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -59,7 +74,9 @@ class WebhookInstallationTargetRenamedChangesLogin implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
         return new self(
             from: SdkClient::stringValue($data->from),
         );
@@ -104,7 +121,9 @@ class WebhookInstallationTargetRenamedChangesSlug implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
         return new self(
             from: SdkClient::stringValue($data->from),
         );
@@ -296,11 +315,21 @@ class WebhookInstallationTargetRenamed implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "account") || $data->account === null) { throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null"); }
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "changes") || $data->changes === null) { throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null"); }
-        if (!property_exists($data, "installation") || $data->installation === null) { throw new SdkValidationError("installation", 'required', "Required property 'installation' is missing or null"); }
-        if (!property_exists($data, "target_type") || $data->target_type === null) { throw new SdkValidationError("target_type", 'required', "Required property 'target_type' is missing or null"); }
+        if (!property_exists($data, "account") || $data->account === null) {
+            throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null");
+        }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "changes") || $data->changes === null) {
+            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
+        }
+        if (!property_exists($data, "installation") || $data->installation === null) {
+            throw new SdkValidationError("installation", 'required', "Required property 'installation' is missing or null");
+        }
+        if (!property_exists($data, "target_type") || $data->target_type === null) {
+            throw new SdkValidationError("target_type", 'required', "Required property 'target_type' is missing or null");
+        }
         return new self(
             account: SdkClient::hydrateClass($data->account, WebhookInstallationTargetRenamedAccount::class),
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookInstallationTargetRenamedActionEnum::class),

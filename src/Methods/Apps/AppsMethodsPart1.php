@@ -33,7 +33,7 @@ trait AppsMethodsPart1
     public static function appsCreateFromManifest(ClientConfig $clientConfig, string $code, ?RequestOptions $requestOptions = null): AppsCreateFromManifestResponse|null
     {
 
-        $sdkResponse = SdkClient::request('POST', "/app-manifests/" . SdkClient::encodePathSegment($code) . "/conversions", $clientConfig, returnType: AppsCreateFromManifestResponse::class, decoder: 'json', operationId: 'appsCreateFromManifest', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
+        $sdkResponse = SdkClient::request('POST', "/app-manifests/" . SdkClient::encodePathSegment($code) . "/conversions", $clientConfig, returnType: AppsCreateFromManifestResponse::class, decoder: 'json', operationId: 'appsCreateFromManifest', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationErrorSimple::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AppsCreateFromManifestResponse::class));
     }
 
@@ -87,7 +87,7 @@ trait AppsMethodsPart1
     public static function appsListWebhookDeliveries(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, string|SdkNotGiven $cursor = SdkNotGiven::Value, AppsListWebhookDeliveriesStatus|SdkNotGiven $status = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/app/hook/deliveries", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'cursor' => new SdkQueryValue($cursor, "form", true), 'status' => new SdkQueryValue($status, "form", true)], decoder: 'json', operationId: 'appsListWebhookDeliveries', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/app/hook/deliveries", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'cursor' => new SdkQueryValue($cursor, "form", true), 'status' => new SdkQueryValue($status, "form", true)], decoder: 'json', operationId: 'appsListWebhookDeliveries', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, HookDeliveryItem::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -103,7 +103,7 @@ trait AppsMethodsPart1
     public static function appsGetWebhookDelivery(ClientConfig $clientConfig, int $deliveryId, ?RequestOptions $requestOptions = null): HookDelivery
     {
 
-        $sdkResponse = SdkClient::request('GET', "/app/hook/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "", $clientConfig, returnType: HookDelivery::class, decoder: 'json', operationId: 'appsGetWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/app/hook/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "", $clientConfig, returnType: HookDelivery::class, decoder: 'json', operationId: 'appsGetWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, HookDelivery::class));
     }
 
@@ -119,7 +119,7 @@ trait AppsMethodsPart1
     public static function appsRedeliverWebhookDelivery(ClientConfig $clientConfig, int $deliveryId, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('POST', "/app/hook/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "/attempts", $clientConfig, decoder: 'json', operationId: 'appsRedeliverWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/app/hook/deliveries/" . SdkClient::encodePathSegment($deliveryId) . "/attempts", $clientConfig, decoder: 'json', operationId: 'appsRedeliverWebhookDelivery', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::stringMapValue($sdkResponse->data));
     }
 
@@ -136,7 +136,7 @@ trait AppsMethodsPart1
     public static function appsListInstallationRequestsForAuthenticatedApp(ClientConfig $clientConfig, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/app/installation-requests", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListInstallationRequestsForAuthenticatedApp', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/app/installation-requests", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'appsListInstallationRequestsForAuthenticatedApp', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, IntegrationInstallationRequest::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -175,7 +175,7 @@ trait AppsMethodsPart1
     public static function appsGetInstallation(ClientConfig $clientConfig, int $installationId, ?RequestOptions $requestOptions = null): Installation
     {
 
-        $sdkResponse = SdkClient::request('GET', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "", $clientConfig, returnType: Installation::class, decoder: 'json', operationId: 'appsGetInstallation', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "", $clientConfig, returnType: Installation::class, decoder: 'json', operationId: 'appsGetInstallation', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Installation::class));
     }
 
@@ -190,7 +190,7 @@ trait AppsMethodsPart1
     public static function appsDeleteInstallation(ClientConfig $clientConfig, int $installationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "", $clientConfig, decoder: 'empty', operationId: 'appsDeleteInstallation', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "", $clientConfig, decoder: 'empty', operationId: 'appsDeleteInstallation', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -208,7 +208,7 @@ trait AppsMethodsPart1
     public static function appsCreateInstallationAccessToken(ClientConfig $clientConfig, int $installationId, array|SdkNotGiven $repositories = SdkNotGiven::Value, array|SdkNotGiven $repositoryIds = SdkNotGiven::Value, AppPermissions|SdkNotGiven $permissions = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): InstallationToken
     {
 
-        $sdkResponse = SdkClient::request('POST', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "/access_tokens", $clientConfig, body: ['repositories' => $repositories, 'repository_ids' => $repositoryIds, 'permissions' => $permissions], returnType: InstallationToken::class, decoder: 'json', operationId: 'appsCreateInstallationAccessToken', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "/access_tokens", $clientConfig, body: ['repositories' => $repositories, 'repository_ids' => $repositoryIds, 'permissions' => $permissions], returnType: InstallationToken::class, decoder: 'json', operationId: 'appsCreateInstallationAccessToken', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, InstallationToken::class));
     }
 
@@ -223,7 +223,7 @@ trait AppsMethodsPart1
     public static function appsSuspendInstallation(ClientConfig $clientConfig, int $installationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "/suspended", $clientConfig, decoder: 'empty', operationId: 'appsSuspendInstallation', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "/suspended", $clientConfig, decoder: 'empty', operationId: 'appsSuspendInstallation', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -237,7 +237,7 @@ trait AppsMethodsPart1
     public static function appsUnsuspendInstallation(ClientConfig $clientConfig, int $installationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "/suspended", $clientConfig, decoder: 'empty', operationId: 'appsUnsuspendInstallation', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/app/installations/" . SdkClient::encodePathSegment($installationId) . "/suspended", $clientConfig, decoder: 'empty', operationId: 'appsUnsuspendInstallation', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -252,7 +252,7 @@ trait AppsMethodsPart1
     public static function appsDeleteAuthorization(ClientConfig $clientConfig, string $clientId, string $accessToken, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/applications/" . SdkClient::encodePathSegment($clientId) . "/grant", $clientConfig, body: ['access_token' => $accessToken], decoder: 'empty', operationId: 'appsDeleteAuthorization', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/applications/" . SdkClient::encodePathSegment($clientId) . "/grant", $clientConfig, body: ['access_token' => $accessToken], decoder: 'empty', operationId: 'appsDeleteAuthorization', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -268,7 +268,7 @@ trait AppsMethodsPart1
     public static function appsCheckToken(ClientConfig $clientConfig, string $clientId, string $accessToken, ?RequestOptions $requestOptions = null): Authorization
     {
 
-        $sdkResponse = SdkClient::request('POST', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], returnType: Authorization::class, decoder: 'json', operationId: 'appsCheckToken', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], returnType: Authorization::class, decoder: 'json', operationId: 'appsCheckToken', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Authorization::class));
     }
 
@@ -285,7 +285,7 @@ trait AppsMethodsPart1
     public static function appsResetToken(ClientConfig $clientConfig, string $clientId, string $accessToken, ?RequestOptions $requestOptions = null): Authorization
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], returnType: Authorization::class, decoder: 'json', operationId: 'appsResetToken', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], returnType: Authorization::class, decoder: 'json', operationId: 'appsResetToken', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Authorization::class));
     }
 
@@ -301,6 +301,6 @@ trait AppsMethodsPart1
     public static function appsDeleteToken(ClientConfig $clientConfig, string $clientId, string $accessToken, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], decoder: 'empty', operationId: 'appsDeleteToken', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/applications/" . SdkClient::encodePathSegment($clientId) . "/token", $clientConfig, body: ['access_token' => $accessToken], decoder: 'empty', operationId: 'appsDeleteToken', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 }

@@ -22,7 +22,7 @@ trait PackagesRestoreMethods
     public static function packagesRestorePackageForOrg(ClientConfig $clientConfig, PackagesRestorePackageForOrgPackageType $packageType, string $packageName, string $org, string|SdkNotGiven $token = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/restore", $clientConfig, query: ['token' => new SdkQueryValue($token, "form", true)], decoder: 'empty', operationId: 'packagesRestorePackageForOrg', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/restore", $clientConfig, query: ['token' => new SdkQueryValue($token, "form", true)], decoder: 'empty', operationId: 'packagesRestorePackageForOrg', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -38,7 +38,7 @@ trait PackagesRestoreMethods
     public static function packagesRestorePackageForAuthenticatedUser(ClientConfig $clientConfig, PackagesRestorePackageForAuthenticatedUserPackageType $packageType, string $packageName, string|SdkNotGiven $token = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/user/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/restore", $clientConfig, query: ['token' => new SdkQueryValue($token, "form", true)], decoder: 'empty', operationId: 'packagesRestorePackageForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/user/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/restore", $clientConfig, query: ['token' => new SdkQueryValue($token, "form", true)], decoder: 'empty', operationId: 'packagesRestorePackageForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -55,6 +55,6 @@ trait PackagesRestoreMethods
     public static function packagesRestorePackageForUser(ClientConfig $clientConfig, PackagesRestorePackageForUserPackageType $packageType, string $packageName, string $username, string|SdkNotGiven $token = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/restore", $clientConfig, query: ['token' => new SdkQueryValue($token, "form", true)], decoder: 'empty', operationId: 'packagesRestorePackageForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('POST', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "/restore", $clientConfig, query: ['token' => new SdkQueryValue($token, "form", true)], decoder: 'empty', operationId: 'packagesRestorePackageForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

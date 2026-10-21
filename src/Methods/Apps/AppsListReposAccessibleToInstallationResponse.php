@@ -52,8 +52,12 @@ class AppsListReposAccessibleToInstallationResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "repositories") || $data->repositories === null) { throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "repositories") || $data->repositories === null) {
+            throw new SdkValidationError("repositories", 'required', "Required property 'repositories' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             repositories: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AppsListReposAccessibleToInstallationResponseRepositoriesItem::class), SdkClient::arrayValue($data->repositories))),
@@ -99,8 +103,12 @@ class AppsListInstallationsForAuthenticatedUserResponse implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "installations") || $data->installations === null) { throw new SdkValidationError("installations", 'required', "Required property 'installations' is missing or null"); }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "installations") || $data->installations === null) {
+            throw new SdkValidationError("installations", 'required', "Required property 'installations' is missing or null");
+        }
         return new self(
             totalCount: SdkClient::intValue($data->total_count),
             installations: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Installation::class), SdkClient::arrayValue($data->installations))),
@@ -190,9 +198,15 @@ class AppsListInstallationReposForAuthenticatedUserResponseRepositoriesItemPermi
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "admin") || $data->admin === null) { throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null"); }
-        if (!property_exists($data, "pull") || $data->pull === null) { throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null"); }
-        if (!property_exists($data, "push") || $data->push === null) { throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null"); }
+        if (!property_exists($data, "admin") || $data->admin === null) {
+            throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null");
+        }
+        if (!property_exists($data, "pull") || $data->pull === null) {
+            throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null");
+        }
+        if (!property_exists($data, "push") || $data->push === null) {
+            throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null");
+        }
         return new self(
             admin: SdkClient::boolValue($data->admin),
             pull: SdkClient::boolValue($data->pull),
@@ -211,11 +225,26 @@ final readonly class AppsListInstallationReposForAuthenticatedUserResponseReposi
     public const ALL = "all";
     public const COLLABORATORS_ONLY = "collaborators_only";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -226,11 +255,26 @@ final readonly class AppsListInstallationReposForAuthenticatedUserResponseReposi
     public const PR_TITLE = "PR_TITLE";
     public const COMMIT_OR_PR_TITLE = "COMMIT_OR_PR_TITLE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -242,11 +286,26 @@ final readonly class AppsListInstallationReposForAuthenticatedUserResponseReposi
     public const COMMIT_MESSAGES = "COMMIT_MESSAGES";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -257,11 +316,26 @@ final readonly class AppsListInstallationReposForAuthenticatedUserResponseReposi
     public const PR_TITLE = "PR_TITLE";
     public const MERGE_MESSAGE = "MERGE_MESSAGE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -273,11 +347,26 @@ final readonly class AppsListInstallationReposForAuthenticatedUserResponseReposi
     public const PR_TITLE = "PR_TITLE";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**

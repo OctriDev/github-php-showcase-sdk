@@ -109,11 +109,21 @@ class CodeownersErrorsErrorsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "line") || $data->line === null) { throw new SdkValidationError("line", 'required', "Required property 'line' is missing or null"); }
-        if (!property_exists($data, "column") || $data->column === null) { throw new SdkValidationError("column", 'required', "Required property 'column' is missing or null"); }
-        if (!property_exists($data, "kind") || $data->kind === null) { throw new SdkValidationError("kind", 'required', "Required property 'kind' is missing or null"); }
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
-        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
+        if (!property_exists($data, "line") || $data->line === null) {
+            throw new SdkValidationError("line", 'required', "Required property 'line' is missing or null");
+        }
+        if (!property_exists($data, "column") || $data->column === null) {
+            throw new SdkValidationError("column", 'required', "Required property 'column' is missing or null");
+        }
+        if (!property_exists($data, "kind") || $data->kind === null) {
+            throw new SdkValidationError("kind", 'required', "Required property 'kind' is missing or null");
+        }
+        if (!property_exists($data, "message") || $data->message === null) {
+            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
+        }
+        if (!property_exists($data, "path") || $data->path === null) {
+            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
+        }
         return new self(
             line: SdkClient::intValue($data->line),
             column: SdkClient::intValue($data->column),
@@ -164,7 +174,9 @@ class CodeownersErrors implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "errors") || $data->errors === null) { throw new SdkValidationError("errors", 'required', "Required property 'errors' is missing or null"); }
+        if (!property_exists($data, "errors") || $data->errors === null) {
+            throw new SdkValidationError("errors", 'required', "Required property 'errors' is missing or null");
+        }
         return new self(
             errors: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CodeownersErrorsErrorsItem::class), SdkClient::arrayValue($data->errors))),
         );

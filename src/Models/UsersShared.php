@@ -75,10 +75,18 @@ class Email implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
-        if (!property_exists($data, "primary") || $data->primary === null) { throw new SdkValidationError("primary", 'required', "Required property 'primary' is missing or null"); }
-        if (!property_exists($data, "verified") || $data->verified === null) { throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null"); }
-        if (!property_exists($data, "visibility")) { throw new SdkValidationError("visibility", 'required', "Missing required property 'visibility'"); }
+        if (!property_exists($data, "email") || $data->email === null) {
+            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
+        }
+        if (!property_exists($data, "primary") || $data->primary === null) {
+            throw new SdkValidationError("primary", 'required', "Required property 'primary' is missing or null");
+        }
+        if (!property_exists($data, "verified") || $data->verified === null) {
+            throw new SdkValidationError("verified", 'required', "Required property 'verified' is missing or null");
+        }
+        if (!property_exists($data, "visibility")) {
+            throw new SdkValidationError("visibility", 'required', "Missing required property 'visibility'");
+        }
         return new self(
             email: SdkClient::stringValue($data->email),
             primary: SdkClient::boolValue($data->primary),

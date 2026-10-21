@@ -55,8 +55,12 @@ class DependabotAlertSecurityAdvisoryIdentifiersItem implements \JsonSerializabl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "value") || $data->value === null) { throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "value") || $data->value === null) {
+            throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, DependabotAlertSecurityAdvisoryIdentifiersItemTypeEnum::class),
             value: SdkClient::stringValue($data->value),
@@ -102,7 +106,9 @@ class DependabotAlertSecurityAdvisoryReferencesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
         );
@@ -303,19 +309,45 @@ class DependabotAlertSecurityAdvisory implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ghsa_id") || $data->ghsa_id === null) { throw new SdkValidationError("ghsa_id", 'required', "Required property 'ghsa_id' is missing or null"); }
-        if (!property_exists($data, "cve_id")) { throw new SdkValidationError("cve_id", 'required', "Missing required property 'cve_id'"); }
-        if (!property_exists($data, "summary") || $data->summary === null) { throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null"); }
-        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
-        if (!property_exists($data, "vulnerabilities") || $data->vulnerabilities === null) { throw new SdkValidationError("vulnerabilities", 'required', "Required property 'vulnerabilities' is missing or null"); }
-        if (!property_exists($data, "severity") || $data->severity === null) { throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null"); }
-        if (!property_exists($data, "cvss") || $data->cvss === null) { throw new SdkValidationError("cvss", 'required', "Required property 'cvss' is missing or null"); }
-        if (!property_exists($data, "cwes") || $data->cwes === null) { throw new SdkValidationError("cwes", 'required', "Required property 'cwes' is missing or null"); }
-        if (!property_exists($data, "identifiers") || $data->identifiers === null) { throw new SdkValidationError("identifiers", 'required', "Required property 'identifiers' is missing or null"); }
-        if (!property_exists($data, "references") || $data->references === null) { throw new SdkValidationError("references", 'required', "Required property 'references' is missing or null"); }
-        if (!property_exists($data, "published_at") || $data->published_at === null) { throw new SdkValidationError("published_at", 'required', "Required property 'published_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "withdrawn_at")) { throw new SdkValidationError("withdrawn_at", 'required', "Missing required property 'withdrawn_at'"); }
+        if (!property_exists($data, "ghsa_id") || $data->ghsa_id === null) {
+            throw new SdkValidationError("ghsa_id", 'required', "Required property 'ghsa_id' is missing or null");
+        }
+        if (!property_exists($data, "cve_id")) {
+            throw new SdkValidationError("cve_id", 'required', "Missing required property 'cve_id'");
+        }
+        if (!property_exists($data, "summary") || $data->summary === null) {
+            throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null");
+        }
+        if (!property_exists($data, "description") || $data->description === null) {
+            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
+        }
+        if (!property_exists($data, "vulnerabilities") || $data->vulnerabilities === null) {
+            throw new SdkValidationError("vulnerabilities", 'required', "Required property 'vulnerabilities' is missing or null");
+        }
+        if (!property_exists($data, "severity") || $data->severity === null) {
+            throw new SdkValidationError("severity", 'required', "Required property 'severity' is missing or null");
+        }
+        if (!property_exists($data, "cvss") || $data->cvss === null) {
+            throw new SdkValidationError("cvss", 'required', "Required property 'cvss' is missing or null");
+        }
+        if (!property_exists($data, "cwes") || $data->cwes === null) {
+            throw new SdkValidationError("cwes", 'required', "Required property 'cwes' is missing or null");
+        }
+        if (!property_exists($data, "identifiers") || $data->identifiers === null) {
+            throw new SdkValidationError("identifiers", 'required', "Required property 'identifiers' is missing or null");
+        }
+        if (!property_exists($data, "references") || $data->references === null) {
+            throw new SdkValidationError("references", 'required', "Required property 'references' is missing or null");
+        }
+        if (!property_exists($data, "published_at") || $data->published_at === null) {
+            throw new SdkValidationError("published_at", 'required', "Required property 'published_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "withdrawn_at")) {
+            throw new SdkValidationError("withdrawn_at", 'required', "Missing required property 'withdrawn_at'");
+        }
         return new self(
             ghsaId: SdkClient::stringValue($data->ghsa_id),
             cveId: ($data->cve_id === null ? null : SdkClient::stringValue($data->cve_id)),
@@ -347,9 +379,24 @@ final readonly class DependabotAlertSecurityVulnerabilitySeverityEnum implements
     public const HIGH = "high";
     public const CRITICAL = "critical";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

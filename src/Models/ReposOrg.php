@@ -185,7 +185,9 @@ class OrgRulesetConditionsVariant0 implements OrgRulesetConditions, RepositoryRu
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_name") || $data->repository_name === null) { throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null"); }
+        if (!property_exists($data, "repository_name") || $data->repository_name === null) {
+            throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null");
+        }
         return new self(
             repositoryName: SdkClient::hydrateClass($data->repository_name, OrgRulesetConditionsVariant0RepositoryName::class),
             refName: (property_exists($data, "ref_name") && $data->ref_name !== null ? SdkClient::hydrateClass($data->ref_name, OrgRulesetConditionsVariant0RefName::class) : SdkNotGiven::Value),
@@ -345,7 +347,9 @@ class OrgRulesetConditionsVariant1 implements OrgRulesetConditions, RepositoryRu
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
+            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
+        }
         return new self(
             repositoryId: SdkClient::hydrateClass($data->repository_id, OrgRulesetConditionsVariant1RepositoryId::class),
             refName: (property_exists($data, "ref_name") && $data->ref_name !== null ? SdkClient::hydrateClass($data->ref_name, OrgRulesetConditionsVariant1RefName::class) : SdkNotGiven::Value),

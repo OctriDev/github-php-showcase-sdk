@@ -16,11 +16,26 @@ final readonly class ImmutableReleasesOrganizationSettingsEnforcedRepositoriesEn
     public const NONE = "none";
     public const SELECTED = "selected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -73,7 +88,9 @@ class ImmutableReleasesOrganizationSettings implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "enforced_repositories") || $data->enforced_repositories === null) { throw new SdkValidationError("enforced_repositories", 'required', "Required property 'enforced_repositories' is missing or null"); }
+        if (!property_exists($data, "enforced_repositories") || $data->enforced_repositories === null) {
+            throw new SdkValidationError("enforced_repositories", 'required', "Required property 'enforced_repositories' is missing or null");
+        }
         return new self(
             enforcedRepositories: SdkClient::hydrateStringEnumOrString($data->enforced_repositories, ImmutableReleasesOrganizationSettingsEnforcedRepositoriesEnum::class),
             selectedRepositoriesUrl: (property_exists($data, "selected_repositories_url") && $data->selected_repositories_url !== null ? SdkClient::stringValue($data->selected_repositories_url) : SdkNotGiven::Value),

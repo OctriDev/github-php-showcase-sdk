@@ -55,8 +55,12 @@ class SecurityAdvisoriesCreateRepositoryAdvisoryCreditsItem implements \JsonSeri
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "login") || $data->login === null) { throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "login") || $data->login === null) {
+            throw new SdkValidationError("login", 'required', "Required property 'login' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             login: SdkClient::stringValue($data->login),
             type: SdkClient::hydrateStringEnumOrString($data->type, SecurityAdvisoryCreditTypes::class),
@@ -114,7 +118,9 @@ class SecurityAdvisoriesCreatePrivateVulnerabilityReportVulnerabilitiesItemPacka
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) { throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null"); }
+        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) {
+            throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null");
+        }
         return new self(
             ecosystem: SdkClient::hydrateStringEnumOrString($data->ecosystem, SecurityAdvisoryEcosystems::class),
             name: (property_exists($data, "name") ? ($data->name === null ? null : SdkClient::stringValue($data->name)) : SdkNotGiven::Value),
@@ -196,7 +202,9 @@ class SecurityAdvisoriesCreatePrivateVulnerabilityReportVulnerabilitiesItem impl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "package") || $data->package === null) { throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null"); }
+        if (!property_exists($data, "package") || $data->package === null) {
+            throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null");
+        }
         return new self(
             package: SdkClient::hydrateClass($data->package, SecurityAdvisoriesCreatePrivateVulnerabilityReportVulnerabilitiesItemPackage::class),
             vulnerableVersionRange: (property_exists($data, "vulnerable_version_range") ? ($data->vulnerable_version_range === null ? null : SdkClient::stringValue($data->vulnerable_version_range)) : SdkNotGiven::Value),
@@ -256,7 +264,9 @@ class SecurityAdvisoriesUpdateRepositoryAdvisoryVulnerabilitiesItemPackage imple
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) { throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null"); }
+        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) {
+            throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null");
+        }
         return new self(
             ecosystem: SdkClient::hydrateStringEnumOrString($data->ecosystem, SecurityAdvisoryEcosystems::class),
             name: (property_exists($data, "name") ? ($data->name === null ? null : SdkClient::stringValue($data->name)) : SdkNotGiven::Value),
@@ -338,7 +348,9 @@ class SecurityAdvisoriesUpdateRepositoryAdvisoryVulnerabilitiesItem implements \
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "package") || $data->package === null) { throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null"); }
+        if (!property_exists($data, "package") || $data->package === null) {
+            throw new SdkValidationError("package", 'required', "Required property 'package' is missing or null");
+        }
         return new self(
             package: SdkClient::hydrateClass($data->package, SecurityAdvisoriesUpdateRepositoryAdvisoryVulnerabilitiesItemPackage::class),
             vulnerableVersionRange: (property_exists($data, "vulnerable_version_range") ? ($data->vulnerable_version_range === null ? null : SdkClient::stringValue($data->vulnerable_version_range)) : SdkNotGiven::Value),

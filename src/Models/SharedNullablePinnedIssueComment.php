@@ -55,8 +55,12 @@ class NullablePinnedIssueComment implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pinned_at") || $data->pinned_at === null) { throw new SdkValidationError("pinned_at", 'required', "Required property 'pinned_at' is missing or null"); }
-        if (!property_exists($data, "pinned_by")) { throw new SdkValidationError("pinned_by", 'required', "Missing required property 'pinned_by'"); }
+        if (!property_exists($data, "pinned_at") || $data->pinned_at === null) {
+            throw new SdkValidationError("pinned_at", 'required', "Required property 'pinned_at' is missing or null");
+        }
+        if (!property_exists($data, "pinned_by")) {
+            throw new SdkValidationError("pinned_by", 'required', "Missing required property 'pinned_by'");
+        }
         return new self(
             pinnedAt: SdkClient::stringValue($data->pinned_at),
             pinnedBy: ($data->pinned_by === null ? null : SdkClient::hydrateClass($data->pinned_by, NullableSimpleUser::class)),
@@ -146,9 +150,15 @@ class NullableRepositoryPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "admin") || $data->admin === null) { throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null"); }
-        if (!property_exists($data, "pull") || $data->pull === null) { throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null"); }
-        if (!property_exists($data, "push") || $data->push === null) { throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null"); }
+        if (!property_exists($data, "admin") || $data->admin === null) {
+            throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null");
+        }
+        if (!property_exists($data, "pull") || $data->pull === null) {
+            throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null");
+        }
+        if (!property_exists($data, "push") || $data->push === null) {
+            throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null");
+        }
         return new self(
             admin: SdkClient::boolValue($data->admin),
             pull: SdkClient::boolValue($data->pull),
@@ -167,11 +177,26 @@ final readonly class NullableRepositoryPullRequestCreationPolicyEnum implements 
     public const ALL = "all";
     public const COLLABORATORS_ONLY = "collaborators_only";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -182,11 +207,26 @@ final readonly class NullableRepositorySquashMergeCommitTitleEnum implements Sdk
     public const PR_TITLE = "PR_TITLE";
     public const COMMIT_OR_PR_TITLE = "COMMIT_OR_PR_TITLE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -198,11 +238,26 @@ final readonly class NullableRepositorySquashMergeCommitMessageEnum implements S
     public const COMMIT_MESSAGES = "COMMIT_MESSAGES";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -213,11 +268,26 @@ final readonly class NullableRepositoryMergeCommitTitleEnum implements SdkOpenEn
     public const PR_TITLE = "PR_TITLE";
     public const MERGE_MESSAGE = "MERGE_MESSAGE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -229,11 +299,26 @@ final readonly class NullableRepositoryMergeCommitMessageEnum implements SdkOpen
     public const PR_TITLE = "PR_TITLE";
     public const BLANK = "BLANK";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**

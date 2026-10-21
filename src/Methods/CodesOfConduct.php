@@ -35,7 +35,7 @@ class CodesOfConduct
     public static function codesOfConductGetConductCode(ClientConfig $clientConfig, string $key, ?RequestOptions $requestOptions = null): CodeOfConduct
     {
 
-        $sdkResponse = SdkClient::request('GET', "/codes_of_conduct/" . SdkClient::encodePathSegment($key) . "", $clientConfig, returnType: CodeOfConduct::class, decoder: 'json', operationId: 'codesOfConductGetConductCode', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/codes_of_conduct/" . SdkClient::encodePathSegment($key) . "", $clientConfig, returnType: CodeOfConduct::class, decoder: 'json', operationId: 'codesOfConductGetConductCode', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CodeOfConduct::class));
     }
 }

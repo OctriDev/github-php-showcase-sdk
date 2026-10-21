@@ -75,10 +75,18 @@ class NullableCodeOfConductSimple implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "html_url")) { throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "key") || $data->key === null) {
+            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "html_url")) {
+            throw new SdkValidationError("html_url", 'required', "Missing required property 'html_url'");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
             key: SdkClient::stringValue($data->key),
@@ -170,9 +178,15 @@ class NullableCollaboratorPermissions implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "pull") || $data->pull === null) { throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null"); }
-        if (!property_exists($data, "push") || $data->push === null) { throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null"); }
-        if (!property_exists($data, "admin") || $data->admin === null) { throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null"); }
+        if (!property_exists($data, "pull") || $data->pull === null) {
+            throw new SdkValidationError("pull", 'required', "Required property 'pull' is missing or null");
+        }
+        if (!property_exists($data, "push") || $data->push === null) {
+            throw new SdkValidationError("push", 'required', "Required property 'push' is missing or null");
+        }
+        if (!property_exists($data, "admin") || $data->admin === null) {
+            throw new SdkValidationError("admin", 'required', "Required property 'admin' is missing or null");
+        }
         return new self(
             pull: SdkClient::boolValue($data->pull),
             push: SdkClient::boolValue($data->push),

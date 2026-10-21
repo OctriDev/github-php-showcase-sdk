@@ -55,8 +55,12 @@ class WebhookIssuesOpenedChanges implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "old_issue")) { throw new SdkValidationError("old_issue", 'required', "Missing required property 'old_issue'"); }
-        if (!property_exists($data, "old_repository") || $data->old_repository === null) { throw new SdkValidationError("old_repository", 'required', "Required property 'old_repository' is missing or null"); }
+        if (!property_exists($data, "old_issue")) {
+            throw new SdkValidationError("old_issue", 'required', "Missing required property 'old_issue'");
+        }
+        if (!property_exists($data, "old_repository") || $data->old_repository === null) {
+            throw new SdkValidationError("old_repository", 'required', "Required property 'old_repository' is missing or null");
+        }
         return new self(
             oldIssue: ($data->old_issue === null ? null : SdkClient::hydrateClass($data->old_issue, WebhookIssuesOpenedChangesOldIssue::class)),
             oldRepository: SdkClient::hydrateClass($data->old_repository, WebhookIssuesOpenedChangesOldRepository::class),
@@ -74,11 +78,26 @@ final readonly class WebhookIssuesOpenedIssueActiveLockReasonEnum implements Sdk
     public const TOO_HEATED = "too heated";
     public const SPAM = "spam";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -90,9 +109,24 @@ final readonly class WebhookIssuesOpenedIssueAssigneeTypeEnum implements SdkOpen
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

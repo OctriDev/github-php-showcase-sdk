@@ -21,7 +21,7 @@ trait MigrationsReposMethods
     public static function migrationsUnlockRepoForOrg(ClientConfig $clientConfig, string $org, int $migrationId, string $repoName, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/migrations/" . SdkClient::encodePathSegment($migrationId) . "/repos/" . SdkClient::encodePathSegment($repoName) . "/lock", $clientConfig, decoder: 'empty', operationId: 'migrationsUnlockRepoForOrg', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/migrations/" . SdkClient::encodePathSegment($migrationId) . "/repos/" . SdkClient::encodePathSegment($repoName) . "/lock", $clientConfig, decoder: 'empty', operationId: 'migrationsUnlockRepoForOrg', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -39,7 +39,7 @@ trait MigrationsReposMethods
     public static function migrationsGetImportStatus(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): Import
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import", $clientConfig, returnType: Import::class, decoder: 'json', operationId: 'migrationsGetImportStatus', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import", $clientConfig, returnType: Import::class, decoder: 'json', operationId: 'migrationsGetImportStatus', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Import::class));
     }
 
@@ -63,7 +63,7 @@ trait MigrationsReposMethods
     public static function migrationsStartImport(ClientConfig $clientConfig, string $owner, string $repo, string $vcsUrl, MigrationsStartImportVcs|SdkNotGiven $vcs = SdkNotGiven::Value, string|SdkNotGiven $vcsUsername = SdkNotGiven::Value, string|SdkNotGiven $vcsPassword = SdkNotGiven::Value, string|SdkNotGiven $tfvcProject = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Import
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import", $clientConfig, body: ['vcs_url' => $vcsUrl, 'vcs' => $vcs, 'vcs_username' => $vcsUsername, 'vcs_password' => $vcsPassword, 'tfvc_project' => $tfvcProject], returnType: Import::class, decoder: 'json', operationId: 'migrationsStartImport', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import", $clientConfig, body: ['vcs_url' => $vcsUrl, 'vcs' => $vcs, 'vcs_username' => $vcsUsername, 'vcs_password' => $vcsPassword, 'tfvc_project' => $tfvcProject], returnType: Import::class, decoder: 'json', operationId: 'migrationsStartImport', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Import::class));
     }
 
@@ -86,7 +86,7 @@ trait MigrationsReposMethods
     public static function migrationsUpdateImport(ClientConfig $clientConfig, string $owner, string $repo, string|SdkNotGiven $vcsUsername = SdkNotGiven::Value, string|SdkNotGiven $vcsPassword = SdkNotGiven::Value, MigrationsUpdateImportVcs|SdkNotGiven $vcs = SdkNotGiven::Value, string|SdkNotGiven $tfvcProject = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Import
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import", $clientConfig, body: ['vcs_username' => $vcsUsername, 'vcs_password' => $vcsPassword, 'vcs' => $vcs, 'tfvc_project' => $tfvcProject], returnType: Import::class, decoder: 'json', operationId: 'migrationsUpdateImport', requestOptions: $requestOptions, errors: [503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import", $clientConfig, body: ['vcs_username' => $vcsUsername, 'vcs_password' => $vcsPassword, 'vcs' => $vcs, 'tfvc_project' => $tfvcProject], returnType: Import::class, decoder: 'json', operationId: 'migrationsUpdateImport', requestOptions: $requestOptions, errors: [503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Import::class));
     }
 
@@ -104,7 +104,7 @@ trait MigrationsReposMethods
     public static function migrationsCancelImport(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import", $clientConfig, decoder: 'empty', operationId: 'migrationsCancelImport', requestOptions: $requestOptions, errors: [503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import", $clientConfig, decoder: 'empty', operationId: 'migrationsCancelImport', requestOptions: $requestOptions, errors: [503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -123,7 +123,7 @@ trait MigrationsReposMethods
     public static function migrationsGetCommitAuthors(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $since = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import/authors", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true)], decoder: 'json', operationId: 'migrationsGetCommitAuthors', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import/authors", $clientConfig, query: ['since' => new SdkQueryValue($since, "form", true)], decoder: 'json', operationId: 'migrationsGetCommitAuthors', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, PorterAuthor::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -145,7 +145,7 @@ trait MigrationsReposMethods
     public static function migrationsMapCommitAuthor(ClientConfig $clientConfig, string $owner, string $repo, int $authorId, string|SdkNotGiven $email = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PorterAuthor
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import/authors/" . SdkClient::encodePathSegment($authorId) . "", $clientConfig, body: ['email' => $email, 'name' => $name], returnType: PorterAuthor::class, decoder: 'json', operationId: 'migrationsMapCommitAuthor', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import/authors/" . SdkClient::encodePathSegment($authorId) . "", $clientConfig, body: ['email' => $email, 'name' => $name], returnType: PorterAuthor::class, decoder: 'json', operationId: 'migrationsMapCommitAuthor', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PorterAuthor::class));
     }
 
@@ -164,7 +164,7 @@ trait MigrationsReposMethods
     public static function migrationsGetLargeFiles(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import/large_files", $clientConfig, decoder: 'json', operationId: 'migrationsGetLargeFiles', requestOptions: $requestOptions, errors: [503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import/large_files", $clientConfig, decoder: 'json', operationId: 'migrationsGetLargeFiles', requestOptions: $requestOptions, errors: [503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, PorterLargeFile::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -184,7 +184,7 @@ trait MigrationsReposMethods
     public static function migrationsSetLfsPreference(ClientConfig $clientConfig, string $owner, string $repo, MigrationsSetLfsPreferenceUseLfs $useLfs, ?RequestOptions $requestOptions = null): Import
     {
 
-        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import/lfs", $clientConfig, body: ['use_lfs' => $useLfs], returnType: Import::class, decoder: 'json', operationId: 'migrationsSetLfsPreference', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 503 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('PATCH', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/import/lfs", $clientConfig, body: ['use_lfs' => $useLfs], returnType: Import::class, decoder: 'json', operationId: 'migrationsSetLfsPreference', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class), 503 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Import::class));
     }
 
@@ -200,6 +200,6 @@ trait MigrationsReposMethods
     public static function migrationsUnlockRepoForAuthenticatedUser(ClientConfig $clientConfig, int $migrationId, string $repoName, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/user/migrations/" . SdkClient::encodePathSegment($migrationId) . "/repos/" . SdkClient::encodePathSegment($repoName) . "/lock", $clientConfig, decoder: 'empty', operationId: 'migrationsUnlockRepoForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/user/migrations/" . SdkClient::encodePathSegment($migrationId) . "/repos/" . SdkClient::encodePathSegment($repoName) . "/lock", $clientConfig, decoder: 'empty', operationId: 'migrationsUnlockRepoForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

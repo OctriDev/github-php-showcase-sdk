@@ -55,8 +55,12 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItem implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "app_id") || $data->app_id === null) { throw new SdkValidationError("app_id", 'required', "Required property 'app_id' is missing or null"); }
-        if (!property_exists($data, "setting") || $data->setting === null) { throw new SdkValidationError("setting", 'required', "Required property 'setting' is missing or null"); }
+        if (!property_exists($data, "app_id") || $data->app_id === null) {
+            throw new SdkValidationError("app_id", 'required', "Required property 'app_id' is missing or null");
+        }
+        if (!property_exists($data, "setting") || $data->setting === null) {
+            throw new SdkValidationError("setting", 'required', "Required property 'setting' is missing or null");
+        }
         return new self(
             appId: SdkClient::intValue($data->app_id),
             setting: SdkClient::boolValue($data->setting),
@@ -158,8 +162,12 @@ class CheckSuitePreference implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "preferences") || $data->preferences === null) { throw new SdkValidationError("preferences", 'required', "Required property 'preferences' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "preferences") || $data->preferences === null) {
+            throw new SdkValidationError("preferences", 'required', "Required property 'preferences' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
         return new self(
             preferences: SdkClient::hydrateClass($data->preferences, CheckSuitePreferencePreferences::class),
             repository: SdkClient::hydrateClass($data->repository, MinimalRepository::class),

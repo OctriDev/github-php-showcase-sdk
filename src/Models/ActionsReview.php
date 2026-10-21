@@ -55,8 +55,12 @@ class ReviewCustomGatesCommentRequired implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "environment_name") || $data->environment_name === null) { throw new SdkValidationError("environment_name", 'required', "Required property 'environment_name' is missing or null"); }
-        if (!property_exists($data, "comment") || $data->comment === null) { throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null"); }
+        if (!property_exists($data, "environment_name") || $data->environment_name === null) {
+            throw new SdkValidationError("environment_name", 'required', "Required property 'environment_name' is missing or null");
+        }
+        if (!property_exists($data, "comment") || $data->comment === null) {
+            throw new SdkValidationError("comment", 'required', "Required property 'comment' is missing or null");
+        }
         return new self(
             environmentName: SdkClient::stringValue($data->environment_name),
             comment: SdkClient::stringValue($data->comment),
@@ -72,11 +76,26 @@ final readonly class ReviewCustomGatesStateRequiredStateEnum implements SdkOpenE
     public const APPROVED = "approved";
     public const REJECTED = "rejected";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -139,8 +158,12 @@ class ReviewCustomGatesStateRequired implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "environment_name") || $data->environment_name === null) { throw new SdkValidationError("environment_name", 'required', "Required property 'environment_name' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "environment_name") || $data->environment_name === null) {
+            throw new SdkValidationError("environment_name", 'required', "Required property 'environment_name' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
         return new self(
             environmentName: SdkClient::stringValue($data->environment_name),
             state: SdkClient::hydrateStringEnumOrString($data->state, ReviewCustomGatesStateRequiredStateEnum::class),

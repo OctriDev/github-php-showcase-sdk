@@ -55,8 +55,12 @@ class RepositoryExternalPropertyPayload implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "repository_name") || $data->repository_name === null) { throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null"); }
-        if (!property_exists($data, "value")) { throw new SdkValidationError("value", 'required', "Missing required property 'value'"); }
+        if (!property_exists($data, "repository_name") || $data->repository_name === null) {
+            throw new SdkValidationError("repository_name", 'required', "Required property 'repository_name' is missing or null");
+        }
+        if (!property_exists($data, "value")) {
+            throw new SdkValidationError("value", 'required', "Missing required property 'value'");
+        }
         return new self(
             repositoryName: SdkClient::stringValue($data->repository_name),
             value: ($data->value === null ? null : SdkClient::stringValue($data->value)),

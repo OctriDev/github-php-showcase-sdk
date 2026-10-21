@@ -19,11 +19,26 @@ final readonly class CheckRunStatusEnum implements SdkOpenEnum
     public const REQUESTED = "requested";
     public const PENDING = "pending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -39,11 +54,26 @@ final readonly class CheckRunConclusionEnum implements SdkOpenEnum
     public const TIMED_OUT = "timed_out";
     public const ACTION_REQUIRED = "action_required";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -124,11 +154,21 @@ class CheckRunOutput implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "title")) { throw new SdkValidationError("title", 'required', "Missing required property 'title'"); }
-        if (!property_exists($data, "summary")) { throw new SdkValidationError("summary", 'required', "Missing required property 'summary'"); }
-        if (!property_exists($data, "text")) { throw new SdkValidationError("text", 'required', "Missing required property 'text'"); }
-        if (!property_exists($data, "annotations_count") || $data->annotations_count === null) { throw new SdkValidationError("annotations_count", 'required', "Required property 'annotations_count' is missing or null"); }
-        if (!property_exists($data, "annotations_url") || $data->annotations_url === null) { throw new SdkValidationError("annotations_url", 'required', "Required property 'annotations_url' is missing or null"); }
+        if (!property_exists($data, "title")) {
+            throw new SdkValidationError("title", 'required', "Missing required property 'title'");
+        }
+        if (!property_exists($data, "summary")) {
+            throw new SdkValidationError("summary", 'required', "Missing required property 'summary'");
+        }
+        if (!property_exists($data, "text")) {
+            throw new SdkValidationError("text", 'required', "Missing required property 'text'");
+        }
+        if (!property_exists($data, "annotations_count") || $data->annotations_count === null) {
+            throw new SdkValidationError("annotations_count", 'required', "Required property 'annotations_count' is missing or null");
+        }
+        if (!property_exists($data, "annotations_url") || $data->annotations_url === null) {
+            throw new SdkValidationError("annotations_url", 'required', "Required property 'annotations_url' is missing or null");
+        }
         return new self(
             title: ($data->title === null ? null : SdkClient::stringValue($data->title)),
             summary: ($data->summary === null ? null : SdkClient::stringValue($data->summary)),
@@ -177,7 +217,9 @@ class CheckRunCheckSuite implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
         );

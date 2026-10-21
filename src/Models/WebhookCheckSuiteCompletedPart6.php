@@ -173,15 +173,33 @@ class WebhookCheckSuiteCompletedCheckSuiteApp implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at")) { throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'"); }
-        if (!property_exists($data, "description")) { throw new SdkValidationError("description", 'required', "Missing required property 'description'"); }
-        if (!property_exists($data, "external_url")) { throw new SdkValidationError("external_url", 'required', "Missing required property 'external_url'"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "id")) { throw new SdkValidationError("id", 'required', "Missing required property 'id'"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "owner")) { throw new SdkValidationError("owner", 'required', "Missing required property 'owner'"); }
-        if (!property_exists($data, "updated_at")) { throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'"); }
+        if (!property_exists($data, "created_at")) {
+            throw new SdkValidationError("created_at", 'required', "Missing required property 'created_at'");
+        }
+        if (!property_exists($data, "description")) {
+            throw new SdkValidationError("description", 'required', "Missing required property 'description'");
+        }
+        if (!property_exists($data, "external_url")) {
+            throw new SdkValidationError("external_url", 'required', "Missing required property 'external_url'");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "id")) {
+            throw new SdkValidationError("id", 'required', "Missing required property 'id'");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "owner")) {
+            throw new SdkValidationError("owner", 'required', "Missing required property 'owner'");
+        }
+        if (!property_exists($data, "updated_at")) {
+            throw new SdkValidationError("updated_at", 'required', "Missing required property 'updated_at'");
+        }
         return new self(
             createdAt: ($data->created_at === null ? null : SdkClient::stringValue($data->created_at)),
             description: ($data->description === null ? null : SdkClient::stringValue($data->description)),
@@ -215,11 +233,26 @@ final readonly class WebhookCheckSuiteCompletedCheckSuiteConclusionEnum implemen
     public const SKIPPED = "skipped";
     public const STARTUP_FAILURE = "startup_failure";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -294,8 +327,12 @@ class WebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthor implements \JsonSeria
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email")) { throw new SdkValidationError("email", 'required', "Missing required property 'email'"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "email")) {
+            throw new SdkValidationError("email", 'required', "Missing required property 'email'");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
         return new self(
             email: ($data->email === null ? null : SdkClient::stringValue($data->email)),
             name: SdkClient::stringValue($data->name),

@@ -97,7 +97,7 @@ trait TeamsReposMethods
     public static function teamsListReposLegacy(ClientConfig $clientConfig, int $teamId, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/repos", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListReposLegacy', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/repos", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'teamsListReposLegacy', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, MinimalRepository::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -137,7 +137,7 @@ trait TeamsReposMethods
     public static function teamsAddOrUpdateRepoPermissionsLegacy(ClientConfig $clientConfig, int $teamId, string $owner, string $repo, TeamsAddOrUpdateRepoPermissionsLegacyPermission|SdkNotGiven $permission = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, body: ['permission' => $permission], decoder: 'empty', operationId: 'teamsAddOrUpdateRepoPermissionsLegacy', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('PUT', "/teams/" . SdkClient::encodePathSegment($teamId) . "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "", $clientConfig, body: ['permission' => $permission], decoder: 'empty', operationId: 'teamsAddOrUpdateRepoPermissionsLegacy', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 

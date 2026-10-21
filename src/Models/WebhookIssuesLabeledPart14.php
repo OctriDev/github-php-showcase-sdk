@@ -413,27 +413,69 @@ class WebhookIssuesLabeledIssue implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "active_lock_reason")) { throw new SdkValidationError("active_lock_reason", 'required', "Missing required property 'active_lock_reason'"); }
-        if (!property_exists($data, "assignees") || $data->assignees === null) { throw new SdkValidationError("assignees", 'required', "Required property 'assignees' is missing or null"); }
-        if (!property_exists($data, "author_association") || $data->author_association === null) { throw new SdkValidationError("author_association", 'required', "Required property 'author_association' is missing or null"); }
-        if (!property_exists($data, "body")) { throw new SdkValidationError("body", 'required', "Missing required property 'body'"); }
-        if (!property_exists($data, "closed_at")) { throw new SdkValidationError("closed_at", 'required', "Missing required property 'closed_at'"); }
-        if (!property_exists($data, "comments") || $data->comments === null) { throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null"); }
-        if (!property_exists($data, "comments_url") || $data->comments_url === null) { throw new SdkValidationError("comments_url", 'required', "Required property 'comments_url' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "events_url") || $data->events_url === null) { throw new SdkValidationError("events_url", 'required', "Required property 'events_url' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "labels_url") || $data->labels_url === null) { throw new SdkValidationError("labels_url", 'required', "Required property 'labels_url' is missing or null"); }
-        if (!property_exists($data, "milestone")) { throw new SdkValidationError("milestone", 'required', "Missing required property 'milestone'"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
-        if (!property_exists($data, "number") || $data->number === null) { throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null"); }
-        if (!property_exists($data, "reactions") || $data->reactions === null) { throw new SdkValidationError("reactions", 'required', "Required property 'reactions' is missing or null"); }
-        if (!property_exists($data, "repository_url") || $data->repository_url === null) { throw new SdkValidationError("repository_url", 'required', "Required property 'repository_url' is missing or null"); }
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "user")) { throw new SdkValidationError("user", 'required', "Missing required property 'user'"); }
+        if (!property_exists($data, "active_lock_reason")) {
+            throw new SdkValidationError("active_lock_reason", 'required', "Missing required property 'active_lock_reason'");
+        }
+        if (!property_exists($data, "assignees") || $data->assignees === null) {
+            throw new SdkValidationError("assignees", 'required', "Required property 'assignees' is missing or null");
+        }
+        if (!property_exists($data, "author_association") || $data->author_association === null) {
+            throw new SdkValidationError("author_association", 'required', "Required property 'author_association' is missing or null");
+        }
+        if (!property_exists($data, "body")) {
+            throw new SdkValidationError("body", 'required', "Missing required property 'body'");
+        }
+        if (!property_exists($data, "closed_at")) {
+            throw new SdkValidationError("closed_at", 'required', "Missing required property 'closed_at'");
+        }
+        if (!property_exists($data, "comments") || $data->comments === null) {
+            throw new SdkValidationError("comments", 'required', "Required property 'comments' is missing or null");
+        }
+        if (!property_exists($data, "comments_url") || $data->comments_url === null) {
+            throw new SdkValidationError("comments_url", 'required', "Required property 'comments_url' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "events_url") || $data->events_url === null) {
+            throw new SdkValidationError("events_url", 'required', "Required property 'events_url' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "labels_url") || $data->labels_url === null) {
+            throw new SdkValidationError("labels_url", 'required', "Required property 'labels_url' is missing or null");
+        }
+        if (!property_exists($data, "milestone")) {
+            throw new SdkValidationError("milestone", 'required', "Missing required property 'milestone'");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
+        if (!property_exists($data, "number") || $data->number === null) {
+            throw new SdkValidationError("number", 'required', "Required property 'number' is missing or null");
+        }
+        if (!property_exists($data, "reactions") || $data->reactions === null) {
+            throw new SdkValidationError("reactions", 'required', "Required property 'reactions' is missing or null");
+        }
+        if (!property_exists($data, "repository_url") || $data->repository_url === null) {
+            throw new SdkValidationError("repository_url", 'required', "Required property 'repository_url' is missing or null");
+        }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "user")) {
+            throw new SdkValidationError("user", 'required', "Missing required property 'user'");
+        }
         return new self(
             activeLockReason: ($data->active_lock_reason === null ? null : SdkClient::hydrateStringEnumOrString($data->active_lock_reason, WebhookIssuesLabeledIssueActiveLockReasonEnum::class)),
             assignees: array_values(array_map(static fn($item) => ($item === null ? null : SdkClient::hydrateClass($item, WebhookIssuesLabeledIssueAssigneesItem::class)), SdkClient::arrayValue($data->assignees))),

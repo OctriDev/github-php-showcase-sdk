@@ -90,7 +90,9 @@ class RepositoryRuleDetailedVariant24 implements RepositoryRuleDetailed, \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleDetailedVariant24TypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleDetailedVariant24Parameters::class) : SdkNotGiven::Value),
@@ -147,7 +149,9 @@ class RepositoryRuleFileExtensionRestrictionParameters implements \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "restricted_file_extensions") || $data->restricted_file_extensions === null) { throw new SdkValidationError("restricted_file_extensions", 'required', "Required property 'restricted_file_extensions' is missing or null"); }
+        if (!property_exists($data, "restricted_file_extensions") || $data->restricted_file_extensions === null) {
+            throw new SdkValidationError("restricted_file_extensions", 'required', "Required property 'restricted_file_extensions' is missing or null");
+        }
         return new self(
             restrictedFileExtensions: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->restricted_file_extensions))),
         );
@@ -204,7 +208,9 @@ class RepositoryRuleFileExtensionRestriction implements RepositoryRule, OrgRules
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleFileExtensionRestrictionTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleFileExtensionRestrictionParameters::class) : SdkNotGiven::Value),
@@ -258,7 +264,9 @@ class RepositoryRuleFilePathRestrictionParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "restricted_file_paths") || $data->restricted_file_paths === null) { throw new SdkValidationError("restricted_file_paths", 'required', "Required property 'restricted_file_paths' is missing or null"); }
+        if (!property_exists($data, "restricted_file_paths") || $data->restricted_file_paths === null) {
+            throw new SdkValidationError("restricted_file_paths", 'required', "Required property 'restricted_file_paths' is missing or null");
+        }
         return new self(
             restrictedFilePaths: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->restricted_file_paths))),
         );
@@ -315,7 +323,9 @@ class RepositoryRuleFilePathRestriction implements RepositoryRule, OrgRules, \Js
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleFilePathRestrictionTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleFilePathRestrictionParameters::class) : SdkNotGiven::Value),

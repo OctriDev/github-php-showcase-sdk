@@ -42,7 +42,9 @@ class CopilotSpacesListCollaboratorsForOrgResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "collaborators") || $data->collaborators === null) { throw new SdkValidationError("collaborators", 'required', "Required property 'collaborators' is missing or null"); }
+        if (!property_exists($data, "collaborators") || $data->collaborators === null) {
+            throw new SdkValidationError("collaborators", 'required', "Required property 'collaborators' is missing or null");
+        }
         return new self(
             collaborators: array_values(array_map(static fn($item) => SdkClient::hydrateUnionAs($item, CopilotSpaceCollaborator::class, [CopilotSpaceCollaboratorVariant0::class, CopilotSpaceCollaboratorVariant1::class], null, []), SdkClient::arrayValue($data->collaborators))),
         );
@@ -84,7 +86,9 @@ class CopilotSpacesListResourcesForOrgResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "resources") || $data->resources === null) { throw new SdkValidationError("resources", 'required', "Required property 'resources' is missing or null"); }
+        if (!property_exists($data, "resources") || $data->resources === null) {
+            throw new SdkValidationError("resources", 'required', "Required property 'resources' is missing or null");
+        }
         return new self(
             resources: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CopilotSpaceResource::class), SdkClient::arrayValue($data->resources))),
         );
@@ -126,7 +130,9 @@ class CopilotSpacesListForUserResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "spaces") || $data->spaces === null) { throw new SdkValidationError("spaces", 'required', "Required property 'spaces' is missing or null"); }
+        if (!property_exists($data, "spaces") || $data->spaces === null) {
+            throw new SdkValidationError("spaces", 'required', "Required property 'spaces' is missing or null");
+        }
         return new self(
             spaces: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CopilotSpace::class), SdkClient::arrayValue($data->spaces))),
         );
@@ -146,11 +152,26 @@ final readonly class CopilotSpacesCreateForUserResourcesAttributesItemResourceTy
     public const MEDIA_CONTENT = "media_content";
     public const UPLOADED_TEXT_FILE = "uploaded_text_file";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -320,9 +341,24 @@ final readonly class CopilotSpacesUpdateForUserResourcesAttributesItemResourceTy
     public const MEDIA_CONTENT = "media_content";
     public const UPLOADED_TEXT_FILE = "uploaded_text_file";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

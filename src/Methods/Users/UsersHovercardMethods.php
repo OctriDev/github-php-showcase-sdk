@@ -22,7 +22,7 @@ trait UsersHovercardMethods
     public static function usersGetContextForUser(ClientConfig $clientConfig, string $username, UsersGetContextForUserSubjectType|SdkNotGiven $subjectType = SdkNotGiven::Value, string|SdkNotGiven $subjectId = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Hovercard
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/hovercard", $clientConfig, query: ['subject_type' => new SdkQueryValue($subjectType, "form", true), 'subject_id' => new SdkQueryValue($subjectId, "form", true)], returnType: Hovercard::class, decoder: 'json', operationId: 'usersGetContextForUser', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/hovercard", $clientConfig, query: ['subject_type' => new SdkQueryValue($subjectType, "form", true), 'subject_id' => new SdkQueryValue($subjectId, "form", true)], returnType: Hovercard::class, decoder: 'json', operationId: 'usersGetContextForUser', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Hovercard::class));
     }
 }

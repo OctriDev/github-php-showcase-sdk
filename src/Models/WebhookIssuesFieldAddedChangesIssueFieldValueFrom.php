@@ -105,7 +105,9 @@ class WebhookIssuesFieldAddedChangesIssueFieldValueFrom implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             value: (property_exists($data, "value") ? ($data->value === null ? null : (is_int($data->value) ? SdkClient::intValue($data->value) : (is_float($data->value) ? SdkClient::floatValue($data->value) : SdkClient::stringValue($data->value)))) : SdkNotGiven::Value),
@@ -155,7 +157,9 @@ class WebhookIssuesFieldAddedChangesIssueFieldValue implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "from") || $data->from === null) {
+            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
+        }
         return new self(
             from: SdkClient::hydrateClass($data->from, WebhookIssuesFieldAddedChangesIssueFieldValueFrom::class),
         );

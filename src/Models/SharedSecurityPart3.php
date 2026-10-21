@@ -67,8 +67,12 @@ class SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem imple
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "reviewer_id") || $data->reviewer_id === null) { throw new SdkValidationError("reviewer_id", 'required', "Required property 'reviewer_id' is missing or null"); }
-        if (!property_exists($data, "reviewer_type") || $data->reviewer_type === null) { throw new SdkValidationError("reviewer_type", 'required', "Required property 'reviewer_type' is missing or null"); }
+        if (!property_exists($data, "reviewer_id") || $data->reviewer_id === null) {
+            throw new SdkValidationError("reviewer_id", 'required', "Required property 'reviewer_id' is missing or null");
+        }
+        if (!property_exists($data, "reviewer_type") || $data->reviewer_type === null) {
+            throw new SdkValidationError("reviewer_type", 'required', "Required property 'reviewer_type' is missing or null");
+        }
         return new self(
             reviewerId: SdkClient::intValue($data->reviewer_id),
             reviewerType: SdkClient::hydrateStringEnumOrString($data->reviewer_type, SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerTypeEnum::class),

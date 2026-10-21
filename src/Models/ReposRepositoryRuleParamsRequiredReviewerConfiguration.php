@@ -65,9 +65,15 @@ class RepositoryRuleParamsRequiredReviewerConfiguration implements \JsonSerializ
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "file_patterns") || $data->file_patterns === null) { throw new SdkValidationError("file_patterns", 'required', "Required property 'file_patterns' is missing or null"); }
-        if (!property_exists($data, "minimum_approvals") || $data->minimum_approvals === null) { throw new SdkValidationError("minimum_approvals", 'required', "Required property 'minimum_approvals' is missing or null"); }
-        if (!property_exists($data, "reviewer") || $data->reviewer === null) { throw new SdkValidationError("reviewer", 'required', "Required property 'reviewer' is missing or null"); }
+        if (!property_exists($data, "file_patterns") || $data->file_patterns === null) {
+            throw new SdkValidationError("file_patterns", 'required', "Required property 'file_patterns' is missing or null");
+        }
+        if (!property_exists($data, "minimum_approvals") || $data->minimum_approvals === null) {
+            throw new SdkValidationError("minimum_approvals", 'required', "Required property 'minimum_approvals' is missing or null");
+        }
+        if (!property_exists($data, "reviewer") || $data->reviewer === null) {
+            throw new SdkValidationError("reviewer", 'required', "Required property 'reviewer' is missing or null");
+        }
         return new self(
             filePatterns: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->file_patterns))),
             minimumApprovals: SdkClient::intValue($data->minimum_approvals),
@@ -83,11 +89,26 @@ final readonly class RepositoryRuleParamsReviewerTypeEnum implements SdkOpenEnum
 {
     public const TEAM = "Team";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -138,8 +159,12 @@ class RepositoryRuleParamsReviewer implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             id: SdkClient::intValue($data->id),
             type: SdkClient::hydrateStringEnumOrString($data->type, RepositoryRuleParamsReviewerTypeEnum::class),
@@ -197,7 +222,9 @@ class RepositoryRuleParamsStatusCheckConfiguration implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "context") || $data->context === null) { throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null"); }
+        if (!property_exists($data, "context") || $data->context === null) {
+            throw new SdkValidationError("context", 'required', "Required property 'context' is missing or null");
+        }
         return new self(
             context: SdkClient::stringValue($data->context),
             integrationId: (property_exists($data, "integration_id") && $data->integration_id !== null ? SdkClient::intValue($data->integration_id) : SdkNotGiven::Value),
@@ -277,8 +304,12 @@ class RepositoryRuleParamsWorkflowFileReference implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
-        if (!property_exists($data, "repository_id") || $data->repository_id === null) { throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) {
+            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
+        }
+        if (!property_exists($data, "repository_id") || $data->repository_id === null) {
+            throw new SdkValidationError("repository_id", 'required', "Required property 'repository_id' is missing or null");
+        }
         return new self(
             path: SdkClient::stringValue($data->path),
             repositoryId: SdkClient::intValue($data->repository_id),
@@ -305,9 +336,24 @@ final readonly class RepositoryRulePullRequestParametersAllowedMergeMethodsItemE
     public const SQUASH = "squash";
     public const REBASE = "rebase";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

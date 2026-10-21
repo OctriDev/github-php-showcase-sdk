@@ -105,13 +105,27 @@ class WebhooksMarketplacePurchase implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "account") || $data->account === null) { throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null"); }
-        if (!property_exists($data, "billing_cycle") || $data->billing_cycle === null) { throw new SdkValidationError("billing_cycle", 'required', "Required property 'billing_cycle' is missing or null"); }
-        if (!property_exists($data, "free_trial_ends_on")) { throw new SdkValidationError("free_trial_ends_on", 'required', "Missing required property 'free_trial_ends_on'"); }
-        if (!property_exists($data, "next_billing_date")) { throw new SdkValidationError("next_billing_date", 'required', "Missing required property 'next_billing_date'"); }
-        if (!property_exists($data, "on_free_trial") || $data->on_free_trial === null) { throw new SdkValidationError("on_free_trial", 'required', "Required property 'on_free_trial' is missing or null"); }
-        if (!property_exists($data, "plan") || $data->plan === null) { throw new SdkValidationError("plan", 'required', "Required property 'plan' is missing or null"); }
-        if (!property_exists($data, "unit_count") || $data->unit_count === null) { throw new SdkValidationError("unit_count", 'required', "Required property 'unit_count' is missing or null"); }
+        if (!property_exists($data, "account") || $data->account === null) {
+            throw new SdkValidationError("account", 'required', "Required property 'account' is missing or null");
+        }
+        if (!property_exists($data, "billing_cycle") || $data->billing_cycle === null) {
+            throw new SdkValidationError("billing_cycle", 'required', "Required property 'billing_cycle' is missing or null");
+        }
+        if (!property_exists($data, "free_trial_ends_on")) {
+            throw new SdkValidationError("free_trial_ends_on", 'required', "Missing required property 'free_trial_ends_on'");
+        }
+        if (!property_exists($data, "next_billing_date")) {
+            throw new SdkValidationError("next_billing_date", 'required', "Missing required property 'next_billing_date'");
+        }
+        if (!property_exists($data, "on_free_trial") || $data->on_free_trial === null) {
+            throw new SdkValidationError("on_free_trial", 'required', "Required property 'on_free_trial' is missing or null");
+        }
+        if (!property_exists($data, "plan") || $data->plan === null) {
+            throw new SdkValidationError("plan", 'required', "Required property 'plan' is missing or null");
+        }
+        if (!property_exists($data, "unit_count") || $data->unit_count === null) {
+            throw new SdkValidationError("unit_count", 'required', "Required property 'unit_count' is missing or null");
+        }
         return new self(
             account: SdkClient::hydrateClass($data->account, WebhooksMarketplacePurchaseAccount::class),
             billingCycle: SdkClient::stringValue($data->billing_cycle),
@@ -133,9 +147,24 @@ final readonly class WebhooksMembershipUserTypeEnum implements SdkOpenEnum
     public const USER = "User";
     public const ORGANIZATION = "Organization";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

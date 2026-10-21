@@ -23,7 +23,7 @@ trait ActionsConcurrencyGroupsMethods
     public static function actionsListConcurrencyGroupsForRepository(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $perPage = SdkNotGiven::Value, string|SdkNotGiven $after = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ConcurrencyGroupList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/concurrency_groups", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'after' => new SdkQueryValue($after, "form", true)], returnType: ConcurrencyGroupList::class, decoder: 'json', operationId: 'actionsListConcurrencyGroupsForRepository', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/concurrency_groups", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'after' => new SdkQueryValue($after, "form", true)], returnType: ConcurrencyGroupList::class, decoder: 'json', operationId: 'actionsListConcurrencyGroupsForRepository', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ConcurrencyGroupList::class));
     }
 
@@ -51,7 +51,7 @@ trait ActionsConcurrencyGroupsMethods
             Validation::validateRange('ahead_of_job', $aheadOfJob, min: 1);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/concurrency_groups/" . SdkClient::encodePathSegment($concurrencyGroupName) . "", $clientConfig, query: ['ahead_of_run' => new SdkQueryValue($aheadOfRun, "form", true), 'ahead_of_job' => new SdkQueryValue($aheadOfJob, "form", true)], returnType: ConcurrencyGroup::class, decoder: 'json', operationId: 'actionsGetConcurrencyGroupForRepository', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/actions/concurrency_groups/" . SdkClient::encodePathSegment($concurrencyGroupName) . "", $clientConfig, query: ['ahead_of_run' => new SdkQueryValue($aheadOfRun, "form", true), 'ahead_of_job' => new SdkQueryValue($aheadOfJob, "form", true)], returnType: ConcurrencyGroup::class, decoder: 'json', operationId: 'actionsGetConcurrencyGroupForRepository', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ConcurrencyGroup::class));
     }
 }

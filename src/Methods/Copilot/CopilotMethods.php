@@ -21,7 +21,7 @@ trait CopilotMethods
     public static function copilotGetCopilotSeatDetailsForUser(ClientConfig $clientConfig, string $org, string $username, ?RequestOptions $requestOptions = null): CopilotSeatDetails
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/members/" . SdkClient::encodePathSegment($username) . "/copilot", $clientConfig, returnType: CopilotSeatDetails::class, decoder: 'json', operationId: 'copilotGetCopilotSeatDetailsForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/members/" . SdkClient::encodePathSegment($username) . "/copilot", $clientConfig, returnType: CopilotSeatDetails::class, decoder: 'json', operationId: 'copilotGetCopilotSeatDetailsForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CopilotSeatDetails::class));
     }
 }

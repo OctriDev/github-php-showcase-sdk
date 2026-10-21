@@ -153,8 +153,12 @@ class DependabotAlertPackage implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) { throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "ecosystem") || $data->ecosystem === null) {
+            throw new SdkValidationError("ecosystem", 'required', "Required property 'ecosystem' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
         return new self(
             ecosystem: SdkClient::stringValue($data->ecosystem),
             name: SdkClient::stringValue($data->name),
@@ -172,11 +176,26 @@ final readonly class DependabotAlertSecurityAdvisorySeverityEnum implements SdkO
     public const HIGH = "high";
     public const CRITICAL = "critical";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -187,11 +206,26 @@ final readonly class DependabotAlertSecurityAdvisoryClassificationEnum implement
     public const GENERAL = "general";
     public const MALWARE = "malware";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -242,8 +276,12 @@ class DependabotAlertSecurityAdvisoryCvss implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "score") || $data->score === null) { throw new SdkValidationError("score", 'required', "Required property 'score' is missing or null"); }
-        if (!property_exists($data, "vector_string")) { throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'"); }
+        if (!property_exists($data, "score") || $data->score === null) {
+            throw new SdkValidationError("score", 'required', "Required property 'score' is missing or null");
+        }
+        if (!property_exists($data, "vector_string")) {
+            throw new SdkValidationError("vector_string", 'required', "Missing required property 'vector_string'");
+        }
         return new self(
             score: SdkClient::floatValue($data->score),
             vectorString: ($data->vector_string === null ? null : SdkClient::stringValue($data->vector_string)),
@@ -299,8 +337,12 @@ class DependabotAlertSecurityAdvisoryCwesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "cwe_id") || $data->cwe_id === null) { throw new SdkValidationError("cwe_id", 'required', "Required property 'cwe_id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "cwe_id") || $data->cwe_id === null) {
+            throw new SdkValidationError("cwe_id", 'required', "Required property 'cwe_id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
         return new self(
             cweId: SdkClient::stringValue($data->cwe_id),
             name: SdkClient::stringValue($data->name),
@@ -316,9 +358,24 @@ final readonly class DependabotAlertSecurityAdvisoryIdentifiersItemTypeEnum impl
     public const CVE = "CVE";
     public const GHSA = "GHSA";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

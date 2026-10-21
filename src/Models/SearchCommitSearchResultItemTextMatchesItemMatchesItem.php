@@ -314,17 +314,39 @@ class CommitSearchResultItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
-        if (!property_exists($data, "sha") || $data->sha === null) { throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "comments_url") || $data->comments_url === null) { throw new SdkValidationError("comments_url", 'required', "Required property 'comments_url' is missing or null"); }
-        if (!property_exists($data, "commit") || $data->commit === null) { throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null"); }
-        if (!property_exists($data, "author")) { throw new SdkValidationError("author", 'required', "Missing required property 'author'"); }
-        if (!property_exists($data, "committer")) { throw new SdkValidationError("committer", 'required', "Missing required property 'committer'"); }
-        if (!property_exists($data, "parents") || $data->parents === null) { throw new SdkValidationError("parents", 'required', "Required property 'parents' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
-        if (!property_exists($data, "score") || $data->score === null) { throw new SdkValidationError("score", 'required', "Required property 'score' is missing or null"); }
-        if (!property_exists($data, "node_id") || $data->node_id === null) { throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null"); }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
+        if (!property_exists($data, "sha") || $data->sha === null) {
+            throw new SdkValidationError("sha", 'required', "Required property 'sha' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "comments_url") || $data->comments_url === null) {
+            throw new SdkValidationError("comments_url", 'required', "Required property 'comments_url' is missing or null");
+        }
+        if (!property_exists($data, "commit") || $data->commit === null) {
+            throw new SdkValidationError("commit", 'required', "Required property 'commit' is missing or null");
+        }
+        if (!property_exists($data, "author")) {
+            throw new SdkValidationError("author", 'required', "Missing required property 'author'");
+        }
+        if (!property_exists($data, "committer")) {
+            throw new SdkValidationError("committer", 'required', "Missing required property 'committer'");
+        }
+        if (!property_exists($data, "parents") || $data->parents === null) {
+            throw new SdkValidationError("parents", 'required', "Required property 'parents' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
+        if (!property_exists($data, "score") || $data->score === null) {
+            throw new SdkValidationError("score", 'required', "Required property 'score' is missing or null");
+        }
+        if (!property_exists($data, "node_id") || $data->node_id === null) {
+            throw new SdkValidationError("node_id", 'required', "Required property 'node_id' is missing or null");
+        }
         return new self(
             url: SdkClient::stringValue($data->url),
             sha: SdkClient::stringValue($data->sha),

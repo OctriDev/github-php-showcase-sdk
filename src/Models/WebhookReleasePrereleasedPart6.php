@@ -113,9 +113,15 @@ class WebhookReleasePrereleased implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "release") || $data->release === null) { throw new SdkValidationError("release", 'required', "Required property 'release' is missing or null"); }
-        if (!property_exists($data, "repository") || $data->repository === null) { throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "release") || $data->release === null) {
+            throw new SdkValidationError("release", 'required', "Required property 'release' is missing or null");
+        }
+        if (!property_exists($data, "repository") || $data->repository === null) {
+            throw new SdkValidationError("repository", 'required', "Required property 'repository' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookReleasePrereleasedActionEnum::class),
             release: SdkClient::hydrateClass($data->release, WebhookReleasePrereleasedRelease::class),

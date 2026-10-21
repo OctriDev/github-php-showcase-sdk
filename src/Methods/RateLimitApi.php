@@ -17,7 +17,7 @@ class RateLimitApi
     public static function rateLimitGet(ClientConfig $clientConfig, ?RequestOptions $requestOptions = null): RateLimitOverview
     {
 
-        $sdkResponse = SdkClient::request('GET', "/rate_limit", $clientConfig, returnType: RateLimitOverview::class, decoder: 'json', operationId: 'rateLimitGet', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/rate_limit", $clientConfig, returnType: RateLimitOverview::class, decoder: 'json', operationId: 'rateLimitGet', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RateLimitOverview::class));
     }
 }

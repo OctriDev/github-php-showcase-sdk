@@ -14,11 +14,26 @@ final readonly class WebhookCodeScanningAlertReopenedByUserActionEnum implements
 {
     public const REOPENED_BY_USER = "reopened_by_user";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -174,11 +189,26 @@ final readonly class WebhookCodeScanningAlertReopenedByUserAlertMostRecentInstan
     public const DISMISSED = "dismissed";
     public const FIXED = "fixed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -309,10 +339,18 @@ class WebhookCodeScanningAlertReopenedByUserAlertMostRecentInstance implements \
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "analysis_key") || $data->analysis_key === null) { throw new SdkValidationError("analysis_key", 'required', "Required property 'analysis_key' is missing or null"); }
-        if (!property_exists($data, "environment") || $data->environment === null) { throw new SdkValidationError("environment", 'required', "Required property 'environment' is missing or null"); }
-        if (!property_exists($data, "ref") || $data->ref === null) { throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null"); }
-        if (!property_exists($data, "state") || $data->state === null) { throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null"); }
+        if (!property_exists($data, "analysis_key") || $data->analysis_key === null) {
+            throw new SdkValidationError("analysis_key", 'required', "Required property 'analysis_key' is missing or null");
+        }
+        if (!property_exists($data, "environment") || $data->environment === null) {
+            throw new SdkValidationError("environment", 'required', "Required property 'environment' is missing or null");
+        }
+        if (!property_exists($data, "ref") || $data->ref === null) {
+            throw new SdkValidationError("ref", 'required', "Required property 'ref' is missing or null");
+        }
+        if (!property_exists($data, "state") || $data->state === null) {
+            throw new SdkValidationError("state", 'required', "Required property 'state' is missing or null");
+        }
         return new self(
             analysisKey: SdkClient::stringValue($data->analysis_key),
             environment: SdkClient::stringValue($data->environment),
@@ -337,9 +375,24 @@ final readonly class WebhookCodeScanningAlertReopenedByUserAlertRuleSeverityEnum
     public const WARNING = "warning";
     public const ERROR = "error";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

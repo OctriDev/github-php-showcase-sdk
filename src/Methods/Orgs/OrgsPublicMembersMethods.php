@@ -53,7 +53,7 @@ trait OrgsPublicMembersMethods
     public static function orgsSetPublicMembershipForAuthenticatedUser(ClientConfig $clientConfig, string $org, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/public_members/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsSetPublicMembershipForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('PUT', "/orgs/" . SdkClient::encodePathSegment($org) . "/public_members/" . SdkClient::encodePathSegment($username) . "", $clientConfig, decoder: 'empty', operationId: 'orgsSetPublicMembershipForAuthenticatedUser', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 

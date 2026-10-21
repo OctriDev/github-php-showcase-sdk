@@ -95,7 +95,7 @@ trait ActivityApiReposMethods
     public static function activityListStargazersForRepo(ClientConfig $clientConfig, string $owner, string $repo, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityListStargazersForRepo', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityListStargazersForRepo', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::decodeUnionValue($sdkResponse->data, [static fn(mixed $value) => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, SimpleUser::class), SdkClient::arrayValue($value))), static fn(mixed $value) => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Stargazer::class), SdkClient::arrayValue($value)))]));
     }
 
@@ -112,7 +112,7 @@ trait ActivityApiReposMethods
     public static function activityGetStargazerCountForRepo(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): ActivityGetStargazerCountForRepoResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers/count", $clientConfig, returnType: ActivityGetStargazerCountForRepoResponse::class, decoder: 'json', operationId: 'activityGetStargazerCountForRepo', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers/count", $clientConfig, returnType: ActivityGetStargazerCountForRepoResponse::class, decoder: 'json', operationId: 'activityGetStargazerCountForRepo', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActivityGetStargazerCountForRepoResponse::class));
     }
 
@@ -139,7 +139,7 @@ trait ActivityApiReposMethods
             Validation::validateRange('page', $page, min: 1, max: 100);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers/history", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityGetStargazerHistoryForRepo', requestOptions: $requestOptions, errors: [422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/stargazers/history", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'activityGetStargazerHistoryForRepo', requestOptions: $requestOptions, errors: [422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, StargazerHistory::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -175,7 +175,7 @@ trait ActivityApiReposMethods
     public static function activityGetRepoSubscription(ClientConfig $clientConfig, string $owner, string $repo, ?RequestOptions $requestOptions = null): RepositorySubscription
     {
 
-        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/subscription", $clientConfig, returnType: RepositorySubscription::class, decoder: 'json', operationId: 'activityGetRepoSubscription', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/subscription", $clientConfig, returnType: RepositorySubscription::class, decoder: 'json', operationId: 'activityGetRepoSubscription', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RepositorySubscription::class));
     }
 

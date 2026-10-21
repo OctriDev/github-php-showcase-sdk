@@ -55,8 +55,12 @@ class WorkflowRunUsageBillableUBUNTUJobRunsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "job_id") || $data->job_id === null) { throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null"); }
-        if (!property_exists($data, "duration_ms") || $data->duration_ms === null) { throw new SdkValidationError("duration_ms", 'required', "Required property 'duration_ms' is missing or null"); }
+        if (!property_exists($data, "job_id") || $data->job_id === null) {
+            throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null");
+        }
+        if (!property_exists($data, "duration_ms") || $data->duration_ms === null) {
+            throw new SdkValidationError("duration_ms", 'required', "Required property 'duration_ms' is missing or null");
+        }
         return new self(
             jobId: SdkClient::intValue($data->job_id),
             durationMs: SdkClient::intValue($data->duration_ms),
@@ -124,8 +128,12 @@ class WorkflowRunUsageBillableUBUNTU implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_ms") || $data->total_ms === null) { throw new SdkValidationError("total_ms", 'required', "Required property 'total_ms' is missing or null"); }
-        if (!property_exists($data, "jobs") || $data->jobs === null) { throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null"); }
+        if (!property_exists($data, "total_ms") || $data->total_ms === null) {
+            throw new SdkValidationError("total_ms", 'required', "Required property 'total_ms' is missing or null");
+        }
+        if (!property_exists($data, "jobs") || $data->jobs === null) {
+            throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null");
+        }
         return new self(
             totalMs: SdkClient::intValue($data->total_ms),
             jobs: SdkClient::intValue($data->jobs),
@@ -182,8 +190,12 @@ class WorkflowRunUsageBillableMACOSJobRunsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "job_id") || $data->job_id === null) { throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null"); }
-        if (!property_exists($data, "duration_ms") || $data->duration_ms === null) { throw new SdkValidationError("duration_ms", 'required', "Required property 'duration_ms' is missing or null"); }
+        if (!property_exists($data, "job_id") || $data->job_id === null) {
+            throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null");
+        }
+        if (!property_exists($data, "duration_ms") || $data->duration_ms === null) {
+            throw new SdkValidationError("duration_ms", 'required', "Required property 'duration_ms' is missing or null");
+        }
         return new self(
             jobId: SdkClient::intValue($data->job_id),
             durationMs: SdkClient::intValue($data->duration_ms),
@@ -251,8 +263,12 @@ class WorkflowRunUsageBillableMACOS implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "total_ms") || $data->total_ms === null) { throw new SdkValidationError("total_ms", 'required', "Required property 'total_ms' is missing or null"); }
-        if (!property_exists($data, "jobs") || $data->jobs === null) { throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null"); }
+        if (!property_exists($data, "total_ms") || $data->total_ms === null) {
+            throw new SdkValidationError("total_ms", 'required', "Required property 'total_ms' is missing or null");
+        }
+        if (!property_exists($data, "jobs") || $data->jobs === null) {
+            throw new SdkValidationError("jobs", 'required', "Required property 'jobs' is missing or null");
+        }
         return new self(
             totalMs: SdkClient::intValue($data->total_ms),
             jobs: SdkClient::intValue($data->jobs),
@@ -309,8 +325,12 @@ class WorkflowRunUsageBillableWINDOWSJobRunsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "job_id") || $data->job_id === null) { throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null"); }
-        if (!property_exists($data, "duration_ms") || $data->duration_ms === null) { throw new SdkValidationError("duration_ms", 'required', "Required property 'duration_ms' is missing or null"); }
+        if (!property_exists($data, "job_id") || $data->job_id === null) {
+            throw new SdkValidationError("job_id", 'required', "Required property 'job_id' is missing or null");
+        }
+        if (!property_exists($data, "duration_ms") || $data->duration_ms === null) {
+            throw new SdkValidationError("duration_ms", 'required', "Required property 'duration_ms' is missing or null");
+        }
         return new self(
             jobId: SdkClient::intValue($data->job_id),
             durationMs: SdkClient::intValue($data->duration_ms),

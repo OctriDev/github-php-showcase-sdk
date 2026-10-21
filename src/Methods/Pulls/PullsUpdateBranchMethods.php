@@ -23,7 +23,7 @@ trait PullsUpdateBranchMethods
     public static function pullsUpdateBranch(ClientConfig $clientConfig, string $owner, string $repo, int $pullNumber, string|SdkNotGiven $expectedHeadSha = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PullsUpdateBranchResponse
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/update-branch", $clientConfig, body: ['expected_head_sha' => $expectedHeadSha], returnType: PullsUpdateBranchResponse::class, decoder: 'json', operationId: 'pullsUpdateBranch', requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/repos/" . SdkClient::encodePathSegment($owner) . "/" . SdkClient::encodePathSegment($repo) . "/pulls/" . SdkClient::encodePathSegment($pullNumber) . "/update-branch", $clientConfig, body: ['expected_head_sha' => $expectedHeadSha], returnType: PullsUpdateBranchResponse::class, decoder: 'json', operationId: 'pullsUpdateBranch', requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PullsUpdateBranchResponse::class));
     }
 }

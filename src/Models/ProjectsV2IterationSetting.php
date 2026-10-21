@@ -103,8 +103,12 @@ class ProjectsV2IterationSetting implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             title: SdkClient::stringValue($data->title),
@@ -164,8 +168,12 @@ class ProjectsV2IterationSettingsTitle implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "raw") || $data->raw === null) { throw new SdkValidationError("raw", 'required', "Required property 'raw' is missing or null"); }
-        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
+        if (!property_exists($data, "raw") || $data->raw === null) {
+            throw new SdkValidationError("raw", 'required', "Required property 'raw' is missing or null");
+        }
+        if (!property_exists($data, "html") || $data->html === null) {
+            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
+        }
         return new self(
             raw: SdkClient::stringValue($data->raw),
             html: SdkClient::stringValue($data->html),
@@ -251,11 +259,21 @@ class ProjectsV2IterationSettings implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "start_date") || $data->start_date === null) { throw new SdkValidationError("start_date", 'required', "Required property 'start_date' is missing or null"); }
-        if (!property_exists($data, "duration") || $data->duration === null) { throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null"); }
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "completed") || $data->completed === null) { throw new SdkValidationError("completed", 'required', "Required property 'completed' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "start_date") || $data->start_date === null) {
+            throw new SdkValidationError("start_date", 'required', "Required property 'start_date' is missing or null");
+        }
+        if (!property_exists($data, "duration") || $data->duration === null) {
+            throw new SdkValidationError("duration", 'required', "Required property 'duration' is missing or null");
+        }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "completed") || $data->completed === null) {
+            throw new SdkValidationError("completed", 'required', "Required property 'completed' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             startDate: SdkClient::stringValue($data->start_date),
@@ -338,8 +356,12 @@ class ProjectsV2SingleSelectOption implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             name: SdkClient::stringValue($data->name),

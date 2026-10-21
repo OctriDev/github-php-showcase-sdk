@@ -45,7 +45,9 @@ class RepositoryRuleMaxFileSizeParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "max_file_size") || $data->max_file_size === null) { throw new SdkValidationError("max_file_size", 'required', "Required property 'max_file_size' is missing or null"); }
+        if (!property_exists($data, "max_file_size") || $data->max_file_size === null) {
+            throw new SdkValidationError("max_file_size", 'required', "Required property 'max_file_size' is missing or null");
+        }
         return new self(
             maxFileSize: SdkClient::intValue($data->max_file_size),
         );
@@ -102,7 +104,9 @@ class RepositoryRuleMaxFileSize implements RepositoryRule, OrgRules, \JsonSerial
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleMaxFileSizeTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleMaxFileSizeParameters::class) : SdkNotGiven::Value),
@@ -126,11 +130,26 @@ final readonly class RepositoryRuleMergeQueueParametersGroupingStrategyEnum impl
     public const ALLGREEN = "ALLGREEN";
     public const HEADGREEN = "HEADGREEN";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -142,11 +161,26 @@ final readonly class RepositoryRuleMergeQueueParametersMergeMethodEnum implement
     public const SQUASH = "SQUASH";
     public const REBASE = "REBASE";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -247,13 +281,27 @@ class RepositoryRuleMergeQueueParameters implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "check_response_timeout_minutes") || $data->check_response_timeout_minutes === null) { throw new SdkValidationError("check_response_timeout_minutes", 'required', "Required property 'check_response_timeout_minutes' is missing or null"); }
-        if (!property_exists($data, "grouping_strategy") || $data->grouping_strategy === null) { throw new SdkValidationError("grouping_strategy", 'required', "Required property 'grouping_strategy' is missing or null"); }
-        if (!property_exists($data, "max_entries_to_build") || $data->max_entries_to_build === null) { throw new SdkValidationError("max_entries_to_build", 'required', "Required property 'max_entries_to_build' is missing or null"); }
-        if (!property_exists($data, "max_entries_to_merge") || $data->max_entries_to_merge === null) { throw new SdkValidationError("max_entries_to_merge", 'required', "Required property 'max_entries_to_merge' is missing or null"); }
-        if (!property_exists($data, "merge_method") || $data->merge_method === null) { throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null"); }
-        if (!property_exists($data, "min_entries_to_merge") || $data->min_entries_to_merge === null) { throw new SdkValidationError("min_entries_to_merge", 'required', "Required property 'min_entries_to_merge' is missing or null"); }
-        if (!property_exists($data, "min_entries_to_merge_wait_minutes") || $data->min_entries_to_merge_wait_minutes === null) { throw new SdkValidationError("min_entries_to_merge_wait_minutes", 'required', "Required property 'min_entries_to_merge_wait_minutes' is missing or null"); }
+        if (!property_exists($data, "check_response_timeout_minutes") || $data->check_response_timeout_minutes === null) {
+            throw new SdkValidationError("check_response_timeout_minutes", 'required', "Required property 'check_response_timeout_minutes' is missing or null");
+        }
+        if (!property_exists($data, "grouping_strategy") || $data->grouping_strategy === null) {
+            throw new SdkValidationError("grouping_strategy", 'required', "Required property 'grouping_strategy' is missing or null");
+        }
+        if (!property_exists($data, "max_entries_to_build") || $data->max_entries_to_build === null) {
+            throw new SdkValidationError("max_entries_to_build", 'required', "Required property 'max_entries_to_build' is missing or null");
+        }
+        if (!property_exists($data, "max_entries_to_merge") || $data->max_entries_to_merge === null) {
+            throw new SdkValidationError("max_entries_to_merge", 'required', "Required property 'max_entries_to_merge' is missing or null");
+        }
+        if (!property_exists($data, "merge_method") || $data->merge_method === null) {
+            throw new SdkValidationError("merge_method", 'required', "Required property 'merge_method' is missing or null");
+        }
+        if (!property_exists($data, "min_entries_to_merge") || $data->min_entries_to_merge === null) {
+            throw new SdkValidationError("min_entries_to_merge", 'required', "Required property 'min_entries_to_merge' is missing or null");
+        }
+        if (!property_exists($data, "min_entries_to_merge_wait_minutes") || $data->min_entries_to_merge_wait_minutes === null) {
+            throw new SdkValidationError("min_entries_to_merge_wait_minutes", 'required', "Required property 'min_entries_to_merge_wait_minutes' is missing or null");
+        }
         return new self(
             checkResponseTimeoutMinutes: SdkClient::intValue($data->check_response_timeout_minutes),
             groupingStrategy: SdkClient::hydrateStringEnumOrString($data->grouping_strategy, RepositoryRuleMergeQueueParametersGroupingStrategyEnum::class),
@@ -316,7 +364,9 @@ class RepositoryRuleMergeQueue implements RepositoryRule, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RepositoryRuleMergeQueueTypeEnum::class),
             parameters: (property_exists($data, "parameters") && $data->parameters !== null ? SdkClient::hydrateClass($data->parameters, RepositoryRuleMergeQueueParameters::class) : SdkNotGiven::Value),

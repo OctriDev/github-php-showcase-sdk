@@ -76,8 +76,12 @@ class AgentAutomationsCreateRepoAutomationTriggersWorkflowRun implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "workflows") || $data->workflows === null) { throw new SdkValidationError("workflows", 'required', "Required property 'workflows' is missing or null"); }
-        if (!property_exists($data, "conclusions") || $data->conclusions === null) { throw new SdkValidationError("conclusions", 'required', "Required property 'conclusions' is missing or null"); }
+        if (!property_exists($data, "workflows") || $data->workflows === null) {
+            throw new SdkValidationError("workflows", 'required', "Required property 'workflows' is missing or null");
+        }
+        if (!property_exists($data, "conclusions") || $data->conclusions === null) {
+            throw new SdkValidationError("conclusions", 'required', "Required property 'conclusions' is missing or null");
+        }
         return new self(
             workflows: array_values(array_map(static fn($item) => SdkClient::stringValue($item), SdkClient::arrayValue($data->workflows))),
             conclusions: array_values(array_map(static fn($item) => SdkClient::hydrateStringEnumOrString($item, AgentAutomationsCreateRepoAutomationTriggersWorkflowRunConclusionsItemEnum::class), SdkClient::arrayValue($data->conclusions))),
@@ -95,11 +99,26 @@ final readonly class AgentAutomationsCreateRepoAutomationTriggersPullRequestOpen
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class AgentAutomationsCreateRepoAutomationTriggersPullRequestOpened implements \JsonSerializable
@@ -179,11 +198,26 @@ final readonly class AgentAutomationsCreateRepoAutomationTriggersPullRequestSync
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class AgentAutomationsCreateRepoAutomationTriggersPullRequestSynchronize implements \JsonSerializable
@@ -263,11 +297,26 @@ final readonly class AgentAutomationsCreateRepoAutomationTriggersPullRequestMerg
     public const TRIGGER = "trigger";
     public const REPOSITORY = "repository";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class AgentAutomationsCreateRepoAutomationTriggersPullRequestMerged implements \JsonSerializable

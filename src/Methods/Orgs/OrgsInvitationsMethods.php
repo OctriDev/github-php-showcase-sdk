@@ -24,7 +24,7 @@ trait OrgsInvitationsMethods
     public static function orgsListPendingInvitations(ClientConfig $clientConfig, string $org, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, OrgsListPendingInvitationsRole|SdkNotGiven $role = SdkNotGiven::Value, OrgsListPendingInvitationsInvitationSource|SdkNotGiven $invitationSource = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/invitations", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'role' => new SdkQueryValue($role, "form", true), 'invitation_source' => new SdkQueryValue($invitationSource, "form", true)], decoder: 'json', operationId: 'orgsListPendingInvitations', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/invitations", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'role' => new SdkQueryValue($role, "form", true), 'invitation_source' => new SdkQueryValue($invitationSource, "form", true)], decoder: 'json', operationId: 'orgsListPendingInvitations', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, OrganizationInvitation::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -44,7 +44,7 @@ trait OrgsInvitationsMethods
     public static function orgsCreateInvitation(ClientConfig $clientConfig, string $org, int|SdkNotGiven $inviteeId = SdkNotGiven::Value, string|SdkNotGiven $email = SdkNotGiven::Value, OrgsCreateInvitationRole|SdkNotGiven $role = SdkNotGiven::Value, array|SdkNotGiven $teamIds = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OrganizationInvitation
     {
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/invitations", $clientConfig, body: ['invitee_id' => $inviteeId, 'email' => $email, 'role' => $role, 'team_ids' => $teamIds], returnType: OrganizationInvitation::class, decoder: 'json', operationId: 'orgsCreateInvitation', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/invitations", $clientConfig, body: ['invitee_id' => $inviteeId, 'email' => $email, 'role' => $role, 'team_ids' => $teamIds], returnType: OrganizationInvitation::class, decoder: 'json', operationId: 'orgsCreateInvitation', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OrganizationInvitation::class));
     }
 
@@ -60,7 +60,7 @@ trait OrgsInvitationsMethods
     public static function orgsCancelInvitation(ClientConfig $clientConfig, string $org, int $invitationId, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/invitations/" . SdkClient::encodePathSegment($invitationId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsCancelInvitation', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/invitations/" . SdkClient::encodePathSegment($invitationId) . "", $clientConfig, decoder: 'empty', operationId: 'orgsCancelInvitation', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, ValidationError::class)])->data;
     }
 
 
@@ -78,7 +78,7 @@ trait OrgsInvitationsMethods
     public static function orgsListInvitationTeams(ClientConfig $clientConfig, string $org, int $invitationId, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/invitations/" . SdkClient::encodePathSegment($invitationId) . "/teams", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListInvitationTeams', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/invitations/" . SdkClient::encodePathSegment($invitationId) . "/teams", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], decoder: 'json', operationId: 'orgsListInvitationTeams', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Team::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

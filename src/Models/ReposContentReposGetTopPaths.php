@@ -75,10 +75,18 @@ class ContentTraffic implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "path") || $data->path === null) { throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null"); }
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "count") || $data->count === null) { throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null"); }
-        if (!property_exists($data, "uniques") || $data->uniques === null) { throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null"); }
+        if (!property_exists($data, "path") || $data->path === null) {
+            throw new SdkValidationError("path", 'required', "Required property 'path' is missing or null");
+        }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "count") || $data->count === null) {
+            throw new SdkValidationError("count", 'required', "Required property 'count' is missing or null");
+        }
+        if (!property_exists($data, "uniques") || $data->uniques === null) {
+            throw new SdkValidationError("uniques", 'required', "Required property 'uniques' is missing or null");
+        }
         return new self(
             path: SdkClient::stringValue($data->path),
             title: SdkClient::stringValue($data->title),

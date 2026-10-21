@@ -24,7 +24,7 @@ trait PackagesMethods
     public static function packagesListPackagesForOrganization(ClientConfig $clientConfig, string $org, PackagesListPackagesForOrganizationPackageType $packageType, PackagesListPackagesForOrganizationVisibility|SdkNotGiven $visibility = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/packages", $clientConfig, query: ['package_type' => new SdkQueryValue($packageType, "form", true), 'visibility' => new SdkQueryValue($visibility, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], decoder: 'json', operationId: 'packagesListPackagesForOrganization', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/orgs/" . SdkClient::encodePathSegment($org) . "/packages", $clientConfig, query: ['package_type' => new SdkQueryValue($packageType, "form", true), 'visibility' => new SdkQueryValue($visibility, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], decoder: 'json', operationId: 'packagesListPackagesForOrganization', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Package::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -59,7 +59,7 @@ trait PackagesMethods
     public static function packagesDeletePackageForOrg(ClientConfig $clientConfig, PackagesDeletePackageForOrgPackageType $packageType, string $packageName, string $org, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageForOrg', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/orgs/" . SdkClient::encodePathSegment($org) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageForOrg', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -110,7 +110,7 @@ trait PackagesMethods
     public static function packagesDeletePackageForAuthenticatedUser(ClientConfig $clientConfig, PackagesDeletePackageForAuthenticatedUserPackageType $packageType, string $packageName, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/user/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/user/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 
 
@@ -129,7 +129,7 @@ trait PackagesMethods
     public static function packagesListPackagesForUser(ClientConfig $clientConfig, string $username, PackagesListPackagesForUserPackageType $packageType, PackagesListPackagesForUserVisibility|SdkNotGiven $visibility = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/packages", $clientConfig, query: ['package_type' => new SdkQueryValue($packageType, "form", true), 'visibility' => new SdkQueryValue($visibility, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], decoder: 'json', operationId: 'packagesListPackagesForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('GET', "/users/" . SdkClient::encodePathSegment($username) . "/packages", $clientConfig, query: ['package_type' => new SdkQueryValue($packageType, "form", true), 'visibility' => new SdkQueryValue($visibility, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], decoder: 'json', operationId: 'packagesListPackagesForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Package::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 
@@ -164,6 +164,6 @@ trait PackagesMethods
     public static function packagesDeletePackageForUser(ClientConfig $clientConfig, PackagesDeletePackageForUserPackageType $packageType, string $packageName, string $username, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageForUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
+        return SdkClient::request('DELETE', "/users/" . SdkClient::encodePathSegment($username) . "/packages/" . SdkClient::encodePathSegment($packageType) . "/" . SdkClient::encodePathSegment($packageName) . "", $clientConfig, decoder: 'empty', operationId: 'packagesDeletePackageForUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)])->data;
     }
 }

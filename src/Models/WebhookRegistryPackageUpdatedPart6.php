@@ -289,23 +289,57 @@ class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion implements \Jso
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author") || $data->author === null) { throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null"); }
-        if (!property_exists($data, "body") || $data->body === null) { throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null"); }
-        if (!property_exists($data, "body_html") || $data->body_html === null) { throw new SdkValidationError("body_html", 'required', "Required property 'body_html' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "description") || $data->description === null) { throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null"); }
-        if (!property_exists($data, "html_url") || $data->html_url === null) { throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "installation_command") || $data->installation_command === null) { throw new SdkValidationError("installation_command", 'required', "Required property 'installation_command' is missing or null"); }
-        if (!property_exists($data, "metadata") || $data->metadata === null) { throw new SdkValidationError("metadata", 'required', "Required property 'metadata' is missing or null"); }
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "package_files") || $data->package_files === null) { throw new SdkValidationError("package_files", 'required', "Required property 'package_files' is missing or null"); }
-        if (!property_exists($data, "package_url") || $data->package_url === null) { throw new SdkValidationError("package_url", 'required', "Required property 'package_url' is missing or null"); }
-        if (!property_exists($data, "summary") || $data->summary === null) { throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null"); }
-        if (!property_exists($data, "target_commitish") || $data->target_commitish === null) { throw new SdkValidationError("target_commitish", 'required', "Required property 'target_commitish' is missing or null"); }
-        if (!property_exists($data, "target_oid") || $data->target_oid === null) { throw new SdkValidationError("target_oid", 'required', "Required property 'target_oid' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "version") || $data->version === null) { throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null"); }
+        if (!property_exists($data, "author") || $data->author === null) {
+            throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null");
+        }
+        if (!property_exists($data, "body") || $data->body === null) {
+            throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null");
+        }
+        if (!property_exists($data, "body_html") || $data->body_html === null) {
+            throw new SdkValidationError("body_html", 'required', "Required property 'body_html' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "description") || $data->description === null) {
+            throw new SdkValidationError("description", 'required', "Required property 'description' is missing or null");
+        }
+        if (!property_exists($data, "html_url") || $data->html_url === null) {
+            throw new SdkValidationError("html_url", 'required', "Required property 'html_url' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "installation_command") || $data->installation_command === null) {
+            throw new SdkValidationError("installation_command", 'required', "Required property 'installation_command' is missing or null");
+        }
+        if (!property_exists($data, "metadata") || $data->metadata === null) {
+            throw new SdkValidationError("metadata", 'required', "Required property 'metadata' is missing or null");
+        }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "package_files") || $data->package_files === null) {
+            throw new SdkValidationError("package_files", 'required', "Required property 'package_files' is missing or null");
+        }
+        if (!property_exists($data, "package_url") || $data->package_url === null) {
+            throw new SdkValidationError("package_url", 'required', "Required property 'package_url' is missing or null");
+        }
+        if (!property_exists($data, "summary") || $data->summary === null) {
+            throw new SdkValidationError("summary", 'required', "Required property 'summary' is missing or null");
+        }
+        if (!property_exists($data, "target_commitish") || $data->target_commitish === null) {
+            throw new SdkValidationError("target_commitish", 'required', "Required property 'target_commitish' is missing or null");
+        }
+        if (!property_exists($data, "target_oid") || $data->target_oid === null) {
+            throw new SdkValidationError("target_oid", 'required', "Required property 'target_oid' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "version") || $data->version === null) {
+            throw new SdkValidationError("version", 'required', "Required property 'version' is missing or null");
+        }
         return new self(
             author: SdkClient::hydrateClass($data->author, WebhookRegistryPackageUpdatedRegistryPackagePackageVersionAuthor::class),
             body: SdkClient::stringValue($data->body),

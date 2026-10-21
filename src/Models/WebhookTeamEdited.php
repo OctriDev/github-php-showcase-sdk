@@ -121,11 +121,21 @@ class WebhookTeamEdited implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "changes") || $data->changes === null) { throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null"); }
-        if (!property_exists($data, "organization") || $data->organization === null) { throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null"); }
-        if (!property_exists($data, "sender") || $data->sender === null) { throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null"); }
-        if (!property_exists($data, "team") || $data->team === null) { throw new SdkValidationError("team", 'required', "Required property 'team' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "changes") || $data->changes === null) {
+            throw new SdkValidationError("changes", 'required', "Required property 'changes' is missing or null");
+        }
+        if (!property_exists($data, "organization") || $data->organization === null) {
+            throw new SdkValidationError("organization", 'required', "Required property 'organization' is missing or null");
+        }
+        if (!property_exists($data, "sender") || $data->sender === null) {
+            throw new SdkValidationError("sender", 'required', "Required property 'sender' is missing or null");
+        }
+        if (!property_exists($data, "team") || $data->team === null) {
+            throw new SdkValidationError("team", 'required', "Required property 'team' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, WebhookTeamEditedActionEnum::class),
             changes: SdkClient::hydrateClass($data->changes, WebhookTeamEditedChanges::class),

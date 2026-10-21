@@ -22,7 +22,7 @@ trait CodespacesStopMethods
     public static function codespacesStopInOrganization(ClientConfig $clientConfig, string $org, string $username, string $codespaceName, ?RequestOptions $requestOptions = null): Codespace
     {
 
-        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/members/" . SdkClient::encodePathSegment($username) . "/codespaces/" . SdkClient::encodePathSegment($codespaceName) . "/stop", $clientConfig, returnType: Codespace::class, decoder: 'json', operationId: 'codespacesStopInOrganization', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/orgs/" . SdkClient::encodePathSegment($org) . "/members/" . SdkClient::encodePathSegment($username) . "/codespaces/" . SdkClient::encodePathSegment($codespaceName) . "/stop", $clientConfig, returnType: Codespace::class, decoder: 'json', operationId: 'codespacesStopInOrganization', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Codespace::class));
     }
 
@@ -38,7 +38,7 @@ trait CodespacesStopMethods
     public static function codespacesStopForAuthenticatedUser(ClientConfig $clientConfig, string $codespaceName, ?RequestOptions $requestOptions = null): Codespace
     {
 
-        $sdkResponse = SdkClient::request('POST', "/user/codespaces/" . SdkClient::encodePathSegment($codespaceName) . "/stop", $clientConfig, returnType: Codespace::class, decoder: 'json', operationId: 'codespacesStopForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
+        $sdkResponse = SdkClient::request('POST', "/user/codespaces/" . SdkClient::encodePathSegment($codespaceName) . "/stop", $clientConfig, returnType: Codespace::class, decoder: 'json', operationId: 'codespacesStopForAuthenticatedUser', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, BasicError::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Codespace::class));
     }
 }
